@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Selection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textSub: '#4A4A5A',
+                    },
+                    boxShadow: {
+                        'ambient': '0 12px 32px -4px rgba(0, 22, 220, 0.08), 0 4px 12px -2px rgba(0, 22, 220, 0.04)',
+                        'ambient-hover': '0 20px 40px -8px rgba(0, 22, 220, 0.12), 0 8px 16px -4px rgba(0, 22, 220, 0.06)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-textMain font-sans h-[100dvh] flex justify-center items-center overflow-hidden">
+
+    <!-- Mobile Container (375x840 constraint) -->
+    <main id="app-container" class="w-full max-w-[375px] h-full max-h-[840px] bg-background relative flex flex-col shadow-2xl mx-auto sm:rounded-[40px] sm:overflow-hidden sm:border-[8px] sm:border-white">
+        
+        <!-- Top Header -->
+        <header id="header" class="w-full h-[72px] bg-white flex items-center justify-center shrink-0 z-10 sticky top-0">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                    <i class="fa-solid fa-bolt text-sm"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-textMain">MMO</span>
+            </div>
+        </header>
+
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 overflow-y-auto hide-scrollbar px-6 pt-8 pb-32 flex flex-col gap-10">
+            
+            <!-- Hero Section -->
+            <section id="hero-section" class="flex flex-col gap-3">
+                <h1 class="text-[28px] leading-[34px] font-bold tracking-tight text-textMain">
+                    Bem-vindo de volta,<br>Arthur
+                </h1>
+                <p class="text-[16px] leading-[24px] text-textSub font-medium">
+                    Como você deseja acessar a plataforma hoje?
+                </p>
+            </section>
+
+            <!-- Selection Cards -->
+            <section id="role-selection" class="flex flex-col gap-4">
+                
+                <!-- Card 1: Cliente (Active State) -->
+                <button class="w-full bg-white rounded-[24px] p-6 text-left transition-all duration-300 shadow-ambient border-2 border-primary relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="flex flex-col gap-4 relative z-10">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-house text-xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <h3 class="text-[20px] font-bold text-textMain">Sou Cliente</h3>
+                            <p class="text-[14px] leading-[20px] text-textSub">
+                                Quero buscar profissionais e publicar demandas no Balcão.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Active Indicator -->
+                    <div class="absolute top-6 right-6 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white shadow-sm">
+                        <i class="fa-solid fa-check text-[12px]"></i>
+                    </div>
+                </button>
+
+                <!-- Card 2: Profissional -->
+                <button class="w-full bg-white rounded-[24px] p-6 text-left transition-all duration-300 shadow-sm border-2 border-transparent hover:shadow-ambient-hover hover:border-primary/20 relative overflow-hidden group">
+                    <div class="flex flex-col gap-4 relative z-10">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-textSub group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                            <i class="fa-solid fa-toolbox text-xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <h3 class="text-[20px] font-bold text-textMain">Sou Profissional</h3>
+                            <p class="text-[14px] leading-[20px] text-textSub">
+                                Quero gerenciar meus pedidos e buscar oportunidades.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Inactive Indicator -->
+                    <div class="absolute top-6 right-6 w-6 h-6 rounded-full border-2 border-gray-200"></div>
+                </button>
+
+            </section>
+
+            <!-- Enterprise Link -->
+            <section id="enterprise-link" class="flex justify-center mt-2">
+                <button class="text-[15px] font-semibold text-primary hover:text-primary/80 transition-colors py-2 px-4 rounded-full hover:bg-primary/5">
+                    Acessar como Conta Empresa
+                </button>
+            </section>
+
+        </div>
+
+        <!-- Sticky Bottom Action -->
+        <div id="sticky-footer" class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-background via-background to-transparent pb-8">
+            <button class="w-full h-[60px] bg-primary text-white rounded-full text-[17px] font-bold shadow-[0_8px_24px_-4px_rgba(0,22,220,0.4)] hover:shadow-[0_12px_32px_-4px_rgba(0,22,220,0.5)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2">
+                <span>Continuar</span>
+                <i class="fa-solid fa-arrow-right text-sm ml-1"></i>
+            </button>
+        </div>
+
+    </main>
+
+</body>
+</html>

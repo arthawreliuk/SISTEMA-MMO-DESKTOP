@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro-transaction / Lead Unlock Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textGray: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'floating': '0 20px 40px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        /* Mobile Constraint Wrapper */
+        #mobile-app-container {
+            width: 100%;
+            max-width: 375px;
+            min-height: 840px;
+            background-color: #F8F9FA;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.05);
+            overflow-x: hidden;
+        }
+
+        .glass-blur {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile App Container -->
+    <main id="mobile-app-container">
+
+        <!-- 1. Top Header -->
+        <header id="header" class="bg-white px-5 py-4 flex items-center justify-between sticky top-0 z-50 shadow-sm rounded-b-[24px]">
+            <button class="text-textGray text-sm font-semibold hover:text-textDark transition-colors">
+                Cancelar
+            </button>
+            <h1 class="text-[15px] font-bold text-textDark tracking-tight">Desbloquear Contato</h1>
+            <div class="bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-hourglass-half text-[10px]"></i>
+                04:59
+            </div>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <div class="flex-1 px-5 py-6 pb-32 flex flex-col gap-6 overflow-y-auto">
+
+            <!-- 2. The Opportunity Card (Locked State) -->
+            <section id="opportunity-card" class="bg-white rounded-[20px] p-5 shadow-soft relative overflow-hidden group">
+                <!-- Top Badge -->
+                <div class="inline-flex items-center gap-1.5 bg-[#FFF4E5] text-[#E67E22] px-3 py-1.5 rounded-full text-xs font-bold mb-4">
+                    <i class="fa-solid fa-bolt"></i>
+                    Pedido Urgente
+                </div>
+
+                <!-- Profile Area -->
+                <div class="flex items-center gap-4 mb-5 relative">
+                    <!-- Blurred Avatar -->
+                    <div class="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Avatar" class="w-full h-full object-cover filter blur-[6px]">
+                        <div class="absolute inset-0 bg-white/20 glass-blur flex items-center justify-center">
+                            <i class="fa-solid fa-lock text-textDark/40 text-lg"></i>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-lg font-bold text-textDark filter blur-[4px] select-none">Cliente Oculto</h2>
+                        <p class="text-sm text-textGray font-medium mt-0.5">Cliente Verificado</p>
+                    </div>
+                </div>
+
+                <!-- Visible Info -->
+                <div class="space-y-3 bg-background rounded-[14px] p-4 border border-gray-100">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                            <i class="fa-solid fa-screwdriver-wrench text-primary text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-textGray font-medium uppercase tracking-wider mb-1">Serviço Solicitado</p>
+                            <p class="text-[15px] font-bold text-textDark">Instalação de Ar Condicionado</p>
+                        </div>
+                    </div>
+                    
+                    <div class="h-[1px] w-full bg-gray-200 my-2"></div>
+                    
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0 mt-0.5">
+                            <i class="fa-solid fa-location-dot text-textGray text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-textGray font-medium uppercase tracking-wider mb-1">Localização</p>
+                            <p class="text-[15px] font-bold text-textDark">Balneário Camboriú, SC</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Decorative background elements mimicking the reference's soft gradients -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
+            </section>
+
+            <!-- 3. Transaction Details -->
+            <section id="transaction-details" class="text-center py-2">
+                <h3 class="text-3xl font-extrabold text-textDark tracking-tight">
+                    <span class="text-lg font-medium text-textGray align-top mr-1">R$</span>9,90
+                </h3>
+                <p class="text-[14px] text-textGray font-medium mt-2 max-w-[250px] mx-auto leading-relaxed">
+                    Desbloqueie o telefone e inicie o chat agora.
+                </p>
+            </section>
+
+            <!-- 4. Quick Payment Selector -->
+            <section id="payment-selector" class="flex flex-col gap-3">
+                <!-- Pill 1: PIX -->
+                <button class="w-full bg-white border-2 border-primary rounded-[16px] p-4 flex items-center gap-4 shadow-sm transition-transform active:scale-[0.98] relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 relative z-10">
+                        <i class="fa-brands fa-pix text-primary text-xl"></i>
+                    </div>
+                    <div class="text-left relative z-10 flex-1">
+                        <p class="text-[15px] font-bold text-textDark">Pagar com PIX</p>
+                        <p class="text-[12px] text-primary font-semibold mt-0.5">Liberação Imediata</p>
+                    </div>
+                    <div class="w-5 h-5 rounded-full border-4 border-primary bg-white relative z-10 shrink-0"></div>
+                </button>
+
+                <!-- Pill 2: Wallet -->
+                <button class="w-full bg-white border-2 border-transparent rounded-[16px] p-4 flex items-center gap-4 shadow-sm transition-transform hover:border-gray-200 active:scale-[0.98]">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-wallet text-textGray text-lg"></i>
+                    </div>
+                    <div class="text-left flex-1">
+                        <p class="text-[15px] font-bold text-textDark">Usar Saldo MMO</p>
+                        <p class="text-[12px] text-textGray font-medium mt-0.5">R$ 45,00 disponíveis</p>
+                    </div>
+                    <div class="w-5 h-5 rounded-full border-2 border-gray-300 bg-white shrink-0"></div>
+                </button>
+            </section>
+            
+            <!-- Trust Badges -->
+            <div class="flex items-center justify-center gap-4 mt-2">
+                <div class="flex items-center gap-1.5 text-xs text-textGray font-medium">
+                    <i class="fa-solid fa-shield-halved text-green-500"></i>
+                    Pagamento Seguro
+                </div>
+                <div class="w-1 h-1 rounded-full bg-gray-300"></div>
+                <div class="flex items-center gap-1.5 text-xs text-textGray font-medium">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Garantia de 7 dias
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 5. Primary Action (Pinned Bottom) -->
+        <footer id="footer" class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-[#F8F9FA] via-[#F8F9FA] to-transparent pt-10">
+            <button class="w-full bg-primary text-white rounded-[100px] py-4 px-6 flex items-center justify-center gap-3 shadow-floating hover:bg-primary/90 transition-all active:scale-[0.98]">
+                <i class="fa-solid fa-lock-open text-lg"></i>
+                <span class="text-[16px] font-bold tracking-wide">Desbloquear por R$ 9,90</span>
+            </button>
+        </footer>
+
+    </main>
+
+</body>
+</html>

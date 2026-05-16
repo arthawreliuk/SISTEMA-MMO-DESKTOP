@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Upgrade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#4B5563',
+                        gold: '#F59E0B'
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.05)',
+                        'pill': '0 8px 24px rgba(0, 22, 220, 0.1)',
+                        'soft': '0 4px 20px rgba(26, 26, 36, 0.04)',
+                        'float': '0 12px 32px rgba(0, 0, 0, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .glass-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="flex justify-center min-h-[100dvh] bg-gray-100">
+
+    <!-- Mobile Wrapper -->
+    <div id="app-container" class="w-full max-w-[375px] bg-background min-h-[100dvh] relative overflow-hidden flex flex-col shadow-2xl">
+
+        <!-- Top Header -->
+        <header id="header" class="fixed top-0 w-full max-w-[375px] z-50 glass-blur bg-white/80 border-b border-white/20 px-5 pt-12 pb-4 flex items-center justify-between">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-soft text-textMain hover:bg-gray-50 transition-colors">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="text-base font-bold text-textMain tracking-tight">Turbinar Perfil</h1>
+            <div class="w-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <!-- Main Content Scrollable Area -->
+        <main class="flex-1 overflow-y-auto pt-28 pb-48 px-5">
+            
+            <!-- Hero Illustration (The Hook) -->
+            <section id="hero-illustration" class="flex flex-col items-center justify-center mb-8 relative">
+                <!-- Decorative background elements -->
+                <div class="absolute w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                
+                <div class="relative w-full h-56 flex items-center justify-center">
+                    <img class="w-full h-full object-contain" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8e440070e4-ef4c34248a8374c47bf3.png" alt="modern 3D vector illustration of a professional profile card floating above a crowd, surrounded by small glowing stars and a rocket icon, deep blue and gold accents, clean off-white background" />
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -right-2 top-10 bg-white px-4 py-2 rounded-full shadow-float border border-white flex items-center gap-2 animate-bounce" style="animation-duration: 3s;">
+                        <i class="fa-solid fa-star text-gold text-sm"></i>
+                        <span class="text-xs font-bold text-textMain">Premium</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Value Proposition -->
+            <section id="value-prop" class="text-center mb-10 px-2">
+                <h2 class="text-[28px] leading-[1.2] font-extrabold text-textMain mb-3 tracking-tight">
+                    Seja a primeira escolha em Camboriú.
+                </h2>
+                <p class="text-sm text-textMuted font-medium leading-relaxed px-4">
+                    Profissionais com o selo Premium recebem até <span class="font-bold text-primary">5x mais pedidos</span> de orçamento.
+                </p>
+            </section>
+
+            <!-- Feature Highlights (Pill-Stack) -->
+            <section id="features" class="flex flex-col gap-4">
+                <!-- Pill 1 -->
+                <div class="bg-white rounded-[24px] p-5 flex items-center gap-4 shadow-soft border border-white/50">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-eye text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-textMain text-[15px]">Visibilidade Máxima nas Buscas</h3>
+                        <p class="text-xs text-textMuted mt-1">Apareça no topo para os clientes.</p>
+                    </div>
+                </div>
+
+                <!-- Pill 2 -->
+                <div class="bg-white rounded-[24px] p-5 flex items-center gap-4 shadow-soft border border-white/50 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-bl-full -z-0"></div>
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0 relative z-10">
+                        <i class="fa-solid fa-certificate text-gold text-xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="font-bold text-textMain text-[15px]">Selo de Mestre Verificado</h3>
+                        <p class="text-xs text-textMuted mt-1">Gere mais confiança instantânea.</p>
+                    </div>
+                </div>
+
+                <!-- Pill 3 -->
+                <div class="bg-white rounded-[24px] p-5 flex items-center gap-4 shadow-soft border border-white/50">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-bolt text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-textMain text-[15px]">Acesso antecipado ao Balcão</h3>
+                        <p class="text-xs text-textMuted mt-1">Receba os melhores pedidos primeiro.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Sticky Action Area -->
+        <section id="sticky-action" class="fixed bottom-[90px] w-full max-w-[375px] px-5 z-40">
+            <div class="bg-white/90 glass-blur rounded-[32px] p-2 pl-6 pr-2 flex items-center justify-between shadow-float border border-white/60">
+                <div class="flex flex-col">
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-textMuted">Investimento</span>
+                    <span class="text-base font-extrabold text-textMain">R$ 49,90<span class="text-xs font-medium text-textMuted">/mês</span></span>
+                </div>
+                <button class="bg-primary hover:bg-primary/90 text-white font-bold text-sm py-4 px-6 rounded-full shadow-pill transition-transform active:scale-95 flex items-center gap-2">
+                    Fazer Upgrade
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Floating Pill Navigation -->
+        <nav id="bottom-nav" class="fixed bottom-6 w-full max-w-[375px] px-8 z-50 flex justify-center">
+            <div class="bg-white rounded-full px-6 py-4 flex items-center justify-between w-full max-w-[280px] shadow-float border border-gray-100">
+                <a href="#" class="text-textMuted hover:text-primary transition-colors flex flex-col items-center gap-1">
+                    <i class="fa-solid fa-house text-lg"></i>
+                </a>
+                <a href="#" class="text-textMuted hover:text-primary transition-colors flex flex-col items-center gap-1">
+                    <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                </a>
+                <a href="#" class="text-textMuted hover:text-primary transition-colors flex flex-col items-center gap-1 relative">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+                </a>
+                <a href="#" class="text-primary transition-colors flex flex-col items-center gap-1 relative">
+                    <div class="w-8 h-8 rounded-full overflow-hidden border-2 border-primary shadow-sm">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-2 w-1 h-1 bg-primary rounded-full"></div>
+                </a>
+            </div>
+        </nav>
+
+    </div>
+
+</body>
+</html>

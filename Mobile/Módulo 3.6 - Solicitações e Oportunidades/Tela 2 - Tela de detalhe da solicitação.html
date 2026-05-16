@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Detalhes do Pedido</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: '#1A1A24',
+                        muted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0, 22, 220, 0.05)',
+                        'nav': '0 -5px 30px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="min-h-[100dvh] flex justify-center bg-gray-100">
+
+    <!-- Mobile Wrapper -->
+    <div id="app-container" class="w-full max-w-[375px] h-[840px] bg-background relative overflow-hidden shadow-2xl mx-auto sm:my-8 sm:rounded-[40px] sm:h-[840px]">
+        
+        <!-- Glassmorphism Header -->
+        <header id="header" class="absolute top-0 left-0 right-0 z-50 pt-12 pb-4 px-6 bg-white/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-50 text-primary transition-transform active:scale-95">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="text-[17px] font-bold text-text tracking-tight">Detalhes do Pedido</h1>
+            <button class="text-[15px] font-medium text-muted hover:text-text transition-colors">
+                Cancelar
+            </button>
+        </header>
+
+        <!-- Main Content Scrollable Area -->
+        <main id="main-content" class="h-full pt-[104px] pb-[100px] overflow-y-auto hide-scroll px-5 space-y-5">
+            
+            <!-- Status Banner -->
+            <section id="status-banner" class="bg-white rounded-[20px] p-5 shadow-soft border border-gray-50/50">
+                <div class="flex justify-between items-start mb-3">
+                    <h2 class="text-[19px] font-bold leading-tight text-text pr-4">Instalação Elétrica</h2>
+                    <div class="bg-blue-50 px-3 py-1.5 rounded-full flex items-center shrink-0">
+                        <span class="text-[11px] font-bold text-primary uppercase tracking-wide">Aguardando Mestres</span>
+                    </div>
+                </div>
+                <div class="flex items-center text-muted text-[13px] font-medium">
+                    <i class="fa-regular fa-clock mr-2 text-[14px]"></i>
+                    Publicado hoje às 10:30
+                </div>
+            </section>
+
+            <!-- Request Details Card -->
+            <section id="request-details" class="bg-white rounded-[20px] p-6 shadow-soft border border-gray-50/50 space-y-6">
+                <!-- Description -->
+                <div>
+                    <h3 class="text-[13px] font-bold text-muted uppercase tracking-wider mb-2">Descrição</h3>
+                    <p class="text-[15px] leading-relaxed text-text font-medium">
+                        Preciso instalar duas tomadas 220v e trocar o disjuntor principal.
+                    </p>
+                </div>
+
+                <!-- Photos Gallery -->
+                <div>
+                    <h3 class="text-[13px] font-bold text-muted uppercase tracking-wider mb-3">Fotos</h3>
+                    <div class="flex space-x-3 overflow-x-auto hide-scroll pb-2">
+                        <div class="w-[100px] h-[100px] shrink-0 rounded-[16px] overflow-hidden bg-gray-100 border border-gray-100 relative">
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Local do serviço 1">
+                        </div>
+                        <div class="w-[100px] h-[100px] shrink-0 rounded-[16px] overflow-hidden bg-gray-100 border border-gray-100 relative">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Local do serviço 2">
+                        </div>
+                        <div class="w-[100px] h-[100px] shrink-0 rounded-[16px] border-2 border-dashed border-gray-200 flex flex-col items-center justify-center text-muted bg-gray-50/50">
+                            <i class="fa-solid fa-plus text-xl mb-1"></i>
+                            <span class="text-[10px] font-bold">Ver Mais</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div class="pt-2 border-t border-gray-100">
+                    <h3 class="text-[13px] font-bold text-muted uppercase tracking-wider mb-2">Local</h3>
+                    <div class="flex items-center text-[15px] font-semibold text-text">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-3 text-primary">
+                            <i class="fa-solid fa-location-dot text-[14px]"></i>
+                        </div>
+                        Centro, Balneário Camboriú
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quotes/Proposals Section -->
+            <section id="proposals-section" class="pt-2 pb-6">
+                <div class="flex items-center justify-between mb-4 px-1">
+                    <h2 class="text-[18px] font-bold text-text">Orçamentos <span class="text-primary bg-blue-50 px-2 py-0.5 rounded-full text-[14px] ml-1">1</span></h2>
+                </div>
+
+                <!-- Proposal Card -->
+                <div class="bg-white rounded-[20px] p-5 shadow-soft border border-gray-50/50 flex flex-col gap-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" alt="Carlos S.">
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                                    <i class="fa-solid fa-check text-[8px] text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-[16px] font-bold text-text flex items-center gap-1">
+                                    Carlos S.
+                                </h4>
+                                <div class="flex items-center text-[12px] text-muted font-medium mt-0.5">
+                                    <i class="fa-solid fa-star text-yellow-400 text-[10px] mr-1"></i>
+                                    <span class="text-text font-bold mr-1">4.9</span> (124 avaliações)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[18px] font-black text-text">R$ 180</div>
+                            <div class="text-[11px] text-muted font-medium">Visita Técnica</div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-primary hover:bg-blue-800 text-white font-bold py-3.5 rounded-full transition-all active:scale-[0.98] shadow-lg shadow-primary/20 text-[15px]">
+                        Ver Proposta
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Bottom padding for scroll -->
+            <div class="h-10"></div>
+        </main>
+
+        <!-- Floating Pill Navigation -->
+        <nav id="bottom-nav" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-48px)] bg-white rounded-full shadow-nav px-6 py-4 flex justify-between items-center z-50 border border-gray-100/50 backdrop-blur-xl">
+            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-text transition-colors w-12">
+                <i class="fa-solid fa-house text-[20px]"></i>
+            </button>
+            
+            <button class="flex flex-col items-center gap-1 text-primary w-12 relative">
+                <i class="fa-solid fa-file-lines text-[20px]"></i>
+                <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-3"></div>
+            </button>
+            
+            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-text transition-colors w-12 relative">
+                <i class="fa-solid fa-message text-[20px]"></i>
+                <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white flex items-center justify-center text-[8px] text-white font-bold">2</div>
+            </button>
+            
+            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-text transition-colors w-12">
+                <i class="fa-regular fa-user text-[20px]"></i>
+            </button>
+        </nav>
+
+    </div>
+
+</body>
+</html>

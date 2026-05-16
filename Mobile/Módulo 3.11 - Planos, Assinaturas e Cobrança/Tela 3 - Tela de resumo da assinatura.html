@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: '#1A1A24',
+                        textLight: '#8A8A8A',
+                        surface: '#FFFFFF',
+                        success: '#10B981',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.15)',
+                        'nav': '0 -5px 30px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background text-text min-h-screen flex justify-center pb-24">
+
+    <!-- Mobile Container (375x840 constraint logic) -->
+    <main id="mobile-app-container" class="w-full max-w-[375px] min-h-[840px] relative bg-background shadow-2xl overflow-x-hidden flex flex-col mx-auto sm:my-8 sm:rounded-[40px] sm:border-[8px] border-white">
+        
+        <!-- Header -->
+        <header id="header" class="glass sticky top-0 z-50 px-6 py-5 flex items-center justify-between border-b border-gray-100/50">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-arrow-left text-text text-lg"></i>
+            </button>
+            <h1 class="text-lg font-bold tracking-tight">Minha Assinatura</h1>
+            <div class="w-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <!-- Content Scroll Area -->
+        <div class="flex-1 overflow-y-auto px-5 py-6 space-y-6">
+            
+            <!-- Hero Card: Active Plan -->
+            <section id="hero-plan-card" class="bg-surface rounded-[24px] p-6 shadow-ambient relative overflow-hidden border border-primary/10 shadow-glow">
+                <!-- Status Badge -->
+                <div class="absolute top-5 right-5 bg-success/10 text-success px-3 py-1 rounded-full text-xs font-bold tracking-wide flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+                    Ativo
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-sm text-textLight font-medium uppercase tracking-wider mb-1">Plano Atual</p>
+                        <h2 class="text-2xl font-bold text-text">Plano Mestre <span class="text-lg font-medium text-textLight">(Mensal)</span></h2>
+                    </div>
+
+                    <div class="pt-2">
+                        <p class="text-3xl font-bold text-primary">R$ 49,90<span class="text-sm text-textLight font-medium">/mês</span></p>
+                        <p class="text-sm text-textLight mt-1">Próxima cobrança: 15/05/2026</p>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="pt-4">
+                        <div class="flex justify-between text-xs font-medium text-textLight mb-2">
+                            <span>15 Abr</span>
+                            <span>15 Mai</span>
+                        </div>
+                        <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary rounded-full w-[65%] relative">
+                                <div class="absolute right-0 top-0 bottom-0 w-4 bg-white/30 rounded-full"></div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-center text-textLight mt-2">20 dias restantes no ciclo</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Method -->
+            <section id="payment-method" class="bg-surface rounded-[16px] p-5 shadow-ambient">
+                <h3 class="text-sm font-bold text-textLight uppercase tracking-wider mb-4">Método de Pagamento</h3>
+                
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-[12px] mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-primary">
+                            <i class="fa-brands fa-cc-visa text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-sm">Visa terminado em •••• 1234</p>
+                            <p class="text-xs text-textLight">Expira 12/28</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="w-full py-3.5 rounded-full border border-gray-200 text-sm font-semibold text-text hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-credit-card"></i>
+                    Atualizar Cartão
+                </button>
+            </section>
+
+            <!-- Quick Actions -->
+            <section id="quick-actions" class="space-y-3 pt-2">
+                <h3 class="text-sm font-bold text-textLight uppercase tracking-wider mb-3 px-1">Ações Rápidas</h3>
+                
+                <button class="w-full bg-surface p-4 rounded-[16px] shadow-sm flex items-center justify-between hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-textLight">
+                            <i class="fa-solid fa-file-invoice"></i>
+                        </div>
+                        <span class="font-medium text-sm">Ver Histórico de Faturas</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-300"></i>
+                </button>
+
+                <button class="w-full bg-surface p-4 rounded-[16px] shadow-sm flex items-center justify-between hover:shadow-md transition-shadow border border-primary/10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-arrow-up-right-dots"></i>
+                        </div>
+                        <span class="font-medium text-sm text-primary">Alterar para Plano Anual</span>
+                    </div>
+                    <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">Economize 20%</span>
+                </button>
+            </section>
+
+            <!-- Danger Zone -->
+            <section id="danger-zone" class="pt-8 pb-6 text-center">
+                <button class="text-sm font-medium text-textLight hover:text-red-500 transition-colors underline decoration-gray-300 underline-offset-4">
+                    Cancelar Assinatura
+                </button>
+            </section>
+
+        </div>
+
+        <!-- Floating Bottom Navigation -->
+        <nav id="bottom-nav" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[320px] bg-surface rounded-full shadow-nav p-2 flex items-center justify-between px-6 z-50">
+            <a href="#" class="p-3 text-textLight hover:text-text transition-colors relative flex flex-col items-center">
+                <i class="fa-solid fa-house text-lg"></i>
+            </a>
+            <a href="#" class="p-3 text-textLight hover:text-text transition-colors relative flex flex-col items-center">
+                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+            </a>
+            <a href="#" class="p-3 text-textLight hover:text-text transition-colors relative flex flex-col items-center">
+                <i class="fa-regular fa-bell text-lg"></i>
+            </a>
+            <a href="#" class="p-3 text-primary transition-colors relative flex flex-col items-center">
+                <i class="fa-solid fa-user text-lg"></i>
+                <span class="absolute -bottom-1 w-1.5 h-1.5 bg-primary rounded-full"></span>
+            </a>
+        </nav>
+
+    </main>
+
+</body>
+</html>

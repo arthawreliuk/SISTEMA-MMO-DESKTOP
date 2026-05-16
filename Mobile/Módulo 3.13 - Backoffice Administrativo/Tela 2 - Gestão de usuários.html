@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>User Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        successSoft: '#DCFCE7',
+                        successText: '#166534',
+                        dangerSoft: '#FEE2E2',
+                        dangerText: '#991B1B',
+                        cardBg: '#FFFFFF',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 -4px 24px -4px rgba(0, 0, 0, 0.06)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-textMain bg-background min-h-[100dvh] flex flex-col relative pb-24">
+
+    <!-- Top Header -->
+    <header id="header" class="glass-header sticky top-0 z-50 px-5 py-4 flex items-center justify-between transition-all duration-300">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+                <i class="fa-solid fa-shield-halved text-sm"></i>
+            </div>
+            <div>
+                <h1 class="text-[17px] font-bold leading-tight tracking-tight text-textMain">MMO Admin</h1>
+                <p class="text-[11px] font-medium text-textMuted uppercase tracking-wider">Backoffice</p>
+            </div>
+        </div>
+        <button class="w-10 h-10 rounded-full bg-white shadow-soft flex items-center justify-center text-textMain hover:bg-gray-50 transition-colors">
+            <i class="fa-regular fa-bell text-[18px]"></i>
+            <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+        </button>
+    </header>
+
+    <main class="flex-1 px-5 pt-6 pb-6 space-y-6">
+        
+        <!-- Search & Filter Section -->
+        <section id="SearchAndFilterPills" class="space-y-4">
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-textMuted text-[15px]"></i>
+                </div>
+                <input type="text" class="block w-full pl-11 pr-4 py-3.5 bg-white border-none rounded-full text-[14px] text-textMain placeholder-textMuted shadow-soft focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all" placeholder="Buscar cliente por nome ou e-mail...">
+            </div>
+            
+            <div class="flex items-center gap-2 overflow-x-auto pb-1 -mx-5 px-5 snap-x">
+                <button class="snap-start whitespace-nowrap px-5 py-2 rounded-full text-[13px] font-semibold bg-primary text-white shadow-md shadow-primary/20 transition-all">Todos</button>
+                <button class="snap-start whitespace-nowrap px-5 py-2 rounded-full text-[13px] font-medium bg-white text-textMuted hover:text-textMain shadow-sm border border-gray-100 transition-all">Ativos</button>
+                <button class="snap-start whitespace-nowrap px-5 py-2 rounded-full text-[13px] font-medium bg-white text-textMuted hover:text-textMain shadow-sm border border-gray-100 transition-all">Suspensos</button>
+                <button class="snap-start whitespace-nowrap px-5 py-2 rounded-full text-[13px] font-medium bg-white text-textMuted hover:text-textMain shadow-sm border border-gray-100 transition-all">Novos</button>
+            </div>
+        </section>
+
+        <!-- User List -->
+        <section id="UserManagementList" class="space-y-3.5">
+            <div class="flex items-center justify-between mb-2">
+                <h2 class="text-[15px] font-bold text-textMain">Clientes Recentes</h2>
+                <span class="text-[12px] font-medium text-textMuted">124 Total</span>
+            </div>
+
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[16px] p-4 shadow-soft border border-gray-50/50 flex flex-col gap-3 transition-transform active:scale-[0.98]">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Avatar" class="w-11 h-11 rounded-full object-cover border-2 border-white shadow-sm">
+                        <div>
+                            <h3 class="text-[15px] font-bold text-textMain leading-tight">Ana Silva</h3>
+                            <p class="text-[13px] text-textMuted mt-0.5">ana.silva@exemplo.com</p>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full bg-successSoft text-successText text-[11px] font-bold tracking-wide uppercase">Ativo</span>
+                </div>
+                <div class="w-full h-px bg-gray-100"></div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5 text-[12px] text-textMuted font-medium">
+                        <i class="fa-regular fa-calendar text-[11px]"></i>
+                        <span>Desde 12 Fev</span>
+                    </div>
+                    <button class="px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[13px] font-semibold hover:bg-primary/10 transition-colors">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[16px] p-4 shadow-soft border border-gray-50/50 flex flex-col gap-3 transition-transform active:scale-[0.98]">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-11 h-11 rounded-full object-cover border-2 border-white shadow-sm">
+                        <div>
+                            <h3 class="text-[15px] font-bold text-textMain leading-tight">Carlos Mendes</h3>
+                            <p class="text-[13px] text-textMuted mt-0.5">carlos.m@exemplo.com</p>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full bg-dangerSoft text-dangerText text-[11px] font-bold tracking-wide uppercase">Suspenso</span>
+                </div>
+                <div class="w-full h-px bg-gray-100"></div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5 text-[12px] text-textMuted font-medium">
+                        <i class="fa-regular fa-calendar text-[11px]"></i>
+                        <span>Desde 05 Jan</span>
+                    </div>
+                    <button class="px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[13px] font-semibold hover:bg-primary/10 transition-colors">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[16px] p-4 shadow-soft border border-gray-50/50 flex flex-col gap-3 transition-transform active:scale-[0.98]">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-[16px] border-2 border-white shadow-sm">
+                            MR
+                        </div>
+                        <div>
+                            <h3 class="text-[15px] font-bold text-textMain leading-tight">Marina Ribeiro</h3>
+                            <p class="text-[13px] text-textMuted mt-0.5">m.ribeiro@exemplo.com</p>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full bg-successSoft text-successText text-[11px] font-bold tracking-wide uppercase">Ativo</span>
+                </div>
+                <div class="w-full h-px bg-gray-100"></div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5 text-[12px] text-textMuted font-medium">
+                        <i class="fa-regular fa-calendar text-[11px]"></i>
+                        <span>Desde 28 Mar</span>
+                    </div>
+                    <button class="px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[13px] font-semibold hover:bg-primary/10 transition-colors">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-[16px] p-4 shadow-soft border border-gray-50/50 flex flex-col gap-3 transition-transform active:scale-[0.98]">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Avatar" class="w-11 h-11 rounded-full object-cover border-2 border-white shadow-sm">
+                        <div>
+                            <h3 class="text-[15px] font-bold text-textMain leading-tight">Roberto Alves</h3>
+                            <p class="text-[13px] text-textMuted mt-0.5">roberto.alves@exemplo.com</p>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full bg-successSoft text-successText text-[11px] font-bold tracking-wide uppercase">Ativo</span>
+                </div>
+                <div class="w-full h-px bg-gray-100"></div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5 text-[12px] text-textMuted font-medium">
+                        <i class="fa-regular fa-calendar text-[11px]"></i>
+                        <span>Desde 15 Abr</span>
+                    </div>
+                    <button class="px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[13px] font-semibold hover:bg-primary/10 transition-colors">
+                        Ver Detalhes
+                    </button>
+                </div>
+            </div>
+            
+            <div class="pt-4 flex justify-center">
+                 <button class="w-10 h-10 rounded-full bg-white shadow-soft flex items-center justify-center text-primary hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-chevron-down text-[14px]"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Bottom Navigation -->
+    <nav id="FloatingPillNavigation" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] bg-white/90 backdrop-blur-xl rounded-full shadow-nav px-6 py-3.5 flex items-center justify-between border border-white/40 z-50">
+        <!-- Nav Item 1 -->
+        <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
+            <i class="fa-solid fa-chart-pie text-[20px]"></i>
+        </a>
+        
+        <!-- Nav Item 2 (Active) -->
+        <a href="#" class="flex flex-col items-center gap-1 text-primary relative">
+            <i class="fa-solid fa-users text-[20px]"></i>
+            <span class="absolute -bottom-2.5 w-1.5 h-1.5 bg-primary rounded-full"></span>
+        </a>
+        
+        <!-- Nav Item 3 -->
+        <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
+            <i class="fa-solid fa-wallet text-[20px]"></i>
+        </a>
+        
+        <!-- Nav Item 4 -->
+        <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
+            <i class="fa-solid fa-gear text-[20px]"></i>
+        </a>
+    </nav>
+
+</body>
+</html>

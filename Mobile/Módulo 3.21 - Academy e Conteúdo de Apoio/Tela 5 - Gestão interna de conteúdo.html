@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LMS CMS Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            green: '#2EA043',
+                            gray: '#D4D4D8'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 -4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'fab': '0 8px 24px -4px rgba(0, 22, 220, 0.4)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .safe-bottom { padding-bottom: calc(env(safe-area-inset-bottom) + 100px); }
+    </style>
+</head>
+<body class="text-brand-navy min-h-screen relative max-w-[430px] mx-auto bg-brand-offwhite shadow-2xl">
+
+    <!-- Header -->
+    <header id="header" class="sticky top-0 z-40 bg-white px-5 py-4 flex items-center justify-between shadow-soft rounded-b-[24px]">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-white font-bold text-lg">
+                M
+            </div>
+        </div>
+        <h1 class="text-[17px] font-bold tracking-tight">Gestão de Conteúdo</h1>
+        <button class="w-10 h-10 rounded-full bg-brand-offwhite flex items-center justify-center text-brand-navy hover:bg-gray-100 transition-colors">
+            <i class="fa-solid fa-search text-sm"></i>
+        </button>
+    </header>
+
+    <main class="px-5 pt-6 safe-bottom">
+        
+        <!-- Macro Metrics -->
+        <section id="metrics" class="mb-8">
+            <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2 -mx-5 px-5">
+                <div class="flex-none bg-white px-5 py-3.5 rounded-full shadow-soft border border-gray-100 flex items-center gap-2.5">
+                    <div class="w-2 h-2 rounded-full bg-brand-blue"></div>
+                    <span class="text-[14px] font-semibold">Total: 45 Aulas</span>
+                </div>
+                <div class="flex-none bg-white px-5 py-3.5 rounded-full shadow-soft border border-gray-100 flex items-center gap-2.5">
+                    <div class="w-2 h-2 rounded-full bg-brand-green"></div>
+                    <span class="text-[14px] font-semibold">12k Visualizações</span>
+                </div>
+                <div class="flex-none bg-white px-5 py-3.5 rounded-full shadow-soft border border-gray-100 flex items-center gap-2.5">
+                    <div class="w-2 h-2 rounded-full bg-brand-navy"></div>
+                    <span class="text-[14px] font-semibold">Uploads Ativos: 3</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content List -->
+        <section id="content-list" class="space-y-4">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-[18px] font-bold">Aulas Recentes</h2>
+                <button class="text-[13px] font-semibold text-brand-blue">Ver todas</button>
+            </div>
+
+            <!-- Card 1 -->
+            <article class="bg-white p-3 rounded-[16px] shadow-soft flex gap-4 items-center border border-gray-50 relative group">
+                <div class="w-[100px] h-[64px] rounded-[10px] overflow-hidden relative flex-shrink-0 bg-gray-100">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Thumbnail" class="w-full h-full object-cover opacity-80 mix-blend-multiply">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-6 h-6 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
+                            <i class="fa-solid fa-play text-white text-[8px] ml-0.5"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 min-w-0 py-1">
+                    <h3 class="text-[15px] font-bold truncate mb-1.5">Vendas B2B</h3>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 rounded-full bg-green-50 text-brand-green text-[11px] font-bold uppercase tracking-wider">Publicado</span>
+                        <span class="text-[12px] font-medium text-gray-500"><i class="fa-regular fa-eye mr-1"></i>1.2k views</span>
+                    </div>
+                </div>
+                <button class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-brand-navy absolute top-2 right-2">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="bg-white p-3 rounded-[16px] shadow-soft flex gap-4 items-center border border-gray-50 relative group">
+                <div class="w-[100px] h-[64px] rounded-[10px] bg-brand-offwhite border border-dashed border-gray-300 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-regular fa-image text-gray-400 text-lg"></i>
+                </div>
+                <div class="flex-1 min-w-0 py-1">
+                    <h3 class="text-[15px] font-bold truncate mb-1.5">Módulo de Elétrica</h3>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 text-[11px] font-bold uppercase tracking-wider">Rascunho</span>
+                        <span class="text-[12px] font-medium text-gray-400">Há 2 dias</span>
+                    </div>
+                </div>
+                <button class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-brand-navy absolute top-2 right-2">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="bg-white p-3 rounded-[16px] shadow-soft flex gap-4 items-center border border-gray-50 relative group">
+                <div class="w-[100px] h-[64px] rounded-[10px] overflow-hidden relative flex-shrink-0 bg-gray-100">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Thumbnail" class="w-full h-full object-cover opacity-80 mix-blend-multiply">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-6 h-6 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
+                            <i class="fa-solid fa-play text-white text-[8px] ml-0.5"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 min-w-0 py-1">
+                    <h3 class="text-[15px] font-bold truncate mb-1.5">Introdução ao UX</h3>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 rounded-full bg-green-50 text-brand-green text-[11px] font-bold uppercase tracking-wider">Publicado</span>
+                        <span class="text-[12px] font-medium text-gray-500"><i class="fa-regular fa-eye mr-1"></i>856 views</span>
+                    </div>
+                </div>
+                <button class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-brand-navy absolute top-2 right-2">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Floating Action Button -->
+    <button class="fixed bottom-[100px] right-6 w-14 h-14 bg-brand-blue rounded-full shadow-fab flex items-center justify-center text-white hover:scale-105 transition-transform z-50">
+        <i class="fa-solid fa-plus text-xl"></i>
+    </button>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] bg-white rounded-full shadow-nav px-2 py-2 flex justify-between items-center z-50 border border-gray-100">
+        <a href="#" class="flex flex-col items-center justify-center w-14 h-12 rounded-full bg-brand-offwhite text-brand-blue relative">
+            <i class="fa-solid fa-house text-[18px] mb-0.5"></i>
+            <div class="absolute -bottom-1 w-1 h-1 rounded-full bg-brand-blue"></div>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center w-14 h-12 rounded-full text-gray-400 hover:text-brand-navy transition-colors">
+            <i class="fa-solid fa-chart-simple text-[18px]"></i>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center w-14 h-12 rounded-full text-gray-400 hover:text-brand-navy transition-colors">
+            <i class="fa-regular fa-folder text-[18px]"></i>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center w-14 h-12 rounded-full text-gray-400 hover:text-brand-navy transition-colors">
+            <i class="fa-regular fa-user text-[18px]"></i>
+        </a>
+    </nav>
+
+</body>
+</html>

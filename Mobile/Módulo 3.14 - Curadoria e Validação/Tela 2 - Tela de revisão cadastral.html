@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Revisão Cadastral - MMO Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            red: '#E53E3E',
+                            yellow: '#F6E05E',
+                            yellowtext: '#744210',
+                            gray: {
+                                100: '#F3F4F6',
+                                200: '#E5E7EB',
+                                300: '#D1D5DB',
+                                400: '#9CA3AF',
+                                500: '#6B7280',
+                            }
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'float': '0 -4px 20px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.active {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-icon.rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-brand-navy min-h-screen flex flex-col relative pb-32">
+
+    <!-- Top Header (Glassmorphism) -->
+    <header id="header" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-brand-gray-200 px-4 py-4 flex items-center justify-between shadow-sm">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-brand-gray-100 transition-colors">
+            <i class="fa-solid fa-arrow-left text-brand-navy text-lg"></i>
+        </button>
+        <h1 class="text-lg font-bold text-brand-navy">Revisão Cadastral</h1>
+        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-brand-gray-100 transition-colors">
+            <i class="fa-solid fa-flag text-brand-red text-lg"></i>
+        </button>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 w-full max-w-[375px] mx-auto px-4 pt-6 pb-8 flex flex-col gap-6">
+        
+        <!-- Professional Profile Hero -->
+        <section id="profile-hero" class="bg-white rounded-[20px] p-6 shadow-soft flex flex-col items-center text-center relative overflow-hidden">
+            <!-- Decorative background blur -->
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-blue/5 rounded-full blur-2xl"></div>
+            
+            <div class="relative mb-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Roberto Alves" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md">
+                <div class="absolute bottom-0 right-0 w-6 h-6 bg-green-500 border-2 border-white rounded-full"></div>
+            </div>
+            
+            <h2 class="text-2xl font-bold text-brand-navy mb-1">Roberto Alves</h2>
+            <p class="text-brand-gray-500 font-medium mb-2">Climatização</p>
+            
+            <div class="flex items-center gap-2 text-brand-gray-400 text-sm mb-4">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Camboriú, SC</span>
+            </div>
+            
+            <div class="bg-brand-yellow/20 text-brand-yellowtext px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-2">
+                <i class="fa-solid fa-clock rotate-180"></i>
+                Em Revisão
+            </div>
+        </section>
+
+        <!-- Data Inspection Blocks (Accordion Style) -->
+        <section id="data-inspection" class="flex flex-col gap-3">
+            
+            <!-- Card 1: Dados Pessoais -->
+            <div class="bg-white rounded-[16px] shadow-soft overflow-hidden border border-brand-gray-100">
+                <button onclick="toggleAccordion('acc-1', 'icon-1')" class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-brand-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                            <i class="fa-regular fa-id-card"></i>
+                        </div>
+                        <span class="font-semibold text-brand-navy">Dados Pessoais</span>
+                    </div>
+                    <i id="icon-1" class="fa-solid fa-chevron-down text-brand-gray-400 accordion-icon"></i>
+                </button>
+                <div id="acc-1" class="accordion-content bg-brand-offwhite/50 px-5 pb-4">
+                    <div class="pt-2 flex flex-col gap-3">
+                        <div class="flex justify-between items-center py-2 border-b border-brand-gray-200 border-dashed">
+                            <span class="text-brand-gray-500 text-sm">CPF</span>
+                            <span class="font-medium text-brand-navy">***.456.789-**</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-brand-gray-200 border-dashed">
+                            <span class="text-brand-gray-500 text-sm">Data de Nasc.</span>
+                            <span class="font-medium text-brand-navy">12/05/1988</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-brand-gray-500 text-sm">Telefone</span>
+                            <span class="font-medium text-brand-navy">(47) 99999-0000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Endereço -->
+            <div class="bg-white rounded-[16px] shadow-soft overflow-hidden border border-brand-gray-100">
+                <button onclick="toggleAccordion('acc-2', 'icon-2')" class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-brand-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <span class="font-semibold text-brand-navy">Endereço</span>
+                    </div>
+                    <i id="icon-2" class="fa-solid fa-chevron-down text-brand-gray-400 accordion-icon"></i>
+                </button>
+                <div id="acc-2" class="accordion-content bg-brand-offwhite/50 px-5 pb-4">
+                    <div class="pt-2 flex flex-col gap-3">
+                        <div class="flex flex-col gap-1 py-2 border-b border-brand-gray-200 border-dashed">
+                            <span class="text-brand-gray-500 text-sm">Logradouro</span>
+                            <span class="font-medium text-brand-navy">Rua das Palmeiras, 123</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex flex-col gap-1 py-2 border-b border-brand-gray-200 border-dashed">
+                                <span class="text-brand-gray-500 text-sm">Bairro</span>
+                                <span class="font-medium text-brand-navy">Centro</span>
+                            </div>
+                            <div class="flex flex-col gap-1 py-2 border-b border-brand-gray-200 border-dashed">
+                                <span class="text-brand-gray-500 text-sm">CEP</span>
+                                <span class="font-medium text-brand-navy">88330-000</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-brand-gray-500 text-sm">Cidade/UF</span>
+                            <span class="font-medium text-brand-navy">Camboriú - SC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Apresentação -->
+            <div class="bg-white rounded-[16px] shadow-soft overflow-hidden border border-brand-gray-100">
+                <button onclick="toggleAccordion('acc-3', 'icon-3')" class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-brand-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <span class="font-semibold text-brand-navy">Apresentação</span>
+                    </div>
+                    <i id="icon-3" class="fa-solid fa-chevron-down text-brand-gray-400 accordion-icon"></i>
+                </button>
+                <div id="acc-3" class="accordion-content bg-brand-offwhite/50 px-5 pb-4">
+                    <div class="pt-2">
+                        <p class="text-sm text-brand-navy leading-relaxed bg-white p-3 rounded-lg border border-brand-gray-200">
+                            "Especialista em instalação e manutenção de ar condicionado split e central. Atuo na região há mais de 10 anos garantindo serviço limpo e com garantia. Orçamento sem compromisso."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Moderation Actions (Pinned Bottom) -->
+    <div id="moderation-bar" class="fixed bottom-0 left-0 right-0 z-40 px-4 pb-6 pt-4 bg-gradient-to-t from-white via-white to-transparent">
+        <div class="max-w-[375px] mx-auto flex items-center gap-3">
+            <button class="flex-1 py-4 px-2 rounded-full border-2 border-brand-red/20 bg-brand-red/5 text-brand-red font-bold text-[15px] hover:bg-brand-red/10 transition-colors flex justify-center items-center gap-2">
+                <i class="fa-solid fa-xmark"></i>
+                Reprovar
+            </button>
+            <button class="flex-[1.5] py-4 px-2 rounded-full bg-brand-blue text-white font-bold text-[15px] shadow-lg hover:bg-brand-blue/90 transition-colors flex justify-center items-center gap-2">
+                <i class="fa-solid fa-check"></i>
+                Dados OK - Avançar
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Pill Navigation (Absolute bottom constraint for mobile feel) -->
+    <nav id="bottom-nav" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-30 w-[90%] max-w-[340px] bg-white/90 backdrop-blur-lg rounded-full shadow-float px-6 py-3 flex items-center justify-between border border-brand-gray-100">
+        <button class="flex flex-col items-center gap-1 text-brand-gray-400 hover:text-brand-blue transition-colors">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-semibold">Início</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-brand-blue transition-colors">
+            <i class="fa-solid fa-users-viewfinder text-lg"></i>
+            <span class="text-[10px] font-semibold">Revisão</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-brand-gray-400 hover:text-brand-blue transition-colors relative">
+            <i class="fa-solid fa-bell text-lg"></i>
+            <span class="absolute top-0 right-1 w-2 h-2 bg-brand-red rounded-full"></span>
+            <span class="text-[10px] font-semibold">Alertas</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-brand-gray-400 hover:text-brand-blue transition-colors">
+            <i class="fa-solid fa-gear text-lg"></i>
+            <span class="text-[10px] font-semibold">Ajustes</span>
+        </button>
+    </nav>
+
+    <script>
+        // Simple accordion logic
+        function toggleAccordion(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.classList.remove('rotate');
+            } else {
+                // Optional: close others
+                document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('active'));
+                document.querySelectorAll('.accordion-icon').forEach(el => el.classList.remove('rotate'));
+                
+                content.classList.add('active');
+                icon.classList.add('rotate');
+            }
+        }
+
+        // Open first accordion by default for demonstration
+        window.onload = () => {
+            toggleAccordion('acc-1', 'icon-1');
+        }
+    </script>
+</body>
+</html>

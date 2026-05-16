@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lock Screen Notification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        trustBlue: '#0016dc',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 h-screen w-full flex items-center justify-center overflow-hidden m-0 p-0">
+
+    <!-- Mobile Device Container -->
+    <main class="relative w-[375px] h-[840px] bg-black overflow-hidden shadow-2xl">
+        
+        <!-- Cinematic Blurred Background -->
+        <div class="absolute inset-0 z-0">
+            <div style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')" class="w-full h-full bg-cover bg-center opacity-60 scale-110 blur-sm"></div>
+            <!-- Overlay gradient for better text readability -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80"></div>
+        </div>
+
+        <!-- Status Bar (Simulated iOS) -->
+        <div id="status-bar" class="absolute top-0 w-full h-12 flex justify-between items-center px-6 z-20 text-white text-sm font-medium pt-2">
+            <span>9:41</span>
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-signal text-xs"></i>
+                <i class="fa-solid fa-wifi text-xs"></i>
+                <i class="fa-solid fa-battery-full text-sm"></i>
+            </div>
+        </div>
+
+        <!-- Lock Screen Clock -->
+        <div id="lock-screen-clock" class="absolute top-24 w-full flex flex-col items-center z-10 text-white">
+            <span class="text-xl font-medium tracking-wide opacity-90 mb-1">Quarta-feira, 24 de Maio</span>
+            <h1 class="text-[80px] font-bold leading-none tracking-tight">09:41</h1>
+        </div>
+
+        <!-- Notification Area -->
+        <div id="notification-container" class="absolute top-64 w-full px-4 z-30 flex flex-col items-center">
+            
+            <!-- The Push Card -->
+            <div id="notification-card" class="w-full glass-card rounded-[24px] p-4 text-white hover:bg-white/20 transition-colors duration-300 cursor-pointer">
+                
+                <!-- App Header -->
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center space-x-2">
+                        <!-- App Icon -->
+                        <div class="w-6 h-6 bg-trustBlue rounded-md flex items-center justify-center shadow-sm">
+                            <i class="fa-solid fa-bolt text-white text-[10px]"></i>
+                        </div>
+                        <span class="text-[12px] font-bold tracking-wide opacity-90 uppercase">MMO Profissional</span>
+                    </div>
+                    <span class="text-[12px] opacity-60 font-medium">agora</span>
+                </div>
+
+                <!-- Notification Content -->
+                <div class="pl-8">
+                    <h2 class="text-[15px] font-semibold mb-1 tracking-tight">Orçamento Aprovado! 🎉</h2>
+                    <p class="text-[14px] leading-snug opacity-90 font-normal">
+                        O cliente em Camboriú aceitou sua proposta de R$ 4.500. Toque para ver os detalhes e iniciar a obra.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Controls -->
+        <div class="absolute bottom-12 w-full px-8 flex justify-between items-center z-20">
+            <div class="w-12 h-12 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/10">
+                <i class="fa-solid fa-flashlight text-white text-xl"></i>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/10">
+                <i class="fa-solid fa-camera text-white text-xl"></i>
+            </div>
+        </div>
+
+        <!-- Home Indicator -->
+        <div id="home-indicator" class="absolute bottom-2 w-full flex justify-center z-30 pb-2">
+            <div class="w-1/3 h-1 bg-white rounded-full opacity-80"></div>
+        </div>
+
+    </main>
+
+</body>
+</html>

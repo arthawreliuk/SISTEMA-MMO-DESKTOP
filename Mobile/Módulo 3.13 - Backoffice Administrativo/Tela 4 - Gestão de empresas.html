@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MMO Admin - Gestão B2B</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            gray: '#8C8C9A',
+                            border: '#E5E7EB'
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.05)',
+                        'card': '0 8px 24px rgba(0, 0, 0, 0.03)',
+                        'nav': '0 -4px 24px rgba(0, 0, 0, 0.06)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Glassmorphism utilities */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="text-brand-navy font-sans min-h-screen pb-24">
+
+    <!-- Mobile Container Wrapper -->
+    <div class="w-full max-w-[430px] mx-auto min-h-screen relative bg-brand-bg shadow-[0_0_40px_rgba(0,0,0,0.05)] sm:border-x sm:border-brand-border/50">
+
+        <!-- Top Header (Glassmorphism) -->
+        <header id="header" class="sticky top-0 z-40 w-full glass-header border-b border-brand-border/40 px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-brand-blue flex items-center justify-center text-white font-bold text-sm">
+                    M
+                </div>
+                <span class="font-semibold text-sm text-brand-navy">Admin</span>
+            </div>
+            
+            <h1 class="font-bold text-base absolute left-1/2 -translate-x-1/2">Gestão B2B</h1>
+            
+            <button class="w-10 h-10 rounded-full flex items-center justify-center text-brand-navy bg-white shadow-sm border border-brand-border/50 hover:bg-gray-50 transition-colors">
+                <i class="fa-regular fa-search text-[15px]"></i>
+            </button>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="w-full px-4 pt-5 pb-6 flex flex-col gap-6">
+            
+            <!-- Filters (Horizontal Scroll) -->
+            <section id="filters" class="w-full -mx-4 px-4 overflow-x-auto hide-scrollbar">
+                <div class="flex items-center gap-2 w-max pb-2">
+                    <button class="px-5 py-2.5 rounded-full bg-brand-navy text-white text-sm font-medium shadow-sm transition-transform active:scale-95">
+                        Todas
+                    </button>
+                    <button class="px-4 py-2.5 rounded-full bg-white text-brand-navy text-sm font-medium border border-brand-border/60 shadow-sm flex items-center gap-2 hover:bg-gray-50 transition-colors">
+                        Aprovar CNPJ <span class="text-[13px]">⚠️</span>
+                    </button>
+                    <button class="px-4 py-2.5 rounded-full bg-white text-brand-navy text-sm font-medium border border-brand-border/60 shadow-sm hover:bg-gray-50 transition-colors">
+                        Planos Corporativos
+                    </button>
+                    <button class="px-4 py-2.5 rounded-full bg-white text-brand-gray text-sm font-medium border border-brand-border/60 shadow-sm hover:bg-gray-50 transition-colors">
+                        Inativas
+                    </button>
+                </div>
+            </section>
+
+            <!-- Company List (B2B Feed) -->
+            <section id="company-feed" class="flex flex-col gap-4">
+                
+                <!-- Card 1 -->
+                <div class="bg-white rounded-[20px] p-4 shadow-card border border-brand-border/40 relative overflow-hidden group">
+                    <!-- Top Row -->
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-[14px] bg-brand-bg flex items-center justify-center border border-brand-border/50">
+                                <i class="fa-solid fa-building text-brand-blue text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-brand-navy text-[17px] leading-tight">Hawlie Assessoria</h3>
+                                <p class="text-[13px] text-brand-gray font-medium mt-0.5">Ativa desde 2023</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1.5 rounded-full bg-brand-navy text-white text-[11px] font-bold tracking-wide uppercase">
+                            Plano Empresa
+                        </span>
+                    </div>
+
+                    <!-- Middle Row (Details) -->
+                    <div class="bg-brand-bg/60 rounded-[14px] p-3 mb-4 space-y-2 border border-brand-border/30">
+                        <div class="flex items-center justify-between text-[13px]">
+                            <span class="text-brand-gray">CNPJ</span>
+                            <span class="font-semibold text-brand-navy">12.345.678/0001-90</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[13px]">
+                            <span class="text-brand-gray">Localização</span>
+                            <span class="font-semibold text-brand-navy">Camboriú, SC</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[13px]">
+                            <span class="text-brand-gray">Administrador</span>
+                            <span class="font-semibold text-brand-navy">Arthur Silva</span>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Row -->
+                    <div class="flex items-center justify-between pt-1">
+                        <div class="flex items-center gap-2 bg-blue-50/50 px-3 py-1.5 rounded-full border border-blue-100/50">
+                            <i class="fa-solid fa-users text-brand-blue text-[12px]"></i>
+                            <span class="text-[13px] font-semibold text-brand-blue">5 Vinculados</span>
+                        </div>
+                        
+                        <button class="px-4 py-2 rounded-full border border-brand-border hover:bg-brand-bg text-brand-navy text-[13px] font-bold transition-colors flex items-center gap-2">
+                            Gerenciar <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-[20px] p-4 shadow-card border border-brand-border/40 relative overflow-hidden">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-[14px] bg-brand-bg flex items-center justify-center border border-brand-border/50">
+                                <i class="fa-solid fa-city text-brand-blue text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-brand-navy text-[17px] leading-tight">TechNova Solutions</h3>
+                                <p class="text-[13px] text-brand-gray font-medium mt-0.5">Aprovação Pendente</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold tracking-wide uppercase border border-amber-200">
+                            Análise
+                        </span>
+                    </div>
+
+                    <div class="bg-brand-bg/60 rounded-[14px] p-3 mb-4 space-y-2 border border-brand-border/30">
+                        <div class="flex items-center justify-between text-[13px]">
+                            <span class="text-brand-gray">CNPJ</span>
+                            <span class="font-semibold text-brand-navy">98.765.432/0001-10</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[13px]">
+                            <span class="text-brand-gray">Localização</span>
+                            <span class="font-semibold text-brand-navy">São Paulo, SP</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[13px]">
+                            <span class="text-brand-gray">Administrador</span>
+                            <span class="font-semibold text-brand-navy">Mariana Costa</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-1">
+                        <div class="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-full border border-brand-border/50">
+                            <i class="fa-solid fa-users text-brand-gray text-[12px]"></i>
+                            <span class="text-[13px] font-semibold text-brand-gray">0 Vinculados</span>
+                        </div>
+                        
+                        <button class="px-4 py-2 rounded-full border border-brand-border hover:bg-brand-bg text-brand-navy text-[13px] font-bold transition-colors flex items-center gap-2">
+                            Revisar <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-[20px] p-4 shadow-card border border-brand-border/40 relative overflow-hidden">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-[14px] bg-brand-bg flex items-center justify-center border border-brand-border/50">
+                                <i class="fa-solid fa-store text-brand-blue text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-brand-navy text-[17px] leading-tight">Mega Varejo S.A.</h3>
+                                <p class="text-[13px] text-brand-gray font-medium mt-0.5">Ativa desde 2022</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1.5 rounded-full bg-brand-navy text-white text-[11px] font-bold tracking-wide uppercase">
+                            Plano Corp
+                        </span>
+                    </div>
+
+                    <div class="bg-brand-bg/60 rounded-[14px] p-3 mb-4 space-y-2 border border-brand-border/30">
+                        <div class="flex items-center justify-between text-[13px]">
+                            <span class="text-brand-gray">CNPJ</span>
+                            <span class="font-semibold text-brand-navy">45.123.890/0001-55</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[13px]">
+                            <span class="text-brand-gray">Localização</span>
+                            <span class="font-semibold text-brand-navy">Rio de Janeiro, RJ</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[13px]">
+                            <span class="text-brand-gray">Administrador</span>
+                            <span class="font-semibold text-brand-navy">Roberto Almeida</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-1">
+                        <div class="flex items-center gap-2 bg-blue-50/50 px-3 py-1.5 rounded-full border border-blue-100/50">
+                            <i class="fa-solid fa-users text-brand-blue text-[12px]"></i>
+                            <span class="text-[13px] font-semibold text-brand-blue">142 Vinculados</span>
+                        </div>
+                        
+                        <button class="px-4 py-2 rounded-full border border-brand-border hover:bg-brand-bg text-brand-navy text-[13px] font-bold transition-colors flex items-center gap-2">
+                            Gerenciar <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- Floating Bottom Navigation -->
+        <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[398px] z-50">
+            <nav class="bg-white/90 backdrop-blur-xl rounded-[24px] shadow-nav border border-white/50 p-2 flex items-center justify-between px-6 h-[72px]">
+                
+                <!-- Dashboard -->
+                <a href="#" class="flex flex-col items-center justify-center w-14 gap-1 text-brand-gray hover:text-brand-navy transition-colors">
+                    <i class="fa-solid fa-chart-pie text-[20px]"></i>
+                </a>
+
+                <!-- Companies (Active) -->
+                <a href="#" class="flex flex-col items-center justify-center w-14 gap-1 relative text-brand-blue">
+                    <i class="fa-solid fa-building text-[20px]"></i>
+                    <div class="absolute -bottom-2 w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
+                </a>
+
+                <!-- Finances -->
+                <a href="#" class="flex flex-col items-center justify-center w-14 gap-1 text-brand-gray hover:text-brand-navy transition-colors">
+                    <i class="fa-solid fa-wallet text-[20px]"></i>
+                </a>
+
+                <!-- Settings -->
+                <a href="#" class="flex flex-col items-center justify-center w-14 gap-1 text-brand-gray hover:text-brand-navy transition-colors">
+                    <i class="fa-solid fa-gear text-[20px]"></i>
+                </a>
+                
+            </nav>
+        </div>
+
+    </div>
+
+</body>
+</html>

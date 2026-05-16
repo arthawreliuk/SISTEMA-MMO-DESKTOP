@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Service Area Definition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6C757D'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'float': '0 8px 30px rgba(0, 22, 220, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Hide scrollbar for cleaner mobile look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Custom slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid #0016dc;
+            cursor: pointer;
+            margin-top: -10px;
+            box-shadow: 0 4px 10px rgba(0, 22, 220, 0.2);
+        }
+        
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #E5E7EB;
+            border-radius: 4px;
+        }
+        
+        /* Fill effect for webkit (requires JS for full cross-browser, but basic styling here) */
+        .slider-container {
+            position: relative;
+        }
+        
+        .slider-fill {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 4px;
+            background: #0016dc;
+            border-radius: 4px;
+            transform: translateY(-50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="text-text-main h-[100dvh] flex justify-center bg-gray-100">
+
+    <!-- Mobile Container (375x840 constraint applied visually while maintaining full bleed on mobile devices) -->
+    <main id="app-container" class="w-full max-w-[375px] h-full bg-background relative flex flex-col overflow-hidden shadow-2xl sm:h-[840px] sm:rounded-[40px] sm:my-auto">
+        
+        <!-- Top Header: Glassmorphism -->
+        <header id="top-header" class="w-full h-16 px-6 flex items-center justify-between bg-white/80 backdrop-blur-md z-20 sticky top-0 border-b border-gray-100/50">
+            <button class="w-10 h-10 flex items-center justify-start text-primary transition-transform active:scale-95" aria-label="Voltar">
+                <i class="fa-solid fa-arrow-left text-xl"></i>
+            </button>
+            <div class="flex-1 flex justify-center">
+                <span class="text-sm font-semibold text-text-main tracking-wide">Passo 3 de 4</span>
+            </div>
+            <div class="w-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <!-- Scrollable Content Area -->
+        <div id="scroll-content" class="flex-1 overflow-y-auto pb-32 px-6 pt-8 flex flex-col gap-8">
+            
+            <!-- Hero Section -->
+            <section id="hero-section" class="flex flex-col gap-3">
+                <h1 class="text-[28px] leading-[1.2] font-bold text-text-main">Onde você atende?</h1>
+                <p class="text-[16px] leading-relaxed text-text-muted">Defina sua região para receber pedidos de clientes próximos.</p>
+            </section>
+
+            <!-- Location Input -->
+            <section id="location-input" class="w-full">
+                <div class="relative w-full shadow-soft rounded-full bg-white flex items-center px-5 py-4 border border-gray-100 transition-all focus-within:border-primary/30 focus-within:shadow-float">
+                    <i class="fa-solid fa-location-dot text-primary text-lg mr-3"></i>
+                    <input type="text" placeholder="Adicionar cidade ou bairro..." class="w-full bg-transparent border-none outline-none text-text-main placeholder-gray-400 font-medium text-base">
+                </div>
+            </section>
+
+            <!-- Selected Areas Tag Cloud -->
+            <section id="selected-areas" class="w-full flex flex-col gap-3">
+                <h3 class="text-sm font-semibold text-text-main uppercase tracking-wider opacity-80">Regiões Selecionadas</h3>
+                <div class="flex flex-wrap gap-2.5">
+                    <div class="bg-primary text-white px-4 py-2.5 rounded-full flex items-center gap-2 shadow-sm text-sm font-medium transition-transform active:scale-95">
+                        <span>Balneário Camboriú</span>
+                        <button class="w-5 h-5 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors">
+                            <i class="fa-solid fa-xmark text-[10px]"></i>
+                        </button>
+                    </div>
+                    <div class="bg-primary text-white px-4 py-2.5 rounded-full flex items-center gap-2 shadow-sm text-sm font-medium transition-transform active:scale-95">
+                        <span>Itajaí</span>
+                        <button class="w-5 h-5 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors">
+                            <i class="fa-solid fa-xmark text-[10px]"></i>
+                        </button>
+                    </div>
+                    <div class="bg-white text-primary border border-primary/20 px-4 py-2.5 rounded-full flex items-center gap-2 shadow-soft text-sm font-medium border-dashed cursor-pointer hover:bg-primary/5 transition-colors">
+                        <i class="fa-solid fa-plus text-xs"></i>
+                        <span>Adicionar mais</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Radius Control -->
+            <section id="radius-control" class="w-full flex flex-col gap-8 mt-4 bg-white p-6 rounded-[24px] shadow-soft border border-gray-50">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-base font-bold text-text-main">Raio de atendimento</h3>
+                    <span class="text-primary font-bold text-lg bg-primary/10 px-3 py-1 rounded-lg">15 km</span>
+                </div>
+                
+                <div class="slider-container w-full pt-6 pb-2 px-2 relative">
+                    <!-- Tooltip -->
+                    <div class="absolute -top-4 left-[30%] transform -translate-x-1/2 bg-text-main text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow-lg">
+                        15 km
+                        <div class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-text-main rotate-45"></div>
+                    </div>
+                    
+                    <!-- Track Fill -->
+                    <div class="slider-fill w-[30%]"></div>
+                    
+                    <!-- Range Input -->
+                    <input type="range" min="1" max="50" value="15" class="w-full relative z-10" aria-label="Raio em km">
+                    
+                    <div class="flex justify-between w-full mt-4 text-xs font-medium text-text-muted">
+                        <span>1 km</span>
+                        <span>50 km</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Visual filler to ensure scrollability matches reference density -->
+            <section class="w-full flex flex-col gap-4 opacity-50 pointer-events-none">
+                 <div class="w-full h-20 rounded-[20px] bg-gray-200 animate-pulse"></div>
+            </section>
+
+        </div>
+
+        <!-- Fixed Primary Action Footer -->
+        <footer id="fixed-footer" class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-white via-white/95 to-transparent pt-12 z-20">
+            <button class="w-full bg-primary text-white font-bold text-lg py-4 rounded-full shadow-float transition-all active:scale-[0.98] active:shadow-md flex items-center justify-center gap-2">
+                <span>Avançar</span>
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+            </button>
+        </footer>
+
+    </main>
+
+    <script>
+        // Simple script to handle slider fill visual
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.querySelector('input[type="range"]');
+            const fill = document.querySelector('.slider-fill');
+            const tooltip = document.querySelector('.absolute.-top-4');
+            const displayValue = document.querySelector('.text-primary.font-bold.text-lg');
+            
+            if(slider && fill && tooltip && displayValue) {
+                slider.addEventListener('input', (e) => {
+                    const value = e.target.value;
+                    const max = e.target.max;
+                    const percentage = (value / max) * 100;
+                    
+                    fill.style.width = `${percentage}%`;
+                    tooltip.style.left = `${percentage}%`;
+                    tooltip.innerHTML = `${value} km <div class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-text-main rotate-45"></div>`;
+                    displayValue.textContent = `${value} km`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

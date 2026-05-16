@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archived Conversations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        bg: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 -4px 24px -6px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="relative min-h-[100dvh] w-full max-w-[430px] mx-auto bg-bg overflow-x-hidden flex flex-col pb-24">
+
+    <!-- 1. Top Header -->
+    <header id="StickyHeader" class="sticky top-0 z-50 glass-header px-5 py-4 flex items-center justify-between border-b border-gray-100">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-50 transition-colors">
+            <i class="fa-solid fa-arrow-left text-primary text-lg"></i>
+        </button>
+        <h1 class="text-lg font-bold text-text-main absolute left-1/2 -translate-x-1/2">Arquivados</h1>
+        <div class="w-10 h-10"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- 2. Search & Filter -->
+    <section id="ArchiveSearch" class="px-5 pt-6 pb-4">
+        <div class="relative w-full">
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+            </div>
+            <input type="text" placeholder="Buscar no arquivo..." 
+                   class="w-full bg-white border-none shadow-soft rounded-full py-3.5 pl-11 pr-4 text-sm font-medium text-text-main placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-shadow">
+        </div>
+    </section>
+
+    <!-- 3. Archived List (The Vault) -->
+    <main id="TheVaultList" class="flex-1 px-5 flex flex-col gap-4">
+        
+        <!-- Card 1 -->
+        <article class="bg-white rounded-[16px] p-4 shadow-soft flex flex-col gap-3">
+            <div class="flex items-start justify-between gap-3">
+                <div class="relative shrink-0">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Carlos Silva" class="w-12 h-12 rounded-full object-cover grayscale opacity-80 border border-gray-100">
+                </div>
+                <div class="flex-1 min-w-0 pt-0.5">
+                    <div class="flex items-center justify-between mb-1">
+                        <h3 class="font-bold text-text-main truncate pr-2">Carlos Silva</h3>
+                        <span class="text-[11px] font-medium text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full shrink-0">12 Fev 2026</span>
+                    </div>
+                    <p class="text-sm text-text-muted truncate">Serviço concluído. Muito obrigado pela ajuda!</p>
+                </div>
+            </div>
+            <div class="flex justify-end pt-2 border-t border-gray-50">
+                <button class="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-gray-500 hover:text-primary hover:bg-primary/5 transition-colors">
+                    <i class="fa-solid fa-box-open"></i>
+                    Desarquivar
+                </button>
+            </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="bg-white rounded-[16px] p-4 shadow-soft flex flex-col gap-3">
+            <div class="flex items-start justify-between gap-3">
+                <div class="relative shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-gray-400 font-bold text-lg grayscale opacity-80 border border-gray-50">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+                <div class="flex-1 min-w-0 pt-0.5">
+                    <div class="flex items-center justify-between mb-1">
+                        <h3 class="font-bold text-text-main truncate pr-2">TechCorp Solutions</h3>
+                        <span class="text-[11px] font-medium text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full shrink-0">08 Fev 2026</span>
+                    </div>
+                    <p class="text-sm text-text-muted truncate">Fatura enviada para o financeiro.</p>
+                </div>
+            </div>
+            <div class="flex justify-end pt-2 border-t border-gray-50">
+                <button class="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-gray-500 hover:text-primary hover:bg-primary/5 transition-colors">
+                    <i class="fa-solid fa-box-open"></i>
+                    Desarquivar
+                </button>
+            </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="bg-white rounded-[16px] p-4 shadow-soft flex flex-col gap-3">
+            <div class="flex items-start justify-between gap-3">
+                <div class="relative shrink-0">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Mariana Costa" class="w-12 h-12 rounded-full object-cover grayscale opacity-80 border border-gray-100">
+                </div>
+                <div class="flex-1 min-w-0 pt-0.5">
+                    <div class="flex items-center justify-between mb-1">
+                        <h3 class="font-bold text-text-main truncate pr-2">Mariana Costa</h3>
+                        <span class="text-[11px] font-medium text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full shrink-0">29 Jan 2026</span>
+                    </div>
+                    <p class="text-sm text-text-muted truncate">Projeto aprovado. Podemos encerrar.</p>
+                </div>
+            </div>
+            <div class="flex justify-end pt-2 border-t border-gray-50">
+                <button class="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-gray-500 hover:text-primary hover:bg-primary/5 transition-colors">
+                    <i class="fa-solid fa-box-open"></i>
+                    Desarquivar
+                </button>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- 4. Floating Pill Navigation -->
+    <div id="FloatingPillNav" class="fixed bottom-6 left-0 right-0 px-6 z-50 flex justify-center pointer-events-none">
+        <nav class="bg-white rounded-[32px] shadow-nav px-6 py-3.5 flex items-center justify-between w-full max-w-[320px] pointer-events-auto border border-gray-50/50">
+            <a href="#" class="flex flex-col items-center justify-center w-12 text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fa-solid fa-house text-xl mb-1"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center w-12 text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fa-solid fa-clipboard-list text-xl mb-1"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center w-12 text-primary relative">
+                <i class="fa-solid fa-message text-xl mb-1"></i>
+                <span class="w-1 h-1 bg-primary rounded-full absolute -bottom-1"></span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center w-12 text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fa-regular fa-user text-xl mb-1"></i>
+            </a>
+        </nav>
+    </div>
+
+</body>
+</html>

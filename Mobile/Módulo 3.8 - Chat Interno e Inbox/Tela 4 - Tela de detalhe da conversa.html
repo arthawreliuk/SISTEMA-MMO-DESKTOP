@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Active Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            canvas: '#F8F9FA',
+                        }
+                    },
+                    boxShadow: {
+                        'bubble': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'header': '0 4px 30px rgba(0, 0, 0, 0.03)',
+                        'input': '0 -4px 30px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header { background: rgba(248, 249, 250, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-brand-canvas text-brand-navy h-screen flex flex-col overflow-hidden w-full max-w-md mx-auto relative shadow-2xl sm:border sm:border-gray-200">
+
+    <!-- Top Header (Glassmorphism) -->
+    <header id="chat-header" class="glass-header sticky top-0 z-50 px-5 py-4 flex items-center justify-between shadow-header border-b border-white/20">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm hover:bg-gray-50 transition-colors">
+            <i class="fa-solid fa-chevron-left text-brand-navy text-lg"></i>
+        </button>
+        
+        <div class="flex flex-col items-center justify-center flex-1 px-4">
+            <div class="relative mb-1">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Client Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+            </div>
+            <h1 class="text-[15px] font-bold leading-tight text-brand-navy">Arthur Silva</h1>
+            <p class="text-[11px] font-medium text-gray-500">Serviço: Troca de Fiação</p>
+        </div>
+
+        <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm hover:bg-gray-50 transition-colors">
+            <i class="fa-solid fa-ellipsis-vertical text-brand-navy text-lg"></i>
+        </button>
+    </header>
+
+    <!-- Chat Canvas -->
+    <main id="chat-timeline" class="flex-1 overflow-y-auto px-5 py-6 flex flex-col gap-6 pb-28">
+        
+        <!-- System Notification -->
+        <div class="flex justify-center w-full my-2">
+            <span class="px-4 py-1.5 bg-gray-200/60 text-gray-600 text-[11px] font-semibold rounded-full tracking-wide">
+                Ontem, 14:30
+            </span>
+        </div>
+
+        <!-- Receiver Bubble (Left) -->
+        <div class="flex flex-col items-start max-w-[85%]">
+            <div class="bg-white px-5 py-3.5 rounded-[20px] rounded-tl-sm shadow-bubble border border-gray-100 relative">
+                <p class="text-[14px] leading-relaxed text-brand-navy font-medium">
+                    Boa tarde, Arthur! O disjuntor continua caindo.
+                </p>
+            </div>
+            <span class="text-[10px] text-gray-400 mt-1.5 ml-2 font-medium">14:31 • Lido</span>
+        </div>
+
+        <!-- Sender Bubble (Right) -->
+        <div class="flex flex-col items-end self-end max-w-[85%]">
+            <div class="bg-brand-blue px-5 py-3.5 rounded-[20px] rounded-tr-sm shadow-bubble relative">
+                <p class="text-[14px] leading-relaxed text-white font-medium">
+                    Certo, consigo resolver isso hoje. Vou enviar o orçamento detalhado para a troca da fiação principal.
+                </p>
+            </div>
+            <span class="text-[10px] text-gray-400 mt-1.5 mr-2 font-medium">14:35</span>
+        </div>
+
+        <!-- Interactive Milestone Bubble -->
+        <div class="w-full mt-4 mb-2 flex justify-center">
+            <div class="bg-white w-full max-w-[90%] rounded-[24px] border-2 border-brand-blue/10 shadow-bubble p-5 flex flex-col gap-4 relative overflow-hidden">
+                <!-- Decorative background glow -->
+                <div class="absolute -right-8 -top-8 w-24 h-24 bg-brand-blue/5 rounded-full blur-xl"></div>
+                
+                <div class="flex items-center gap-3 relative z-10">
+                    <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue shrink-0">
+                        <i class="fa-solid fa-file-invoice-dollar text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[12px] font-semibold text-brand-blue uppercase tracking-wider mb-0.5">Novo Orçamento</p>
+                        <h3 class="text-[16px] font-bold text-brand-navy">Orçamento Enviado: R$ 250,00</h3>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-3 mt-1 relative z-10">
+                    <button class="flex-1 py-2.5 px-4 bg-gray-100 text-brand-navy font-bold text-[13px] rounded-full hover:bg-gray-200 transition-colors">
+                        Revisar
+                    </button>
+                    <button class="flex-1 py-2.5 px-4 bg-brand-blue text-white font-bold text-[13px] rounded-full shadow-md shadow-brand-blue/20 hover:bg-blue-800 transition-colors">
+                        Aprovar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Notification -->
+        <div class="flex justify-center w-full my-2">
+            <span class="px-4 py-1.5 bg-gray-200/60 text-gray-600 text-[11px] font-semibold rounded-full tracking-wide">
+                Hoje, 09:15
+            </span>
+        </div>
+
+        <!-- Receiver Bubble (Left) -->
+        <div class="flex flex-col items-start max-w-[85%]">
+            <div class="bg-white px-5 py-3.5 rounded-[20px] rounded-tl-sm shadow-bubble border border-gray-100 relative">
+                <p class="text-[14px] leading-relaxed text-brand-navy font-medium">
+                    Perfeito, pode vir. Estarei em casa a tarde toda.
+                </p>
+            </div>
+            <span class="text-[10px] text-gray-400 mt-1.5 ml-2 font-medium">09:16</span>
+        </div>
+
+    </main>
+
+    <!-- Bottom Input Area (Fixed) -->
+    <div id="input-control-bar" class="fixed bottom-0 w-full max-w-md bg-white px-4 py-3 shadow-input border-t border-gray-100 z-50 pb-8 sm:pb-4">
+        <div class="flex items-center gap-3">
+            <button class="w-11 h-11 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors shrink-0">
+                <i class="fa-solid fa-plus text-lg"></i>
+            </button>
+            
+            <div class="flex-1 relative">
+                <input type="text" placeholder="Digite sua mensagem..." class="w-full bg-gray-50 border border-gray-200 text-brand-navy text-[14px] font-medium rounded-full py-3.5 pl-5 pr-12 focus:outline-none focus:border-brand-blue/30 focus:bg-white transition-all placeholder-gray-400 shadow-inner">
+                <button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-brand-blue transition-colors">
+                    <i class="fa-regular fa-face-smile text-lg"></i>
+                </button>
+            </div>
+
+            <button class="w-11 h-11 rounded-full bg-brand-blue flex items-center justify-center text-white shadow-md shadow-brand-blue/20 hover:bg-blue-800 transition-colors shrink-0">
+                <i class="fa-solid fa-microphone text-lg"></i>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

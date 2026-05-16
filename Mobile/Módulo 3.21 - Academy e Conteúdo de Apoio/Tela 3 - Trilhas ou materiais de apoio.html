@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Learning Path</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#64748B',
+                        cardBg: '#FFFFFF',
+                        lockedBg: '#F1F5F9',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'nav': '0 -10px 40px -10px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex justify-center font-sans">
+
+    <!-- Mobile Container Wrapper -->
+    <div class="w-full max-w-[430px] bg-background min-h-screen relative pb-[100px] flex flex-col shadow-2xl overflow-hidden sm:border sm:border-gray-200">
+
+        <!-- Top Header -->
+        <header id="header" class="bg-cardBg px-6 pt-12 pb-4 flex items-center justify-between sticky top-0 z-40 shadow-sm rounded-b-[24px]">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 text-textMain hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-chevron-left text-[15px]"></i>
+            </button>
+            <h1 class="text-[17px] font-bold text-textMain tracking-tight">Trilhas de Sucesso</h1>
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 text-primary hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-trophy text-[15px]"></i>
+            </button>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main class="flex-1 px-5 pt-6 pb-8 overflow-y-auto no-scrollbar">
+
+            <!-- Path Hero Card -->
+            <section id="hero-card" class="bg-cardBg rounded-[24px] p-6 shadow-soft mb-8 relative overflow-hidden">
+                <!-- Decorative background glow -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary opacity-[0.03] rounded-full blur-2xl pointer-events-none"></div>
+                
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#Eef2ff] text-primary text-xs font-bold mb-4">
+                        <i class="fa-solid fa-star text-[10px]"></i> Trilha Premium
+                    </div>
+                    
+                    <h2 class="text-[28px] leading-[1.2] font-extrabold text-textMain mb-3 tracking-tight">Mestre das Vendas B2B</h2>
+                    <p class="text-[15px] text-textMuted leading-relaxed mb-6 font-medium">Aprenda a fechar grandes obras e contratos corporativos com técnicas avançadas.</p>
+                    
+                    <!-- Progress Area -->
+                    <div class="bg-gray-50 rounded-[16px] p-4 border border-gray-100">
+                        <div class="flex justify-between items-end mb-3">
+                            <span class="text-[14px] font-bold text-textMain">Progresso da Trilha</span>
+                            <span class="text-[13px] font-bold text-primary bg-white px-2 py-1 rounded-md shadow-sm">40%</span>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden mb-2">
+                            <div class="h-full bg-primary rounded-full transition-all duration-1000 ease-out relative" style="width: 40%">
+                                <!-- Shine effect -->
+                                <div class="absolute top-0 left-0 right-0 bottom-0 bg-white opacity-20 w-full h-full" style="background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);"></div>
+                            </div>
+                        </div>
+                        <p class="text-[13px] text-textMuted font-medium text-center mt-2">2 de 5 Módulos Concluídos</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Vertical Roadmap (Timeline) -->
+            <section id="roadmap" class="relative px-2">
+                <h3 class="text-[18px] font-bold text-textMain mb-6 pl-2">Módulos da Trilha</h3>
+                
+                <!-- Timeline Line Background -->
+                <div class="absolute left-[39px] top-[60px] bottom-10 w-[3px] bg-gray-200 rounded-full z-0"></div>
+                <!-- Timeline Line Active -->
+                <div class="absolute left-[39px] top-[60px] h-[140px] w-[3px] bg-primary rounded-full z-0"></div>
+
+                <div class="flex flex-col gap-6 relative z-10">
+                    
+                    <!-- Step 1 (Completed) -->
+                    <div class="flex gap-4 group">
+                        <div class="flex flex-col items-center mt-1">
+                            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-md ring-4 ring-background z-10">
+                                <i class="fa-solid fa-check text-white text-[16px]"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 bg-cardBg rounded-[20px] p-5 shadow-sm border border-gray-100 transition-all">
+                            <span class="text-[11px] font-bold text-textMuted uppercase tracking-wider mb-1 block">Módulo 1</span>
+                            <h4 class="text-[16px] font-bold text-textMain mb-1">Fundamentos</h4>
+                            <p class="text-[13px] text-textMuted">Conceitos básicos e preparação de mentalidade.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 (Active/Current) -->
+                    <div class="flex gap-4">
+                        <div class="flex flex-col items-center mt-1">
+                            <div class="w-10 h-10 rounded-full bg-white border-[3px] border-primary flex items-center justify-center shadow-md ring-4 ring-background z-10 relative">
+                                <div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="flex-1 bg-cardBg rounded-[20px] p-5 shadow-soft border-[2px] border-primary relative overflow-hidden">
+                            <!-- Subtle highlight bg -->
+                            <div class="absolute inset-0 bg-primary opacity-[0.02] pointer-events-none"></div>
+                            
+                            <div class="flex justify-between items-start mb-1">
+                                <span class="text-[11px] font-bold text-primary uppercase tracking-wider block">Módulo 2 • Em andamento</span>
+                                <span class="text-[11px] font-bold text-textMuted bg-white px-2 py-0.5 rounded-full shadow-sm border border-gray-100">3/8 Aulas</span>
+                            </div>
+                            <h4 class="text-[18px] font-bold text-textMain mb-2">Prospecção Ativa</h4>
+                            <p class="text-[13px] text-textMuted mb-4">Estratégias para encontrar e abordar os decisores certos.</p>
+                            
+                            <button class="w-full bg-primary hover:bg-blue-700 text-white font-bold text-[14px] py-3.5 rounded-full transition-all shadow-md active:scale-[0.98]">
+                                Continuar Trilha
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 (Locked) -->
+                    <div class="flex gap-4 opacity-70">
+                        <div class="flex flex-col items-center mt-1">
+                            <div class="w-10 h-10 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center ring-4 ring-background z-10">
+                                <i class="fa-solid fa-lock text-gray-400 text-[14px]"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 bg-lockedBg rounded-[20px] p-5 border border-gray-200">
+                            <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1 block">Módulo 3</span>
+                            <h4 class="text-[16px] font-bold text-gray-500 mb-1">Técnicas de Negociação</h4>
+                            <p class="text-[13px] text-gray-400">Desbloqueado após concluir o Módulo 2.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 (Locked) -->
+                    <div class="flex gap-4 opacity-70">
+                        <div class="flex flex-col items-center mt-1">
+                            <div class="w-10 h-10 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center ring-4 ring-background z-10">
+                                <i class="fa-solid fa-lock text-gray-400 text-[14px]"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 bg-lockedBg rounded-[20px] p-5 border border-gray-200">
+                            <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1 block">Módulo 4</span>
+                            <h4 class="text-[16px] font-bold text-gray-500 mb-1">Fechamento de Contratos</h4>
+                            <p class="text-[13px] text-gray-400">Desbloqueado após concluir o Módulo 3.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Floating Bottom Navigation -->
+        <nav id="bottom-nav" class="absolute bottom-6 left-6 right-6 bg-cardBg rounded-full shadow-nav flex justify-between items-center px-6 py-4 z-50 border border-gray-100">
+            <button class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
+                <i class="fa-solid fa-house text-[20px]"></i>
+                <span class="text-[10px] font-bold">Início</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-primary relative">
+                <!-- Active dot -->
+                <div class="absolute -top-2 w-1.5 h-1.5 bg-primary rounded-full"></div>
+                <i class="fa-solid fa-route text-[20px]"></i>
+                <span class="text-[10px] font-bold">Trilhas</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
+                <i class="fa-regular fa-compass text-[20px]"></i>
+                <span class="text-[10px] font-bold">Explorar</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
+                <i class="fa-regular fa-user text-[20px]"></i>
+                <span class="text-[10px] font-bold">Perfil</span>
+            </button>
+        </nav>
+
+    </div>
+
+</body>
+</html>

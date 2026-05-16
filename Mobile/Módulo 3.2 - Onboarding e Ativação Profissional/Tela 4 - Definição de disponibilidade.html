@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Availability & Schedule Definition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6C757D'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 8px 24px rgba(0, 0, 0, 0.04)',
+                        'soft-lg': '0 12px 32px rgba(0, 0, 0, 0.06)',
+                        'inner-soft': 'inset 0 2px 4px rgba(0,0,0,0.02)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+    </style>
+</head>
+<body class="text-text-main antialiased relative min-h-[100dvh] flex flex-col items-center overflow-x-hidden">
+
+    <!-- Main Mobile Container -->
+    <main id="mobile-container" class="w-full max-w-[375px] min-h-[100dvh] bg-background relative flex flex-col pb-[100px] shadow-2xl md:my-8 md:rounded-[40px] md:overflow-hidden md:h-[840px] md:min-h-0 mx-auto">
+        
+        <!-- Header (Focus Mode - Glassmorphism) -->
+        <header id="top-header" class="sticky top-0 z-50 w-full px-6 py-5 bg-white/80 backdrop-blur-xl border-b border-gray-100 flex items-center justify-between">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 hover:bg-gray-100 transition-colors text-primary shadow-sm" aria-label="Voltar">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <div class="flex-1 flex justify-center">
+                <span class="text-sm font-semibold tracking-wide text-text-main">Passo 4 de 4</span>
+            </div>
+            <div class="w-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <div class="flex-1 overflow-y-auto px-6 pt-8 pb-10 flex flex-col gap-10">
+            
+            <!-- Hero Section -->
+            <section id="hero-section" class="flex flex-col gap-3 text-center px-2">
+                <h1 class="text-[28px] leading-[1.2] font-extrabold text-text-main tracking-tight">
+                    Quando você atende?
+                </h1>
+                <p class="text-[16px] leading-relaxed text-text-muted font-medium">
+                    Defina seus dias e horários de trabalho para receber pedidos no momento certo.
+                </p>
+            </section>
+
+            <!-- Days of the Week Selector -->
+            <section id="days-selector" class="flex flex-col gap-4">
+                <h2 class="text-sm font-bold text-text-main uppercase tracking-wider ml-1">Dias da Semana</h2>
+                <div class="flex items-center justify-between w-full">
+                    <!-- Active Day -->
+                    <button class="w-11 h-11 rounded-full bg-primary text-white font-bold text-sm shadow-soft flex items-center justify-center transition-transform active:scale-95">D</button>
+                    <!-- Active Day -->
+                    <button class="w-11 h-11 rounded-full bg-primary text-white font-bold text-sm shadow-soft flex items-center justify-center transition-transform active:scale-95">S</button>
+                    <!-- Active Day -->
+                    <button class="w-11 h-11 rounded-full bg-primary text-white font-bold text-sm shadow-soft flex items-center justify-center transition-transform active:scale-95">T</button>
+                    <!-- Active Day -->
+                    <button class="w-11 h-11 rounded-full bg-primary text-white font-bold text-sm shadow-soft flex items-center justify-center transition-transform active:scale-95">Q</button>
+                    <!-- Active Day -->
+                    <button class="w-11 h-11 rounded-full bg-primary text-white font-bold text-sm shadow-soft flex items-center justify-center transition-transform active:scale-95">Q</button>
+                    <!-- Inactive Day -->
+                    <button class="w-11 h-11 rounded-full bg-white text-text-muted font-semibold text-sm border border-gray-200 shadow-sm flex items-center justify-center transition-transform active:scale-95">S</button>
+                    <!-- Inactive Day -->
+                    <button class="w-11 h-11 rounded-full bg-white text-text-muted font-semibold text-sm border border-gray-200 shadow-sm flex items-center justify-center transition-transform active:scale-95">S</button>
+                </div>
+            </section>
+
+            <!-- Time Range Settings -->
+            <section id="time-range" class="flex flex-col gap-4">
+                <h2 class="text-sm font-bold text-text-main uppercase tracking-wider ml-1">Horário Padrão</h2>
+                <div class="flex gap-4 w-full">
+                    <div class="flex-1 relative">
+                        <label class="absolute text-[10px] font-bold text-text-muted top-3 left-5 uppercase tracking-wider">Início</label>
+                        <input type="time" value="08:00" class="w-full h-[68px] bg-white rounded-2xl shadow-soft border border-transparent focus:border-primary/20 focus:ring-4 focus:ring-primary/10 outline-none px-5 pt-5 pb-2 text-lg font-bold text-text-main transition-all appearance-none">
+                    </div>
+                    <div class="flex-1 relative">
+                        <label class="absolute text-[10px] font-bold text-text-muted top-3 left-5 uppercase tracking-wider">Fim</label>
+                        <input type="time" value="18:00" class="w-full h-[68px] bg-white rounded-2xl shadow-soft border border-transparent focus:border-primary/20 focus:ring-4 focus:ring-primary/10 outline-none px-5 pt-5 pb-2 text-lg font-bold text-text-main transition-all appearance-none">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Emergency Toggle Card -->
+            <section id="emergency-toggle" class="mt-2">
+                <div class="bg-white rounded-[24px] p-5 shadow-soft-lg flex items-center justify-between border border-gray-50/50">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center text-amber-500 shadow-inner-soft">
+                            <i class="fa-solid fa-bolt text-xl"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-text-main text-[15px]">Emergências 24h</span>
+                            <span class="text-xs font-medium text-text-muted mt-0.5">Disponível para urgências</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Premium Toggle -->
+                    <div class="relative inline-block w-14 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="toggle" checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-primary appearance-none cursor-pointer z-10 top-1 right-1 transition-all duration-300"/>
+                        <label for="toggle" class="toggle-label block overflow-hidden h-8 rounded-full bg-primary cursor-pointer transition-colors duration-300"></label>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Fixed Bottom Action -->
+        <div id="bottom-action" class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-background via-background/95 to-transparent pt-12 pb-8 z-40">
+            <button class="w-full h-[60px] bg-primary text-white rounded-full font-bold text-[16px] tracking-wide shadow-[0_12px_24px_rgba(0,22,220,0.25)] flex items-center justify-center gap-3 transition-transform active:scale-[0.98] hover:shadow-[0_16px_32px_rgba(0,22,220,0.3)]">
+                Concluir e Avançar
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+            </button>
+        </div>
+
+    </main>
+
+</body>
+</html>

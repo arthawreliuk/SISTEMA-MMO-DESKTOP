@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Projetos Compostos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        'trust-blue': '#0016dc',
+                        'dark-navy': '#1A1A24',
+                        'off-white': '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0, 22, 220, 0.08)',
+                        'nav': '0 -4px 24px -8px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen relative pb-28">
+
+    <!-- Top Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-gray-100">
+        <div class="max-w-[430px] mx-auto px-5 h-[72px] flex items-center justify-between">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-arrow-left text-dark-navy text-lg"></i>
+            </button>
+            <h1 class="text-lg font-bold text-dark-navy tracking-tight">Projetos Compostos</h1>
+            <div class="w-10 h-10"></div> <!-- Spacer for centering -->
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-[430px] mx-auto pt-24 px-5">
+        
+        <!-- Hero Section -->
+        <section id="hero-section" class="mb-8">
+            <p class="text-[16px] text-gray-600 leading-relaxed font-medium">
+                Arthur, gerencie obras ou serviços que exigem múltiplos especialistas em um só lugar.
+            </p>
+        </section>
+
+        <!-- Compound Project Card -->
+        <section id="project-cards" class="space-y-6">
+            
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient border-t-4 border-trust-blue relative overflow-hidden">
+                <!-- Card Header -->
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-dark-navy mb-1">Reforma do Escritório</h2>
+                        <span class="text-sm font-medium text-gray-500"><i class="fa-regular fa-calendar mr-1.5"></i>Início: 12 Nov</span>
+                    </div>
+                    <!-- Progress Ring -->
+                    <div class="relative w-[52px] h-[52px] flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <path class="text-gray-100" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="text-trust-blue" stroke-dasharray="66, 100" stroke-width="3" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <span class="absolute text-[13px] font-bold text-dark-navy">66%</span>
+                    </div>
+                </div>
+
+                <!-- Specialists Breakdown -->
+                <div class="space-y-4 mb-8">
+                    <!-- Row 1 -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-[16px]">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 text-trust-blue flex items-center justify-center">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-dark-navy">Eletricista</p>
+                                <p class="text-[12px] text-gray-500">João Silva</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1.5 bg-green-100 text-green-700 text-[12px] font-bold rounded-full flex items-center gap-1.5">
+                                Contratado <i class="fa-solid fa-check text-[10px]"></i>
+                            </span>
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Pro" class="w-8 h-8 rounded-full border-2 border-white shadow-sm object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-[16px]">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center">
+                                <i class="fa-solid fa-paint-roller"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-dark-navy">Pintor</p>
+                                <p class="text-[12px] text-gray-500">Carlos Mendes</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1.5 bg-green-100 text-green-700 text-[12px] font-bold rounded-full flex items-center gap-1.5">
+                                Contratado <i class="fa-solid fa-check text-[10px]"></i>
+                            </span>
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Pro" class="w-8 h-8 rounded-full border-2 border-white shadow-sm object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="flex items-center justify-between p-3 bg-white border border-gray-200 border-dashed rounded-[16px]">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center">
+                                <i class="fa-solid fa-trowel"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-dark-navy">Gesseiro</p>
+                                <p class="text-[12px] text-gray-400">Pendente</p>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="px-3 py-1.5 border border-gray-200 text-gray-600 text-[12px] font-bold rounded-full bg-white shadow-sm">
+                                3 Orçamentos
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Area -->
+                <button class="w-full bg-trust-blue text-white font-bold text-[15px] py-4 rounded-full shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition-all active:scale-[0.98]">
+                    Gerenciar Projeto
+                </button>
+            </div>
+
+            <!-- Card 2 (Secondary state example) -->
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient relative overflow-hidden opacity-90">
+                <!-- Card Header -->
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-dark-navy mb-1">Instalação Ar Condicionado</h2>
+                        <span class="text-sm font-medium text-gray-500"><i class="fa-regular fa-clock mr-1.5"></i>Aguardando</span>
+                    </div>
+                    <!-- Progress Ring -->
+                    <div class="relative w-[52px] h-[52px] flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <path class="text-gray-100" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="text-gray-300" stroke-dasharray="0, 100" stroke-width="3" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <span class="absolute text-[13px] font-bold text-gray-400">0%</span>
+                    </div>
+                </div>
+
+                <!-- Specialists Breakdown -->
+                <div class="space-y-4 mb-8">
+                    <!-- Row 1 -->
+                    <div class="flex items-center justify-between p-3 bg-white border border-gray-200 border-dashed rounded-[16px]">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center">
+                                <i class="fa-solid fa-snowflake"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-dark-navy">Técnico AC</p>
+                                <p class="text-[12px] text-gray-400">Pendente</p>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="px-3 py-1.5 border border-gray-200 text-gray-600 text-[12px] font-bold rounded-full bg-white shadow-sm">
+                                Buscar Profissional
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Area -->
+                <button class="w-full bg-gray-100 text-dark-navy font-bold text-[15px] py-4 rounded-full hover:bg-gray-200 transition-all active:scale-[0.98]">
+                    Ver Detalhes
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Floating Pill Navigation -->
+    <nav id="bottom-nav" class="fixed bottom-6 left-0 right-0 z-50 px-5 pointer-events-none">
+        <div class="max-w-[340px] mx-auto pointer-events-auto">
+            <div class="bg-white h-[72px] rounded-full shadow-nav flex items-center justify-around px-2 border border-gray-100">
+                
+                <!-- Home -->
+                <a href="#" class="flex flex-col items-center justify-center w-14 h-14 rounded-full text-gray-400 hover:text-dark-navy transition-colors">
+                    <i class="fa-solid fa-house text-[20px] mb-1"></i>
+                </a>
+
+                <!-- Orders (Active) -->
+                <a href="#" class="flex flex-col items-center justify-center w-14 h-14 rounded-full text-trust-blue relative">
+                    <i class="fa-solid fa-file-lines text-[22px] mb-1"></i>
+                    <span class="w-1.5 h-1.5 bg-trust-blue rounded-full absolute bottom-1"></span>
+                </a>
+
+                <!-- Messages -->
+                <a href="#" class="flex flex-col items-center justify-center w-14 h-14 rounded-full text-gray-400 hover:text-dark-navy transition-colors relative">
+                    <i class="fa-regular fa-comment-dots text-[22px] mb-1"></i>
+                    <span class="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
+                </a>
+
+                <!-- Profile -->
+                <a href="#" class="flex flex-col items-center justify-center w-14 h-14 rounded-full text-gray-400 hover:text-dark-navy transition-colors">
+                    <i class="fa-regular fa-user text-[20px] mb-1"></i>
+                </a>
+                
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>

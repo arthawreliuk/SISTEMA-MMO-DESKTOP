@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Detalhes da Transação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        success: '#10B981',
+                        successBg: 'rgba(16, 185, 129, 0.1)',
+                        danger: '#EF4444',
+                        cardBg: '#FFFFFF',
+                        innerCardBg: '#F8F9FA',
+                        borderLight: 'rgba(0, 0, 0, 0.05)',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'float': '0 10px 40px rgba(0, 22, 220, 0.15)',
+                        'nav': '0 8px 32px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Mobile Constraint Wrapper */
+        .mobile-container {
+            width: 100%;
+            max-width: 375px;
+            margin: 0 auto;
+            min-height: 100dvh;
+            background-color: #F8F9FA;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.05); /* Just for desktop viewing separation */
+        }
+        
+        /* Hide scrollbar for clean UI */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex justify-center items-start min-h-screen">
+
+    <!-- Mobile Viewport Wrapper -->
+    <main class="mobile-container pb-[120px]">
+        
+        <!-- 1. Top Header -->
+        <header id="header" class="glass-header sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full active:bg-gray-100 transition-colors" aria-label="Voltar">
+                <i class="fa-solid fa-arrow-left text-primary text-lg"></i>
+            </button>
+            <h1 class="text-[17px] font-bold text-textMain tracking-tight">Detalhes da Transação</h1>
+            <div class="w-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="px-5 py-6 flex flex-col gap-6 flex-1">
+
+            <!-- 2. Hero Financial Card -->
+            <section id="hero_financial_card" class="bg-cardBg rounded-[20px] p-6 shadow-soft relative overflow-hidden">
+                <!-- Glowing accent top right -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary opacity-[0.03] rounded-full blur-2xl"></div>
+                
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <i class="fa-solid fa-wallet text-xl"></i>
+                    </div>
+                    <div class="bg-successBg text-success px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 border border-success/20">
+                        <i class="fa-solid fa-check text-[10px]"></i>
+                        Aprovado
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <p class="text-xs font-semibold text-textMuted uppercase tracking-wider mb-1">Valor Bruto</p>
+                    <h2 class="text-4xl font-extrabold text-textMain tracking-tight">R$ 450,00</h2>
+                </div>
+
+                <div class="flex flex-col gap-2 pt-4 border-t border-borderLight">
+                    <div class="flex items-center gap-2 text-sm">
+                        <i class="fa-regular fa-user text-textMuted w-4 text-center"></i>
+                        <span class="text-textMuted">Cliente:</span>
+                        <span class="font-semibold text-textMain">Rodrigo</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-wrench text-textMuted w-4 text-center"></i>
+                        <span class="text-textMuted">Serviço:</span>
+                        <span class="font-semibold text-textMain">Instalação Elétrica</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Money Breakdown -->
+            <section id="money_breakdown" class="bg-cardBg rounded-[20px] p-1 shadow-soft">
+                <div class="bg-innerCardBg rounded-[16px] p-5 flex flex-col gap-4">
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-textMuted font-medium">Valor do Serviço</span>
+                        <span class="font-semibold text-textMain">R$ 450,00</span>
+                    </div>
+                    
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-textMuted font-medium flex items-center gap-1.5">
+                            Taxa MMO Pagamentos
+                            <i class="fa-solid fa-circle-info text-[10px] opacity-50"></i>
+                        </span>
+                        <span class="font-semibold text-danger">- R$ 13,50</span>
+                    </div>
+                    
+                    <div class="h-px w-full bg-borderLight my-1"></div>
+                    
+                    <div class="flex justify-between items-center">
+                        <span class="text-base font-bold text-textMain">Líquido a receber</span>
+                        <span class="text-lg font-extrabold text-primary">R$ 436,50</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Financial Timeline -->
+            <section id="financial_timeline" class="bg-cardBg rounded-[20px] p-6 shadow-soft">
+                <h3 class="text-base font-bold text-textMain mb-6">Rastreio do Saldo</h3>
+                
+                <div class="relative pl-3">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-[15px] top-2 bottom-2 w-0.5 bg-gray-100 rounded-full"></div>
+                    
+                    <!-- Step 1 -->
+                    <div class="flex gap-4 mb-6 relative z-10">
+                        <div class="w-6 h-6 rounded-full bg-success flex items-center justify-center shrink-0 shadow-sm border-2 border-white ring-4 ring-cardBg">
+                            <i class="fa-solid fa-check text-white text-[10px]"></i>
+                        </div>
+                        <div class="pt-0.5">
+                            <p class="text-sm font-semibold text-textMain">Cobrança Enviada</p>
+                            <p class="text-xs text-textMuted mt-0.5">12 Out, 14:30</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex gap-4 mb-6 relative z-10">
+                        <div class="w-6 h-6 rounded-full bg-success flex items-center justify-center shrink-0 shadow-sm border-2 border-white ring-4 ring-cardBg">
+                            <i class="fa-solid fa-check text-white text-[10px]"></i>
+                        </div>
+                        <div class="pt-0.5">
+                            <p class="text-sm font-semibold text-textMain">Pago pelo Cliente</p>
+                            <p class="text-xs text-textMuted mt-0.5">12 Out, 15:45</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 (Active) -->
+                    <div class="flex gap-4 relative z-10">
+                        <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-[0_0_0_4px_rgba(0,22,220,0.1)] border-2 border-white">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                        <div class="pt-0.5">
+                            <p class="text-sm font-bold text-primary">Saldo Liberado na Carteira</p>
+                            <p class="text-xs text-textMuted mt-0.5">Hoje, 09:00</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- 5. Primary Action (Fixed Bottom Area) -->
+        <div id="action_navigation_hub" class="fixed bottom-[80px] left-0 right-0 max-w-[375px] mx-auto px-5 z-40">
+            <button class="w-full bg-primary text-white font-bold text-[15px] py-4 rounded-full shadow-float flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+                <i class="fa-solid fa-building-columns"></i>
+                Transferir para minha Conta (Saque)
+            </button>
+        </div>
+
+        <!-- 6. Floating Pill Navigation -->
+        <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] glass-nav rounded-full px-6 py-3.5 shadow-nav z-50 border border-white/50 flex justify-between items-center">
+            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
+                <i class="fa-solid fa-house text-lg"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
+                <i class="fa-solid fa-chart-simple text-lg"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-primary relative">
+                <div class="absolute -top-1 -right-1 w-2 h-2 bg-danger rounded-full border border-white"></div>
+                <i class="fa-solid fa-wallet text-xl"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
+                <i class="fa-solid fa-bell text-lg"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
+                <i class="fa-regular fa-user text-lg"></i>
+            </a>
+        </nav>
+
+    </main>
+
+</body>
+</html>

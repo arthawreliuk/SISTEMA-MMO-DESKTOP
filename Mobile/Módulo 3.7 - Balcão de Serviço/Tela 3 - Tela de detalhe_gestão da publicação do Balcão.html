@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0016dc',
+                            light: '#e6e8fb'
+                        },
+                        navy: '#1A1A24',
+                        offwhite: '#F8F9FA'
+                    },
+                    boxShadow: {
+                        'ambient': '0 8px 30px rgba(0, 0, 0, 0.04)',
+                        'glow': '0 0 15px rgba(0, 22, 220, 0.15)',
+                        'nav': '0 20px 40px rgba(0, 0, 0, 0.08)',
+                        'btn': '0 4px 14px rgba(0, 22, 220, 0.3)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; display: flex; justify-content: center; min-height: 100vh; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-navy antialiased">
+
+    <!-- Mobile Device Wrapper -->
+    <main class="w-full max-w-[375px] min-h-[840px] bg-offwhite relative overflow-hidden flex flex-col shadow-2xl">
+        
+        <!-- Top Header (Glassmorphism) -->
+        <header id="header" class="fixed top-0 w-full max-w-[375px] z-50 bg-white/80 backdrop-blur-md px-4 py-4 flex items-center justify-between border-b border-gray-100/50">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-chevron-left text-[16px]"></i>
+            </button>
+            <h1 class="font-bold text-[16px]">Gerenciar Pedido</h1>
+            <button class="px-4 py-2 rounded-full border border-gray-200 text-[13px] font-semibold hover:bg-gray-50 transition-colors">
+                Pausar
+            </button>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="pt-[88px] pb-[120px] px-4 flex flex-col gap-6 overflow-y-auto h-full">
+            
+            <!-- Request Status Card (Hero) -->
+            <section id="hero-card" class="bg-white rounded-[24px] p-5 shadow-ambient border border-white/50">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand/10 text-brand text-[12px] font-bold mb-4 shadow-glow">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    Ativo no Balcão
+                </div>
+                <h2 class="text-[22px] font-extrabold mb-5 leading-tight tracking-tight">Troca de Fiação Completa</h2>
+                
+                <div class="flex items-center gap-4 text-[13px] text-gray-500 font-medium bg-gray-50/50 p-3 rounded-2xl">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-regular fa-eye text-[14px]"></i>
+                        <span>12 Visualizações</span>
+                    </div>
+                    <div class="w-[1px] h-4 bg-gray-200"></div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-regular fa-envelope text-[14px]"></i>
+                        <span>3 Propostas</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Proposals Section -->
+            <section id="proposals-list" class="flex flex-col gap-4">
+                <h3 class="text-[18px] font-bold px-1">Mestres Interessados</h3>
+
+                <!-- Bid Card 1 -->
+                <article class="bg-white rounded-[24px] p-5 shadow-ambient border border-white/50 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-brand/5 rounded-bl-full -z-0"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <div class="flex items-center gap-1.5">
+                                        <h4 class="font-bold text-[16px]">Carlos Silva</h4>
+                                        <i class="fa-solid fa-shield-halved text-brand text-[14px]"></i>
+                                    </div>
+                                    <div class="flex items-center gap-1 text-[13px] font-bold text-yellow-500 mt-0.5">
+                                        <i class="fa-solid fa-star text-[11px]"></i>
+                                        <span>4.9</span>
+                                        <span class="text-gray-400 font-medium ml-1">(124)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-[14px] text-gray-600 leading-relaxed mb-5">
+                            "Posso resolver isso hoje à tarde. Tenho o material necessário e experiência de 10 anos em elétrica residencial."
+                        </p>
+
+                        <div class="mb-5">
+                            <span class="text-[12px] text-gray-400 font-medium uppercase tracking-wider">Valor Proposto</span>
+                            <div class="text-[22px] font-extrabold text-navy">R$ 450,00</div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <button class="flex-1 py-3.5 rounded-full border border-gray-200 text-center font-bold text-[14px] hover:bg-gray-50 transition-colors text-navy">
+                                Chat
+                            </button>
+                            <button class="flex-[1.5] py-3.5 rounded-full bg-brand text-white text-center font-bold text-[14px] shadow-btn hover:opacity-90 transition-opacity">
+                                Aceitar e Contratar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Bid Card 2 -->
+                <article class="bg-white rounded-[24px] p-5 shadow-ambient border border-white/50 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <div class="flex items-center gap-1.5">
+                                        <h4 class="font-bold text-[16px]">Roberto Mendes</h4>
+                                        <i class="fa-solid fa-shield-halved text-brand text-[14px]"></i>
+                                    </div>
+                                    <div class="flex items-center gap-1 text-[13px] font-bold text-yellow-500 mt-0.5">
+                                        <i class="fa-solid fa-star text-[11px]"></i>
+                                        <span>4.7</span>
+                                        <span class="text-gray-400 font-medium ml-1">(89)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-[14px] text-gray-600 leading-relaxed mb-5">
+                            "Tenho disponibilidade para amanhã de manhã. Faço um serviço limpo e com garantia de 3 meses."
+                        </p>
+
+                        <div class="mb-5">
+                            <span class="text-[12px] text-gray-400 font-medium uppercase tracking-wider">Valor Proposto</span>
+                            <div class="text-[22px] font-extrabold text-navy">R$ 380,00</div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <button class="flex-1 py-3.5 rounded-full border border-gray-200 text-center font-bold text-[14px] hover:bg-gray-50 transition-colors text-navy">
+                                Chat
+                            </button>
+                            <button class="flex-[1.5] py-3.5 rounded-full bg-brand text-white text-center font-bold text-[14px] shadow-btn hover:opacity-90 transition-opacity">
+                                Aceitar e Contratar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+        </div>
+
+        <!-- Floating Pill Navigation -->
+        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[343px] z-50">
+            <div class="bg-white rounded-full px-8 py-4 flex items-center justify-between shadow-nav border border-gray-100/50 backdrop-blur-xl">
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
+                    <i class="fa-solid fa-house text-[20px]"></i>
+                </button>
+                <button class="flex flex-col items-center gap-1 text-brand relative">
+                    <i class="fa-solid fa-clipboard-list text-[20px]"></i>
+                    <div class="w-1.5 h-1.5 bg-brand rounded-full absolute -bottom-2.5"></div>
+                </button>
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors relative">
+                    <i class="fa-regular fa-message text-[20px]"></i>
+                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
+                    <i class="fa-regular fa-user text-[20px]"></i>
+                </button>
+            </div>
+        </nav>
+
+    </main>
+</body>
+</html>

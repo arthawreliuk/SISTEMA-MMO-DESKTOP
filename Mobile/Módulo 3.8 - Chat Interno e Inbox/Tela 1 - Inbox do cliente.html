@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Messages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        surface: '#F8F9FA',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 8px 30px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 0 1px rgba(0, 22, 220, 0.1), 0 4px 20px -2px rgba(0, 22, 220, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header {
+            background: rgba(248, 249, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="text-text-main font-sans min-h-[100dvh] flex flex-col relative pb-28">
+
+    <!-- Header -->
+    <header id="header" class="glass-header fixed top-0 left-0 right-0 z-50 px-6 pt-14 pb-4 border-b border-gray-100">
+        <div class="flex justify-between items-center max-w-md mx-auto w-full">
+            <h1 class="text-[28px] font-bold tracking-tight">Mensagens</h1>
+            <button class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-text-main hover:bg-gray-50 transition-colors">
+                <i class="fa-solid fa-magnifying-glass text-[18px]"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 w-full max-w-md mx-auto pt-[104px] px-5 flex flex-col gap-6">
+        
+        <!-- Filters (Horizontal Scroll) -->
+        <div id="filters" class="flex gap-3 overflow-x-auto pb-2 -mx-5 px-5 snap-x">
+            <button class="snap-start whitespace-nowrap px-5 py-2.5 rounded-full bg-primary text-white font-semibold text-[15px] shadow-soft transition-transform active:scale-95">
+                Todas
+            </button>
+            <button class="snap-start whitespace-nowrap px-5 py-2.5 rounded-full bg-white text-text-main font-medium text-[15px] shadow-soft border border-gray-100 hover:bg-gray-50 transition-colors flex items-center gap-2">
+                Não Lidas
+                <span class="bg-primary text-white text-[11px] font-bold px-2 py-0.5 rounded-full">2</span>
+            </button>
+            <button class="snap-start whitespace-nowrap px-5 py-2.5 rounded-full bg-white text-text-main font-medium text-[15px] shadow-soft border border-gray-100 hover:bg-gray-50 transition-colors">
+                Orçamentos 💰
+            </button>
+            <button class="snap-start whitespace-nowrap px-5 py-2.5 rounded-full bg-white text-text-main font-medium text-[15px] shadow-soft border border-gray-100 hover:bg-gray-50 transition-colors">
+                Agendamentos 📅
+            </button>
+        </div>
+
+        <!-- Inbox List -->
+        <div id="inbox-list" class="flex flex-col gap-4 pb-6">
+            
+            <!-- Compound Request Item -->
+            <div class="bg-white rounded-[20px] p-4 shadow-glow border border-primary/10 relative overflow-hidden cursor-pointer active:scale-[0.98] transition-transform">
+                <div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-folder-open text-primary text-xl"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-[17px] truncate">Reforma do Escritório</h3>
+                        <p class="text-[14px] text-text-muted mt-0.5">3 profissionais neste projeto</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-chevron-right text-[13px] text-text-muted"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Standard Chat Item 1 (Unread) -->
+            <div class="bg-white rounded-[20px] p-4 shadow-soft border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform">
+                <div class="flex gap-4">
+                    <div class="relative shrink-0">
+                        <div class="w-14 h-14 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-full h-full object-cover" alt="Avatar">
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+                        <div class="absolute -top-1 -right-1 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] shadow-sm">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-1">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-[16px] truncate pr-2">Carlos Eletricista</h3>
+                            <span class="text-[13px] font-semibold text-primary shrink-0">09:41</span>
+                        </div>
+                        <p class="text-[14px] text-text-main font-medium truncate mb-2">Posso ir amanhã de manhã fazer a...</p>
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-yellow-50 text-yellow-700 text-[12px] font-semibold">
+                            <i class="fa-solid fa-file-invoice text-[11px]"></i> Orçamento Recebido
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end justify-between pt-1 shrink-0">
+                        <div class="w-5 h-5 bg-primary rounded-full flex items-center justify-center text-white text-[11px] font-bold">1</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Standard Chat Item 2 (Read) -->
+            <div class="bg-white rounded-[20px] p-4 shadow-soft border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform opacity-80">
+                <div class="flex gap-4">
+                    <div class="relative shrink-0">
+                        <div class="w-14 h-14 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-full h-full object-cover" alt="Avatar">
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-1">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-semibold text-[16px] text-text-muted truncate pr-2">Ana Arquiteta</h3>
+                            <span class="text-[13px] text-text-muted shrink-0">Ontem</span>
+                        </div>
+                        <p class="text-[14px] text-text-muted truncate mb-2">Perfeito, o projeto está aprovado.</p>
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-green-50 text-green-700 text-[12px] font-semibold">
+                            <i class="fa-regular fa-calendar-check text-[11px]"></i> Agendado: 15/05
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Standard Chat Item 3 (Read) -->
+             <div class="bg-white rounded-[20px] p-4 shadow-soft border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform opacity-80">
+                <div class="flex gap-4">
+                    <div class="relative shrink-0">
+                        <div class="w-14 h-14 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-full h-full object-cover" alt="Avatar">
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-1">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-semibold text-[16px] text-text-muted truncate pr-2">João Encanador</h3>
+                            <span class="text-[13px] text-text-muted shrink-0">Terça</span>
+                        </div>
+                        <p class="text-[14px] text-text-muted truncate">Tudo certo com o material?</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Floating Bottom Navigation -->
+    <div class="fixed bottom-6 left-0 right-0 z-50 px-6 flex justify-center pointer-events-none">
+        <nav class="bg-white/95 backdrop-blur-md shadow-float rounded-[32px] px-6 py-3.5 flex items-center gap-8 border border-gray-100/50 pointer-events-auto">
+            <a href="#" class="flex flex-col items-center gap-1 text-text-muted hover:text-text-main transition-colors w-12">
+                <i class="fa-solid fa-house text-[20px]"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-text-muted hover:text-text-main transition-colors w-12">
+                <i class="fa-solid fa-clipboard-list text-[20px]"></i>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-primary relative w-12">
+                <i class="fa-solid fa-comment-dots text-[22px]"></i>
+                <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-2"></div>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-text-muted hover:text-text-main transition-colors w-12">
+                <i class="fa-regular fa-user text-[20px]"></i>
+            </a>
+        </nav>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            green: '#10B981'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'floating': '0 20px 40px -10px rgba(0, 22, 220, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Hide scrollbar for clean mobile look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-brand-offwhite min-h-screen flex flex-col font-sans selection:bg-brand-blue selection:text-white pb-28">
+
+    <!-- Top Header -->
+    <header id="header" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-5 flex items-center justify-between shadow-sm">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 hover:bg-gray-100 transition-colors text-brand-navy">
+            <i class="fa-solid fa-arrow-left text-lg"></i>
+        </button>
+        
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-lock text-brand-green text-sm"></i>
+            <h1 class="text-[17px] font-semibold text-brand-navy tracking-tight">Checkout Seguro</h1>
+        </div>
+        
+        <div class="text-sm font-medium text-gray-400 bg-gray-50 px-3 py-1.5 rounded-full">
+            4/4
+        </div>
+    </header>
+
+    <main class="flex-1 w-full max-w-[375px] mx-auto px-5 pt-6 pb-8 flex flex-col gap-8">
+        
+        <!-- Order Summary Card -->
+        <section id="order-summary" class="bg-white rounded-[24px] p-6 shadow-ambient border border-gray-100/50 relative overflow-hidden">
+            <!-- Decorative gradient blur -->
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-blue/5 rounded-full blur-2xl"></div>
+            
+            <div class="relative z-10">
+                <span class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2 block">Orçamento da Campanha</span>
+                <div class="flex items-baseline gap-1 mb-3">
+                    <span class="text-2xl font-bold text-brand-navy">R$</span>
+                    <span class="text-4xl font-extrabold text-brand-navy tracking-tight">500,00</span>
+                </div>
+                
+                <div class="flex items-center gap-3 bg-brand-offwhite p-3.5 rounded-[16px] border border-gray-100">
+                    <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                        <i class="fa-solid fa-chart-line text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-[13px] font-semibold text-brand-navy">Veiculação: 7 dias</p>
+                        <p class="text-[12px] text-gray-500 font-medium">Estimativa: 12k impressões</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Method Selectors -->
+        <section id="payment-methods" class="flex flex-col gap-3">
+            <h2 class="text-[15px] font-bold text-brand-navy px-1 mb-1">Método de Pagamento</h2>
+            
+            <!-- Active: Credit Card -->
+            <label class="relative flex items-center justify-between p-4 rounded-[20px] bg-white border-2 border-brand-blue shadow-sm cursor-pointer transition-all hover:shadow-md">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                        <i class="fa-solid fa-credit-card text-lg"></i>
+                    </div>
+                    <span class="text-[15px] font-bold text-brand-navy">Cartão de Crédito</span>
+                </div>
+                <div class="w-6 h-6 rounded-full border-2 border-brand-blue flex items-center justify-center bg-brand-blue">
+                    <i class="fa-solid fa-check text-white text-[10px]"></i>
+                </div>
+                <input type="radio" name="payment" checked class="hidden">
+            </label>
+
+            <!-- Inactive: PIX -->
+            <label class="relative flex items-center justify-between p-4 rounded-[20px] bg-white border-2 border-transparent shadow-sm cursor-pointer transition-all hover:border-gray-200">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400">
+                        <i class="fa-brands fa-pix text-xl"></i>
+                    </div>
+                    <span class="text-[15px] font-semibold text-gray-600">PIX</span>
+                </div>
+                <div class="w-6 h-6 rounded-full border-2 border-gray-200 flex items-center justify-center"></div>
+                <input type="radio" name="payment" class="hidden">
+            </label>
+        </section>
+
+        <!-- Credit Card Form -->
+        <section id="credit-card-form" class="bg-white rounded-[24px] p-6 shadow-ambient border border-gray-100/50 flex flex-col gap-5">
+            
+            <!-- Card Number -->
+            <div class="relative">
+                <label class="block text-[13px] font-bold text-gray-600 mb-2 ml-1">Número do Cartão</label>
+                <div class="relative flex items-center">
+                    <input type="text" placeholder="0000 0000 0000 0000" class="w-full h-14 pl-5 pr-16 bg-brand-offwhite rounded-[16px] border border-transparent focus:border-brand-blue focus:bg-white focus:ring-4 focus:ring-brand-blue/10 outline-none transition-all text-[15px] font-medium text-brand-navy placeholder-gray-400">
+                    <div class="absolute right-4 flex gap-1.5">
+                        <i class="fa-brands fa-cc-mastercard text-2xl text-gray-300"></i>
+                        <i class="fa-brands fa-cc-visa text-2xl text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split Row: Expiry & CVV -->
+            <div class="flex gap-4">
+                <div class="flex-1 relative">
+                    <label class="block text-[13px] font-bold text-gray-600 mb-2 ml-1">Validade</label>
+                    <input type="text" placeholder="MM/AA" class="w-full h-14 px-5 bg-brand-offwhite rounded-[16px] border border-transparent focus:border-brand-blue focus:bg-white focus:ring-4 focus:ring-brand-blue/10 outline-none transition-all text-[15px] font-medium text-brand-navy placeholder-gray-400">
+                </div>
+                <div class="flex-1 relative">
+                    <label class="block text-[13px] font-bold text-gray-600 mb-2 ml-1">CVV</label>
+                    <div class="relative flex items-center">
+                        <input type="text" placeholder="123" class="w-full h-14 px-5 bg-brand-offwhite rounded-[16px] border border-transparent focus:border-brand-blue focus:bg-white focus:ring-4 focus:ring-brand-blue/10 outline-none transition-all text-[15px] font-medium text-brand-navy placeholder-gray-400">
+                        <i class="fa-regular fa-circle-question absolute right-4 text-gray-400 text-sm"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cardholder Name -->
+            <div class="relative">
+                <label class="block text-[13px] font-bold text-gray-600 mb-2 ml-1">Nome impresso no cartão</label>
+                <input type="text" placeholder="Ex: JOAO S SILVA" class="w-full h-14 px-5 bg-brand-offwhite rounded-[16px] border border-transparent focus:border-brand-blue focus:bg-white focus:ring-4 focus:ring-brand-blue/10 outline-none transition-all text-[15px] font-medium text-brand-navy placeholder-gray-400 uppercase">
+            </div>
+            
+            <div class="flex items-center gap-2 mt-2 ml-1">
+                <i class="fa-solid fa-shield-halved text-brand-green text-[13px]"></i>
+                <span class="text-[12px] font-medium text-gray-500">Seus dados estão protegidos</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pinned Bottom Action -->
+    <div id="pinned-action" class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl border-t border-gray-100 p-5 pb-8 z-50">
+        <div class="max-w-[375px] mx-auto">
+            <button class="w-full h-[60px] bg-brand-blue text-white rounded-full font-bold text-[16px] shadow-floating flex items-center justify-center gap-2 transition-transform active:scale-[0.98] hover:bg-blue-700">
+                <span>Pagar e Lançar Campanha</span>
+                <span class="text-xl">🚀</span>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

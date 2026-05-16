@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Recovery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                        },
+                        navy: {
+                            900: '#0a192f',
+                            800: '#112240',
+                            600: '#233554',
+                            400: '#8892b0',
+                        },
+                        offwhite: '#F8F9FA'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center font-sans text-navy-900 bg-offwhite antialiased">
+
+    <!-- Centered Workspace Container -->
+    <main class="w-full max-w-[450px] px-6 sm:px-0 flex flex-col items-center">
+        
+        <!-- Branding Logo -->
+        <div id="branding-logo" class="mb-8 flex justify-center w-full">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="12" fill="#0016dc"/>
+                <path d="M14 28V16L24 24L34 16V28" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+
+        <!-- Main Content Canvas (Pure White Card) -->
+        <div id="recovery-card" class="w-full bg-white rounded-[16px] shadow-soft p-8 sm:p-10 flex flex-col items-center text-center">
+            
+            <h1 class="text-[24px] font-bold text-navy-900 mb-3 tracking-tight">Esqueceu sua senha?</h1>
+            
+            <p class="text-[15px] text-navy-600 mb-8 leading-relaxed max-w-[320px]">
+                Sem problemas. Digite seu e-mail abaixo e nós cuidamos do resto.
+            </p>
+
+            <form class="w-full flex flex-col gap-6" onsubmit="event.preventDefault();">
+                <!-- Input Field -->
+                <div class="flex flex-col text-left w-full">
+                    <label for="email" class="text-[13px] font-semibold text-navy-800 mb-2 ml-1">E-mail da sua conta</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        placeholder="seu@email.com"
+                        class="w-full h-[52px] px-4 rounded-[12px] border border-gray-200 bg-white text-[15px] text-navy-900 placeholder:text-gray-400 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all duration-200"
+                        required
+                    >
+                </div>
+
+                <!-- Action Area -->
+                <button 
+                    type="submit" 
+                    id="submit-btn"
+                    class="w-full h-[52px] bg-brand-blue text-white rounded-full font-semibold text-[15px] hover:bg-opacity-90 hover:-translate-y-[1px] hover:shadow-lg transition-all duration-200 mt-2"
+                >
+                    Enviar Instruções de Acesso
+                </button>
+            </form>
+        </div>
+
+        <!-- Support Link -->
+        <div id="support-footer" class="w-full mt-6 flex justify-end">
+            <a href="#" class="text-[13px] font-medium text-navy-600 hover:text-brand-blue transition-colors duration-200">
+                Precisa de ajuda com seu acesso?
+            </a>
+        </div>
+
+    </main>
+
+</body>
+</html>

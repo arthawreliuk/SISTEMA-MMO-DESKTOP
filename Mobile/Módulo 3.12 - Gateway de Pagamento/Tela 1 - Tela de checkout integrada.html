@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Checkout | Pagamento Seguro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E5E7EB',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.15)',
+                    },
+                    borderRadius: {
+                        'pill': '9999px',
+                        'card': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-textMain font-sans bg-background pb-[100px] flex justify-center w-full min-h-screen">
+
+    <!-- Mobile Container Wrapper -->
+    <main class="w-full max-w-[430px] min-h-screen bg-background relative shadow-2xl overflow-x-hidden flex flex-col">
+        
+        <!-- 1. Top Trust Header -->
+        <header id="trust-header" class="w-full bg-white px-6 py-5 rounded-b-[32px] shadow-soft z-10 relative">
+            <div class="flex flex-col items-center justify-center space-y-1">
+                <div class="flex items-center space-x-2 text-primary">
+                    <i class="fa-solid fa-shield-halved text-lg"></i>
+                    <h1 class="text-[17px] font-bold tracking-tight">Pagamento Seguro</h1>
+                </div>
+                <div class="flex items-center space-x-1.5 text-textMuted text-[11px] font-medium uppercase tracking-wider">
+                    <span>Powered by</span>
+                    <span class="font-bold text-textMain">MMO Pagamentos</span>
+                </div>
+            </div>
+            
+            <!-- Decorative Glow -->
+            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-primary/10 blur-xl rounded-full"></div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 px-5 pt-8 pb-6 flex flex-col space-y-6">
+            
+            <!-- 2. Professional & Service Summary Card -->
+            <section id="summary-card" class="bg-white rounded-card p-6 shadow-soft relative overflow-hidden border border-white/60">
+                <!-- Top: Professional Info -->
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Mestre Elétrica" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm">
+                        <div class="absolute -bottom-1 -right-1 bg-[#22C55E] text-white w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                            <i class="fa-solid fa-check text-[10px]"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold text-textMuted uppercase tracking-wider mb-0.5">Profissional</p>
+                        <h2 class="text-lg font-bold text-textMain leading-tight">Mestre Elétrica</h2>
+                    </div>
+                </div>
+
+                <!-- Middle: Service Details -->
+                <div class="bg-background rounded-2xl p-4 mb-6 border border-borderLight/50">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <p class="text-[13px] font-medium text-textMuted mb-1">Serviço</p>
+                            <p class="text-[15px] font-semibold text-textMain leading-snug">Troca de Fiação Completa Residencial</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 ml-3">
+                            <i class="fa-solid fa-bolt text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom: Price -->
+                <div class="flex flex-col items-center justify-center pt-2">
+                    <p class="text-sm font-medium text-textMuted mb-1">Total a pagar</p>
+                    <div class="flex items-start">
+                        <span class="text-xl font-bold text-textMain mt-1.5 mr-1">R$</span>
+                        <span class="text-[42px] font-extrabold text-textMain tracking-tight leading-none">450,00</span>
+                    </div>
+                </div>
+                
+                <!-- Subtle Gradient Overlay -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-primary/[0.03] rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
+            </section>
+
+            <!-- 3. Payment Method Tabs -->
+            <section id="payment-tabs" class="w-full">
+                <div class="bg-white p-1.5 rounded-pill shadow-sm border border-borderLight/50 flex items-center justify-between">
+                    <!-- Active PIX Tab -->
+                    <button class="flex-1 bg-primary text-white py-3 px-4 rounded-pill flex items-center justify-center space-x-2 shadow-glow transition-all">
+                        <i class="fa-brands fa-pix text-lg"></i>
+                        <span class="text-sm font-bold">PIX</span>
+                    </button>
+                    <!-- Inactive Card Tab -->
+                    <button class="flex-1 text-textMuted py-3 px-4 rounded-pill flex items-center justify-center space-x-2 hover:bg-background transition-all">
+                        <i class="fa-regular fa-credit-card text-lg"></i>
+                        <span class="text-sm font-semibold">Cartão até 12x</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 4. Active Payment Area (PIX) -->
+            <section id="pix-area" class="bg-white rounded-card p-6 shadow-soft border border-white/60 flex flex-col items-center text-center">
+                
+                <div class="mb-5">
+                    <h3 class="text-base font-bold text-textMain mb-1">Escaneie ou copie o código</h3>
+                    <p class="text-sm text-textMuted">O pagamento será aprovado na hora.</p>
+                </div>
+
+                <!-- QR Code Container -->
+                <div class="w-48 h-48 p-4 rounded-3xl border-2 border-dashed border-primary/30 bg-primary/[0.02] mb-6 relative group">
+                    <!-- Corner Accents (Like Ref Image 2) -->
+                    <div class="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-primary rounded-tl-lg"></div>
+                    <div class="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-primary rounded-tr-lg"></div>
+                    <div class="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-primary rounded-bl-lg"></div>
+                    <div class="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-primary rounded-br-lg"></div>
+                    
+                    <!-- QR Image Placeholder -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126580014br.gov.bcb.pix0136123e4567-e89b-12d3-a456-4266554400005204000053039865406450.005802BR5915Mestre%20Eletrica6009Sao%20Paulo62070503***63041D3D&color=0016dc&bgcolor=ffffff" alt="PIX QR Code" class="w-full h-full object-contain rounded-xl mix-blend-multiply">
+                </div>
+
+                <!-- Copy Button -->
+                <button class="w-full bg-primary/10 text-primary hover:bg-primary/15 transition-colors py-4 px-6 rounded-pill flex items-center justify-center space-x-3 font-bold text-[15px]">
+                    <i class="fa-regular fa-copy text-lg"></i>
+                    <span>Copiar Código PIX (Copia e Cola)</span>
+                </button>
+                
+                <!-- Timer / Expiry text -->
+                <p class="mt-4 text-[12px] text-textMuted font-medium flex items-center justify-center space-x-1.5">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Código expira em 30:00</span>
+                </p>
+            </section>
+            
+            <!-- Spacer to ensure scrolling past footer -->
+            <div class="h-6"></div>
+        </div>
+
+        <!-- 5. Trust Footer -->
+        <footer id="trust-footer" class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] glass-panel px-6 py-4 pb-safe z-50 rounded-t-[24px]">
+            <div class="flex flex-col items-center justify-center space-y-3">
+                <div class="flex items-center justify-center space-x-4 opacity-40 grayscale">
+                    <i class="fa-brands fa-cc-visa text-2xl"></i>
+                    <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+                    <i class="fa-brands fa-cc-amex text-2xl"></i>
+                    <div class="h-4 w-px bg-textMain/30 mx-2"></div>
+                    <i class="fa-solid fa-lock text-lg"></i>
+                </div>
+                <p class="text-[11px] font-semibold text-textMuted uppercase tracking-widest text-center">
+                    Ambiente criptografado de ponta a ponta
+                </p>
+            </div>
+            <!-- Safe area bottom padding for modern iPhones -->
+            <div class="h-[env(safe-area-inset-bottom)]"></div>
+        </footer>
+
+    </main>
+
+</body>
+</html>

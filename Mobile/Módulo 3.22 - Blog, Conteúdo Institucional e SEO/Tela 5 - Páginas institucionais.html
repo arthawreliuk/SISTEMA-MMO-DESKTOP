@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Termos de Serviço e Privacidade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'off-white': '#F8F9FA',
+                        'trust-blue': '#0016dc',
+                        'deep-navy': '#1A1A24',
+                        'slate-grey': '#475569',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 30px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        
+        .legal-content h2 {
+            color: #1A1A24;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .legal-content p {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .legal-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .legal-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .legal-content li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #0016dc;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-grey bg-off-white min-h-screen relative pb-24">
+
+    <!-- Mobile Container (375x840 constraint applied via max-w) -->
+    <div class="w-full max-w-[375px] mx-auto bg-off-white min-h-screen relative shadow-soft sm:shadow-none">
+
+        <!-- Minimalist Header -->
+        <header id="header" class="sticky top-0 z-50 bg-white px-6 py-4 flex items-center justify-between rounded-b-[24px] shadow-soft">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-off-white text-deep-navy hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-trust-blue flex items-center justify-center">
+                    <i class="fa-solid fa-shield-halved text-white text-sm"></i>
+                </div>
+                <span class="font-bold text-deep-navy text-lg tracking-tight">MMO</span>
+            </div>
+            <div class="w-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <!-- Document Hero -->
+        <section id="document-hero" class="px-6 pt-8 pb-6 bg-white mt-4 mx-4 rounded-[24px] shadow-soft">
+            <h1 class="text-[28px] leading-[1.2] font-bold text-deep-navy mb-3 tracking-tight">
+                Termos de Serviço e Privacidade
+            </h1>
+            <div class="flex items-center gap-2 text-sm text-slate-grey/80">
+                <i class="fa-regular fa-calendar text-xs"></i>
+                <span>Última atualização: 15 de Maio de 2026</span>
+            </div>
+        </section>
+
+        <!-- The Document Canvas -->
+        <main id="legal-content-canvas" class="px-6 py-6 legal-content">
+            <p>
+                Bem-vindo aos Termos de Serviço da MMO. Ao utilizar nossa plataforma institucional, você concorda com as práticas descritas neste documento. Recomendamos a leitura atenta para compreender seus direitos e obrigações.
+            </p>
+
+            <h2>1. Coleta de Dados</h2>
+            <p>
+                Nossa prioridade é a segurança e privacidade de suas informações financeiras e institucionais. Coletamos apenas os dados estritamente necessários para o funcionamento otimizado da plataforma:
+            </p>
+            <ul>
+                <li>Informações de cadastro corporativo (CNPJ, Razão Social).</li>
+                <li>Dados de transações financeiras processadas via API.</li>
+                <li>Logs de acesso e metadados de segurança para auditoria.</li>
+                <li>Preferências de interface e configurações de usuário.</li>
+            </ul>
+
+            <h2>2. Uso das Informações</h2>
+            <p>
+                Os dados coletados são utilizados exclusivamente para as finalidades descritas abaixo, garantindo total conformidade com a LGPD e regulamentações financeiras vigentes:
+            </p>
+            <ul>
+                <li>Processamento e validação de operações financeiras.</li>
+                <li>Geração de relatórios analíticos e dashboards.</li>
+                <li>Comunicação institucional e alertas de segurança.</li>
+            </ul>
+
+            <h2>3. Compartilhamento e Segurança</h2>
+            <p>
+                A MMO emprega criptografia de ponta a ponta (AES-256) em todos os dados em repouso e em trânsito. Não comercializamos ou compartilhamos seus dados com terceiros, exceto quando exigido por ordem judicial ou para o processamento estrito via parceiros homologados.
+            </p>
+
+            <h2>4. Direitos do Usuário</h2>
+            <p>
+                Você mantém controle total sobre seus dados corporativos, podendo solicitar a qualquer momento:
+            </p>
+            <ul>
+                <li>Exportação completa do histórico de dados.</li>
+                <li>Retificação de informações incorretas.</li>
+                <li>Exclusão de contas (sujeito aos prazos de retenção legal).</li>
+            </ul>
+
+            <div class="h-8"></div> <!-- Bottom Spacer inside content -->
+        </main>
+
+        <!-- Sticky Table of Contents Pill -->
+        <div id="sticky-toc-pill" class="fixed bottom-6 left-0 w-full max-w-[375px] mx-auto flex justify-center z-40 px-6 pointer-events-none">
+            <button class="pointer-events-auto bg-white text-deep-navy font-semibold px-6 py-4 rounded-full shadow-float flex items-center gap-3 hover:scale-105 transition-transform border border-gray-100">
+                <div class="w-8 h-8 rounded-full bg-trust-blue/10 flex items-center justify-center text-trust-blue">
+                    <i class="fa-solid fa-list-ul"></i>
+                </div>
+                <span>Índice do Documento</span>
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>

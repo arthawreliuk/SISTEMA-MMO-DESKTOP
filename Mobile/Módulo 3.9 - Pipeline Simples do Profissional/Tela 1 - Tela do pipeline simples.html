@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Meu Funil - Kanban</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        bg: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: '#1A1A24',
+                        textMuted: '#6B7280',
+                        card: '#FFFFFF',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'floating': '0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 10px -5px rgba(0, 0, 0, 0.04)',
+                        'header': '0 2px 10px -2px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-tap-highlight-color: transparent; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .snap-x-mandatory { scroll-snap-type: x mandatory; }
+        .snap-center { scroll-snap-align: center; }
+    </style>
+</head>
+<body class="antialiased min-h-[100dvh] flex flex-col relative pb-28">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-40 glass-header shadow-header px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">
+                M
+            </div>
+        </div>
+        <h1 class="text-lg font-bold text-text tracking-tight">Meu Funil</h1>
+        <button class="bg-primary hover:bg-blue-700 text-white text-sm font-semibold py-2 px-4 rounded-full transition-colors shadow-sm">
+            + Novo Job
+        </button>
+    </header>
+
+    <!-- Main Content - Kanban Board -->
+    <main id="main-content" class="flex-1 pt-20 pb-6 w-full max-w-[375px] mx-auto md:max-w-none md:px-4">
+        
+        <!-- Horizontal Scrollable Container -->
+        <div id="pipeline-container" class="flex overflow-x-auto hide-scrollbar snap-x-mandatory px-4 gap-4 pb-4 h-full md:pb-0">
+            
+            <!-- Column 1: Em Orçamento -->
+            <div id="col-orcamento" class="min-w-[85%] md:min-w-[320px] flex-shrink-0 snap-center flex flex-col gap-3">
+                <!-- Column Header -->
+                <div class="bg-white rounded-full py-2.5 px-4 shadow-sm flex items-center justify-between border border-gray-100">
+                    <span class="font-bold text-[15px] text-text">Em Orçamento</span>
+                    <span class="bg-gray-100 text-textMuted text-xs font-bold px-2.5 py-1 rounded-full">3</span>
+                </div>
+
+                <!-- Cards Stack -->
+                <div class="flex flex-col gap-3">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-[16px] p-4 shadow-soft border border-gray-50 flex flex-col gap-3 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-primary/20"></div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[13px] text-textMuted font-medium mb-0.5">Cliente</p>
+                                <h3 class="font-bold text-[15px] text-text">Roberto Silva</h3>
+                            </div>
+                            <button class="text-gray-400 hover:text-text"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        
+                        <div>
+                            <p class="text-[13px] text-textMuted font-medium mb-0.5">Serviço</p>
+                            <p class="text-[14px] text-text font-medium">Automação Residencial - Brava</p>
+                        </div>
+
+                        <div class="pt-2 border-t border-gray-100 mt-1">
+                            <p class="text-[12px] text-textMuted font-medium mb-0.5">Valor do Projeto</p>
+                            <p class="font-bold text-[18px] text-primary tracking-tight">R$ 3.200,00</p>
+                        </div>
+
+                        <button class="mt-1 w-full py-2.5 px-4 rounded-full border border-gray-200 text-text font-semibold text-[13px] hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                            Avançar para Execução <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                        </button>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-[16px] p-4 shadow-soft border border-gray-50 flex flex-col gap-3 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-primary/20"></div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[13px] text-textMuted font-medium mb-0.5">Cliente</p>
+                                <h3 class="font-bold text-[15px] text-text">Clinica Sorriso</h3>
+                            </div>
+                            <button class="text-gray-400 hover:text-text"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        
+                        <div>
+                            <p class="text-[13px] text-textMuted font-medium mb-0.5">Serviço</p>
+                            <p class="text-[14px] text-text font-medium">Rede Estruturada e CFTV</p>
+                        </div>
+
+                        <div class="pt-2 border-t border-gray-100 mt-1">
+                            <p class="text-[12px] text-textMuted font-medium mb-0.5">Valor do Projeto</p>
+                            <p class="font-bold text-[18px] text-primary tracking-tight">R$ 8.500,00</p>
+                        </div>
+
+                        <button class="mt-1 w-full py-2.5 px-4 rounded-full border border-gray-200 text-text font-semibold text-[13px] hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                            Avançar para Execução <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Em Execução (Partially visible) -->
+            <div id="col-execucao" class="min-w-[85%] md:min-w-[320px] flex-shrink-0 snap-center flex flex-col gap-3 opacity-60 transition-opacity">
+                <!-- Column Header -->
+                <div class="bg-white rounded-full py-2.5 px-4 shadow-sm flex items-center justify-between border border-gray-100">
+                    <span class="font-bold text-[15px] text-text">Em Execução</span>
+                    <span class="bg-gray-100 text-textMuted text-xs font-bold px-2.5 py-1 rounded-full">1</span>
+                </div>
+
+                <!-- Cards Stack -->
+                <div class="flex flex-col gap-3 pointer-events-none">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-[16px] p-4 shadow-soft border border-gray-50 flex flex-col gap-3 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-yellow-400"></div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[13px] text-textMuted font-medium mb-0.5">Cliente</p>
+                                <h3 class="font-bold text-[15px] text-text">Tech Solutions</h3>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[13px] text-textMuted font-medium mb-0.5">Serviço</p>
+                            <p class="text-[14px] text-text font-medium">Manutenção Servidores</p>
+                        </div>
+                         <div class="pt-2 border-t border-gray-100 mt-1">
+                            <p class="font-bold text-[18px] text-text tracking-tight">R$ 1.200,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Floating Pill Navigation -->
+    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[340px]">
+        <div class="bg-white rounded-[32px] shadow-floating px-6 py-4 flex justify-between items-center border border-gray-100/50">
+            
+            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-text transition-colors">
+                <i class="fa-solid fa-house text-[20px]"></i>
+            </a>
+            
+            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-text transition-colors">
+                <i class="fa-solid fa-chart-pie text-[20px]"></i>
+            </a>
+            
+            <!-- Active State -->
+            <a href="#" class="flex flex-col items-center gap-1 text-primary relative">
+                <i class="fa-solid fa-layer-group text-[20px]"></i>
+                <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-3"></div>
+            </a>
+            
+            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-text transition-colors">
+                <i class="fa-regular fa-user text-[20px]"></i>
+            </a>
+
+        </div>
+    </nav>
+
+</body>
+</html>

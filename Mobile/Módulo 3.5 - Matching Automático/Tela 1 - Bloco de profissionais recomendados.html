@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Recommendations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        'primary-light': 'rgba(0, 22, 220, 0.1)',
+                        text: '#1A1A24',
+                        muted: '#64748b',
+                        background: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.15)',
+                        'nav': '0 -5px 30px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="text-text font-sans selection:bg-primary selection:text-white pb-28">
+
+    <!-- Mobile Wrapper -->
+    <div id="app-wrapper" class="w-full max-w-[430px] mx-auto min-h-screen relative bg-background overflow-hidden">
+
+        <!-- Header -->
+        <header id="header" class="fixed top-0 left-0 right-0 z-50 glass-header px-5 py-4 flex items-center justify-between max-w-[430px] mx-auto">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-primary transition-transform active:scale-95">
+                <i class="fa-solid fa-chevron-left text-lg"></i>
+            </button>
+            <h1 class="text-[17px] font-bold tracking-tight">Mestres Recomendados</h1>
+            <div class="w-10 h-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content" class="pt-24 px-5 pb-8 flex flex-col gap-6">
+
+            <!-- Hero Intro -->
+            <section id="hero-intro" class="flex flex-col gap-2">
+                <h2 class="text-2xl font-extrabold tracking-tight">Top Matches 🔥</h2>
+                <p class="text-[15px] text-muted leading-relaxed font-medium">Arthur, baseando-se nas suas últimas buscas, separamos os melhores profissionais para você.</p>
+            </section>
+
+            <!-- Top Match Hero Card -->
+            <section id="top-match-card" class="relative bg-white rounded-[24px] p-5 shadow-soft border border-primary/10 shadow-glow flex flex-col gap-5">
+                
+                <!-- Badge -->
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md whitespace-nowrap flex items-center gap-1.5">
+                    <span>✨</span> 98% Match Perfeito
+                </div>
+
+                <!-- Profile Info -->
+                <div class="flex items-center gap-4 mt-2">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Roberto Alves" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm">
+                        <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+                    </div>
+                    <div class="flex flex-col">
+                        <h3 class="text-lg font-bold">Roberto Alves</h3>
+                        <p class="text-sm text-muted font-medium">Eletricista Residencial</p>
+                        <div class="flex items-center gap-1 mt-1">
+                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-sm font-bold">5.0</span>
+                            <span class="text-xs text-muted">(124 avaliações)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reasoning Tags -->
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-primary-light text-primary text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                        <i class="fa-solid fa-location-dot text-[10px]"></i> A 2km de você
+                    </span>
+                    <span class="bg-primary-light text-primary text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                        <i class="fa-solid fa-money-bill-wave text-[10px]"></i> Visita Grátis
+                    </span>
+                    <span class="bg-primary-light text-primary text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt text-[10px]"></i> Responde rápido
+                    </span>
+                </div>
+
+                <!-- Action -->
+                <button class="w-full bg-primary text-white font-bold py-4 rounded-full shadow-lg shadow-primary/30 transition-transform active:scale-[0.98] mt-1">
+                    Solicitar Orçamento
+                </button>
+            </section>
+
+            <!-- Other Recommendations -->
+            <section id="other-recommendations" class="flex flex-col gap-4 mt-2">
+                <h3 class="text-lg font-bold">Outras Opções</h3>
+
+                <!-- Card 1 -->
+                <div class="bg-white rounded-[20px] p-4 shadow-sm border border-gray-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Carlos Silva" class="w-12 h-12 rounded-full object-cover">
+                        <div class="flex flex-col">
+                            <h4 class="font-bold text-[15px]">Carlos Silva</h4>
+                            <div class="flex items-center gap-1 text-xs text-muted mt-0.5">
+                                <i class="fa-solid fa-star text-yellow-400"></i>
+                                <span class="font-bold text-text">4.9</span>
+                                <span>• Eletricista</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1">
+                        <span class="text-primary font-bold text-sm">92% Match</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-50 text-text flex items-center justify-center">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-[20px] p-4 shadow-sm border border-gray-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Marcos Paulo" class="w-12 h-12 rounded-full object-cover">
+                        <div class="flex flex-col">
+                            <h4 class="font-bold text-[15px]">Marcos Paulo</h4>
+                            <div class="flex items-center gap-1 text-xs text-muted mt-0.5">
+                                <i class="fa-solid fa-star text-yellow-400"></i>
+                                <span class="font-bold text-text">4.8</span>
+                                <span>• Eletricista</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1">
+                        <span class="text-primary font-bold text-sm">88% Match</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-50 text-text flex items-center justify-center">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-[20px] p-4 shadow-sm border border-gray-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="João Mendes" class="w-12 h-12 rounded-full object-cover">
+                        <div class="flex flex-col">
+                            <h4 class="font-bold text-[15px]">João Mendes</h4>
+                            <div class="flex items-center gap-1 text-xs text-muted mt-0.5">
+                                <i class="fa-solid fa-star text-yellow-400"></i>
+                                <span class="font-bold text-text">4.7</span>
+                                <span>• Eletricista</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1">
+                        <span class="text-primary font-bold text-sm">85% Match</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-50 text-text flex items-center justify-center">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Floating Nav -->
+        <nav id="floating-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] bg-white rounded-full shadow-nav px-6 py-4 flex items-center justify-between z-50 border border-gray-100">
+            <button class="flex flex-col items-center gap-1.5 text-primary relative">
+                <i class="fa-solid fa-house text-xl"></i>
+                <div class="w-1 h-1 bg-primary rounded-full absolute -bottom-2.5"></div>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors">
+                <i class="fa-solid fa-clipboard-list text-xl"></i>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors relative">
+                <i class="fa-regular fa-comment-dots text-xl"></i>
+                <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></div>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors">
+                <i class="fa-regular fa-user text-xl"></i>
+            </button>
+        </nav>
+
+    </div>
+
+</body>
+</html>

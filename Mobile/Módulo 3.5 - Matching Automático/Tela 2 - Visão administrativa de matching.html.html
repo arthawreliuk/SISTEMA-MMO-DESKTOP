@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo de Matching</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        surface: '#FFFFFF',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,22,220,0.08)',
+                        'ambient-sm': '0 4px 20px -5px rgba(0,22,220,0.06)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'floating-nav': '0 -10px 40px -10px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body class="font-sans min-h-[100dvh] pb-32">
+
+    <!-- Screen Wrapper: Mobile Target (375x840 intent) -->
+    <div id="app-container" class="w-full max-w-[430px] mx-auto min-h-[100dvh] relative bg-background flex flex-col">
+
+        <!-- 1. Header Area: Glassmorphism -->
+        <header id="header" class="glass-header sticky top-0 z-40 w-full px-5 py-4 flex items-center justify-between shadow-glass">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">
+                    M
+                </div>
+                <span class="font-bold text-textMain text-sm tracking-tight">MMO Admin</span>
+            </div>
+            
+            <button class="flex items-center gap-1.5 bg-white/60 border border-gray-100 px-3 py-1.5 rounded-full text-xs font-semibold text-textMain shadow-sm hover:bg-white transition-colors">
+                <span>Santa Catarina</span>
+                <i class="fa-solid fa-chevron-down text-[10px] text-textMuted"></i>
+            </button>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 w-full px-5 pt-6 pb-24 flex flex-col gap-8">
+
+            <!-- 2. KPIs Inteligentes (Horizontal Scroll) -->
+            <section id="kpi-section" class="w-full">
+                <h2 class="text-sm font-bold text-textMain mb-4 px-1">Visão Geral</h2>
+                <div class="flex overflow-x-auto hide-scroll gap-4 pb-4 -mx-5 px-5 snap-x">
+                    
+                    <!-- KPI 1 -->
+                    <div class="min-w-[150px] snap-start bg-surface rounded-[24px] p-4 shadow-ambient-sm border border-gray-50 flex flex-col gap-3 relative overflow-hidden">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-textMuted">Matches Hoje</span>
+                            <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                                <i class="fa-solid fa-bolt text-primary text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-2xl font-extrabold text-textMain">142</span>
+                            <span class="text-[10px] font-bold text-emerald-500 bg-emerald-50 px-1.5 py-0.5 rounded-full">+12%</span>
+                        </div>
+                        <!-- Sparkline placeholder -->
+                        <div class="w-full h-8 mt-1" id="sparkline-1"></div>
+                    </div>
+
+                    <!-- KPI 2 -->
+                    <div class="min-w-[150px] snap-start bg-surface rounded-[24px] p-4 shadow-ambient-sm border border-gray-50 flex flex-col gap-3 relative overflow-hidden">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-textMuted">Score Médio</span>
+                            <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                                <i class="fa-solid fa-star text-primary text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-2xl font-extrabold text-textMain">96%</span>
+                        </div>
+                        <!-- Sparkline placeholder -->
+                        <div class="w-full h-8 mt-1" id="sparkline-2"></div>
+                    </div>
+
+                    <!-- KPI 3 -->
+                    <div class="min-w-[150px] snap-start bg-surface rounded-[24px] p-4 shadow-ambient-sm border border-gray-50 flex flex-col gap-3 relative overflow-hidden">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-textMuted">Tempo Resp.</span>
+                            <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                                <i class="fa-regular fa-clock text-primary text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-2xl font-extrabold text-textMain">8m</span>
+                            <span class="text-[10px] font-bold text-emerald-500 bg-emerald-50 px-1.5 py-0.5 rounded-full">-2m</span>
+                        </div>
+                        <!-- Sparkline placeholder -->
+                        <div class="w-full h-8 mt-1" id="sparkline-3"></div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 3. Fluxo de Conexões (Live Feed) -->
+            <section id="live-feed-section" class="w-full flex flex-col gap-4">
+                <div class="flex items-center justify-between px-1">
+                    <h2 class="text-lg font-bold text-textMain flex items-center gap-2">
+                        Conexões em Tempo Real
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                    </h2>
+                    <button class="text-xs font-semibold text-primary">Ver todos</button>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    
+                    <!-- Feed Card 1 -->
+                    <div class="bg-surface rounded-[24px] p-5 shadow-ambient border border-gray-50 flex flex-col gap-4 relative">
+                        
+                        <!-- Connection Visual -->
+                        <div class="flex items-center justify-between relative">
+                            <!-- Line connecting avatars -->
+                            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gray-100 -translate-y-1/2 z-0"></div>
+                            
+                            <!-- Client -->
+                            <div class="flex flex-col items-center gap-1.5 relative z-10 bg-surface px-1">
+                                <div class="w-12 h-12 rounded-full border-2 border-white shadow-sm overflow-hidden">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Cliente" class="w-full h-full object-cover">
+                                </div>
+                                <span class="text-[10px] font-semibold text-textMain">Marina S.</span>
+                            </div>
+
+                            <!-- Match Badge -->
+                            <div class="relative z-10 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md border-2 border-white flex items-center gap-1">
+                                <i class="fa-solid fa-check-double text-[8px]"></i>
+                                98% Match
+                            </div>
+
+                            <!-- Master -->
+                            <div class="flex flex-col items-center gap-1.5 relative z-10 bg-surface px-1">
+                                <div class="w-12 h-12 rounded-full border-2 border-white shadow-sm overflow-hidden relative">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Mestre" class="w-full h-full object-cover">
+                                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></div>
+                                </div>
+                                <span class="text-[10px] font-semibold text-textMain">Carlos E.</span>
+                            </div>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="flex flex-wrap items-center gap-2 justify-center mt-1">
+                            <span class="bg-gray-50 text-textMuted text-[10px] font-semibold px-2.5 py-1 rounded-full">Eletricista</span>
+                            <span class="bg-red-50 text-red-600 text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1"><i class="fa-solid fa-triangle-exclamation text-[8px]"></i> Urgente</span>
+                            <span class="bg-gray-50 text-textMuted text-[10px] font-semibold px-2.5 py-1 rounded-full">Balneário Camboriú</span>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="mt-2 flex justify-center">
+                            <div class="bg-primary/5 text-primary text-[10px] font-bold px-4 py-1.5 rounded-full border border-primary/10">
+                                Aguardando Aceite
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feed Card 2 -->
+                    <div class="bg-surface rounded-[24px] p-5 shadow-ambient border border-gray-50 flex flex-col gap-4 relative opacity-80">
+                        <div class="flex items-center justify-between relative">
+                            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gray-100 -translate-y-1/2 z-0"></div>
+                            
+                            <div class="flex flex-col items-center gap-1.5 relative z-10 bg-surface px-1">
+                                <div class="w-12 h-12 rounded-full border-2 border-white shadow-sm overflow-hidden">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Cliente" class="w-full h-full object-cover">
+                                </div>
+                                <span class="text-[10px] font-semibold text-textMain">Roberto A.</span>
+                            </div>
+
+                            <div class="relative z-10 bg-gray-800 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md border-2 border-white flex items-center gap-1">
+                                <i class="fa-solid fa-handshake text-[8px]"></i>
+                                92% Match
+                            </div>
+
+                            <div class="flex flex-col items-center gap-1.5 relative z-10 bg-surface px-1">
+                                <div class="w-12 h-12 rounded-full border-2 border-white shadow-sm overflow-hidden relative">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Mestre" class="w-full h-full object-cover">
+                                </div>
+                                <span class="text-[10px] font-semibold text-textMain">João P.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2 justify-center mt-1">
+                            <span class="bg-gray-50 text-textMuted text-[10px] font-semibold px-2.5 py-1 rounded-full">Encanador</span>
+                            <span class="bg-gray-50 text-textMuted text-[10px] font-semibold px-2.5 py-1 rounded-full">Itajaí</span>
+                        </div>
+
+                        <div class="mt-2 flex justify-center">
+                            <div class="bg-emerald-50 text-emerald-600 text-[10px] font-bold px-4 py-1.5 rounded-full border border-emerald-100">
+                                Serviço em Andamento
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 4. Primary Action -->
+            <section id="cta-section" class="w-full pt-4">
+                <button class="w-full bg-primary text-white font-bold text-sm py-4 rounded-full shadow-[0_8px_20px_-6px_rgba(0,22,220,0.4)] flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Ver Relatórios Detalhados
+                </button>
+            </section>
+
+        </main>
+
+        <!-- 5. Floating Pill Navigation -->
+        <div class="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-6">
+            <nav id="bottom-nav" class="bg-surface px-6 py-4 rounded-full shadow-floating-nav border border-gray-100 pointer-events-auto flex items-center justify-between w-full max-w-[320px]">
+                
+                <!-- Dashboard (Active) -->
+                <a href="#" class="flex flex-col items-center gap-1 relative group w-12">
+                    <i class="fa-solid fa-house text-primary text-lg transition-transform group-active:scale-90"></i>
+                    <!-- Active Dot -->
+                    <div class="absolute -bottom-2.5 w-1 h-1 bg-primary rounded-full"></div>
+                </a>
+
+                <!-- Reports -->
+                <a href="#" class="flex flex-col items-center gap-1 relative group w-12">
+                    <i class="fa-regular fa-file-lines text-textMuted hover:text-textMain text-lg transition-colors group-active:scale-90"></i>
+                </a>
+
+                <!-- Users -->
+                <a href="#" class="flex flex-col items-center gap-1 relative group w-12">
+                    <i class="fa-regular fa-user text-textMuted hover:text-textMain text-lg transition-colors group-active:scale-90"></i>
+                </a>
+
+                <!-- Settings -->
+                <a href="#" class="flex flex-col items-center gap-1 relative group w-12">
+                    <i class="fa-solid fa-gear text-textMuted hover:text-textMain text-lg transition-colors group-active:scale-90"></i>
+                </a>
+
+            </nav>
+        </div>
+
+    </div>
+
+    <!-- Scripts for Sparklines -->
+    <script>
+        function initializeCharts() {
+            const commonLayout = {
+                margin: { t: 0, r: 0, b: 0, l: 0 },
+                xaxis: { showgrid: false, zeroline: false, showticklabels: false },
+                yaxis: { showgrid: false, zeroline: false, showticklabels: false },
+                showlegend: false,
+                plot_bgcolor: 'transparent',
+                paper_bgcolor: 'transparent',
+                height: 32,
+                staticPlot: true
+            };
+
+            const config = { displayModeBar: false, responsive: true };
+
+            // Sparkline 1
+            Plotly.newPlot('sparkline-1', [{
+                y: [40, 60, 45, 80, 50, 90, 142],
+                type: 'scatter',
+                mode: 'lines',
+                line: { color: '#0016dc', width: 2, shape: 'spline', smoothing: 1.3 },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(0, 22, 220, 0.1)'
+            }], commonLayout, config);
+
+            // Sparkline 2
+            Plotly.newPlot('sparkline-2', [{
+                y: [85, 88, 92, 90, 94, 95, 96],
+                type: 'scatter',
+                mode: 'lines',
+                line: { color: '#0016dc', width: 2, shape: 'spline', smoothing: 1.3 },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(0, 22, 220, 0.1)'
+            }], commonLayout, config);
+
+            // Sparkline 3
+            Plotly.newPlot('sparkline-3', [{
+                y: [15, 12, 14, 10, 9, 11, 8],
+                type: 'scatter',
+                mode: 'lines',
+                line: { color: '#10B981', width: 2, shape: 'spline', smoothing: 1.3 },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(16, 185, 129, 0.1)'
+            }], commonLayout, config);
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

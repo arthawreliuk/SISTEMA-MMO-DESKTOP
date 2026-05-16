@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliar Serviço</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            gray: '#E5E7EB',
+                            lightgray: '#F3F4F6'
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'floating': '0 20px 40px -10px rgba(0, 0, 0, 0.08)',
+                        'card': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="flex justify-center min-h-screen">
+
+    <!-- Mobile Container (375x840 target) -->
+    <main id="app-container" class="w-full max-w-[375px] min-h-[840px] bg-brand-offwhite relative flex flex-col mx-auto shadow-2xl overflow-hidden">
+
+        <!-- Top Header -->
+        <header id="header" class="glass-panel sticky top-0 z-50 px-6 py-4 flex items-center justify-between border-b border-white/50 shadow-sm">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-brand-blue hover:bg-gray-50 transition-colors">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <h1 class="text-[17px] font-bold tracking-tight text-brand-navy">Avaliar Serviço</h1>
+            <div class="w-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto pb-32 px-5 pt-6 space-y-8">
+            
+            <!-- Service & Pro Summary -->
+            <section id="pro-summary" class="bg-white rounded-[20px] p-5 shadow-card border border-white/60 relative overflow-hidden">
+                <!-- Decorative blur -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-blue/5 rounded-full blur-2xl"></div>
+                
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Professional Avatar" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm">
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <i class="fa-solid fa-check text-[10px] text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-lg text-brand-navy leading-tight mb-1">Mestre Elétrica</h2>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-brand-lightgray text-[11px] font-semibold text-brand-navy/70">
+                            <i class="fa-solid fa-location-dot mr-1.5 text-brand-blue/70"></i> Serviço em Camboriú Concluído
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rating Core (Hero) -->
+            <section id="rating-core" class="flex flex-col items-center pt-4 pb-2">
+                <h3 class="text-[28px] font-extrabold tracking-tight text-center text-brand-navy mb-8 leading-tight">
+                    Como foi sua<br>experiência?
+                </h3>
+                
+                <div class="flex items-center justify-center gap-3">
+                    <button class="text-[40px] text-brand-blue transition-transform active:scale-90 hover:scale-110 drop-shadow-sm">
+                        <i class="fa-solid fa-star"></i>
+                    </button>
+                    <button class="text-[40px] text-brand-blue transition-transform active:scale-90 hover:scale-110 drop-shadow-sm">
+                        <i class="fa-solid fa-star"></i>
+                    </button>
+                    <button class="text-[40px] text-brand-blue transition-transform active:scale-90 hover:scale-110 drop-shadow-sm">
+                        <i class="fa-solid fa-star"></i>
+                    </button>
+                    <button class="text-[40px] text-brand-blue transition-transform active:scale-90 hover:scale-110 drop-shadow-sm">
+                        <i class="fa-solid fa-star"></i>
+                    </button>
+                    <button class="text-[40px] text-gray-300 transition-transform active:scale-90 hover:scale-110">
+                        <i class="fa-solid fa-star"></i>
+                    </button>
+                </div>
+                <p class="mt-4 text-sm font-semibold text-brand-blue">Muito Bom (4/5)</p>
+            </section>
+
+            <!-- Quick Feedback Tags -->
+            <section id="feedback-tags" class="space-y-4">
+                <h4 class="text-[15px] font-bold text-brand-navy px-1">O que mais se destacou?</h4>
+                <div class="flex flex-wrap gap-2.5">
+                    <button class="px-5 py-3 rounded-full border border-gray-200 bg-white text-sm font-semibold text-brand-navy hover:bg-gray-50 transition-all shadow-sm">
+                        Pontualidade
+                    </button>
+                    <button class="px-5 py-3 rounded-full border border-gray-200 bg-white text-sm font-semibold text-brand-navy hover:bg-gray-50 transition-all shadow-sm">
+                        Preço Justo
+                    </button>
+                    <button class="px-5 py-3 rounded-full bg-brand-blue text-sm font-bold text-white shadow-[0_4px_14px_rgba(0,22,220,0.3)] transition-all ring-2 ring-brand-blue/20 ring-offset-2">
+                        <i class="fa-solid fa-check mr-1.5 opacity-80"></i> Limpeza
+                    </button>
+                    <button class="px-5 py-3 rounded-full border border-gray-200 bg-white text-sm font-semibold text-brand-navy hover:bg-gray-50 transition-all shadow-sm">
+                        Qualidade Técnica
+                    </button>
+                </div>
+            </section>
+
+            <!-- Written Review -->
+            <section id="written-review" class="space-y-3">
+                <div class="relative">
+                    <textarea 
+                        class="w-full bg-white border border-gray-200 rounded-[24px] p-5 pt-5 text-sm font-medium text-brand-navy placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all resize-none shadow-sm h-[140px]"
+                        placeholder="Deixe um comentário detalhado (Opcional)"
+                    ></textarea>
+                    <div class="absolute bottom-4 right-4 text-[11px] font-semibold text-gray-400">
+                        0/500
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Bottom Action & Nav Area -->
+        <div class="absolute bottom-0 left-0 w-full z-40 pb-6 px-5 flex flex-col gap-4 bg-gradient-to-t from-brand-offwhite via-brand-offwhite to-transparent pt-10">
+            
+            <!-- Primary Action -->
+            <button id="submit-review" class="w-full h-[56px] bg-brand-blue text-white rounded-full font-bold text-[16px] tracking-wide shadow-[0_8px_24px_rgba(0,22,220,0.25)] hover:bg-blue-800 transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+                Publicar Avaliação <i class="fa-solid fa-paper-plane text-sm ml-1 opacity-90"></i>
+            </button>
+
+            <!-- Floating Pill Navigation -->
+            <nav id="floating-nav" class="mx-auto w-[280px] h-[64px] bg-white rounded-full shadow-floating flex items-center justify-between px-6 border border-gray-100 relative">
+                <!-- Active Indicator Pill -->
+                <div class="absolute left-[calc(50%-24px)] w-12 h-1 bg-brand-blue rounded-full bottom-2 opacity-10"></div>
+                
+                <button class="w-12 h-12 flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
+                    <i class="fa-solid fa-house text-[18px]"></i>
+                </button>
+                <button class="w-12 h-12 flex flex-col items-center justify-center gap-1 text-brand-blue transition-colors relative">
+                    <i class="fa-solid fa-clipboard-list text-[20px]"></i>
+                    <div class="absolute -bottom-1 w-1 h-1 bg-brand-blue rounded-full"></div>
+                </button>
+                <button class="w-12 h-12 flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-brand-navy transition-colors relative">
+                    <i class="fa-regular fa-bell text-[18px]"></i>
+                    <div class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></div>
+                </button>
+                <button class="w-12 h-12 flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
+                    <i class="fa-regular fa-user text-[18px]"></i>
+                </button>
+            </nav>
+        </div>
+
+    </main>
+
+</body>
+</html>

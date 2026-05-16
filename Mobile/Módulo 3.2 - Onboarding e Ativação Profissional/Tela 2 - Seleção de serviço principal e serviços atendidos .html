@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Service Selection Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0016dc', // Deep Trust Blue
+                            dark: '#0010a3',
+                            light: '#e6e8fb'
+                        },
+                        navy: {
+                            DEFAULT: '#1A1A24', // Deep Navy
+                            light: '#3A3A4A',
+                            muted: '#6B6B7B'
+                        },
+                        surface: {
+                            DEFAULT: '#F8F9FA', // Off-white
+                            card: '#FFFFFF',
+                            hover: '#F1F3F5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'ambient': '0 8px 30px rgba(0, 0, 0, 0.04)',
+                        'ambient-lg': '0 12px 40px rgba(0, 0, 0, 0.06)',
+                        'nav': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Focus Mode utilities */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .glass-bottom {
+            background: linear-gradient(to top, rgba(248,249,250, 1) 40%, rgba(248,249,250, 0.8) 70%, rgba(248,249,250, 0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-navy font-sans min-h-[100dvh] flex justify-center w-full pb-28">
+
+    <!-- Mobile Container Wrapper -->
+    <main class="w-full max-w-[430px] mx-auto bg-surface min-h-[100dvh] relative flex flex-col shadow-2xl md:shadow-ambient overflow-hidden">
+
+        <!-- 1. Top Header (Glassmorphism) -->
+        <header id="header" class="fixed top-0 w-full max-w-[430px] z-50 glass-header px-5 py-4 flex items-center justify-between shadow-nav">
+            <button class="w-10 h-10 flex items-center justify-center text-brand rounded-full hover:bg-brand-light transition-colors active:scale-95" aria-label="Voltar">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <div class="flex-1 flex justify-center">
+                <span class="text-navy font-semibold text-[15px] tracking-tight">Passo 2 de 4</span>
+            </div>
+            <div class="w-10"></div> <!-- Spacer for perfect centering -->
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <div class="flex-1 px-6 pt-28 pb-32 overflow-y-auto">
+            
+            <!-- 2. Hero Section -->
+            <section id="hero-section" class="mb-8">
+                <h1 class="text-[28px] leading-[1.2] font-extrabold text-navy mb-3 tracking-tight">
+                    O que você faz de melhor?
+                </h1>
+                <p class="text-[16px] text-navy-muted leading-relaxed font-medium">
+                    Defina sua especialidade principal e até 4 serviços complementares.
+                </p>
+            </section>
+
+            <!-- 3. Search & Input -->
+            <section id="search-section" class="mb-8 relative">
+                <div class="relative flex items-center w-full">
+                    <div class="absolute left-5 text-brand opacity-70">
+                        <i class="fa-solid fa-magnifying-glass text-[18px]"></i>
+                    </div>
+                    <input 
+                        type="text" 
+                        placeholder="Buscar serviços..." 
+                        class="w-full h-[60px] pl-14 pr-6 rounded-full bg-surface-card border-none shadow-ambient focus:outline-none focus:ring-2 focus:ring-brand/30 text-[16px] text-navy font-medium placeholder:text-navy-muted/60 transition-all"
+                    >
+                </div>
+            </section>
+
+            <!-- 4. Active Selection Area -->
+            <section id="active-selection" class="mb-10">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-[15px] font-bold text-navy">Serviços Selecionados</h2>
+                    <span class="text-[14px] font-bold text-brand bg-brand-light px-3 py-1 rounded-full">3/5 selecionados</span>
+                </div>
+                
+                <!-- Tag Cloud -->
+                <div class="flex flex-wrap gap-2.5">
+                    <!-- Selected Tag 1 -->
+                    <div class="flex items-center gap-2 bg-brand text-white px-4 py-2.5 rounded-full text-[14px] font-semibold shadow-md active:scale-95 transition-transform">
+                        <span>Elétrica Residencial</span>
+                        <button class="w-5 h-5 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors">
+                            <i class="fa-solid fa-xmark text-[10px]"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Selected Tag 2 -->
+                    <div class="flex items-center gap-2 bg-brand text-white px-4 py-2.5 rounded-full text-[14px] font-semibold shadow-md active:scale-95 transition-transform">
+                        <span>Instalação de Ar</span>
+                        <button class="w-5 h-5 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors">
+                            <i class="fa-solid fa-xmark text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <!-- Selected Tag 3 -->
+                    <div class="flex items-center gap-2 bg-brand text-white px-4 py-2.5 rounded-full text-[14px] font-semibold shadow-md active:scale-95 transition-transform">
+                        <span>Manutenção</span>
+                        <button class="w-5 h-5 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors">
+                            <i class="fa-solid fa-xmark text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Suggested Categories -->
+            <section id="suggested-categories">
+                <h3 class="text-[15px] font-bold text-navy-muted mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-fire text-orange-500"></i>
+                    Mais buscados em Camboriú
+                </h3>
+                
+                <div class="flex flex-col gap-3">
+                    <!-- Suggestion Item -->
+                    <button class="w-full flex items-center justify-between p-4 rounded-2xl bg-surface-card shadow-ambient border border-transparent hover:border-brand/10 transition-all active:scale-[0.98] group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand">
+                                <i class="fa-solid fa-plug"></i>
+                            </div>
+                            <span class="text-[15px] font-semibold text-navy group-hover:text-brand transition-colors">Troca de Fiação</span>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border-2 border-brand/20 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all">
+                            <i class="fa-solid fa-plus text-[14px]"></i>
+                        </div>
+                    </button>
+
+                    <!-- Suggestion Item -->
+                    <button class="w-full flex items-center justify-between p-4 rounded-2xl bg-surface-card shadow-ambient border border-transparent hover:border-brand/10 transition-all active:scale-[0.98] group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand">
+                                <i class="fa-solid fa-fan"></i>
+                            </div>
+                            <span class="text-[15px] font-semibold text-navy group-hover:text-brand transition-colors">Limpeza de Split</span>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border-2 border-brand/20 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all">
+                            <i class="fa-solid fa-plus text-[14px]"></i>
+                        </div>
+                    </button>
+
+                    <!-- Suggestion Item -->
+                    <button class="w-full flex items-center justify-between p-4 rounded-2xl bg-surface-card shadow-ambient border border-transparent hover:border-brand/10 transition-all active:scale-[0.98] group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <span class="text-[15px] font-semibold text-navy group-hover:text-brand transition-colors">Quadro de Luz</span>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border-2 border-brand/20 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all">
+                            <i class="fa-solid fa-plus text-[14px]"></i>
+                        </div>
+                    </button>
+                    
+                     <!-- Suggestion Item -->
+                    <button class="w-full flex items-center justify-between p-4 rounded-2xl bg-surface-card shadow-ambient border border-transparent hover:border-brand/10 transition-all active:scale-[0.98] group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand">
+                                <i class="fa-solid fa-house-chimney-crack"></i>
+                            </div>
+                            <span class="text-[15px] font-semibold text-navy group-hover:text-brand transition-colors">Pequenos Reparos</span>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border-2 border-brand/20 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all">
+                            <i class="fa-solid fa-plus text-[14px]"></i>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- 6. Primary Action (Fixed Bottom) -->
+        <div id="footer-action" class="fixed bottom-0 w-full max-w-[430px] px-6 pt-12 pb-8 glass-bottom z-40 pointer-events-none">
+            <button class="w-full h-[60px] bg-brand text-white rounded-full text-[17px] font-bold shadow-ambient-lg pointer-events-auto active:scale-95 transition-transform flex items-center justify-center gap-2">
+                Avançar
+                <i class="fa-solid fa-arrow-right text-[14px]"></i>
+            </button>
+        </div>
+
+    </main>
+
+</body>
+</html>

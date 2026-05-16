@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Identity Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6C757D'
+                        },
+                        background: '#F8F9FA'
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 24px -6px rgba(0, 0, 0, 0.05), 0 12px 32px -12px rgba(0, 22, 220, 0.08)',
+                        'header': '0 2px 10px -2px rgba(0, 0, 0, 0.02)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Hide scrollbar for clean mobile feel */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-footer {
+            background: linear-gradient(180deg, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 0.9) 30%, rgba(248, 249, 250, 1) 100%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-background min-h-[100dvh] flex flex-col relative pb-32">
+
+    <!-- Top Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 glass-header shadow-header border-b border-gray-100 h-16 flex items-center px-6 transition-all duration-300">
+        <div class="w-full max-w-[430px] mx-auto flex items-center justify-between relative">
+            <button class="w-10 h-10 flex items-center justify-center -ml-2 rounded-full hover:bg-gray-100/50 active:bg-gray-200/50 transition-colors">
+                <i class="fa-solid fa-arrow-left text-primary text-lg"></i>
+            </button>
+            <div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+                <span class="text-sm font-semibold text-text-main tracking-tight">Validação</span>
+                <div class="bg-gray-100 px-2 py-0.5 rounded-full text-xs font-bold text-text-muted">1/2</div>
+            </div>
+            <div class="w-10"></div> <!-- Spacer for perfect centering -->
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-[430px] mx-auto pt-24 px-6 flex flex-col gap-8">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="flex flex-col gap-3">
+            <h1 class="text-[28px] leading-[1.2] font-extrabold text-text-main tracking-tight">
+                Sua Segurança<br>Primeiro
+            </h1>
+            <p class="text-[15px] leading-relaxed text-text-muted">
+                Para manter o ecossistema confiável, precisamos validar sua identidade com um documento oficial com foto (CNH ou RG).
+            </p>
+        </section>
+
+        <!-- Upload Zones -->
+        <section id="upload-zones" class="flex flex-col gap-5">
+            
+            <!-- Document Zone -->
+            <div id="document-zone" class="bg-white rounded-[20px] p-6 shadow-ambient border-[2px] border-dashed border-primary/20 flex flex-col items-center text-center gap-5 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 active:scale-[0.98]">
+                <div class="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-1">
+                    <i class="fa-regular fa-id-card text-[32px]"></i>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h3 class="text-lg font-bold text-text-main">Tirar foto do Documento</h3>
+                    <p class="text-sm text-text-muted">Frente e verso nítidos</p>
+                </div>
+                <button class="mt-2 w-full max-w-[200px] h-11 rounded-full border-2 border-primary text-primary font-semibold text-[15px] flex items-center justify-center gap-2 hover:bg-primary/5 active:bg-primary/10 transition-colors">
+                    <i class="fa-solid fa-camera text-sm"></i>
+                    Abrir Câmera
+                </button>
+            </div>
+
+            <!-- Selfie Zone -->
+            <div id="selfie-zone" class="bg-white rounded-[20px] p-6 shadow-ambient border-[2px] border-dashed border-primary/20 flex flex-col items-center text-center gap-5 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 active:scale-[0.98]">
+                <div class="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-1">
+                    <i class="fa-regular fa-face-smile text-[32px]"></i>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h3 class="text-lg font-bold text-text-main">Tirar uma Selfie</h3>
+                    <p class="text-sm text-text-muted">Rosto bem iluminado</p>
+                </div>
+                <button class="mt-2 w-full max-w-[200px] h-11 rounded-full border-2 border-primary text-primary font-semibold text-[15px] flex items-center justify-center gap-2 hover:bg-primary/5 active:bg-primary/10 transition-colors">
+                    <i class="fa-solid fa-camera text-sm"></i>
+                    Abrir Câmera
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Trust Badge -->
+        <section id="trust-badge" class="flex items-start gap-3 bg-gray-50 rounded-2xl p-4 border border-gray-100 mt-2">
+            <i class="fa-solid fa-lock text-primary/60 mt-0.5"></i>
+            <p class="text-[13px] leading-relaxed text-text-muted font-medium">
+                Seus dados são criptografados de ponta a ponta e usados apenas para curadoria.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Fixed Bottom Action -->
+    <div id="footer-action" class="fixed bottom-0 left-0 right-0 z-40 pb-8 pt-12 px-6 glass-footer pointer-events-none flex justify-center">
+        <div class="w-full max-w-[430px] pointer-events-auto">
+            <button class="w-full h-14 rounded-full bg-primary text-white font-bold text-[16px] shadow-[0_8px_20px_-6px_rgba(0,22,220,0.4)] flex items-center justify-center gap-2 hover:bg-[#0012b3] active:scale-[0.98] transition-all">
+                Enviar para Análise
+                <i class="fa-solid fa-arrow-right text-sm ml-1 opacity-80"></i>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

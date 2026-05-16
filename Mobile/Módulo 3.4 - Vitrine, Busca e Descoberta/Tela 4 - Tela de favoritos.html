@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Meus Favoritos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 -4px 24px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.03); }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(0,0,0,0.04); }
+        
+        /* Mobile Constraint Wrapper */
+        .mobile-container {
+            width: 100%;
+            max-width: 430px; /* Max width for mobile feel on desktop */
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            background-color: #F8F9FA;
+            box-shadow: 0 0 40px rgba(0,0,0,0.05);
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="bg-background text-textDark">
+
+<div class="mobile-container pb-[100px]">
+
+    <!-- Top Header -->
+    <header id="header" class="fixed top-0 w-full max-w-[430px] z-50 glass-header px-6 py-4 flex items-center justify-between">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full active:bg-gray-100 transition-colors">
+            <i class="fa-solid fa-arrow-left text-primary text-xl"></i>
+        </button>
+        <h1 class="text-[18px] font-bold text-textDark tracking-tight">Meus Favoritos</h1>
+        <div class="w-10 h-10"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-[88px] px-5 flex flex-col gap-6">
+        
+        <!-- Hero Section -->
+        <section id="hero-section" class="px-1">
+            <p class="text-[16px] text-textMuted leading-relaxed font-medium">
+                <span class="text-textDark font-semibold">Arthur</span>, aqui estão os Mestres que você salvou para seus próximos projetos.
+            </p>
+        </section>
+
+        <!-- Favorites List -->
+        <section id="favorites-list" class="flex flex-col gap-4">
+            
+            <!-- Card 1 -->
+            <article class="bg-cardBg rounded-[24px] p-5 shadow-soft relative border border-gray-50 flex flex-col gap-4">
+                <div class="absolute top-5 right-5 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-heart text-primary text-sm"></i>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Carlos Silva" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col pt-1">
+                        <div class="flex items-center gap-1.5">
+                            <h2 class="text-[17px] font-bold text-textDark">Carlos Silva</h2>
+                            <i class="fa-solid fa-circle-check text-primary text-[14px]"></i>
+                        </div>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="bg-yellow-100 text-yellow-700 text-[12px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1">
+                                <i class="fa-solid fa-star text-[10px]"></i> 5.0
+                            </span>
+                            <span class="text-[13px] text-textMuted font-medium">• Eletricista</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="w-full py-3.5 rounded-full border border-primary text-primary font-semibold text-[15px] hover:bg-primary/5 active:bg-primary/10 transition-colors mt-2">
+                    Pedir Orçamento Agora
+                </button>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="bg-cardBg rounded-[24px] p-5 shadow-soft relative border border-gray-50 flex flex-col gap-4">
+                <div class="absolute top-5 right-5 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-heart text-primary text-sm"></i>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Mariana Costa" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col pt-1">
+                        <div class="flex items-center gap-1.5">
+                            <h2 class="text-[17px] font-bold text-textDark">Mariana Costa</h2>
+                            <i class="fa-solid fa-circle-check text-primary text-[14px]"></i>
+                        </div>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="bg-yellow-100 text-yellow-700 text-[12px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1">
+                                <i class="fa-solid fa-star text-[10px]"></i> 4.9
+                            </span>
+                            <span class="text-[13px] text-textMuted font-medium">• Arquiteta</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="w-full py-3.5 rounded-full border border-primary text-primary font-semibold text-[15px] hover:bg-primary/5 active:bg-primary/10 transition-colors mt-2">
+                    Pedir Orçamento Agora
+                </button>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="bg-cardBg rounded-[24px] p-5 shadow-soft relative border border-gray-50 flex flex-col gap-4">
+                <div class="absolute top-5 right-5 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-heart text-primary text-sm"></i>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Roberto Alves" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col pt-1">
+                        <div class="flex items-center gap-1.5">
+                            <h2 class="text-[17px] font-bold text-textDark">Roberto Alves</h2>
+                        </div>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="bg-yellow-100 text-yellow-700 text-[12px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1">
+                                <i class="fa-solid fa-star text-[10px]"></i> 4.8
+                            </span>
+                            <span class="text-[13px] text-textMuted font-medium">• Encanador</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="w-full py-3.5 rounded-full border border-primary text-primary font-semibold text-[15px] hover:bg-primary/5 active:bg-primary/10 transition-colors mt-2">
+                    Pedir Orçamento Agora
+                </button>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- Floating Bottom Navigation -->
+    <div class="fixed bottom-6 left-0 w-full max-w-[430px] px-6 z-50 pointer-events-none">
+        <nav id="bottom-nav" class="glass-nav rounded-full h-[72px] shadow-nav flex items-center justify-between px-8 pointer-events-auto">
+            
+            <button class="flex flex-col items-center justify-center w-12 h-12 text-textMuted hover:text-textDark transition-colors">
+                <i class="fa-solid fa-house text-[20px]"></i>
+            </button>
+            
+            <button class="flex flex-col items-center justify-center w-12 h-12 text-textMuted hover:text-textDark transition-colors">
+                <i class="fa-solid fa-clipboard-list text-[20px]"></i>
+            </button>
+            
+            <button class="flex flex-col items-center justify-center w-12 h-12 text-textMuted hover:text-textDark transition-colors relative">
+                <i class="fa-regular fa-comment-dots text-[20px]"></i>
+                <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+            </button>
+            
+            <!-- Active Profile/Favorites -->
+            <button class="flex flex-col items-center justify-center w-12 h-12 text-primary relative">
+                <i class="fa-solid fa-user text-[20px]"></i>
+                <span class="absolute -bottom-1 w-1.5 h-1.5 bg-primary rounded-full"></span>
+            </button>
+            
+        </nav>
+    </div>
+
+</div>
+
+</body>
+</html>

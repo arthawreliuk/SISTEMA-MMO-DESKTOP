@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Opportunity Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            light: '#e6e8fc',
+                        },
+                        navy: '#1A1A24',
+                        offwhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'soft': '0 12px 32px -4px rgba(26, 26, 36, 0.06), 0 4px 12px -2px rgba(26, 26, 36, 0.03)',
+                        'float': '0 20px 40px -8px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .glass-footer {
+            background: linear-gradient(180deg, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 0.9) 20%, rgba(248, 249, 250, 1) 100%);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .blur-content {
+            filter: blur(6px);
+            user-select: none;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="relative min-h-[100dvh] flex justify-center bg-offwhite">
+
+    <!-- Mobile Container (Max width for desktop viewing, full width on mobile) -->
+    <main class="w-full max-w-[430px] min-h-[100dvh] bg-offwhite relative flex flex-col shadow-2xl overflow-hidden pb-32">
+        
+        <!-- Top Header (Fixed) -->
+        <header id="header" class="fixed top-0 w-full max-w-[430px] z-50 glass-header px-6 py-4 flex items-center justify-center">
+            <h1 class="text-[15px] font-semibold text-navy tracking-tight">Quase lá, Arthur!</h1>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto no-scrollbar pt-24 px-5 flex flex-col gap-8">
+            
+            <!-- Hero Section -->
+            <section id="hero-opportunity-intro" class="flex flex-col gap-3 px-1">
+                <div class="inline-flex items-center gap-2 bg-brand-light/50 text-brand-blue px-3 py-1.5 rounded-full w-fit mb-1">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
+                    </span>
+                    <span class="text-xs font-bold uppercase tracking-wider">Novo</span>
+                </div>
+                <h2 class="text-[28px] leading-[1.15] font-extrabold text-navy tracking-tight">
+                    Clientes estão <br>esperando
+                </h2>
+                <p class="text-[16px] leading-relaxed font-medium text-brand-blue mt-1">
+                    Encontramos 12 oportunidades de serviços na sua região.
+                </p>
+            </section>
+
+            <!-- Locked Opportunity Cards -->
+            <section id="teaser-card-stack" class="flex flex-col gap-4">
+                
+                <!-- Card 1 -->
+                <div class="bg-white rounded-[24px] p-5 shadow-soft border border-gray-100 relative overflow-hidden group">
+                    
+                    <!-- Top Row: Tag -->
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-blue-50 text-brand-blue text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">
+                            Elétrica Residencial
+                        </span>
+                        <span class="text-gray-400 text-xs font-medium">Hoje</span>
+                    </div>
+
+                    <!-- Middle: Blurred Content with Lock -->
+                    <div class="relative py-4 mb-4 rounded-xl bg-gray-50/50 border border-gray-100 flex items-center justify-center min-h-[100px] overflow-hidden">
+                        <!-- Fake Content to Blur -->
+                        <div class="absolute inset-0 p-4 blur-content flex flex-col gap-2">
+                            <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+                            <div class="h-3 bg-gray-200 rounded w-full mt-2"></div>
+                            <div class="h-3 bg-gray-200 rounded w-5/6"></div>
+                        </div>
+                        
+                        <!-- Lock Icon Overlay -->
+                        <div class="relative z-10 flex flex-col items-center justify-center gap-2">
+                            <div class="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center text-brand-blue">
+                                <i class="fa-solid fa-lock text-xl"></i>
+                            </div>
+                            <span class="text-[10px] font-bold text-navy uppercase tracking-widest bg-white/80 px-2 py-1 rounded-md backdrop-blur-sm">Oculto</span>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Row: Meta Data -->
+                    <div class="flex items-center justify-between pt-2">
+                        <div class="flex items-center gap-2 text-navy/70">
+                            <i class="fa-solid fa-location-dot text-gray-400"></i>
+                            <span class="text-sm font-semibold">Balneário Camboriú • 5km</span>
+                        </div>
+                        <div class="bg-green-50 text-green-700 px-3 py-1.5 rounded-full text-sm font-bold">
+                            R$ 200 - R$ 400
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-[24px] p-5 shadow-soft border border-gray-100 relative overflow-hidden">
+                    
+                    <!-- Top Row: Tag -->
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-blue-50 text-brand-blue text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">
+                            Instalação de Ar
+                        </span>
+                        <span class="text-gray-400 text-xs font-medium">Ontem</span>
+                    </div>
+
+                    <!-- Middle: Blurred Content with Lock -->
+                    <div class="relative py-4 mb-4 rounded-xl bg-gray-50/50 border border-gray-100 flex items-center justify-center min-h-[100px] overflow-hidden">
+                        <!-- Fake Content to Blur -->
+                        <div class="absolute inset-0 p-4 blur-content flex flex-col gap-2">
+                            <div class="h-4 bg-gray-300 rounded w-2/3"></div>
+                            <div class="h-3 bg-gray-200 rounded w-full mt-2"></div>
+                            <div class="h-3 bg-gray-200 rounded w-4/5"></div>
+                        </div>
+                        
+                        <!-- Lock Icon Overlay -->
+                        <div class="relative z-10 flex flex-col items-center justify-center gap-2">
+                            <div class="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center text-brand-blue">
+                                <i class="fa-solid fa-lock text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Row: Meta Data -->
+                    <div class="flex items-center justify-between pt-2">
+                        <div class="flex items-center gap-2 text-navy/70">
+                            <i class="fa-solid fa-location-dot text-gray-400"></i>
+                            <span class="text-sm font-semibold">Itajaí • 12km</span>
+                        </div>
+                        <div class="bg-green-50 text-green-700 px-3 py-1.5 rounded-full text-sm font-bold">
+                            R$ 350 - R$ 600
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Faded out 3rd card peeking from bottom -->
+                <div class="bg-white/60 rounded-t-[24px] p-5 shadow-sm border border-gray-100 relative h-20 overflow-hidden opacity-50">
+                    <div class="flex justify-between items-center">
+                        <span class="bg-blue-50/50 text-brand-blue/50 text-xs font-bold px-3 py-1.5 rounded-full">
+                            Manutenção Geral
+                        </span>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- Fixed Action Footer -->
+        <footer id="footer" class="fixed bottom-0 w-full max-w-[430px] z-50 glass-footer pt-12 pb-8 px-5">
+            <button class="w-full bg-brand-blue hover:bg-blue-700 text-white h-16 rounded-full font-bold text-[16px] shadow-float transition-all active:scale-[0.98] flex items-center justify-center gap-3">
+                Validar Perfil para Desbloquear
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <p class="text-center text-xs text-gray-500 font-medium mt-4">
+                Leva apenas 2 minutos. 100% seguro.
+            </p>
+        </footer>
+
+    </main>
+
+</body>
+</html>

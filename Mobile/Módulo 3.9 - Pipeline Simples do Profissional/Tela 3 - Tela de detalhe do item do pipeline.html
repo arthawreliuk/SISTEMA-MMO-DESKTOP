@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Item Detail / Deal Record</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: '#1A1A24',
+                        card: '#FFFFFF',
+                        border: '#E2E8F0',
+                        muted: '#64748B'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-text selection:bg-primary selection:text-white pb-32">
+
+    <!-- Mobile Container (Max width for larger screens to maintain mobile layout) -->
+    <div class="max-w-[375px] mx-auto min-h-screen relative shadow-2xl bg-background overflow-hidden">
+        
+        <!-- 1. Top Header -->
+        <header id="top-header" class="glass-header sticky top-0 z-50 px-6 py-4 flex items-center justify-between border-b border-gray-100">
+            <button class="text-primary hover:opacity-80 transition-opacity w-8 h-8 flex items-center justify-start">
+                <i class="fa-solid fa-arrow-left text-xl"></i>
+            </button>
+            <h1 class="text-base font-bold tracking-tight">Detalhes do Serviço</h1>
+            <button class="text-primary text-sm font-semibold hover:opacity-80 transition-opacity">
+                Editar
+            </button>
+        </header>
+
+        <main class="p-4 space-y-6">
+            
+            <!-- 2. Deal Hero Card -->
+            <section id="deal-hero" class="bg-card rounded-[24px] shadow-soft p-5 space-y-6">
+                
+                <!-- Stepper -->
+                <div class="flex items-center justify-between relative">
+                    <div class="absolute top-1/2 left-0 w-full h-[2px] bg-gray-100 -z-10 -translate-y-1/2"></div>
+                    
+                    <div class="flex flex-col items-center gap-2 bg-card px-1">
+                        <div class="w-6 h-6 rounded-full bg-gray-100 text-muted flex items-center justify-center text-[10px] font-bold">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <span class="text-[10px] font-medium text-muted">Lead</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center gap-2 bg-card px-1">
+                        <div class="px-3 py-1 rounded-full bg-primary text-white flex items-center justify-center text-[11px] font-bold shadow-[0_2px_8px_rgba(0,22,220,0.3)]">
+                            Orçamento
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col items-center gap-2 bg-card px-1">
+                        <div class="w-6 h-6 rounded-full bg-gray-100 text-muted flex items-center justify-center text-[10px] font-bold border-2 border-white">
+                            3
+                        </div>
+                        <span class="text-[10px] font-medium text-muted">Execução</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center gap-2 bg-card px-1">
+                        <div class="w-6 h-6 rounded-full bg-gray-100 text-muted flex items-center justify-center text-[10px] font-bold border-2 border-white">
+                            4
+                        </div>
+                        <span class="text-[10px] font-medium text-muted">Pago</span>
+                    </div>
+                </div>
+
+                <!-- Title & Client -->
+                <div class="space-y-4">
+                    <h2 class="text-xl font-bold leading-tight">Automação Residencial Completa</h2>
+                    
+                    <div class="flex items-center gap-3 p-3 rounded-[16px] bg-gray-50 border border-gray-100">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Rodrigo" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <p class="text-sm font-bold">Rodrigo</p>
+                            <p class="text-xs text-muted flex items-center gap-1 mt-0.5">
+                                <i class="fa-solid fa-location-dot text-gray-400"></i> Camboriú, SC
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finance -->
+                <div class="pt-2 border-t border-gray-100">
+                    <p class="text-xs text-muted font-medium mb-1">Valor Previsto</p>
+                    <p class="text-2xl font-bold text-primary">R$ 8.500,00</p>
+                </div>
+            </section>
+
+            <!-- 3. Notes & Checklist Section -->
+            <section id="notes-checklist" class="space-y-4">
+                
+                <!-- Notes -->
+                <div class="bg-card rounded-[24px] shadow-soft p-5">
+                    <h3 class="text-sm font-bold mb-3 flex items-center gap-2">
+                        <i class="fa-regular fa-note-sticky text-primary"></i>
+                        Anotações Internas
+                        <span class="text-[10px] font-normal text-muted bg-gray-100 px-2 py-0.5 rounded-full ml-auto">Só você</span>
+                    </h3>
+                    <textarea class="w-full bg-gray-50 rounded-[20px] p-4 text-sm text-text border-none focus:ring-2 focus:ring-primary/20 outline-none resize-none h-24 placeholder:text-gray-400" placeholder="Adicione notas sobre o projeto..."></textarea>
+                </div>
+
+                <!-- Checklist -->
+                <div class="bg-card rounded-[24px] shadow-soft p-5">
+                    <h3 class="text-sm font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-primary"></i>
+                        Checklist da Etapa
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 p-3 rounded-[16px] border border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer group">
+                            <div class="w-5 h-5 rounded-full border-2 border-gray-300 group-hover:border-primary flex items-center justify-center transition-colors"></div>
+                            <span class="text-sm font-medium">Material Comprado</span>
+                        </label>
+                        
+                        <label class="flex items-center gap-3 p-3 rounded-[16px] border border-primary/20 bg-primary/5 cursor-pointer group">
+                            <div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-white text-[10px]">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-sm font-medium text-text line-through opacity-70">Visita Técnica Confirmada</span>
+                        </label>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- 4. Primary Actions (Pinned bottom before nav) -->
+        <div class="fixed bottom-[90px] left-0 right-0 px-4 max-w-[375px] mx-auto z-40">
+            <div class="flex flex-col gap-3">
+                <button class="w-full bg-primary text-white font-bold py-4 rounded-full shadow-[0_8px_20px_rgba(0,22,220,0.25)] hover:bg-[#0012b3] transition-colors active:scale-[0.98]">
+                    Avançar para Execução
+                </button>
+                <button class="w-full bg-white text-text font-bold py-4 rounded-full shadow-soft border border-gray-100 hover:bg-gray-50 transition-colors active:scale-[0.98] flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-comment-dots"></i>
+                    Abrir Chat com o Cliente
+                </button>
+            </div>
+        </div>
+
+        <!-- 5. Floating Pill Navigation -->
+        <nav id="bottom-nav" class="fixed bottom-6 left-6 right-6 max-w-[327px] mx-auto bg-white rounded-full shadow-float px-6 py-4 flex items-center justify-between z-50 border border-gray-100/50">
+            <button class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors">
+                <i class="fa-solid fa-house text-lg"></i>
+            </button>
+            
+            <button class="flex flex-col items-center gap-1 text-primary relative">
+                <i class="fa-solid fa-briefcase text-lg"></i>
+                <div class="w-1 h-1 bg-primary rounded-full absolute -bottom-2"></div>
+            </button>
+            
+            <button class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors">
+                <i class="fa-regular fa-bell text-lg"></i>
+            </button>
+            
+            <button class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors">
+                <i class="fa-regular fa-user text-lg"></i>
+            </button>
+        </nav>
+
+        <!-- Gradient fade for scroll area behind actions -->
+        <div class="fixed bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/90 to-transparent pointer-events-none z-30 max-w-[375px] mx-auto"></div>
+
+    </div>
+
+</body>
+</html>

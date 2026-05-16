@@ -131,16 +131,36 @@
 
   function standardizeNav() {
     const header = document.querySelector('header, #header');
-    if (!header) return;
-    const nav = header.querySelector('nav');
-    if (!nav) return;
+    let targetEl, resetStyles;
+
+    if (header) {
+      // Standard pattern: replace the <nav> inside <header>
+      targetEl = header.querySelector('nav');
+      resetStyles = true;
+    } else {
+      // Standalone pill/floating nav: find the child div that holds the links
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+      resetStyles = false;
+      // Pick the first child div that contains <a> tags (skip logo/avatar divs)
+      for (const child of nav.children) {
+        if (child.tagName === 'DIV' && child.querySelector('a')) {
+          targetEl = child; break;
+        }
+      }
+      if (!targetEl) { targetEl = nav; resetStyles = true; }
+    }
+
+    if (!targetEl) return;
 
     const path = decodeURIComponent(window.location.pathname).toLowerCase();
 
-    nav.removeAttribute('class');
-    nav.style.cssText = 'display:flex!important;align-items:center;gap:32px;';
+    if (resetStyles) {
+      targetEl.removeAttribute('class');
+      targetEl.style.cssText = 'display:flex!important;align-items:center;gap:32px;';
+    }
 
-    nav.innerHTML = NAV_ITEMS.map(item => {
+    targetEl.innerHTML = NAV_ITEMS.map(item => {
       const active = item.keys.some(k => path.includes(k));
       const c = active ? '#0016dc' : '#6b7280';
       const w = active ? '700' : '500';

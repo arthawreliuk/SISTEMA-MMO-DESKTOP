@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6C757D',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 30px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; margin: 0; padding: 0; background-color: #F8F9FA; }
+        .glass-header {
+            background: rgba(248, 249, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-textMain font-sans antialiased min-h-screen relative pb-32">
+
+    <!-- Mobile Container -->
+    <div class="w-full max-w-[375px] mx-auto min-h-screen relative shadow-[0_0_40px_rgba(0,0,0,0.05)] bg-background">
+
+        <!-- Top Header & Search (Glassmorphism) -->
+        <header id="header" class="fixed top-0 w-full max-w-[375px] z-40 glass-header pt-12 pb-4 px-5 border-b border-gray-100/50">
+            <div class="relative w-full">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-textMuted text-sm"></i>
+                </div>
+                <input type="text" value="Eletricistas em Camboriú" class="w-full bg-white text-textMain text-[15px] font-semibold rounded-full py-3.5 pl-11 pr-4 shadow-soft focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" readonly>
+            </div>
+
+            <!-- Quick Filters (Horizontal Scroll) -->
+            <div class="mt-4 flex gap-2 overflow-x-auto pb-1 -mx-5 px-5">
+                <button class="flex-shrink-0 bg-white text-textMain font-medium text-[13px] px-4 py-2 rounded-full shadow-soft flex items-center gap-2 border border-gray-100">
+                    Filtros <i class="fa-solid fa-gear text-textMuted text-xs"></i>
+                </button>
+                <button class="flex-shrink-0 bg-white text-textMain font-medium text-[13px] px-4 py-2 rounded-full shadow-soft flex items-center gap-2 border border-gray-100">
+                    Preço <i class="fa-solid fa-chevron-down text-textMuted text-[10px]"></i>
+                </button>
+                <button class="flex-shrink-0 bg-white text-textMain font-medium text-[13px] px-4 py-2 rounded-full shadow-soft flex items-center gap-2 border border-gray-100">
+                    Avaliação <i class="fa-solid fa-chevron-down text-textMuted text-[10px]"></i>
+                </button>
+                <button class="flex-shrink-0 bg-white text-textMain font-medium text-[13px] px-4 py-2 rounded-full shadow-soft border border-gray-100">
+                    Mais Próximos
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="pt-[140px] px-5 pb-6">
+            
+            <!-- Results Count -->
+            <div id="results-count" class="mb-5">
+                <p class="text-textMuted text-[13px] font-medium">42 Mestres encontrados próximos a você</p>
+            </div>
+
+            <!-- Professionals List -->
+            <div class="flex flex-col gap-5">
+
+                <!-- Card 1 -->
+                <div id="card-1" class="bg-white rounded-[24px] p-5 shadow-soft border border-gray-50">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Roberto Silva" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div>
+                                <h3 class="text-[16px] font-bold text-textMain flex items-center gap-1.5">
+                                    Roberto Silva
+                                    <i class="fa-solid fa-shield-check text-primary text-[14px]"></i>
+                                </h3>
+                                <p class="text-textMuted text-[12px] font-medium mt-0.5">Eletricista Residencial</p>
+                            </div>
+                        </div>
+                        <div class="bg-primary/10 text-primary text-[11px] font-bold px-2.5 py-1 rounded-full border border-primary/20">
+                            98% Match
+                        </div>
+                    </div>
+
+                    <!-- Mini Portfolio -->
+                    <div class="flex gap-2 mb-4">
+                        <div class="w-1/3 aspect-square rounded-[12px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover" alt="Work 1">
+                        </div>
+                        <div class="w-1/3 aspect-square rounded-[12px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b6?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover" alt="Work 2">
+                        </div>
+                        <div class="w-1/3 aspect-square rounded-[12px] overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Work 3">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <span class="text-white text-[13px] font-bold">+4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details Row -->
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="bg-[#F8F9FA] text-textMain text-[12px] font-semibold px-3 py-1.5 rounded-full flex items-center gap-1">
+                            <i class="fa-solid fa-star text-[#FFB800] text-[10px]"></i> 5.0 <span class="text-textMuted font-medium">(124)</span>
+                        </span>
+                        <span class="bg-[#F8F9FA] text-textMain text-[12px] font-medium px-3 py-1.5 rounded-full flex items-center gap-1">
+                            📍 1.2 km
+                        </span>
+                        <span class="bg-[#F8F9FA] text-textMain text-[12px] font-medium px-3 py-1.5 rounded-full flex items-center gap-1">
+                            ⚡ Responde rápido
+                        </span>
+                    </div>
+
+                    <!-- Action Button -->
+                    <button class="w-full bg-primary text-white text-[15px] font-bold py-3.5 rounded-full shadow-float transition-transform active:scale-[0.98]">
+                        Ver Perfil e Orçamento
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div id="card-2" class="bg-white rounded-[24px] p-5 shadow-soft border border-gray-50">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Carlos Mendes" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div>
+                                <h3 class="text-[16px] font-bold text-textMain flex items-center gap-1.5">
+                                    Carlos Mendes
+                                    <i class="fa-solid fa-shield-check text-primary text-[14px]"></i>
+                                </h3>
+                                <p class="text-textMuted text-[12px] font-medium mt-0.5">Instalações Industriais</p>
+                            </div>
+                        </div>
+                        <div class="bg-primary/10 text-primary text-[11px] font-bold px-2.5 py-1 rounded-full border border-primary/20">
+                            95% Match
+                        </div>
+                    </div>
+
+                    <!-- Mini Portfolio -->
+                    <div class="flex gap-2 mb-4">
+                        <div class="w-1/3 aspect-square rounded-[12px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Work 1">
+                        </div>
+                        <div class="w-1/3 aspect-square rounded-[12px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover" alt="Work 2">
+                        </div>
+                        <div class="w-1/3 aspect-square rounded-[12px] overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b6?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover" alt="Work 3">
+                        </div>
+                    </div>
+
+                    <!-- Details Row -->
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="bg-[#F8F9FA] text-textMain text-[12px] font-semibold px-3 py-1.5 rounded-full flex items-center gap-1">
+                            <i class="fa-solid fa-star text-[#FFB800] text-[10px]"></i> 4.9 <span class="text-textMuted font-medium">(89)</span>
+                        </span>
+                        <span class="bg-[#F8F9FA] text-textMain text-[12px] font-medium px-3 py-1.5 rounded-full flex items-center gap-1">
+                            📍 2.5 km
+                        </span>
+                    </div>
+
+                    <!-- Action Button -->
+                    <button class="w-full bg-primary text-white text-[15px] font-bold py-3.5 rounded-full shadow-float transition-transform active:scale-[0.98]">
+                        Ver Perfil e Orçamento
+                    </button>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Floating Pill Navigation (Dynamic Island) -->
+        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[335px] bg-white rounded-full py-4 px-8 shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-gray-100 flex justify-between items-center z-50">
+            <!-- Home (Active) -->
+            <a href="#" class="flex flex-col items-center gap-1.5 relative group">
+                <i class="fa-solid fa-house text-primary text-[20px]"></i>
+                <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-3"></div>
+            </a>
+            
+            <!-- Orders -->
+            <a href="#" class="flex flex-col items-center gap-1 text-[#A0A5AA] hover:text-textMain transition-colors">
+                <i class="fa-solid fa-clipboard-list text-[20px]"></i>
+            </a>
+            
+            <!-- Messages -->
+            <a href="#" class="flex flex-col items-center gap-1 text-[#A0A5AA] hover:text-textMain transition-colors relative">
+                <i class="fa-solid fa-message text-[20px]"></i>
+                <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#FF4E00] rounded-full border-2 border-white"></div>
+            </a>
+            
+            <!-- Profile -->
+            <a href="#" class="flex flex-col items-center gap-1 text-[#A0A5AA] hover:text-textMain transition-colors">
+                <i class="fa-solid fa-user text-[20px]"></i>
+            </a>
+        </nav>
+
+    </div>
+
+</body>
+</html>

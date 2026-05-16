@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Eligible Opportunities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0016dc',
+                            light: '#e6e8fb',
+                        },
+                        surface: {
+                            DEFAULT: '#F8F9FA',
+                            card: '#FFFFFF',
+                        },
+                        content: {
+                            primary: '#1A1A24',
+                            secondary: '#4A4A57',
+                            tertiary: '#8E8E9F',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 -8px 30px -5px rgba(0, 22, 220, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Hide scrollbar for horizontal scroll areas */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Ensure mobile-first constraint */
+        .mobile-container {
+            width: 100%;
+            max-width: 430px; /* Slightly wider than 375 to allow standard max phones but keeps mobile layout */
+            margin: 0 auto;
+            min-height: 100dvh;
+            position: relative;
+            background-color: #F8F9FA;
+            padding-bottom: 100px; /* Space for nav */
+        }
+    </style>
+</head>
+<body>
+
+<div class="mobile-container" id="app-root">
+
+    <!-- 1. Top Header -->
+    <header id="main-header" class="fixed top-0 w-full max-w-[430px] z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="flex items-center justify-between px-4 py-3">
+            <!-- Logo -->
+            <div class="flex items-center justify-center w-8 h-8 bg-brand text-white rounded-lg font-bold text-lg leading-none">
+                M
+            </div>
+            
+            <!-- Location Dropdown Pill -->
+            <button class="flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-[13px] font-medium text-content-primary shadow-sm">
+                <i class="fa-solid fa-location-dot text-brand text-xs"></i>
+                <span class="truncate max-w-[140px]">Camboriú, SC (15km)</span>
+                <i class="fa-solid fa-chevron-down text-[10px] text-content-tertiary ml-1"></i>
+            </button>
+            
+            <!-- Filter Icon -->
+            <button class="w-8 h-8 flex items-center justify-center text-content-primary hover:bg-gray-50 rounded-full transition-colors">
+                <i class="fa-solid fa-sliders text-lg"></i>
+            </button>
+        </div>
+        
+        <!-- 2. Quick Filters (Horizontal Scroll) -->
+        <div id="quick-filters" class="px-4 pb-3 pt-1 overflow-x-auto hide-scrollbar flex gap-2">
+            <button class="whitespace-nowrap px-4 py-1.5 rounded-full border border-gray-200 bg-white text-sm font-medium text-content-primary shadow-sm">
+                Novos
+            </button>
+            <button class="whitespace-nowrap px-4 py-1.5 rounded-full border border-brand/20 bg-brand/5 text-sm font-medium text-brand shadow-sm flex items-center gap-1.5">
+                Urgentes <i class="fa-solid fa-bolt text-[10px]"></i>
+            </button>
+            <button class="whitespace-nowrap px-4 py-1.5 rounded-full border border-gray-200 bg-white text-sm font-medium text-content-primary shadow-sm">
+                Minhas Especialidades
+            </button>
+            <button class="whitespace-nowrap px-4 py-1.5 rounded-full border border-gray-200 bg-white text-sm font-medium text-content-primary shadow-sm">
+                Visita Paga
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="pt-[110px] px-4 pb-6 flex flex-col gap-4" id="opportunities-feed">
+        
+        <!-- Section Title -->
+        <div class="flex items-center justify-between mt-2 mb-1">
+            <h1 class="text-lg font-bold text-content-primary">Oportunidades (12)</h1>
+            <span class="text-xs font-medium text-content-tertiary">Atualizado agora</span>
+        </div>
+
+        <!-- Card 1 -->
+        <article class="bg-surface-card rounded-[20px] p-5 shadow-soft border border-gray-100 flex flex-col gap-4">
+            <!-- Header -->
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand">
+                        <i class="fa-solid fa-plug"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base font-bold text-content-primary">Instalação Elétrica</h2>
+                        <p class="text-xs text-content-tertiary font-medium">Há 15 min</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Description -->
+            <p class="text-sm text-content-secondary leading-relaxed line-clamp-2">
+                "Preciso trocar o disjuntor principal da casa e verificar a fiação do chuveiro que está desarmando constantemente..."
+            </p>
+            
+            <!-- Meta Tags -->
+            <div class="flex flex-wrap gap-2 mt-1">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 text-xs font-medium text-content-secondary border border-gray-100">
+                    <i class="fa-solid fa-location-dot text-content-tertiary"></i> 2.5 km
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-orange-50 text-xs font-medium text-orange-600 border border-orange-100">
+                    <i class="fa-solid fa-bolt"></i> Para Hoje
+                </span>
+            </div>
+            
+            <!-- Action -->
+            <button class="w-full mt-2 py-3.5 bg-brand hover:bg-brand/90 text-white rounded-full text-sm font-bold transition-colors shadow-md shadow-brand/20">
+                Ver Oportunidade
+            </button>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="bg-surface-card rounded-[20px] p-5 shadow-soft border border-gray-100 flex flex-col gap-4 relative overflow-hidden">
+            <!-- Visual indicator for premium/urgent -->
+            <div class="absolute top-0 left-0 w-1 h-full bg-brand"></div>
+            
+            <!-- Header -->
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base font-bold text-content-primary">Encanamento</h2>
+                        <p class="text-xs text-content-tertiary font-medium">Há 45 min</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 text-content-secondary text-[10px] font-bold px-2 py-1 rounded">
+                    VISITA PAGA
+                </div>
+            </div>
+            
+            <!-- Description -->
+            <p class="text-sm text-content-secondary leading-relaxed line-clamp-2">
+                "Vazamento na pia da cozinha, parece ser no sifão. Preciso de alguém para avaliar e consertar ainda hoje."
+            </p>
+            
+            <!-- Meta Tags -->
+            <div class="flex flex-wrap gap-2 mt-1">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 text-xs font-medium text-content-secondary border border-gray-100">
+                    <i class="fa-solid fa-location-dot text-content-tertiary"></i> 5.8 km
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 text-xs font-medium text-content-secondary border border-gray-100">
+                    <i class="fa-regular fa-calendar"></i> Flexível
+                </span>
+            </div>
+            
+            <!-- Action -->
+            <button class="w-full mt-2 py-3.5 bg-brand hover:bg-brand/90 text-white rounded-full text-sm font-bold transition-colors shadow-md shadow-brand/20">
+                Ver Oportunidade
+            </button>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="bg-surface-card rounded-[20px] p-5 shadow-soft border border-gray-100 flex flex-col gap-4 opacity-75">
+            <!-- Header -->
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+                        <i class="fa-solid fa-paint-roller"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base font-bold text-content-primary">Pintura Residencial</h2>
+                        <p class="text-xs text-content-tertiary font-medium">Há 2 horas</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Description -->
+            <p class="text-sm text-content-secondary leading-relaxed line-clamp-2">
+                "Pintura de um quarto de 12m2. Já tenho a tinta, preciso apenas da mão de obra para lixar e pintar duas demãos."
+            </p>
+            
+            <!-- Meta Tags -->
+            <div class="flex flex-wrap gap-2 mt-1">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 text-xs font-medium text-content-secondary border border-gray-100">
+                    <i class="fa-solid fa-location-dot text-content-tertiary"></i> 12.1 km
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 text-xs font-medium text-content-secondary border border-gray-100">
+                    <i class="fa-regular fa-calendar"></i> Próxima Semana
+                </span>
+            </div>
+            
+            <!-- Action -->
+            <button class="w-full mt-2 py-3.5 bg-white border border-brand text-brand hover:bg-brand/5 rounded-full text-sm font-bold transition-colors">
+                Ver Oportunidade
+            </button>
+        </article>
+
+    </main>
+
+    <!-- 4. Floating Pill Navigation -->
+    <div class="fixed bottom-6 left-0 w-full max-w-[430px] px-6 z-50 flex justify-center pointer-events-none">
+        <nav class="bg-white rounded-full shadow-nav px-6 py-3.5 flex items-center justify-between w-full max-w-[320px] pointer-events-auto border border-gray-100">
+            
+            <!-- Home -->
+            <button class="flex flex-col items-center gap-1 w-12 text-content-tertiary hover:text-content-primary transition-colors">
+                <i class="fa-solid fa-house text-lg"></i>
+            </button>
+
+            <!-- Orders/Opportunities (ACTIVE) -->
+            <button class="flex flex-col items-center gap-1 w-12 text-brand relative">
+                <i class="fa-solid fa-list-ul text-lg"></i>
+                <div class="w-1 h-1 rounded-full bg-brand absolute -bottom-2"></div>
+            </button>
+
+            <!-- Messages -->
+            <button class="flex flex-col items-center gap-1 w-12 text-content-tertiary hover:text-content-primary transition-colors relative">
+                <i class="fa-regular fa-comment-dots text-lg"></i>
+                <div class="absolute top-0 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></div>
+            </button>
+
+            <!-- Profile -->
+            <button class="flex flex-col items-center gap-1 w-12 text-content-tertiary hover:text-content-primary transition-colors">
+                <i class="fa-regular fa-user text-lg"></i>
+            </button>
+            
+        </nav>
+    </div>
+
+</div>
+
+</body>
+</html>

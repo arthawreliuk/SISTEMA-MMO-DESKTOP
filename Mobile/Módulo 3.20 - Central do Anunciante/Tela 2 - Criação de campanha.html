@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ad Campaign Creation - Objective Selection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#9CA3AF'
+                        },
+                        border: '#E2E8F0',
+                        accent: {
+                            light: '#F5F7FF',
+                            purple: '#6366F1',
+                            pink: '#F472B6',
+                            orange: '#FBBF24',
+                            green: '#34D399'
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0px 4px 24px rgba(0, 0, 0, 0.04)',
+                        'header': '0px 2px 12px rgba(0, 0, 0, 0.03)',
+                        'btn': '0px 8px 20px rgba(0, 22, 220, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-text-main font-sans w-full h-full min-h-[100dvh] flex justify-center bg-[#E5E5E5]">
+    
+    <!-- Mobile App Container -->
+    <main class="w-full max-w-[375px] h-full min-h-[100dvh] bg-background relative flex flex-col mx-auto shadow-2xl overflow-hidden">
+        
+        <!-- Header -->
+        <header id="top-header" class="w-full bg-surface py-4 px-5 flex items-center justify-between shadow-header sticky top-0 z-50 rounded-b-[16px]">
+            <button class="text-text-muted font-medium text-[15px] hover:text-text-main transition-colors">Cancelar</button>
+            <h1 class="font-bold text-[17px] tracking-tight">Nova Campanha</h1>
+            <div class="bg-accent-light text-primary font-semibold text-[13px] px-3 py-1.5 rounded-full">
+                1/4
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto hide-scroll pb-[120px] px-5 pt-6 flex flex-col gap-8">
+            
+            <!-- Campaign Name Section -->
+            <section id="campaign-name-section" class="flex flex-col gap-3">
+                <label for="campaign-name" class="font-bold text-[18px] ml-1">Nome da Campanha</label>
+                <div class="bg-surface rounded-[16px] shadow-card p-2">
+                    <input 
+                        type="text" 
+                        id="campaign-name" 
+                        placeholder="Ex: Promoção Tintas de Verão" 
+                        class="w-full bg-accent-light text-text-main placeholder:text-text-muted text-[15px] font-medium px-5 py-4 rounded-[12px] outline-none border border-transparent focus:border-primary/20 focus:bg-white transition-all"
+                    >
+                </div>
+            </section>
+
+            <!-- Objective Selection Section -->
+            <section id="objective-selection-section" class="flex flex-col gap-4">
+                <div class="flex flex-col gap-1 ml-1">
+                    <h2 class="font-bold text-[20px]">Qual o seu objetivo?</h2>
+                    <p class="text-text-muted text-[14px] font-medium">Escolha o foco principal dos seus anúncios.</p>
+                </div>
+
+                <div class="flex flex-col gap-3 mt-2">
+                    
+                    <!-- Active Card -->
+                    <button class="w-full bg-accent-light border-2 border-primary rounded-[16px] p-5 flex items-center gap-4 text-left shadow-card relative overflow-hidden group transition-all">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-primary text-[20px] shrink-0 relative">
+                            <i class="fa-solid fa-bullhorn relative z-10"></i>
+                            <div class="absolute inset-0 bg-primary/10 rounded-full animate-ping opacity-50"></div>
+                        </div>
+                        <div class="flex flex-col">
+                            <h3 class="font-bold text-[16px] text-primary">Visibilidade da Marca</h3>
+                            <p class="text-text-muted text-[13px] font-medium mt-0.5 leading-snug">Alcance o máximo de pessoas na sua região.</p>
+                        </div>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-[12px]">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </button>
+
+                    <!-- Inactive Card 1 -->
+                    <button class="w-full bg-surface border-2 border-transparent hover:border-border rounded-[16px] p-5 flex items-center gap-4 text-left shadow-card transition-all">
+                        <div class="w-12 h-12 bg-background rounded-full flex items-center justify-center text-text-muted text-[20px] shrink-0 group-hover:text-text-main transition-colors">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <h3 class="font-bold text-[16px] text-text-main">Atrair Profissionais</h3>
+                            <p class="text-text-muted text-[13px] font-medium mt-0.5 leading-snug">Encontre pintores e arquitetos para parceria.</p>
+                        </div>
+                    </button>
+
+                    <!-- Inactive Card 2 -->
+                    <button class="w-full bg-surface border-2 border-transparent hover:border-border rounded-[16px] p-5 flex items-center gap-4 text-left shadow-card transition-all">
+                        <div class="w-12 h-12 bg-background rounded-full flex items-center justify-center text-text-muted text-[20px] shrink-0 group-hover:text-text-main transition-colors">
+                            <i class="fa-solid fa-tag"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <h3 class="font-bold text-[16px] text-text-main">Vendas Diretas</h3>
+                            <p class="text-text-muted text-[13px] font-medium mt-0.5 leading-snug">Leve clientes direto para o seu WhatsApp.</p>
+                        </div>
+                    </button>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- Pinned Bottom Action -->
+        <div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-background via-background/95 to-transparent pt-10 z-50">
+            <button class="w-full bg-primary text-white font-bold text-[16px] py-4 rounded-[100px] shadow-btn flex items-center justify-center gap-2 hover:bg-primary/90 active:scale-[0.98] transition-all">
+                Avançar para Segmentação
+                <i class="fa-solid fa-arrow-right text-[14px]"></i>
+            </button>
+        </div>
+
+    </main>
+
+</body>
+</html>

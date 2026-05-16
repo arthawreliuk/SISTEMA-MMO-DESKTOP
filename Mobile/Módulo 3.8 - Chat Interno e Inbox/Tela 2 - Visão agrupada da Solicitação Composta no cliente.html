@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens do Projeto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        offwhite: '#F8F9FA',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                    },
+                    boxShadow: {
+                        'ambient': '0 8px 32px -4px rgba(0, 22, 220, 0.08)',
+                        'nav': '0 -4px 24px -4px rgba(26, 26, 36, 0.06)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header {
+            background: rgba(248, 249, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Mobile container constraints for absolute precision */
+        .mobile-container {
+            width: 100%;
+            max-width: 375px;
+            min-height: 840px;
+            margin: 0 auto;
+            position: relative;
+            background-color: #F8F9FA;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+<div class="mobile-container pb-28">
+
+    <!-- 1. Top Header -->
+    <header id="header" class="fixed top-0 w-full max-w-[375px] z-50 glass-header px-6 py-5 flex items-center justify-between border-b border-gray-100/50">
+        <button class="w-10 h-10 flex items-center justify-start text-primary active:scale-95 transition-transform" aria-label="Voltar">
+            <i class="fa-solid fa-arrow-left text-xl"></i>
+        </button>
+        <h1 class="text-[17px] font-bold text-navy tracking-tight">Mensagens do Projeto</h1>
+        <button class="w-10 h-10 flex items-center justify-end text-navy/60 hover:text-primary active:scale-95 transition-all" aria-label="Info">
+            <i class="fa-regular fa-circle-info text-xl"></i>
+        </button>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="pt-24 px-5 flex flex-col gap-6">
+
+        <!-- 2. Project Context Card (Hero) -->
+        <section id="project-hero" class="bg-white rounded-[24px] p-6 shadow-ambient border-t-2 border-primary relative overflow-hidden">
+            <!-- Subtle background accent -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-10 -mt-10"></div>
+            
+            <div class="relative z-10">
+                <div class="flex items-start justify-between mb-2">
+                    <h2 class="text-xl font-bold text-navy leading-tight">Reforma do Escritório</h2>
+                    <div class="bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center text-primary">
+                        <i class="fa-solid fa-building text-sm"></i>
+                    </div>
+                </div>
+                
+                <p class="text-sm text-navy/60 font-medium flex items-center gap-2 mb-5">
+                    <i class="fa-solid fa-location-dot text-primary/70"></i>
+                    Camboriú, Centro <span class="text-gray-300">|</span> Iniciado em 12/04
+                </p>
+
+                <!-- Progress Bar -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center text-xs font-bold">
+                        <span class="text-navy">Progresso Geral</span>
+                        <span class="text-primary">66% Concluído</span>
+                    </div>
+                    <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-primary rounded-full w-[66%] relative">
+                            <!-- Shine effect on progress bar -->
+                            <div class="absolute inset-0 bg-white/20 w-1/2 skew-x-12 translate-x-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Grouped Chats List -->
+        <section id="chat-list" class="flex flex-col gap-4">
+            <h3 class="text-sm font-bold text-navy/50 uppercase tracking-wider px-2 mt-2">Especialistas Envolvidos</h3>
+
+            <!-- Chat 1: Active -->
+            <button class="w-full bg-white rounded-[20px] p-4 shadow-ambient flex items-center gap-4 text-left active:scale-[0.98] transition-transform relative group">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Electrician Avatar" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm">
+                    <!-- Unread Dot -->
+                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-primary border-2 border-white rounded-full"></div>
+                </div>
+                
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-bold text-navy truncate pr-2">Carlos Eletricista</h4>
+                        <span class="text-[10px] font-bold text-success bg-success/10 px-2 py-1 rounded-full whitespace-nowrap">Orçamento Aprovado ✓</span>
+                    </div>
+                    <p class="text-sm text-navy/80 font-medium truncate pr-4">"Material comprado, chego às 8h."</p>
+                </div>
+            </button>
+
+            <!-- Chat 2: Negotiating -->
+            <button class="w-full bg-white rounded-[20px] p-4 shadow-ambient flex items-center gap-4 text-left active:scale-[0.98] transition-transform">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Painter Avatar" class="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+                
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-start mb-1">
+                        <h4 class="font-bold text-navy truncate pr-2">Roberto Pinturas</h4>
+                        <span class="text-[10px] font-bold text-warning bg-warning/10 px-2 py-1 rounded-full whitespace-nowrap">Em Negociação ⏳</span>
+                    </div>
+                    <p class="text-sm text-navy/50 truncate pr-4">"Mandei a tabela de cores."</p>
+                </div>
+            </button>
+
+            <!-- Placeholder Role (Ghost Card) -->
+            <div class="w-full rounded-[20px] p-5 border-2 border-dashed border-gray-200 bg-gray-50/50 flex flex-col items-center justify-center text-center gap-3 mt-2">
+                <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-navy/40">
+                    <i class="fa-solid fa-hammer text-xl"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-navy text-sm mb-1">Marceneiro</h4>
+                    <p class="text-xs text-navy/50">Nenhum profissional contratado ainda</p>
+                </div>
+                <button class="mt-2 px-6 py-2.5 rounded-full bg-white text-primary text-sm font-bold shadow-sm border border-gray-100 hover:bg-gray-50 active:bg-gray-100 transition-colors">
+                    Buscar no Balcão
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- 4. Floating Pill Navigation -->
+    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-48px)] max-w-[327px] bg-white rounded-[32px] shadow-nav px-6 py-4 z-50 flex items-center justify-between">
+        <button class="flex flex-col items-center gap-1 text-navy/40 hover:text-navy transition-colors w-12">
+            <i class="fa-solid fa-house text-lg"></i>
+        </button>
+        
+        <button class="flex flex-col items-center gap-1 text-navy/40 hover:text-navy transition-colors w-12">
+            <i class="fa-solid fa-clipboard-list text-lg"></i>
+        </button>
+        
+        <!-- Active Nav Item -->
+        <button class="flex flex-col items-center gap-1.5 text-primary w-12 relative">
+            <i class="fa-solid fa-message text-xl"></i>
+            <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-2"></div>
+        </button>
+        
+        <button class="flex flex-col items-center gap-1 text-navy/40 hover:text-navy transition-colors w-12">
+            <i class="fa-regular fa-user text-lg"></i>
+        </button>
+    </nav>
+
+</div>
+
+</body>
+</html>

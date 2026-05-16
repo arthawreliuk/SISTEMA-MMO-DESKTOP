@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Campaign Status Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            active: '#10B981',
+                            review: '#F59E0B',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'floating': '0 8px 30px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Hide scrollbar for horizontal scrolling */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Toggle switch custom styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:disabled + .toggle-label {
+            background-color: #E5E7EB;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-brand-offwhite min-h-[100dvh] flex justify-center">
+
+    <!-- Mobile App Container -->
+    <main id="app-container" class="w-full max-w-[375px] bg-brand-offwhite min-h-[100dvh] relative flex flex-col pb-24 shadow-2xl overflow-hidden">
+        
+        <!-- Header -->
+        <header id="header" class="bg-white px-6 py-5 flex items-center justify-between shadow-[0_2px_10px_rgba(0,0,0,0.02)] sticky top-0 z-20">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-sm">
+                    M
+                </div>
+            </div>
+            <h1 class="text-brand-navy font-bold text-lg tracking-tight">Minhas Campanhas</h1>
+            <button class="w-10 h-10 rounded-full flex items-center justify-center text-brand-navy hover:bg-gray-50 transition-colors">
+                <i class="fa-solid fa-plus text-lg"></i>
+            </button>
+        </header>
+
+        <!-- Global Status Filter -->
+        <section id="status-filters" class="pt-6 px-4 pb-2">
+            <div class="flex overflow-x-auto hide-scrollbar gap-3 pb-2 px-2">
+                <button class="whitespace-nowrap px-5 py-2.5 rounded-full bg-brand-blue text-white font-semibold text-sm shadow-md transition-all">
+                    Todas
+                </button>
+                <button class="whitespace-nowrap px-5 py-2.5 rounded-full bg-white text-gray-500 font-medium text-sm shadow-soft hover:bg-gray-50 transition-all border border-gray-100">
+                    Ativas (2)
+                </button>
+                <button class="whitespace-nowrap px-5 py-2.5 rounded-full bg-white text-gray-500 font-medium text-sm shadow-soft hover:bg-gray-50 transition-all border border-gray-100">
+                    Em Análise (1)
+                </button>
+                <button class="whitespace-nowrap px-5 py-2.5 rounded-full bg-white text-gray-500 font-medium text-sm shadow-soft hover:bg-gray-50 transition-all border border-gray-100">
+                    Pausadas
+                </button>
+            </div>
+        </section>
+
+        <!-- Campaign Cards List -->
+        <section id="campaign-list" class="flex-1 px-4 py-4 flex flex-col gap-4">
+            
+            <!-- Card 1: Active -->
+            <article class="bg-white rounded-[20px] p-5 shadow-soft border border-gray-50/50">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="font-bold text-brand-navy text-[16px] leading-tight pr-4">Eletricistas Camboriú - Promo</h2>
+                    <div class="flex items-center gap-1.5 bg-green-50 px-2.5 py-1 rounded-full border border-green-100/50">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-active"></span>
+                        <span class="text-[11px] font-bold text-brand-active uppercase tracking-wide">Ativa</span>
+                    </div>
+                </div>
+                
+                <div class="mb-5">
+                    <div class="flex justify-between items-end mb-2">
+                        <span class="text-xs font-medium text-gray-400">Gasto Atual</span>
+                        <div class="text-right">
+                            <span class="font-bold text-brand-navy text-sm">R$ 150</span>
+                            <span class="text-xs text-gray-400"> / R$ 500</span>
+                        </div>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                        <div class="bg-brand-blue h-1.5 rounded-full" style="width: 30%"></div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                    <span class="text-sm font-medium text-gray-500">Status da Campanha</span>
+                    <!-- Toggle Switch -->
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="toggle1" checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 translate-x-6 border-brand-blue"/>
+                        <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-brand-blue cursor-pointer transition-colors duration-300"></label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2: Review -->
+            <article class="bg-white rounded-[20px] p-5 shadow-soft border border-gray-50/50">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="font-bold text-brand-navy text-[16px] leading-tight pr-4">Branding Litoral 2026</h2>
+                    <div class="flex items-center gap-1.5 bg-orange-50 px-2.5 py-1 rounded-full border border-orange-100/50">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-review"></span>
+                        <span class="text-[11px] font-bold text-brand-review uppercase tracking-wide">Em Análise</span>
+                    </div>
+                </div>
+                
+                <div class="mb-5">
+                    <div class="flex justify-between items-end mb-2">
+                        <span class="text-xs font-medium text-gray-400">Orçamento Diário</span>
+                        <div class="text-right">
+                            <span class="font-bold text-brand-navy text-sm">R$ 50</span>
+                            <span class="text-xs text-gray-400"> / dia</span>
+                        </div>
+                    </div>
+                    <!-- Empty Progress Bar -->
+                    <div class="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                        <div class="bg-gray-300 h-1.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                    <span class="text-sm font-medium text-gray-400">Aguardando aprovação</span>
+                    <!-- Disabled Toggle Switch -->
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none opacity-50">
+                        <input type="checkbox" disabled name="toggle2" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-gray-200 appearance-none cursor-not-allowed z-10"/>
+                        <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-200 cursor-not-allowed"></label>
+                    </div>
+                </div>
+            </article>
+
+             <!-- Card 3: Active (Extra for scroll) -->
+             <article class="bg-white rounded-[20px] p-5 shadow-soft border border-gray-50/50 opacity-60">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="font-bold text-brand-navy text-[16px] leading-tight pr-4">Retargeting Site</h2>
+                    <div class="flex items-center gap-1.5 bg-green-50 px-2.5 py-1 rounded-full border border-green-100/50">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-active"></span>
+                        <span class="text-[11px] font-bold text-brand-active uppercase tracking-wide">Ativa</span>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Floating Action Button -->
+        <button id="fab" class="absolute bottom-[100px] right-6 w-14 h-14 bg-brand-blue rounded-full shadow-floating flex items-center justify-center text-white hover:scale-105 transition-transform z-30">
+            <i class="fa-solid fa-plus text-xl"></i>
+        </button>
+
+        <!-- Bottom Navigation -->
+        <nav id="bottom-nav" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] bg-white rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.08)] px-6 py-4 flex justify-between items-center z-20 border border-gray-50">
+            <button class="flex flex-col items-center gap-1 text-brand-blue">
+                <i class="fa-solid fa-layer-group text-lg"></i>
+                <span class="text-[10px] font-bold">Campanhas</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
+                <i class="fa-solid fa-chart-pie text-lg"></i>
+                <span class="text-[10px] font-medium">Métricas</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
+                <i class="fa-solid fa-wallet text-lg"></i>
+                <span class="text-[10px] font-medium">Pagamentos</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
+                <i class="fa-solid fa-gear text-lg"></i>
+                <span class="text-[10px] font-medium">Ajustes</span>
+            </button>
+        </nav>
+
+    </main>
+
+    <script>
+        // Simple toggle logic for visual feedback
+        document.getElementById('toggle1').addEventListener('change', function(e) {
+            const label = this.nextElementSibling;
+            if(this.checked) {
+                this.classList.replace('translate-x-0', 'translate-x-6');
+                this.classList.replace('border-gray-200', 'border-brand-blue');
+                label.classList.replace('bg-gray-200', 'bg-brand-blue');
+            } else {
+                this.classList.replace('translate-x-6', 'translate-x-0');
+                this.classList.replace('border-brand-blue', 'border-gray-200');
+                label.classList.replace('bg-brand-blue', 'bg-gray-200');
+            }
+        });
+    </script>
+</body>
+</html>

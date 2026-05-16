@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Administrative Audit Log</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#F8F9FA',
+                            text: '#1A1A24',
+                            muted: '#64748B',
+                            accent: '#0016dc',
+                            card: '#FFFFFF',
+                            green: { bg: '#E6F4EA', text: '#1E8E3E' },
+                            blue: { bg: '#E8F0FE', text: '#1A73E8' },
+                            red: { bg: '#FCE8E6', text: '#D93025' }
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'sm-soft': '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen flex justify-center">
+
+    <!-- Mobile Container Wrapper -->
+    <div class="w-full max-w-[375px] min-h-[840px] bg-brand-bg relative flex flex-col shadow-2xl overflow-hidden sm:rounded-[32px] sm:my-8 sm:border sm:border-gray-200">
+        
+        <!-- Global Header -->
+        <header id="header" class="bg-brand-card w-full h-[60px] flex items-center justify-between px-5 shadow-sm-soft sticky top-0 z-50">
+            <button class="text-brand-text hover:text-brand-accent transition-colors w-8 h-8 flex items-center justify-center rounded-full active:bg-gray-100">
+                <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+            <h1 class="text-[16px] font-semibold tracking-tight">Logs do Sistema</h1>
+            <button class="text-brand-text hover:text-brand-accent transition-colors w-8 h-8 flex items-center justify-center rounded-full active:bg-gray-100">
+                <i class="fa-solid fa-magnifying-glass text-[15px]"></i>
+            </button>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto hide-scroll pb-24">
+            
+            <!-- Quick Metrics Strip -->
+            <section id="metrics-strip" class="w-full pt-5 pb-4 px-5 overflow-x-auto hide-scroll whitespace-nowrap flex gap-3">
+                <div class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-gray-200 bg-brand-card shadow-sm-soft text-[13px] font-medium text-brand-text">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent mr-2"></span>
+                    Hoje: 124 Ações
+                </div>
+                <div class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-gray-200 bg-brand-card shadow-sm-soft text-[13px] font-medium text-brand-text">
+                    <span class="w-2 h-2 rounded-full bg-brand-red-text mr-2"></span>
+                    Falhas: 0
+                </div>
+                <div class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-gray-200 bg-brand-card shadow-sm-soft text-[13px] font-medium text-brand-text">
+                    <span class="w-2 h-2 rounded-full bg-brand-green-text mr-2"></span>
+                    Admin Ativos: 3
+                </div>
+            </section>
+
+            <!-- Audit Feed List -->
+            <section id="audit-feed" class="px-5 flex flex-col gap-3 pb-6">
+                
+                <!-- Date Header -->
+                <h2 class="text-[12px] font-semibold text-brand-muted uppercase tracking-wider mt-2 mb-1">Hoje</h2>
+
+                <!-- Row 1 (Update) -->
+                <article class="bg-brand-card rounded-[12px] p-3.5 flex items-start gap-3.5 shadow-soft border border-gray-100/50 active:scale-[0.98] transition-transform cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-brand-blue-bg flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-pen text-brand-blue-text text-[14px]"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <h3 class="text-[14px] font-semibold text-brand-text truncate leading-tight">Arthur H. atualizou as permissões</h3>
+                        <p class="text-[12px] text-brand-muted mt-1 truncate">Módulo: Central de Modelos</p>
+                    </div>
+                    <span class="text-[11px] font-medium text-brand-muted shrink-0 pt-1">14:32</span>
+                </article>
+
+                <!-- Row 2 (Creation) -->
+                <article class="bg-brand-card rounded-[12px] p-3.5 flex items-start gap-3.5 shadow-soft border border-gray-100/50 active:scale-[0.98] transition-transform cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-brand-green-bg flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-plus text-brand-green-text text-[15px]"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <h3 class="text-[14px] font-semibold text-brand-text truncate leading-tight">Sistema gerou fatura #INV-992</h3>
+                        <p class="text-[12px] text-brand-muted mt-1 truncate">Cliente: Yachthouse</p>
+                    </div>
+                    <span class="text-[11px] font-medium text-brand-muted shrink-0 pt-1">13:05</span>
+                </article>
+
+                <!-- Date Header -->
+                <h2 class="text-[12px] font-semibold text-brand-muted uppercase tracking-wider mt-4 mb-1">Ontem</h2>
+
+                <!-- Row 3 (Deletion) -->
+                <article class="bg-brand-card rounded-[12px] p-3.5 flex items-start gap-3.5 shadow-soft border border-gray-100/50 active:scale-[0.98] transition-transform cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-brand-red-bg flex items-center justify-center shrink-0">
+                        <i class="fa-regular fa-trash-can text-brand-red-text text-[14px]"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <h3 class="text-[14px] font-semibold text-brand-text truncate leading-tight">Antonio deletou a campanha Ads</h3>
+                        <p class="text-[12px] text-brand-muted mt-1 truncate">Ação irreversível</p>
+                    </div>
+                    <span class="text-[11px] font-medium text-brand-muted shrink-0 pt-1">18:45</span>
+                </article>
+                
+                <!-- Additional Row to fill space -->
+                <article class="bg-brand-card rounded-[12px] p-3.5 flex items-start gap-3.5 shadow-soft border border-gray-100/50 active:scale-[0.98] transition-transform cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-arrow-right-to-bracket text-gray-600 text-[14px]"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <h3 class="text-[14px] font-semibold text-brand-text truncate leading-tight">Login detectado (Novo IP)</h3>
+                        <p class="text-[12px] text-brand-muted mt-1 truncate">Usuário: admin@finova.com</p>
+                    </div>
+                    <span class="text-[11px] font-medium text-brand-muted shrink-0 pt-1">09:12</span>
+                </article>
+
+            </section>
+
+            <!-- Pagination Button -->
+            <section id="pagination" class="px-5 pb-8 flex justify-center mt-2">
+                <button class="w-full max-w-[280px] py-3.5 px-6 rounded-full border border-gray-200 bg-transparent text-[14px] font-semibold text-brand-muted hover:bg-gray-50 hover:text-brand-text active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-arrow-rotate-right text-[12px]"></i>
+                    Carregar logs anteriores
+                </button>
+            </section>
+
+        </main>
+
+        <!-- Bottom Navigation Shell (Optional context for mobile app feel) -->
+        <nav id="bottom-nav" class="absolute bottom-0 w-full h-[80px] bg-brand-card border-t border-gray-100 flex justify-around items-center px-4 pb-4 pt-2 shadow-[0_-4px_12px_rgba(0,0,0,0.02)] z-50">
+            <button class="flex flex-col items-center gap-1 text-brand-muted hover:text-brand-accent transition-colors w-16">
+                <i class="fa-solid fa-house text-[18px]"></i>
+                <span class="text-[10px] font-medium">Início</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-brand-muted hover:text-brand-accent transition-colors w-16">
+                <i class="fa-solid fa-chart-pie text-[18px]"></i>
+                <span class="text-[10px] font-medium">Métricas</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-brand-accent w-16">
+                <div class="relative">
+                    <i class="fa-solid fa-list-ul text-[18px]"></i>
+                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-brand-red-text rounded-full border border-white"></span>
+                </div>
+                <span class="text-[10px] font-medium">Logs</span>
+            </button>
+            <button class="flex flex-col items-center gap-1 text-brand-muted hover:text-brand-accent transition-colors w-16">
+                <i class="fa-regular fa-user text-[18px]"></i>
+                <span class="text-[10px] font-medium">Perfil</span>
+            </button>
+        </nav>
+
+    </div>
+
+</body>
+</html>

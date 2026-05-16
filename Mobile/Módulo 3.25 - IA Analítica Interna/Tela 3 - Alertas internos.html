@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SaaS Internal AI Crisis Alert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        navy: '#1A1A24',
+                        amber: '#F59E0B',
+                        crimson: '#EF4444',
+                        neonPurple: '#BF80FF',
+                        trustBlue: '#0016dc',
+                    },
+                    boxShadow: {
+                        'ambient-amber': '0 8px 32px -8px rgba(245, 158, 11, 0.25)',
+                        'ambient-crimson': '0 8px 32px -8px rgba(239, 68, 68, 0.25)',
+                        'soft': '0 4px 20px -2px rgba(26, 26, 36, 0.05)',
+                    },
+                    animation: {
+                        'pulse-border': 'pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'pulse-border': {
+                            '0%, 100%': { borderColor: 'rgba(245, 158, 11, 0.5)' },
+                            '50%': { borderColor: 'rgba(191, 128, 255, 0.5)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom gradient border utility */
+        .gradient-border-wrapper {
+            position: relative;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.4), rgba(191, 128, 255, 0.4));
+            padding: 2px;
+            animation: pulse-gradient 3s ease infinite;
+        }
+        .gradient-border-inner {
+            background: #FFFFFF;
+            border-radius: 18px;
+            height: 100%;
+        }
+        
+        @keyframes pulse-gradient {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background font-sans text-navy flex justify-center">
+
+    <!-- Mobile Container (375x840 target) -->
+    <main class="w-full max-w-[375px] min-h-[840px] bg-background relative flex flex-col shadow-2xl overflow-x-hidden">
+        
+        <!-- Header -->
+        <header id="header" class="w-full bg-white px-5 py-4 flex items-center justify-between sticky top-0 z-50 shadow-soft">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-arrow-left text-navy text-lg"></i>
+            </button>
+            <h1 class="text-base font-bold text-navy tracking-tight">Central de Alertas IA</h1>
+            <div class="w-10 h-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <!-- Content Scroll Area -->
+        <div class="flex-1 overflow-y-auto px-4 py-6 space-y-6 pb-24">
+            
+            <!-- Predictive Alert Hero Card -->
+            <section id="alert-hero" class="w-full">
+                <div class="gradient-border-wrapper shadow-ambient-amber">
+                    <div class="gradient-border-inner p-6 flex flex-col gap-5">
+                        
+                        <!-- Badge -->
+                        <div class="flex items-center gap-2">
+                            <div class="bg-neonPurple/10 border border-neonPurple/30 px-3 py-1.5 rounded-full flex items-center gap-2 w-fit">
+                                <i class="fa-solid fa-sparkles text-neonPurple text-xs"></i>
+                                <span class="text-neonPurple text-xs font-bold uppercase tracking-wider">Previsão de Risco Alto</span>
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <h2 class="text-2xl font-extrabold text-navy leading-tight">
+                            Evasão em Massa Prevista: Eletricistas no Litoral
+                        </h2>
+
+                        <!-- AI Diagnosis -->
+                        <div class="bg-gray-50 rounded-[14px] p-4 border border-gray-100 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-1 h-full bg-amber"></div>
+                            <p class="text-sm text-navy/80 leading-relaxed font-medium">
+                                <strong class="text-navy">A IA detectou:</strong> 12 profissionais na região de Camboriú não responderam aos últimos 5 orçamentos. Risco de <span class="text-crimson font-bold">85% de churn</span> (cancelamento) nas próximas 48h.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Recommended Actions -->
+            <section id="ai-actions" class="bg-white rounded-[20px] p-6 shadow-soft border border-gray-100 flex flex-col gap-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-robot text-trustBlue text-sm"></i>
+                    <h3 class="text-sm font-bold text-navy uppercase tracking-wider">Ações Recomendadas</h3>
+                </div>
+                
+                <button class="w-full bg-trustBlue text-white font-bold text-sm py-4 px-6 rounded-full shadow-[0_4px_14px_0_rgba(0,22,220,0.39)] hover:shadow-[0_6px_20px_rgba(0,22,220,0.23)] hover:bg-trustBlue/90 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Disparar SMS de Engajamento Automático
+                </button>
+                
+                <button class="w-full bg-transparent text-navy font-bold text-sm py-4 px-6 rounded-full border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-pause"></i>
+                    Pausar envio de leads para este grupo
+                </button>
+            </section>
+
+            <!-- Data Proof Sparkline -->
+            <section id="data-proof" class="bg-white rounded-[20px] p-6 shadow-soft border border-gray-100">
+                <div class="flex justify-between items-end mb-4">
+                    <div>
+                        <h3 class="text-sm font-bold text-navy mb-1">Taxa de Resposta (24h)</h3>
+                        <p class="text-xs text-navy/60">Camboriú - Eletricistas</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-crimson font-bold text-lg">-42%</span>
+                    </div>
+                </div>
+                
+                <!-- Chart Container -->
+                <div id="sparkline-chart" class="w-full h-[120px]"></div>
+            </section>
+
+            <!-- Contextual Risk Factors -->
+            <section id="risk-factors" class="bg-white rounded-[20px] p-6 shadow-soft border border-gray-100">
+                <h3 class="text-sm font-bold text-navy mb-4 uppercase tracking-wider">Fatores de Risco Ativos</h3>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3 p-3 rounded-[12px] bg-red-50/50 border border-red-100">
+                        <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
+                            <i class="fa-solid fa-arrow-trend-down text-crimson text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-navy">Queda abrupta de engajamento</p>
+                            <p class="text-xs text-navy/60 mt-0.5">0 respostas nos últimos 5 leads enviados.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-3 p-3 rounded-[12px] bg-amber-50/50 border border-amber-100">
+                        <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center shrink-0 mt-0.5">
+                            <i class="fa-solid fa-clock text-amber text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-navy">Padrão de fim de mês</p>
+                            <p class="text-xs text-navy/60 mt-0.5">Histórico indica alta de cancelamentos neste período.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        // Initialize Plotly Chart
+        function initializeCharts() {
+            const container = document.getElementById('sparkline-chart');
+            if (!container) return;
+
+            // Generate some dramatic drop data
+            const xData = Array.from({length: 24}, (_, i) => `${i}h`);
+            const yData = [85, 82, 80, 81, 79, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 22, 20, 18, 15, 12, 10, 8, 5];
+
+            const trace = {
+                x: xData,
+                y: yData,
+                type: 'scatter',
+                mode: 'lines',
+                line: {
+                    color: '#F59E0B', // Warning Amber
+                    width: 3,
+                    shape: 'spline',
+                    smoothing: 1.3
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(245, 158, 11, 0.1)',
+                hoverinfo: 'none'
+            };
+
+            const layout = {
+                margin: { t: 5, r: 5, b: 5, l: 5 },
+                xaxis: {
+                    showgrid: false,
+                    zeroline: false,
+                    showticklabels: false,
+                    fixedrange: true
+                },
+                yaxis: {
+                    showgrid: true,
+                    gridcolor: 'rgba(26, 26, 36, 0.05)',
+                    zeroline: false,
+                    showticklabels: false,
+                    fixedrange: true,
+                    range: [0, 100]
+                },
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                showlegend: false,
+                dragmode: false
+            };
+
+            const config = {
+                responsive: true,
+                displayModeBar: false,
+                staticPlot: true
+            };
+
+            try {
+                Plotly.newPlot(container, [trace], layout, config);
+            } catch (e) {
+                console.error('Chart rendering failed:', e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

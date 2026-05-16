@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ajustes de Notificação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        borderLight: '#F3F4F6'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'float': '0 -4px 20px rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Toggle Switch Custom Styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            width: 50px;
+            height: 28px;
+            background-color: #E5E7EB;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="text-textMain min-h-screen flex justify-center bg-gray-100">
+
+    <!-- Mobile Wrapper -->
+    <div id="app-container" class="w-full max-w-[375px] bg-background min-h-[840px] relative flex flex-col mx-auto overflow-hidden shadow-2xl md:my-8 md:rounded-[32px] md:h-[840px]">
+        
+        <!-- Header -->
+        <header id="header" class="bg-surface px-6 pt-12 pb-4 flex items-center justify-between sticky top-0 z-20 shadow-sm rounded-b-[24px]">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-background text-textMain hover:bg-gray-200 transition">
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+            <div class="flex flex-col items-center">
+                <span class="text-[10px] font-bold text-primary tracking-wider uppercase mb-0.5">MMO</span>
+                <h1 class="text-[17px] font-semibold">Ajustes de Notificação</h1>
+            </div>
+            <div class="w-10 h-10"></div> <!-- Spacer -->
+        </header>
+
+        <!-- Main Content Scrollable Area -->
+        <main class="flex-1 overflow-y-auto px-5 pt-6 pb-28 space-y-5">
+            
+            <!-- Master Switch Card -->
+            <section id="master-switch" class="bg-surface rounded-[24px] p-5 shadow-soft border border-borderLight">
+                <div class="flex items-center justify-between">
+                    <div class="pr-4">
+                        <h2 class="text-[16px] font-semibold mb-1">Pausar todas as notificações</h2>
+                        <p class="text-[13px] text-textMuted leading-tight">Ideal para férias ou foco total.</p>
+                    </div>
+                    <div class="relative inline-block w-[50px] mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="master-toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                        <label for="master-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <div class="space-y-4">
+                
+                <!-- Card 1 -->
+                <section id="category-leads" class="bg-surface rounded-[24px] p-5 shadow-soft border border-borderLight">
+                    <div class="flex items-center gap-3 mb-4 pb-4 border-b border-borderLight">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-users text-sm"></i>
+                        </div>
+                        <h3 class="text-[16px] font-semibold">Novos Leads e Orçamentos</h3>
+                    </div>
+                    
+                    <div class="space-y-5">
+                        <!-- Row A -->
+                        <div class="flex items-center justify-between">
+                            <span class="text-[15px] font-medium">Avisos no Celular (Push)</span>
+                            <div class="relative inline-block w-[50px] mr-2 align-middle select-none">
+                                <input type="checkbox" checked name="toggle" id="toggle-push-1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                                <label for="toggle-push-1" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                            </div>
+                        </div>
+                        <!-- Row B -->
+                        <div class="flex items-center justify-between">
+                            <span class="text-[15px] font-medium">Resumo por E-mail</span>
+                            <div class="relative inline-block w-[50px] mr-2 align-middle select-none">
+                                <input type="checkbox" checked name="toggle" id="toggle-email-1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                                <label for="toggle-email-1" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Card 2 -->
+                <section id="category-finance" class="bg-surface rounded-[24px] p-5 shadow-soft border border-borderLight">
+                    <div class="flex items-center gap-3 mb-4 pb-4 border-b border-borderLight">
+                        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                            <i class="fa-solid fa-wallet text-sm"></i>
+                        </div>
+                        <h3 class="text-[16px] font-semibold">Financeiro e Faturas</h3>
+                    </div>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[15px] font-medium">Aprovação de Pagamento</span>
+                            <div class="relative inline-block w-[50px] mr-2 align-middle select-none">
+                                <input type="checkbox" checked name="toggle" id="toggle-pay-1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                                <label for="toggle-pay-1" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[15px] font-medium">Lembrete de Vencimento</span>
+                            <div class="relative inline-block w-[50px] mr-2 align-middle select-none">
+                                <input type="checkbox" checked name="toggle" id="toggle-due-1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                                <label for="toggle-due-1" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Card 3 -->
+                <section id="category-marketing" class="bg-surface rounded-[24px] p-5 shadow-soft border border-borderLight">
+                    <div class="flex items-center gap-3 mb-4 pb-4 border-b border-borderLight">
+                        <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+                            <i class="fa-solid fa-bullhorn text-sm"></i>
+                        </div>
+                        <h3 class="text-[16px] font-semibold">Marketing e Dicas</h3>
+                    </div>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[15px] font-medium">Newsletter Semanal</span>
+                            <div class="relative inline-block w-[50px] mr-2 align-middle select-none">
+                                <input type="checkbox" name="toggle" id="toggle-news-1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                                <label for="toggle-news-1" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Sticky Action Bar -->
+        <div id="sticky-action" class="absolute bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-md px-5 py-6 shadow-float rounded-t-[32px] md:rounded-b-[32px]">
+            <button class="w-full bg-primary hover:bg-blue-700 text-white font-semibold text-[16px] py-4 rounded-full transition-colors shadow-lg shadow-primary/20">
+                Salvar Preferências
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>

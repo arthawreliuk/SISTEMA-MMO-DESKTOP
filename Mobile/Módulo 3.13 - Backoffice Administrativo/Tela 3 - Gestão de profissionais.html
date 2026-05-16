@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        offwhite: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        warning: '#F59E0B',
+                        success: '#10B981',
+                        border: '#E5E7EB',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 40px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex justify-center bg-offwhite">
+
+    <!-- Mobile Container Wrapper -->
+    <div class="w-full max-w-[375px] min-h-[840px] bg-offwhite relative shadow-2xl overflow-hidden flex flex-col">
+        
+        <!-- 1. Top Header -->
+        <header id="header" class="glass-nav sticky top-0 z-50 px-6 py-4 flex justify-between items-center border-b border-white/20 shadow-sm">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                <span class="font-bold text-lg text-navy tracking-tight">MMO Admin</span>
+            </div>
+            <button class="w-10 h-10 rounded-full bg-white shadow-soft flex items-center justify-center text-navy hover:text-primary transition-colors">
+                <i class="fa-solid fa-search"></i>
+            </button>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto hide-scrollbar pb-28">
+            
+            <!-- 2. Filters (Horizontal Scroll) -->
+            <section id="filters" class="pt-6 pb-4 px-6">
+                <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2 -mx-6 px-6">
+                    <button class="whitespace-nowrap px-5 py-2.5 rounded-full bg-primary text-white font-semibold text-sm shadow-md transition-transform active:scale-95">
+                        Todos
+                    </button>
+                    <button class="whitespace-nowrap px-5 py-2.5 rounded-full bg-white text-navy font-medium text-sm shadow-soft border border-border hover:border-primary/30 transition-all flex items-center gap-2">
+                        Docs Pendentes <span class="text-warning">⚠️</span>
+                    </button>
+                    <button class="whitespace-nowrap px-5 py-2.5 rounded-full bg-white text-navy font-medium text-sm shadow-soft border border-border hover:border-primary/30 transition-all flex items-center gap-2">
+                        Plano Mestre <span class="text-yellow-400">⭐️</span>
+                    </button>
+                    <button class="whitespace-nowrap px-5 py-2.5 rounded-full bg-white text-navy font-medium text-sm shadow-soft border border-border hover:border-primary/30 transition-all">
+                        Bloqueados
+                    </button>
+                </div>
+            </section>
+
+            <!-- 3. Professionals List -->
+            <section id="professionals-list" class="px-6 flex flex-col gap-4 pb-8">
+                
+                <!-- Card 1: Pending KYC -->
+                <article id="card-1" class="bg-white rounded-[16px] p-5 shadow-soft border border-border/50 relative overflow-hidden">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Arthur" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-yellow-400 rounded-full border-2 border-white flex items-center justify-center text-[10px] text-white shadow-sm">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-navy text-base leading-tight">Arthur - Elétrica</h3>
+                                <div class="flex items-center gap-2 mt-1 text-xs text-gray-500 font-medium">
+                                    <span class="flex items-center gap-1"><i class="fa-solid fa-star text-yellow-400"></i> 4.9</span>
+                                    <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                    <span>Camboriú</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-warning/10 text-warning text-[10px] font-bold rounded-full uppercase tracking-wide border border-warning/20">
+                            KYC Pendente
+                        </span>
+                    </div>
+                    <button class="w-full py-3 rounded-full bg-primary text-white font-semibold text-sm shadow-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-file-signature"></i> Analisar Documentos
+                    </button>
+                </article>
+
+                <!-- Card 2: Verified Profile -->
+                <article id="card-2" class="bg-white rounded-[16px] p-5 shadow-soft border border-border/50 relative overflow-hidden">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Mariana" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-gray-200 rounded-full border-2 border-white flex items-center justify-center text-[10px] text-gray-500 shadow-sm">
+                                    <i class="fa-solid fa-medal"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-navy text-base leading-tight">Mariana - Encanamento</h3>
+                                <div class="flex items-center gap-2 mt-1 text-xs text-gray-500 font-medium">
+                                    <span class="flex items-center gap-1"><i class="fa-solid fa-star text-yellow-400"></i> 4.7</span>
+                                    <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                    <span>Itajaí</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-success/10 text-success text-[10px] font-bold rounded-full uppercase tracking-wide border border-success/20">
+                            Ativo
+                        </span>
+                    </div>
+                    <button class="w-full py-3 rounded-full bg-white text-navy font-semibold text-sm shadow-sm border border-border hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-user"></i> Ver Perfil
+                    </button>
+                </article>
+
+                <!-- Card 3: Pending KYC -->
+                <article id="card-3" class="bg-white rounded-[16px] p-5 shadow-soft border border-border/50 relative overflow-hidden">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Carlos" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-navy text-base leading-tight">Carlos - Pintura</h3>
+                                <div class="flex items-center gap-2 mt-1 text-xs text-gray-500 font-medium">
+                                    <span class="flex items-center gap-1"><i class="fa-solid fa-star text-yellow-400"></i> 4.2</span>
+                                    <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                    <span>Balneário</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-warning/10 text-warning text-[10px] font-bold rounded-full uppercase tracking-wide border border-warning/20">
+                            KYC Pendente
+                        </span>
+                    </div>
+                    <button class="w-full py-3 rounded-full bg-primary text-white font-semibold text-sm shadow-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-file-signature"></i> Analisar Documentos
+                    </button>
+                </article>
+
+            </section>
+        </main>
+
+        <!-- 4. Floating Pill Navigation -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-48px)]">
+            <nav id="bottom-nav" class="bg-white rounded-[32px] shadow-float border border-white/50 px-6 py-4 flex justify-between items-center relative overflow-hidden">
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
+                    <i class="fa-solid fa-chart-pie text-xl"></i>
+                </button>
+                
+                <button class="flex flex-col items-center gap-1 text-primary relative">
+                    <i class="fa-solid fa-users text-xl"></i>
+                    <span class="absolute -bottom-2 w-1 h-1 rounded-full bg-primary"></span>
+                </button>
+                
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
+                    <i class="fa-solid fa-wallet text-xl"></i>
+                </button>
+                
+                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
+                    <i class="fa-solid fa-gear text-xl"></i>
+                </button>
+            </nav>
+        </div>
+
+    </div>
+
+</body>
+</html>

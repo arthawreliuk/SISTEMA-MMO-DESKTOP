@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Center Template Listing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            blue50: '#eef0ff',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                        },
+                        file: {
+                            doc: '#2563eb',
+                            docBg: '#eff6ff',
+                            xls: '#16a34a',
+                            xlsBg: '#f0fdf4',
+                            pdf: '#dc2626',
+                            pdfBg: '#fef2f2',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 -4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-brand-navy min-h-screen pb-24 flex justify-center w-full">
+
+    <!-- Main Mobile Container (forced max-width for desktop viewing to maintain mobile layout intent) -->
+    <main class="w-full max-w-[375px] bg-brand-bg min-h-screen relative shadow-2xl mx-auto overflow-hidden flex flex-col">
+
+        <!-- Sticky Header & Search -->
+        <header id="sticky_header_search" class="sticky top-0 z-50 bg-white px-5 pt-12 pb-4 shadow-soft rounded-b-[24px]">
+            <div class="flex items-center justify-between mb-5">
+                <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-arrow-left text-lg"></i>
+                </button>
+                <h1 class="text-[17px] font-semibold tracking-tight">Resultados: Gestão</h1>
+                <div class="w-10"></div> <!-- Spacer for centering -->
+            </div>
+
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400 group-focus-within:text-brand-blue transition-colors"></i>
+                </div>
+                <input type="text" value="Contrato" 
+                    class="w-full bg-gray-50 text-[15px] font-medium py-3.5 pl-11 pr-10 rounded-full border border-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue/30 focus:bg-white transition-all shadow-sm"
+                    placeholder="Buscar modelos...">
+                <button class="absolute inset-y-0 right-3 flex items-center justify-center w-8 h-8 rounded-full text-gray-400 hover:text-brand-navy hover:bg-gray-100 mt-1.5 transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- File-Type Filter Strip -->
+        <section id="horizontal_file_filters" class="pt-6 pb-2 px-5">
+            <div class="flex overflow-x-auto hide-scrollbar gap-2.5 pb-2 -mx-5 px-5">
+                <button class="flex-none flex items-center gap-2 bg-brand-navy text-white px-5 py-2.5 rounded-full text-[13px] font-semibold shadow-md whitespace-nowrap transition-transform active:scale-95">
+                    Todos
+                </button>
+                <button class="flex-none flex items-center gap-2 bg-white border border-gray-200 text-gray-600 px-4 py-2.5 rounded-full text-[13px] font-medium hover:border-gray-300 hover:bg-gray-50 transition-all whitespace-nowrap active:scale-95">
+                    <i class="fa-regular fa-file-word text-file-doc"></i>
+                    DOC (12)
+                </button>
+                <button class="flex-none flex items-center gap-2 bg-white border border-gray-200 text-gray-600 px-4 py-2.5 rounded-full text-[13px] font-medium hover:border-gray-300 hover:bg-gray-50 transition-all whitespace-nowrap active:scale-95">
+                    <i class="fa-regular fa-file-excel text-file-xls"></i>
+                    XLS (5)
+                </button>
+                <button class="flex-none flex items-center gap-2 bg-white border border-gray-200 text-gray-600 px-4 py-2.5 rounded-full text-[13px] font-medium hover:border-gray-300 hover:bg-gray-50 transition-all whitespace-nowrap active:scale-95">
+                    <i class="fa-regular fa-file-pdf text-file-pdf"></i>
+                    PDF (8)
+                </button>
+            </div>
+        </section>
+
+        <!-- Template List -->
+        <section id="template_directory_list" class="flex-1 px-5 py-4 flex flex-col gap-3.5">
+            
+            <!-- Card 1 (DOC) -->
+            <div class="bg-white rounded-[16px] p-4 flex items-center gap-4 shadow-soft border border-gray-100/50 active:scale-[0.98] transition-transform cursor-pointer group hover:border-gray-200">
+                <div class="w-[52px] h-[52px] rounded-[14px] bg-file-docBg flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-file-word text-file-doc text-xl"></i>
+                </div>
+                <div class="flex-1 min-w-0 py-0.5">
+                    <h3 class="text-[15px] font-bold text-brand-navy leading-tight mb-1 truncate group-hover:text-brand-blue transition-colors">Contrato de Prestação de Serviços</h3>
+                    <div class="flex items-center gap-2 text-[12px] text-gray-500 font-medium">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-download text-[10px]"></i> 1,250 downloads</span>
+                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                        <span>Atualizado hoje</span>
+                    </div>
+                </div>
+                <button class="w-9 h-9 rounded-full bg-brand-blue50 text-brand-blue flex items-center justify-center flex-shrink-0 hover:bg-brand-blue hover:text-white transition-colors">
+                    <i class="fa-solid fa-arrow-down text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Card 2 (XLS) -->
+            <div class="bg-white rounded-[16px] p-4 flex items-center gap-4 shadow-soft border border-gray-100/50 active:scale-[0.98] transition-transform cursor-pointer group hover:border-gray-200">
+                <div class="w-[52px] h-[52px] rounded-[14px] bg-file-xlsBg flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-file-excel text-file-xls text-xl"></i>
+                </div>
+                <div class="flex-1 min-w-0 py-0.5">
+                    <h3 class="text-[15px] font-bold text-brand-navy leading-tight mb-1 truncate group-hover:text-brand-blue transition-colors">Planilha de Controle Financeiro</h3>
+                    <div class="flex items-center gap-2 text-[12px] text-gray-500 font-medium">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-download text-[10px]"></i> 840 downloads</span>
+                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                        <span>24 KB</span>
+                    </div>
+                </div>
+                <button class="w-9 h-9 rounded-full bg-brand-blue50 text-brand-blue flex items-center justify-center flex-shrink-0 hover:bg-brand-blue hover:text-white transition-colors">
+                    <i class="fa-solid fa-arrow-down text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Card 3 (PDF) -->
+            <div class="bg-white rounded-[16px] p-4 flex items-center gap-4 shadow-soft border border-gray-100/50 active:scale-[0.98] transition-transform cursor-pointer group hover:border-gray-200">
+                <div class="w-[52px] h-[52px] rounded-[14px] bg-file-pdfBg flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-file-pdf text-file-pdf text-xl"></i>
+                </div>
+                <div class="flex-1 min-w-0 py-0.5">
+                    <h3 class="text-[15px] font-bold text-brand-navy leading-tight mb-1 truncate group-hover:text-brand-blue transition-colors">Manual de Integração RH</h3>
+                    <div class="flex items-center gap-2 text-[12px] text-gray-500 font-medium">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-download text-[10px]"></i> 420 downloads</span>
+                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                        <span>1.2 MB</span>
+                    </div>
+                </div>
+                <button class="w-9 h-9 rounded-full bg-brand-blue50 text-brand-blue flex items-center justify-center flex-shrink-0 hover:bg-brand-blue hover:text-white transition-colors">
+                    <i class="fa-solid fa-arrow-down text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Card 4 (DOC) -->
+            <div class="bg-white rounded-[16px] p-4 flex items-center gap-4 shadow-soft border border-gray-100/50 active:scale-[0.98] transition-transform cursor-pointer group hover:border-gray-200">
+                <div class="w-[52px] h-[52px] rounded-[14px] bg-file-docBg flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-file-word text-file-doc text-xl"></i>
+                </div>
+                <div class="flex-1 min-w-0 py-0.5">
+                    <h3 class="text-[15px] font-bold text-brand-navy leading-tight mb-1 truncate group-hover:text-brand-blue transition-colors">Acordo de Confidencialidade</h3>
+                    <div class="flex items-center gap-2 text-[12px] text-gray-500 font-medium">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-download text-[10px]"></i> 2,100 downloads</span>
+                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                        <span>NDA Padrão</span>
+                    </div>
+                </div>
+                <button class="w-9 h-9 rounded-full bg-brand-blue50 text-brand-blue flex items-center justify-center flex-shrink-0 hover:bg-brand-blue hover:text-white transition-colors">
+                    <i class="fa-solid fa-arrow-down text-sm"></i>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Pagination -->
+        <section id="pagination_load_more" class="px-5 py-6 mb-8">
+            <button class="w-full bg-white border-2 border-gray-200 text-brand-navy py-4 rounded-full text-[15px] font-bold hover:border-brand-navy hover:bg-gray-50 transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.98]">
+                <span>Carregar mais modelos</span>
+                <i class="fa-solid fa-chevron-down text-sm text-gray-400"></i>
+            </button>
+        </section>
+
+        <!-- Mobile Bottom Nav -->
+        <nav id="mobile_bottom_nav" class="fixed bottom-0 w-full max-w-[375px] bg-white border-t border-gray-100 px-6 py-4 flex justify-between items-center shadow-nav z-50 rounded-t-[24px]">
+            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
+                <i class="fa-solid fa-house text-xl mb-0.5"></i>
+                <span class="text-[10px] font-bold">Início</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-brand-blue transition-colors relative">
+                <div class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></div>
+                <i class="fa-solid fa-folder-open text-xl mb-0.5"></i>
+                <span class="text-[10px] font-bold">Modelos</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
+                <i class="fa-solid fa-bookmark text-xl mb-0.5"></i>
+                <span class="text-[10px] font-bold">Salvos</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
+                <i class="fa-solid fa-user text-xl mb-0.5"></i>
+                <span class="text-[10px] font-bold">Perfil</span>
+            </a>
+        </nav>
+
+    </main>
+
+</body>
+</html>

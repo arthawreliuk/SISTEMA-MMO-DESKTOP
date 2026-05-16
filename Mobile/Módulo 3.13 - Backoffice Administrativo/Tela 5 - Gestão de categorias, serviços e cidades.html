@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Categories Management - MMO Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textGray: '#6B7280',
+                        borderLight: '#E5E7EB',
+                        glassWhite: 'rgba(255, 255, 255, 0.85)',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 -4px 24px rgba(0, 0, 0, 0.08)',
+                        'card': '0 2px 12px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-panel { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked { right: 0; border-color: #0016dc; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #0016dc; }
+        .toggle-checkbox { right: 0; z-index: 1; border-color: #e2e8f0; transition: all 0.3s; }
+        .toggle-label { width: 44px; height: 24px; background-color: #e2e8f0; border-radius: 9999px; transition: all 0.3s; position: relative; display: inline-block; cursor: pointer; }
+        .toggle-label:after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background-color: white; border-radius: 50%; transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .toggle-checkbox:checked + .toggle-label:after { transform: translateX(20px); }
+    </style>
+</head>
+<body class="bg-background text-textDark flex justify-center min-h-[100dvh]">
+
+    <!-- Mobile Container Wrapper -->
+    <div class="w-full max-w-[430px] min-h-[100dvh] relative bg-background flex flex-col shadow-2xl overflow-hidden md:rounded-[32px] md:my-8 md:h-[840px] md:min-h-0 border border-borderLight/50">
+        
+        <!-- 1. Top Header -->
+        <header id="header" class="glass-panel sticky top-0 z-40 px-5 py-4 flex items-center justify-between border-b border-borderLight/50 shadow-sm">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm shadow-sm">
+                    M
+                </div>
+                <span class="font-semibold text-sm text-textGray">Admin</span>
+            </div>
+            <h1 class="font-bold text-lg tracking-tight">Taxonomia</h1>
+            <button class="w-10 h-10 rounded-full bg-white border border-borderLight flex items-center justify-center text-primary shadow-sm hover:bg-gray-50 transition-colors">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </header>
+
+        <!-- 2. Master Tabs (Horizontal Scroll) -->
+        <section id="taxonomy-tabs" class="pt-5 pb-2 px-5">
+            <div class="flex overflow-x-auto hide-scrollbar gap-3 pb-2">
+                <button class="flex-shrink-0 px-5 py-2.5 rounded-full bg-white border border-borderLight text-textGray font-medium text-sm flex items-center gap-2 shadow-sm transition-all">
+                    <i class="fa-solid fa-location-dot text-gray-400"></i> Cidades
+                </button>
+                <button class="flex-shrink-0 px-5 py-2.5 rounded-full bg-primary text-white font-medium text-sm flex items-center gap-2 shadow-md shadow-primary/20 transition-all">
+                    <i class="fa-solid fa-folder"></i> Categorias
+                </button>
+                <button class="flex-shrink-0 px-5 py-2.5 rounded-full bg-white border border-borderLight text-textGray font-medium text-sm flex items-center gap-2 shadow-sm transition-all">
+                    <i class="fa-solid fa-wrench text-gray-400"></i> Serviços
+                </button>
+            </div>
+        </section>
+
+        <!-- Main Content Area (Scrollable) -->
+        <main class="flex-1 overflow-y-auto px-5 pb-40 hide-scrollbar flex flex-col gap-4 pt-2">
+            
+            <!-- Category Card 1 (Expanded) -->
+            <div id="category-card-1" class="bg-white rounded-[16px] border border-borderLight/60 shadow-card overflow-hidden transition-all duration-300">
+                <!-- Main Row -->
+                <div class="p-4 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-[12px] bg-blue-50 flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-plug text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base">Instalações Elétricas</h3>
+                            <p class="text-xs text-textGray font-medium mt-0.5">12 serviços vinculados</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                            <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                        <i class="fa-solid fa-chevron-up text-textGray text-sm"></i>
+                    </div>
+                </div>
+                
+                <!-- Expanded Sub-services -->
+                <div class="bg-gray-50/50 px-4 pb-4 pt-1 border-t border-borderLight/40">
+                    <div class="flex flex-col gap-2 mt-3">
+                        
+                        <!-- Sub-service Item -->
+                        <div class="bg-white rounded-full py-2.5 px-4 flex items-center justify-between border border-borderLight/50 shadow-sm ml-4 relative before:content-[''] before:absolute before:-left-4 before:top-1/2 before:w-3 before:h-px before:bg-borderLight">
+                            <span class="text-sm font-medium text-textDark">Troca de Fiação</span>
+                            <div class="flex items-center gap-3">
+                                <button class="text-textGray hover:text-primary transition-colors">
+                                    <i class="fa-regular fa-pen-to-square text-sm"></i>
+                                </button>
+                                <div class="relative inline-block w-8 align-middle select-none">
+                                    <input type="checkbox" name="toggle-sub1" id="toggle-sub1" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer top-1" checked/>
+                                    <label for="toggle-sub1" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer w-9"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sub-service Item -->
+                        <div class="bg-white rounded-full py-2.5 px-4 flex items-center justify-between border border-borderLight/50 shadow-sm ml-4 relative before:content-[''] before:absolute before:-left-4 before:top-1/2 before:w-3 before:h-px before:bg-borderLight">
+                            <span class="text-sm font-medium text-textDark">Instalação de Tomadas</span>
+                            <div class="flex items-center gap-3">
+                                <button class="text-textGray hover:text-primary transition-colors">
+                                    <i class="fa-regular fa-pen-to-square text-sm"></i>
+                                </button>
+                                <div class="relative inline-block w-8 align-middle select-none">
+                                    <input type="checkbox" name="toggle-sub2" id="toggle-sub2" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer top-1" checked/>
+                                    <label for="toggle-sub2" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer w-9"></label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Add Sub-service Button -->
+                        <button class="ml-4 mt-1 py-2 px-4 rounded-full border border-dashed border-primary/30 text-primary text-xs font-semibold flex items-center justify-center gap-2 bg-primary/5 hover:bg-primary/10 transition-colors">
+                            <i class="fa-solid fa-plus"></i> Adicionar Serviço
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Card 2 (Collapsed) -->
+            <div id="category-card-2" class="bg-white rounded-[16px] border border-borderLight/60 shadow-card overflow-hidden transition-all duration-300">
+                <div class="p-4 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-[12px] bg-orange-50 flex items-center justify-center text-orange-500">
+                            <i class="fa-solid fa-hammer text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base">Marido de Aluguel</h3>
+                            <p class="text-xs text-textGray font-medium mt-0.5">8 serviços vinculados</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none">
+                            <input type="checkbox" name="toggle" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                            <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-textGray text-sm"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Card 3 (Collapsed, Inactive) -->
+            <div id="category-card-3" class="bg-white rounded-[16px] border border-borderLight/60 shadow-card overflow-hidden transition-all duration-300 opacity-70">
+                <div class="p-4 flex items-center justify-between cursor-pointer">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-[12px] bg-gray-100 flex items-center justify-center text-gray-500">
+                            <i class="fa-solid fa-broom text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-gray-500">Limpeza Pós-Obra</h3>
+                            <p class="text-xs text-gray-400 font-medium mt-0.5">3 serviços vinculados</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none">
+                            <input type="checkbox" name="toggle" id="toggle3" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+                            <label for="toggle3" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-textGray text-sm"></i>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- 4. Primary Action (Pinned Bottom) -->
+        <div class="absolute bottom-[90px] left-0 right-0 px-5 z-20">
+            <button class="w-full bg-primary hover:bg-blue-700 text-white font-bold text-base py-4 rounded-full shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-transform active:scale-95">
+                <i class="fa-solid fa-plus text-sm"></i> Criar Nova Categoria
+            </button>
+        </div>
+
+        <!-- 5. Floating Pill Navigation -->
+        <nav id="floating-nav" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] bg-white rounded-full shadow-nav border border-borderLight/50 px-6 py-3.5 z-30 flex items-center justify-between">
+            <button class="flex flex-col items-center gap-1 text-textGray hover:text-textDark transition-colors">
+                <i class="fa-solid fa-chart-pie text-lg"></i>
+                <span class="text-[10px] font-semibold">Dash</span>
+            </button>
+            
+            <button class="flex flex-col items-center gap-1 text-primary relative">
+                <i class="fa-solid fa-layer-group text-lg"></i>
+                <span class="text-[10px] font-bold">Setup</span>
+                <div class="absolute -bottom-1.5 w-1 h-1 rounded-full bg-primary"></div>
+            </button>
+            
+            <button class="flex flex-col items-center gap-1 text-textGray hover:text-textDark transition-colors">
+                <i class="fa-solid fa-wallet text-lg"></i>
+                <span class="text-[10px] font-semibold">Finance</span>
+            </button>
+            
+            <button class="flex flex-col items-center gap-1 text-textGray hover:text-textDark transition-colors">
+                <i class="fa-solid fa-gear text-lg"></i>
+                <span class="text-[10px] font-semibold">Config</span>
+            </button>
+        </nav>
+
+        <!-- Gradient fade for bottom scroll -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-10"></div>
+
+    </div>
+
+</body>
+</html>

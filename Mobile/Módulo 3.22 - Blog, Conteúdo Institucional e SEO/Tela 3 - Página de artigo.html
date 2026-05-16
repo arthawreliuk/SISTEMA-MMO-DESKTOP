@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MMO Blog - Article</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            offwhite: '#F8F9FA',
+                            navy: '#1A1A24',
+                            slate: '#334155',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 40px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-brand-navy font-sans antialiased bg-brand-offwhite relative min-h-screen pb-[100px]">
+
+    <!-- Mobile Container Wrapper (Max 430px for strict mobile focus, centered on larger screens) -->
+    <div class="w-full max-w-[430px] mx-auto bg-brand-offwhite min-h-screen relative shadow-soft overflow-hidden">
+
+        <!-- 1. Minimalist Header -->
+        <header id="header" class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 px-5 py-4 flex items-center justify-between transition-all duration-300">
+            <button class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-50 text-brand-navy hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <div class="font-bold text-xl tracking-tight flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-brand-blue flex items-center justify-center text-white text-xs">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                MMO Blog
+            </div>
+            <button class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-50 text-brand-navy hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </button>
+        </header>
+
+        <main id="main-content">
+            <!-- 2. Article Hero -->
+            <section id="article-hero" class="px-5 pt-8 pb-6 bg-white">
+                <div class="mb-5 flex items-center gap-3">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold tracking-wide uppercase">
+                        Marketing Local
+                    </span>
+                    <span class="text-xs text-gray-400 font-medium"><i class="fa-regular fa-clock mr-1"></i> 6 min read</span>
+                </div>
+                
+                <h1 class="text-[32px] leading-[1.2] font-extrabold text-brand-navy mb-6 tracking-tight">
+                    Como dominar orçamentos de alto valor na região litorânea
+                </h1>
+
+                <div class="flex items-center gap-3 mb-8">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Ricardo Mendes" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <div>
+                        <p class="text-sm font-bold text-brand-navy">Por Ricardo Mendes</p>
+                        <p class="text-xs text-gray-500 font-medium">Atualizado em 15 de Maio</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hero Image Full Bleed -->
+            <div class="w-full relative">
+                <img class="w-full h-auto aspect-video object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="High resolution professional architectural photography of a luxury coastal real estate property in Brazil, sunny day, clear blue sky, modern design, lifestyle, 16:9 ratio" />
+                <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent"></div>
+            </div>
+
+            <!-- 3. The Reading Canvas -->
+            <article id="reading-canvas" class="px-5 py-8 bg-white font-serif text-brand-slate text-[17px] leading-[1.8] space-y-7">
+                <p class="first-letter:text-5xl first-letter:font-bold first-letter:text-brand-blue first-letter:mr-2 first-letter:float-left">
+                    O mercado imobiliário e de serviços nas regiões litorâneas do Brasil apresenta uma dinâmica única. Diferente dos grandes centros urbanos, a sazonalidade e o perfil do consumidor exigem uma abordagem muito mais estratégica para fechar contratos de alto ticket.
+                </p>
+
+                <p>
+                    Muitos profissionais cometem o erro de aplicar as mesmas táticas de vendas usadas na capital quando tentam negociar reformas, projetos arquitetônicos ou serviços premium na praia. O resultado? Orçamentos recusados e margens espremidas.
+                </p>
+
+                <h2 class="font-sans text-2xl font-bold text-brand-navy mt-10 mb-4 tracking-tight">A Psicologia do Cliente Costeiro</h2>
+                
+                <p>
+                    O cliente que investe em uma propriedade no litoral geralmente está buscando refúgio, status ou um investimento de longo prazo. A comunicação do seu orçamento precisa refletir a exclusividade que ele procura.
+                </p>
+
+                <blockquote class="my-10 pl-5 py-2 border-l-4 border-brand-blue bg-brand-blue/5 rounded-r-xl italic text-brand-navy font-medium text-lg leading-relaxed relative">
+                    <i class="fa-solid fa-quote-left absolute -top-3 -left-2 text-brand-blue/20 text-4xl"></i>
+                    "Não venda o serviço. Venda a tranquilidade de que a casa de praia dele estará perfeita para o próximo verão sem que ele precise se estressar."
+                </blockquote>
+
+                <h3 class="font-sans text-xl font-bold text-brand-navy mt-8 mb-3">3 Passos para Estruturar a Proposta</h3>
+                
+                <ul class="space-y-4 font-sans text-base">
+                    <li class="flex items-start gap-3 bg-gray-50 p-4 rounded-2xl">
+                        <div class="w-8 h-8 shrink-0 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-blue font-bold">1</div>
+                        <div>
+                            <strong class="text-brand-navy block mb-1">Ancoragem de Valor</strong>
+                            <span class="text-gray-600 text-sm leading-relaxed">Apresente primeiro as soluções mais completas e premium antes de mostrar opções mais enxutas.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 bg-gray-50 p-4 rounded-2xl">
+                        <div class="w-8 h-8 shrink-0 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-blue font-bold">2</div>
+                        <div>
+                            <strong class="text-brand-navy block mb-1">Escassez Sazonal</strong>
+                            <span class="text-gray-600 text-sm leading-relaxed">Deixe claro que a janela de execução antes da alta temporada é limitada.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 bg-gray-50 p-4 rounded-2xl">
+                        <div class="w-8 h-8 shrink-0 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-blue font-bold">3</div>
+                        <div>
+                            <strong class="text-brand-navy block mb-1">Prova Social Local</strong>
+                            <span class="text-gray-600 text-sm leading-relaxed">Mostre projetos já realizados no mesmo condomínio ou praia.</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <p class="pt-4">
+                    Implementar essas pequenas mudanças na forma como você apresenta seus números pode aumentar sua taxa de conversão em até 40% durante a baixa temporada.
+                </p>
+                
+                <!-- Tag cloud -->
+                <div class="flex flex-wrap gap-2 pt-8 mt-8 border-t border-gray-100 font-sans">
+                    <span class="px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium">Vendas</span>
+                    <span class="px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium">Precificação</span>
+                    <span class="px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium">Mercado Imobiliário</span>
+                </div>
+            </article>
+
+            <!-- Related Articles -->
+            <section class="px-5 py-10 bg-brand-offwhite">
+                <h3 class="font-sans text-xl font-bold text-brand-navy mb-6">Leia também</h3>
+                <div class="space-y-4">
+                    <a href="#" class="block bg-white p-4 rounded-3xl shadow-soft flex gap-4 items-center active:scale-[0.98] transition-transform">
+                        <img class="w-20 h-20 rounded-2xl object-cover shrink-0" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="A modern business meeting, handshake, high contrast, warm lighting" />
+                        <div>
+                            <h4 class="font-sans font-bold text-brand-navy text-sm leading-snug mb-2">Técnicas de negociação para serviços B2B</h4>
+                            <span class="text-xs text-gray-400 font-medium">4 min read</span>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-white p-4 rounded-3xl shadow-soft flex gap-4 items-center active:scale-[0.98] transition-transform">
+                        <img class="w-20 h-20 rounded-2xl object-cover shrink-0" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="Minimalist desk setup with a calculator, notebook and coffee, top down view, clean aesthetic" />
+                        <div>
+                            <h4 class="font-sans font-bold text-brand-navy text-sm leading-snug mb-2">Como calcular sua margem de lucro real</h4>
+                            <span class="text-xs text-gray-400 font-medium">8 min read</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- 4. Sticky Bottom Conversion Bar -->
+        <div id="conversion-bar" class="fixed bottom-6 left-0 right-0 z-50 px-4 w-full max-w-[430px] mx-auto pointer-events-none">
+            <div class="bg-white rounded-[32px] p-2 pl-6 pr-2 shadow-float flex items-center justify-between border border-gray-100 pointer-events-auto backdrop-blur-xl bg-white/95">
+                <span class="text-sm font-semibold text-brand-navy">Gostou do artigo?</span>
+                <button class="bg-brand-blue hover:bg-blue-700 text-white px-6 py-3.5 rounded-[24px] font-bold text-sm tracking-wide transition-all shadow-md flex items-center gap-2 active:scale-95">
+                    Criar Conta Grátis
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

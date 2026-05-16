@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Service Board Exposure Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 8px 30px rgba(0, 22, 220, 0.08)',
+                        'floating': '0 20px 40px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="text-text-main font-sans min-h-[100dvh] flex flex-col relative pb-32">
+
+    <!-- Top Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 glass-header px-6 py-4 flex items-center justify-between shadow-sm">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm hover:bg-gray-50 transition-colors">
+            <i class="fa-solid fa-arrow-left text-text-main text-lg"></i>
+        </button>
+        <h1 class="text-lg font-bold tracking-tight">Visibilidade</h1>
+        <div class="w-10"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-5 pt-24 pb-6 flex flex-col gap-6 max-w-[375px] mx-auto w-full">
+        
+        <!-- Upsell Section -->
+        <section id="upsell-plans" class="flex flex-col gap-4">
+            <h2 class="text-base font-bold px-1">Escolha a exposição</h2>
+            
+            <!-- Plan 1 (Premium/Active) -->
+            <div id="plan-premium" class="bg-white rounded-[20px] p-5 border-2 border-primary shadow-glow relative cursor-pointer transition-transform active:scale-[0.98]">
+                <div class="absolute -top-3 right-4 bg-primary text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow-md">
+                    Recomendado
+                </div>
+                <div class="flex justify-between items-start mb-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-xs shadow-sm">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h3 class="text-primary font-extrabold text-lg flex items-center gap-1.5">
+                            <i class="fa-solid fa-bolt text-[#EFFF00] drop-shadow-md"></i> Exposição Turbo
+                        </h3>
+                    </div>
+                    <div class="bg-blue-50 text-primary font-bold py-1.5 px-3 rounded-full text-sm">
+                        R$ 14,90
+                    </div>
+                </div>
+                <p class="text-sm text-text-muted leading-relaxed pr-4">
+                    Notifica Mestres VIPs agora e destaca seu pedido no topo do balcão.
+                </p>
+            </div>
+
+            <!-- Plan 2 (Basic) -->
+            <div id="plan-basic" class="bg-transparent rounded-[20px] p-5 border border-gray-200 cursor-pointer transition-colors hover:bg-white/50">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-2">
+                        <div class="w-5 h-5 rounded-full border-2 border-gray-300 flex items-center justify-center"></div>
+                        <h3 class="font-semibold text-text-main">Padrão (Grátis)</h3>
+                    </div>
+                </div>
+                <p class="text-sm text-text-muted leading-relaxed pl-7">
+                    Seu pedido entra na fila normal do Balcão.
+                </p>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section id="payment-method" class="flex flex-col gap-3 mt-2">
+            <h2 class="text-base font-bold px-1">Forma de Pagamento</h2>
+            
+            <div class="bg-white rounded-[20px] p-2 shadow-ambient">
+                <!-- Pix Option -->
+                <label class="flex items-center justify-between p-4 rounded-[16px] cursor-pointer hover:bg-gray-50 transition-colors group">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-600">
+                            <i class="fa-brands fa-pix text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="block font-semibold text-sm">Pix</span>
+                            <span class="block text-xs text-text-muted mt-0.5">Aprovação na hora</span>
+                        </div>
+                    </div>
+                    <div class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+                        <div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+                    </div>
+                </label>
+
+                <div class="h-[1px] bg-gray-100 mx-4 my-1"></div>
+
+                <!-- Credit Card Option -->
+                <label class="flex items-center justify-between p-4 rounded-[16px] cursor-pointer hover:bg-gray-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                            <i class="fa-regular fa-credit-card text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="block font-semibold text-sm">Cartão de Crédito</span>
+                            <span class="block text-xs text-text-muted mt-0.5">Final 4012</span>
+                        </div>
+                    </div>
+                    <div class="w-5 h-5 rounded-full border-2 border-gray-300"></div>
+                </label>
+            </div>
+        </section>
+
+        <!-- Order Summary -->
+        <section id="order-summary" class="mt-4 px-2">
+            <div class="flex justify-between items-center text-sm mb-2">
+                <span class="text-text-muted font-medium">Serviço:</span>
+                <span class="font-semibold text-text-main">Troca de Fiação</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-text-muted font-medium">Total:</span>
+                <span class="font-bold text-lg text-primary">R$ 14,90</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Primary Action (Fixed above Nav) -->
+    <div class="fixed bottom-[90px] left-0 right-0 px-5 max-w-[375px] mx-auto z-40">
+        <button id="btn-pay" class="w-full bg-primary text-white font-bold text-base py-4 rounded-[20px] shadow-[0_10px_25px_rgba(0,22,220,0.3)] transition-transform active:scale-[0.98] flex items-center justify-center gap-2">
+            Pagar e Publicar Balcão
+            <i class="fa-solid fa-arrow-right text-sm"></i>
+        </button>
+    </div>
+
+    <!-- Floating Pill Navigation -->
+    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] bg-white rounded-full shadow-floating py-3 px-6 z-50 flex justify-between items-center border border-gray-100">
+        <!-- Home (Active) -->
+        <a href="#" class="flex flex-col items-center gap-1 text-primary relative px-2">
+            <i class="fa-solid fa-house text-xl"></i>
+            <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-2"></div>
+        </a>
+        <!-- Orders -->
+        <a href="#" class="flex flex-col items-center text-gray-400 hover:text-text-main transition-colors px-2">
+            <i class="fa-solid fa-clipboard-list text-xl"></i>
+        </a>
+        <!-- Messages -->
+        <a href="#" class="flex flex-col items-center text-gray-400 hover:text-text-main transition-colors px-2 relative">
+            <i class="fa-regular fa-comment-dots text-xl"></i>
+            <div class="absolute top-0 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></div>
+        </a>
+        <!-- Profile -->
+        <a href="#" class="flex flex-col items-center text-gray-400 hover:text-text-main transition-colors px-2">
+            <i class="fa-regular fa-user text-xl"></i>
+        </a>
+    </nav>
+
+</body>
+</html>

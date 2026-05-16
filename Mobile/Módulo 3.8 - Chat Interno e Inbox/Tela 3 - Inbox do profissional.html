@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Professional Messaging Inbox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        urgentOrange: '#F97316',
+                        badgePending: '#FEF3C7',
+                        badgePendingText: '#D97706',
+                        badgeApproved: '#D1FAE5',
+                        badgeApprovedText: '#059669',
+                        badgeWaiting: '#DBEAFE',
+                        badgeWaitingText: '#1D4ED8',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'floating': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
+                        'urgent': '-4px 0 15px -2px rgba(249, 115, 22, 0.15)',
+                        'urgentPrimary': '-4px 0 15px -2px rgba(0, 22, 220, 0.15)',
+                    },
+                    borderRadius: {
+                        'pill': '9999px',
+                        'xl-card': '24px',
+                        'lg-card': '16px',
+                    }
+                }
+            }
+        }
+    </script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .glass-header {
+            background: rgba(248, 249, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen relative pb-28">
+
+    <!-- Top Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-40 glass-header px-6 pt-12 pb-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold tracking-tight text-textMain">Meus Clientes</h1>
+        <button class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-textMain transition-transform active:scale-95">
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+        </button>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="pt-28 px-4 flex flex-col gap-6">
+
+        <!-- Action/Stats Row (Horizontal Scroll) -->
+        <section id="stats-row" class="w-full -mx-4 px-4 overflow-x-auto no-scrollbar flex gap-3 pb-2">
+            <div class="flex-shrink-0 bg-white rounded-pill px-5 py-3 shadow-soft flex items-center gap-3 border border-gray-100">
+                <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary">
+                    <i class="fa-solid fa-user-plus text-sm"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-textMuted uppercase tracking-wider">Novos Leads</span>
+                    <span class="text-lg font-bold text-textMain leading-none mt-0.5">3</span>
+                </div>
+            </div>
+
+            <div class="flex-shrink-0 bg-white rounded-pill px-5 py-3 shadow-soft flex items-center gap-3 border border-gray-100">
+                <div class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center text-amber-500">
+                    <i class="fa-solid fa-file-invoice-dollar text-sm"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-textMuted uppercase tracking-wider">Orçamentos Pendentes</span>
+                    <span class="text-lg font-bold text-textMain leading-none mt-0.5">1</span>
+                </div>
+            </div>
+
+            <div class="flex-shrink-0 bg-white rounded-pill px-5 py-3 shadow-soft flex items-center gap-3 border border-gray-100">
+                <div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
+                    <i class="fa-solid fa-briefcase text-sm"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-textMuted uppercase tracking-wider">Serviços Ativos</span>
+                    <span class="text-lg font-bold text-textMain leading-none mt-0.5">4</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inbox List (Sales Funnel) -->
+        <section id="inbox-list" class="flex flex-col gap-4">
+            
+            <!-- Urgent/Balcão Chat -->
+            <article class="bg-white rounded-lg-card p-4 shadow-soft relative overflow-hidden border-l-[4px] border-primary shadow-urgentPrimary cursor-pointer transition-transform active:scale-[0.98]">
+                <div class="flex gap-4">
+                    <!-- Avatar & Badge -->
+                    <div class="relative flex-shrink-0">
+                        <div class="w-14 h-14 rounded-full bg-gray-100 overflow-hidden border-2 border-white shadow-sm flex items-center justify-center">
+                            <i class="fa-solid fa-user text-gray-400 text-xl"></i>
+                        </div>
+                        <div class="absolute -bottom-2 -left-2 bg-primary text-white text-[9px] font-bold px-2 py-1 rounded-pill flex items-center gap-1 shadow-sm whitespace-nowrap z-10">
+                            <i class="fa-solid fa-bolt"></i> URGENTE
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="flex-1 min-w-0 flex flex-col justify-center pt-1">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-textMain truncate text-base">Cliente do Balcão</h3>
+                            <div class="flex flex-col items-end gap-1">
+                                <span class="text-xs font-medium text-primary">Agora</span>
+                                <div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-textMuted truncate font-medium">Preciso para hoje à tarde, é possível?</p>
+                        
+                        <!-- Status Pill -->
+                        <div class="mt-3 inline-flex">
+                            <span class="bg-badgePending text-badgePendingText text-[10px] font-bold px-2.5 py-1 rounded-pill uppercase tracking-wide">
+                                Aguardando meu orçamento
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Standard Chat 1 -->
+            <article class="bg-white rounded-lg-card p-4 shadow-soft cursor-pointer transition-transform active:scale-[0.98]">
+                <div class="flex gap-4">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-14 h-14 rounded-full bg-gray-100 overflow-hidden border-2 border-white shadow-sm">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Ana Silva" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 min-w-0 flex flex-col justify-center">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-textMain truncate text-base">Ana Silva</h3>
+                            <span class="text-xs font-medium text-textMuted">10:42</span>
+                        </div>
+                        <p class="text-sm text-textMuted truncate">Perfeito! Pode seguir com a produção.</p>
+                        
+                        <div class="mt-3 inline-flex">
+                            <span class="bg-badgeApproved text-badgeApprovedText text-[10px] font-bold px-2.5 py-1 rounded-pill uppercase tracking-wide flex items-center gap-1">
+                                Aprovado <i class="fa-solid fa-check"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Standard Chat 2 -->
+            <article class="bg-white rounded-lg-card p-4 shadow-soft cursor-pointer transition-transform active:scale-[0.98]">
+                <div class="flex gap-4">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-14 h-14 rounded-full bg-gray-100 overflow-hidden border-2 border-white shadow-sm">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Carlos Mendes" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 min-w-0 flex flex-col justify-center">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-textMain truncate text-base">Carlos Mendes</h3>
+                            <span class="text-xs font-medium text-textMuted">Ontem</span>
+                        </div>
+                        <p class="text-sm text-textMuted truncate">Vou analisar a proposta e retorno.</p>
+                        
+                        <div class="mt-3 inline-flex">
+                            <span class="bg-badgeWaiting text-badgeWaitingText text-[10px] font-bold px-2.5 py-1 rounded-pill uppercase tracking-wide">
+                                Aguardando Resposta do Cliente
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+             <!-- Standard Chat 3 -->
+             <article class="bg-white rounded-lg-card p-4 shadow-soft cursor-pointer transition-transform active:scale-[0.98]">
+                <div class="flex gap-4">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-14 h-14 rounded-full bg-gray-100 overflow-hidden border-2 border-white shadow-sm">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Mariana Costa" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 min-w-0 flex flex-col justify-center">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-textMain truncate text-base">Mariana Costa</h3>
+                            <span class="text-xs font-medium text-textMuted">Seg</span>
+                        </div>
+                        <p class="text-sm text-textMuted truncate">Olá, gostaria de saber os valores para...</p>
+                        
+                        <div class="mt-3 inline-flex">
+                            <span class="bg-badgePending text-badgePendingText text-[10px] font-bold px-2.5 py-1 rounded-pill uppercase tracking-wide">
+                                Aguardando meu orçamento
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Floating Pill Navigation -->
+    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[340px]">
+        <div class="glass-nav rounded-pill shadow-floating px-6 py-4 flex justify-between items-center border border-gray-100">
+            
+            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors w-12">
+                <i class="fa-solid fa-house text-xl"></i>
+            </a>
+
+            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors w-12">
+                <i class="fa-solid fa-chart-pie text-xl"></i>
+            </a>
+
+            <a href="#" class="flex flex-col items-center gap-1 text-primary w-12 relative">
+                <i class="fa-solid fa-message text-xl"></i>
+                <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-3"></div>
+            </a>
+
+            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors w-12">
+                <i class="fa-solid fa-user text-xl"></i>
+            </a>
+
+        </div>
+    </nav>
+
+</body>
+</html>

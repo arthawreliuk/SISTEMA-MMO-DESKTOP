@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nova Solicitação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 8px 30px -4px rgba(0, 0, 0, 0.05)',
+                        'ambient-nav': '0 12px 40px -8px rgba(0, 0, 0, 0.12)',
+                        'glow-blue': '0 8px 24px -4px rgba(0, 22, 220, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; }
+        textarea:focus { outline: none; }
+    </style>
+</head>
+<body class="m-0 p-0 bg-offwhite font-sans text-navy antialiased">
+
+    <!-- Mobile App Container -->
+    <main id="app-container" class="w-full max-w-[430px] mx-auto min-h-[100dvh] relative flex flex-col bg-offwhite overflow-hidden shadow-xl sm:shadow-none">
+
+        <!-- Wizard Header -->
+        <header id="wizard-header" class="fixed top-0 left-0 right-0 max-w-[430px] mx-auto z-50 bg-white/85 backdrop-blur-xl border-b border-gray-200/50">
+            <div class="flex items-center justify-between px-5 py-4">
+                <button class="w-10 h-10 flex items-center justify-start text-trustblue hover:opacity-80 transition-opacity">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+                <h1 class="text-[16px] font-bold text-navy">Nova Solicitação</h1>
+                <div class="w-10 flex justify-end">
+                    <span class="text-[13px] font-medium text-navy/60">2 de 4</span>
+                </div>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full h-[2px] bg-gray-200 absolute bottom-0">
+                <div class="h-full bg-trustblue w-1/2 rounded-r-full transition-all duration-500"></div>
+            </div>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <div id="focus-content" class="flex-1 overflow-y-auto px-5 pt-28 pb-32 flex flex-col gap-8">
+            
+            <!-- Title Section -->
+            <section id="service-description" class="flex flex-col gap-2">
+                <h2 class="text-[24px] font-bold leading-tight text-navy">Detalhes do Serviço</h2>
+                <p class="text-[15px] text-navy/70 leading-relaxed">
+                    Descreva o que você precisa e adicione fotos para receber orçamentos mais precisos.
+                </p>
+            </section>
+
+            <!-- Inputs Section -->
+            <section id="inputs-area" class="flex flex-col gap-5">
+                
+                <!-- Text Area Card -->
+                <div class="bg-white rounded-[24px] p-5 shadow-ambient border border-gray-100 min-h-[180px] flex flex-col">
+                    <textarea 
+                        class="w-full flex-1 resize-none bg-transparent text-[15px] text-navy placeholder:text-gray-400/80 leading-relaxed"
+                        placeholder="Ex: Preciso instalar duas tomadas 220v e trocar o disjuntor do quadro principal. O local é de fácil acesso..."
+                    ></textarea>
+                </div>
+
+                <!-- Upload Zone -->
+                <div id="photo-upload-zone" class="flex flex-col gap-4">
+                    <button class="w-full border-2 border-dashed border-trustblue/30 text-trustblue rounded-[100px] py-4 flex items-center justify-center gap-3 font-semibold text-[15px] bg-trustblue/[0.03] hover:bg-trustblue/[0.06] transition-colors">
+                        <i class="fa-solid fa-camera text-lg"></i>
+                        + Adicionar Fotos do Local
+                    </button>
+
+                    <!-- Uploaded Thumbnails -->
+                    <div class="flex gap-3 flex-wrap">
+                        <div class="w-[84px] h-[84px] rounded-[20px] relative shadow-sm border border-gray-100 overflow-hidden group">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/225d29967b-7ad2adbc55f1cba13693.png" alt="close up of an electrical panel box on a wall, clear lighting, realistic" />
+                            <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <button class="absolute top-1.5 right-1.5 w-6 h-6 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-navy hover:bg-white shadow-sm">
+                                <i class="fa-solid fa-xmark text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spacer to push button down if needed -->
+            <div class="flex-1"></div>
+
+            <!-- Action Area -->
+            <section id="action-area" class="mt-4">
+                <button class="w-full bg-trustblue text-white rounded-[100px] py-[18px] font-bold text-[16px] shadow-glow-blue hover:bg-trustblue/90 transition-colors active:scale-[0.98]">
+                    Avançar para Localização
+                </button>
+            </section>
+        </div>
+
+        <!-- Floating Pill Navigation -->
+        <nav id="floating-pill-nav" class="absolute bottom-6 left-5 right-5 z-50">
+            <div class="bg-white rounded-[100px] py-4 px-8 flex justify-between items-center shadow-ambient-nav border border-gray-50/50 backdrop-blur-xl">
+                
+                <button class="text-navy/40 hover:text-navy/70 transition-colors flex flex-col items-center gap-1">
+                    <i class="fa-solid fa-house text-[22px]"></i>
+                </button>
+
+                <button class="text-trustblue relative flex flex-col items-center gap-1">
+                    <i class="fa-solid fa-file-lines text-[22px]"></i>
+                    <div class="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-trustblue rounded-full"></div>
+                </button>
+
+                <button class="text-navy/40 hover:text-navy/70 transition-colors flex flex-col items-center gap-1">
+                    <i class="fa-solid fa-message text-[22px]"></i>
+                </button>
+
+                <button class="text-navy/40 hover:text-navy/70 transition-colors flex flex-col items-center gap-1">
+                    <i class="fa-solid fa-user text-[22px]"></i>
+                </button>
+
+            </div>
+        </nav>
+
+    </main>
+
+</body>
+</html>

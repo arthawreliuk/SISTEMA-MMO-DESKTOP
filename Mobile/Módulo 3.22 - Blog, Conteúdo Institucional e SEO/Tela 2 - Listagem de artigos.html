@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Blog Article Listing & Search Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest' }; </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#64748B',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E2E8F0'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'header': '0 2px 10px -2px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Mobile constraint wrapper */
+        .mobile-container {
+            width: 100%;
+            max-width: 430px; /* Standard large mobile max-width */
+            margin: 0 auto;
+            min-height: 100vh;
+            background-color: #F8F9FA;
+            position: relative;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="bg-background text-textMain m-0 p-0">
+
+    <div class="mobile-container flex flex-col shadow-2xl bg-background" id="app-wrapper">
+        
+        <!-- Header Section -->
+        <header id="header" class="sticky top-0 z-50 bg-white shadow-header px-5 pt-12 pb-4 rounded-b-[24px]">
+            <!-- Top Bar: Back & Logo -->
+            <div class="flex items-center justify-between mb-5">
+                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-background text-textMain hover:bg-gray-200 transition-colors">
+                    <i class="fa-solid fa-arrow-left text-lg"></i>
+                </button>
+                <div class="text-xl font-bold tracking-tight">
+                    <span class="text-primary">MMO</span> Blog
+                </div>
+                <div class="w-10 h-10"></div> <!-- Spacer for center alignment -->
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative mb-5">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-search text-textMuted text-sm"></i>
+                </div>
+                <input type="text" value="Gestão financeira" 
+                    class="block w-full pl-11 pr-10 py-3.5 bg-background border border-transparent rounded-full text-sm font-medium text-textMain placeholder-textMuted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-inner"
+                    placeholder="Buscar artigos...">
+                <div class="absolute inset-y-0 right-0 pr-2 flex items-center">
+                    <button class="w-8 h-8 flex items-center justify-center rounded-full bg-white text-textMuted hover:text-textMain shadow-sm">
+                        <i class="fa-solid fa-times text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Pills -->
+            <div class="flex overflow-x-auto no-scrollbar gap-3 pb-1">
+                <button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-semibold bg-primary text-white shadow-md shadow-primary/20 transition-transform active:scale-95">
+                    Artigos (12)
+                </button>
+                <button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium bg-background text-textMuted border border-borderLight hover:bg-gray-100 transition-colors">
+                    Vídeos (4)
+                </button>
+                <button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium bg-background text-textMuted border border-borderLight hover:bg-gray-100 transition-colors">
+                    Guias (1)
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="flex-1 px-5 pt-6 pb-24">
+            
+            <!-- Results Meta -->
+            <div class="flex items-center justify-between mb-6" id="results-meta">
+                <p class="text-sm text-textMuted font-medium">
+                    Exibindo <span class="text-textMain font-bold">17 resultados</span> para <span class="italic">Gestão financeira</span>
+                </p>
+                <button class="text-textMuted hover:text-primary">
+                    <i class="fa-solid fa-sliders text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Article Feed -->
+            <div class="flex flex-col gap-4" id="article-feed">
+                
+                <!-- Card 1 -->
+                <article class="bg-white rounded-[20px] p-3 flex gap-4 shadow-soft items-center border border-transparent hover:border-primary/10 transition-all cursor-pointer group">
+                    <div class="w-[88px] h-[88px] rounded-[14px] overflow-hidden flex-shrink-0 relative bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Finance graph" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <div class="flex flex-col justify-center flex-1 pr-1">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full w-max mb-1.5">Finanças</span>
+                        <h3 class="text-sm font-bold leading-snug mb-2 line-clamp-2 text-textMain group-hover:text-primary transition-colors">
+                            Como estruturar a gestão financeira da sua startup em 5 passos
+                        </h3>
+                        <a href="#" class="text-xs font-semibold text-primary flex items-center gap-1 mt-auto">
+                            Ler artigo <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="bg-white rounded-[20px] p-3 flex gap-4 shadow-soft items-center border border-transparent hover:border-primary/10 transition-all cursor-pointer group">
+                    <div class="w-[88px] h-[88px] rounded-[14px] overflow-hidden flex-shrink-0 relative bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dashboard" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <div class="flex flex-col justify-center flex-1 pr-1">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full w-max mb-1.5">Métricas</span>
+                        <h3 class="text-sm font-bold leading-snug mb-2 line-clamp-2 text-textMain group-hover:text-primary transition-colors">
+                            Os KPIs financeiros que todo CEO de SaaS precisa acompanhar
+                        </h3>
+                        <a href="#" class="text-xs font-semibold text-primary flex items-center gap-1 mt-auto">
+                            Ler artigo <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="bg-white rounded-[20px] p-3 flex gap-4 shadow-soft items-center border border-transparent hover:border-primary/10 transition-all cursor-pointer group">
+                    <div class="w-[88px] h-[88px] rounded-[14px] overflow-hidden flex-shrink-0 relative bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Team meeting" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <div class="flex flex-col justify-center flex-1 pr-1">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full w-max mb-1.5">Estratégia</span>
+                        <h3 class="text-sm font-bold leading-snug mb-2 line-clamp-2 text-textMain group-hover:text-primary transition-colors">
+                            Previsibilidade de caixa: O segredo para crescer sem queimar capital
+                        </h3>
+                        <a href="#" class="text-xs font-semibold text-primary flex items-center gap-1 mt-auto">
+                            Ler artigo <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="bg-white rounded-[20px] p-3 flex gap-4 shadow-soft items-center border border-transparent hover:border-primary/10 transition-all cursor-pointer group">
+                    <div class="w-[88px] h-[88px] rounded-[14px] overflow-hidden flex-shrink-0 relative bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mobile banking" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <div class="flex flex-col justify-center flex-1 pr-1">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full w-max mb-1.5">Ferramentas</span>
+                        <h3 class="text-sm font-bold leading-snug mb-2 line-clamp-2 text-textMain group-hover:text-primary transition-colors">
+                            Comparativo: Os melhores ERPs para pequenas e médias empresas em 2024
+                        </h3>
+                        <a href="#" class="text-xs font-semibold text-primary flex items-center gap-1 mt-auto">
+                            Ler artigo <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Pagination / Load More -->
+            <div class="mt-8 mb-4 flex justify-center" id="pagination">
+                <button class="w-full py-4 rounded-full border-2 border-primary/20 bg-primary/5 text-primary font-bold text-sm hover:bg-primary/10 hover:border-primary/30 transition-all active:scale-[0.98]">
+                    Carregar mais artigos
+                </button>
+            </div>
+
+        </main>
+        
+        <!-- Bottom Safe Area Gradient (optional for mobile feel) -->
+        <div class="fixed bottom-0 w-full max-w-[430px] h-12 bg-gradient-to-t from-background to-transparent pointer-events-none z-40"></div>
+    </div>
+
+</body>
+</html>

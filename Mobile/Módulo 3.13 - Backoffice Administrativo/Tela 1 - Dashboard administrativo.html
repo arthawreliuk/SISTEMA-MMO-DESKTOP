@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Admin Dashboard - MMO Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            gray: '#F8F9FA',
+                            white: '#FFFFFF',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 40px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Hide scrollbar for horizontal scroll areas */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Glassmorphism utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-brand-gray text-brand-navy min-h-screen relative pb-28">
+
+    <!-- Top Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 glass px-6 py-4 flex justify-between items-center shadow-soft">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-blue flex items-center justify-center shadow-md">
+                <i class="fa-solid fa-gamepad text-white text-lg"></i>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-bold text-lg leading-tight tracking-tight">MMO Platform</span>
+                <span class="text-brand-blue text-xs font-semibold uppercase tracking-wider bg-brand-blue/10 px-2 py-0.5 rounded-full inline-block w-max mt-0.5">Admin</span>
+            </div>
+        </div>
+        <button class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center relative border border-gray-100 hover:bg-gray-50 transition-colors">
+            <i class="fa-regular fa-bell text-brand-navy text-lg"></i>
+            <span class="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+        </button>
+    </header>
+
+    <!-- Main Content Wrapper (Mobile First layout: 375x840 intent) -->
+    <main class="pt-24 px-5 max-w-md mx-auto w-full flex flex-col gap-8 pb-10">
+
+        <!-- Executive Overview (KPI Cards) -->
+        <section id="executive-overview" class="flex flex-col gap-3">
+            <h2 class="text-sm font-bold text-gray-500 uppercase tracking-widest px-1">Overview</h2>
+            
+            <div class="flex overflow-x-auto no-scrollbar gap-4 pb-4 -mx-5 px-5 snap-x">
+                <!-- Card 1 -->
+                <div class="snap-center shrink-0 w-[280px] bg-white rounded-[24px] p-6 shadow-soft border border-gray-100/50 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-blue/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                    <div class="flex justify-between items-start mb-4 relative z-10">
+                        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-green-600 bg-green-50 px-2.5 py-1 rounded-full">
+                            <i class="fa-solid fa-arrow-trend-up text-[10px]"></i> +12%
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-sm text-gray-500 font-medium mb-1">Faturamento Hoje</p>
+                        <h3 class="text-3xl font-bold tracking-tight">R$ 2.850</h3>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="snap-center shrink-0 w-[280px] bg-white rounded-[24px] p-6 shadow-soft border border-gray-100/50 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                    <div class="flex justify-between items-start mb-4 relative z-10">
+                        <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 bg-gray-50 px-2.5 py-1 rounded-full">
+                            Hoje
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-sm text-gray-500 font-medium mb-1">Novos Mestres</p>
+                        <div class="flex items-baseline gap-2">
+                            <h3 class="text-3xl font-bold tracking-tight">14</h3>
+                            <span class="text-sm text-gray-400 font-medium">registros</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="snap-center shrink-0 w-[280px] bg-white rounded-[24px] p-6 shadow-soft border border-gray-100/50 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                    <div class="flex justify-between items-start mb-4 relative z-10">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-blue bg-brand-blue/10 px-2.5 py-1 rounded-full">
+                            Ativos
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-sm text-gray-500 font-medium mb-1">Pedidos no Balcão</p>
+                        <h3 class="text-3xl font-bold tracking-tight">42</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Moderation Alert -->
+        <section id="moderation-alert" class="w-full">
+            <div class="bg-orange-50/50 rounded-[20px] p-5 border-2 border-dashed border-orange-300 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-r from-orange-100/20 to-transparent"></div>
+                <div class="relative z-10 flex flex-col gap-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-orange-900 text-lg">3 Denúncias pendentes</h3>
+                            <p class="text-sm text-orange-700/80 mt-0.5 leading-snug">Violações de termos de serviço reportadas nas últimas 2 horas.</p>
+                        </div>
+                    </div>
+                    <button class="w-full bg-brand-blue hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-full transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2">
+                        Resolver Agora
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Activity Stream -->
+        <section id="activity-stream" class="flex flex-col gap-4">
+            <div class="flex justify-between items-end px-1">
+                <h2 class="text-xl font-bold tracking-tight">Atividade Recente</h2>
+                <button class="text-brand-blue text-sm font-semibold hover:underline">Ver tudo</button>
+            </div>
+            
+            <div class="bg-white rounded-[24px] shadow-soft border border-gray-100/50 p-2 flex flex-col">
+                
+                <!-- Event 1 -->
+                <div class="flex gap-4 p-4 hover:bg-gray-50/50 rounded-[16px] transition-colors relative">
+                    <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 shrink-0 z-10 border border-purple-100">
+                        <i class="fa-solid fa-user-plus text-sm"></i>
+                    </div>
+                    <div class="flex-1 pb-1 border-b border-gray-100 last:border-0">
+                        <p class="text-sm font-semibold text-brand-navy leading-snug">Novo Mestre cadastrado em Itapema</p>
+                        <p class="text-xs text-gray-500 mt-1">Agora mesmo • via App</p>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="flex gap-4 p-4 hover:bg-gray-50/50 rounded-[16px] transition-colors relative">
+                    <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600 shrink-0 z-10 border border-green-100">
+                        <i class="fa-solid fa-check text-sm"></i>
+                    </div>
+                    <div class="flex-1 pb-1 border-b border-gray-100 last:border-0">
+                        <p class="text-sm font-semibold text-brand-navy leading-snug">Pagamento de R$ 49,90 confirmado</p>
+                        <p class="text-xs text-gray-500 mt-1">Há 12 min • Stripe</p>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="flex gap-4 p-4 hover:bg-gray-50/50 rounded-[16px] transition-colors relative">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue shrink-0 z-10 border border-blue-100">
+                        <i class="fa-solid fa-pen-to-square text-sm"></i>
+                    </div>
+                    <div class="flex-1 pb-1 border-b border-gray-100 last:border-0">
+                        <p class="text-sm font-semibold text-brand-navy leading-snug">Campanha "Verão" atualizada</p>
+                        <p class="text-xs text-gray-500 mt-1">Há 45 min • Admin: Sarah</p>
+                    </div>
+                </div>
+
+                 <!-- Event 4 -->
+                 <div class="flex gap-4 p-4 hover:bg-gray-50/50 rounded-[16px] transition-colors relative">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 shrink-0 z-10 border border-gray-200">
+                        <i class="fa-solid fa-server text-sm"></i>
+                    </div>
+                    <div class="flex-1 pb-1 border-b border-gray-100 last:border-0">
+                        <p class="text-sm font-semibold text-brand-navy leading-snug">Backup diário concluído</p>
+                        <p class="text-xs text-gray-500 mt-1">Há 2 horas • Sistema</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating Pill Navigation (Admin Mode) -->
+    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-sm">
+        <div class="glass rounded-full px-6 py-3.5 flex justify-between items-center shadow-float border border-white/50">
+            
+            <!-- Dashboard (Active) -->
+            <a href="#" class="flex flex-col items-center gap-1.5 w-14 relative group">
+                <i class="fa-solid fa-chart-pie text-brand-blue text-xl transition-transform group-active:scale-95"></i>
+                <div class="w-1.5 h-1.5 bg-brand-blue rounded-full absolute -bottom-2"></div>
+            </a>
+
+            <!-- Users -->
+            <a href="#" class="flex flex-col items-center gap-1.5 w-14 group">
+                <i class="fa-solid fa-users text-gray-400 hover:text-gray-600 text-xl transition-all group-active:scale-95"></i>
+            </a>
+
+            <!-- Finances -->
+            <a href="#" class="flex flex-col items-center gap-1.5 w-14 group">
+                <i class="fa-solid fa-wallet text-gray-400 hover:text-gray-600 text-xl transition-all group-active:scale-95"></i>
+            </a>
+
+            <!-- Settings -->
+            <a href="#" class="flex flex-col items-center gap-1.5 w-14 group">
+                <i class="fa-solid fa-gear text-gray-400 hover:text-gray-600 text-xl transition-all group-active:scale-95"></i>
+            </a>
+            
+        </div>
+    </nav>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Campaign Edit & Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            blueHover: '#0010a3',
+                            navy: '#1A1A24',
+                            navyLight: '#2A2A35',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            green: '#10B981',
+                            greenLight: '#D1FAE5',
+                            gray: '#6B7280',
+                            grayLight: '#F3F4F6',
+                            border: '#E5E7EB'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 10px 30px -5px rgba(0, 0, 0, 0.03)',
+                        'float': '0 20px 40px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #E5E7EB;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            background-color: #E5E7EB;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body class="bg-brand-bg font-sans pb-32">
+
+    <!-- Mobile Container (375x840 constraint via max-w and mx-auto for desktop viewing, full width on mobile) -->
+    <main class="w-full max-w-[375px] mx-auto min-h-screen bg-brand-bg relative shadow-2xl sm:shadow-none sm:max-w-none md:max-w-[375px] md:mx-auto lg:max-w-[400px]">
+
+        <!-- 1. Top Header -->
+        <header id="header" class="sticky top-0 z-50 bg-brand-card px-5 py-4 flex items-center justify-between shadow-sm rounded-b-2xl mb-6">
+            <button class="text-brand-navy font-semibold text-sm flex items-center gap-2 hover:text-brand-blue transition-colors">
+                <i class="fa-solid fa-chevron-left text-xs"></i>
+                Voltar
+            </button>
+            <h1 class="text-brand-navy font-bold text-base tracking-tight">Editar Campanha</h1>
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-red-50 text-red-500 hover:bg-red-100 transition-colors">
+                <i class="fa-regular fa-trash-can text-sm"></i>
+            </button>
+        </header>
+
+        <div class="px-5 flex flex-col gap-5">
+            <!-- 2. Campaign Hero Snapshot -->
+            <section id="campaign-hero" class="bg-brand-card rounded-3xl p-5 shadow-card border border-brand-border/50">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border border-brand-border">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Campaign Creative Thumbnail" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-greenLight text-brand-green text-[10px] font-bold uppercase tracking-wider">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+                                Ativa
+                            </span>
+                            <span class="text-xs text-brand-gray font-medium">ID: #9842A</span>
+                        </div>
+                        <h2 class="text-lg font-bold text-brand-navy leading-tight">Promoção Tintas - Litoral</h2>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Editable Settings (The Core) -->
+            <section id="editable-settings" class="flex flex-col gap-4">
+                
+                <!-- Status Toggle -->
+                <div class="bg-brand-card rounded-2xl p-5 shadow-soft border border-brand-border/50 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-brand-navy font-bold text-sm">Status da Veiculação</h3>
+                        <p class="text-brand-gray text-xs mt-0.5">Pausar ou ativar anúncios</p>
+                    </div>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="status-toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                        <label for="status-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+
+                <!-- Budget Control -->
+                <div class="bg-brand-card rounded-3xl p-6 shadow-card border border-brand-border/50">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-brand-navy font-bold text-sm">Orçamento Diário</h3>
+                        <i class="fa-solid fa-money-bill-trend-up text-brand-blue opacity-80"></i>
+                    </div>
+                    
+                    <div class="relative mb-4">
+                        <span class="absolute left-5 top-1/2 -translate-y-1/2 text-brand-navy font-bold text-lg">R$</span>
+                        <input type="text" value="50,00" class="w-full bg-brand-grayLight/50 border-2 border-transparent focus:border-brand-blue/30 focus:bg-white rounded-full py-4 pl-14 pr-5 text-2xl font-bold text-brand-navy outline-none transition-all shadow-inner" />
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button class="flex-1 py-3 rounded-full border border-brand-border text-brand-navy font-semibold text-sm hover:border-brand-blue hover:text-brand-blue hover:bg-blue-50/50 transition-all">
+                            + R$ 10
+                        </button>
+                        <button class="flex-1 py-3 rounded-full border border-brand-border text-brand-navy font-semibold text-sm hover:border-brand-blue hover:text-brand-blue hover:bg-blue-50/50 transition-all">
+                            + R$ 50
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Schedule -->
+                <div class="bg-brand-card rounded-3xl p-6 shadow-card border border-brand-border/50">
+                    <h3 class="text-brand-navy font-bold text-sm mb-4">Data de Término</h3>
+                    <div class="relative">
+                        <i class="fa-regular fa-calendar absolute left-5 top-1/2 -translate-y-1/2 text-brand-gray"></i>
+                        <input type="text" value="15 Nov 2026" class="w-full bg-brand-grayLight/50 border-2 border-transparent focus:border-brand-blue/30 focus:bg-white rounded-full py-3.5 pl-12 pr-5 text-sm font-bold text-brand-navy outline-none transition-all cursor-pointer" readonly />
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- 4. Locked Settings (Read-only) -->
+            <section id="locked-settings" class="bg-brand-grayLight/60 rounded-3xl p-6 border border-brand-border/40 mt-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-lock text-brand-gray text-xs"></i>
+                    <h3 class="text-brand-gray font-bold text-xs uppercase tracking-wider">Parâmetros Fixos</h3>
+                </div>
+                
+                <div class="flex flex-col gap-3">
+                    <div class="flex items-center justify-between bg-white/60 rounded-2xl p-3.5 border border-white">
+                        <span class="text-brand-gray text-xs font-medium">Objetivo</span>
+                        <span class="text-brand-navy font-bold text-sm">Alcance</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-white/60 rounded-2xl p-3.5 border border-white">
+                        <span class="text-brand-gray text-xs font-medium">Região</span>
+                        <span class="text-brand-navy font-bold text-sm">Camboriú +15km</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- 5. Primary Action (Pinned Bottom) -->
+        <div id="footer" class="fixed bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-brand-bg via-brand-bg to-transparent z-40 max-w-[375px] mx-auto sm:max-w-none md:max-w-[375px] lg:max-w-[400px]">
+            <button class="w-full bg-brand-blue text-white font-bold text-base py-4 rounded-full shadow-float hover:bg-brand-blueHover hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                Salvar Alterações
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+            </button>
+        </div>
+
+    </main>
+
+</body>
+</html>

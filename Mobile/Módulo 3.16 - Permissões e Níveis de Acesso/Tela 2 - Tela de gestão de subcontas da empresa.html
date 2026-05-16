@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Minha Equipe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        danger: '#E11D48',
+                        navy: '#1A1A24',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 30px -5px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        /* Mobile target constraint styling */
+        .mobile-container {
+            width: 100%;
+            max-width: 430px; /* Max width for mobile feel on desktop */
+            margin: 0 auto;
+            min-height: 100vh;
+            background-color: #F8F9FA;
+            position: relative;
+            padding-bottom: 120px; /* Space for bottom nav */
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-navy font-sans antialiased m-0 p-0 selection:bg-primary selection:text-white">
+
+    <div class="mobile-container flex flex-col relative shadow-2xl sm:shadow-none bg-background">
+        
+        <!-- 1. Top Header -->
+        <header id="top-header" class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-border/50 px-6 py-5 flex items-center justify-between transition-all duration-300">
+            <button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors group">
+                <i class="fa-solid fa-chevron-left text-navy group-hover:-translate-x-1 transition-transform"></i>
+                <span class="sr-only">Voltar</span>
+            </button>
+            <h1 class="text-xl font-bold tracking-tight text-navy">Minha Equipe</h1>
+            <button class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors">
+                <i class="fa-solid fa-plus text-navy text-lg"></i>
+            </button>
+        </header>
+
+        <main class="flex-1 px-5 pt-6 pb-24 flex flex-col gap-6">
+            
+            <!-- 2. Seats Usage Tracker (Hero Card) -->
+            <section id="usage-tracker" class="bg-surface rounded-[24px] p-6 shadow-soft border border-border/30 relative overflow-hidden group">
+                <!-- Subtle background glow -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center">
+                                <i class="fa-solid fa-crown text-amber-500 text-xs"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-navy">Plano Corporativo Gold</span>
+                        </div>
+                        <span class="text-xs font-medium text-muted bg-gray-50 px-2.5 py-1 rounded-full">Ativo</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between items-end mb-2">
+                            <h2 class="text-2xl font-bold text-navy tracking-tight">8/10</h2>
+                            <span class="text-sm font-medium text-muted mb-1">Vagas Utilizadas</span>
+                        </div>
+                        
+                        <!-- Segmented Progress Bar -->
+                        <div class="flex gap-1 h-3 w-full">
+                            <div class="h-full flex-1 bg-primary rounded-l-full"></div>
+                            <div class="h-full flex-1 bg-primary"></div>
+                            <div class="h-full flex-1 bg-primary"></div>
+                            <div class="h-full flex-1 bg-primary"></div>
+                            <div class="h-full flex-1 bg-primary"></div>
+                            <div class="h-full flex-1 bg-primary"></div>
+                            <div class="h-full flex-1 bg-primary"></div>
+                            <div class="h-full flex-1 bg-primary"></div>
+                            <div class="h-full flex-1 bg-gray-100"></div>
+                            <div class="h-full flex-1 bg-gray-100 rounded-r-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 mt-5 p-3 rounded-2xl bg-gray-50/80 border border-gray-100">
+                        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="fa-solid fa-check text-green-600 text-[10px]"></i>
+                        </div>
+                        <p class="text-sm font-medium text-navy">2 vagas disponíveis para novos Mestres</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters / Tabs (Extrapolated for realistic SaaS) -->
+            <div class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                <button class="px-5 py-2.5 rounded-full bg-navy text-white text-sm font-semibold whitespace-nowrap shadow-md">Todos (8)</button>
+                <button class="px-5 py-2.5 rounded-full bg-surface border border-border text-navy text-sm font-medium whitespace-nowrap hover:bg-gray-50 transition-colors">Ativos (7)</button>
+                <button class="px-5 py-2.5 rounded-full bg-surface border border-border text-navy text-sm font-medium whitespace-nowrap hover:bg-gray-50 transition-colors">Pendentes (1)</button>
+            </div>
+
+            <!-- 3. Team List (Sub-accounts) -->
+            <section id="team-list" class="flex flex-col gap-3">
+                
+                <!-- Card 1 (Active Member) -->
+                <div class="bg-surface rounded-[20px] p-4 shadow-sm border border-border/40 flex items-center justify-between group hover:shadow-soft transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Lucas Silva" class="w-12 h-12 rounded-full object-cover border-2 border-surface shadow-sm">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-surface rounded-full"></div>
+                        </div>
+                        <div class="flex flex-col">
+                            <h3 class="text-base font-bold text-navy leading-tight">Lucas Silva</h3>
+                            <div class="mt-1 flex items-center gap-2">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/20">
+                                    <i class="fa-solid fa-screwdriver-wrench mr-1 text-[10px]"></i> Técnico em Campo
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center text-muted hover:bg-gray-50 hover:text-navy transition-colors">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                </div>
+
+                <!-- Active Member 2 (Extrapolated) -->
+                <div class="bg-surface rounded-[20px] p-4 shadow-sm border border-border/40 flex items-center justify-between group hover:shadow-soft transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Mariana Costa" class="w-12 h-12 rounded-full object-cover border-2 border-surface shadow-sm">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-surface rounded-full"></div>
+                        </div>
+                        <div class="flex flex-col">
+                            <h3 class="text-base font-bold text-navy leading-tight">Mariana Costa</h3>
+                            <div class="mt-1 flex items-center gap-2">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-gray-100 text-gray-700 border border-gray-200">
+                                    <i class="fa-solid fa-user-tie mr-1 text-[10px]"></i> Supervisor
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center text-muted hover:bg-gray-50 hover:text-navy transition-colors">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                </div>
+
+                <!-- Card 2 (Pending Invite) -->
+                <div class="bg-surface rounded-[20px] p-4 shadow-sm border border-dashed border-orange-200 flex items-center justify-between bg-orange-50/30">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-orange-100 border-2 border-surface shadow-sm flex items-center justify-center text-orange-500">
+                            <i class="fa-regular fa-envelope text-lg"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <h3 class="text-sm font-semibold text-navy leading-tight truncate max-w-[160px]">joao@empresa.com</h3>
+                            <div class="mt-1 flex items-center gap-2">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-orange-100 text-orange-700 border border-orange-200">
+                                    <i class="fa-regular fa-clock mr-1 text-[10px]"></i> Convite Pendente
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center text-muted hover:bg-orange-100 hover:text-orange-700 transition-colors">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                </div>
+
+                <!-- Active Member 3 (Extrapolated) -->
+                <div class="bg-surface rounded-[20px] p-4 shadow-sm border border-border/40 flex items-center justify-between group hover:shadow-soft transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <div class="w-12 h-12 rounded-full bg-gray-100 border-2 border-surface shadow-sm flex items-center justify-center text-gray-500 font-bold text-lg">
+                                RS
+                            </div>
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-gray-300 border-2 border-surface rounded-full"></div>
+                        </div>
+                        <div class="flex flex-col">
+                            <h3 class="text-base font-bold text-navy leading-tight">Roberto Santos</h3>
+                            <div class="mt-1 flex items-center gap-2">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/20">
+                                    <i class="fa-solid fa-screwdriver-wrench mr-1 text-[10px]"></i> Técnico em Campo
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center text-muted hover:bg-gray-50 hover:text-navy transition-colors">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Floating Bottom Navigation & CTA -->
+        <div class="fixed bottom-0 left-0 right-0 w-full max-w-md mx-auto z-50 pointer-events-none flex flex-col items-center pb-6 px-5 gap-4">
+            
+            <!-- 4. Primary Action (Pinned Bottom) -->
+            <button class="w-full pointer-events-auto bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-full shadow-float flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-[0.98]">
+                <i class="fa-solid fa-user-plus text-lg"></i>
+                <span class="text-base tracking-wide">Convidar Novo Profissional</span>
+            </button>
+
+            <!-- White floating pill-shaped bottom navigation bar -->
+            <nav class="pointer-events-auto w-[90%] bg-surface px-6 py-4 rounded-[32px] shadow-soft border border-border/20 flex items-center justify-between backdrop-blur-xl bg-surface/90">
+                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors w-12">
+                    <i class="fa-solid fa-house text-xl"></i>
+                    <span class="text-[10px] font-semibold">Início</span>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors w-12">
+                    <i class="fa-solid fa-wallet text-xl"></i>
+                    <span class="text-[10px] font-semibold">Saldo</span>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-1 text-primary w-12 relative">
+                    <div class="absolute -top-12 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-float border-4 border-background">
+                        <i class="fa-solid fa-users text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-bold mt-2">Equipe</span>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors w-12">
+                    <i class="fa-solid fa-chart-simple text-xl"></i>
+                    <span class="text-[10px] font-semibold">Relatórios</span>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors w-12">
+                    <i class="fa-solid fa-gear text-xl"></i>
+                    <span class="text-[10px] font-semibold">Ajustes</span>
+                </a>
+            </nav>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="m-0 p-0">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Assinatura - Plano de Crescimento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        'primary-light': '#E6E8FC',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6C757D'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 24px -4px rgba(0, 0, 0, 0.04), 0 12px 32px -8px rgba(0, 0, 0, 0.06)',
+                        'highlight': '0 12px 48px -12px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Mobile-first constraints for the exact 375x840 target */
+        .mobile-container {
+            width: 100%;
+            max-width: 375px;
+            min-height: 840px;
+            margin: 0 auto;
+            position: relative;
+            background-color: #F8F9FA;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="m-0 p-0 min-h-screen bg-background flex justify-center">
+
+    <!-- Mobile Screen Wrapper (Target: 375x840) -->
+    <div class="mobile-container shadow-[0_0_40px_rgba(0,0,0,0.05)] sm:my-8 sm:rounded-[32px] sm:border sm:border-gray-100 sm:overflow-hidden bg-background">
+        
+        <!-- Sticky Header (Glassmorphism) -->
+        <header id="sticky_header" class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100/50 px-5 py-4 flex items-center justify-between">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-50 transition-colors group" aria-label="Voltar">
+                <i class="fa-solid fa-arrow-left text-primary text-lg group-hover:-translate-x-1 transition-transform"></i>
+            </button>
+            <h1 class="text-[17px] font-semibold text-text-main tracking-tight">Assinatura</h1>
+            <div class="w-10"></div> <!-- Spacer for centering -->
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 px-5 pt-8 pb-10 flex flex-col gap-8 relative z-10">
+            
+            <!-- Hero Section -->
+            <section id="hero_onboarding" class="text-center flex flex-col gap-3 px-2">
+                <h2 class="text-[28px] leading-[1.2] font-extrabold text-text-main tracking-tight">
+                    Escolha seu Plano<br>de Crescimento
+                </h2>
+                <p class="text-[15px] leading-[1.5] text-text-muted font-medium px-2">
+                    Selecione o plano ideal para o seu momento e comece a receber pedidos.
+                </p>
+            </section>
+
+            <!-- Pricing Cards Container -->
+            <div class="flex flex-col gap-5 w-full">
+                
+                <!-- Premium Plan Card (Mestre VIP) -->
+                <section id="premium_plan_card" class="relative w-full bg-primary-light rounded-[24px] border-2 border-primary p-6 shadow-highlight flex flex-col gap-6 transition-transform hover:-translate-y-1 duration-300">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-[11px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-md whitespace-nowrap">
+                        <i class="fa-solid fa-star text-[10px] mr-1.5 text-yellow-300"></i> Recomendado
+                    </div>
+
+                    <!-- Header -->
+                    <div class="flex flex-col items-center text-center gap-1.5 pt-2">
+                        <h3 class="text-xl font-bold text-primary">Mestre VIP</h3>
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-[32px] font-extrabold text-text-main tracking-tight">R$ 49,90</span>
+                            <span class="text-sm font-semibold text-text-muted">/mês</span>
+                        </div>
+                    </div>
+
+                    <hr class="border-primary/20">
+
+                    <!-- Benefits List -->
+                    <ul class="flex flex-col gap-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-[10px] text-primary"></i>
+                            </div>
+                            <span class="text-[14px] font-medium text-text-main leading-snug">Destaque prioritário nas buscas de clientes da região.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-[10px] text-primary"></i>
+                            </div>
+                            <span class="text-[14px] font-medium text-text-main leading-snug">Taxa zero nas primeiras 10 transações mensais.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-[10px] text-primary"></i>
+                            </div>
+                            <span class="text-[14px] font-medium text-text-main leading-snug">Suporte premium 24/7 via WhatsApp direto.</span>
+                        </li>
+                    </ul>
+
+                    <!-- CTA Button -->
+                    <button class="w-full h-[56px] bg-primary hover:bg-[#0012b3] text-white rounded-full font-bold text-[16px] shadow-[0_8px_20px_rgba(0,22,220,0.25)] transition-all active:scale-[0.98] mt-2 flex items-center justify-center gap-2">
+                        Assinar Mestre VIP <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </section>
+
+                <!-- Basic Plan Card -->
+                <section id="basic_plan_card" class="w-full bg-white rounded-[24px] p-6 shadow-soft border border-gray-100 flex flex-col gap-6">
+                    
+                    <!-- Header -->
+                    <div class="flex flex-col items-center text-center gap-1.5">
+                        <h3 class="text-lg font-bold text-text-main">Básico</h3>
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-[28px] font-extrabold text-text-main tracking-tight">R$ 0</span>
+                            <span class="text-sm font-medium text-text-muted">/mês</span>
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-100">
+
+                    <!-- Benefits List -->
+                    <ul class="flex flex-col gap-4">
+                        <li class="flex items-start gap-3 opacity-80">
+                            <div class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-[10px] text-gray-400"></i>
+                            </div>
+                            <span class="text-[14px] font-medium text-text-main leading-snug">Perfil padrão na plataforma sem destaque.</span>
+                        </li>
+                        <li class="flex items-start gap-3 opacity-80">
+                            <div class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-[10px] text-gray-400"></i>
+                            </div>
+                            <span class="text-[14px] font-medium text-text-main leading-snug">Taxa padrão de 12% por serviço concluído.</span>
+                        </li>
+                    </ul>
+
+                    <!-- CTA Button -->
+                    <button class="w-full h-[56px] bg-transparent border-2 border-primary text-primary hover:bg-primary/5 rounded-full font-bold text-[16px] transition-all active:scale-[0.98] mt-2">
+                        Começar Grátis
+                    </button>
+                </section>
+
+            </div>
+
+        </main>
+
+        <!-- Footer Legal Links -->
+        <footer id="footer_legal_links" class="w-full pb-8 pt-4 px-6 text-center mt-auto">
+            <a href="#" class="inline-block text-[13px] font-semibold text-text-main hover:text-primary transition-colors underline decoration-gray-300 underline-offset-4">
+                Ver todos os detalhes e taxas aplicáveis.
+            </a>
+        </footer>
+
+    </div>
+
+</body>
+</html>

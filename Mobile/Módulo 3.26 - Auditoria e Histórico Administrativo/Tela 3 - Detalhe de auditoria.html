@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Audit Event Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        softgrey: '#FBFBFC',
+                        bordergrey: '#E5E7EB',
+                        diffred: '#FFF1F2',
+                        diffredtext: '#E11D48',
+                        diffgreen: '#F0FDF4',
+                        diffgreentext: '#16A34A',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 40px -10px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="antialiased min-h-[100dvh] flex flex-col relative pb-24">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-bordergrey/50 px-4 py-4 flex items-center justify-between">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-navy">
+            <i class="fa-solid fa-arrow-left text-lg"></i>
+        </button>
+        <h1 class="text-[17px] font-semibold text-navy">Detalhe do Evento</h1>
+        <div class="w-10"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-4 py-6 space-y-6 max-w-md mx-auto w-full">
+        
+        <!-- Event Hero Card -->
+        <section id="event-hero" class="bg-white rounded-[16px] p-5 shadow-soft border border-bordergrey/40 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-1 h-full bg-trustblue"></div>
+            <div class="flex items-center justify-between mb-3">
+                <span class="font-mono text-[13px] font-bold text-trustblue bg-trustblue/10 px-2.5 py-1 rounded-md tracking-tight">#EVT-909182A</span>
+                <span class="flex items-center gap-1.5 text-xs font-medium text-gray-500">
+                    <i class="fa-regular fa-clock"></i> 17:10:45
+                </span>
+            </div>
+            <h2 class="text-xl font-bold text-navy mb-1 leading-tight">Exclusão de Usuário</h2>
+            <p class="text-sm text-gray-500 font-medium">4 de Maio de 2026</p>
+            
+            <div class="mt-5 pt-4 border-t border-gray-100 flex gap-4">
+                <div class="flex-1">
+                    <p class="text-[11px] text-gray-400 uppercase tracking-wider font-bold mb-1">Status</p>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                        <span class="text-sm font-semibold text-navy">Success</span>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <p class="text-[11px] text-gray-400 uppercase tracking-wider font-bold mb-1">Service</p>
+                    <span class="text-sm font-semibold text-navy">IAM Core</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actor Context Block -->
+        <section id="actor-context" class="bg-softgrey rounded-[16px] p-5 border border-bordergrey/60">
+            <h3 class="text-[13px] uppercase tracking-wider font-bold text-gray-400 mb-4">Actor Context</h3>
+            
+            <div class="flex items-center gap-3 mb-5">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Arthur" class="w-10 h-10 rounded-full border border-gray-200 object-cover">
+                <div>
+                    <p class="text-[15px] font-bold text-navy leading-none mb-1">Arthur Hawreliuk</p>
+                    <p class="text-xs text-gray-500 font-medium bg-gray-200/50 px-2 py-0.5 rounded inline-block">Admin</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 bg-white p-3 rounded-xl border border-gray-100">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500 flex items-center gap-1.5"><i class="fa-solid fa-laptop text-gray-400"></i> Device</span>
+                    <span class="font-mono text-[13px] text-navy font-medium">macOS 14.2</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500 flex items-center gap-1.5"><i class="fa-solid fa-globe text-gray-400"></i> IP Address</span>
+                    <span class="font-mono text-[13px] text-navy font-medium">177.45.xx.xx</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500 flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-gray-400"></i> Location</span>
+                    <span class="text-[13px] text-navy font-medium text-right">Camboriú, SC</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Changes Diff -->
+        <section id="data-changes" class="bg-white rounded-[16px] shadow-soft border border-bordergrey/40 overflow-hidden">
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+                <h3 class="text-[14px] font-bold text-navy flex items-center gap-2">
+                    <i class="fa-solid fa-code-compare text-trustblue"></i> Payload Changes
+                </h3>
+                <span class="text-[11px] font-mono text-gray-500 bg-gray-200 px-2 py-0.5 rounded">JSON</span>
+            </div>
+            
+            <div class="bg-navy p-4 font-mono text-[13px] leading-relaxed overflow-x-auto text-gray-300">
+<pre><code>{
+  "user_id": "usr_88912",
+  "email": "arthur@company.com",
+<div class="bg-diffred/10 text-diffredtext px-2 py-0.5 -mx-4 flex"><span class="select-none mr-4 opacity-50">-</span><span>  "status": "active"</span></div><div class="bg-diffgreen/10 text-diffgreentext px-2 py-0.5 -mx-4 flex"><span class="select-none mr-4 opacity-50">+</span><span>  "status": "deleted"</span></div>  "updated_at": "2026-05-04T17:10:45Z"
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Additional Meta (To fill out the page) -->
+        <section id="technical-meta" class="bg-white rounded-[16px] p-5 shadow-soft border border-bordergrey/40">
+            <h3 class="text-[13px] uppercase tracking-wider font-bold text-gray-400 mb-4">Request Metadata</h3>
+            <div class="space-y-4">
+                <div>
+                    <p class="text-[11px] text-gray-400 font-bold mb-1">User Agent</p>
+                    <p class="font-mono text-[11px] text-navy bg-gray-50 p-2 rounded border border-gray-100 break-all">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36...</p>
+                </div>
+                <div>
+                    <p class="text-[11px] text-gray-400 font-bold mb-1">Session ID</p>
+                    <p class="font-mono text-[12px] text-navy">sess_9a8b7c6d5e4f3g2h1</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating Pill Navigation -->
+    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-full px-6 py-3.5 shadow-float border border-gray-100 flex items-center gap-8 z-50 w-max">
+        <a href="#" class="flex flex-col items-center gap-1 text-trustblue">
+            <i class="fa-solid fa-file-lines text-lg"></i>
+            <span class="text-[10px] font-bold">Details</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
+            <i class="fa-solid fa-clock-rotate-left text-lg"></i>
+            <span class="text-[10px] font-bold">Timeline</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
+            <i class="fa-solid fa-shield-halved text-lg"></i>
+            <span class="text-[10px] font-bold">Policy</span>
+        </a>
+    </nav>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SaaS AI Operational Digest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#F8F9FA',
+                            text: '#1A1A24',
+                            blue: '#0016dc',
+                            purple: '#BF80FF',
+                            purpleLight: 'rgba(191, 128, 255, 0.15)',
+                            grey: '#F3F4F6'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'floating': '0 20px 25px -5px rgba(0, 22, 220, 0.25), 0 8px 10px -6px rgba(0, 22, 220, 0.1)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-text min-h-screen relative pb-24">
+
+    <!-- Mobile Container -->
+    <div class="w-full max-w-[375px] mx-auto min-h-[840px] flex flex-col relative bg-brand-bg shadow-2xl md:shadow-none">
+
+        <!-- 1. Header -->
+        <header id="header" class="w-full bg-white px-5 py-4 flex items-center justify-between sticky top-0 z-40 border-b border-gray-100">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-50 transition-colors">
+                <i class="fa-solid fa-bars text-brand-text text-lg"></i>
+            </button>
+            <div class="flex items-center gap-2">
+                <h1 class="text-[17px] font-semibold text-brand-text tracking-tight">Resumo Executivo</h1>
+                <i class="fa-solid fa-sparkles text-brand-purple text-sm mb-0.5"></i>
+            </div>
+            <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-50 transition-colors">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-8 h-8 rounded-full object-cover border border-gray-200">
+            </button>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 w-full px-5 pt-6 pb-8 flex flex-col gap-6">
+
+            <!-- 2. Date Selector -->
+            <section id="date-selector" class="w-full">
+                <div class="flex items-center gap-2 overflow-x-auto hide-scroll pb-1">
+                    <button class="px-5 py-2.5 rounded-full border border-gray-200 text-[14px] font-medium text-gray-500 whitespace-nowrap transition-all">
+                        Ontem
+                    </button>
+                    <button class="px-5 py-2.5 rounded-full bg-brand-blue text-white text-[14px] font-semibold shadow-md whitespace-nowrap transition-all">
+                        Hoje
+                    </button>
+                    <button class="px-5 py-2.5 rounded-full border border-gray-200 text-[14px] font-medium text-gray-500 whitespace-nowrap transition-all">
+                        Esta Semana
+                    </button>
+                </div>
+            </section>
+
+            <!-- 3. The AI Digest Canvas -->
+            <section id="ai-digest-canvas" class="w-full bg-white rounded-[24px] shadow-soft p-6 flex flex-col gap-6 relative overflow-hidden">
+                <!-- Decorative gradient blob behind card (subtle) -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-purple opacity-5 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="flex flex-col gap-2">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="px-2.5 py-1 bg-brand-purpleLight text-brand-purple text-[11px] font-bold tracking-wider uppercase rounded-md">Insight</span>
+                        <span class="text-[12px] text-gray-400 font-medium">Gerado há 5 min</span>
+                    </div>
+                    <h2 class="text-[22px] font-bold text-brand-text leading-tight">Síntese da Operação: Litoral</h2>
+                </div>
+
+                <div class="text-[16px] leading-[1.6] text-gray-700 font-medium">
+                    Nas últimas 24 horas, observamos um aumento de 
+                    <span class="inline-block bg-brand-purpleLight text-brand-text px-1.5 py-0.5 rounded-[6px] font-semibold transition-colors hover:bg-brand-purple hover:text-white cursor-default">18%</span> 
+                    nos pedidos de serviços de alto padrão em Balneário Camboriú. O ticket médio aprovado subiu para 
+                    <span class="inline-block bg-brand-purpleLight text-brand-text px-1.5 py-0.5 rounded-[6px] font-semibold transition-colors hover:bg-brand-purple hover:text-white cursor-default">R$ 3.200</span>.
+                </div>
+
+                <!-- 4. AI Key Takeaways -->
+                <div class="mt-2 bg-brand-grey rounded-[16px] p-5 border border-gray-100">
+                    <h3 class="text-[14px] font-bold text-brand-text mb-4 flex items-center gap-2">
+                        Pontos de Atenção
+                    </h3>
+                    <ul class="flex flex-col gap-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-sparkles text-brand-purple text-[12px] mt-1 shrink-0"></i>
+                            <span class="text-[14px] leading-relaxed text-gray-600 font-medium">Capacidade de atendimento na região está próxima de 92%. Recomendado realocação preventiva.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-sparkles text-brand-purple text-[12px] mt-1 shrink-0"></i>
+                            <span class="text-[14px] leading-relaxed text-gray-600 font-medium">Pico de demanda previsto entre 18h e 21h hoje com base no histórico recente.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- 5. Bottom Action -->
+        <div id="bottom-action" class="fixed bottom-6 left-0 right-0 w-full max-w-[375px] mx-auto px-5 z-50">
+            <button class="w-full bg-brand-blue text-white h-14 rounded-full font-bold text-[16px] shadow-floating flex items-center justify-center gap-3 transition-transform active:scale-95">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[14px]"></i>
+                Compartilhar Resumo
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>

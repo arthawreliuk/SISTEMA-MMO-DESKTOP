@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        cardbg: '#FFFFFF',
+                        border: '#E5E7EB',
+                        textmuted: '#6B7280'
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'header': '0 2px 10px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="antialiased flex justify-center w-full min-h-screen">
+
+    <!-- Mobile Container Wrapper (375x840 target) -->
+    <div id="app-container" class="w-full max-w-[375px] bg-background min-h-[100dvh] relative shadow-2xl flex flex-col mx-auto overflow-hidden">
+
+        <!-- Global Header -->
+        <header id="global-header" class="bg-cardbg sticky top-0 z-50 shadow-header border-b border-border/50">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between px-4 h-14">
+                <button class="text-navy p-2 -ml-2 rounded-full hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-bars text-[18px]"></i>
+                </button>
+                <h1 class="text-[16px] font-semibold text-navy tracking-tight">Notificações</h1>
+                <button class="text-textmuted p-2 -mr-2 rounded-full hover:bg-gray-50 transition-colors flex items-center justify-center" aria-label="Mark all as read">
+                    <i class="fa-solid fa-check-double text-[16px]"></i>
+                </button>
+            </div>
+
+            <!-- Filter Navigation (Scrollable) -->
+            <div id="filter-navigation" class="px-4 pb-3 pt-1 overflow-x-auto hide-scrollbar flex items-center gap-2">
+                <button class="whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-gray-100 text-textmuted transition-colors hover:bg-gray-200">
+                    Todas
+                </button>
+                <button class="whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-trustblue/10 text-trustblue transition-colors">
+                    Não Lidas (3)
+                </button>
+                <button class="whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-gray-100 text-textmuted transition-colors hover:bg-gray-200">
+                    Financeiro
+                </button>
+                <button class="whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-medium bg-gray-100 text-textmuted transition-colors hover:bg-gray-200">
+                    Ads
+                </button>
+            </div>
+        </header>
+
+        <!-- Notification Feed -->
+        <main id="notification-feed" class="flex-1 p-4 flex flex-col gap-3 overflow-y-auto pb-8">
+
+            <!-- Card 1 (Unread & Actionable) -->
+            <article id="card-1-unread" class="bg-cardbg rounded-[16px] p-4 shadow-card relative border border-border/40">
+                <div class="absolute top-5 left-3 w-2 h-2 rounded-full bg-trustblue shadow-[0_0_8px_rgba(0,22,220,0.6)]"></div>
+                
+                <div class="flex items-start gap-3 pl-3">
+                    <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-gray-100 border border-border/50">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Avatar" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start gap-2 mb-1">
+                            <h2 class="text-[14px] font-semibold text-navy leading-snug">Novo pedido de orçamento em Camboriú</h2>
+                        </div>
+                        <p class="text-[12px] text-textmuted flex items-center gap-1.5">
+                            <i class="fa-regular fa-clock text-[10px]"></i> Há 5 min
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-4 flex items-center gap-2 pl-3">
+                    <button class="flex-1 bg-trustblue hover:bg-blue-700 text-white text-[13px] font-medium py-2 px-4 rounded-full transition-colors text-center">
+                        Ver Pedido
+                    </button>
+                    <button class="flex-1 bg-transparent border border-border text-navy hover:bg-gray-50 text-[13px] font-medium py-2 px-4 rounded-full transition-colors text-center">
+                        Recusar
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 2 (System Alert) -->
+            <article id="card-2-alert" class="bg-cardbg rounded-[16px] p-4 shadow-card border border-border/40">
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-full bg-warning/10 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-triangle-exclamation text-warning text-[16px]"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <h2 class="text-[14px] font-medium text-navy leading-snug mb-1">Sua campanha 'Eletricista' está sem saldo.</h2>
+                        <p class="text-[12px] text-textmuted flex items-center gap-1.5">
+                            <i class="fa-regular fa-clock text-[10px]"></i> Há 1 hora
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3 (Read/Success) -->
+            <article id="card-3-success" class="bg-cardbg rounded-[16px] p-4 shadow-card border border-border/40 opacity-70">
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-check text-success text-[16px]"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <h2 class="text-[14px] font-medium text-navy leading-snug mb-1">Pagamento de R$ 150,00 aprovado.</h2>
+                        <p class="text-[12px] text-textmuted flex items-center gap-1.5">
+                            <i class="fa-regular fa-clock text-[10px]"></i> Há 3 horas
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Additional Card (Read System Alert for density) -->
+            <article id="card-4-system" class="bg-cardbg rounded-[16px] p-4 shadow-card border border-border/40 opacity-70">
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-gear text-textmuted text-[16px]"></i>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <h2 class="text-[14px] font-medium text-navy leading-snug mb-1">Atualização do sistema concluída com sucesso.</h2>
+                        <p class="text-[12px] text-textmuted flex items-center gap-1.5">
+                            <i class="fa-regular fa-clock text-[10px]"></i> Ontem, 14:30
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Service Board Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        background: '#F8F9FA',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E5E7EB',
+                        success: '#10B981',
+                        warning: '#F97316',
+                        warningBg: '#FFFBEB',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 8px 30px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .pulse-dot { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(1.2); } }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        
+        /* Mobile Constraint Wrapper */
+        .mobile-container {
+            width: 100%;
+            max-width: 375px;
+            min-height: 840px;
+            margin: 0 auto;
+            position: relative;
+            background-color: #F8F9FA;
+            overflow-x: hidden;
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+        }
+        @media (min-width: 376px) {
+            body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #e5e7eb; }
+            .mobile-container { border-radius: 40px; height: 840px; overflow-y: auto; margin: 20px 0; border: 8px solid #1A1A24; }
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+<div class="mobile-container pb-[100px]">
+    
+    <!-- 1. Top Header -->
+    <header id="header" class="glass-header sticky top-0 z-50 px-5 py-4 flex items-center justify-between border-b border-borderLight/50">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">
+                M
+            </div>
+            <span class="font-bold text-[18px] tracking-tight">MMO</span>
+            <span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full ml-1 uppercase tracking-wider">Admin</span>
+        </div>
+        <button class="w-10 h-10 rounded-full bg-white shadow-sm border border-borderLight flex items-center justify-center relative">
+            <i class="fa-regular fa-bell text-textMain text-lg"></i>
+            <span class="absolute top-2 right-2.5 w-2 h-2 bg-primary rounded-full border border-white"></span>
+        </button>
+    </header>
+
+    <main class="px-5 pt-6 flex flex-col gap-8">
+        
+        <!-- 2. Executive Overview (KPIs) -->
+        <section id="kpi-section" class="flex flex-col gap-3">
+            <h2 class="text-[14px] font-semibold text-textMuted uppercase tracking-wider pl-1">Visão Geral</h2>
+            <div class="flex gap-3 overflow-x-auto hide-scroll pb-4 -mx-5 px-5 snap-x">
+                
+                <!-- Card 1 -->
+                <div class="min-w-[160px] snap-center bg-cardBg rounded-[20px] p-4 shadow-ambient border border-borderLight/40 flex flex-col gap-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-success pulse-dot"></div>
+                        <span class="text-[12px] font-medium text-textMuted">Ativos Agora</span>
+                    </div>
+                    <span class="text-[24px] font-bold text-textMain">124</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="min-w-[160px] snap-center bg-cardBg rounded-[20px] p-4 shadow-ambient border border-borderLight/40 flex flex-col gap-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-primary/70 text-[12px]"></i>
+                        <span class="text-[12px] font-medium text-textMuted">Propostas Enviadas</span>
+                    </div>
+                    <span class="text-[24px] font-bold text-textMain">512</span>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="min-w-[160px] snap-center bg-cardBg rounded-[20px] p-4 shadow-ambient border border-borderLight/40 flex flex-col gap-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bolt text-warning text-[12px]"></i>
+                        <span class="text-[12px] font-medium text-textMuted">Faturamento Turbo</span>
+                    </div>
+                    <span class="text-[24px] font-bold text-textMain">R$ 850</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. Alerts Section -->
+        <section id="alerts-section">
+            <div class="bg-warningBg rounded-[20px] p-5 border-2 border-dashed border-warning/40 flex flex-col gap-4 relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 w-20 h-20 bg-warning/10 rounded-full blur-xl"></div>
+                
+                <div class="flex items-start gap-3 relative z-10">
+                    <div class="w-8 h-8 rounded-full bg-warning/20 flex items-center justify-center shrink-0 mt-0.5">
+                        <span class="text-warning text-sm">⚠️</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <h3 class="text-[15px] font-bold text-textMain leading-tight">3 Pedidos reportados por usuários.</h3>
+                        <p class="text-[13px] text-textMuted leading-snug">Conteúdo suspeito ou violação de termos detectada.</p>
+                    </div>
+                </div>
+                
+                <button class="w-full bg-primary text-white font-semibold text-[14px] py-3.5 rounded-full shadow-md hover:bg-primary/90 transition-colors relative z-10">
+                    Verificar Denúncias
+                </button>
+            </div>
+        </section>
+
+        <!-- 3. Live Feed -->
+        <section id="live-feed-section" class="flex flex-col gap-4">
+            <div class="flex items-center justify-between pl-1">
+                <h2 class="text-[16px] font-bold text-textMain">Atividade Recente no Balcão</h2>
+                <span class="text-[12px] font-medium text-primary cursor-pointer">Ver Tudo</span>
+            </div>
+            
+            <div class="flex flex-col gap-3">
+                <!-- Feed Item 1 -->
+                <div class="bg-cardBg rounded-[20px] p-4 shadow-ambient border border-borderLight/60 flex flex-col gap-3">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center border border-borderLight">
+                                <i class="fa-solid fa-plug text-textMuted text-[12px]"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[14px] font-bold text-textMain">Novo Pedido: Elétrica</span>
+                                <span class="text-[12px] text-textMuted">Camboriú, SC • Há 2 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mt-1">
+                        <div class="flex items-center gap-1.5 bg-gray-50 px-2.5 py-1 rounded-full border border-borderLight/50">
+                            <i class="fa-solid fa-file-contract text-primary text-[10px]"></i>
+                            <span class="text-[11px] font-semibold text-textMain">2/5 Propostas</span>
+                        </div>
+                        <button class="px-4 py-1.5 rounded-full border border-borderLight text-[12px] font-semibold text-textMain hover:bg-gray-50 transition-colors">
+                            Moderar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Feed Item 2 -->
+                <div class="bg-cardBg rounded-[20px] p-4 shadow-ambient border border-borderLight/60 flex flex-col gap-3">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center border border-borderLight">
+                                <i class="fa-solid fa-wrench text-textMuted text-[12px]"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[14px] font-bold text-textMain">Manutenção Hidráulica</span>
+                                <span class="text-[12px] text-textMuted">Balneário, SC • Há 15 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mt-1">
+                        <div class="flex items-center gap-1.5 bg-gray-50 px-2.5 py-1 rounded-full border border-borderLight/50">
+                            <i class="fa-solid fa-file-contract text-primary text-[10px]"></i>
+                            <span class="text-[11px] font-semibold text-textMain">5/5 Propostas</span>
+                        </div>
+                        <button class="px-4 py-1.5 rounded-full border border-borderLight text-[12px] font-semibold text-textMain hover:bg-gray-50 transition-colors">
+                            Moderar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 5. Floating Pill Navigation -->
+    <div class="absolute bottom-6 left-0 w-full px-5 z-50 pointer-events-none">
+        <nav id="bottom-nav" class="pointer-events-auto bg-white/95 backdrop-blur-xl rounded-full h-[72px] shadow-float border border-white/20 flex items-center justify-between px-6">
+            
+            <!-- Active Item -->
+            <a href="#" class="flex flex-col items-center justify-center w-12 h-12 gap-1 text-primary relative">
+                <i class="fa-solid fa-chart-pie text-[20px]"></i>
+                <div class="w-1.5 h-1.5 rounded-full bg-primary absolute -bottom-1"></div>
+            </a>
+            
+            <!-- Inactive Items -->
+            <a href="#" class="flex flex-col items-center justify-center w-12 h-12 gap-1 text-textMuted hover:text-textMain transition-colors">
+                <i class="fa-solid fa-users text-[20px]"></i>
+            </a>
+            
+            <a href="#" class="flex flex-col items-center justify-center w-12 h-12 gap-1 text-textMuted hover:text-textMain transition-colors">
+                <i class="fa-solid fa-wallet text-[20px]"></i>
+            </a>
+            
+            <a href="#" class="flex flex-col items-center justify-center w-12 h-12 gap-1 text-textMuted hover:text-textMain transition-colors">
+                <i class="fa-solid fa-gear text-[20px]"></i>
+            </a>
+
+        </nav>
+    </div>
+
+</div>
+
+</body>
+</html>

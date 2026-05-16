@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Histórico de Propostas - MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        'primary-light': 'rgba(0, 22, 220, 0.08)',
+                        text: '#1A1A24',
+                        'text-muted': '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'glow': '0 0 15px rgba(0, 22, 220, 0.15)',
+                        'nav': '0 10px 40px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background min-h-[100dvh] flex justify-center pb-24">
+
+    <!-- Mobile Container (Max Width 430px for accurate mobile feel on desktop) -->
+    <div class="w-full max-w-[430px] relative min-h-[100dvh] flex flex-col">
+
+        <!-- 1. Top Header (Glassmorphism) -->
+        <header id="header" class="fixed top-0 w-full max-w-[430px] z-50 glass border-b border-gray-100/50 px-5 pt-12 pb-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">
+                    M
+                </div>
+            </div>
+            <h1 class="text-[15px] font-semibold text-text absolute left-1/2 -translate-x-1/2">Histórico de Propostas</h1>
+            <div class="bg-white shadow-soft rounded-full px-3 py-1.5 flex items-center gap-1.5 border border-gray-100">
+                <i class="fa-solid fa-location-dot text-primary text-xs"></i>
+                <span class="text-[11px] font-medium text-text">Camboriú, SC</span>
+            </div>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main class="flex-1 w-full pt-28 px-5 pb-8 flex flex-col gap-6 overflow-y-auto">
+
+            <!-- 2. Quick Stats Row (Horizontal Scroll) -->
+            <section id="stats-section" class="w-full">
+                <div class="flex gap-3 overflow-x-auto pb-2 -mx-5 px-5 snap-x">
+                    
+                    <!-- Stat Card 1 -->
+                    <div class="min-w-[140px] bg-white rounded-[20px] p-4 shadow-soft border border-gray-50 flex flex-col gap-2 snap-start">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-text-muted">Enviadas</span>
+                            <div class="w-6 h-6 rounded-full bg-gray-50 flex items-center justify-center">
+                                <i class="fa-regular fa-paper-plane text-text-muted text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-text">45</div>
+                        <div class="h-8 w-full" id="chart-sent"></div>
+                    </div>
+
+                    <!-- Stat Card 2 -->
+                    <div class="min-w-[140px] bg-white rounded-[20px] p-4 shadow-soft border border-gray-50 flex flex-col gap-2 snap-start relative overflow-hidden">
+                        <div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+                        <div class="flex items-center justify-between relative z-10">
+                            <span class="text-xs font-medium text-primary">Ganhos</span>
+                            <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                                <i class="fa-solid fa-trophy text-primary text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-primary relative z-10">12</div>
+                        <div class="h-8 w-full relative z-10" id="chart-won"></div>
+                    </div>
+
+                    <!-- Stat Card 3 -->
+                    <div class="min-w-[140px] bg-white rounded-[20px] p-4 shadow-soft border border-gray-50 flex flex-col gap-2 snap-start">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-text-muted">Conversão</span>
+                            <div class="w-6 h-6 rounded-full bg-gray-50 flex items-center justify-center">
+                                <i class="fa-solid fa-chart-pie text-text-muted text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-text">26%</div>
+                        <div class="h-8 w-full" id="chart-conv"></div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 3. Main List -->
+            <section id="opportunities-list" class="w-full flex flex-col gap-4">
+                
+                <div class="flex items-center justify-between mb-1">
+                    <h2 class="text-sm font-semibold text-text">Propostas Recentes</h2>
+                    <button class="text-[11px] font-medium text-primary flex items-center gap-1">
+                        Filtros <i class="fa-solid fa-chevron-down text-[8px]"></i>
+                    </button>
+                </div>
+
+                <!-- Card 1: Ganhada (With Glow) -->
+                <div class="bg-white rounded-[20px] p-4 shadow-glow border border-primary/20 flex flex-col gap-3">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-3">
+                            <div class="w-10 h-10 rounded-[12px] bg-primary/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-bolt text-primary text-sm"></i>
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <h3 class="text-[14px] font-semibold text-text leading-tight">Reparo Elétrico</h3>
+                                <span class="text-[11px] text-text-muted mt-0.5">Residência • 12 Out</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-1.5">
+                            <span class="text-[14px] font-bold text-text">R$ 450</span>
+                            <div class="px-2 py-1 rounded-full bg-primary/10 text-primary text-[9px] font-bold uppercase tracking-wide">
+                                Ganhada
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Em Análise -->
+                <div class="bg-white rounded-[20px] p-4 shadow-soft border border-gray-100 flex flex-col gap-3">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-3">
+                            <div class="w-10 h-10 rounded-[12px] bg-orange-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-paint-roller text-orange-500 text-sm"></i>
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <h3 class="text-[14px] font-semibold text-text leading-tight">Pintura Externa</h3>
+                                <span class="text-[11px] text-text-muted mt-0.5">Comercial • 10 Out</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-1.5">
+                            <span class="text-[14px] font-bold text-text">R$ 2.800</span>
+                            <div class="px-2 py-1 rounded-full bg-orange-50 text-orange-600 text-[9px] font-bold uppercase tracking-wide">
+                                Em Análise
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Perdida -->
+                <div class="bg-white rounded-[20px] p-4 shadow-soft border border-gray-100 flex flex-col gap-3 opacity-75">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-3">
+                            <div class="w-10 h-10 rounded-[12px] bg-gray-100 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-wrench text-text-muted text-sm"></i>
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <h3 class="text-[14px] font-semibold text-text leading-tight">Manutenção Hidráulica</h3>
+                                <span class="text-[11px] text-text-muted mt-0.5">Apartamento • 05 Out</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-1.5">
+                            <span class="text-[14px] font-bold text-text-muted line-through">R$ 180</span>
+                            <div class="px-2 py-1 rounded-full bg-gray-100 text-text-muted text-[9px] font-bold uppercase tracking-wide">
+                                Perdida
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Card 4: Ganhada (With Glow) -->
+                 <div class="bg-white rounded-[20px] p-4 shadow-glow border border-primary/20 flex flex-col gap-3">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-3">
+                            <div class="w-10 h-10 rounded-[12px] bg-primary/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-hammer text-primary text-sm"></i>
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <h3 class="text-[14px] font-semibold text-text leading-tight">Instalação de Móveis</h3>
+                                <span class="text-[11px] text-text-muted mt-0.5">Escritório • 02 Out</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-1.5">
+                            <span class="text-[14px] font-bold text-text">R$ 950</span>
+                            <div class="px-2 py-1 rounded-full bg-primary/10 text-primary text-[9px] font-bold uppercase tracking-wide">
+                                Ganhada
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- 4. Floating Pill Navigation -->
+        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[390px] bg-white/90 backdrop-blur-xl shadow-nav rounded-full px-6 py-4 flex justify-between items-center z-50 border border-white/40">
+            
+            <a href="#" class="flex flex-col items-center gap-1 group w-12">
+                <i class="fa-solid fa-house text-text-muted group-hover:text-text transition-colors text-[18px]"></i>
+            </a>
+
+            <a href="#" class="flex flex-col items-center gap-1 group w-12 relative">
+                <i class="fa-solid fa-briefcase text-primary text-[18px]"></i>
+                <div class="w-1 h-1 rounded-full bg-primary absolute -bottom-2"></div>
+            </a>
+
+            <a href="#" class="flex flex-col items-center gap-1 group w-12 relative">
+                <i class="fa-regular fa-message text-text-muted group-hover:text-text transition-colors text-[18px]"></i>
+                <div class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white"></div>
+            </a>
+
+            <a href="#" class="flex flex-col items-center gap-1 group w-12">
+                <i class="fa-regular fa-user text-text-muted group-hover:text-text transition-colors text-[18px]"></i>
+            </a>
+
+        </nav>
+
+    </div>
+
+    <!-- Charts Initialization Script -->
+    <script>
+        function initializeCharts() {
+            const commonConfig = {responsive: true, displayModeBar: false};
+            const commonLayout = {
+                margin: {t: 0, r: 0, b: 0, l: 0},
+                xaxis: {visible: false},
+                yaxis: {visible: false},
+                showlegend: false,
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                height: 32
+            };
+
+            // Sent Sparkline
+            try {
+                Plotly.newPlot('chart-sent', [{
+                    y: [12, 15, 10, 20, 18, 25, 22],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: {color: '#9CA3AF', width: 2, shape: 'spline', smoothing: 1.3}
+                }], commonLayout, commonConfig);
+            } catch(e) {}
+
+            // Won Sparkline
+            try {
+                Plotly.newPlot('chart-won', [{
+                    y: [2, 3, 1, 4, 3, 6, 5],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: {color: '#0016dc', width: 2.5, shape: 'spline', smoothing: 1.3},
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(0, 22, 220, 0.1)'
+                }], commonLayout, commonConfig);
+            } catch(e) {}
+
+            // Conv Sparkline
+            try {
+                Plotly.newPlot('chart-conv', [{
+                    y: [15, 20, 10, 25, 22, 30, 26],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: {color: '#1A1A24', width: 2, shape: 'spline', smoothing: 1.3}
+                }], commonLayout, commonConfig);
+            } catch(e) {}
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

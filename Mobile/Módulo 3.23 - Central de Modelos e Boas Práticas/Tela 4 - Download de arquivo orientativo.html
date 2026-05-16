@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        success: '#10B981',
+                        primary: '#0016dc',
+                        surface: '#FFFFFF',
+                        background: '#F8F9FA',
+                        academy: '#F0F4FF'
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(16, 185, 129, 0.3)',
+                        'nav': '0 -10px 30px rgba(0,0,0,0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-navy flex justify-center min-h-screen">
+    
+    <!-- Mobile App Container -->
+    <main class="w-full max-w-[430px] bg-background min-h-[100dvh] relative flex flex-col shadow-2xl overflow-hidden">
+        
+        <!-- Content Scroll Area -->
+        <div class="flex-1 overflow-y-auto pb-[140px] px-6 pt-12 flex flex-col gap-8">
+            
+            <!-- 1. Success Hero -->
+            <section id="success-hero" class="flex flex-col items-center text-center mt-6">
+                <div class="relative mb-8">
+                    <!-- Glow effect behind -->
+                    <div class="absolute inset-0 bg-success rounded-full blur-xl opacity-30 scale-150"></div>
+                    <!-- Icon Container -->
+                    <div class="w-24 h-24 bg-surface rounded-full shadow-soft flex items-center justify-center relative z-10 border border-gray-100">
+                        <i class="fa-solid fa-check text-[40px] text-success drop-shadow-sm"></i>
+                    </div>
+                </div>
+                <h1 class="text-[28px] font-extrabold tracking-tight mb-3 text-navy leading-tight">Download<br>Concluído!</h1>
+                <p class="text-gray-500 text-[15px] font-medium max-w-[280px] leading-relaxed">
+                    O <span class="text-navy font-semibold">'Contrato B2B'</span> foi salvo no seu dispositivo com sucesso.
+                </p>
+            </section>
+
+            <!-- 2. "Como usar" Card -->
+            <section id="how-to-use" class="bg-surface rounded-[24px] p-6 shadow-soft border border-gray-50">
+                <h2 class="text-[18px] font-bold mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-primary text-sm"></i>
+                    Próximos Passos
+                </h2>
+                
+                <div class="flex flex-col gap-5">
+                    <!-- Step 1 -->
+                    <div class="flex gap-4 relative pb-5">
+                        <div class="absolute left-[15px] top-8 bottom-0 w-[2px] bg-gray-100 rounded-full"></div>
+                        <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 z-10 border border-gray-100 text-sm font-bold text-navy">1</div>
+                        <div class="pt-1">
+                            <h3 class="font-bold text-[15px] mb-1">Abra o arquivo</h3>
+                            <p class="text-gray-500 text-[13px] leading-relaxed">Localize o documento na sua pasta de downloads e abra em um editor de texto.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="flex gap-4 relative pb-5">
+                        <div class="absolute left-[15px] top-8 bottom-0 w-[2px] bg-gray-100 rounded-full"></div>
+                        <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 z-10 border border-gray-100 text-sm font-bold text-navy">2</div>
+                        <div class="pt-1">
+                            <h3 class="font-bold text-[15px] mb-1">Edite os campos</h3>
+                            <p class="text-gray-500 text-[13px] leading-relaxed">Preencha as áreas destacadas em <span class="text-yellow-600 font-medium bg-yellow-50 px-1 rounded">amarelo</span> com os dados do seu cliente.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex gap-4">
+                        <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center shrink-0 z-10 border border-gray-100 text-sm font-bold text-navy">3</div>
+                        <div class="pt-1">
+                            <h3 class="font-bold text-[15px] mb-1">Exporte em PDF</h3>
+                            <p class="text-gray-500 text-[13px] leading-relaxed">Salve uma cópia final em PDF antes de enviar para garantir a formatação.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Academy Cross-sell -->
+            <section id="academy-cross-sell" class="bg-academy rounded-[20px] p-5 flex items-center justify-between gap-4 border border-blue-100/50">
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i class="fa-solid fa-graduation-cap text-primary text-sm"></i>
+                        <span class="text-[11px] font-bold text-primary uppercase tracking-wider">Academy</span>
+                    </div>
+                    <p class="text-[14px] font-bold text-navy leading-tight pr-2">Quer aprender a fechar este contrato?</p>
+                </div>
+                <button class="bg-white text-primary text-[13px] font-bold px-4 py-2.5 rounded-full shadow-sm whitespace-nowrap active:scale-95 transition-transform border border-blue-50">
+                    Assistir Aula
+                </button>
+            </section>
+            
+        </div>
+
+        <!-- 4. Sticky Bottom Action -->
+        <section id="sticky-bottom" class="absolute bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-md pt-4 pb-8 px-6 shadow-nav border-t border-gray-100 z-50">
+            <button class="w-full bg-primary text-white font-bold text-[16px] py-4 rounded-full mb-4 shadow-lg shadow-primary/30 active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+                <i class="fa-regular fa-folder-open"></i>
+                Abrir Arquivo
+            </button>
+            <div class="text-center">
+                <a href="#" class="text-[14px] font-semibold text-gray-400 hover:text-navy transition-colors">Voltar para a Central</a>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

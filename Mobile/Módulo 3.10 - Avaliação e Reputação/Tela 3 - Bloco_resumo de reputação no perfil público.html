@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        gold: '#F59E0B'
+                    },
+                    boxShadow: {
+                        'soft-ambient': '0 10px 40px -10px rgba(0, 22, 220, 0.08)',
+                        'inner-subtle': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="antialiased w-full flex justify-center bg-[#E5E7EB]">
+
+    <!-- Mobile Wrapper constraint -->
+    <div class="w-full max-w-[375px] min-h-[840px] bg-background relative overflow-hidden shadow-2xl">
+        
+        <!-- Header / Nav -->
+        <header id="header" class="px-6 py-5 flex justify-between items-center bg-background z-10 relative">
+            <button class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-textMain">
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+            <div class="flex space-x-3">
+                <button class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-textMain">
+                    <i class="fa-regular fa-heart text-sm"></i>
+                </button>
+                <button class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-textMain">
+                    <i class="fa-solid fa-share-nodes text-sm"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="w-full pb-24 h-full overflow-y-auto no-scrollbar">
+            
+            <!-- Professional Bio Summary (Preceding section context) -->
+            <section id="professional_bio_summary" class="px-6 pt-2 pb-8 text-center relative">
+                <div class="w-28 h-28 mx-auto rounded-full p-1 bg-white shadow-md relative mb-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Arthur M." class="w-full h-full object-cover rounded-full">
+                    <div class="absolute bottom-1 right-1 w-6 h-6 bg-green-500 border-2 border-white rounded-full"></div>
+                </div>
+                <h1 class="text-2xl font-bold text-textMain mb-1">Arthur Mendes</h1>
+                <p class="text-textMuted text-sm font-medium mb-3">Mestre de Obras Especialista</p>
+                <div class="flex items-center justify-center space-x-2 text-sm text-textMuted">
+                    <i class="fa-solid fa-location-dot text-primary/70"></i>
+                    <span>Balneário Camboriú, SC</span>
+                </div>
+            </section>
+
+            <!-- Reputation Card (Hero Block) -->
+            <section id="reputation_hero_card" class="px-5 mb-8 relative z-20">
+                <div class="bg-card rounded-[24px] p-6 shadow-soft-ambient relative pt-8 border border-gray-100">
+                    
+                    <!-- Trust Badge -->
+                    <div class="absolute -top-4 left-6 bg-white px-4 py-1.5 rounded-full shadow-md border border-gray-50 flex items-center space-x-2">
+                        <span class="text-gold text-sm">🏆</span>
+                        <span class="text-primary font-bold text-xs tracking-wide">Top Mestre Camboriú</span>
+                    </div>
+
+                    <!-- Core Stats Row -->
+                    <div class="flex items-center space-x-5 mb-7">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-[42px] font-extrabold text-textMain leading-none tracking-tight">4.9</span>
+                            <i class="fa-solid fa-star text-primary text-2xl drop-shadow-[0_2px_8px_rgba(0,22,220,0.4)]"></i>
+                        </div>
+                        <div class="flex flex-col justify-center border-l-2 border-gray-100 pl-4 py-1">
+                            <span class="text-textMain font-bold text-lg leading-tight mb-0.5">Excepcional</span>
+                            <span class="text-textMuted text-xs font-medium">128 Avaliações Verificadas</span>
+                        </div>
+                    </div>
+
+                    <!-- Top Qualities (Horizontal Scroll) -->
+                    <div id="top_qualities_scroller" class="mb-7">
+                        <h3 class="text-xs font-bold text-textMuted uppercase tracking-wider mb-3">Destaques dos Clientes</h3>
+                        <div class="flex space-x-2 overflow-x-auto no-scrollbar pb-2 -mx-2 px-2">
+                            <div class="flex-shrink-0 bg-background border border-gray-200 rounded-full px-3 py-1.5 flex items-center space-x-1.5">
+                                <span class="text-sm">✨</span>
+                                <span class="text-xs font-semibold text-textMain">Impecável na Limpeza</span>
+                            </div>
+                            <div class="flex-shrink-0 bg-background border border-gray-200 rounded-full px-3 py-1.5 flex items-center space-x-1.5">
+                                <span class="text-sm">⏱️</span>
+                                <span class="text-xs font-semibold text-textMain">Super Pontual</span>
+                            </div>
+                            <div class="flex-shrink-0 bg-background border border-gray-200 rounded-full px-3 py-1.5 flex items-center space-x-1.5">
+                                <span class="text-sm">💰</span>
+                                <span class="text-xs font-semibold text-textMain">Preço Justo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Highlight Review -->
+                    <div id="featured_review_inner" class="bg-background rounded-[16px] p-4 shadow-inner-subtle border border-gray-50 mb-5 relative overflow-hidden">
+                        <!-- Decorative quote mark -->
+                        <i class="fa-solid fa-quote-left text-gray-200 text-4xl absolute -top-1 -right-1 opacity-50"></i>
+                        
+                        <div class="flex justify-between items-start mb-3 relative z-10">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Client" class="w-8 h-8 rounded-full object-cover">
+                                <div>
+                                    <h4 class="text-sm font-bold text-textMain leading-none">Marina Silva</h4>
+                                    <span class="text-[10px] text-textMuted">Há 2 dias</span>
+                                </div>
+                            </div>
+                            <div class="flex space-x-0.5">
+                                <i class="fa-solid fa-star text-gold text-[10px]"></i>
+                                <i class="fa-solid fa-star text-gold text-[10px]"></i>
+                                <i class="fa-solid fa-star text-gold text-[10px]"></i>
+                                <i class="fa-solid fa-star text-gold text-[10px]"></i>
+                                <i class="fa-solid fa-star text-gold text-[10px]"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-textMain/90 font-medium leading-relaxed relative z-10">
+                            "Arthur salvou minha obra no domingo. Recomendo de olhos fechados!"
+                        </p>
+                    </div>
+
+                    <!-- Bottom Action -->
+                    <button id="view_all_reviews_action" class="w-full py-3.5 rounded-full bg-primary/5 hover:bg-primary/10 transition-colors flex justify-center items-center space-x-2 group">
+                        <span class="text-primary font-bold text-sm">Ler todas as 128 avaliações</span>
+                        <i class="fa-solid fa-arrow-right text-primary text-sm group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Example dummy section to fill out the page structure based on reference rhythm -->
+            <section class="px-6 mb-8">
+                <h2 class="text-lg font-bold text-textMain mb-4">Serviços Populares</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white rounded-[16px] p-4 shadow-sm border border-gray-100 flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-hammer text-primary text-lg"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-textMain">Alvenaria</h4>
+                        <span class="text-xs text-textMuted mt-1">A partir de R$150</span>
+                    </div>
+                    <div class="bg-white rounded-[16px] p-4 shadow-sm border border-gray-100 flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-paint-roller text-primary text-lg"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-textMain">Pintura</h4>
+                        <span class="text-xs text-textMuted mt-1">A partir de R$80</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Bottom Navigation Bar (App Chrome) -->
+        <nav class="absolute bottom-0 w-full bg-white border-t border-gray-100 px-6 py-4 flex justify-between items-center z-30 pb-6">
+            <button class="flex flex-col items-center space-y-1 text-primary">
+                <i class="fa-solid fa-house text-xl"></i>
+                <span class="text-[10px] font-semibold">Início</span>
+            </button>
+            <button class="flex flex-col items-center space-y-1 text-textMuted hover:text-textMain transition-colors">
+                <i class="fa-regular fa-calendar text-xl"></i>
+                <span class="text-[10px] font-semibold">Agenda</span>
+            </button>
+            <button class="w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center -mt-6 hover:scale-105 transition-transform">
+                <i class="fa-solid fa-plus text-xl"></i>
+            </button>
+            <button class="flex flex-col items-center space-y-1 text-textMuted hover:text-textMain transition-colors">
+                <i class="fa-regular fa-message text-xl"></i>
+                <span class="text-[10px] font-semibold">Chat</span>
+            </button>
+            <button class="flex flex-col items-center space-y-1 text-textMuted hover:text-textMain transition-colors">
+                <i class="fa-regular fa-user text-xl"></i>
+                <span class="text-[10px] font-semibold">Perfil</span>
+            </button>
+        </nav>
+
+    </div>
+</body>
+</html>

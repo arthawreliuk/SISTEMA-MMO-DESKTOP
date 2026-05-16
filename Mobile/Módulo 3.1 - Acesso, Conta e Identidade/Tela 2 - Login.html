@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Login - MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        'primary-hover': '#0011b3',
+                        surface: '#FFFFFF',
+                        background: '#F8F9FA',
+                        'text-main': '#111827',
+                        'text-muted': '#6B7280',
+                        border: '#E5E7EB',
+                        'input-bg': '#F9FAFB'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'input': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #FFFFFF;
+        }
+        /* Mobile specific strict sizing */
+        .mobile-container {
+            width: 100%;
+            max-width: 430px; /* Max width for large phones, but targets 375px */
+            min-height: 100vh;
+            min-height: 100dvh;
+            margin: 0 auto;
+            position: relative;
+            background-color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Input autofill styling fix */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+        }
+    </style>
+</head>
+<body class="text-text-main font-sans bg-background md:py-8">
+
+    <!-- Main Mobile Container -->
+    <main id="app-container" class="mobile-container md:shadow-2xl md:rounded-[32px] md:overflow-hidden md:border md:border-border">
+        
+        <!-- Inner Wrapper for padding (Gutters) -->
+        <div class="flex-1 flex flex-col px-6 py-8 md:px-8">
+            
+            <!-- 1. Top & Branding -->
+            <header id="header" class="flex items-center justify-between w-full mb-10">
+                <button class="text-text-muted hover:text-text-main transition-colors flex items-center gap-2 text-sm font-medium group">
+                    <i class="fa-solid fa-xmark text-lg group-hover:-rotate-90 transition-transform duration-300"></i>
+                    <span>Fechar</span>
+                </button>
+                
+                <!-- MMO Logo -->
+                <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+                    <div class="w-10 h-10 bg-text-main text-white rounded-xl flex items-center justify-center font-bold text-xl tracking-tighter shadow-soft">
+                        M
+                    </div>
+                </div>
+                
+                <!-- Empty div for flex balance -->
+                <div class="w-[70px]"></div>
+            </header>
+
+            <!-- 2. Welcome Hero -->
+            <section id="welcome-hero" class="mb-10 text-center flex flex-col items-center">
+                <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6 shadow-glow">
+                    <i class="fa-solid fa-arrow-right-to-bracket text-2xl"></i>
+                </div>
+                <h1 class="text-[32px] leading-tight font-extrabold tracking-tight mb-3 text-text-main">
+                    Bem-vindo de volta.
+                </h1>
+                <p class="text-text-muted text-base px-2 leading-relaxed">
+                    Entre para gerenciar seus serviços ou buscar profissionais.
+                </p>
+            </section>
+
+            <!-- 3. Social Login -->
+            <section id="social-login" class="flex flex-col gap-3 mb-8 w-full">
+                <button class="w-full h-[52px] flex items-center justify-center gap-3 bg-white border border-border rounded-full text-text-main font-semibold text-[15px] hover:bg-gray-50 hover:border-gray-300 transition-all shadow-input active:scale-[0.98]">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-5 h-5">
+                    Continuar com Google
+                </button>
+                
+                <button class="w-full h-[52px] flex items-center justify-center gap-3 bg-white border border-border rounded-full text-text-main font-semibold text-[15px] hover:bg-gray-50 hover:border-gray-300 transition-all shadow-input active:scale-[0.98]">
+                    <i class="fa-brands fa-apple text-[22px] mb-[2px]"></i>
+                    Continuar com Apple
+                </button>
+            </section>
+
+            <!-- Divider -->
+            <div class="flex items-center w-full mb-8 opacity-70">
+                <div class="flex-1 h-px bg-border"></div>
+                <span class="px-4 text-xs font-medium text-text-muted uppercase tracking-wider">ou entre com seu e-mail</span>
+                <div class="flex-1 h-px bg-border"></div>
+            </div>
+
+            <!-- 4. Email / Password Form -->
+            <form id="login-form" class="flex flex-col gap-5 w-full mb-8">
+                
+                <!-- Email Input -->
+                <div class="flex flex-col gap-2">
+                    <label for="email" class="text-sm font-semibold text-text-main ml-1">E-mail</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-muted">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                        <input type="email" id="email" placeholder="seunome@email.com" 
+                            class="w-full h-[56px] pl-11 pr-4 bg-white border border-border rounded-full text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-input placeholder-gray-400">
+                    </div>
+                </div>
+
+                <!-- Password Input -->
+                <div class="flex flex-col gap-2">
+                    <label for="password" class="text-sm font-semibold text-text-main ml-1">Senha</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-muted">
+                            <i class="fa-solid fa-lock text-sm"></i>
+                        </div>
+                        <input type="password" id="password" placeholder="••••••••" 
+                            class="w-full h-[56px] pl-11 pr-12 bg-white border border-border rounded-full text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-input tracking-[0.2em] placeholder:tracking-normal placeholder-gray-400 font-medium">
+                        <button type="button" class="absolute inset-y-0 right-0 pr-4 flex items-center text-text-muted hover:text-text-main transition-colors">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Forgot Password Link -->
+                <div class="flex justify-end mt-[-4px]">
+                    <a href="#" class="text-sm font-semibold text-primary hover:text-primary-hover transition-colors">
+                        Esqueci minha senha
+                    </a>
+                </div>
+
+                <!-- 5. Primary Action -->
+                <button type="submit" class="w-full h-[56px] mt-2 bg-primary hover:bg-primary-hover text-white rounded-full font-bold textbase transition-all shadow-[0_8px_20px_-6px_rgba(0,22,220,0.5)] active:scale-[0.98] flex items-center justify-center gap-2">
+                    Entrar na Conta
+                    <i class="fa-solid fa-arrow-right text-sm ml-1"></i>
+                </button>
+            </form>
+
+            <!-- Spacer to push footer to bottom if needed -->
+            <div class="flex-1"></div>
+
+            <!-- 6. Footer Switch -->
+            <footer id="footer" class="mt-auto pt-6 pb-2 text-center w-full border-t border-border/50">
+                <p class="text-text-muted text-[15px]">
+                    Ainda não tem conta? 
+                    <a href="#" class="font-bold text-primary hover:text-primary-hover transition-colors ml-1">
+                        Cadastre-se
+                    </a>
+                </p>
+            </footer>
+
+        </div>
+    </main>
+
+</body>
+</html>

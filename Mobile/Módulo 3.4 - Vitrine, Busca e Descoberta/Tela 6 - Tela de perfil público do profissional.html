@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Professional Public Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            card: '#FFFFFF',
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 8px 32px -4px rgba(26, 26, 36, 0.08)',
+                        'nav': '0 -4px 32px -4px rgba(26, 26, 36, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Hide scrollbar for horizontal scrolling */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-header {
+            background: rgba(248, 249, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="pb-32">
+
+    <!-- Mobile Wrapper -->
+    <div class="w-full max-w-[375px] mx-auto min-h-screen bg-brand-offwhite relative overflow-hidden flex flex-col">
+
+        <!-- 1. Top Header -->
+        <header id="header" class="glass-header fixed top-0 w-full max-w-[375px] z-50 px-6 py-4 flex items-center justify-between border-b border-gray-100/50">
+            <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-brand-blue transition-transform active:scale-95">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+            <div class="flex items-center gap-3">
+                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-brand-navy transition-transform active:scale-95">
+                    <i class="fa-regular fa-heart text-lg"></i>
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-brand-navy transition-transform active:scale-95">
+                    <i class="fa-solid fa-arrow-up-from-bracket text-lg"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Scrollable Area -->
+        <main class="flex-1 pt-24 px-5 flex flex-col gap-8 pb-10">
+
+            <!-- 2. Professional Identity Card -->
+            <section id="identity-card" class="bg-white rounded-[24px] p-6 shadow-ambient flex flex-col items-center text-center relative mt-8">
+                <div class="relative -mt-16 mb-4">
+                    <div class="w-28 h-28 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Professional Avatar" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-brand-blue text-white w-10 h-10 flex items-center justify-center rounded-full border-2 border-white shadow-sm" title="Mestre Verificado">
+                        <i class="fa-solid fa-check text-sm"></i>
+                    </div>
+                </div>
+                
+                <h1 class="text-2xl font-bold text-brand-navy mb-1 tracking-tight">Carlos Mendes</h1>
+                <p class="text-sm text-gray-500 font-medium mb-3">Mestre em Climatização</p>
+                
+                <div class="flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-full">
+                    <div class="flex text-amber-400 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="text-sm font-bold text-brand-navy">5.0</span>
+                    <span class="text-xs text-gray-500 font-medium">(142 avaliações)</span>
+                </div>
+            </section>
+
+            <!-- 3. The "Trust Row" -->
+            <section id="trust-row" class="-mx-5 px-5">
+                <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-4 snap-x">
+                    <div class="snap-center shrink-0 w-[160px] bg-white rounded-[16px] p-4 shadow-sm border border-gray-100 flex flex-col gap-2">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center mb-1">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <p class="text-xs font-semibold text-brand-navy leading-tight">Atende Camboriú e região</p>
+                    </div>
+                    <div class="snap-center shrink-0 w-[160px] bg-white rounded-[16px] p-4 shadow-sm border border-gray-100 flex flex-col gap-2">
+                        <div class="w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-1">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                        <p class="text-xs font-semibold text-brand-navy leading-tight">Responde em 5 min</p>
+                    </div>
+                    <div class="snap-center shrink-0 w-[160px] bg-white rounded-[16px] p-4 shadow-sm border border-gray-100 flex flex-col gap-2">
+                        <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mb-1">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <p class="text-xs font-semibold text-brand-navy leading-tight">Garantia MMO Protegida</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Portfolio Showcase -->
+            <section id="portfolio-showcase" class="flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-bold text-brand-navy">Casos de Sucesso</h2>
+                    <button class="text-sm text-brand-blue font-semibold">Ver todos</button>
+                </div>
+                
+                <div class="-mx-5 px-5 flex gap-4 overflow-x-auto hide-scrollbar pb-2 snap-x">
+                    <!-- Project 1 -->
+                    <div class="snap-center shrink-0 w-[240px] relative rounded-[16px] overflow-hidden shadow-sm">
+                        <div class="h-[160px] bg-gray-200 w-full relative">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/598ab0e698-f97f32bdb8052d7e977b.png" alt="split screen showing a dirty air conditioner on the left and a pristine clean air conditioner on the right, professional home service context" />
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-bold text-brand-navy uppercase tracking-wider">
+                                Antes/Depois
+                            </div>
+                        </div>
+                        <div class="bg-white p-3 border-x border-b border-gray-100 rounded-b-[16px]">
+                            <p class="text-sm font-semibold text-brand-navy truncate">Limpeza Profunda Split 12k</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="snap-center shrink-0 w-[240px] relative rounded-[16px] overflow-hidden shadow-sm">
+                        <div class="h-[160px] bg-gray-200 w-full relative">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7176b5e686-ff7b9cad8c694b3a1a39.png" alt="modern clean residential air conditioning unit installed perfectly on a white wall, interior design, bright lighting" />
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-bold text-brand-navy uppercase tracking-wider">
+                                Instalação Nova
+                            </div>
+                        </div>
+                        <div class="bg-white p-3 border-x border-b border-gray-100 rounded-b-[16px]">
+                            <p class="text-sm font-semibold text-brand-navy truncate">Instalação Inverter LG</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Customer Reviews -->
+            <section id="customer-reviews" class="flex flex-col gap-4">
+                <h2 class="text-lg font-bold text-brand-navy">O que dizem os clientes</h2>
+                
+                <div class="flex flex-col gap-4">
+                    <!-- Review 1 -->
+                    <div class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-50 flex flex-col gap-3">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 overflow-hidden">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Reviewer" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-brand-navy">Mariana Silva</p>
+                                    <p class="text-xs text-gray-500">Há 2 dias</p>
+                                </div>
+                            </div>
+                            <div class="flex text-amber-400 text-[10px] gap-0.5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            "Excelente profissional! Chegou no horário, foi super educado e resolveu o problema do meu ar condicionado que estava pingando. Recomendo muito!"
+                        </p>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-50 flex flex-col gap-3">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 overflow-hidden">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Reviewer" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-brand-navy">Roberto Almeida</p>
+                                    <p class="text-xs text-gray-500">Há 1 semana</p>
+                                </div>
+                            </div>
+                            <div class="flex text-amber-400 text-[10px] gap-0.5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            "Trabalho impecável e muito limpo. Fez a instalação de duas máquinas na minha clínica sem fazer bagunça."
+                        </p>
+                    </div>
+                </div>
+                
+                <button class="w-full py-3 mt-2 rounded-xl border-2 border-gray-200 text-brand-navy font-bold text-sm transition-colors active:bg-gray-50">
+                    Ver todas 142 avaliações
+                </button>
+            </section>
+
+        </main>
+
+        <!-- 6. Floating Primary Action -->
+        <div class="fixed bottom-[88px] w-full max-w-[375px] px-5 z-40">
+            <button class="w-full bg-brand-blue text-white py-4 rounded-full font-bold text-base shadow-[0_8px_24px_-6px_rgba(0,22,220,0.4)] transition-transform active:scale-[0.98] flex items-center justify-center gap-2">
+                <span>Solicitar Orçamento Grátis</span>
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+            </button>
+        </div>
+
+        <!-- 7. Floating Pill Navigation -->
+        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[335px] bg-white rounded-full shadow-nav z-50 px-6 py-3 border border-gray-100/50 flex justify-between items-center">
+            
+            <!-- Home (Active) -->
+            <a href="#" class="flex flex-col items-center gap-1 text-brand-blue relative w-12">
+                <i class="fa-solid fa-house text-xl"></i>
+                <div class="w-1 h-1 bg-brand-blue rounded-full absolute -bottom-2"></div>
+            </a>
+            
+            <!-- Orders -->
+            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors w-12">
+                <i class="fa-solid fa-clipboard-list text-xl"></i>
+            </a>
+            
+            <!-- Messages -->
+            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors w-12 relative">
+                <i class="fa-regular fa-message text-xl"></i>
+                <div class="absolute top-0 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></div>
+            </a>
+            
+            <!-- Profile -->
+            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors w-12">
+                <i class="fa-regular fa-user text-xl"></i>
+            </a>
+            
+        </nav>
+
+    </div>
+
+</body>
+</html>

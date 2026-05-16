@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Detalhes do Pedido</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        tagBg: '#F3F4F6',
+                        tagText: '#4B5563',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'nav': '0 -5px 25px -5px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-textMain min-h-[100dvh] flex flex-col relative pb-32">
+
+    <!-- Top Header -->
+    <header id="header" class="glass-header fixed top-0 left-0 right-0 z-50 px-5 pt-12 pb-4 flex items-center justify-between border-b border-gray-100/50">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-primary">
+            <i class="fa-solid fa-chevron-left text-lg"></i>
+        </button>
+        <h1 class="text-[17px] font-bold text-textMain tracking-tight">Detalhes do Pedido</h1>
+        <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-textMain">
+            <i class="fa-solid fa-arrow-up-right-from-square text-[15px]"></i>
+        </button>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-1 px-5 pt-28 pb-10 flex flex-col gap-6">
+        
+        <!-- Main Request Card -->
+        <section id="request-hero" class="bg-cardBg rounded-[24px] p-6 shadow-ambient relative z-10 -mt-2">
+            <h2 class="text-2xl font-extrabold leading-tight mb-4 text-textMain">Troca de Disjuntor Principal</h2>
+            
+            <div class="flex flex-wrap gap-2">
+                <span class="px-4 py-2 bg-tagBg text-tagText rounded-full text-[13px] font-semibold tracking-wide">Instalação Elétrica</span>
+                <span class="px-4 py-2 bg-red-50 text-red-600 rounded-full text-[13px] font-bold tracking-wide flex items-center gap-1.5">
+                    <i class="fa-solid fa-bolt text-xs"></i> Urgente
+                </span>
+                <span class="px-4 py-2 bg-blue-50 text-primary rounded-full text-[13px] font-semibold tracking-wide flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-xs"></i> 2.5 km - Camboriú
+                </span>
+            </div>
+        </section>
+
+        <!-- Client Info Snippet -->
+        <section id="client-snippet" class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 overflow-hidden">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Client Avatar" class="w-full h-full object-cover opacity-80 filter grayscale blur-[1px]">
+                </div>
+                <div>
+                    <h3 class="text-[15px] font-bold text-textMain">João A.</h3>
+                    <p class="text-[13px] text-textMuted font-medium flex items-center gap-1.5 mt-0.5">
+                        <i class="fa-solid fa-shield-check text-green-500"></i> Cliente verificado
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1 bg-yellow-50 px-3 py-1.5 rounded-full">
+                <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                <span class="text-[13px] font-bold text-yellow-700">4.9</span>
+            </div>
+        </section>
+
+        <!-- Problem Description Area -->
+        <section id="problem-description" class="flex flex-col gap-4 mt-2">
+            <h3 class="text-[18px] font-bold text-textMain px-1">O que o cliente precisa</h3>
+            
+            <div class="bg-white rounded-[20px] p-5 shadow-sm border border-gray-100">
+                <p class="text-[15px] leading-relaxed text-textMuted font-medium">
+                    Olá, preciso de um eletricista para trocar o disjuntor principal do meu quadro de energia. Ele está desarmando frequentemente quando ligo o chuveiro e o ar condicionado ao mesmo tempo. O quadro é antigo e acho que precisa de uma revisão geral também. Tenho urgência pois está atrapalhando a rotina da casa.
+                </p>
+            </div>
+
+            <!-- Photos Gallery -->
+            <div class="mt-2">
+                <div class="flex overflow-x-auto hide-scroll gap-3 pb-4 px-1 snap-x">
+                    <div class="min-w-[240px] h-[160px] rounded-[16px] overflow-hidden snap-center relative shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop" alt="Electrical Panel 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="min-w-[240px] h-[160px] rounded-[16px] overflow-hidden snap-center relative shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b6?q=80&w=2069&auto=format&fit=crop" alt="Electrical Panel 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="min-w-[240px] h-[160px] rounded-[16px] overflow-hidden snap-center relative shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop" alt="Electrical Panel 3" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Sticky Action Footer -->
+    <footer id="action-footer" class="fixed bottom-[90px] left-0 right-0 px-5 z-40 pb-4 pt-6 bg-gradient-to-t from-background via-background to-transparent pointer-events-none">
+        <div class="flex flex-col gap-3 pointer-events-auto max-w-[500px] mx-auto">
+            <button class="w-full bg-primary text-white font-bold text-[16px] py-4 rounded-full shadow-lg shadow-primary/30 active:scale-[0.98] transition-transform">
+                Enviar Meu Orçamento
+            </button>
+            <button class="w-full text-textMuted font-semibold text-[14px] py-2 active:opacity-70 transition-opacity">
+                Ignorar oportunidade
+            </button>
+        </div>
+    </footer>
+
+    <!-- Floating Pill Navigation -->
+    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white rounded-full px-6 py-3.5 shadow-nav border border-gray-100 flex items-center gap-8 w-max">
+        <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-textMain transition-colors">
+            <i class="fa-solid fa-house text-[18px]"></i>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-1 text-primary relative">
+            <i class="fa-solid fa-file-lines text-[18px]"></i>
+            <div class="w-1 h-1 bg-primary rounded-full absolute -bottom-2"></div>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-textMain transition-colors relative">
+            <i class="fa-solid fa-comment-dots text-[18px]"></i>
+            <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></div>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-textMain transition-colors">
+            <i class="fa-regular fa-user text-[18px]"></i>
+        </a>
+    </nav>
+
+</body>
+</html>

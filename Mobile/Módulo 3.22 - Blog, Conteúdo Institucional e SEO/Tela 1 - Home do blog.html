@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Editorial Blog Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        bodyBg: '#F8F9FA',
+                        trustBlue: '#0016dc',
+                        trustBlueLight: '#F0F4FF',
+                        deepNavy: '#1A1A24',
+                        mutedGray: '#6B7280',
+                        borderLight: '#E5E7EB'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 40px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="relative min-h-screen pb-[90px]">
+
+    <!-- Editorial Top Header -->
+    <header id="header" class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-borderLight/50 px-5 py-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-trustBlue rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-bolt text-white text-sm"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight text-deepNavy">MMO Blog</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="text-deepNavy hover:text-trustBlue transition-colors">
+                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+            </button>
+            <button class="px-4 py-2 border border-borderLight rounded-full text-sm font-semibold text-deepNavy hover:bg-bodyBg transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-bars text-xs"></i>
+                Categorias
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full max-w-[430px] mx-auto px-5 pt-6 pb-8 flex flex-col gap-8">
+
+        <!-- Featured Hero Article -->
+        <section id="hero-article" class="w-full">
+            <article class="bg-white rounded-[20px] shadow-soft overflow-hidden border border-borderLight/40 flex flex-col group cursor-pointer">
+                <div class="w-full h-[220px] relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1000&auto=format&fit=crop" alt="Business strategy meeting" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+                <div class="p-6 flex flex-col gap-4">
+                    <div class="flex items-center">
+                        <span class="px-3 py-1 bg-trustBlueLight text-trustBlue text-xs font-bold rounded-full uppercase tracking-wider">Gestão</span>
+                    </div>
+                    <h1 class="text-[26px] leading-[1.2] font-extrabold text-deepNavy tracking-tight">
+                        Como precificar serviços de grande porte em 2026
+                    </h1>
+                    <div class="flex items-center gap-3 mt-1">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Arthur" class="w-6 h-6 rounded-full object-cover" />
+                        <p class="text-sm font-medium text-mutedGray">
+                            Por <span class="text-deepNavy">Arthur</span> • 5 min de leitura
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Category Filter Strip -->
+        <section id="category-filters" class="w-full -mx-5 px-5">
+            <div class="flex items-center gap-3 overflow-x-auto hide-scrollbar pb-2 pt-1">
+                <button class="shrink-0 px-5 py-2.5 bg-trustBlue text-white rounded-full text-sm font-bold shadow-md">Todos</button>
+                <button class="shrink-0 px-5 py-2.5 bg-transparent border border-trustBlue/20 text-deepNavy hover:border-trustBlue hover:text-trustBlue rounded-full text-sm font-semibold transition-all">Marketing</button>
+                <button class="shrink-0 px-5 py-2.5 bg-transparent border border-trustBlue/20 text-deepNavy hover:border-trustBlue hover:text-trustBlue rounded-full text-sm font-semibold transition-all">Obras</button>
+                <button class="shrink-0 px-5 py-2.5 bg-transparent border border-trustBlue/20 text-deepNavy hover:border-trustBlue hover:text-trustBlue rounded-full text-sm font-semibold transition-all">Financeiro</button>
+                <button class="shrink-0 px-5 py-2.5 bg-transparent border border-trustBlue/20 text-deepNavy hover:border-trustBlue hover:text-trustBlue rounded-full text-sm font-semibold transition-all">Tecnologia</button>
+            </div>
+        </section>
+
+        <!-- Recent Articles Feed -->
+        <section id="recent-articles" class="w-full flex flex-col gap-4">
+            <div class="flex items-center justify-between mb-2">
+                <h2 class="text-lg font-bold text-deepNavy">Recentes</h2>
+                <button class="text-sm font-semibold text-trustBlue hover:underline">Ver todos</button>
+            </div>
+
+            <!-- Article Card 1 -->
+            <article class="bg-white rounded-[16px] p-3 shadow-soft border border-borderLight/40 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow">
+                <div class="w-[80px] h-[80px] shrink-0 rounded-[12px] overflow-hidden bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=400&auto=format&fit=crop" alt="Data analytics" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex flex-col justify-center flex-1 py-1 pr-2">
+                    <span class="text-[10px] font-bold text-trustBlue uppercase tracking-wider mb-1">Financeiro</span>
+                    <h3 class="text-[15px] font-bold leading-tight text-deepNavy mb-2 line-clamp-2">Os novos KPIs essenciais para SaaS B2B</h3>
+                    <span class="text-xs font-medium text-mutedGray">12 Out 2025</span>
+                </div>
+            </article>
+
+            <!-- Article Card 2 -->
+            <article class="bg-white rounded-[16px] p-3 shadow-soft border border-borderLight/40 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow">
+                <div class="w-[80px] h-[80px] shrink-0 rounded-[12px] overflow-hidden bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=400&auto=format&fit=crop" alt="Marketing team" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex flex-col justify-center flex-1 py-1 pr-2">
+                    <span class="text-[10px] font-bold text-trustBlue uppercase tracking-wider mb-1">Marketing</span>
+                    <h3 class="text-[15px] font-bold leading-tight text-deepNavy mb-2 line-clamp-2">CAC vs LTV: A métrica que define o jogo</h3>
+                    <span class="text-xs font-medium text-mutedGray">10 Out 2025</span>
+                </div>
+            </article>
+
+            <!-- Article Card 3 -->
+            <article class="bg-white rounded-[16px] p-3 shadow-soft border border-borderLight/40 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow">
+                <div class="w-[80px] h-[80px] shrink-0 rounded-[12px] overflow-hidden bg-gray-100">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=400&auto=format&fit=crop" alt="Tech setup" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex flex-col justify-center flex-1 py-1 pr-2">
+                    <span class="text-[10px] font-bold text-trustBlue uppercase tracking-wider mb-1">Tecnologia</span>
+                    <h3 class="text-[15px] font-bold leading-tight text-deepNavy mb-2 line-clamp-2">Automatizando processos de onboarding</h3>
+                    <span class="text-xs font-medium text-mutedGray">08 Out 2025</span>
+                </div>
+            </article>
+        </section>
+
+    </main>
+
+    <!-- Sticky Newsletter Capture -->
+    <div id="newsletter-sticky" class="fixed bottom-0 left-0 right-0 z-50 bg-trustBlueLight/95 backdrop-blur-xl border-t border-trustBlue/10 px-5 py-4 shadow-[0_-4px_20px_rgba(0,22,220,0.05)]">
+        <div class="max-w-[430px] mx-auto flex items-center justify-between gap-4">
+            <div class="flex flex-col">
+                <span class="text-[13px] font-bold text-deepNavy">Dicas semanais</span>
+                <span class="text-[11px] font-medium text-mutedGray">para o seu negócio</span>
+            </div>
+            <button class="px-6 py-3 bg-trustBlue text-white rounded-full text-sm font-bold shadow-float hover:bg-blue-800 transition-colors shrink-0 flex items-center gap-2">
+                Assinar <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

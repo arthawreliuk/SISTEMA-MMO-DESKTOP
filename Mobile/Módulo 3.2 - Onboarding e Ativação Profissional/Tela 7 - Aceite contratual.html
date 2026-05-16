@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Acordo Legal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6C757D'
+                        },
+                        card: {
+                            bg: '#F1F3F5'
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 30px rgba(0, 0, 0, 0.05)',
+                        'bottom-bar': '0 -10px 40px rgba(248, 249, 250, 0.9)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Custom Checkbox Styles */
+        .custom-checkbox input:checked + div {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        .custom-checkbox input:checked + div svg {
+            display: block;
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-[100dvh] flex flex-col relative pb-[120px]">
+
+    <!-- Top Header (Fixed Glassmorphism) -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-glass border-b border-gray-100">
+        <div class="max-w-[375px] mx-auto w-full px-6 h-16 flex items-center justify-between">
+            <button class="w-10 h-10 flex items-center justify-start text-primary transition-transform active:scale-95" aria-label="Voltar">
+                <i class="fa-solid fa-arrow-left text-xl"></i>
+            </button>
+            <div class="flex-1 text-center">
+                <span class="text-[15px] font-semibold tracking-wide text-text-main">Acordo Legal</span>
+            </div>
+            <div class="w-10 h-10"></div> <!-- Spacer for perfect centering -->
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main id="main-content" class="flex-1 max-w-[375px] mx-auto w-full px-6 pt-[104px] flex flex-col gap-8">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="flex flex-col gap-3">
+            <h1 class="text-[28px] leading-[1.2] font-extrabold text-text-main tracking-tight">
+                Acordo de Parceria MMO
+            </h1>
+            <p class="text-[16px] leading-relaxed text-text-muted font-medium">
+                Leia com atenção nossos termos de uso e regras de conduta para finalizar seu cadastro.
+            </p>
+        </section>
+
+        <!-- Document Box -->
+        <section id="document-box" class="w-full">
+            <div class="bg-card-bg rounded-[16px] p-6 h-[320px] overflow-y-auto border border-gray-200/60 shadow-sm relative">
+                <!-- Faded bottom indicator -->
+                <div class="sticky top-0 h-4 bg-gradient-to-b from-card-bg to-transparent z-10 -mt-6 mb-2"></div>
+                
+                <div class="space-y-6 text-[14px] leading-relaxed text-text-muted">
+                    <div>
+                        <h3 class="text-[15px] font-bold text-text-main mb-2">1. Aceitação dos Termos</h3>
+                        <p>Ao acessar e utilizar a plataforma MMO, você concorda em cumprir e estar vinculado aos seguintes termos e condições de uso, que, juntamente com nossa política de privacidade, regem o relacionamento da MMO com você em relação a este aplicativo.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-[15px] font-bold text-text-main mb-2">2. Uso da Plataforma</h3>
+                        <p>O conteúdo das páginas deste aplicativo é para sua informação geral e uso apenas. Está sujeito a alterações sem aviso prévio. O uso de qualquer informação ou material neste aplicativo é inteiramente por sua conta e risco.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[15px] font-bold text-text-main mb-2">3. Padrões de Conduta (SLA)</h3>
+                        <p>Os parceiros devem manter um nível mínimo de qualidade no atendimento de 95% de aprovação. O não cumprimento reiterado dos padrões de qualidade resultará em suspensão temporária da conta para reavaliação.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-[15px] font-bold text-text-main mb-2">4. Propriedade Intelectual</h3>
+                        <p>Este aplicativo contém material que é de nossa propriedade ou licenciado para nós. Este material inclui, mas não está limitado a, design, layout, aparência e gráficos. A reprodução é proibida, exceto de acordo com o aviso de direitos autorais.</p>
+                    </div>
+                </div>
+                
+                <div class="sticky bottom-0 h-8 bg-gradient-to-t from-card-bg to-transparent z-10 -mb-6 mt-2"></div>
+            </div>
+        </section>
+
+        <!-- Agreement Checkboxes -->
+        <section id="agreement-toggles" class="flex flex-col gap-4">
+            <!-- Checkbox 1 -->
+            <label class="custom-checkbox flex items-start gap-4 cursor-pointer group">
+                <input type="checkbox" class="sr-only" id="check-terms">
+                <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex-shrink-0 flex items-center justify-center transition-colors duration-200 mt-0.5 group-active:scale-95">
+                    <svg class="w-3.5 h-3.5 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <span class="text-[15px] font-medium text-text-main leading-snug pt-0.5">
+                    Li e concordo com os Termos de Uso e Política de Privacidade.
+                </span>
+            </label>
+
+            <!-- Checkbox 2 -->
+            <label class="custom-checkbox flex items-start gap-4 cursor-pointer group">
+                <input type="checkbox" class="sr-only" id="check-sla">
+                <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex-shrink-0 flex items-center justify-center transition-colors duration-200 mt-0.5 group-active:scale-95">
+                    <svg class="w-3.5 h-3.5 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <span class="text-[15px] font-medium text-text-main leading-snug pt-0.5">
+                    Concordo com os padrões de qualidade e regras de conduta (SLA).
+                </span>
+            </label>
+        </section>
+
+    </main>
+
+    <!-- Bottom Fixed Action Area -->
+    <div id="bottom-action" class="fixed bottom-0 left-0 right-0 z-40 pb-8 pt-6 px-6 bg-gradient-to-t from-background via-background to-transparent backdrop-blur-[2px] shadow-bottom-bar">
+        <div class="max-w-[375px] mx-auto w-full flex flex-col gap-4">
+            <button id="submit-btn" class="w-full bg-primary text-white font-bold text-[16px] tracking-wide h-[56px] rounded-full flex items-center justify-center transition-all active:scale-[0.98] opacity-50 cursor-not-allowed shadow-[0_8px_20px_rgba(0,22,220,0.25)]" disabled>
+                Concordar e Assinar Eletronicamente
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Simple logic to enable button only when both checkboxes are checked
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkTerms = document.getElementById('check-terms');
+            const checkSla = document.getElementById('check-sla');
+            const submitBtn = document.getElementById('submit-btn');
+
+            function updateButtonState() {
+                if (checkTerms.checked && checkSla.checked) {
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    submitBtn.removeAttribute('disabled');
+                } else {
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    submitBtn.setAttribute('disabled', 'true');
+                }
+            }
+
+            checkTerms.addEventListener('change', updateButtonState);
+            checkSla.addEventListener('change', updateButtonState);
+        });
+    </script>
+</body>
+</html>
