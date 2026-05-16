@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Favoritos - Empty State</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustBlue: '#0016dc',
+                        offWhite: '#F8F9FA',
+                        softGrey: '#8F95B2',
+                        borderLight: '#EAECEF',
+                    },
+                    boxShadow: {
+                        'soft': '0px 4px 24px rgba(26, 26, 36, 0.04)',
+                        'inner-light': 'inset 0px 2px 4px rgba(255, 255, 255, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Subtle grid background pattern for the empty state container to give it that premium SaaS feel */
+        .bg-grid-pattern {
+            background-image: radial-gradient(#EAECEF 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="font-sans text-navy antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="w-full bg-white border-b border-borderLight px-6 h-20 flex items-center justify-between sticky top-0 z-50 shadow-sm">
+        <div class="flex items-center gap-6">
+            <!-- Logo area -->
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-trustBlue rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-[0_4px_12px_rgba(0,22,220,0.25)]">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight">MMO</span>
+            </div>
+            
+            <!-- Divider -->
+            <div class="h-6 w-px bg-borderLight mx-2"></div>
+            
+            <!-- Breadcrumb -->
+            <nav class="flex text-sm font-medium text-softGrey">
+                <a href="#" class="hover:text-navy transition-colors">Painel</a>
+                <span class="mx-2 text-borderLight">/</span>
+                <span class="text-navy font-semibold">Meus Favoritos</span>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-5">
+            <button class="relative p-2 text-softGrey hover:text-navy transition-colors rounded-full hover:bg-offWhite">
+                <i class="fa-regular fa-bell text-lg"></i>
+                <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-trustBlue rounded-full border-2 border-white"></span>
+            </button>
+            <div class="flex items-center gap-3 cursor-pointer pl-4 border-l border-borderLight">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold leading-tight">Admin User</p>
+                    <p class="text-xs text-softGrey leading-tight">Gestor de Conta</p>
+                </div>
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover">
+                <i class="fa-solid fa-chevron-down text-xs text-softGrey"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-6">
+        
+        <!-- Toolbar / Filter Strip -->
+        <section id="toolbar" class="w-full bg-white rounded-[24px] shadow-soft p-4 flex flex-col sm:flex-row items-center justify-between gap-4 border border-borderLight/50">
+            
+            <!-- Left: Filter Tabs -->
+            <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 hide-scrollbar">
+                <button disabled class="px-5 py-2.5 rounded-full bg-offWhite text-softGrey text-sm font-semibold border border-transparent cursor-not-allowed opacity-70 whitespace-nowrap">
+                    Todos os Mestres
+                </button>
+                <button disabled class="px-5 py-2.5 rounded-full bg-transparent text-softGrey text-sm font-medium border border-borderLight cursor-not-allowed opacity-50 whitespace-nowrap">
+                    Elétrica
+                </button>
+                <button disabled class="px-5 py-2.5 rounded-full bg-transparent text-softGrey text-sm font-medium border border-borderLight cursor-not-allowed opacity-50 whitespace-nowrap">
+                    Construção
+                </button>
+            </div>
+
+            <!-- Right: Search Bar -->
+            <div class="relative w-full sm:w-80">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-softGrey/50"></i>
+                </div>
+                <input disabled type="text" placeholder="Buscar nos favoritos..." class="w-full pl-11 pr-4 py-2.5 bg-offWhite border border-borderLight rounded-full text-sm text-softGrey cursor-not-allowed focus:outline-none opacity-70 placeholder:text-softGrey/60">
+            </div>
+            
+        </section>
+
+        <!-- Empty State Canvas -->
+        <section id="empty-state-canvas" class="w-full bg-white rounded-[24px] shadow-soft border border-borderLight/50 flex-1 min-h-[600px] flex flex-col items-center justify-center p-8 relative overflow-hidden">
+            
+            <!-- Decorative background elements -->
+            <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-trustBlue/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col items-center max-w-lg mx-auto text-center">
+                
+                <!-- Illustration Wrapper -->
+                <div class="w-48 h-48 mb-8 relative flex items-center justify-center">
+                    <!-- Soft glow behind illustration -->
+                    <div class="absolute inset-0 bg-trustBlue/10 rounded-full blur-2xl"></div>
+                    
+                    <!-- AI Generated Premium Illustration -->
+                    <img 
+                        class="w-full h-full object-contain relative z-10 drop-shadow-xl" 
+                        src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ff6f26e277-a7a27fa5b18b9a96aafa.png" alt="3D minimalist premium corporate vector line-art illustration of an elegant folder or bookmark with a subtle wireframe heart, soft deep blue tint (#0016dc), clean white background, high-end SaaS dashboard aesthetic, dribbble trending, highly detailed, no childish elements" />
+                </div>
+
+                <!-- Copy -->
+                <h1 class="text-3xl sm:text-4xl font-bold text-navy mb-4 tracking-tight">
+                    Nenhum Mestre salvo nesta lista
+                </h1>
+                
+                <p class="text-base sm:text-lg text-softGrey font-medium mb-10 leading-relaxed max-w-md">
+                    Você ainda não favoritou nenhum profissional. Explore o balcão de serviços para montar sua equipe de confiança.
+                </p>
+
+                <!-- Call to Action -->
+                <button onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 2 - Tela de busca.html'" class="group relative px-8 py-4 bg-trustBlue text-white rounded-full font-semibold text-lg shadow-[0_8px_24px_rgba(0,22,220,0.3)] hover:shadow-[0_12px_32px_rgba(0,22,220,0.4)] hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
+                    <span class="relative flex items-center justify-center gap-3">
+                        Explorar Profissionais no Balcão
+                        <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </button>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        gold: '#F7B500',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 8px 30px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans text-navy bg-background antialiased m-0 p-0">
+
+    <!-- Top Navigation -->
+    <header id="header" class="w-full bg-surface border-b border-border h-[72px] flex items-center justify-between px-6 lg:px-12 sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                M
+            </div>
+            <span class="font-bold text-xl tracking-tight">MMO Admin</span>
+        </div>
+        
+        <div class="flex items-center gap-6">
+            <button class="text-gray-500 hover:text-primary transition-colors relative">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+            </button>
+            <div class="flex items-center gap-3 pl-6 border-l border-border cursor-pointer group">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-navy group-hover:text-primary transition-colors">Admin User</p>
+                    <p class="text-xs text-gray-500">Superadmin</p>
+                </div>
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin" class="w-10 h-10 rounded-full object-cover border-2 border-transparent group-hover:border-primary transition-all">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-6">
+        
+        <!-- Admin Control Bar -->
+        <section id="control-bar" class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface p-4 rounded-2xl shadow-soft">
+            <div class="flex items-center gap-2 text-sm font-medium">
+                <a href="#" class="text-gray-500 hover:text-primary transition-colors">Painel</a>
+                <i class="fa-solid fa-chevron-right text-gray-400 text-xs"></i>
+                <span class="text-navy">Profissionais</span>
+            </div>
+
+            <div class="flex-1 max-w-md relative">
+                <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" placeholder="Buscar profissionais..." class="w-full h-11 pl-11 pr-4 rounded-full bg-gray-50 border border-transparent focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm">
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button class="h-11 px-4 rounded-full border border-gray-200 bg-white hover:bg-gray-50 text-sm font-medium text-navy flex items-center gap-2 transition-colors">
+                    <i class="fa-solid fa-filter text-gray-400"></i> Filtros
+                </button>
+                <button onclick="window.location.href='Tela 4 - Gestão de empresas.html'" class="h-11 px-6 rounded-full bg-primary hover:bg-blue-700 text-white text-sm font-semibold flex items-center gap-2 transition-all shadow-md shadow-primary/20">
+                    <i class="fa-solid fa-plus"></i> Convidar Profissional
+                </button>
+            </div>
+        </section>
+
+        <!-- Master Analytics Strip -->
+        <section id="analytics-strip" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-surface p-5 rounded-2xl shadow-soft flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1">Total de Mestres</p>
+                    <h3 class="text-2xl font-bold text-navy">450</h3>
+                </div>
+            </div>
+            <div class="bg-surface p-5 rounded-2xl shadow-soft flex items-center gap-4 border border-gold/20 relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-24 h-24 bg-gold/5 rounded-bl-full -z-10"></div>
+                <div class="w-12 h-12 rounded-full bg-gold/10 text-gold flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1">Assinantes Premium</p>
+                    <h3 class="text-2xl font-bold text-navy">120</h3>
+                </div>
+            </div>
+            <div class="bg-surface p-5 rounded-2xl shadow-soft flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-file-circle-exclamation"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1">Docs Pendentes</p>
+                    <h3 class="text-2xl font-bold text-navy">15</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Master Data Table -->
+        <section id="data-table" class="bg-surface rounded-[24px] shadow-card overflow-hidden flex flex-col">
+            <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                <h2 class="text-lg font-bold text-navy">Diretório de Profissionais</h2>
+                <button class="text-sm text-gray-500 hover:text-primary transition-colors"><i class="fa-solid fa-download mr-2"></i>Exportar CSV</button>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50/50 text-xs uppercase tracking-wider text-gray-500 font-semibold">
+                            <th class="px-6 py-4 rounded-tl-lg">Profissional</th>
+                            <th class="px-6 py-4">Categoria/Nicho</th>
+                            <th class="px-6 py-4">Localização</th>
+                            <th class="px-6 py-4">Plano Atual</th>
+                            <th class="px-6 py-4">Rating</th>
+                            <th class="px-6 py-4">Status KYC</th>
+                            <th class="px-6 py-4 text-right rounded-tr-lg">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50 text-sm">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-semibold text-navy">Ana Silva</p>
+                                        <p class="text-xs text-gray-500">ana@example.com</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-600">Modelagem 3D</td>
+                            <td class="px-6 py-4 text-gray-600">São Paulo, SP</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-gold to-yellow-400 text-white shadow-sm">
+                                    Plano Mestre
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-1 text-gold text-xs">
+                                    <i class="fa-solid fa-star"></i> 4.9
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-600 border border-green-100">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Aprovado
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-primary hover:text-white text-gray-500 flex items-center justify-center transition-all"><i class="fa-regular fa-eye text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-orange-500 hover:text-white text-gray-500 flex items-center justify-center transition-all"><i class="fa-solid fa-shield-halved text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-red-500 hover:text-white text-gray-500 flex items-center justify-center transition-all"><i class="fa-solid fa-ban text-xs"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-semibold text-navy">Carlos Mendes</p>
+                                        <p class="text-xs text-gray-500">carlos@example.com</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-600">Arquitetura</td>
+                            <td class="px-6 py-4 text-gray-600">Rio de Janeiro, RJ</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
+                                    Grátis
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-1 text-gold text-xs">
+                                    <i class="fa-solid fa-star"></i> 4.5
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-600 border border-orange-100">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Pendente
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-primary hover:text-white text-gray-500 flex items-center justify-center transition-all"><i class="fa-regular fa-eye text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-orange-500 hover:text-white text-gray-500 flex items-center justify-center transition-all"><i class="fa-solid fa-shield-halved text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-red-500 hover:text-white text-gray-500 flex items-center justify-center transition-all"><i class="fa-solid fa-ban text-xs"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
+                <span>Mostrando 1 a 10 de 450 profissionais</span>
+                <div class="flex gap-1">
+                    <button class="w-8 h-8 rounded-md flex items-center justify-center border border-gray-200 hover:bg-gray-50 disabled:opacity-50"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                    <button class="w-8 h-8 rounded-md flex items-center justify-center bg-primary text-white font-medium">1</button>
+                    <button class="w-8 h-8 rounded-md flex items-center justify-center border border-gray-200 hover:bg-gray-50 font-medium">2</button>
+                    <button class="w-8 h-8 rounded-md flex items-center justify-center border border-gray-200 hover:bg-gray-50 disabled:opacity-50"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full bg-surface py-6 border-t border-border mt-auto">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+            <p>&copy; 2026 MMO Admin. Todos os direitos reservados.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-primary transition-colors">Suporte</a>
+                <a href="#" class="hover:text-primary transition-colors">Termos</a>
+                <a href="#" class="hover:text-primary transition-colors">Privacidade</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

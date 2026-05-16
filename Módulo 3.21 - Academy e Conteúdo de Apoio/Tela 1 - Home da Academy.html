@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Home Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        navy: '#1A1A24',
+                        navyLight: '#2A2A35',
+                        trustBlue: '#0016dc',
+                        trustBlueHover: '#0012b3',
+                        surface: '#FFFFFF',
+                        borderLight: '#E5E7EB',
+                        textMuted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'bento': '0 10px 40px -10px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05)',
+                        'nav': '0 4px 20px -2px rgba(0,0,0,0.05)',
+                    },
+                    borderRadius: {
+                        'bento': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .glass-search {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        
+        .course-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .course-card-hover:hover .course-thumb {
+            transform: scale(1.05);
+        }
+        .course-card-hover:hover .play-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background">
+
+    <!-- Global Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 h-20 bg-surface/90 backdrop-blur-md shadow-nav z-50 border-b border-borderLight/50">
+        <div class="max-w-[1200px] mx-auto w-full h-full px-6 flex items-center justify-between">
+            <!-- Left: Breadcrumb -->
+            <div class="flex items-center gap-3 text-sm font-medium">
+                <span class="text-textMuted hover:text-navy cursor-pointer transition-colors">Painel</span>
+                <i class="fa-solid fa-chevron-right text-[10px] text-textMuted"></i>
+                <span class="text-navy font-semibold">Academy</span>
+            </div>
+
+            <!-- Right: Search & Profile -->
+            <div class="flex items-center gap-6">
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-textMuted group-focus-within:text-trustBlue transition-colors"></i>
+                    </div>
+                    <input type="text" placeholder="Buscar treinamentos..." 
+                           class="w-72 h-11 pl-11 pr-4 bg-background border border-borderLight rounded-full text-sm font-medium text-navy placeholder-textMuted focus:outline-none focus:ring-2 focus:ring-trustBlue/20 focus:border-trustBlue transition-all">
+                </div>
+                
+                <div class="flex items-center gap-4 border-l border-borderLight pl-6">
+                    <button class="relative w-10 h-10 rounded-full bg-background flex items-center justify-center text-textMuted hover:text-navy hover:bg-borderLight/50 transition-colors">
+                        <i class="fa-regular fa-bell text-lg"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-surface"></span>
+                    </button>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-surface shadow-sm cursor-pointer hover:border-trustBlue transition-colors">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="pt-28 pb-20 px-6 min-h-screen">
+        <div class="max-w-[1200px] mx-auto w-full flex flex-col gap-6">
+            
+            <!-- Top Row: Hero + Stats -->
+            <div class="flex flex-col lg:flex-row gap-6 w-full">
+                
+                <!-- Hero Block (65%) -->
+                <section id="hero-block" class="w-full lg:w-[65%] bg-surface rounded-bento shadow-bento p-8 flex flex-col justify-between overflow-hidden relative group">
+                    <!-- Background Accent -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-trustBlue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+                    
+                    <div class="flex flex-col gap-6 relative z-10">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 bg-trustBlue/10 text-trustBlue text-xs font-bold uppercase tracking-wider rounded-full">Trilha Recomendada</span>
+                            <span class="text-sm font-medium text-textMuted flex items-center gap-1.5"><i class="fa-regular fa-clock"></i> 4h 30m</span>
+                        </div>
+                        
+                        <div class="w-full aspect-video rounded-2xl overflow-hidden relative shadow-sm border border-borderLight/50 bg-navyLight group/video cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Course Cover" class="w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover/video:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent"></div>
+                            
+                            <!-- Play Button Overlay -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-surface/20 backdrop-blur-md rounded-full flex items-center justify-center border border-surface/30 shadow-xl group-hover/video:scale-110 group-hover/video:bg-trustBlue transition-all duration-300">
+                                    <i class="fa-solid fa-play text-surface text-xl ml-1"></i>
+                                </div>
+                            </div>
+                            
+                            <!-- Video Info -->
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <h2 class="text-3xl font-bold text-surface mb-2 leading-tight">Estratégias de Tráfego e Conversão para Lojistas</h2>
+                                <p class="text-surface/80 text-sm font-medium">Módulo 1: Fundamentos do Tráfego Pago</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex items-center justify-between relative z-10">
+                        <div class="flex -space-x-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-10 h-10 rounded-full border-2 border-surface object-cover">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-10 h-10 rounded-full border-2 border-surface object-cover">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full border-2 border-surface object-cover">
+                            <div class="w-10 h-10 rounded-full border-2 border-surface bg-background flex items-center justify-center text-xs font-bold text-navy">+2k</div>
+                        </div>
+                        <button onclick="window.location.href='Tela 2 - Conteúdo_tutorial.html'" class="px-8 py-4 bg-trustBlue hover:bg-trustBlueHover text-white font-bold text-sm rounded-full shadow-lg shadow-trustBlue/30 transition-all hover:-translate-y-0.5 flex items-center gap-2">
+                            Iniciar Treinamento
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- User Stats Block (35%) -->
+                <section id="stats-block" class="w-full lg:w-[35%] bg-surface rounded-bento shadow-bento p-8 flex flex-col">
+                    <h3 class="text-lg font-bold text-navy mb-6">Seu Progresso</h3>
+                    
+                    <!-- Level Card -->
+                    <div class="bg-gradient-to-br from-[#FFF9E6] to-[#FFF0B3] p-5 rounded-2xl border border-[#FFE066]/30 flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+                            <i class="fa-solid fa-crown text-[#F59E0B] text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-[#B45309] uppercase tracking-wider mb-1">Nível Atual</p>
+                            <p class="text-lg font-extrabold text-navy">Mestre Ouro</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Circular Gauge -->
+                    <div class="flex-1 flex flex-col items-center justify-center relative min-h-[200px]">
+                        <div id="progress-gauge" class="w-full h-full absolute inset-0"></div>
+                        <div class="relative z-10 text-center mt-4">
+                            <span class="text-3xl font-extrabold text-navy block">60%</span>
+                            <span class="text-sm font-medium text-textMuted">Concluído</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-center text-sm font-medium text-navy mt-4 mb-8">
+                        <strong class="text-trustBlue">12/20</strong> Aulas Concluídas nesta semana
+                    </p>
+                    
+                    <button class="w-full py-3.5 px-4 bg-background hover:bg-borderLight/40 text-navy font-bold text-sm rounded-full border border-borderLight transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-award text-trustBlue"></i>
+                        Ver Certificados
+                    </button>
+                </section>
+
+            </div>
+
+            <!-- Carousel Block (100%) -->
+            <section id="carousel-block" class="w-full bg-surface rounded-bento shadow-bento p-8">
+                <div class="flex items-center justify-between mb-8">
+                    <h3 class="text-xl font-bold text-navy">Últimos Lançamentos</h3>
+                    <div class="flex gap-2">
+                        <button class="w-10 h-10 rounded-full border border-borderLight flex items-center justify-center text-navy hover:bg-background transition-colors">
+                            <i class="fa-solid fa-chevron-left text-sm"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-full border border-borderLight flex items-center justify-center text-navy hover:bg-background transition-colors">
+                            <i class="fa-solid fa-chevron-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 overflow-x-auto hide-scrollbar pb-4 -mx-2 px-2">
+                    
+                    <!-- Card 1 -->
+                    <div class="min-w-[280px] w-[280px] flex flex-col gap-4 course-card-hover cursor-pointer group">
+                        <div class="w-full aspect-video rounded-2xl overflow-hidden relative border border-borderLight/50 bg-background">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" class="w-full h-full object-cover course-thumb">
+                            <div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-bold text-navy uppercase tracking-wide shadow-sm">
+                                Marketing
+                            </div>
+                            <div class="absolute inset-0 bg-navy/20 opacity-0 play-overlay flex items-center justify-center transition-opacity duration-300">
+                                <div class="w-12 h-12 bg-trustBlue rounded-full flex items-center justify-center shadow-lg">
+                                    <i class="fa-solid fa-play text-white ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy text-base mb-1 line-clamp-2 group-hover:text-trustBlue transition-colors">Growth Hacking para E-commerce</h4>
+                            <p class="text-sm text-textMuted font-medium">Por Gabriel Costa</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="min-w-[280px] w-[280px] flex flex-col gap-4 course-card-hover cursor-pointer group">
+                        <div class="w-full aspect-video rounded-2xl overflow-hidden relative border border-borderLight/50 bg-background">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover course-thumb">
+                            <div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-bold text-navy uppercase tracking-wide shadow-sm">
+                                Gestão
+                            </div>
+                            <div class="absolute inset-0 bg-navy/20 opacity-0 play-overlay flex items-center justify-center transition-opacity duration-300">
+                                <div class="w-12 h-12 bg-trustBlue rounded-full flex items-center justify-center shadow-lg">
+                                    <i class="fa-solid fa-play text-white ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy text-base mb-1 line-clamp-2 group-hover:text-trustBlue transition-colors">Liderança de Equipes Remotas</h4>
+                            <p class="text-sm text-textMuted font-medium">Por Marina Silva</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="min-w-[280px] w-[280px] flex flex-col gap-4 course-card-hover cursor-pointer group">
+                        <div class="w-full aspect-video rounded-2xl overflow-hidden relative border border-borderLight/50 bg-background">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover course-thumb">
+                            <div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-bold text-navy uppercase tracking-wide shadow-sm">
+                                Finanças
+                            </div>
+                            <div class="absolute inset-0 bg-navy/20 opacity-0 play-overlay flex items-center justify-center transition-opacity duration-300">
+                                <div class="w-12 h-12 bg-trustBlue rounded-full flex items-center justify-center shadow-lg">
+                                    <i class="fa-solid fa-play text-white ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy text-base mb-1 line-clamp-2 group-hover:text-trustBlue transition-colors">Análise de Dados Financeiros</h4>
+                            <p class="text-sm text-textMuted font-medium">Por Carlos Eduardo</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4 -->
+                    <div class="min-w-[280px] w-[280px] flex flex-col gap-4 course-card-hover cursor-pointer group">
+                        <div class="w-full aspect-video rounded-2xl overflow-hidden relative border border-borderLight/50 bg-background">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover course-thumb">
+                            <div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[10px] font-bold text-navy uppercase tracking-wide shadow-sm">
+                                Vendas
+                            </div>
+                            <div class="absolute inset-0 bg-navy/20 opacity-0 play-overlay flex items-center justify-center transition-opacity duration-300">
+                                <div class="w-12 h-12 bg-trustBlue rounded-full flex items-center justify-center shadow-lg">
+                                    <i class="fa-solid fa-play text-white ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy text-base mb-1 line-clamp-2 group-hover:text-trustBlue transition-colors">Técnicas Avançadas de Negociação</h4>
+                            <p class="text-sm text-textMuted font-medium">Por Roberto Alves</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        // Initialize Plotly Gauge Chart
+        window.addEventListener('load', function() {
+            try {
+                var data = [
+                    {
+                        type: "indicator",
+                        mode: "gauge",
+                        value: 60,
+                        gauge: {
+                            shape: "angular",
+                            bar: { color: "#0016dc", thickness: 0.2 },
+                            bgcolor: "#F3F4F6",
+                            borderwidth: 0,
+                            axis: { range: [null, 100], visible: false },
+                            steps: [
+                                { range: [0, 100], color: "#F8F9FA" }
+                            ]
+                        }
+                    }
+                ];
+
+                var layout = {
+                    width: 250,
+                    height: 200,
+                    margin: { t: 20, r: 20, l: 20, b: 20 },
+                    paper_bgcolor: "transparent",
+                    font: { family: "Plus Jakarta Sans, sans-serif" }
+                };
+
+                Plotly.newPlot('progress-gauge', data, layout, {displayModeBar: false, responsive: true});
+            } catch (e) {
+                console.error("Plotly chart failed to load", e);
+            }
+        });
+    </script>
+</body>
+</html>

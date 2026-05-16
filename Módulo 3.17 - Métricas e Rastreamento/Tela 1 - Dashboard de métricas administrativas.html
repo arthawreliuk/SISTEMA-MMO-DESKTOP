@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrative Metrics Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        navy: '#1A1A24',
+                        trustBlue: '#0016dc',
+                        neonPurple: '#BF80FF',
+                        accentGreen: '#10B981',
+                        accentRed: '#EF4444',
+                        textGray: '#6B7280',
+                        borderGray: '#E5E7EB'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'glow': '0 0 15px rgba(191, 128, 255, 0.3)'
+                    },
+                    borderRadius: {
+                        '4xl': '24px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.4); }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Admin Control Bar -->
+    <header id="header" class="w-full bg-surface border-b border-borderGray sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 text-sm font-medium text-textGray">
+                <span class="hover:text-navy cursor-pointer transition-colors">Admin</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="hover:text-navy cursor-pointer transition-colors">Dashboard</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-navy font-semibold">Métricas Globais</span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="flex items-center bg-background rounded-full px-4 py-2 border border-borderGray text-sm font-medium">
+                    <i class="fa-regular fa-calendar mr-2 text-textGray"></i>
+                    <span>Últimos 30 dias</span>
+                    <i class="fa-solid fa-chevron-down ml-3 text-[10px] text-textGray"></i>
+                </div>
+                <button class="bg-trustBlue text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-[0_4px_12px_rgba(0,22,220,0.25)] hover:bg-blue-800 transition-all flex items-center gap-2 border border-transparent hover:border-blue-400">
+                    <i class="fa-solid fa-sliders"></i>
+                    Filtros Avançados
+                </button>
+                <div class="h-10 w-10 rounded-full bg-background border border-borderGray overflow-hidden ml-2 cursor-pointer">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="flex-1 w-full max-w-[1200px] mx-auto px-6 py-8 flex flex-col gap-8">
+        
+        <!-- High-Level KPI Strip -->
+        <section id="kpi-strip" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- MRR -->
+            <div class="bg-surface rounded-4xl p-6 shadow-soft relative overflow-hidden group border border-transparent hover:border-borderGray transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-textGray text-sm font-medium mb-1">Receita (MRR)</p>
+                        <h3 class="text-2xl font-bold text-navy">R$ 1.2M</h3>
+                    </div>
+                    <div class="bg-accentGreen/10 text-accentGreen px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        +14.2%
+                    </div>
+                </div>
+                <div id="sparkline-1" class="h-16 w-full mt-2"></div>
+            </div>
+
+            <!-- Active Professionals -->
+            <div class="bg-surface rounded-4xl p-6 shadow-soft relative overflow-hidden group border border-transparent hover:border-borderGray transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-textGray text-sm font-medium mb-1">Profissionais Ativos</p>
+                        <h3 class="text-2xl font-bold text-navy">8,432</h3>
+                    </div>
+                    <div class="bg-accentGreen/10 text-accentGreen px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        +5.8%
+                    </div>
+                </div>
+                <div id="sparkline-2" class="h-16 w-full mt-2"></div>
+            </div>
+
+            <!-- Lead Match Rate -->
+            <div class="bg-surface rounded-4xl p-6 shadow-soft relative overflow-hidden group border border-transparent hover:border-borderGray transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-textGray text-sm font-medium mb-1">Taxa de Match (Leads)</p>
+                        <h3 class="text-2xl font-bold text-navy">68.4%</h3>
+                    </div>
+                    <div class="bg-accentRed/10 text-accentRed px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-trend-down"></i>
+                        -1.2%
+                    </div>
+                </div>
+                <div id="sparkline-3" class="h-16 w-full mt-2"></div>
+            </div>
+
+            <!-- Platform Take-rate -->
+            <div class="bg-surface rounded-4xl p-6 shadow-soft relative overflow-hidden group border border-transparent hover:border-borderGray transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-textGray text-sm font-medium mb-1">Take-rate da Plataforma</p>
+                        <h3 class="text-2xl font-bold text-navy">12.5%</h3>
+                    </div>
+                    <div class="bg-accentGreen/10 text-accentGreen px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        +0.4%
+                    </div>
+                </div>
+                <div id="sparkline-4" class="h-16 w-full mt-2"></div>
+            </div>
+        </section>
+
+        <!-- The Data Hub (Grid System) -->
+        <section id="data-hub" class="flex flex-col gap-6">
+            <!-- Large Section (Top) - Heatmap -->
+            <div class="bg-surface rounded-4xl p-6 shadow-soft border border-borderGray">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-lg font-bold text-navy">Heatmap de Demanda (Camboriú/SC)</h2>
+                    <button class="text-textGray hover:text-navy transition-colors"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div id="heatmap-chart" class="w-full h-[350px] rounded-2xl overflow-hidden relative">
+                    <!-- Plotly container -->
+                </div>
+            </div>
+
+            <!-- Bottom Row (50/50 Split) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Bottom Left: Performance por Categoria -->
+                <div class="bg-surface rounded-4xl p-6 shadow-soft border border-borderGray">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-lg font-bold text-navy">Performance por Categoria (ROI)</h2>
+                        <button class="text-textGray hover:text-navy transition-colors"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <div id="bar-chart" class="w-full h-[300px]"></div>
+                </div>
+
+                <!-- Bottom Right: Funil de Conversão -->
+                <div class="bg-surface rounded-4xl p-6 shadow-soft border border-borderGray">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-lg font-bold text-navy">Funil de Conversão</h2>
+                        <div class="flex gap-2">
+                            <span class="text-xs font-medium bg-background px-2 py-1 rounded text-textGray">Últimos 7 dias</span>
+                        </div>
+                    </div>
+                    <div id="funnel-chart" class="w-full h-[300px]"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Predictive Insight Card -->
+        <section id="predictive-insight" class="mt-2">
+            <div class="glass-card rounded-4xl p-6 shadow-glow relative overflow-hidden bg-gradient-to-r from-surface to-purple-50/50">
+                <div class="absolute top-0 left-0 w-1 h-full bg-neonPurple"></div>
+                <div class="flex items-start gap-5">
+                    <div class="w-12 h-12 rounded-full bg-neonPurple/10 flex items-center justify-center flex-shrink-0 border border-neonPurple/20">
+                        <i class="fa-solid fa-wand-magic-sparkles text-neonPurple text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-navy mb-1 flex items-center gap-2">
+                            Insight Preditivo IA
+                            <span class="bg-neonPurple text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Novo</span>
+                        </h3>
+                        <p class="text-textGray text-sm leading-relaxed">
+                            A categoria <strong class="text-navy">'Jardinagem'</strong> cresceu <strong class="text-accentGreen">40%</strong> em Itajaí nos últimos 14 dias. 
+                            <br>
+                            <span class="text-trustBlue font-medium mt-1 inline-block"><i class="fa-solid fa-lightbulb mr-1"></i> Sugestão: Aumentar campanhas de tráfego pago em 15% para atrair profissionais nesta área e suprir a demanda.</span>
+                        </p>
+                    </div>
+                    <button onclick="window.location.href='Tela 2 - Relatórios por região_categoria_perfil.html'" class="ml-auto bg-navy text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors whitespace-nowrap">
+                        Aplicar Sugestão
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full border-t border-borderGray bg-surface mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 py-6 flex items-center justify-between text-sm text-textGray">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-trustBlue rounded flex items-center justify-center text-white text-[10px]">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <span class="font-semibold text-navy">MMO Platform</span>
+                <span>&copy; 2026 Admin Dashboard</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-navy transition-colors">Suporte</a>
+                <a href="#" class="hover:text-navy transition-colors">Documentação da API</a>
+                <a href="#" class="hover:text-navy transition-colors">Status do Sistema</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const commonConfig = { responsive: true, displayModeBar: false, displaylogo: false };
+                const fontConfig = { family: '"Plus Jakarta Sans", sans-serif', color: '#6B7280' };
+
+                // Sparkline 1 (MRR)
+                Plotly.newPlot('sparkline-1', [{
+                    x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                    y: [10, 15, 13, 17, 22, 18, 25, 23, 28, 30],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: { color: '#0016dc', width: 2, shape: 'spline', smoothing: 1.3 },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(0, 22, 220, 0.1)',
+                    hoverinfo: 'none'
+                }], {
+                    margin: { t: 5, r: 5, b: 5, l: 5 },
+                    xaxis: { visible: false },
+                    yaxis: { visible: false },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent'
+                }, commonConfig);
+
+                // Sparkline 2 (Active Pros)
+                Plotly.newPlot('sparkline-2', [{
+                    x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                    y: [20, 22, 21, 25, 24, 28, 27, 30, 29, 32],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: { color: '#10B981', width: 2, shape: 'spline', smoothing: 1.3 },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(16, 185, 129, 0.1)',
+                    hoverinfo: 'none'
+                }], {
+                    margin: { t: 5, r: 5, b: 5, l: 5 },
+                    xaxis: { visible: false },
+                    yaxis: { visible: false },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent'
+                }, commonConfig);
+
+                // Sparkline 3 (Match Rate)
+                Plotly.newPlot('sparkline-3', [{
+                    x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                    y: [70, 72, 68, 65, 67, 64, 62, 65, 63, 60],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: { color: '#EF4444', width: 2, shape: 'spline', smoothing: 1.3 },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(239, 68, 68, 0.1)',
+                    hoverinfo: 'none'
+                }], {
+                    margin: { t: 5, r: 5, b: 5, l: 5 },
+                    xaxis: { visible: false },
+                    yaxis: { visible: false },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent'
+                }, commonConfig);
+
+                // Sparkline 4 (Take-rate)
+                Plotly.newPlot('sparkline-4', [{
+                    x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                    y: [12.0, 12.1, 12.1, 12.2, 12.3, 12.2, 12.4, 12.5, 12.4, 12.5],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: { color: '#BF80FF', width: 2, shape: 'spline', smoothing: 1.3 },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(191, 128, 255, 0.1)',
+                    hoverinfo: 'none'
+                }], {
+                    margin: { t: 5, r: 5, b: 5, l: 5 },
+                    xaxis: { visible: false },
+                    yaxis: { visible: false },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent'
+                }, commonConfig);
+
+                // Heatmap (Mocked with Scatter for region visualization)
+                Plotly.newPlot('heatmap-chart', [{
+                    z: [[1, 20, 30, 50, 1], [20, 1, 60, 80, 30], [30, 60, 1, -10, 20]],
+                    type: 'heatmap',
+                    colorscale: [
+                        ['0.0', '#F8F9FA'],
+                        ['0.3', '#BF80FF'],
+                        ['0.7', '#0016dc'],
+                        ['1.0', '#1A1A24']
+                    ],
+                    showscale: false
+                }], {
+                    margin: { t: 10, r: 10, b: 20, l: 30 },
+                    xaxis: { showgrid: false, zeroline: false, visible: false },
+                    yaxis: { showgrid: false, zeroline: false, visible: false },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent'
+                }, commonConfig);
+
+                // Bar Chart - ROI
+                Plotly.newPlot('bar-chart', [{
+                    x: ['Construção', 'Tecnologia', 'Jardinagem', 'Beleza', 'Aulas'],
+                    y: [320, 450, 280, 390, 210],
+                    type: 'bar',
+                    marker: { 
+                        color: ['#0016dc', '#0016dc', '#BF80FF', '#0016dc', '#0016dc'],
+                        corner_radius: 8
+                    }
+                }], {
+                    margin: { t: 10, r: 10, b: 30, l: 40 },
+                    xaxis: { tickfont: fontConfig, showgrid: false },
+                    yaxis: { tickfont: fontConfig, gridcolor: '#E5E7EB', gridwidth: 1, zeroline: false },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent',
+                    bargap: 0.4
+                }, commonConfig);
+
+                // Funnel Chart
+                Plotly.newPlot('funnel-chart', [{
+                    type: 'funnel',
+                    y: ['Visitante', 'Cadastro', '1º Desbloqueio', 'Mestre Ativo'],
+                    x: [12000, 5400, 2100, 850],
+                    marker: {
+                        color: ['#1A1A24', '#0016dc', '#BF80FF', '#10B981']
+                    },
+                    textinfo: "value+percent initial"
+                }], {
+                    margin: { t: 10, r: 10, b: 10, l: 100 },
+                    yaxis: { tickfont: { family: '"Plus Jakarta Sans", sans-serif', color: '#1A1A24', size: 12 } },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent'
+                }, commonConfig);
+
+            } catch (e) { console.error('Chart initialization error:', e); }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

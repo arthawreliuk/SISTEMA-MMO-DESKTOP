@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'trust-blue': '#0016dc',
+                        'deep-navy': '#111827',
+                        'mac-gray': '#8E8E93',
+                        'mac-light-gray': '#F2F2F7',
+                        'mac-border': '#E5E5EA',
+                    },
+                    boxShadow: {
+                        'mac-notification': '0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        /* Simulating a 3D mesh gradient background */
+        .mesh-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f4f8;
+            background-image: 
+                radial-gradient(at 40% 20%, hsla(210,100%,90%,1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(220,50%,85%,1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(200,60%,92%,1) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, hsla(230,40%,88%,1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(210,70%,95%,1) 0px, transparent 50%),
+                radial-gradient(at 80% 100%, hsla(220,60%,90%,1) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, hsla(200,80%,96%,1) 0px, transparent 50%);
+            z-index: -1;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-deep-navy min-h-screen relative">
+
+    <!-- Desktop Wallpaper Background -->
+    <div id="desktop_wallpaper" class="mesh-bg"></div>
+
+    <!-- Notification Overlay Container -->
+    <div id="notification_overlay" class="absolute top-6 right-6 w-full max-w-[360px] z-50">
+        
+        <!-- Notification Card -->
+        <div id="notification_card" class="glass-card rounded-[16px] shadow-mac-notification overflow-hidden flex flex-col">
+            
+            <!-- Main Content Area (Header + Body) -->
+            <div class="p-4 flex gap-4">
+                
+                <!-- App Icon -->
+                <div id="app_icon_container" class="flex-shrink-0 pt-1">
+                    <div class="w-10 h-10 bg-trust-blue rounded-[8px] flex items-center justify-center shadow-sm">
+                        <span class="text-white font-bold text-sm tracking-tighter">MMO</span>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div id="notification_content" class="flex-col flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-0.5">
+                        <span class="text-[11px] font-medium text-mac-gray uppercase tracking-wider">MMO Plataforma</span>
+                        <span class="text-[11px] text-mac-gray">Agora</span>
+                    </div>
+                    <h3 class="text-[15px] font-semibold text-deep-navy leading-tight mb-1">
+                        Sua campanha pausou
+                    </h3>
+                    <p class="text-[13px] text-gray-600 leading-snug">
+                        O saldo da conta de anúncios esgotou. Adicione créditos para continuar recebendo leads.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div id="action_button_group" class="flex border-t border-mac-border/60 bg-mac-light-gray/30">
+                <button class="flex-1 py-2.5 text-[13px] font-medium text-gray-600 hover:bg-gray-100/50 transition-colors border-r border-mac-border/60">
+                    Fechar
+                </button>
+                <button onclick="window.location.href='Tela 1 - Central de notificações.html'" class="flex-1 py-2.5 text-[13px] font-semibold text-trust-blue hover:bg-trust-blue/5 transition-colors">
+                    Adicionar Saldo
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

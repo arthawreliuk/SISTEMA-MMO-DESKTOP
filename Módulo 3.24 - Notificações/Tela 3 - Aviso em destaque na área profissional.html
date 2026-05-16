@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            gray: '#8E92A4',
+                            border: '#E5E7EB',
+                            surface: '#FFFFFF'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 1px 3px rgba(0,0,0,0.02), 0 4px 14px rgba(0,0,0,0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+        .glass-pill { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Global Alert Bar -->
+    <div id="global-alert" class="w-full bg-[#0016dc] text-white py-2.5 px-4 flex items-center justify-center relative z-50 transition-all duration-300">
+        <div class="flex items-center gap-3 text-[13px] font-medium tracking-wide">
+            <span class="flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-yellow-300"></i>
+                Black Friday MMO: Garanta 50% de desconto no plano anual.
+            </span>
+            <a href="Tela 4 - Mensagem transacional por e-mail.html" class="underline underline-offset-4 font-semibold hover:text-white/80 transition-colors">Fazer Upgrade Agora &rarr;</a>
+        </div>
+        <button onclick="document.getElementById('global-alert').style.display='none'" class="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-white/70 hover:text-white">
+            <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+    </div>
+
+    <!-- Global Nav Header -->
+    <header id="header" class="w-full bg-transparent sticky top-0 z-40 border-b border-brand-border/50 backdrop-blur-md">
+        <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <!-- Logo & Nav -->
+            <div class="flex items-center gap-10">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white">
+                        <i class="fa-solid fa-cube text-sm"></i>
+                    </div>
+                    <span class="font-bold text-lg tracking-tight text-brand-navy">FinDash</span>
+                </div>
+                
+                <nav class="hidden md:flex items-center gap-1 bg-white/60 backdrop-blur-md border border-white/40 rounded-full px-2 py-1 shadow-sm">
+                    <a href="#" class="px-4 py-1.5 text-[14px] font-medium text-brand-navy bg-white rounded-full shadow-sm">Dashboard</a>
+                    <a href="#" class="px-4 py-1.5 text-[14px] font-medium text-brand-gray hover:text-brand-navy transition-colors">Transactions</a>
+                    <a href="#" class="px-4 py-1.5 text-[14px] font-medium text-brand-gray hover:text-brand-navy transition-colors">Analytics</a>
+                    <a href="#" class="px-4 py-1.5 text-[14px] font-medium text-brand-gray hover:text-brand-navy transition-colors">Settings</a>
+                </nav>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <div class="hidden lg:flex items-center relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-brand-gray text-sm"></i>
+                    <input type="text" placeholder="Search..." class="w-[200px] pl-9 pr-4 py-2 bg-white border border-brand-border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all placeholder:text-brand-gray/70">
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                        <kbd class="text-[10px] font-sans px-1.5 py-0.5 rounded border border-brand-border text-brand-gray bg-brand-offwhite">⌘</kbd>
+                        <kbd class="text-[10px] font-sans px-1.5 py-0.5 rounded border border-brand-border text-brand-gray bg-brand-offwhite">K</kbd>
+                    </div>
+                </div>
+                
+                <button class="w-10 h-10 rounded-full flex items-center justify-center text-brand-gray hover:bg-white hover:shadow-sm border border-transparent hover:border-brand-border transition-all relative">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-brand-offwhite"></span>
+                </button>
+                
+                <div class="flex items-center gap-3 pl-4 border-l border-brand-border">
+                    <div class="text-right hidden sm:block">
+                        <div class="text-sm font-semibold text-brand-navy">Alex Morgan</div>
+                        <div class="text-xs text-brand-gray">Admin</div>
+                    </div>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-6 py-8 flex flex-col gap-8">
+        
+        <!-- Page Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-brand-navy tracking-tight mb-1">Financial Overview</h1>
+                <p class="text-brand-gray text-sm">Monitor your key metrics and recent activities.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="px-4 py-2 bg-white border border-brand-border rounded-full text-sm font-medium text-brand-navy hover:shadow-sm transition-all flex items-center gap-2">
+                    <i class="fa-regular fa-calendar text-brand-gray"></i>
+                    Last 30 Days
+                    <i class="fa-solid fa-chevron-down text-[10px] text-brand-gray ml-1"></i>
+                </button>
+                <button class="px-5 py-2 bg-brand-blue text-white rounded-full text-sm font-medium hover:bg-brand-blue/90 shadow-lg shadow-brand-blue/20 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-plus text-white/80"></i>
+                    New Report
+                </button>
+            </div>
+        </div>
+
+        <!-- KPI Grid -->
+        <div id="kpi-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[20px] p-5 shadow-card border border-brand-border/50 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-[100px] -z-10 transition-transform group-hover:scale-110"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-semibold">
+                        <i class="fa-solid fa-arrow-trend-up text-[10px]"></i> +12.5%
+                    </span>
+                </div>
+                <div class="text-brand-gray text-sm font-medium mb-1">Total Balance</div>
+                <div class="text-2xl font-bold text-brand-navy">$124,563.00</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[20px] p-5 shadow-card border border-brand-border/50 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-purple-50 rounded-bl-[100px] -z-10 transition-transform group-hover:scale-110"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-semibold">
+                        <i class="fa-solid fa-arrow-trend-up text-[10px]"></i> +8.2%
+                    </span>
+                </div>
+                <div class="text-brand-gray text-sm font-medium mb-1">Monthly Revenue</div>
+                <div class="text-2xl font-bold text-brand-navy">$45,231.89</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[20px] p-5 shadow-card border border-brand-border/50 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-rose-50 rounded-bl-[100px] -z-10 transition-transform group-hover:scale-110"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-semibold">
+                        <i class="fa-solid fa-arrow-trend-down text-[10px]"></i> -2.4%
+                    </span>
+                </div>
+                <div class="text-brand-gray text-sm font-medium mb-1">Expenses</div>
+                <div class="text-2xl font-bold text-brand-navy">$18,405.20</div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-[20px] p-5 shadow-card border border-brand-border/50 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-[100px] -z-10 transition-transform group-hover:scale-110"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-semibold">
+                        <i class="fa-solid fa-arrow-trend-up text-[10px]"></i> +15.3%
+                    </span>
+                </div>
+                <div class="text-brand-gray text-sm font-medium mb-1">Active Users</div>
+                <div class="text-2xl font-bold text-brand-navy">2,845</div>
+            </div>
+        </div>
+
+        <!-- Dashboard Canvas (Chart + Side Panel) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main Chart Area -->
+            <div class="lg:col-span-2 bg-white rounded-[24px] shadow-card border border-brand-border/50 p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-lg font-bold text-brand-navy">Revenue Overview</h2>
+                        <p class="text-xs text-brand-gray">Monthly performance metrics</p>
+                    </div>
+                    <div class="flex bg-brand-offwhite p-1 rounded-lg">
+                        <button class="px-3 py-1.5 text-xs font-semibold bg-white shadow-sm rounded-md text-brand-navy">Income</button>
+                        <button class="px-3 py-1.5 text-xs font-medium text-brand-gray hover:text-brand-navy rounded-md">Expense</button>
+                    </div>
+                </div>
+                <div id="revenueChart" class="w-full h-[320px]"></div>
+            </div>
+
+            <!-- Quick Transfer / Side Panel -->
+            <div class="bg-white rounded-[24px] shadow-card border border-brand-border/50 p-6 flex flex-col">
+                <h2 class="text-lg font-bold text-brand-navy mb-1">Quick Transfer</h2>
+                <p class="text-xs text-brand-gray mb-6">Send money instantly to contacts</p>
+
+                <div class="flex items-center gap-3 overflow-x-auto pb-4 mb-2">
+                    <button class="flex flex-col items-center gap-2 min-w-[60px]">
+                        <div class="w-12 h-12 rounded-full border border-dashed border-brand-gray flex items-center justify-center text-brand-gray hover:border-brand-blue hover:text-brand-blue transition-colors">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <span class="text-xs font-medium text-brand-navy">Add</span>
+                    </button>
+                    <button class="flex flex-col items-center gap-2 min-w-[60px]">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-transparent hover:border-brand-blue transition-all cursor-pointer">
+                        <span class="text-xs font-medium text-brand-gray">Sarah</span>
+                    </button>
+                    <button class="flex flex-col items-center gap-2 min-w-[60px]">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-transparent hover:border-brand-blue transition-all cursor-pointer">
+                        <span class="text-xs font-medium text-brand-gray">Mike</span>
+                    </button>
+                    <button class="flex flex-col items-center gap-2 min-w-[60px]">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-transparent hover:border-brand-blue transition-all cursor-pointer">
+                        <span class="text-xs font-medium text-brand-gray">Emma</span>
+                    </button>
+                </div>
+
+                <div class="mt-auto space-y-4">
+                    <div class="relative">
+                        <label class="text-xs font-semibold text-brand-gray mb-1.5 block">Amount</label>
+                        <div class="relative flex items-center">
+                            <span class="absolute left-4 text-brand-navy font-bold">$</span>
+                            <input type="text" value="1,250.00" class="w-full pl-8 pr-16 py-3 bg-brand-offwhite border border-brand-border rounded-xl text-brand-navy font-bold focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all">
+                            <span class="absolute right-4 text-brand-gray text-xs font-medium">USD</span>
+                        </div>
+                    </div>
+                    <button class="w-full py-3.5 bg-brand-navy text-white rounded-xl text-sm font-semibold hover:bg-brand-navy/90 shadow-md transition-all flex items-center justify-center gap-2">
+                        Send Money <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Transactions Table -->
+        <div class="bg-white rounded-[24px] shadow-card border border-brand-border/50 overflow-hidden mb-12">
+            <div class="p-6 border-b border-brand-border/50 flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg font-bold text-brand-navy">Recent Transactions</h2>
+                    <p class="text-xs text-brand-gray">Latest activity across all accounts</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-brand-gray text-xs"></i>
+                        <input type="text" placeholder="Search..." class="w-[180px] pl-8 pr-3 py-1.5 bg-brand-offwhite border border-brand-border rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-brand-blue/30">
+                    </div>
+                    <button class="p-1.5 border border-brand-border rounded-lg text-brand-gray hover:bg-brand-offwhite transition-colors">
+                        <i class="fa-solid fa-filter text-xs"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-brand-offwhite/50 text-[11px] uppercase tracking-wider text-brand-gray font-semibold border-b border-brand-border/50">
+                            <th class="px-6 py-4 font-semibold">Transaction</th>
+                            <th class="px-6 py-4 font-semibold">Date & Time</th>
+                            <th class="px-6 py-4 font-semibold">Status</th>
+                            <th class="px-6 py-4 font-semibold">Category</th>
+                            <th class="px-6 py-4 font-semibold text-right">Amount</th>
+                            <th class="px-6 py-4"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-brand-border/40">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-brand-offwhite/30 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center border border-blue-100">
+                                        <i class="fa-brands fa-apple text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-brand-navy">Apple Store</div>
+                                        <div class="text-xs text-brand-gray">Equipment</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-brand-navy font-medium">Oct 24, 2023</div>
+                                <div class="text-xs text-brand-gray">10:42 AM</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-100">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Completed
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 rounded-md bg-gray-100 text-brand-gray text-xs font-medium">Hardware</span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-bold text-brand-navy">
+                                -$1,299.00
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-brand-gray hover:text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <i class="fa-solid fa-ellipsis-vertical px-2"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-brand-offwhite/30 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center border border-purple-100">
+                                        <i class="fa-brands fa-figma text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-brand-navy">Figma Inc.</div>
+                                        <div class="text-xs text-brand-gray">Software Subscription</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-brand-navy font-medium">Oct 22, 2023</div>
+                                <div class="text-xs text-brand-gray">09:15 AM</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-100">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Completed
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 rounded-md bg-gray-100 text-brand-gray text-xs font-medium">SaaS</span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-bold text-brand-navy">
+                                -$45.00
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-brand-gray hover:text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <i class="fa-solid fa-ellipsis-vertical px-2"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-brand-offwhite/30 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" class="w-full h-full rounded-full object-cover">
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-brand-navy">Stripe Payout</div>
+                                        <div class="text-xs text-brand-gray">Direct Deposit</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-brand-navy font-medium">Oct 20, 2023</div>
+                                <div class="text-xs text-brand-gray">14:30 PM</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold border border-amber-100">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Pending
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 rounded-md bg-gray-100 text-brand-gray text-xs font-medium">Income</span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-bold text-emerald-600">
+                                +$8,450.00
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-brand-gray hover:text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <i class="fa-solid fa-ellipsis-vertical px-2"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-4 border-t border-brand-border/50 flex items-center justify-center">
+                <button class="text-sm font-semibold text-brand-blue hover:text-brand-navy transition-colors">View All Transactions &rarr;</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const revenueData = [{
+                    type: 'scatter',
+                    mode: 'lines',
+                    name: 'Revenue',
+                    x: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                    y: [30, 45, 35, 55, 40, 65, 50, 75, 60, 85],
+                    line: {
+                        color: '#0016dc',
+                        width: 3,
+                        shape: 'spline',
+                        smoothing: 1.3
+                    },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(0, 22, 220, 0.05)',
+                    marker: {
+                        size: 6,
+                        color: '#0016dc',
+                        symbol: 'circle'
+                    }
+                }];
+
+                const layout = {
+                    margin: { t: 10, r: 10, b: 30, l: 40 },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent',
+                    showlegend: false,
+                    xaxis: {
+                        showgrid: false,
+                        tickfont: { family: 'Plus Jakarta Sans', color: '#8E92A4', size: 12 },
+                        linecolor: '#E5E7EB'
+                    },
+                    yaxis: {
+                        showgrid: true,
+                        gridcolor: 'rgba(229, 231, 235, 0.5)',
+                        gridwidth: 1,
+                        tickfont: { family: 'Plus Jakarta Sans', color: '#8E92A4', size: 12 },
+                        zeroline: false
+                    },
+                    hovermode: 'closest',
+                    hoverlabel: {
+                        bgcolor: '#1A1A24',
+                        font: { family: 'Plus Jakarta Sans', color: '#FFFFFF' },
+                        bordercolor: 'transparent'
+                    }
+                };
+
+                const config = {
+                    responsive: true,
+                    displayModeBar: false,
+                    displaylogo: false
+                };
+
+                Plotly.newPlot('revenueChart', revenueData, layout, config);
+            } catch (e) {
+                console.error('Chart initialization failed:', e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

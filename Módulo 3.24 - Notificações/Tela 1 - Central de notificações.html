@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            light: '#F8F9FA',
+                            navy: '#1A1A24',
+                            gray: '#F3F4F6',
+                            border: '#E5E7EB'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .row-hover-action:hover .action-btn { opacity: 1; transform: translateX(0); }
+        .action-btn { opacity: 0; transform: translateX(10px); transition: all 0.2s ease-out; }
+    </style>
+</head>
+<body class="min-h-screen bg-brand-light font-sans text-brand-navy antialiased">
+
+    <!-- Global Header -->
+    <header id="header" class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-brand-border z-50 h-16 flex items-center justify-between px-6 lg:px-10">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white">
+                <i class="fa-solid fa-layer-group text-sm"></i>
+            </div>
+            <span class="font-bold text-lg tracking-tight">Finova</span>
+        </div>
+        
+        <div class="flex items-center gap-6">
+            <div class="relative cursor-pointer group">
+                <i class="fa-regular fa-bell text-xl text-gray-400 group-hover:text-brand-navy transition-colors"></i>
+                <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white flex items-center justify-center shadow-[0_0_8px_rgba(239,68,68,0.5)]">
+                    <span class="text-[9px] font-bold text-white">3</span>
+                </div>
+            </div>
+            <div class="h-6 w-px bg-brand-border"></div>
+            <div class="flex items-center gap-3 cursor-pointer">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-8 h-8 rounded-full border border-brand-border object-cover">
+                <div class="hidden md:block text-sm">
+                    <p class="font-semibold leading-tight">Alex Silva</p>
+                    <p class="text-gray-500 text-xs">Admin</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <main class="pt-24 pb-12 px-4 md:px-8 max-w-[1200px] mx-auto min-h-screen flex flex-col lg:flex-row gap-6">
+        
+        <!-- Sidebar Panel -->
+        <aside id="sidebar-panel" class="w-full lg:w-[25%] shrink-0">
+            <div class="bg-white rounded-[24px] p-6 shadow-soft h-full">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 px-2">Caixa de Entrada</h2>
+                
+                <nav class="space-y-1">
+                    <a href="#" class="flex items-center justify-between px-4 py-3 rounded-xl bg-brand-gray text-brand-blue font-semibold transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-inbox w-5 text-center"></i>
+                            <span>Todas as Atualizações</span>
+                        </div>
+                        <span class="bg-brand-blue text-white text-xs py-0.5 px-2 rounded-full">3</span>
+                    </a>
+                    
+                    <a href="#" class="flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-brand-navy font-medium transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-money-bill-transfer w-5 text-center"></i>
+                            <span>Pagamentos e Faturas</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-brand-navy font-medium transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-rocket w-5 text-center"></i>
+                            <span>Campanhas de Ads</span>
+                        </div>
+                    </a>
+                    
+                    <a href="Tela 2 - Preferências de notificação.html" class="flex items-center justify-between px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-brand-navy font-medium transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-gear w-5 text-center"></i>
+                            <span>Alertas do Sistema</span>
+                        </div>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Feed Panel -->
+        <section id="main-feed" class="w-full lg:w-[75%]">
+            <div class="bg-white rounded-[24px] shadow-soft overflow-hidden h-full flex flex-col">
+                
+                <!-- Feed Header -->
+                <div class="px-8 py-6 border-b border-brand-border flex items-center justify-between bg-white z-10 sticky top-0">
+                    <h1 class="text-2xl font-bold text-brand-navy">Todas as Atualizações</h1>
+                    <button class="text-sm font-medium text-brand-blue hover:text-blue-700 transition-colors">Marcar tudo como lido</button>
+                </div>
+
+                <!-- Feed Content -->
+                <div class="flex-1 overflow-y-auto">
+                    
+                    <!-- Unread Row 1 -->
+                    <div class="row-hover-action group flex items-center gap-4 px-8 py-5 border-b border-brand-border/60 hover:bg-gray-50/50 transition-colors relative cursor-pointer">
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-brand-blue rounded-r-full"></div>
+                        
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-rocket text-brand-blue text-lg"></i>
+                        </div>
+                        
+                        <div class="flex-1 min-w-0 pr-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="font-bold text-brand-navy truncate">Campanha Aprovada</h3>
+                                <span class="text-xs text-gray-400 font-medium shrink-0 ml-4">10:45</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">Seu anúncio para o litoral já está rodando e gerando impressões.</p>
+                        </div>
+                        
+                        <div class="action-btn flex items-center gap-2 absolute right-8 bg-gradient-to-l from-white via-white to-transparent pl-8 py-2">
+                            <button class="px-4 py-2 rounded-full bg-brand-blue text-white text-xs font-semibold hover:bg-blue-700 shadow-sm transition-colors">Ver Métricas</button>
+                        </div>
+                    </div>
+
+                    <!-- Unread Row 2 -->
+                    <div class="row-hover-action group flex items-center gap-4 px-8 py-5 border-b border-brand-border/60 hover:bg-gray-50/50 transition-colors relative cursor-pointer">
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-brand-blue rounded-r-full"></div>
+                        
+                        <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-money-check-dollar text-green-600 text-lg"></i>
+                        </div>
+                        
+                        <div class="flex-1 min-w-0 pr-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="font-bold text-brand-navy truncate">Pagamento Recebido</h3>
+                                <span class="text-xs text-gray-400 font-medium shrink-0 ml-4">09:30</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">Fatura #4092 paga por TechCorp Solutions no valor de R$ 12.500,00.</p>
+                        </div>
+                        
+                        <div class="action-btn flex items-center gap-2 absolute right-8 bg-gradient-to-l from-white via-white to-transparent pl-8 py-2">
+                            <button class="px-4 py-2 rounded-full bg-white border border-brand-border text-brand-navy text-xs font-semibold hover:bg-gray-50 shadow-sm transition-colors">Ver Fatura</button>
+                        </div>
+                    </div>
+
+                    <!-- Unread Row 3 -->
+                    <div class="row-hover-action group flex items-center gap-4 px-8 py-5 border-b border-brand-border/60 hover:bg-gray-50/50 transition-colors relative cursor-pointer">
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-red-500 rounded-r-full"></div>
+                        
+                        <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-triangle-exclamation text-red-500 text-lg"></i>
+                        </div>
+                        
+                        <div class="flex-1 min-w-0 pr-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="font-bold text-brand-navy truncate">Falha na Integração API</h3>
+                                <span class="text-xs text-gray-400 font-medium shrink-0 ml-4">Ontem</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">O webhook do gateway de pagamento retornou erro 500 nas últimas 3 tentativas.</p>
+                        </div>
+                        
+                        <div class="action-btn flex items-center gap-2 absolute right-8 bg-gradient-to-l from-white via-white to-transparent pl-8 py-2">
+                            <button class="px-4 py-2 rounded-full bg-red-50 text-red-600 text-xs font-semibold hover:bg-red-100 transition-colors">Analisar Logs</button>
+                        </div>
+                    </div>
+
+                    <!-- Read Row 1 -->
+                    <div class="row-hover-action group flex items-center gap-4 px-8 py-5 border-b border-brand-border/60 hover:bg-gray-50/50 transition-colors relative cursor-pointer opacity-75">
+                        
+                        <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-user-plus text-purple-600 text-lg"></i>
+                        </div>
+                        
+                        <div class="flex-1 min-w-0 pr-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="font-medium text-brand-navy truncate">Novo Membro na Equipe</h3>
+                                <span class="text-xs text-gray-400 font-medium shrink-0 ml-4">24 Out</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">Sarah Mendes aceitou o convite para workspace "Financeiro".</p>
+                        </div>
+                        
+                        <div class="action-btn flex items-center gap-2 absolute right-8 bg-gradient-to-l from-white via-white to-transparent pl-8 py-2">
+                            <button class="px-4 py-2 rounded-full bg-white border border-brand-border text-brand-navy text-xs font-semibold hover:bg-gray-50 shadow-sm transition-colors">Gerenciar Acessos</button>
+                        </div>
+                    </div>
+
+                    <!-- Read Row 2 -->
+                    <div class="row-hover-action group flex items-center gap-4 px-8 py-5 hover:bg-gray-50/50 transition-colors relative cursor-pointer opacity-75">
+                        
+                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-file-invoice text-gray-600 text-lg"></i>
+                        </div>
+                        
+                        <div class="flex-1 min-w-0 pr-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="font-medium text-brand-navy truncate">Relatório Mensal Disponível</h3>
+                                <span class="text-xs text-gray-400 font-medium shrink-0 ml-4">22 Out</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">O fechamento consolidado de Setembro já está pronto para download.</p>
+                        </div>
+                        
+                        <div class="action-btn flex items-center gap-2 absolute right-8 bg-gradient-to-l from-white via-white to-transparent pl-8 py-2">
+                            <button class="px-4 py-2 rounded-full bg-white border border-brand-border text-brand-navy text-xs font-semibold hover:bg-gray-50 shadow-sm transition-colors">Download PDF</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

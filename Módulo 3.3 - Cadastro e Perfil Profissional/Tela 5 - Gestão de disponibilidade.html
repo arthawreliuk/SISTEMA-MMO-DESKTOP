@@ -1,0 +1,187 @@
+<html lang="en">
+
+  <head>
+    <script>
+      window.FontAwesomeConfig = {
+        autoReplaceSvg: 'nest'
+      };
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availability &amp; Schedule Definition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script>
+      tailwind.config = {
+        theme:
+        {
+          extend:
+          {
+            fontFamily:
+            {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+            colors:
+            {
+              brand:
+              {
+                blue: '#0016dc',
+                navy: '#1A1A24',
+                bg: '#F8F9FA',
+                card: '#FFFFFF',
+                gray: '#F3F4F6'
+              }
+            },
+            boxShadow:
+            {
+              'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+              'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body
+      {
+        margin: 0;
+        padding: 0;
+        background-color: #F8F9FA;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+
+      /* Custom Toggle Switch */
+      .toggle-checkbox:checked
+      {
+        right: 0;
+        border-color: #0016dc;
+      }
+
+      .toggle-checkbox:checked+.toggle-label
+      {
+        background-color: #0016dc;
+      }
+
+      .toggle-checkbox:checked+.toggle-label:after
+      {
+        transform: translateX(100%);
+        border-color: white;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-brand-bg text-brand-navy min-h-screen flex flex-col items-center">
+    <!-- Top Navigation -->
+    <header id="header"
+      class="w-full max-w-[1440px] h-[80px] bg-white border-b border-gray-100 flex items-center justify-between px-8 md:px-12 fixed top-0 z-50">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 rounded-full bg-brand-blue flex items-center justify-center text-white font-bold text-xl">
+          M
+        </div><span class="font-bold text-xl tracking-tight">MMO</span>
+      </div>
+      <div class="w-[72px]"></div> <!-- Spacer for centering -->
+    </header><!-- Main Content Area -->
+    <main id="main-workspace"
+      class="w-full flex-1 flex items-center justify-center pt-[120px] pb-[80px] px-4">
+      <!-- Primary Card Container -->
+      <div id="setup-card"
+        class="w-full max-w-[700px] bg-white rounded-[24px] shadow-soft p-10 md:p-12">
+        <!-- Header Section -->
+        <div id="card-header" class="text-center mb-10">
+          <h1
+            class="text-[32px] md:text-[40px] font-extrabold tracking-tight text-brand-navy mb-4 leading-tight">
+            Quando você atende?
+          </h1>
+          <p
+            class="text-[16px] text-gray-500 font-medium max-w-[480px] mx-auto leading-relaxed">
+            Defina seus dias e horários de trabalho para receber pedidos no
+            momento certo.
+          </p>
+        </div><!-- Weekly Setup -->
+        <div id="weekly-setup" class="mb-10"><label
+            class="block text-sm font-bold text-brand-navy mb-4 uppercase tracking-wider">Dias
+            da Semana</label>
+          <div class="flex flex-wrap justify-between gap-3"><button
+              class="flex-1 min-w-[60px] h-[56px] rounded-full bg-brand-blue text-white font-bold text-[15px] shadow-[0_8px_16px_-6px_rgba(0,22,220,0.4)] transition-all hover:-translate-y-1">
+              Seg
+            </button><button
+              class="flex-1 min-w-[60px] h-[56px] rounded-full bg-brand-blue text-white font-bold text-[15px] shadow-[0_8px_16px_-6px_rgba(0,22,220,0.4)] transition-all hover:-translate-y-1">
+              Ter
+            </button><button
+              class="flex-1 min-w-[60px] h-[56px] rounded-full bg-brand-blue text-white font-bold text-[15px] shadow-[0_8px_16px_-6px_rgba(0,22,220,0.4)] transition-all hover:-translate-y-1">
+              Qua
+            </button><button
+              class="flex-1 min-w-[60px] h-[56px] rounded-full bg-brand-blue text-white font-bold text-[15px] shadow-[0_8px_16px_-6px_rgba(0,22,220,0.4)] transition-all hover:-translate-y-1">
+              Qui
+            </button><button
+              class="flex-1 min-w-[60px] h-[56px] rounded-full bg-brand-blue text-white font-bold text-[15px] shadow-[0_8px_16px_-6px_rgba(0,22,220,0.4)] transition-all hover:-translate-y-1">
+              Sex
+            </button><button
+              class="flex-1 min-w-[60px] h-[56px] rounded-full bg-brand-gray text-gray-400 font-bold text-[15px] transition-all hover:bg-gray-200">
+              Sáb
+            </button><button
+              class="flex-1 min-w-[60px] h-[56px] rounded-full bg-brand-gray text-gray-400 font-bold text-[15px] transition-all hover:bg-gray-200">
+              Dom
+            </button></div>
+        </div><!-- Time Inputs -->
+        <div id="time-inputs" class="mb-10"><label
+            class="block text-sm font-bold text-brand-navy mb-4 uppercase tracking-wider">Horário
+            Padrão</label>
+          <div class="flex gap-6">
+            <div class="flex-1 relative">
+              <div
+                class="absolute inset-y-0 left-6 flex items-center pointer-events-none">
+                <span class="text-gray-400 font-medium">Das</span></div><input
+                type="time" value="08:00"
+                class="w-full h-[64px] bg-brand-gray border-2 border-transparent focus:border-brand-blue rounded-full pl-[72px] pr-6 text-lg font-bold text-brand-navy outline-none transition-all cursor-pointer shadow-inner-soft">
+            </div>
+            <div class="flex-1 relative">
+              <div
+                class="absolute inset-y-0 left-6 flex items-center pointer-events-none">
+                <span class="text-gray-400 font-medium">Até</span></div><input
+                type="time" value="18:00"
+                class="w-full h-[64px] bg-brand-gray border-2 border-transparent focus:border-brand-blue rounded-full pl-[72px] pr-6 text-lg font-bold text-brand-navy outline-none transition-all cursor-pointer shadow-inner-soft">
+            </div>
+          </div>
+        </div><!-- 24/7 Availability Block -->
+        <div id="emergency-block"
+          class="bg-brand-gray rounded-[20px] p-6 flex items-center justify-between mb-12 border border-gray-200/50">
+          <div class="flex items-center gap-4">
+            <div
+              class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-blue">
+              <i class="fa-solid fa-bolt text-xl"></i></div>
+            <div>
+              <h3 class="font-bold text-brand-navy text-[16px]">Atendimento de
+                Emergência 24h</h3>
+              <p class="text-sm text-gray-500 font-medium mt-0.5">Ficar visível
+                para pedidos urgentes</p>
+            </div>
+          </div><!-- Custom Toggle -->
+          <div
+            class="relative inline-block w-14 mr-2 align-middle select-none transition duration-200 ease-in">
+            <input type="checkbox" name="toggle" id="toggle" checked=""
+              class="toggle-checkbox absolute block w-7 h-7 rounded-full bg-white border-4 border-brand-blue appearance-none cursor-pointer z-10 transition-all duration-300 right-0 top-0"><label
+              for="toggle"
+              class="toggle-label block overflow-hidden h-7 rounded-full bg-brand-blue cursor-pointer transition-colors duration-300"></label>
+          </div>
+        </div><!-- Action Area -->
+        <div id="action-area"><button onclick="window.location.href='Tela 6 - Gestão de links sociais.html'"
+            class="w-full h-[72px] bg-brand-blue rounded-full text-white font-bold text-[18px] shadow-[0_16px_32px_-12px_rgba(0,22,220,0.5)] transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(0,22,220,0.6)] flex items-center justify-center gap-3"><span>Finalizar
+              Configuração de Agenda</span><i
+              class="fa-solid fa-arrow-right"></i></button></div>
+      </div>
+    </main>
+  </body>
+
+</html>

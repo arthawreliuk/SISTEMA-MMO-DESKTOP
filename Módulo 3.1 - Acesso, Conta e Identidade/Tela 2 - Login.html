@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MMO Premium Service Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0016dc',
+                            50: '#eef0ff',
+                            100: '#e0e4ff',
+                            500: '#0016dc',
+                            600: '#0011b0',
+                            900: '#000858',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 22, 220, 0.15)',
+                        'input': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .pattern-bg {
+            background-color: #0016dc;
+            background-image: radial-gradient(#ffffff 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+            opacity: 0.95;
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen text-slate-900 overflow-x-hidden flex flex-col md:flex-row">
+
+    <!-- Left Panel: Login Form (40%) -->
+    <main id="left-panel" class="w-full md:w-[40%] min-h-screen flex flex-col justify-center items-center px-6 py-12 lg:px-12 bg-white relative">
+        
+        <!-- Form Container -->
+        <div class="w-full max-w-[400px] flex flex-col">
+            
+            <!-- Logo -->
+            <div class="mb-12">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center text-white font-bold text-xl">M</div>
+                    <span class="text-2xl font-bold tracking-tight">MMO</span>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold tracking-tight mb-2">Entrar</h1>
+                <p class="text-slate-500">Bem-vindo de volta, por favor insira seus dados.</p>
+            </div>
+
+
+            <!-- Credentials Form -->
+            <form class="flex flex-col gap-5">
+                
+                <!-- Email Input -->
+                <div class="flex flex-col gap-1.5">
+                    <label for="email" class="text-sm font-medium text-slate-700">E-mail</label>
+                    <div class="relative flex items-center">
+                        <div class="absolute left-4 text-slate-400">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                        <input type="email" id="email" placeholder="nome@exemplo.com" class="w-full pl-11 pr-4 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all shadow-input text-sm" required>
+                    </div>
+                </div>
+
+                <!-- Password Input -->
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                        <label for="password" class="text-sm font-medium text-slate-700">Senha</label>
+                        <a href="Tela 3 - Recuperação de Acesso.html" class="text-sm font-medium text-brand hover:text-brand-600 transition-colors">Recuperar senha</a>
+                    </div>
+                    <div class="relative flex items-center">
+                        <div class="absolute left-4 text-slate-400">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <input type="password" id="password" placeholder="••••••••" class="w-full pl-11 pr-11 py-3.5 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all shadow-input text-sm" required>
+                        <button type="button" class="absolute right-4 text-slate-400 hover:text-slate-600">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" onclick="event.preventDefault(); window.location.href='Tela 5 - Seleção_Alternância de Contexto.html'" class="w-full bg-brand hover:bg-brand-600 text-white font-medium py-3.5 px-4 rounded-full transition-all mt-4 shadow-[0_4px_14px_0_rgba(0,22,220,0.39)] hover:shadow-[0_6px_20px_rgba(0,22,220,0.23)] hover:-translate-y-0.5">
+                    Entrar na Plataforma
+                </button>
+
+            </form>
+
+            <!-- Footer -->
+            <div class="mt-8 text-center">
+                <p class="text-sm text-slate-500">
+                    Não possui conta? <a href="Tela 1 - Cadastro de conta.html" class="font-semibold text-brand hover:text-brand-600 transition-colors">Cadastre-se grátis</a>
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Right Panel: Brand Canvas (60%) -->
+    <aside id="right-panel" class="hidden md:flex md:w-[60%] min-h-screen relative overflow-hidden pattern-bg items-center justify-center p-12">
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand-600/30 blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-indigo-500/20 blur-[120px]"></div>
+
+        <!-- Floating Trust Card -->
+        <div id="trust-card" class="glass-card rounded-[24px] p-8 max-w-[480px] w-full shadow-glass relative z-10 transform hover:scale-[1.02] transition-transform duration-500">
+            
+            <!-- Stars -->
+            <div class="flex items-center gap-1 mb-6">
+                <i class="fa-solid fa-star text-yellow-400 text-xl"></i>
+                <i class="fa-solid fa-star text-yellow-400 text-xl"></i>
+                <i class="fa-solid fa-star text-yellow-400 text-xl"></i>
+                <i class="fa-solid fa-star text-yellow-400 text-xl"></i>
+                <i class="fa-solid fa-star text-yellow-400 text-xl"></i>
+            </div>
+
+            <!-- Review Text -->
+            <p class="text-white text-xl font-medium leading-relaxed mb-8">
+                "A plataforma MMO transformou a maneira como contrato serviços premium. A qualidade dos profissionais e a segurança do processo são incomparáveis. Definitivamente o melhor marketplace do mercado."
+            </p>
+
+            <!-- User Info -->
+            <div class="flex items-center gap-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Roberto Almeida" class="w-12 h-12 rounded-full border-2 border-white/20 object-cover">
+                <div>
+                    <h4 class="text-white font-semibold">Roberto Almeida</h4>
+                    <p class="text-white/70 text-sm">Diretor de Operações, TechCorp</p>
+                </div>
+            </div>
+
+            <!-- Decorative Quote Icon -->
+            <div class="absolute top-6 right-8 text-white/10 text-6xl">
+                <i class="fa-solid fa-quote-right"></i>
+            </div>
+        </div>
+
+        <!-- Floating Badges -->
+        <div class="absolute top-1/4 right-[15%] glass-card rounded-full px-6 py-3 flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+            <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+                <i class="fa-solid fa-shield-check"></i>
+            </div>
+            <span class="text-white font-medium text-sm">100% Seguro</span>
+        </div>
+
+        <div class="absolute bottom-1/4 left-[15%] glass-card rounded-full px-6 py-3 flex items-center gap-3 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+            <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <span class="text-white font-medium text-sm">+50k Profissionais</span>
+        </div>
+
+    </aside>
+
+</body>
+</html>

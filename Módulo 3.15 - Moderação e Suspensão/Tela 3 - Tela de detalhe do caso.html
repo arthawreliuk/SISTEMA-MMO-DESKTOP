@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispute Case Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        'trust-blue': '#0016dc',
+                        crimson: '#E11D48',
+                        warning: '#F59E0B',
+                        'off-white': '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Admin Control Bar -->
+    <header id="admin-control-bar" class="w-full bg-white shadow-sm border-b border-gray-100 z-10 sticky top-0">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 text-sm font-medium text-gray-500">
+                <a href="#" class="hover:text-navy transition-colors">Painel</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <a href="#" class="hover:text-navy transition-colors">Segurança</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <a href="#" class="hover:text-navy transition-colors">Fila</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-navy font-semibold">Ticket #9942</span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full border border-blue-100">
+                    <div class="w-2 h-2 rounded-full bg-trust-blue animate-pulse"></div>
+                    <span class="text-sm font-semibold text-trust-blue">Tempo de Análise: 12m</span>
+                </div>
+                <div class="flex items-center gap-3 bg-gray-50 px-4 py-2 rounded-full border border-gray-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Moderator" class="w-6 h-6 rounded-full object-cover">
+                    <span class="text-sm font-medium text-navy">Responsável: Arthur</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-6 py-8">
+        
+        <div class="flex items-center justify-between mb-8">
+            <h1 class="text-3xl font-bold text-navy">Investigation Board</h1>
+            <div class="flex gap-2">
+                <span class="px-3 py-1 bg-red-50 text-crimson text-xs font-bold rounded-full uppercase tracking-wide border border-red-100">High Priority</span>
+                <span class="px-3 py-1 bg-orange-50 text-warning text-xs font-bold rounded-full uppercase tracking-wide border border-orange-100">Escalated</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-10 gap-6">
+            
+            <!-- Column 1: The Claim & Evidence (30%) -->
+            <div id="col-claim" class="lg:col-span-3 flex flex-col gap-6">
+                <!-- Client Info Card -->
+                <div class="bg-white rounded-[24px] p-6 shadow-ambient">
+                    <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">The Claimant</h2>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Client" class="w-14 h-14 rounded-full object-cover border-2 border-gray-100">
+                        <div>
+                            <h3 class="text-lg font-bold text-navy">Marcella Silva</h3>
+                            <p class="text-sm text-gray-500">Membro desde Mar 2023</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-red-50 rounded-2xl p-4 border border-red-100 mb-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-tag text-crimson text-sm"></i>
+                            <span class="text-sm font-bold text-crimson">Tag: Fraude Financeira</span>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            "O profissional solicitou um pagamento por fora da plataforma via PIX antes de iniciar o serviço. Quando eu recusei, ele cancelou o pedido e me bloqueou."
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-100">
+                        <h4 class="text-sm font-semibold text-navy mb-3">Attached Evidence</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="relative group rounded-xl overflow-hidden cursor-pointer border border-gray-200 aspect-square">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3d9f6e051d-652869d57d7618f4bbaa.png" alt="screenshot of a whatsapp chat showing payment request in portuguese" /></AI-IMAGE>
+                                <div class="absolute inset-0 bg-navy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <i class="fa-solid fa-magnifying-glass-plus text-white text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="relative group rounded-xl overflow-hidden cursor-pointer border border-gray-200 aspect-square bg-gray-50 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fa-solid fa-file-pdf text-gray-400 text-2xl mb-1"></i>
+                                    <p class="text-[10px] text-gray-500 font-medium">extrato.pdf</p>
+                                </div>
+                                <div class="absolute inset-0 bg-navy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <i class="fa-solid fa-magnifying-glass-plus text-white text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: System Context & Chat Logs (40%) -->
+            <div id="col-chat" class="lg:col-span-4 flex flex-col gap-6">
+                <div class="bg-white rounded-[24px] shadow-ambient flex flex-col h-[700px] overflow-hidden">
+                    <!-- Context Header -->
+                    <div class="p-6 border-b border-gray-100 bg-gray-50/50">
+                        <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">System Context</h2>
+                        <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-gray-200 shadow-sm">
+                            <div>
+                                <p class="text-xs text-gray-500 mb-1">Transaction Value</p>
+                                <p class="text-xl font-bold text-navy">R$ 450,00</p>
+                            </div>
+                            <div class="h-10 w-px bg-gray-200"></div>
+                            <div>
+                                <p class="text-xs text-gray-500 mb-1">Status</p>
+                                <p class="text-sm font-bold text-warning"><i class="fa-solid fa-lock mr-1"></i> Escrow Locked</p>
+                            </div>
+                            <div class="h-10 w-px bg-gray-200"></div>
+                            <div>
+                                <p class="text-xs text-gray-500 mb-1">Match Time</p>
+                                <p class="text-sm font-semibold text-navy">14 Jun, 10:42 AM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Log -->
+                    <div class="flex-grow p-6 overflow-y-auto flex flex-col gap-4 bg-gray-50/30">
+                        <div class="text-center my-2">
+                            <span class="text-xs font-medium text-gray-400 bg-gray-100 px-3 py-1 rounded-full">14 Jun 2024</span>
+                        </div>
+
+                        <!-- System Message -->
+                        <div class="flex justify-center my-2">
+                            <div class="bg-blue-50 border border-blue-100 rounded-xl py-2 px-4 text-xs text-trust-blue font-medium flex items-center gap-2 shadow-sm">
+                                <i class="fa-solid fa-handshake"></i> Pedido #8821 Iniciado
+                            </div>
+                        </div>
+
+                        <!-- Professional Message -->
+                        <div class="flex items-end gap-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-8 h-8 rounded-full object-cover">
+                            <div class="bg-white border border-gray-200 rounded-2xl rounded-bl-none p-3 max-w-[80%] shadow-sm">
+                                <p class="text-sm text-navy">Olá Marcella, vi seu pedido. Consigo fazer hoje mesmo, mas a taxa da plataforma tá muito alta.</p>
+                                <span class="text-[10px] text-gray-400 mt-1 block">10:45 AM</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-end gap-2">
+                            <div class="w-8"></div>
+                            <div class="bg-white border border-gray-200 rounded-2xl rounded-bl-none p-3 max-w-[80%] shadow-sm">
+                                <p class="text-sm text-navy">Faz um PIX de R$200 de sinal direto pra mim que eu te dou desconto no total. Chave: 119988...</p>
+                                <span class="text-[10px] text-gray-400 mt-1 block">10:46 AM</span>
+                            </div>
+                        </div>
+
+                        <!-- Client Message -->
+                        <div class="flex items-end justify-end gap-2">
+                            <div class="bg-trust-blue text-white rounded-2xl rounded-br-none p-3 max-w-[80%] shadow-md">
+                                <p class="text-sm">Oi, eu prefiro pagar tudo por aqui mesmo pra ter a garantia do serviço.</p>
+                                <span class="text-[10px] text-blue-200 mt-1 block text-right">10:50 AM</span>
+                            </div>
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover">
+                        </div>
+
+                        <!-- Professional Message -->
+                        <div class="flex items-end gap-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-8 h-8 rounded-full object-cover">
+                            <div class="bg-white border border-gray-200 rounded-2xl rounded-bl-none p-3 max-w-[80%] shadow-sm">
+                                <p class="text-sm text-navy">Ah, então não vai dar. Boa sorte aí.</p>
+                                <span class="text-[10px] text-gray-400 mt-1 block">10:52 AM</span>
+                            </div>
+                        </div>
+
+                         <!-- System Message -->
+                         <div class="flex justify-center my-4">
+                            <div class="bg-red-50 border border-red-100 rounded-xl py-2 px-4 text-xs text-crimson font-medium flex items-center gap-2 shadow-sm">
+                                <i class="fa-solid fa-ban"></i> Profissional cancelou o pedido
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3: Defendant Profile & Resolution (30%) -->
+            <div id="col-resolution" class="lg:col-span-3 flex flex-col gap-6">
+                
+                <!-- Defendant Profile -->
+                <div class="bg-white rounded-[24px] p-6 shadow-ambient">
+                    <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">The Defendant</h2>
+                    <div class="flex flex-col items-center text-center mb-6">
+                        <div class="relative mb-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Professional" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md">
+                            <div class="absolute -bottom-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-full border-2 border-white shadow-sm flex items-center gap-1">
+                                <i class="fa-solid fa-crown"></i> Mestre
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy">Stefan Kutch</h3>
+                        <p class="text-sm text-gray-500">Eletricista Residencial</p>
+                        
+                        <div class="flex items-center gap-4 mt-4 w-full bg-gray-50 rounded-xl p-3 border border-gray-100">
+                            <div class="flex-1 text-center">
+                                <p class="text-[10px] text-gray-500 uppercase font-bold">Rating</p>
+                                <p class="text-sm font-bold text-navy"><i class="fa-solid fa-star text-yellow-400 text-xs mr-1"></i> 4.8</p>
+                            </div>
+                            <div class="w-px h-6 bg-gray-200"></div>
+                            <div class="flex-1 text-center">
+                                <p class="text-[10px] text-gray-500 uppercase font-bold">Jobs</p>
+                                <p class="text-sm font-bold text-navy">142</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- History -->
+                    <div>
+                        <h4 class="text-sm font-semibold text-navy mb-4">Histórico de Moderação</h4>
+                        <div class="relative pl-4 border-l-2 border-gray-100 space-y-4">
+                            <div class="relative">
+                                <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-warning border-2 border-white"></div>
+                                <p class="text-xs font-bold text-navy">Advertência (Comportamento)</p>
+                                <p class="text-[10px] text-gray-500">12 Fev 2024</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-gray-300 border-2 border-white"></div>
+                                <p class="text-xs font-bold text-navy">Disputa a favor (Cancelamento)</p>
+                                <p class="text-[10px] text-gray-500">05 Nov 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Gavel -->
+                <div class="bg-white rounded-[24px] p-6 shadow-ambient border-t-4 border-navy">
+                    <h2 class="text-sm font-bold text-navy uppercase tracking-wider mb-1">Ação de Resolução</h2>
+                    <p class="text-xs text-gray-500 mb-6">Decida o desfecho deste ticket.</p>
+
+                    <div class="space-y-3">
+                        <button onclick="window.location.href='Tela 4 - Tela de histórico de sanções.html'" class="w-full bg-crimson hover:bg-red-700 text-white font-bold py-3.5 px-4 rounded-xl transition-colors shadow-md shadow-red-500/20 flex items-center justify-center gap-2 group">
+                            <i class="fa-solid fa-gavel group-hover:-rotate-12 transition-transform"></i>
+                            Suspender Conta (Ban)
+                        </button>
+
+                        <button onclick="window.location.href='Tela 4 - Tela de histórico de sanções.html'" class="w-full bg-trust-blue hover:bg-blue-800 text-white font-bold py-3.5 px-4 rounded-xl transition-colors shadow-md shadow-blue-500/20 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            Aplicar Advertência (Strike)
+                        </button>
+
+                        <button onclick="window.location.href='Tela 4 - Tela de histórico de sanções.html'" class="w-full bg-white border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-navy font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-circle-check"></i>
+                            Encerrar a favor do Mestre
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full bg-white border-t border-gray-100 py-6 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 flex justify-between items-center text-xs text-gray-400 font-medium">
+            <p>&copy; 2024 Trust & Safety Command Center.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-navy transition-colors">Políticas Internas</a>
+                <a href="#" class="hover:text-navy transition-colors">Ajuda do Sistema</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

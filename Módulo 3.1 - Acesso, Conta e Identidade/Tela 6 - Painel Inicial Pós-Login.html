@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context/Role Selection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        'primary-light': 'rgba(0, 22, 220, 0.05)',
+                        'deep-navy': '#0F172A',
+                        'card-bg': '#FFFFFF',
+                        'border-light': '#E2E8F0',
+                        'text-muted': '#64748B'
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0, 22, 220, 0.08)',
+                        'nav': '0 2px 10px rgba(0, 0, 0, 0.02)',
+                        'card-hover': '0 20px 40px -10px rgba(0, 22, 220, 0.12)'
+                    },
+                    backgroundImage: {
+                        'geometric': "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%230016dc\\' fill-opacity=\\'0.05\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::-webkit-scrollbar { display: none; }
+        
+        .card-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-transition {
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-deep-navy">
+
+    <!-- Top Navigation -->
+    <nav id="header" class="w-full bg-white shadow-nav py-4 px-6 md:px-12 flex justify-between items-center fixed top-0 z-50">
+        <div class="flex items-center gap-2 cursor-pointer">
+            <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-xl">
+                M
+            </div>
+            <span class="font-bold text-xl tracking-tight text-deep-navy">MMO</span>
+        </div>
+        <a href="Tela 2 - Login.html" class="text-deep-navy font-semibold text-sm hover:text-primary transition-colors flex items-center gap-2">
+            Sair <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
+        </a>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow flex flex-col items-center justify-center pt-24 pb-12 px-4 sm:px-6 relative">
+        
+        <!-- Workspace Container -->
+        <div class="w-full max-w-[900px] mx-auto flex flex-col items-center">
+            
+            <!-- Typography Setup -->
+            <div id="greeting-header" class="text-center mb-12 sm:mb-16">
+                <p class="text-primary font-semibold text-sm tracking-widest uppercase mb-3">Bem-vindo de volta</p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-deep-navy tracking-tight leading-tight">
+                    Como deseja continuar,<br/>
+                    <span class="text-primary">Arthur?</span>
+                </h1>
+                <p class="mt-4 text-text-muted text-base sm:text-lg max-w-lg mx-auto">
+                    Selecione o perfil que melhor se adequa ao seu objetivo hoje para personalizarmos sua experiência.
+                </p>
+            </div>
+
+            <!-- Role Selection Grid -->
+            <div id="role-selection" class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full">
+                
+                <!-- Card 1: Cliente -->
+                <div class="card-transition bg-white rounded-2xl shadow-ambient hover:shadow-card-hover hover:-translate-y-2 border border-border-light overflow-hidden flex flex-col group cursor-pointer">
+                    <!-- Geometric Top -->
+                    <div class="h-32 bg-primary-light bg-geometric flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/50"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center z-10 border border-border-light group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-user text-2xl text-primary"></i>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-8 flex-grow flex flex-col items-center text-center">
+                        <h2 class="text-2xl font-bold text-deep-navy mb-3">Cliente</h2>
+                        <p class="text-text-muted text-sm mb-8 flex-grow">
+                            Busco contratar serviços, encontrar profissionais qualificados e gerenciar meus projetos.
+                        </p>
+                        <!-- Button -->
+                        <button onclick="window.location.href='Tela 4 - Validação de E-mail_Telefone.html'" class="btn-transition w-full py-3 px-6 rounded-xl border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-white">
+                            Entrar como Cliente
+                            <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Profissional -->
+                <div class="card-transition bg-white rounded-2xl shadow-ambient hover:shadow-card-hover hover:-translate-y-2 border border-border-light overflow-hidden flex flex-col group cursor-pointer relative">
+                    <!-- Popular Badge -->
+                    <div class="absolute top-4 right-4 z-20 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Mais Usado
+                    </div>
+                    <!-- Geometric Top -->
+                    <div class="h-32 bg-primary-light bg-geometric flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/50"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center z-10 border border-border-light group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-briefcase text-2xl text-primary"></i>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-8 flex-grow flex flex-col items-center text-center">
+                        <h2 class="text-2xl font-bold text-deep-navy mb-3">Mestre / Profissional</h2>
+                        <p class="text-text-muted text-sm mb-8 flex-grow">
+                            Quero oferecer meus serviços, gerenciar minha agenda e expandir minha base de clientes.
+                        </p>
+                        <!-- Button -->
+                        <button onclick="window.location.href='../Módulo 3.2 - Onboarding e Ativação Profissional/Tela 1 - Ativação do modo profissional.html'" class="btn-transition w-full py-3 px-6 rounded-xl border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-white">
+                            Entrar como Profissional
+                            <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Empresa -->
+                <div class="card-transition bg-white rounded-2xl shadow-ambient hover:shadow-card-hover hover:-translate-y-2 border border-border-light overflow-hidden flex flex-col group cursor-pointer">
+                    <!-- Geometric Top -->
+                    <div class="h-32 bg-primary-light bg-geometric flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/50"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center z-10 border border-border-light group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-building text-2xl text-primary"></i>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-8 flex-grow flex flex-col items-center text-center">
+                        <h2 class="text-2xl font-bold text-deep-navy mb-3">Empresa</h2>
+                        <p class="text-text-muted text-sm mb-8 flex-grow">
+                            Represento uma organização, busco gerenciar equipes, filiais e grandes volumes de serviços.
+                        </p>
+                        <!-- Button -->
+                        <button class="btn-transition w-full py-3 px-6 rounded-xl border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-white">
+                            Entrar como Empresa
+                            <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Security Notice Footer -->
+    <footer id="footer" class="w-full py-8 flex justify-center items-center mt-auto">
+        <div class="flex items-center gap-2 text-text-muted text-xs sm:text-sm font-medium bg-white/50 px-4 py-2 rounded-full border border-border-light/50 backdrop-blur-sm">
+            <i class="fa-solid fa-shield-halved text-primary"></i>
+            <span>Seu acesso é protegido por criptografia de ponta a ponta.</span>
+        </div>
+    </footer>
+
+</body>
+</html>

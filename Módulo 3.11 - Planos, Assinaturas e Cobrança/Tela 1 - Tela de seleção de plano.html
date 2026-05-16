@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plan Selection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#4A4A5A',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E5E7EB',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0, 22, 220, 0.08)',
+                        'ambient-strong': '0 20px 60px -15px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .grid-bg {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background text-textMain min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav id="top-nav" class="w-full bg-white border-b border-borderLight sticky top-0 z-50 h-[72px] flex items-center justify-center">
+        <div class="w-full max-w-[1200px] px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <span class="font-extrabold text-xl tracking-tight text-textMain">MMOPlatform</span>
+            </div>
+            
+            <!-- Right Actions -->
+            <div class="flex items-center gap-4">
+                <button class="text-textMuted hover:text-textMain transition-colors text-sm font-medium">Suporte</button>
+                <div class="flex items-center gap-3 pl-4 border-l border-borderLight cursor-pointer group">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-semibold text-textMain group-hover:text-primary transition-colors">Alex Silva</p>
+                        <p class="text-xs text-textMuted">Administrador</p>
+                    </div>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm ring-2 ring-transparent group-hover:ring-primary/20 transition-all">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow relative overflow-hidden pb-24">
+        <!-- Subtle Grid Background -->
+        <div class="absolute inset-0 grid-bg opacity-50 z-0 pointer-events-none"></div>
+        
+        <!-- Glow Effect behind Hero -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[100px] z-0 pointer-events-none"></div>
+
+        <div class="w-full max-w-[1200px] mx-auto px-6 relative z-10 pt-20">
+            
+            <!-- Hero Section -->
+            <section id="hero-section" class="text-center max-w-3xl mx-auto mb-16">
+                <h1 class="text-[48px] md:text-[56px] leading-[1.1] font-extrabold text-textMain tracking-tight mb-6">
+                    Desbloqueie o potencial <span class="text-primary">máximo</span> dos seus serviços
+                </h1>
+                <p class="text-lg md:text-xl text-textMuted mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Acesso prioritário ao Balcão, gestão de funil e métricas de conversão.
+                </p>
+                
+                <!-- Billing Toggle -->
+                <div class="inline-flex items-center p-1.5 bg-white border border-borderLight rounded-full shadow-sm mb-12">
+                    <button id="btn-monthly" class="px-6 py-2.5 rounded-full text-sm font-semibold text-textMuted hover:text-textMain transition-all focus:outline-none w-[160px]">
+                        Cobrança Mensal
+                    </button>
+                    <button id="btn-annual" class="px-6 py-2.5 rounded-full text-sm font-semibold bg-textMain text-white shadow-md transition-all focus:outline-none relative w-[240px]">
+                        Cobrança Anual
+                        <span class="absolute -top-3 -right-2 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-green-200 shadow-sm">
+                            Economize R$ 120
+                        </span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Pricing Grid -->
+            <section id="pricing-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mb-24">
+                
+                <!-- Left Card: Iniciante -->
+                <div id="plan-iniciante" class="bg-cardBg rounded-[24px] p-8 border border-borderLight shadow-ambient hover:shadow-ambient-strong transition-all duration-300 flex flex-col h-[520px]">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-textMain mb-2">Iniciante</h3>
+                        <p class="text-sm text-textMuted h-10">O essencial para começar a gerenciar seus serviços.</p>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-semibold text-textMuted">R$</span>
+                            <span class="text-5xl font-extrabold text-textMain tracking-tight">49</span>
+                            <span class="text-textMuted">/mês</span>
+                        </div>
+                    </div>
+                    <ul class="flex-grow space-y-4 mb-8">
+                        <li class="flex items-start gap-3 text-sm text-textMain">
+                            <i class="fa-solid fa-check text-primary mt-1 opacity-70"></i>
+                            <span>Até 100 clientes ativos</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-textMain">
+                            <i class="fa-solid fa-check text-primary mt-1 opacity-70"></i>
+                            <span>Dashboard básico</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-textMain">
+                            <i class="fa-solid fa-check text-primary mt-1 opacity-70"></i>
+                            <span>Suporte por email</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-textMuted opacity-50">
+                            <i class="fa-solid fa-xmark mt-1"></i>
+                            <span>Gestão de funil avançada</span>
+                        </li>
+                    </ul>
+                    <button onclick="window.location.href='Tela 2 - Tela de checkout.html'" class="w-full py-3.5 rounded-full border-2 border-borderLight text-textMain font-semibold hover:border-textMain hover:bg-gray-50 transition-colors">
+                        Começar Grátis
+                    </button>
+                </div>
+
+                <!-- Center Card: Mestre (The Star) -->
+                <div id="plan-mestre" class="bg-cardBg rounded-[24px] p-8 border-2 border-primary shadow-ambient-strong transform scale-110 relative z-10 flex flex-col h-[600px]">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+                        Mais Popular
+                    </div>
+                    <div class="mb-6 mt-2">
+                        <h3 class="text-2xl font-extrabold text-textMain mb-2 flex items-center gap-2">
+                            Mestre <i class="fa-solid fa-star text-yellow-400 text-lg"></i>
+                        </h3>
+                        <p class="text-sm text-textMuted h-10">Tudo que você precisa para escalar e dominar o mercado.</p>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl font-semibold text-textMuted">R$</span>
+                            <span class="text-6xl font-extrabold text-textMain tracking-tight">129</span>
+                            <span class="text-textMuted">/mês</span>
+                        </div>
+                    </div>
+                    <ul class="flex-grow space-y-4 mb-8">
+                        <li class="flex items-start gap-3 text-sm font-medium text-textMain">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                            </div>
+                            <span>Clientes ilimitados</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm font-medium text-textMain">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                            </div>
+                            <span>Acesso prioritário ao Balcão</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm font-medium text-textMain">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                            </div>
+                            <span>Gestão de funil completa</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm font-medium text-textMain">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                            </div>
+                            <span>Métricas de conversão avançadas</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm font-medium text-textMain">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                            </div>
+                            <span>Automação de cobranças</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm font-medium text-textMain">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                            </div>
+                            <span>Suporte prioritário 24/7</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm font-medium text-textMain">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-primary text-[10px]"></i>
+                            </div>
+                            <span>Relatórios personalizados</span>
+                        </li>
+                    </ul>
+                    <button onclick="window.location.href='Tela 2 - Tela de checkout.html'" class="w-full py-4 rounded-full bg-primary text-white font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg shadow-primary/30">
+                        Assinar Mestre
+                    </button>
+                </div>
+
+                <!-- Right Card: Empresa -->
+                <div id="plan-empresa" class="bg-cardBg rounded-[24px] p-8 border border-borderLight shadow-ambient hover:shadow-ambient-strong transition-all duration-300 flex flex-col h-[520px]">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-textMain mb-2">Empresa</h3>
+                        <p class="text-sm text-textMuted h-10">Para equipes grandes que precisam de controle total.</p>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-extrabold text-textMain tracking-tight">Personalizado</span>
+                        </div>
+                    </div>
+                    <ul class="flex-grow space-y-4 mb-8">
+                        <li class="flex items-start gap-3 text-sm text-textMain">
+                            <i class="fa-solid fa-check text-primary mt-1 opacity-70"></i>
+                            <span>Tudo do plano Mestre</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-textMain">
+                            <i class="fa-solid fa-check text-primary mt-1 opacity-70"></i>
+                            <span>Múltiplos usuários (Roles)</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-textMain">
+                            <i class="fa-solid fa-check text-primary mt-1 opacity-70"></i>
+                            <span>API dedicada</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-textMain">
+                            <i class="fa-solid fa-check text-primary mt-1 opacity-70"></i>
+                            <span>Gerente de conta exclusivo</span>
+                        </li>
+                    </ul>
+                    <button onclick="window.location.href='Tela 2 - Tela de checkout.html'" class="w-full py-3.5 rounded-full bg-white border-2 border-textMain text-textMain font-semibold hover:bg-textMain hover:text-white transition-colors">
+                        Falar com Vendas
+                    </button>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq-section" class="max-w-3xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-extrabold text-textMain mb-4">Perguntas Frequentes</h2>
+                    <p class="text-textMuted">Tudo que você precisa saber sobre nossos planos e preços.</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white border border-borderLight rounded-[16px] p-6 shadow-sm cursor-pointer hover:border-gray-300 transition-colors">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-textMain text-lg">Posso cancelar a qualquer momento?</h4>
+                            <i class="fa-solid fa-chevron-down text-textMuted"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white border border-borderLight rounded-[16px] p-6 shadow-sm cursor-pointer hover:border-gray-300 transition-colors">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-textMain text-lg">Como funciona a cobrança anual?</h4>
+                            <i class="fa-solid fa-chevron-down text-textMuted"></i>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white border border-borderLight rounded-[16px] p-6 shadow-sm cursor-pointer hover:border-gray-300 transition-colors">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-textMain text-lg">Quais são as formas de pagamento aceitas?</h4>
+                            <i class="fa-solid fa-chevron-down text-textMuted"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-borderLight py-12 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-primary rounded flex items-center justify-center text-white text-xs">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <span class="font-bold text-textMain">MMOPlatform &copy; 2026</span>
+            </div>
+            <div class="flex gap-6 text-sm text-textMuted font-medium">
+                <a href="#" class="hover:text-primary transition-colors">Termos de Serviço</a>
+                <a href="#" class="hover:text-primary transition-colors">Política de Privacidade</a>
+                <a href="#" class="hover:text-primary transition-colors">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple toggle script for demonstration
+        document.getElementById('btn-monthly').addEventListener('click', function() {
+            this.classList.replace('text-textMuted', 'text-white');
+            this.classList.replace('hover:text-textMain', 'bg-textMain');
+            this.classList.add('shadow-md');
+            
+            const annualBtn = document.getElementById('btn-annual');
+            annualBtn.classList.replace('bg-textMain', 'hover:text-textMain');
+            annualBtn.classList.replace('text-white', 'text-textMuted');
+            annualBtn.classList.remove('shadow-md');
+        });
+
+        document.getElementById('btn-annual').addEventListener('click', function() {
+            this.classList.replace('text-textMuted', 'text-white');
+            this.classList.replace('hover:text-textMain', 'bg-textMain');
+            this.classList.add('shadow-md');
+            
+            const monthlyBtn = document.getElementById('btn-monthly');
+            monthlyBtn.classList.replace('bg-textMain', 'hover:text-textMain');
+            monthlyBtn.classList.replace('text-white', 'text-textMuted');
+            monthlyBtn.classList.remove('shadow-md');
+        });
+    </script>
+</body>
+</html>

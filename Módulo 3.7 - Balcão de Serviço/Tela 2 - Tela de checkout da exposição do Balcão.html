@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Board Exposure Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            border: '#E2E8F0',
+                            muted: '#94A3B8'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-sans">
+
+    <!-- Top Navigation -->
+    <header id="header" class="w-full bg-white border-b border-brand-border/50 sticky top-0 z-50">
+        <div class="max-w-[1440px] mx-auto px-8 h-[80px] flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-navy rounded-xl flex items-center justify-center text-white font-bold text-xl">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight text-brand-navy">MMO</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-brand-navy font-semibold relative group">
+                    Home
+                    <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-brand-blue rounded-full"></span>
+                </a>
+                <a href="#" class="text-brand-muted hover:text-brand-navy font-medium transition-colors">Orders</a>
+                <a href="#" class="text-brand-muted hover:text-brand-navy font-medium transition-colors">Messages</a>
+                <a href="#" class="text-brand-muted hover:text-brand-navy font-medium transition-colors">Profile</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full border border-brand-border flex items-center justify-center text-brand-navy hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Profile" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-[1000px] mx-auto px-6 py-12 md:py-16">
+        
+        <!-- Header & Progress Stepper -->
+        <section id="progress_stepper_header" class="text-center mb-12">
+            <h1 class="text-3xl md:text-[40px] font-bold text-brand-navy mb-8 tracking-tight">Finalizar Publicação</h1>
+            
+            <div class="flex items-center justify-center max-w-2xl mx-auto">
+                <div class="flex items-center text-brand-muted font-medium">
+                    <span class="w-8 h-8 rounded-full bg-white border border-brand-border flex items-center justify-center text-sm mr-3">1</span>
+                    Detalhes
+                </div>
+                <div class="w-16 h-[2px] bg-brand-border mx-4"></div>
+                <div class="flex items-center text-brand-muted font-medium">
+                    <span class="w-8 h-8 rounded-full bg-white border border-brand-border flex items-center justify-center text-sm mr-3">2</span>
+                    Mídia
+                </div>
+                <div class="w-16 h-[2px] bg-brand-blue mx-4"></div>
+                <div class="flex items-center text-brand-blue font-bold">
+                    <span class="w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center text-sm mr-3 shadow-glow">3</span>
+                    Exposição & Pagamento
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Workspace Grid -->
+        <section id="checkout_workspace_grid" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column: Plan Selection -->
+            <div class="lg:col-span-7 space-y-6">
+                <h2 class="text-xl font-bold text-brand-navy">Nível de Urgência</h2>
+                
+                <!-- Turbo Plan -->
+                <label class="block relative cursor-pointer group">
+                    <input type="radio" name="plan" value="turbo" class="peer sr-only" checked>
+                    <div class="bg-white rounded-[24px] p-6 border-2 border-brand-blue shadow-glow transition-all relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-brand-blue text-white text-xs font-bold px-4 py-1.5 rounded-bl-[16px]">RECOMENDADO</div>
+                        
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue text-xl">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand-navy">Exposição Turbo</h3>
+                                    <p class="text-brand-blue font-semibold mt-1">R$ 14,90</p>
+                                </div>
+                            </div>
+                            <div class="w-6 h-6 rounded-full border-2 border-brand-blue flex items-center justify-center bg-brand-blue text-white">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                        </div>
+                        
+                        <p class="text-brand-muted text-sm leading-relaxed">
+                            Seu pedido alcança profissionais em Camboriú <strong class="text-brand-navy">3x mais rápido</strong>. Ideal para serviços que precisam de atendimento imediato.
+                        </p>
+                    </div>
+                </label>
+
+                <!-- Standard Plan -->
+                <label class="block relative cursor-pointer group">
+                    <input type="radio" name="plan" value="standard" class="peer sr-only">
+                    <div class="bg-white/60 rounded-[24px] p-6 border border-brand-border hover:border-brand-muted transition-all opacity-80 hover:opacity-100">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-brand-muted text-xl">
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-brand-navy">Padrão</h3>
+                                    <p class="text-brand-muted font-medium mt-1">Grátis</p>
+                                </div>
+                            </div>
+                            <div class="w-6 h-6 rounded-full border-2 border-brand-border peer-checked:border-brand-blue"></div>
+                        </div>
+                        <p class="text-brand-muted text-sm leading-relaxed pl-15">
+                            Exposição normal no mural de serviços. O tempo de resposta pode variar conforme a demanda local.
+                        </p>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Right Column: Secure Payment -->
+            <div class="lg:col-span-5">
+                <div class="bg-white rounded-[32px] p-8 shadow-soft border border-brand-border/50 sticky top-[100px]">
+                    
+                    <div class="flex items-center gap-3 mb-8 justify-center">
+                        <i class="fa-solid fa-shield-halved text-green-500 text-xl"></i>
+                        <span class="font-semibold text-brand-navy">Segurança Garantida</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Payment Method Toggle -->
+                        <div class="bg-brand-bg rounded-full p-1.5 flex items-center">
+                            <button class="flex-1 py-3 px-6 rounded-full bg-white text-brand-navy font-bold shadow-sm text-sm transition-all text-center">
+                                <i class="fa-brands fa-pix text-[#32BCAD] mr-2"></i> Pix
+                            </button>
+                            <button class="flex-1 py-3 px-6 rounded-full text-brand-muted font-medium hover:text-brand-navy text-sm transition-all text-center">
+                                <i class="fa-regular fa-credit-card mr-2"></i> Cartão
+                            </button>
+                        </div>
+
+                        <!-- Order Summary -->
+                        <div class="bg-gray-50 rounded-[20px] p-5 border border-brand-border border-dashed">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-brand-muted font-medium text-sm">Plano Selecionado</span>
+                                <span class="text-brand-navy font-bold text-sm">Turbo</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-3 border-t border-brand-border">
+                                <span class="text-brand-navy font-bold">Total</span>
+                                <span class="text-2xl font-extrabold text-brand-blue">R$ 14,90</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        <button onclick="window.location.href='Tela 3 - Tela de detalhe_gestão da publicação do Balcão.html'" class="w-full py-4 px-8 bg-brand-blue hover:bg-blue-700 text-white rounded-full font-bold text-lg shadow-glow transition-all transform hover:-translate-y-0.5 mt-4">
+                            Finalizar e Enviar para Mestres
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="transaction_legal_footer" class="w-full py-8 text-center mt-auto">
+        <div class="flex items-center justify-center gap-2 text-brand-muted text-sm font-medium">
+            <i class="fa-solid fa-lock text-xs"></i>
+            Transação segura criptografada.
+        </div>
+    </footer>
+
+</body>
+</html>

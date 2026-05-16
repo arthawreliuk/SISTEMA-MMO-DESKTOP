@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Board Opportunities Feed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        borderLight: '#E5E7EB'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 1px 3px 0 rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Subtle grid background inspired by reference */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative">
+
+    <!-- Decorative Background Grid -->
+    <div class="fixed inset-0 pointer-events-none bg-grid-pattern z-0 opacity-50"></div>
+
+    <!-- Navigation -->
+    <nav id="top-nav" class="bg-white shadow-nav sticky top-0 z-50 border-b border-borderLight/50">
+        <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl tracking-tighter">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight text-textMain">MMO</span>
+            </div>
+
+            <!-- Links -->
+            <div class="hidden md:flex items-center gap-8 font-medium text-[15px]">
+                <a href="#" class="text-textMuted hover:text-textMain transition-colors">Home</a>
+                <a href="#" class="text-textMain font-semibold relative flex flex-col items-center">
+                    Opportunities
+                    <span class="absolute -bottom-[26px] w-1.5 h-1.5 bg-primary rounded-full"></span>
+                </a>
+                <a href="#" class="text-textMuted hover:text-textMain transition-colors">Messages</a>
+                <a href="#" class="text-textMuted hover:text-textMain transition-colors">Profile</a>
+            </div>
+
+            <!-- User Actions -->
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full border border-borderLight flex items-center justify-center text-textMuted hover:text-textMain hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm cursor-pointer">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow relative z-10 pt-10 pb-20">
+        <div class="max-w-[1200px] mx-auto px-6">
+            
+            <!-- Control Header Bar -->
+            <header id="control-header" class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-[32px] md:text-[40px] font-bold tracking-tight text-textMain leading-tight">
+                        Balcão de Oportunidades<br/>Profissionais
+                    </h1>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-3">
+                    <button class="flex items-center gap-2 px-5 py-2.5 bg-white border border-borderLight rounded-full text-sm font-semibold hover:border-gray-300 transition-colors shadow-sm">
+                        <i class="fa-solid fa-location-dot text-textMuted"></i>
+                        <span>São Paulo, SP</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] ml-1 text-textMuted"></i>
+                    </button>
+                    <button class="flex items-center gap-2 px-5 py-2.5 bg-white border border-borderLight rounded-full text-sm font-semibold hover:border-gray-300 transition-colors shadow-sm text-textMain">
+                        <span>Configurar Alertas</span>
+                        <i class="fa-solid fa-gear text-textMuted"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Opportunities Toolbar -->
+            <section id="opportunities-toolbar" class="bg-white rounded-[24px] p-4 shadow-soft border border-borderLight/40 mb-8 flex flex-col lg:flex-row items-center justify-between gap-4">
+                
+                <!-- Search -->
+                <div class="relative w-full lg:max-w-md flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-textMuted"></i>
+                    <input type="text" placeholder="Buscar por serviço, categoria ou palavra-chave..." 
+                           class="w-full pl-11 pr-4 py-3.5 bg-background rounded-full border-none focus:ring-2 focus:ring-primary/20 text-sm font-medium outline-none placeholder:text-textMuted/70">
+                </div>
+
+                <!-- Filters & Sort -->
+                <div class="flex items-center gap-2 w-full lg:w-auto overflow-x-auto pb-2 lg:pb-0 hide-scrollbar">
+                    <span class="text-sm font-semibold text-textMuted mr-2 whitespace-nowrap">Ordernar por:</span>
+                    <button class="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-full whitespace-nowrap">
+                        Recentes
+                    </button>
+                    <button class="px-4 py-2 bg-background text-textMain hover:bg-gray-200 text-sm font-semibold rounded-full whitespace-nowrap transition-colors">
+                        Urgentes
+                    </button>
+                    <button class="px-4 py-2 bg-background text-textMain hover:bg-gray-200 text-sm font-semibold rounded-full whitespace-nowrap transition-colors">
+                        Proximidade
+                    </button>
+                    
+                    <div class="w-px h-6 bg-borderLight mx-2 hidden sm:block"></div>
+                    
+                    <button class="px-4 py-2 bg-white border border-borderLight text-textMain hover:bg-gray-50 text-sm font-semibold rounded-full whitespace-nowrap transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-textMuted"></i> Filtros
+                    </button>
+                </div>
+            </section>
+
+            <!-- Opportunities Feed (List) -->
+            <section id="opportunities-feed" class="flex flex-col gap-4">
+                
+                <!-- Job Card 1 -->
+                <article class="bg-white rounded-[24px] p-6 shadow-soft border border-borderLight/40 hover:border-primary/20 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    
+                    <!-- Left: Icon & Title -->
+                    <div class="flex items-start gap-5 flex-1 min-w-[300px]">
+                        <div class="w-14 h-14 rounded-full bg-blue-50 text-primary flex items-center justify-center shrink-0 text-xl border border-blue-100">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-[18px] font-bold text-textMain mb-1.5 group-hover:text-primary transition-colors line-clamp-2">
+                                Reparo Hidráulico Completo em Residência
+                            </h3>
+                            <div class="flex items-center gap-3 text-sm text-textMuted font-medium">
+                                <span class="flex items-center gap-1.5">
+                                    <i class="fa-regular fa-clock"></i> Publicado há 10 min
+                                </span>
+                                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                <span class="text-textMain bg-gray-100 px-2 py-0.5 rounded-md text-xs font-semibold">Encanador</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Center: Details -->
+                    <div class="flex flex-row md:flex-col gap-4 md:gap-2 flex-1 w-full md:w-auto justify-start md:justify-center md:items-center py-4 md:py-0 border-y md:border-y-0 md:border-x border-borderLight/50 md:px-6">
+                        <div class="flex items-center gap-2 text-sm font-semibold text-textMain">
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-textMuted border border-borderLight/50">
+                                <i class="fa-solid fa-location-arrow"></i>
+                            </div>
+                            2.5 km de você
+                        </div>
+                        <div class="flex items-center gap-2 text-sm font-semibold text-red-600">
+                            <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-500 border border-red-100">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            Alta Urgência
+                        </div>
+                        <div class="w-full md:w-auto text-center mt-2 md:mt-0">
+                            <div class="text-xs font-semibold text-textMuted mb-1">Concorrência</div>
+                            <div class="flex items-center justify-center gap-1">
+                                <div class="flex -space-x-2">
+                                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar">
+                                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Avatar">
+                                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Avatar">
+                                </div>
+                                <span class="text-sm font-bold text-textMain ml-2">3/5 propostas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Action -->
+                    <div class="w-full md:w-auto md:shrink-0 flex justify-end">
+                        <button onclick="window.location.href='Tela 5 - Tela de detalhe da oportunidade do Balcão.html'" class="w-full md:w-auto px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold text-[15px] rounded-full transition-all shadow-md shadow-primary/20 flex items-center justify-center gap-2">
+                            Ver Oportunidade Completa
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Job Card 2 -->
+                <article class="bg-white rounded-[24px] p-6 shadow-soft border border-borderLight/40 hover:border-primary/20 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div class="flex items-start gap-5 flex-1 min-w-[300px]">
+                        <div class="w-14 h-14 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center shrink-0 text-xl border border-orange-100">
+                            <i class="fa-solid fa-plug"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-[18px] font-bold text-textMain mb-1.5 group-hover:text-primary transition-colors line-clamp-2">
+                                Instalação de Quadro de Distribuição Bifásico
+                            </h3>
+                            <div class="flex items-center gap-3 text-sm text-textMuted font-medium">
+                                <span class="flex items-center gap-1.5">
+                                    <i class="fa-regular fa-clock"></i> Publicado há 45 min
+                                </span>
+                                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                <span class="text-textMain bg-gray-100 px-2 py-0.5 rounded-md text-xs font-semibold">Eletricista</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row md:flex-col gap-4 md:gap-2 flex-1 w-full md:w-auto justify-start md:justify-center md:items-center py-4 md:py-0 border-y md:border-y-0 md:border-x border-borderLight/50 md:px-6">
+                        <div class="flex items-center gap-2 text-sm font-semibold text-textMain">
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-textMuted border border-borderLight/50">
+                                <i class="fa-solid fa-location-arrow"></i>
+                            </div>
+                            5.2 km de você
+                        </div>
+                        <div class="flex items-center gap-2 text-sm font-semibold text-orange-500">
+                            <div class="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 border border-orange-100">
+                                <i class="fa-solid fa-calendar"></i>
+                            </div>
+                            Agendar Data
+                        </div>
+                        <div class="w-full md:w-auto text-center mt-2 md:mt-0">
+                            <div class="text-xs font-semibold text-textMuted mb-1">Concorrência</div>
+                            <div class="flex items-center justify-center gap-1">
+                                <div class="flex -space-x-2">
+                                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Avatar">
+                                </div>
+                                <span class="text-sm font-bold text-textMain ml-2">1/5 propostas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-auto md:shrink-0 flex justify-end">
+                        <button onclick="window.location.href='Tela 5 - Tela de detalhe da oportunidade do Balcão.html'" class="w-full md:w-auto px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold text-[15px] rounded-full transition-all shadow-md shadow-primary/20 flex items-center justify-center gap-2">
+                            Ver Oportunidade Completa
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </article>
+
+                 <!-- Job Card 3 -->
+                 <article class="bg-white rounded-[24px] p-6 shadow-soft border border-borderLight/40 hover:border-primary/20 transition-all group flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div class="flex items-start gap-5 flex-1 min-w-[300px]">
+                        <div class="w-14 h-14 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 text-xl border border-purple-100">
+                            <i class="fa-solid fa-paint-roller"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-[18px] font-bold text-textMain mb-1.5 group-hover:text-primary transition-colors line-clamp-2">
+                                Pintura Externa de Sobrado (Aprox. 150m²)
+                            </h3>
+                            <div class="flex items-center gap-3 text-sm text-textMuted font-medium">
+                                <span class="flex items-center gap-1.5">
+                                    <i class="fa-regular fa-clock"></i> Publicado há 2 horas
+                                </span>
+                                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                <span class="text-textMain bg-gray-100 px-2 py-0.5 rounded-md text-xs font-semibold">Pintor</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row md:flex-col gap-4 md:gap-2 flex-1 w-full md:w-auto justify-start md:justify-center md:items-center py-4 md:py-0 border-y md:border-y-0 md:border-x border-borderLight/50 md:px-6">
+                        <div class="flex items-center gap-2 text-sm font-semibold text-textMain">
+                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-textMuted border border-borderLight/50">
+                                <i class="fa-solid fa-location-arrow"></i>
+                            </div>
+                            8.0 km de você
+                        </div>
+                        <div class="flex items-center gap-2 text-sm font-semibold text-textMuted">
+                            <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-textMuted border border-borderLight/50">
+                                <i class="fa-regular fa-calendar-check"></i>
+                            </div>
+                            Flexível
+                        </div>
+                        <div class="w-full md:w-auto text-center mt-2 md:mt-0">
+                            <div class="text-xs font-semibold text-textMuted mb-1">Concorrência</div>
+                            <div class="flex items-center justify-center gap-1">
+                                <div class="flex -space-x-2">
+                                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Avatar">
+                                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Avatar">
+                                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" alt="Avatar">
+                                    <img class="w-6 h-6 rounded-full border-2 border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" alt="Avatar">
+                                </div>
+                                <span class="text-sm font-bold text-textMain ml-2">4/5 propostas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-auto md:shrink-0 flex justify-end">
+                        <button onclick="window.location.href='Tela 5 - Tela de detalhe da oportunidade do Balcão.html'" class="w-full md:w-auto px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold text-[15px] rounded-full transition-all shadow-md shadow-primary/20 flex items-center justify-center gap-2">
+                            Ver Oportunidade Completa
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </article>
+
+            </section>
+            
+            <!-- Load More -->
+            <div class="mt-8 flex justify-center">
+                <button class="px-6 py-3 bg-white border border-borderLight rounded-full text-sm font-bold text-textMain hover:bg-gray-50 transition-colors shadow-sm">
+                    Carregar mais oportunidades
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-borderLight/50 mt-auto py-12 relative z-10">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                    M
+                </div>
+                <span class="font-bold text-lg text-textMain">MMO</span>
+            </div>
+            
+            <div class="flex items-center gap-6 text-sm font-medium text-textMuted">
+                <a href="#" class="hover:text-primary transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-primary transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-primary transition-colors">Ajuda & Suporte</a>
+            </div>
+            
+            <div class="text-sm text-textMuted font-medium">
+                &copy; 2026 MMO Oportunidades.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

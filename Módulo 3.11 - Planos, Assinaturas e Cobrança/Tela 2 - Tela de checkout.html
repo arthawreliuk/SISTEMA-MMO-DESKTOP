@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        surface: '#FFFFFF',
+                        border: '#E2E8F0',
+                        muted: '#64748B'
+                    },
+                    boxShadow: {
+                        'ambient': '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header" class="w-full py-8 px-6 lg:px-12 flex justify-between items-center max-w-[1440px] mx-auto">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">
+                M
+            </div>
+            <span class="font-extrabold text-2xl tracking-tight text-navy">MMO</span>
+        </div>
+        <div class="flex items-center gap-2 text-muted text-sm font-medium">
+            <i class="fa-solid fa-lock text-primary"></i>
+            <span>Ambiente 100% Seguro</span>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main id="main-content" class="flex-grow flex items-center justify-center p-6 lg:p-12">
+        <div class="w-full max-w-[1000px] bg-surface rounded-[24px] shadow-ambient overflow-hidden flex flex-col lg:flex-row">
+            
+            <!-- Left Column: Form -->
+            <section id="payment-form" class="w-full lg:w-[60%] p-8 lg:p-12">
+                <h1 class="text-2xl font-bold text-navy mb-8">Como você prefere pagar?</h1>
+                
+                <!-- Payment Methods -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="payment_method" class="peer sr-only" checked>
+                        <div class="w-full p-4 border-2 border-primary rounded-full flex items-center justify-center gap-3 transition-all bg-white">
+                            <i class="fa-regular fa-credit-card text-primary text-xl"></i>
+                            <span class="font-semibold text-navy">Cartão de Crédito</span>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="payment_method" class="peer sr-only">
+                        <div class="w-full p-4 border-2 border-border rounded-full flex items-center justify-center gap-3 transition-all hover:border-muted peer-checked:border-primary peer-checked:bg-white bg-background/50">
+                            <i class="fa-brands fa-pix text-muted text-xl"></i>
+                            <span class="font-semibold text-navy">PIX</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Card Form -->
+                <form class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-navy mb-2 ml-4">Número do Cartão</label>
+                        <div class="relative">
+                            <input type="text" placeholder="0000 0000 0000 0000" class="w-full bg-background border-none rounded-full py-4 px-6 text-navy placeholder:text-muted focus:ring-2 focus:ring-primary focus:outline-none transition-all">
+                            <i class="fa-brands fa-cc-visa absolute right-6 top-1/2 -translate-y-1/2 text-2xl text-muted"></i>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-navy mb-2 ml-4">Nome Impresso no Cartão</label>
+                        <input type="text" placeholder="Nome Completo" class="w-full bg-background border-none rounded-full py-4 px-6 text-navy placeholder:text-muted focus:ring-2 focus:ring-primary focus:outline-none transition-all">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-semibold text-navy mb-2 ml-4">Validade</label>
+                            <input type="text" placeholder="MM/AA" class="w-full bg-background border-none rounded-full py-4 px-6 text-navy placeholder:text-muted focus:ring-2 focus:ring-primary focus:outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-navy mb-2 ml-4">CVV</label>
+                            <div class="relative">
+                                <input type="text" placeholder="123" class="w-full bg-background border-none rounded-full py-4 px-6 text-navy placeholder:text-muted focus:ring-2 focus:ring-primary focus:outline-none transition-all">
+                                <i class="fa-regular fa-circle-question absolute right-6 top-1/2 -translate-y-1/2 text-muted cursor-pointer hover:text-primary transition-colors"></i>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Right Column: Summary -->
+            <section id="order-summary" class="w-full lg:w-[40%] bg-background p-8 lg:p-12 border-l border-border/50 flex flex-col">
+                <h2 class="text-xl font-bold text-navy mb-8">Resumo do Pedido</h2>
+                
+                <div class="flex-grow space-y-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-navy text-lg">Plano Mestre</h3>
+                            <p class="text-sm text-muted mt-1">Acesso ilimitado mensal</p>
+                        </div>
+                        <span class="font-bold text-primary text-lg">R$ 49,90</span>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-muted">Subtotal</span>
+                            <span class="font-medium text-navy">R$ 49,90</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-muted">Taxas</span>
+                            <span class="font-medium text-navy">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <div class="w-full border-t border-dashed border-border py-6 mt-6">
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="font-bold text-navy">Total a pagar:</span>
+                            <span class="font-extrabold text-2xl text-primary">R$ 49,90</span>
+                        </div>
+                        
+                        <button onclick="window.location.href='Tela 3 - Tela de resumo da assinatura.html'" class="w-full bg-primary hover:bg-primary/90 text-white font-bold text-lg py-4 rounded-full transition-all shadow-lg shadow-primary/20 transform hover:-translate-y-0.5">
+                            Finalizar Compra
+                        </button>
+                        
+                        <div class="flex items-center justify-center gap-2 mt-6 text-xs text-muted font-medium">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Criptografia ponta-a-ponta</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full py-8 text-center text-sm text-muted max-w-[1440px] mx-auto">
+        <p>© 2026 MMO Platform. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

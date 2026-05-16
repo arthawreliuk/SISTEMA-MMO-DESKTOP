@@ -1,0 +1,111 @@
+{
+  "_comment": "Brainiac Context — Claude Code hooks settings template. Copie para .claude/settings.json do seu projeto e ajuste se necessário. Veja INSTALL.md para passo-a-passo.",
+
+  "env": {
+    "BRAINIAC_LANG": "en"
+  },
+
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/brainiac/session-start.sh",
+            "timeout": 10,
+            "statusMessage": "Brainiac: carregando contratos do framework..."
+          }
+        ]
+      }
+    ],
+
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/brainiac/prompt-reminder.sh",
+            "timeout": 5,
+            "statusMessage": "Brainiac: detectando trigger pattern..."
+          }
+        ]
+      }
+    ],
+
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/brainiac/canonical-gate.sh",
+            "timeout": 10,
+            "statusMessage": "Brainiac: protegendo canonicals em agents/brainiac/..."
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/brainiac/require-intent.sh",
+            "timeout": 10,
+            "statusMessage": "Brainiac: verificando Intent carregado..."
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/brainiac/clean-code-gate.sh",
+            "timeout": 10,
+            "statusMessage": "Brainiac: validando Clean Code..."
+          }
+        ]
+      }
+    ],
+
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/brainiac/learn-gate.sh",
+            "timeout": 10,
+            "statusMessage": "Brainiac: validando Learn Gate..."
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/brainiac/qa-gate.sh",
+            "timeout": 10,
+            "statusMessage": "Brainiac: checando QA (advisory)..."
+          }
+        ]
+      }
+    ],
+
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/brainiac/pre-compact.sh",
+            "timeout": 10,
+            "statusMessage": "Brainiac: salvando handoff antes do compact..."
+          }
+        ]
+      }
+    ],
+
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/brainiac/post-compact.sh",
+            "timeout": 10,
+            "statusMessage": "Brainiac: injetando checklist de reload pós-compact..."
+          }
+        ]
+      }
+    ]
+  }
+}

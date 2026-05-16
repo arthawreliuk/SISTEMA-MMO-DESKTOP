@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Summary / Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            surface: '#FFFFFF',
+                            border: '#E5E7EB',
+                            muted: '#6B7280'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .progress-gradient { background: linear-gradient(90deg, #0016dc 0%, #3B82F6 100%); }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-brand-surface w-full border-b border-brand-border sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <!-- Logo Placeholder -->
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-lg">
+                        M
+                    </div>
+                    <span class="font-bold text-xl text-brand-navy tracking-tight">MMO Platform</span>
+                </div>
+                
+                <!-- Nav Links -->
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="#" class="text-brand-muted hover:text-brand-blue font-medium transition-colors">Dashboard</a>
+                    <a href="#" class="text-brand-muted hover:text-brand-blue font-medium transition-colors">Projetos</a>
+                    <a href="#" class="text-brand-muted hover:text-brand-blue font-medium transition-colors">Equipe</a>
+                </nav>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-5">
+                <button class="w-10 h-10 rounded-full flex items-center justify-center text-brand-muted hover:bg-gray-50 transition-colors relative">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+                </button>
+                <div class="w-px h-8 bg-brand-border"></div>
+                <button class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-brand-blue p-0.5">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <div class="hidden sm:block text-left">
+                        <p class="text-sm font-semibold text-brand-navy leading-tight">Admin User</p>
+                        <p class="text-xs text-brand-muted">Pro Plan</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-xs text-brand-muted ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-6 py-8 flex flex-col gap-8">
+        
+        <!-- Breadcrumb Header -->
+        <section id="breadcrumb-header" class="flex flex-col gap-2">
+            <nav class="flex items-center gap-2 text-sm text-brand-muted font-medium">
+                <a href="#" class="hover:text-brand-blue transition-colors">Configurações</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-brand-navy">Minha Assinatura</span>
+            </nav>
+            <h1 class="text-3xl font-bold text-brand-navy tracking-tight">Gerenciamento de Assinatura</h1>
+            <p class="text-brand-muted">Acompanhe seu plano, faturamento e histórico de pagamentos.</p>
+        </section>
+
+        <!-- Grid Layout Workspace -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- Active Plan Banner (Full Width) -->
+            <section id="active-plan-card" class="lg:col-span-2 bg-brand-surface rounded-[24px] p-8 shadow-soft border border-brand-border/50 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between relative overflow-hidden">
+                <!-- Decorative background element -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+
+                <div class="flex-1 w-full flex flex-col gap-6 z-10">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-[#0F172A] flex items-center justify-center shadow-lg">
+                            <i class="fa-solid fa-crown text-2xl text-[#22D3EE]"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-3 mb-1">
+                                <h2 class="text-2xl font-bold text-brand-navy">Plano Mestre</h2>
+                                <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-wide">Ativo</span>
+                            </div>
+                            <p class="text-brand-muted text-sm">Cobrado mensalmente • Próxima renovação em 15 Nov, 2023</p>
+                        </div>
+                    </div>
+
+                    <!-- Visual Gauge / Progress -->
+                    <div class="w-full max-w-md bg-gray-50 rounded-xl p-4 border border-gray-100">
+                        <div class="flex justify-between text-sm mb-2 font-medium">
+                            <span class="text-brand-navy">Ciclo de Faturamento</span>
+                            <span class="text-brand-blue font-bold">12 dias restantes</span>
+                        </div>
+                        <div class="h-2.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full progress-gradient rounded-full" style="width: 60%;"></div>
+                        </div>
+                        <div class="flex justify-between text-xs text-brand-muted mt-2">
+                            <span>15 Out</span>
+                            <span>15 Nov</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto z-10">
+                    <button onclick="window.location.href='Tela 4 - Tela de status de cobrança.html'" class="px-6 py-3.5 rounded-full bg-transparent border-2 border-gray-200 text-brand-navy font-semibold hover:border-brand-blue hover:text-brand-blue transition-all whitespace-nowrap">
+                        Gerenciar Pagamento
+                    </button>
+                    <button onclick="window.location.href='Tela 1 - Tela de seleção de plano.html'" class="px-6 py-3.5 rounded-full bg-brand-blue text-white font-semibold hover:bg-blue-800 transition-colors shadow-lg shadow-brand-blue/20 whitespace-nowrap flex items-center justify-center gap-2">
+                        Mudar de Plano
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Payment Method Card (Bottom Left) -->
+            <section id="payment-method-card" class="bg-brand-surface rounded-[24px] p-8 shadow-soft border border-brand-border/50 flex flex-col h-full">
+                <div class="flex items-center justify-between mb-8">
+                    <h3 class="text-xl font-bold text-brand-navy">Método de Pagamento</h3>
+                    <button class="text-brand-blue text-sm font-semibold hover:underline">Editar</button>
+                </div>
+
+                <!-- Custom Credit Card UI Illustration -->
+                <div class="relative w-full max-w-sm mx-auto aspect-[1.58] rounded-2xl overflow-hidden shadow-2xl mb-8 group">
+                    <!-- CC Background -->
+                    <div class="absolute inset-0 bg-[#0F172A] p-6 flex flex-col justify-between">
+                        <!-- Decorative shapes -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#22D3EE] to-[#3B82F6] opacity-20 blur-2xl rounded-full"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#3B82F6] to-purple-500 opacity-20 blur-xl rounded-full"></div>
+                        
+                        <div class="flex justify-between items-start relative z-10">
+                            <i class="fa-brands fa-cc-mastercard text-4xl text-white/90"></i>
+                            <i class="fa-solid fa-wifi rotate-90 text-xl text-white/50"></i>
+                        </div>
+                        
+                        <div class="relative z-10 mt-auto">
+                            <div class="text-white/80 font-mono text-lg tracking-[0.2em] mb-2">
+                                •••• •••• •••• 4242
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <div class="text-[10px] text-white/50 uppercase tracking-wider mb-1">Titular do Cartão</div>
+                                    <div class="text-white text-sm font-medium tracking-wide">ADMIN USER</div>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-white/50 uppercase tracking-wider mb-1">Validade</div>
+                                    <div class="text-white text-sm font-medium tracking-wide">12/25</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 mt-auto">
+                    <h4 class="text-xs font-bold text-brand-muted uppercase tracking-wider mb-2">Endereço de Cobrança</h4>
+                    <p class="text-brand-navy text-sm font-medium leading-relaxed">
+                        Av. Paulista, 1578 - Bela Vista<br>
+                        São Paulo - SP, 01310-200<br>
+                        Brasil
+                    </p>
+                </div>
+            </section>
+
+            <!-- Invoice History Card (Bottom Right) -->
+            <section id="invoice-history-card" class="bg-brand-surface rounded-[24px] p-8 shadow-soft border border-brand-border/50 flex flex-col h-full">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-brand-navy">Histórico de Faturas</h3>
+                    <button class="text-brand-muted hover:text-brand-blue text-sm font-medium transition-colors flex items-center gap-2">
+                        Ver todas
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto w-full">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-gray-100">
+                                <th class="py-4 px-2 text-xs font-bold text-brand-muted uppercase tracking-wider w-1/3">Data</th>
+                                <th class="py-4 px-2 text-xs font-bold text-brand-muted uppercase tracking-wider w-1/4">Valor</th>
+                                <th class="py-4 px-2 text-xs font-bold text-brand-muted uppercase tracking-wider w-1/4">Status</th>
+                                <th class="py-4 px-2 text-xs font-bold text-brand-muted uppercase tracking-wider text-right">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-50">
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-gray-50/50 transition-colors group">
+                                <td class="py-4 px-2">
+                                    <div class="font-semibold text-brand-navy text-sm">15 Out, 2023</div>
+                                    <div class="text-xs text-brand-muted mt-0.5">Fatura #INV-2023-10</div>
+                                </td>
+                                <td class="py-4 px-2 font-medium text-brand-navy text-sm">R$ 299,00</td>
+                                <td class="py-4 px-2">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 text-green-700 text-xs font-semibold border border-green-200/50">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                        Pago
+                                    </span>
+                                </td>
+                                <td class="py-4 px-2 text-right">
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-brand-muted hover:bg-brand-blue hover:text-white transition-all inline-flex items-center justify-center">
+                                        <i class="fa-solid fa-download text-sm"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-gray-50/50 transition-colors group">
+                                <td class="py-4 px-2">
+                                    <div class="font-semibold text-brand-navy text-sm">15 Set, 2023</div>
+                                    <div class="text-xs text-brand-muted mt-0.5">Fatura #INV-2023-09</div>
+                                </td>
+                                <td class="py-4 px-2 font-medium text-brand-navy text-sm">R$ 299,00</td>
+                                <td class="py-4 px-2">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 text-green-700 text-xs font-semibold border border-green-200/50">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                        Pago
+                                    </span>
+                                </td>
+                                <td class="py-4 px-2 text-right">
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-brand-muted hover:bg-brand-blue hover:text-white transition-all inline-flex items-center justify-center">
+                                        <i class="fa-solid fa-download text-sm"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="hover:bg-gray-50/50 transition-colors group">
+                                <td class="py-4 px-2">
+                                    <div class="font-semibold text-brand-navy text-sm">15 Ago, 2023</div>
+                                    <div class="text-xs text-brand-muted mt-0.5">Fatura #INV-2023-08</div>
+                                </td>
+                                <td class="py-4 px-2 font-medium text-brand-navy text-sm">R$ 299,00</td>
+                                <td class="py-4 px-2">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 text-green-700 text-xs font-semibold border border-green-200/50">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                        Pago
+                                    </span>
+                                </td>
+                                <td class="py-4 px-2 text-right">
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-brand-muted hover:bg-brand-blue hover:text-white transition-all inline-flex items-center justify-center">
+                                        <i class="fa-solid fa-download text-sm"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="hover:bg-gray-50/50 transition-colors group">
+                                <td class="py-4 px-2">
+                                    <div class="font-semibold text-brand-navy text-sm">15 Jul, 2023</div>
+                                    <div class="text-xs text-brand-muted mt-0.5">Fatura #INV-2023-07</div>
+                                </td>
+                                <td class="py-4 px-2 font-medium text-brand-navy text-sm">R$ 299,00</td>
+                                <td class="py-4 px-2">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 text-green-700 text-xs font-semibold border border-green-200/50">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                        Pago
+                                    </span>
+                                </td>
+                                <td class="py-4 px-2 text-right">
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-brand-muted hover:bg-brand-blue hover:text-white transition-all inline-flex items-center justify-center">
+                                        <i class="fa-solid fa-download text-sm"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full bg-brand-surface border-t border-brand-border mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-brand-muted font-medium">© 2023 MMO Platform. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-6 text-sm font-medium">
+                <a href="#" class="text-brand-muted hover:text-brand-navy transition-colors">Termos de Serviço</a>
+                <a href="#" class="text-brand-muted hover:text-brand-navy transition-colors">Política de Privacidade</a>
+                <a href="#" class="text-brand-muted hover:text-brand-navy transition-colors">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

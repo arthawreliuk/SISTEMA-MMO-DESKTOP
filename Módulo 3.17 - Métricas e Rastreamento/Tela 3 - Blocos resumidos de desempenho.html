@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cockpit Resumido</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'off-white': '#F8F9FA',
+                        'navy': '#1A1A24',
+                        'trust-blue': '#0016dc',
+                        'trust-blue-light': 'rgba(0, 22, 220, 0.1)',
+                        'card-gray': '#F2F2F2',
+                        'text-muted': '#6B7280',
+                        'border-light': '#E5E7EB',
+                        'success': '#10B981',
+                        'warning': '#F59E0B',
+                        'danger': '#EF4444'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'inner-soft': 'inset 0 2px 4px rgba(0,0,0,0.02)'
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        '5xl': '32px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .bento-card {
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .bento-inner-card {
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Admin Control Bar -->
+    <header id="header" class="w-full bg-white/80 backdrop-blur-md border-b border-border-light sticky top-0 z-50 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3 text-sm font-medium text-text-muted">
+            <span class="hover:text-navy cursor-pointer transition-colors">Painel</span>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <span class="hover:text-navy cursor-pointer transition-colors">Analytics</span>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <span class="text-navy font-semibold">Cockpit Resumido</span>
+        </div>
+        <button onclick="window.location.href='Tela 1 - Dashboard de métricas administrativas.html'" class="px-5 py-2.5 rounded-full border border-border-light bg-white text-navy font-semibold text-sm hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center gap-2 shadow-sm">
+            <i class="fa-regular fa-share-from-square"></i>
+            Compartilhar Visão
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 w-full max-w-[1200px] mx-auto py-10 px-6">
+        
+        <!-- Header Title -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-navy tracking-tight">Performance Summary</h1>
+            <p class="text-text-muted mt-1 font-medium">Visão executiva em tempo real</p>
+        </div>
+
+        <!-- Bento Grid Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min">
+
+            <!-- Block A: Motor de Receita (Hero, 60% width -> col-span-7) -->
+            <div id="block-a" class="bento-card md:col-span-7 h-[420px]">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-navy">Motor de Receita</h2>
+                        <p class="text-sm text-text-muted mt-1">Assinaturas vs Balcão</p>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-50 rounded-full border border-border-light text-sm font-semibold flex items-center gap-2 cursor-pointer hover:bg-gray-100">
+                        Mensal <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </div>
+                </div>
+                
+                <div class="bento-inner-card flex-1 flex flex-col relative overflow-hidden">
+                    <div class="flex items-center gap-6 mb-4 z-10 relative">
+                        <div>
+                            <div class="flex items-center gap-2 text-sm text-text-muted">
+                                <div class="w-2 h-2 rounded-full bg-trust-blue"></div> Assinaturas
+                            </div>
+                            <div class="text-2xl font-bold text-navy mt-1">R$ 1.2M</div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 text-sm text-text-muted">
+                                <div class="w-2 h-2 rounded-full bg-warning"></div> Balcão
+                            </div>
+                            <div class="text-2xl font-bold text-navy mt-1">R$ 450K</div>
+                        </div>
+                        <div class="ml-auto text-right">
+                            <div class="text-3xl font-bold text-navy">+18%</div>
+                            <div class="text-xs text-text-muted mt-1">Crescimento Total</div>
+                        </div>
+                    </div>
+                    <div id="chart-revenue" class="flex-1 w-full h-[220px]"></div>
+                </div>
+            </div>
+
+            <!-- Block B: Taxa de Liquidez (40% width -> col-span-5) -->
+            <div id="block-b" class="bento-card md:col-span-5 h-[420px]">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-navy">Taxa de Liquidez</h2>
+                        <p class="text-sm text-text-muted mt-1">Desempenho do Balcão</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="w-8 h-8 rounded-full bg-gray-50 border border-border-light flex items-center justify-center hover:bg-gray-100"><i class="fa-solid fa-sliders text-xs"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-gray-50 border border-border-light flex items-center justify-center hover:bg-gray-100"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></button>
+                    </div>
+                </div>
+
+                <div class="bento-inner-card flex-1 flex flex-col items-center justify-center relative">
+                    <div id="chart-liquidity" class="w-full h-[240px]"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center mt-6 pointer-events-none">
+                        <span class="text-5xl font-bold text-navy">92%</span>
+                        <span class="text-sm font-medium text-text-muted mt-1 text-center px-8">pedidos atendidos em <br><span class="text-trust-blue font-bold">&lt; 10 min</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block C: Alerta de Praças (30% width -> col-span-4) -->
+            <div id="block-c" class="bento-card md:col-span-4 h-[380px]">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-navy">Alerta de Praças</h2>
+                        <p class="text-sm text-text-muted mt-1">Anomalias regionais</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4 flex-1 overflow-y-auto pr-2">
+                    <!-- Item 1 -->
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-gray-50 border border-border-light hover:bg-white hover:shadow-sm transition-all cursor-pointer">
+                        <div class="w-10 h-10 rounded-full bg-trust-blue-light text-trust-blue flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy text-sm">Camboriú</h4>
+                            <p class="text-xs text-text-muted mt-1 leading-relaxed">Alta demanda detectada (+45% vol) nas últimas 2 horas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-red-50 border border-red-100 hover:bg-white hover:shadow-sm transition-all cursor-pointer">
+                        <div class="w-10 h-10 rounded-full bg-red-100 text-danger flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy text-sm">Itajaí</h4>
+                            <p class="text-xs text-text-muted mt-1 leading-relaxed">Déficit crítico: Faltam Eletricistas para suprir demanda.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-gray-50 border border-border-light hover:bg-white hover:shadow-sm transition-all cursor-pointer">
+                        <div class="w-10 h-10 rounded-full bg-green-50 text-success flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-check-double"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy text-sm">Florianópolis</h4>
+                            <p class="text-xs text-text-muted mt-1 leading-relaxed">Operação normalizada. SLA de atendimento em 98%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block D: Top Categorias (30% width -> col-span-4) -->
+            <div id="block-d" class="bento-card md:col-span-4 h-[380px]">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-navy">Top Categorias</h2>
+                        <p class="text-sm text-text-muted mt-1">Volume por especialidade</p>
+                    </div>
+                    <div class="px-3 py-1.5 bg-gray-50 rounded-full border border-border-light text-xs font-semibold">Hoje</div>
+                </div>
+
+                <div class="bento-inner-card flex-1 flex flex-col justify-center gap-6">
+                    
+                    <!-- Category 1 -->
+                    <div>
+                        <div class="flex justify-between items-end mb-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-6 h-6 rounded bg-trust-blue-light text-trust-blue flex items-center justify-center text-xs"><i class="fa-solid fa-snowflake"></i></div>
+                                <span class="font-semibold text-sm text-navy">Climatização</span>
+                            </div>
+                            <span class="font-bold text-navy text-sm">4,209 <span class="text-xs text-text-muted font-normal ml-1">reqs</span></span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-trust-blue rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Category 2 -->
+                    <div>
+                        <div class="flex justify-between items-end mb-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-6 h-6 rounded bg-orange-50 text-warning flex items-center justify-center text-xs"><i class="fa-solid fa-hammer"></i></div>
+                                <span class="font-semibold text-sm text-navy">Obras & Reparos</span>
+                            </div>
+                            <span class="font-bold text-navy text-sm">3,150 <span class="text-xs text-text-muted font-normal ml-1">reqs</span></span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-warning rounded-full" style="width: 65%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Category 3 -->
+                    <div>
+                        <div class="flex justify-between items-end mb-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-6 h-6 rounded bg-green-50 text-success flex items-center justify-center text-xs"><i class="fa-solid fa-broom"></i></div>
+                                <span class="font-semibold text-sm text-navy">Limpeza</span>
+                            </div>
+                            <span class="font-bold text-navy text-sm">2,840 <span class="text-xs text-text-muted font-normal ml-1">reqs</span></span>
+                        </div>
+                        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-success rounded-full" style="width: 45%"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Block E: Insights Expressos (40% width -> col-span-4) -->
+            <div id="block-e" class="bento-card md:col-span-4 h-[380px] bg-gradient-to-br from-navy to-[#2A2A3A] border-none">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-trust-blue text-lg"></i>
+                            <h2 class="text-xl font-bold text-white">Insights Expressos</h2>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-1">Gerado por IA</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-between flex-1 gap-4">
+                    <!-- Insight 1 -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-4 hover:bg-white/10 transition-colors cursor-default">
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-200 leading-snug font-medium">Aceleração de 12% em assinaturas B2B comparado a terça-feira passada.</p>
+                        </div>
+                        <div class="w-[60px] h-[30px]" id="spark-1"></div>
+                    </div>
+
+                    <!-- Insight 2 -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-4 hover:bg-white/10 transition-colors cursor-default">
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-200 leading-snug font-medium">Ticket médio de Obras subiu R$ 150. Sugestão: focar ads em reparos elétricos.</p>
+                        </div>
+                        <div class="w-[60px] h-[30px]" id="spark-2"></div>
+                    </div>
+
+                    <!-- Insight 3 -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-4 hover:bg-white/10 transition-colors cursor-default">
+                        <div class="flex-1">
+                            <p class="text-sm text-gray-200 leading-snug font-medium">Risco de churn em 5 contas VIP. Disparar workflow de retenção imediato.</p>
+                        </div>
+                        <div class="w-[60px] h-[30px]" id="spark-3"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                // Common layout settings for clean ref look
+                const commonLayout = {
+                    font: { family: 'Plus Jakarta Sans', color: '#6B7280' },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    margin: { t: 10, r: 10, b: 20, l: 30 },
+                    showlegend: false,
+                    hovermode: 'x unified'
+                };
+
+                const commonConfig = { responsive: true, displayModeBar: false, displaylogo: false };
+
+                // Block A: Motor de Receita (Dual Axis Line/Area)
+                const revenueData = [
+                    {
+                        x: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                        y: [600, 750, 680, 900, 1100, 850, 950],
+                        type: 'scatter',
+                        mode: 'lines',
+                        name: 'Assinaturas',
+                        line: { color: '#0016dc', width: 3, shape: 'spline', smoothing: 1.3 },
+                        fill: 'tozeroy',
+                        fillcolor: 'rgba(0, 22, 220, 0.05)'
+                    },
+                    {
+                        x: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                        y: [300, 420, 380, 500, 450, 600, 400],
+                        type: 'scatter',
+                        mode: 'lines',
+                        name: 'Balcão',
+                        line: { color: '#F59E0B', width: 2, shape: 'spline', smoothing: 1.3 }
+                    }
+                ];
+                
+                const revenueLayout = {
+                    ...commonLayout,
+                    xaxis: { showgrid: false, zeroline: false, tickfont: { size: 11 } },
+                    yaxis: { showgrid: true, gridcolor: 'rgba(229, 231, 235, 0.5)', zeroline: false, showticklabels: false }
+                };
+                
+                Plotly.newPlot('chart-revenue', revenueData, revenueLayout, commonConfig);
+
+                // Block B: Taxa de Liquidez (Donut/Gauge)
+                const liquidityData = [{
+                    values: [92, 8],
+                    labels: ['Atendido', 'Pendente'],
+                    type: 'pie',
+                    hole: 0.75,
+                    marker: { colors: ['#0016dc', '#E5E7EB'] },
+                    textinfo: 'none',
+                    hoverinfo: 'label+percent'
+                }];
+
+                const liquidityLayout = {
+                    ...commonLayout,
+                    margin: { t: 0, r: 0, b: 0, l: 0 },
+                    showlegend: false
+                };
+
+                Plotly.newPlot('chart-liquidity', liquidityData, liquidityLayout, commonConfig);
+
+                // Sparklines for AI Insights
+                const sparkLayout = {
+                    margin: { t: 0, r: 0, b: 0, l: 0 },
+                    xaxis: { visible: false },
+                    yaxis: { visible: false },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    showlegend: false,
+                    hovermode: false
+                };
+
+                // Spark 1 (Up)
+                Plotly.newPlot('spark-1', [{
+                    y: [1, 2, 1.5, 3, 4, 3.5, 5], type: 'scatter', mode: 'lines', 
+                    line: { color: '#10B981', width: 2, shape: 'spline' }
+                }], sparkLayout, {displayModeBar: false});
+
+                // Spark 2 (Up)
+                Plotly.newPlot('spark-2', [{
+                    y: [2, 1.5, 3, 2.5, 4, 5, 6], type: 'scatter', mode: 'lines', 
+                    line: { color: '#0016dc', width: 2, shape: 'spline' }
+                }], sparkLayout, {displayModeBar: false});
+
+                // Spark 3 (Down/Risk)
+                Plotly.newPlot('spark-3', [{
+                    y: [5, 4.5, 4, 2, 3, 1, 0.5], type: 'scatter', mode: 'lines', 
+                    line: { color: '#EF4444', width: 2, shape: 'spline' }
+                }], sparkLayout, {displayModeBar: false});
+
+            } catch (e) {
+                console.error('Chart initialization failed:', e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

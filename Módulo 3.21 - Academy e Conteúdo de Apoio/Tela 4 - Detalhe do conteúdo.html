@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Lesson Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'floating': '0 -10px 40px -10px rgba(0,0,0,0.08)'
+                    },
+                    borderRadius: {
+                        'bento': '24px',
+                        'pill': '9999px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative pb-32">
+    
+    <!-- Background Grid Noise -->
+    <div class="fixed inset-0 pointer-events-none bg-grid-pattern z-0"></div>
+
+    <!-- Top Navigation -->
+    <header id="header" class="relative z-20 w-full bg-surface border-b border-border/60 py-4 px-6 md:px-12 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+            <div class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-graduation-cap text-surface text-sm"></i>
+            </div>
+            <nav class="hidden md:flex items-center text-sm font-medium text-muted">
+                <a href="#" class="hover:text-navy transition-colors">Academy</a>
+                <i class="fa-solid fa-chevron-right text-[10px] mx-3 text-border"></i>
+                <a href="#" class="hover:text-navy transition-colors">Vendas</a>
+                <i class="fa-solid fa-chevron-right text-[10px] mx-3 text-border"></i>
+                <span class="text-navy font-semibold">Negociação Avançada</span>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-6">
+            <div class="relative hidden sm:block">
+                <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-muted text-sm"></i>
+                <input type="text" placeholder="Buscar aulas..." class="pl-9 pr-4 py-2 bg-offwhite border border-border rounded-pill text-sm focus:outline-none focus:border-trustblue/30 focus:ring-2 focus:ring-trustblue/10 transition-all w-64">
+            </div>
+            <button class="relative p-2 text-muted hover:text-navy transition-colors">
+                <i class="fa-regular fa-bell text-lg"></i>
+                <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-trustblue rounded-full border-2 border-surface"></span>
+            </button>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-offwhite shadow-sm cursor-pointer">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content - Bento Grid -->
+    <main id="main-content" class="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+        
+        <div class="mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-navy tracking-tight mb-3">Técnicas de Fechamento de Alto Impacto</h1>
+            <p class="text-muted text-lg">Domine as estratégias usadas pelos top 1% de vendedores corporativos.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Hero Video Preview (65%) -->
+            <div id="video-preview" class="col-span-1 lg:col-span-8 bg-surface rounded-bento shadow-soft overflow-hidden group cursor-pointer relative h-[320px] sm:h-[400px] md:h-[450px]">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Instructor Video" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/30 transition-colors duration-300"></div>
+                
+                <!-- Play Button Overlay -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-20 h-20 bg-surface/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-play text-trustblue text-2xl ml-1"></i>
+                    </div>
+                </div>
+
+                <!-- Video Meta -->
+                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-navy/80 to-transparent">
+                    <div class="flex items-center gap-4 text-white">
+                        <span class="bg-trustblue/90 backdrop-blur text-xs font-bold px-3 py-1.5 rounded-pill uppercase tracking-wider">Módulo 3</span>
+                        <span class="flex items-center gap-2 text-sm"><i class="fa-regular fa-clock"></i> 45 min</span>
+                        <span class="flex items-center gap-2 text-sm"><i class="fa-solid fa-chart-simple"></i> Avançado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructor Spotlight (35%) -->
+            <div id="instructor-card" class="col-span-1 lg:col-span-4 bg-surface rounded-bento shadow-soft p-8 flex flex-col items-center text-center justify-center border border-border/40 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-offwhite to-transparent"></div>
+                
+                <p class="text-sm font-semibold text-muted tracking-widest uppercase mb-6 relative z-10">Seu Mentor</p>
+                
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface shadow-md mb-6 relative z-10">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Instructor" class="w-full h-full object-cover">
+                </div>
+
+                <h3 class="text-3xl font-extrabold text-navy mb-2 relative z-10" style="font-family: 'Times New Roman', serif; font-style: italic;">Roberto Silva</h3>
+                <p class="text-muted text-sm mb-6 relative z-10">VP de Vendas Globais @ TechCorp</p>
+
+                <div class="flex flex-wrap justify-center gap-2 relative z-10">
+                    <span class="px-3 py-1.5 bg-offwhite text-navy text-xs font-semibold rounded-pill border border-border/60 flex items-center gap-1.5">
+                        <i class="fa-solid fa-award text-trustblue"></i> +15 Anos Exp.
+                    </span>
+                    <span class="px-3 py-1.5 bg-offwhite text-navy text-xs font-semibold rounded-pill border border-border/60 flex items-center gap-1.5">
+                        <i class="fa-solid fa-building text-trustblue"></i> B2B Enterprise
+                    </span>
+                    <span class="px-3 py-1.5 bg-offwhite text-navy text-xs font-semibold rounded-pill border border-border/60 flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-trustblue"></i> 4.9/5 Avaliação
+                    </span>
+                </div>
+            </div>
+
+            <!-- Lesson Core Info (50%) -->
+            <div id="lesson-info" class="col-span-1 lg:col-span-6 bg-surface rounded-bento shadow-soft p-8 border border-border/40">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 bg-offwhite rounded-full flex items-center justify-center text-navy">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-navy">O que será abordado</h2>
+                </div>
+
+                <p class="text-muted mb-8 leading-relaxed">Nesta aula intensiva, você aprenderá a identificar os gatilhos de compra em negociações complexas e como contornar objeções de preço sem sacrificar a margem de lucro.</p>
+
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-4 p-4 rounded-xl hover:bg-offwhite transition-colors border border-transparent hover:border-border/60">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-trustblue/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-check text-trustblue text-xs"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-navy text-sm mb-1">Mapeamento de Stakeholders</h4>
+                            <p class="text-xs text-muted">Como identificar quem realmente decide na mesa de negociação.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4 p-4 rounded-xl hover:bg-offwhite transition-colors border border-transparent hover:border-border/60">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-trustblue/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-check text-trustblue text-xs"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-navy text-sm mb-1">Ancoragem de Preço</h4>
+                            <p class="text-xs text-muted">Técnicas psicológicas para estabelecer o valor antes do custo.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4 p-4 rounded-xl hover:bg-offwhite transition-colors border border-transparent hover:border-border/60">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-trustblue/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-check text-trustblue text-xs"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-navy text-sm mb-1">Fechamento Assuntivo</h4>
+                            <p class="text-xs text-muted">Conduzindo o cliente ao "sim" de forma natural e sem pressão.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Resources & Community (50%) -->
+            <div id="resources-community" class="col-span-1 lg:col-span-6 flex flex-col gap-6">
+                
+                <!-- Resources Top Half -->
+                <div class="bg-surface rounded-bento shadow-soft p-8 border border-border/40 flex-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-offwhite rounded-full flex items-center justify-center text-navy">
+                            <i class="fa-regular fa-folder-open"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-navy">Materiais de Apoio</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="group flex items-center justify-between p-4 rounded-xl border border-border hover:border-trustblue/30 hover:bg-trustblue/5 transition-all text-left">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-red-50 text-red-500 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-file-pdf text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navy text-sm group-hover:text-trustblue transition-colors">Framework de objeções</h4>
+                                    <p class="text-xs text-muted">PDF • 2.4 MB</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-download text-muted group-hover:text-trustblue transition-colors"></i>
+                        </button>
+
+                        <button class="group flex items-center justify-between p-4 rounded-xl border border-border hover:border-trustblue/30 hover:bg-trustblue/5 transition-all text-left">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-50 text-green-600 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-file-excel text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navy text-sm group-hover:text-trustblue transition-colors">Calculadora de ROI</h4>
+                                    <p class="text-xs text-muted">XLS • 1.1 MB</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-download text-muted group-hover:text-trustblue transition-colors"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Community Bottom Half -->
+                <div class="bg-surface rounded-bento shadow-soft p-8 border border-border/40 flex-1 flex flex-col justify-center">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-sm font-bold text-navy uppercase tracking-wider">Quem está assistindo</h2>
+                        <span class="text-xs font-semibold text-trustblue bg-trustblue/10 px-2 py-1 rounded-md">24 Online agora</span>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-surface" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-surface" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-surface" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-surface" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-surface" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" alt="User">
+                        </div>
+                        <div class="ml-4 text-sm text-muted">
+                            Junte-se a <span class="font-semibold text-navy">1.2k+</span> alunos nesta jornada.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Floating Footer Action -->
+    <div id="footer-action" class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md border-t border-border/60 py-4 px-6 z-50 shadow-floating">
+        <div class="max-w-[1200px] mx-auto flex items-center justify-between gap-6">
+            <div class="hidden md:block">
+                <p class="text-sm font-medium text-navy">Próximo passo:</p>
+                <p class="text-lg font-bold text-navy">Técnicas de Fechamento de Alto Impacto</p>
+            </div>
+            <button onclick="window.location.href='Tela 5 - Gestão interna de conteúdo.html'" class="w-full md:w-auto flex-1 md:flex-none bg-trustblue hover:bg-trustblue/90 text-white font-bold text-lg py-4 px-12 rounded-pill shadow-lg shadow-trustblue/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                <i class="fa-solid fa-play"></i>
+                Iniciar Aula (45 min)
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

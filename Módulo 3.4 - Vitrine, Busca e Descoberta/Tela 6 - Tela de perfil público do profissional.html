@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Public Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#5A5A5A',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E3E3E3',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 24px -4px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.02)',
+                        'ambient-hover': '0 12px 32px -4px rgba(0, 22, 220, 0.08), 0 4px 12px -2px rgba(0, 22, 220, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="fixed top-0 w-full z-50 glass-nav border-b border-borderLight/50">
+        <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg shadow-[0_0_12px_rgba(0,22,220,0.3)]">M</div>
+                <span class="font-bold text-textMain text-xl tracking-tight">MMO</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8 font-medium text-[15px]">
+                <a href="#" class="text-primary font-semibold relative flex flex-col items-center">
+                    Home
+                    <span class="absolute -bottom-[6px] w-[4px] h-[4px] rounded-full bg-primary"></span>
+                </a>
+                <a href="#" class="text-textMuted hover:text-textMain transition-colors">Orders</a>
+                <a href="#" class="text-textMuted hover:text-textMain transition-colors">Messages</a>
+                <a href="#" class="text-textMuted hover:text-textMain transition-colors">Profile</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full bg-background border border-borderLight flex items-center justify-center text-textMain hover:bg-borderLight/30 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="w-10 h-10 rounded-full overflow-hidden border border-borderLight shadow-sm">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-grow pt-[104px] pb-24 px-6">
+        <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 items-start">
+            
+            <!-- Left Sidebar (Sticky) -->
+            <aside id="sidebar-profile" class="lg:sticky top-[104px] flex flex-col gap-6">
+                <div class="bg-cardBg rounded-[24px] p-8 shadow-ambient border border-borderLight/40 flex flex-col items-center text-center">
+                    <div class="relative mb-6 group">
+                        <div class="w-32 h-32 rounded-[24px] overflow-hidden border-[4px] border-white shadow-ambient">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Professional Avatar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full border border-borderLight shadow-sm flex items-center gap-1.5 text-xs font-bold text-textMain whitespace-nowrap">
+                            <i class="fa-solid fa-circle-check text-primary"></i> Verificado
+                        </div>
+                    </div>
+                    
+                    <h1 class="text-2xl font-bold text-textMain mb-1 tracking-tight">Carlos Mendes</h1>
+                    <p class="text-textMuted font-medium mb-4">Arquiteto & Designer de Interiores</p>
+                    
+                    <div class="flex items-center gap-4 mb-8 w-full justify-center">
+                        <div class="flex items-center gap-1.5 bg-background px-3 py-1.5 rounded-full border border-borderLight/50">
+                            <i class="fa-solid fa-star text-[#F5B014] text-[13px]"></i>
+                            <span class="font-bold text-sm text-textMain">4.9</span>
+                            <span class="text-textMuted text-xs">(124)</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 bg-background px-3 py-1.5 rounded-full border border-borderLight/50">
+                            <i class="fa-solid fa-location-dot text-textMuted text-[13px]"></i>
+                            <span class="font-medium text-sm text-textMain">Camboriú, SC</span>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full flex flex-col gap-3">
+                        <button onclick="window.location.href='../Módulo 3.6 - Solicitações e Oportunidades/Tela 1 - Tela de criação de solicitação.html'" class="w-full h-[52px] rounded-full bg-primary text-white font-bold text-[15px] shadow-[0_8px_16px_-4px_rgba(0,22,220,0.2)] hover:shadow-[0_12px_24px_-4px_rgba(0,22,220,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                            Solicitar Orçamento
+                        </button>
+                        <button onclick="window.location.href='Tela 4 - Tela de favoritos.html'" class="w-full h-[52px] rounded-full bg-transparent border-2 border-borderLight text-textMain font-bold text-[15px] hover:border-textMain/20 hover:bg-background transition-all duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-bookmark"></i> Salvar nos Favoritos
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg rounded-[24px] p-6 shadow-ambient border border-borderLight/40">
+                    <h3 class="text-sm font-bold text-textMuted uppercase tracking-wider mb-4">Estatísticas</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-[16px] bg-background border border-borderLight/50">
+                            <div class="text-2xl font-bold text-textMain mb-1">150+</div>
+                            <div class="text-xs font-medium text-textMuted">Projetos Concluídos</div>
+                        </div>
+                        <div class="p-4 rounded-[16px] bg-background border border-borderLight/50">
+                            <div class="text-2xl font-bold text-textMain mb-1">100%</div>
+                            <div class="text-xs font-medium text-textMuted">Taxa de Resposta</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Column (Main Feed) -->
+            <div class="flex flex-col gap-8">
+                
+                <!-- Section 1: Bio -->
+                <section id="section-bio" class="bg-cardBg rounded-[24px] p-8 shadow-ambient border border-borderLight/40">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-textMain tracking-tight">Trajetória e Especialidade</h2>
+                    </div>
+                    <div class="prose prose-lg text-textMuted max-w-none leading-relaxed">
+                        <p class="mb-4">Com mais de 10 anos de experiência em arquitetura de alto padrão, minha missão é transformar espaços em experiências únicas e funcionais. Especialista em design de interiores residenciais e comerciais na região de Balneário Camboriú e Itajaí.</p>
+                        <p>Meu foco está em unir estética contemporânea com soluções inteligentes, sempre priorizando o conforto e a identidade de cada cliente. Utilizo metodologias ágeis e renderização 3D de alta fidelidade para garantir previsibilidade e excelência em cada entrega.</p>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <span class="px-4 py-2 rounded-full bg-background border border-borderLight text-sm font-semibold text-textMain">Arquitetura Residencial</span>
+                        <span class="px-4 py-2 rounded-full bg-background border border-borderLight text-sm font-semibold text-textMain">Design de Interiores</span>
+                        <span class="px-4 py-2 rounded-full bg-background border border-borderLight text-sm font-semibold text-textMain">Projetos Comerciais</span>
+                        <span class="px-4 py-2 rounded-full bg-background border border-borderLight text-sm font-semibold text-textMain">Renderização 3D</span>
+                    </div>
+                </section>
+
+                <!-- Section 2: Visual Portfolio -->
+                <section id="section-portfolio" class="bg-cardBg rounded-[24px] p-8 shadow-ambient border border-borderLight/40">
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-textMain tracking-tight">Projetos em Destaque</h2>
+                        </div>
+                        <button class="text-sm font-bold text-primary hover:text-primary/80 transition-colors">Ver todos</button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <!-- Project Card 1 -->
+                        <div class="group relative rounded-[20px] overflow-hidden cursor-pointer">
+                            <div class="aspect-[4/5] bg-borderLight w-full">
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/da772d6db8-f5e6236f1e1cbb71272c.png" alt="Modern luxury living room with high ceilings, large windows, minimalist aesthetic, neutral tones, hyper-realistic architectural render" />
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-textMain/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-0 left-0 w-full p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <h4 class="text-white font-bold text-lg mb-1">Residência Brava</h4>
+                                <p class="text-white/80 text-sm font-medium">Design de Interiores</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Card 2 -->
+                        <div class="group relative rounded-[20px] overflow-hidden cursor-pointer">
+                            <div class="aspect-[4/5] bg-borderLight w-full">
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/572ee50195-c05cf9f1432833cc591d.png" alt="Contemporary high-end kitchen with dark wood cabinets, marble island, warm lighting, hyper-realistic architectural render" />
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-textMain/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-0 left-0 w-full p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <h4 class="text-white font-bold text-lg mb-1">Cobertura Vista Mar</h4>
+                                <p class="text-white/80 text-sm font-medium">Reforma Completa</p>
+                            </div>
+                        </div>
+
+                        <!-- Project Card 3 -->
+                        <div class="group relative rounded-[20px] overflow-hidden cursor-pointer">
+                            <div class="aspect-[4/5] bg-borderLight w-full">
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/21738c9ea4-bd8c733437ea0f10bb35.png" alt="Minimalist home office with natural light, ergonomic furniture, indoor plants, hyper-realistic architectural render" />
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-textMain/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-0 left-0 w-full p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <h4 class="text-white font-bold text-lg mb-1">Estúdio Criativo</h4>
+                                <p class="text-white/80 text-sm font-medium">Projeto Comercial</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Social Proof -->
+                <section id="section-reviews" class="bg-cardBg rounded-[24px] p-8 shadow-ambient border border-borderLight/40">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-textMain tracking-tight">Depoimentos de Clientes</h2>
+                    </div>
+
+                    <div class="flex flex-col gap-4">
+                        <!-- Review Card 1 -->
+                        <div class="p-6 rounded-[20px] bg-background border border-borderLight/50 hover:shadow-ambient-hover transition-shadow duration-300">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full overflow-hidden bg-borderLight">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Client" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-textMain text-sm">Mariana Costa</h4>
+                                        <div class="flex items-center gap-1 text-[#F5B014] text-[11px] mt-0.5">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-medium text-textMuted">Há 2 semanas</span>
+                            </div>
+                            <p class="text-sm text-textMuted leading-relaxed">"Trabalho impecável! O Carlos conseguiu traduzir exatamente o que queríamos para nossa sala de estar. O projeto 3D ficou idêntico ao resultado final. Profissional super atencioso e pontual com os prazos."</p>
+                        </div>
+
+                        <!-- Review Card 2 -->
+                        <div class="p-6 rounded-[20px] bg-background border border-borderLight/50 hover:shadow-ambient-hover transition-shadow duration-300">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full overflow-hidden bg-borderLight">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-textMain text-sm">Roberto Almeida</h4>
+                                        <div class="flex items-center gap-1 text-[#F5B014] text-[11px] mt-0.5">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-medium text-textMuted">Há 1 mês</span>
+                            </div>
+                            <p class="text-sm text-textMuted leading-relaxed">"Excelente experiência desde o primeiro contato. Reformamos nosso escritório inteiro e a visão de design aplicada trouxe um ar muito mais moderno e produtivo para a equipe. Recomendo de olhos fechados."</p>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full mt-6 py-3 rounded-full bg-transparent border border-borderLight text-textMain font-bold text-sm hover:bg-background transition-colors">
+                        Carregar mais depoimentos
+                    </button>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-cardBg border-t border-borderLight/50 py-8">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white font-bold text-[10px]">M</div>
+                <span class="font-bold text-textMain text-sm tracking-tight">MMO</span>
+            </div>
+            <p class="text-sm font-medium text-textMuted text-center">MMO © 2026. Profissionais verificados em Camboriú.</p>
+            <div class="flex items-center gap-4 text-textMuted">
+                <a href="#" class="hover:text-primary transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-primary transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

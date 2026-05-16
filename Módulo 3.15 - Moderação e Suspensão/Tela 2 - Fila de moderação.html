@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderation & Triage Queue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        border: '#E5E7EB',
+                        danger: '#EF4444',
+                        warning: '#F59E0B',
+                        success: '#10B981',
+                        info: '#3B82F6',
+                        dangerGhost: '#FEE2E2',
+                        dangerText: '#991B1B',
+                        warningGhost: '#FEF3C7',
+                        warningText: '#92400E',
+                        infoGhost: '#DBEAFE',
+                        infoText: '#1E40AF',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'card': '0 10px 15px -3px rgba(0, 0, 0, 0.03), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                    },
+                    borderRadius: {
+                        'xl': '12px',
+                        '2xl': '16px',
+                        '3xl': '24px',
+                        'pill': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-background m-0 p-0">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-cardBg border-b border-border sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-soft">
+                    M
+                </div>
+                <span class="font-bold text-xl text-textMain tracking-tight">MMO Admin</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <button class="relative p-2 text-textMuted hover:text-textMain transition-colors">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-danger rounded-full border-2 border-cardBg"></span>
+                </button>
+                <div class="h-8 w-px bg-border"></div>
+                <div class="flex items-center gap-3 cursor-pointer group">
+                    <div class="text-right hidden sm:block">
+                        <div class="text-sm font-semibold text-textMain group-hover:text-primary transition-colors">Alex Rivera</div>
+                        <div class="text-xs text-textMuted">Senior Moderator</div>
+                    </div>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-10 h-10 rounded-full border-2 border-border object-cover">
+                    <i class="fa-solid fa-chevron-down text-xs text-textMuted"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 max-w-[1200px] w-full mx-auto px-6 py-8 flex flex-col gap-8">
+        
+        <!-- Admin Control Bar -->
+        <section id="control-bar" class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-center text-sm font-medium text-textMuted gap-2">
+                <span class="hover:text-textMain cursor-pointer transition-colors">Painel</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="hover:text-textMain cursor-pointer transition-colors">Segurança</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-textMain bg-white px-3 py-1.5 rounded-pill shadow-sm border border-border">Fila de Triagem</span>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3">
+                <button class="flex items-center gap-2 bg-white border border-border text-textMain px-4 py-2 rounded-pill text-sm font-semibold hover:border-primary hover:text-primary transition-all shadow-sm">
+                    Gravidade <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <button class="flex items-center gap-2 bg-white border border-border text-textMain px-4 py-2 rounded-pill text-sm font-semibold hover:border-primary hover:text-primary transition-all shadow-sm">
+                    Status <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <button class="flex items-center gap-2 bg-white border border-border text-textMain px-4 py-2 rounded-pill text-sm font-semibold hover:border-primary hover:text-primary transition-all shadow-sm">
+                    Responsável <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div class="h-6 w-px bg-border mx-1 hidden sm:block"></div>
+                <button class="flex items-center justify-center w-9 h-9 bg-white border border-border text-textMain rounded-full hover:bg-background transition-colors shadow-sm">
+                    <i class="fa-solid fa-arrow-rotate-right text-sm"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Moderation KPI Strip -->
+        <section id="kpi-strip" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-cardBg p-5 rounded-2xl shadow-card border border-border/50 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary">
+                        <i class="fa-solid fa-folder-open"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-textMuted bg-gray-50 px-2 py-1 rounded-pill">Hoje</span>
+                </div>
+                <div>
+                    <h3 class="text-textMuted text-sm font-medium mb-1">Denúncias Abertas</h3>
+                    <div class="flex items-end gap-2">
+                        <span class="text-3xl font-bold text-textMain">15</span>
+                        <span class="text-sm font-medium text-success mb-1">+2 hoje</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-cardBg p-5 rounded-2xl shadow-card border border-border/50 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-textMuted bg-gray-50 px-2 py-1 rounded-pill">Média</span>
+                </div>
+                <div>
+                    <h3 class="text-textMuted text-sm font-medium mb-1">SLA Médio de Resposta</h3>
+                    <div class="flex items-end gap-2">
+                        <span class="text-3xl font-bold text-textMain">14m</span>
+                        <span class="text-sm font-medium text-success mb-1">-2m</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-cardBg p-5 rounded-2xl shadow-card border border-danger/20 relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-danger/5 rounded-bl-full -mr-4 -mt-4"></div>
+                <div class="flex items-center justify-between mb-4 relative z-10">
+                    <div class="w-10 h-10 rounded-full bg-danger/10 flex items-center justify-center text-danger">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <span class="flex items-center gap-1.5 text-xs font-bold text-danger bg-danger/10 px-2 py-1 rounded-pill">
+                        <span class="w-1.5 h-1.5 rounded-full bg-danger animate-pulse"></span>
+                        Urgente
+                    </span>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-textMuted text-sm font-medium mb-1">Casos Críticos</h3>
+                    <div class="flex items-end gap-2">
+                        <span class="text-3xl font-bold text-textMain">3</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-cardBg p-5 rounded-2xl shadow-card border border-border/50 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-warning">
+                        <i class="fa-solid fa-user-slash"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-textMuted bg-gray-50 px-2 py-1 rounded-pill">Hoje</span>
+                </div>
+                <div>
+                    <h3 class="text-textMuted text-sm font-medium mb-1">Contas Suspensas</h3>
+                    <div class="flex items-end gap-2">
+                        <span class="text-3xl font-bold text-textMain">2</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Master Triage Table -->
+        <section id="triage-table-container" class="bg-cardBg rounded-3xl shadow-card border border-border/60 overflow-hidden flex flex-col">
+            <div class="p-6 border-b border-border/60 flex items-center justify-between bg-white">
+                <div>
+                    <h2 class="text-lg font-bold text-textMain">Fila de Prioridade</h2>
+                    <p class="text-sm text-textMuted mt-1">Gerencie e analise denúncias ativas.</p>
+                </div>
+                <div class="relative">
+                    <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-textMuted text-sm"></i>
+                    <input type="text" placeholder="Buscar ID ou usuário..." class="pl-9 pr-4 py-2 bg-background border border-border rounded-pill text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all">
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-background/50 text-xs uppercase tracking-wider text-textMuted font-semibold border-b border-border/60">
+                            <th class="px-6 py-4 whitespace-nowrap">Ticket ID</th>
+                            <th class="px-6 py-4 whitespace-nowrap">Gravidade</th>
+                            <th class="px-6 py-4 whitespace-nowrap">Categoria</th>
+                            <th class="px-6 py-4 whitespace-nowrap">Denunciante</th>
+                            <th class="px-6 py-4 whitespace-nowrap">Denunciado</th>
+                            <th class="px-6 py-4 whitespace-nowrap">SLA Espera</th>
+                            <th class="px-6 py-4 whitespace-nowrap text-right">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border/40 text-sm">
+                        <!-- Row 1: Critical -->
+                        <tr class="hover:bg-background/30 transition-colors group">
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-textMain">#TK-9842</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-pill text-xs font-semibold bg-dangerGhost text-dangerText">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-danger mr-1.5"></span> Crítica
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMain">Fraude Financeira</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMuted">@user_772</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-textMain">@scammer_x</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-bold text-danger">26h 15m</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <div class="flex items-center justify-end gap-2">
+                                    <button onclick="window.location.href='Tela 3 - Tela de detalhe do caso.html'" class="bg-primary text-white px-4 py-1.5 rounded-pill text-xs font-bold hover:bg-blue-800 transition-colors shadow-sm">
+                                        Analisar
+                                    </button>
+                                    <button class="w-8 h-8 rounded-full text-textMuted hover:bg-background hover:text-textMain flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 2: High -->
+                        <tr class="hover:bg-background/30 transition-colors group">
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-textMain">#TK-9845</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-pill text-xs font-semibold bg-warningGhost text-warningText">
+                                    Alta
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMain">Assédio</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMuted">@player_one</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-textMain">@toxic_guy</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMuted">12h 05m</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <div class="flex items-center justify-end gap-2">
+                                    <button onclick="window.location.href='Tela 3 - Tela de detalhe do caso.html'" class="bg-primary text-white px-4 py-1.5 rounded-pill text-xs font-bold hover:bg-blue-800 transition-colors shadow-sm">
+                                        Analisar
+                                    </button>
+                                    <button class="w-8 h-8 rounded-full text-textMuted hover:bg-background hover:text-textMain flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3: Low -->
+                        <tr class="hover:bg-background/30 transition-colors group">
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-textMain">#TK-9850</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-pill text-xs font-semibold bg-infoGhost text-infoText">
+                                    Baixa
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMain">Spam no Chat</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMuted">@system_bot</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-textMain">@ad_bot_99</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMuted">2h 30m</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <div class="flex items-center justify-end gap-2">
+                                    <button onclick="window.location.href='Tela 3 - Tela de detalhe do caso.html'" class="bg-primary text-white px-4 py-1.5 rounded-pill text-xs font-bold hover:bg-blue-800 transition-colors shadow-sm">
+                                        Analisar
+                                    </button>
+                                    <button class="w-8 h-8 rounded-full text-textMuted hover:bg-background hover:text-textMain flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                         <!-- Row 4: High SLA Alert -->
+                        <tr class="hover:bg-background/30 transition-colors group">
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-textMain">#TK-9833</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-pill text-xs font-semibold bg-warningGhost text-warningText">
+                                    Alta
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMain">Exploit Report</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-textMuted">@dev_team</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-textMain">@hacker_x</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-bold text-danger">28h 40m</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <div class="flex items-center justify-end gap-2">
+                                    <button onclick="window.location.href='Tela 3 - Tela de detalhe do caso.html'" class="bg-primary text-white px-4 py-1.5 rounded-pill text-xs font-bold hover:bg-blue-800 transition-colors shadow-sm">
+                                        Analisar
+                                    </button>
+                                    <button class="w-8 h-8 rounded-full text-textMuted hover:bg-background hover:text-textMain flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="px-6 py-4 border-t border-border/60 bg-white flex items-center justify-between">
+                <span class="text-xs text-textMuted font-medium">Mostrando 4 de 15 resultados</span>
+                <div class="flex items-center gap-1">
+                    <button class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-textMuted hover:bg-background disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold shadow-sm">1</button>
+                    <button class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-textMain hover:bg-background text-xs font-medium">2</button>
+                    <button class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-textMain hover:bg-background text-xs font-medium">3</button>
+                    <button class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-textMuted hover:bg-background">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="mt-auto py-6 border-t border-border bg-background">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-textMuted font-medium">© 2026 MMO Admin Backoffice. Secure Area.</p>
+            <div class="flex items-center gap-4 text-xs text-textMuted font-medium">
+                <a href="#" class="hover:text-textMain transition-colors">System Status: <span class="text-success">All Operational</span></a>
+                <span class="w-1 h-1 rounded-full bg-border"></span>
+                <a href="#" class="hover:text-textMain transition-colors">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

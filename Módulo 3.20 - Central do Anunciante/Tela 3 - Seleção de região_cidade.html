@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Campaign Geo-Targeting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#1A1A24',
+                            800: '#2D2D3B',
+                            700: '#404052',
+                        },
+                        trust: {
+                            blue: '#0016dc',
+                            light: '#E6E8FB',
+                        },
+                        offwhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'floating': '0 8px 30px rgba(0, 0, 0, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Map specific styles */
+        .map-overlay-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        
+        /* Custom Checkbox */
+        .custom-checkbox input:checked + div {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        .custom-checkbox input:checked + div svg {
+            display: block;
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased flex flex-col items-center pt-8 pb-12">
+
+    <!-- Main Wrapper (1200px Centered) -->
+    <div class="w-full max-w-[1200px] px-6 flex flex-col gap-6 h-[900px]">
+        
+        <!-- Ads Control Bar -->
+        <header id="control-bar" class="w-full bg-white rounded-[24px] shadow-ambient px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3 text-sm font-semibold">
+                <span class="text-navy-700 hover:text-trust-blue cursor-pointer transition-colors">Central de Ads</span>
+                <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                <span class="text-navy-700 hover:text-trust-blue cursor-pointer transition-colors">Nova Campanha</span>
+                <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                <span class="text-trust-blue">Segmentação</span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-cog"></i>
+                </button>
+                <div class="h-10 w-10 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </header>
+
+        <!-- 3-Panel Split Layout -->
+        <main class="flex-1 flex gap-6 h-full overflow-hidden">
+            
+            <!-- Panel 1: Search & Hierarchy (25%) -->
+            <aside id="panel-search" class="w-[25%] bg-white rounded-[24px] shadow-ambient flex flex-col overflow-hidden">
+                <div class="p-6 border-b border-gray-100">
+                    <h2 class="text-lg font-bold text-navy-900 mb-4">Adicionar Localização</h2>
+                    <div class="relative">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Buscar cidade, estado..." class="w-full bg-gray-50 text-sm py-3 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:border-trust-blue focus:ring-1 focus:ring-trust-blue transition-all placeholder:text-gray-400">
+                    </div>
+                </div>
+                
+                <div class="p-4 flex-1 overflow-y-auto">
+                    <!-- Accordion Item -->
+                    <div class="mb-2">
+                        <button class="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-chevron-down text-xs text-trust-blue transition-transform"></i>
+                                <span class="font-semibold text-navy-900 text-sm group-hover:text-trust-blue">Litoral SC</span>
+                            </div>
+                            <span class="text-xs font-medium text-gray-400 bg-gray-100 px-2 py-1 rounded-md">3 Selecionados</span>
+                        </button>
+                        
+                        <div class="pl-9 pr-3 py-2 flex flex-col gap-3">
+                            <!-- Checkbox 1 -->
+                            <label class="custom-checkbox flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" checked class="hidden">
+                                <div class="w-4 h-4 rounded border border-gray-300 flex items-center justify-center transition-colors">
+                                    <svg class="w-2.5 h-2.5 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-sm text-navy-800 group-hover:text-trust-blue transition-colors">Camboriú</span>
+                            </label>
+                            
+                            <!-- Checkbox 2 -->
+                            <label class="custom-checkbox flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" checked class="hidden">
+                                <div class="w-4 h-4 rounded border border-gray-300 flex items-center justify-center transition-colors">
+                                    <svg class="w-2.5 h-2.5 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-sm text-navy-800 group-hover:text-trust-blue transition-colors">Itajaí</span>
+                            </label>
+
+                            <!-- Checkbox 3 -->
+                            <label class="custom-checkbox flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" checked class="hidden">
+                                <div class="w-4 h-4 rounded border border-gray-300 flex items-center justify-center transition-colors">
+                                    <svg class="w-2.5 h-2.5 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-sm text-navy-800 group-hover:text-trust-blue transition-colors">Itapema</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Unexpanded Accordion Item -->
+                    <div class="mb-2">
+                        <button class="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-navy-900 transition-transform"></i>
+                                <span class="font-semibold text-navy-900 text-sm">Grande Florianópolis</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Panel 2: The Map Engine (50%) -->
+            <section id="panel-map" class="w-[50%] bg-white rounded-[24px] shadow-ambient overflow-hidden relative flex flex-col">
+                <div class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-gray-100 flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-trust-blue animate-pulse"></div>
+                    <span class="text-xs font-bold text-navy-900">Visualização Ativa</span>
+                </div>
+                
+                <!-- Map Controls -->
+                <div class="absolute right-4 bottom-4 z-10 flex flex-col gap-2">
+                    <button class="w-10 h-10 bg-white rounded-full shadow-floating flex items-center justify-center text-navy-900 hover:text-trust-blue transition-colors border border-gray-100">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <button class="w-10 h-10 bg-white rounded-full shadow-floating flex items-center justify-center text-navy-900 hover:text-trust-blue transition-colors border border-gray-100">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <button class="w-10 h-10 bg-white rounded-full shadow-floating flex items-center justify-center text-navy-900 hover:text-trust-blue transition-colors border border-gray-100 mt-2">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                    </button>
+                </div>
+
+                <!-- Simulated Map Canvas using AI Image -->
+                <div class="w-full h-full relative bg-[#E8F0F8]">
+                    <img class="w-full h-full object-cover opacity-80 mix-blend-multiply" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/9e67eb6ad5-89b714441389012de9ea.png" alt="minimalist clean digital map of coastal region, light grey and white roads, subtle terrain, premium UI aesthetic, unlabelled" />
+                    
+                    <!-- Simulated Radial Overlays -->
+                    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <div class="relative w-48 h-48">
+                            <div class="absolute inset-0 bg-trust-blue/20 rounded-full border border-trust-blue/30 map-overlay-pulse"></div>
+                            <div class="absolute inset-4 bg-trust-blue/30 rounded-full border border-trust-blue/40 backdrop-blur-[2px]"></div>
+                            <div class="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-trust-blue rounded-full shadow-[0_0_15px_rgba(0,22,220,0.6)] border-2 border-white"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute bottom-1/3 left-1/3">
+                        <div class="relative w-32 h-32">
+                            <div class="absolute inset-0 bg-trust-blue/20 rounded-full border border-trust-blue/30 map-overlay-pulse" style="animation-delay: 1s"></div>
+                            <div class="absolute inset-4 bg-trust-blue/30 rounded-full border border-trust-blue/40 backdrop-blur-[2px]"></div>
+                            <div class="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-trust-blue rounded-full shadow-[0_0_15px_rgba(0,22,220,0.6)] border-2 border-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Panel 3: Audience Intelligence (25%) -->
+            <aside id="panel-intelligence" class="w-[25%] bg-white rounded-[24px] shadow-ambient flex flex-col justify-between p-6">
+                
+                <div class="flex flex-col gap-8">
+                    <!-- Title -->
+                    <div>
+                        <h2 class="text-xl font-bold text-navy-900">Inteligência de Público</h2>
+                        <p class="text-sm text-gray-500 mt-1">Análise em tempo real</p>
+                    </div>
+
+                    <!-- Termômetro de Público -->
+                    <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm font-bold text-navy-900">Termômetro</span>
+                            <span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded-md">Ideal</span>
+                        </div>
+                        
+                        <div class="relative h-2 w-full rounded-full bg-gradient-to-r from-red-400 via-green-400 to-yellow-400 mb-6">
+                            <!-- Indicator Arrow -->
+                            <div class="absolute top-0 left-[50%] -translate-x-1/2 -translate-y-full pb-1 flex flex-col items-center">
+                                <div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-navy-900 drop-shadow-sm"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                            <span>Específico</span>
+                            <span class="text-navy-900">Ideal</span>
+                            <span>Amplo</span>
+                        </div>
+                    </div>
+
+                    <!-- Tamanho do Público Alvo -->
+                    <div>
+                        <span class="text-sm font-semibold text-gray-500 block mb-2">Tamanho Estimado</span>
+                        <h3 class="text-4xl font-extrabold text-navy-900 tracking-tight leading-none">45k <span class="text-2xl text-gray-400 font-bold">a</span> 52k</h3>
+                        <p class="text-sm font-medium text-trust-blue mt-2 flex items-center gap-2">
+                            <i class="fa-solid fa-users"></i> Pessoas alcançáveis
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <button onclick="window.location.href='Tela 4 - Upload de material.html'" class="w-full bg-trust-blue hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-full shadow-[0_8px_20px_rgba(0,22,220,0.25)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3 group">
+                    Continuar para Upload
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </aside>
+
+        </main>
+    </div>
+
+</body>
+</html>

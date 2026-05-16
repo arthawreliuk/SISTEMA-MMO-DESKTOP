@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Selection Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        pageBg: '#F8F9FA',
+                        trustBlue: '#0016dc',
+                        trustBlueLight: '#E6E8FC',
+                        deepNavy: '#0F172A',
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'dropdown': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Custom Input Focus Ring */
+        .input-focus-ring:focus-within {
+            box-shadow: 0 0 0 3px rgba(0, 22, 220, 0.15);
+            border-color: #0016dc;
+        }
+    </style>
+</head>
+<body class="bg-pageBg min-h-screen flex flex-col text-deepNavy m-0 p-0">
+
+    <!-- Top Navigation -->
+    <header id="header" class="w-full bg-white shadow-soft sticky top-0 z-50 h-20 flex items-center px-8">
+        <div class="max-w-[1440px] mx-auto w-full flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer">
+                <div class="w-10 h-10 rounded-xl bg-trustBlue flex items-center justify-center text-white font-bold text-xl">
+                    M
+                </div>
+                <span class="font-extrabold text-2xl tracking-tight text-deepNavy">MMO</span>
+            </div>
+            
+            <!-- Optional Nav Items (Hidden on small, clean look) -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+                <span class="cursor-pointer hover:text-trustBlue transition-colors">Ajuda</span>
+                <span onclick="window.location.href='../Módulo 3.1 - Acesso, Conta e Identidade/Tela 2 - Login.html'" class="cursor-pointer hover:text-trustBlue transition-colors">Sair</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main id="main-content" class="flex-grow flex items-center justify-center p-6 md:p-12 relative overflow-hidden">
+        
+        <!-- Decorative Background Elements (Subtle) -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-trustBlue opacity-[0.03] rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 -left-20 w-64 h-64 bg-trustBlue opacity-[0.02] rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Centered Container -->
+        <div id="workspace-container" class="w-full max-w-[600px] bg-white rounded-[24px] shadow-soft p-8 md:p-12 z-10 relative flex flex-col min-h-[600px]">
+            
+            <!-- Step Indicator -->
+            <div class="flex justify-center mb-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-1 bg-trustBlue rounded-full"></div>
+                    <div class="w-8 h-1 bg-slate-200 rounded-full"></div>
+                    <div class="w-8 h-1 bg-slate-200 rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Typography Setup -->
+            <div id="header-section" class="text-center mb-10">
+                <h1 class="text-4xl md:text-[40px] font-extrabold text-deepNavy mb-4 tracking-tight leading-tight">
+                    Área de Atuação
+                </h1>
+                <p class="text-base text-slate-500 font-medium max-w-md mx-auto leading-relaxed">
+                    Mantenha o foco. Escolha no máximo 5 serviços para garantir alta relevância.
+                </p>
+            </div>
+
+            <!-- Smart Input Experience -->
+            <div id="input-section" class="w-full relative mb-8 flex-grow">
+                
+                <!-- Search Label -->
+                <label class="block text-sm font-semibold text-deepNavy mb-2 ml-1">Buscar Serviços</label>
+                
+                <!-- Input Wrapper -->
+                <div class="relative input-focus-ring rounded-xl border border-slate-200 bg-slate-50 transition-all duration-200">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+                    </div>
+                    <input 
+                        type="text" 
+                        class="w-full pl-11 pr-4 py-4 bg-transparent border-none outline-none text-deepNavy font-medium placeholder-slate-400 rounded-xl"
+                        placeholder="Ex: Desenvolvimento Web, Design UX/UI..."
+                        value="Desi"
+                    >
+                    
+                    <!-- Dropdown Menu (Simulated Active State) -->
+                    <div class="absolute top-full left-0 w-full mt-2 bg-white rounded-xl shadow-dropdown border border-slate-100 overflow-hidden z-20">
+                        <ul class="py-2">
+                            <li class="px-5 py-3 hover:bg-slate-50 cursor-pointer flex items-center justify-between group transition-colors">
+                                <span class="font-medium text-deepNavy group-hover:text-trustBlue">Design UX/UI</span>
+                                <i class="fa-solid fa-plus text-slate-300 group-hover:text-trustBlue"></i>
+                            </li>
+                            <li class="px-5 py-3 hover:bg-slate-50 cursor-pointer flex items-center justify-between group transition-colors">
+                                <span class="font-medium text-deepNavy group-hover:text-trustBlue">Design Gráfico</span>
+                                <i class="fa-solid fa-plus text-slate-300 group-hover:text-trustBlue"></i>
+                            </li>
+                            <li class="px-5 py-3 hover:bg-slate-50 cursor-pointer flex items-center justify-between group transition-colors">
+                                <span class="font-medium text-deepNavy group-hover:text-trustBlue">Design de Produto</span>
+                                <i class="fa-solid fa-plus text-slate-300 group-hover:text-trustBlue"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Selected Tags Area -->
+                <div id="tags-section" class="mt-6">
+                    <div class="flex flex-wrap gap-3">
+                        <!-- Tag 1 -->
+                        <div class="inline-flex items-center gap-2 bg-trustBlueLight px-4 py-2.5 rounded-full border border-trustBlue/10 animate-fade-in">
+                            <span class="text-trustBlue font-semibold text-sm">Desenvolvimento Web</span>
+                            <button class="w-5 h-5 rounded-full hover:bg-trustBlue/20 flex items-center justify-center text-trustBlue transition-colors outline-none">
+                                <i class="fa-solid fa-xmark text-xs"></i>
+                            </button>
+                        </div>
+                        <!-- Tag 2 -->
+                        <div class="inline-flex items-center gap-2 bg-trustBlueLight px-4 py-2.5 rounded-full border border-trustBlue/10 animate-fade-in">
+                            <span class="text-trustBlue font-semibold text-sm">Marketing Digital</span>
+                            <button class="w-5 h-5 rounded-full hover:bg-trustBlue/20 flex items-center justify-center text-trustBlue transition-colors outline-none">
+                                <i class="fa-solid fa-xmark text-xs"></i>
+                            </button>
+                        </div>
+                        <!-- Tag 3 -->
+                        <div class="inline-flex items-center gap-2 bg-trustBlueLight px-4 py-2.5 rounded-full border border-trustBlue/10 animate-fade-in">
+                            <span class="text-trustBlue font-semibold text-sm">SEO</span>
+                            <button class="w-5 h-5 rounded-full hover:bg-trustBlue/20 flex items-center justify-center text-trustBlue transition-colors outline-none">
+                                <i class="fa-solid fa-xmark text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Limit Indicator -->
+            <div id="progress-section" class="mt-auto mb-8 pt-6 border-t border-slate-100">
+                <div class="flex justify-between items-end mb-2">
+                    <span class="text-sm font-semibold text-slate-600">Capacidade</span>
+                    <span class="text-sm font-bold text-trustBlue">3 <span class="text-slate-400 font-medium">/ 5</span></span>
+                </div>
+                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-trustBlue rounded-full transition-all duration-500 ease-out" style="width: 60%;"></div>
+                </div>
+            </div>
+
+            <!-- Action Area -->
+            <div id="action-section" class="mt-4">
+                <button onclick="window.location.href='Tela 3 - Definição de região de atendimento.html'" class="w-full bg-trustBlue hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-[0_8px_20px_-6px_rgba(0,22,220,0.4)] transform hover:-translate-y-0.5 transition-all duration-200 outline-none focus:ring-4 focus:ring-trustBlue/30">
+                    Salvar e Continuar
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Simple Footer for Desktop Balance -->
+    <footer id="footer" class="py-6 text-center text-slate-400 text-sm font-medium">
+        &copy; 2024 MMO Platform. Todos os direitos reservados.
+    </footer>
+
+</body>
+</html>

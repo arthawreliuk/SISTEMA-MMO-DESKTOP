@@ -1,0 +1,214 @@
+<html lang="en">
+
+  <head>
+    <script>
+      window.FontAwesomeConfig = {
+        autoReplaceSvg: 'nest'
+      };
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script>
+      tailwind.config = {
+        theme:
+        {
+          extend:
+          {
+            fontFamily:
+            {
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            },
+            colors:
+            {
+              primary: '#0016dc',
+              'deep-navy': '#0f172a',
+              'off-white': '#F8F9FA',
+            },
+            boxShadow:
+            {
+              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+              'ambient': '0 20px 40px -10px rgba(0, 22, 220, 0.15)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body
+      {
+        margin: 0;
+        padding: 0;
+      }
+
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      .floating-input:focus-within label,
+      .floating-input input:not(:placeholder-shown)+label
+      {
+        transform: translateY(-130%) scale(0.85);
+        color: #0016dc;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-off-white font-sans text-deep-navy antialiased h-screen overflow-hidden">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+    <main id="auth-container" class="flex flex-col lg:flex-row h-full w-full">
+      <!-- Left Side: Form Area (40%) -->
+      <section id="auth-form-area"
+        class="w-full lg:w-[40%] h-full bg-white flex items-center justify-center relative z-10 px-6 sm:px-12 py-10 lg:py-0 shadow-[20px_0_40px_-15px_rgba(0,0,0,0.03)] order-2 lg:order-1 pb-0 pt-0">
+        <div
+          class="w-full max-w-[420px] flex flex-col h-full justify-between lg:justify-center pt-12 pb-12"
+          id="inn1v">
+          <!-- Header -->
+          <div id="auth-header"
+            class="mb-12 text-center lg:text-left mt-8 lg:mt-0">
+            <div
+              class="flex items-center justify-center lg:justify-start gap-3 mb-10">
+              <div
+                class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-ambient">
+                <i class="fa-solid fa-cube text-xl"></i></div><span
+                class="text-2xl font-extrabold tracking-tight text-deep-navy">MMO</span>
+            </div>
+            <h1
+              class="text-[2.5rem] leading-[1.1] font-bold text-deep-navy mb-3 tracking-tight">
+              Bem-vindo à MMO</h1>
+            <p class="text-slate-500 text-base font-medium">Insira seus dados
+              para acessar sua conta.</p>
+          </div><!-- Form -->
+          <form id="login-form"
+            class="space-y-6 flex-grow flex flex-col justify-center">
+            <div class="space-y-5">
+              <!-- Nome Input (For Sign Up state, shown here for completeness based on query) -->
+              <div
+                class="relative floating-input bg-slate-50/50 rounded-2xl border border-slate-200/60 focus-within:border-primary focus-within:bg-white focus-within:ring-4 focus-within:ring-primary/10 transition-all duration-300">
+                <input type="text" id="nome" placeholder=" " required=""
+                  class="w-full bg-transparent px-5 pt-7 pb-3 text-deep-navy font-semibold outline-none peer"><label
+                  for="nome"
+                  class="absolute left-5 top-5 text-slate-400 font-medium transition-all duration-300 pointer-events-none origin-left">Nome
+                  completo</label></div><!-- E-mail Input -->
+              <div
+                class="relative floating-input bg-slate-50/50 rounded-2xl border border-slate-200/60 focus-within:border-primary focus-within:bg-white focus-within:ring-4 focus-within:ring-primary/10 transition-all duration-300">
+                <input type="email" id="email" placeholder=" " required=""
+                  class="w-full bg-transparent px-5 pt-7 pb-3 text-deep-navy font-semibold outline-none peer"><label
+                  for="email"
+                  class="absolute left-5 top-5 text-slate-400 font-medium transition-all duration-300 pointer-events-none origin-left">E-mail
+                  corporativo</label></div><!-- Senha Input -->
+              <div
+                class="relative floating-input bg-slate-50/50 rounded-2xl border border-slate-200/60 focus-within:border-primary focus-within:bg-white focus-within:ring-4 focus-within:ring-primary/10 transition-all duration-300 group">
+                <input type="password" id="senha" placeholder=" " required=""
+                  class="w-full bg-transparent px-5 pt-7 pb-3 text-deep-navy font-semibold outline-none peer pr-12"><label
+                  for="senha"
+                  class="absolute left-5 top-5 text-slate-400 font-medium transition-all duration-300 pointer-events-none origin-left">Sua
+                  senha secreta</label><button type="button"
+                  class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"><i
+                    class="fa-regular fa-eye"></i></button></div>
+            </div>
+            <div class="flex items-center justify-between pt-2"><label
+                class="flex items-center gap-3 cursor-pointer group">
+                <div class="relative flex items-center justify-center w-5 h-5">
+                  <input type="checkbox"
+                    class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded-[6px] checked:bg-primary checked:border-primary transition-all cursor-pointer"><i
+                    class="fa-solid fa-check text-white text-[10px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity"></i>
+                </div><span
+                  class="text-sm font-semibold text-slate-600 group-hover:text-deep-navy transition-colors">Lembrar
+                  de mim</span>
+              </label><a href="Tela 3 - Recuperação de Acesso.html"
+                class="text-sm font-bold text-primary hover:text-primary/80 transition-colors">Esqueceu
+                a senha?</a></div><button type="submit"
+              onclick="event.preventDefault(); window.location.href='Tela 5 - Seleção_Alternância de Contexto.html'"
+              class="w-full bg-primary hover:bg-[#0012b3] text-white font-bold text-[15px] py-4 rounded-full shadow-ambient transform hover:-translate-y-0.5 transition-all duration-300 mt-4">
+              Avançar
+            </button>
+          </form><!-- Footer -->
+          <div id="auth-footer" class="text-center mt-12 mb-8 lg:mb-0">
+            <p class="text-slate-600 font-medium">
+              Já tem conta?
+              <a href="Tela 2 - Login.html"
+                class="text-primary font-bold hover:underline ml-1">Entrar</a>
+            </p>
+          </div>
+        </div>
+      </section><!-- Right Side: Brand Canvas (60%) -->
+      <section id="brand-canvas"
+        class="hidden lg:flex w-[60%] h-full bg-off-white relative overflow-hidden items-center justify-center order-1 lg:order-2">
+        <!-- Abstract Background Elements -->
+        <div class="absolute inset-0 z-0 opacity-40">
+          <div
+            class="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-3xl">
+          </div>
+          <div
+            class="absolute bottom-[-20%] left-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-blue-400/10 to-transparent blur-3xl">
+          </div>
+        </div><!-- Massive 3D Glassmorphism Illustration -->
+        <div
+          class="relative z-10 w-full h-full flex items-center justify-center p-20">
+          <img
+            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8cadc42cb7-3f744fe367a28bbd6c0a.png"
+            alt="massive high-end 3D glassmorphism illustration representing connectivity linked abstract blocks stylized blueprint in deep blue and clean white tones transparent background"
+            class="w-full max-w-[800px] h-auto object-contain drop-shadow-2xl mix-blend-multiply">
+        </div><!-- Floating Review Card -->
+        <div
+          class="absolute bottom-20 left-20 z-20 bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-[24px] shadow-[0_24px_48px_-12px_rgba(0,22,220,0.15)] max-w-[320px] transform hover:-translate-y-2 transition-transform duration-500">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex gap-1 text-amber-400 text-sm"><i
+                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i></div><span
+              class="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded-md">5.0</span>
+          </div>
+          <p
+            class="text-deep-navy font-semibold leading-relaxed text-[15px] mb-5">
+            "A plataforma transformou completamente a forma como gerenciamos
+            nossa estrutura. Intuitivo, rápido e incrivelmente robusto."
+          </p>
+          <div class="flex items-center gap-3"><img
+              src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg"
+              alt="User"
+              class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover">
+            <div>
+              <h4 class="text-sm font-bold text-deep-navy">Roberto Almeida</h4>
+              <p class="text-xs font-medium text-slate-500">Diretor de
+                Operações, TechCorp</p>
+            </div>
+          </div>
+        </div><!-- Decorative Badge -->
+        <div
+          class="absolute top-12 right-12 z-20 bg-white px-5 py-2.5 rounded-full shadow-soft flex items-center gap-2 border border-slate-100">
+          <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+          <span
+            class="text-xs font-bold text-slate-600 tracking-wide uppercase">Sistemas
+            Online</span>
+        </div>
+      </section>
+    </main>
+  </body>
+
+</html>

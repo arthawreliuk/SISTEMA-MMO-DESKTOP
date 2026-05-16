@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Upgrade Upsell</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        trustBlue: '#0016dc',
+                        offWhite: '#F8F9FA',
+                        deepNavy: '#1A1A24',
+                    },
+                    boxShadow: {
+                        'ambient': '0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 0 20px rgba(0, 22, 220, 0.05)',
+                        'floating': '0 30px 60px -15px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { display: none; }
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        
+        .hero-bg {
+            background: linear-gradient(180deg, #0016dc 0%, #0016dc 85%, #F8F9FA 100%);
+        }
+        
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(0, 22, 220, 0.4);
+        }
+    </style>
+</head>
+<body class="font-sans text-deepNavy min-h-screen flex flex-col">
+
+    <!-- Transparent Navigation -->
+    <nav id="top-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 text-white">
+                <div class="w-10 h-10 rounded-[12px] bg-white/10 flex items-center justify-center border border-white/20">
+                    <i class="fa-solid fa-bolt text-xl"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">MMO</span>
+            </div>
+            
+            <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all border border-white/10 backdrop-blur-sm text-sm font-semibold">
+                <span>Fechar</span>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow relative">
+        
+        <!-- Immersive Hero Section -->
+        <section id="hero-section" class="hero-bg pt-32 pb-48 relative overflow-hidden">
+            <!-- Background Decorative Elements -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-white/5 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+            
+            <div class="max-w-[1200px] mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+                
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium mb-8 backdrop-blur-md">
+                    <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                    Plano Mestre
+                </div>
+
+                <h1 class="text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6 max-w-4xl leading-tight">
+                    Destaque-se para os <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-100">melhores clientes</span> da região.
+                </h1>
+                
+                <p class="text-xl text-white/80 max-w-2xl mb-16 font-medium leading-relaxed">
+                    Faça o upgrade para o Plano Mestre e domine o Balcão de Serviços.
+                </p>
+
+                <!-- Floating Illustration / Visual Anchor -->
+                <div class="w-full max-w-[800px] h-[320px] relative rounded-[24px] bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden flex items-center justify-center mb-12 group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-trustBlue/20 to-transparent z-0"></div>
+                    <img class="w-full h-full object-cover opacity-90 mix-blend-overlay group-hover:scale-105 transition-transform duration-700" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b14920c751-21d827779640e3639c84.png" alt="3D isometric high quality illustration of a sleek modern dashboard showing climbing revenue charts, green up arrows, and floating notification badges, deep blue and gold accents, clean studio lighting" />
+                    
+                    <!-- Overlay UI Elements mimicking ref style -->
+                    <div class="absolute top-6 left-6 p-4 rounded-[16px] bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-green-400/20 flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-trend-up text-green-400"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-white/60 text-xs font-semibold uppercase tracking-wider">Receita</p>
+                            <p class="text-white font-bold text-lg">+340%</p>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-6 right-6 p-4 rounded-[16px] bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-yellow-400/20 flex items-center justify-center">
+                            <i class="fa-solid fa-bell text-yellow-400"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-white/60 text-xs font-semibold uppercase tracking-wider">Novos Pedidos</p>
+                            <p class="text-white font-bold text-lg">12 na fila</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- The Offer Container (Overlapping) -->
+        <section id="offer-section" class="relative -mt-40 z-20 pb-24 px-6">
+            <div class="max-w-[1200px] mx-auto bg-white rounded-[32px] shadow-floating border border-gray-100 overflow-hidden">
+                
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-10 md:p-12 bg-gray-50/50">
+                    
+                    <!-- Feature 1 -->
+                    <div class="flex flex-col items-center text-center p-6 rounded-[20px] bg-white shadow-ambient border border-gray-50 hover:-translate-y-1 transition-transform">
+                        <div class="w-16 h-16 rounded-[16px] bg-blue-50 text-trustBlue flex items-center justify-center text-2xl mb-6 shadow-inner">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-deepNavy mb-3">Acesso Prioritário</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">
+                            Seja o primeiro a ver os pedidos mais valiosos do Balcão.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="flex flex-col items-center text-center p-6 rounded-[20px] bg-white shadow-ambient border border-gray-50 hover:-translate-y-1 transition-transform relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-200"></div>
+                        <div class="w-16 h-16 rounded-[16px] bg-yellow-50 text-yellow-500 flex items-center justify-center text-2xl mb-6 shadow-inner">
+                            <i class="fa-solid fa-shield-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-deepNavy mb-3">Selo de Confiança</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">
+                            Destaque-se com o selo dourado exclusivo em seu perfil.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="flex flex-col items-center text-center p-6 rounded-[20px] bg-white shadow-ambient border border-gray-50 hover:-translate-y-1 transition-transform">
+                        <div class="w-16 h-16 rounded-[16px] bg-purple-50 text-purple-600 flex items-center justify-center text-2xl mb-6 shadow-inner">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-deepNavy mb-3">Métricas Avançadas</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">
+                            Acompanhe suas visualizações e taxa de conversão em tempo real.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Action Footer -->
+                <div class="p-10 md:p-14 bg-white flex flex-col items-center border-t border-gray-100">
+                    <div class="mb-8 text-center">
+                        <span class="text-gray-400 font-semibold uppercase tracking-widest text-xs mb-2 block">Investimento Mensal</span>
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-2xl font-bold text-deepNavy">R$</span>
+                            <span class="text-6xl font-extrabold text-deepNavy tracking-tighter">49,90</span>
+                            <span class="text-xl font-medium text-gray-400">/mês</span>
+                        </div>
+                    </div>
+
+                    <button onclick="window.location.href='Tela 6 - Tela de checkout da exposição do Balcão.html'" class="w-full max-w-md bg-trustBlue hover:bg-blue-700 text-white text-lg font-bold py-5 px-8 rounded-full shadow-[0_10px_25px_-5px_rgba(0,22,220,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(0,22,220,0.5)] transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-3 group">
+                        Quero me Destacar Agora
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+
+                    <div class="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500 font-medium">
+                        <i class="fa-solid fa-lock text-gray-400"></i>
+                        Garantia de 7 dias ou seu dinheiro de volta.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Minimalist Footer -->
+    <footer id="footer" class="bg-offWhite py-12 border-t border-gray-200 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2 text-gray-400">
+                <i class="fa-solid fa-bolt text-lg"></i>
+                <span class="font-bold tracking-tight text-gray-500">MMO</span>
+            </div>
+            
+            <div class="flex gap-6 text-sm font-medium text-gray-500">
+                <a href="#" class="hover:text-trustBlue transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-trustBlue transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-trustBlue transition-colors">Suporte</a>
+            </div>
+            
+            <div class="text-xs text-gray-400">
+                © 2026 MMO Platform. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll effect for nav
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('top-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-nav');
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('glass-nav');
+                nav.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>

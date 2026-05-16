@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Preferences Control Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280',
+                            light: '#9CA3AF'
+                        },
+                        border: '#E5E7EB',
+                        hover: '#F3F4F6'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 10px 30px -5px rgba(0, 0, 0, 0.03)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)'
+                    },
+                    borderRadius: {
+                        '24': '24px',
+                        'pill': '9999px',
+                        'checkbox': '6px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+        
+        /* Custom Checkbox Styling */
+        .custom-checkbox {
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 6px;
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .custom-checkbox::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em white;
+            background-color: white;
+            transform-origin: center;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        .custom-checkbox:checked {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+
+        .custom-checkbox:checked::before {
+            transform: scale(1);
+        }
+
+        /* Toggle Switch Styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Global Header -->
+    <header id="header" class="bg-surface border-b border-border h-20 sticky top-0 z-50 px-6 lg:px-12 flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-8">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                    <i class="fa-solid fa-bolt text-xl"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">Finova</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-text-muted">
+                <a href="#" class="hover:text-text-main transition-colors">Dashboard</a>
+                <a href="#" class="hover:text-text-main transition-colors">Transações</a>
+                <a href="#" class="hover:text-text-main transition-colors">Relatórios</a>
+                <a href="#" class="text-text-main font-semibold relative">
+                    Configurações
+                    <div class="absolute -bottom-7 left-0 right-0 h-0.5 bg-primary rounded-t-full"></div>
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-5">
+            <button class="w-10 h-10 rounded-full hover:bg-hover flex items-center justify-center text-text-muted transition-colors relative">
+                <i class="fa-regular fa-bell"></i>
+                <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-surface"></span>
+            </button>
+            <div class="h-6 w-px bg-border"></div>
+            <button class="flex items-center gap-3 hover:bg-hover p-1.5 pr-4 rounded-full transition-colors border border-transparent hover:border-border">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-8 h-8 rounded-full object-cover">
+                <span class="text-sm font-medium hidden sm:block">Roberto Almeida</span>
+                <i class="fa-solid fa-chevron-down text-xs text-text-light hidden sm:block"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 py-8 lg:py-12 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sidebar Panel (25%) -->
+        <aside id="settings-sidebar" class="w-full lg:w-1/4 flex-shrink-0">
+            <div class="sticky top-28">
+                <h1 class="text-2xl font-bold mb-6 tracking-tight">Configurações</h1>
+                
+                <nav class="space-y-1">
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-text-muted rounded-xl hover:bg-hover hover:text-text-main transition-all">
+                        <i class="fa-regular fa-user w-5 text-center"></i>
+                        Perfil da Conta
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-text-muted rounded-xl hover:bg-hover hover:text-text-main transition-all">
+                        <i class="fa-solid fa-shield-halved w-5 text-center"></i>
+                        Segurança e Acesso
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-text-muted rounded-xl hover:bg-hover hover:text-text-main transition-all">
+                        <i class="fa-regular fa-credit-card w-5 text-center"></i>
+                        Métodos de Pagamento
+                    </a>
+                    
+                    <div class="py-2">
+                        <div class="h-px w-full bg-border"></div>
+                    </div>
+
+                    <a href="#" class="flex items-center justify-between px-4 py-3 text-sm font-bold text-text-main bg-white rounded-xl shadow-sm border border-border/50 relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-regular fa-bell w-5 text-center text-primary"></i>
+                            Preferências de Alerta
+                        </div>
+                        <div class="w-2 h-2 rounded-full bg-primary"></div>
+                    </a>
+                    
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-text-muted rounded-xl hover:bg-hover hover:text-text-main transition-all">
+                        <i class="fa-solid fa-plug w-5 text-center"></i>
+                        Integrações (API)
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-text-muted rounded-xl hover:bg-hover hover:text-text-main transition-all">
+                        <i class="fa-solid fa-file-invoice w-5 text-center"></i>
+                        Faturamento
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Panel (75%) -->
+        <section id="notification-matrix" class="w-full lg:w-3/4 bg-surface rounded-24 shadow-card border border-border/40 overflow-hidden flex flex-col">
+            
+            <!-- Header Area -->
+            <div class="px-8 py-8 border-b border-border/60">
+                <h2 class="text-xl font-bold text-text-main mb-2">Central de Notificações</h2>
+                <p class="text-sm text-text-muted">Gerencie como e quando você deseja ser alertado sobre movimentações e eventos da sua conta.</p>
+            </div>
+
+            <!-- Do Not Disturb Section -->
+            <div class="px-8 py-6 bg-hover/30 border-b border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <h3 class="text-base font-semibold text-text-main">Horário de Silêncio (Do Not Disturb)</h3>
+                        <span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded-md uppercase tracking-wider">Novo</span>
+                    </div>
+                    <p class="text-sm text-text-muted">Pausar notificações push não críticas durante este período.</p>
+                </div>
+                
+                <div class="flex items-center gap-4 bg-surface p-2 rounded-2xl border border-border/50 shadow-sm">
+                    <div class="flex items-center gap-2 px-3 py-1.5 bg-hover rounded-xl border border-border/50">
+                        <i class="fa-regular fa-clock text-text-light text-sm"></i>
+                        <select class="bg-transparent text-sm font-medium text-text-main outline-none cursor-pointer appearance-none pr-4">
+                            <option>20:00</option>
+                            <option>21:00</option>
+                            <option selected>22:00</option>
+                            <option>23:00</option>
+                        </select>
+                    </div>
+                    <span class="text-text-muted text-sm font-medium">às</span>
+                    <div class="flex items-center gap-2 px-3 py-1.5 bg-hover rounded-xl border border-border/50">
+                        <i class="fa-regular fa-sun text-text-light text-sm"></i>
+                        <select class="bg-transparent text-sm font-medium text-text-main outline-none cursor-pointer appearance-none pr-4">
+                            <option>06:00</option>
+                            <option>07:00</option>
+                            <option selected>08:00</option>
+                            <option>09:00</option>
+                        </select>
+                    </div>
+                    <div class="pl-2 pr-1 border-l border-border">
+                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle" id="dnd-toggle" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 border-border appearance-none cursor-pointer z-10 transition-transform duration-200 ease-in-out" checked/>
+                            <label for="dnd-toggle" class="toggle-label block overflow-hidden h-5 rounded-full bg-border cursor-pointer transition-colors duration-200 ease-in-out"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Matrix -->
+            <div class="flex-1 overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[700px]">
+                    <thead>
+                        <tr class="border-b border-border/60 bg-surface">
+                            <th class="py-4 px-8 text-xs font-semibold text-text-light uppercase tracking-wider w-2/5">Tipo de Alerta</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-text-light uppercase tracking-wider text-center w-1/5">In-App</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-text-light uppercase tracking-wider text-center w-1/5">Push (Celular)</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-text-light uppercase tracking-wider text-center w-1/5">E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border/40">
+                        
+                        <!-- Group 1 -->
+                        <tr class="bg-hover/20">
+                            <td colspan="4" class="py-3 px-8 text-sm font-bold text-text-main bg-hover/40">Operação & Vendas</td>
+                        </tr>
+                        <tr class="hover:bg-hover/30 transition-colors group">
+                            <td class="py-4 px-8">
+                                <div class="text-sm font-medium text-text-main">Nova Venda Aprovada</div>
+                                <div class="text-xs text-text-muted mt-0.5">Alertas imediatos para transações confirmadas.</div>
+                            </td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto"></td>
+                        </tr>
+                        <tr class="hover:bg-hover/30 transition-colors group">
+                            <td class="py-4 px-8">
+                                <div class="text-sm font-medium text-text-main">Venda Recusada / Estorno</div>
+                                <div class="text-xs text-text-muted mt-0.5">Avisos críticos sobre falhas ou chargebacks.</div>
+                            </td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked></td>
+                        </tr>
+                        <tr class="hover:bg-hover/30 transition-colors group">
+                            <td class="py-4 px-8">
+                                <div class="text-sm font-medium text-text-main">Resumo Diário de Caixa</div>
+                                <div class="text-xs text-text-muted mt-0.5">Consolidado enviado ao final do dia.</div>
+                            </td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto"></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto"></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked></td>
+                        </tr>
+
+                        <!-- Group 2 -->
+                        <tr class="bg-hover/20">
+                            <td colspan="4" class="py-3 px-8 text-sm font-bold text-text-main bg-hover/40 border-t border-border/40">Segurança & Acesso</td>
+                        </tr>
+                        <tr class="hover:bg-hover/30 transition-colors group">
+                            <td class="py-4 px-8">
+                                <div class="text-sm font-medium text-text-main">Novo Login Detectado</div>
+                                <div class="text-xs text-text-muted mt-0.5">Acesso de um dispositivo ou IP desconhecido.</div>
+                            </td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked disabled class="opacity-50 cursor-not-allowed"></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked disabled class="opacity-50 cursor-not-allowed"></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked disabled class="opacity-50 cursor-not-allowed"></td>
+                        </tr>
+                        <tr class="hover:bg-hover/30 transition-colors group">
+                            <td class="py-4 px-8">
+                                <div class="text-sm font-medium text-text-main">Alteração de Senha/Dados</div>
+                                <div class="text-xs text-text-muted mt-0.5">Modificações no perfil administrativo.</div>
+                            </td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked></td>
+                            <td class="py-4 px-6 text-center"><input type="checkbox" class="custom-checkbox mx-auto" checked></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Bottom Action Bar -->
+            <div class="px-8 py-5 bg-surface border-t border-border/60 flex items-center justify-between sm:justify-end gap-4 rounded-b-24">
+                <button onclick="window.location.href='Tela 1 - Central de notificações.html'" class="px-6 py-2.5 text-sm font-semibold text-text-muted hover:text-text-main hover:bg-hover rounded-pill transition-all">
+                    Descartar
+                </button>
+                <button onclick="window.location.href='Tela 1 - Central de notificações.html'" class="px-8 py-2.5 text-sm font-bold text-white bg-primary hover:bg-primary/90 rounded-pill shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    Salvar Alterações
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

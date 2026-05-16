@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Sub-accounts Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        cardbg: '#FFFFFF',
+                        bordercolor: '#E2E8F0',
+                        textmuted: '#64748B',
+                        successbg: '#ECFDF5',
+                        successtext: '#059669',
+                        warningbg: '#FFFBEB',
+                        warningtext: '#D97706',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'button': '0 4px 14px 0 rgba(0, 22, 220, 0.39)',
+                    },
+                    borderRadius: {
+                        'xl': '16px',
+                        '2xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #e2e8f0;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 3rem;
+            height: 1.5rem;
+            background-color: #cbd5e1;
+            border-radius: 9999px;
+            transition: all 0.3s;
+        }
+        .toggle-circle {
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: white;
+            border-radius: 50%;
+            top: 0.125rem;
+            left: 0.125rem;
+            transition: all 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .toggle-checkbox:checked ~ .toggle-circle {
+            transform: translateX(1.5rem);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col items-center">
+
+    <div class="w-full max-w-[1200px] flex flex-col gap-6 p-6 lg:p-8 xl:p-10">
+        
+        <!-- Admin Control Bar -->
+        <header id="admin-control-bar" class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 w-full">
+            <div class="flex flex-col">
+                <div class="flex items-center text-sm text-textmuted font-medium mb-1">
+                    <span>Empresa</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] mx-2"></i>
+                    <span class="text-navy font-semibold">Minha Equipe</span>
+                </div>
+                <h1 class="text-3xl font-bold text-navy tracking-tight">Gestão de Subcontas</h1>
+                <p class="text-textmuted text-sm mt-1">Gerencie acessos, permissões e consumo da sua equipe.</p>
+            </div>
+            
+            <button onclick="window.location.href='Tela 3 - Tela de definição de permissões.html'" class="bg-trustblue hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-xl shadow-button transition-all duration-200 flex items-center gap-2">
+                <i class="fa-solid fa-plus"></i>
+                Adicionar Membro
+            </button>
+        </header>
+
+        <!-- Master KPI & Seats Strip -->
+        <section id="master-kpi-strip" class="bg-cardbg rounded-2xl shadow-ambient p-6 w-full border border-bordercolor/50">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-bordercolor/50">
+                
+                <!-- KPI 1: Seats -->
+                <div class="flex flex-col justify-center px-2 md:px-6">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm font-semibold text-textmuted uppercase tracking-wider">Licenças Ativas</span>
+                        <span class="bg-blue-50 text-trustblue text-xs font-bold px-2 py-1 rounded-md">80%</span>
+                    </div>
+                    <div class="flex items-baseline gap-2 mb-3">
+                        <span class="text-3xl font-bold text-navy">8</span>
+                        <span class="text-lg font-medium text-textmuted">/ 10</span>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-gray-100 rounded-full h-2 mb-1 overflow-hidden">
+                        <div class="bg-trustblue h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <span class="text-xs text-textmuted mt-1">2 licenças disponíveis</span>
+                </div>
+
+                <!-- KPI 2: Spend -->
+                <div class="flex flex-col justify-center px-2 md:px-6 py-4 md:py-0">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                            <i class="fa-solid fa-wallet text-sm"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-textmuted uppercase tracking-wider">Gasto Mensal (Leads)</span>
+                    </div>
+                    <div class="text-3xl font-bold text-navy mb-1">R$ 450,00</div>
+                    <div class="flex items-center text-xs font-medium text-successtext gap-1">
+                        <i class="fa-solid fa-arrow-trend-down"></i>
+                        <span>-12% vs mês anterior</span>
+                    </div>
+                </div>
+
+                <!-- KPI 3: Volume -->
+                <div class="flex flex-col justify-center px-2 md:px-6 pt-4 md:pt-0">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
+                            <i class="fa-solid fa-bolt text-sm"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-textmuted uppercase tracking-wider">Volume de Serviços</span>
+                    </div>
+                    <div class="text-3xl font-bold text-navy mb-1">Alto</div>
+                    <div class="flex items-center text-xs font-medium text-textmuted gap-1">
+                        <span>Pico de acessos: 14:00 - 16:00</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- The Sub-account Ledger (Master Data Table) -->
+        <section id="ledger-section" class="bg-cardbg rounded-2xl shadow-ambient w-full border border-bordercolor/50 overflow-hidden flex flex-col">
+            
+            <!-- Ledger Header & Filters -->
+            <div class="p-6 border-b border-bordercolor/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h2 class="text-xl font-bold text-navy">Membros da Equipe</h2>
+                
+                <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                    <!-- Search -->
+                    <div class="relative w-full sm:w-64">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-magnifying-glass text-textmuted text-sm"></i>
+                        </div>
+                        <input type="text" class="block w-full pl-10 pr-3 py-2 border border-bordercolor rounded-xl leading-5 bg-offwhite placeholder-textmuted focus:outline-none focus:ring-1 focus:ring-trustblue focus:border-trustblue sm:text-sm transition-colors" placeholder="Buscar membro...">
+                    </div>
+                    
+                    <!-- Filter Dropdown -->
+                    <button class="flex items-center gap-2 px-4 py-2 border border-bordercolor rounded-xl bg-white text-sm font-medium text-navy hover:bg-offwhite transition-colors">
+                        <i class="fa-solid fa-filter text-textmuted"></i>
+                        Filtros
+                        <i class="fa-solid fa-chevron-down text-[10px] text-textmuted ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table Container -->
+            <div class="overflow-x-auto w-full">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-bordercolor/50 bg-offwhite/50">
+                            <th class="py-4 px-6 text-xs font-semibold text-textmuted uppercase tracking-wider">Profissional</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textmuted uppercase tracking-wider">Função</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textmuted uppercase tracking-wider">Status da Conta</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textmuted uppercase tracking-wider">Leads Comprados (Mês)</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textmuted uppercase tracking-wider text-center">Permissão de Saque</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textmuted uppercase tracking-wider text-right">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-bordercolor/50">
+                        
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-offwhite transition-colors group">
+                            <td class="py-4 px-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border border-bordercolor">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Avatar" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-bold text-navy">Ana Silva</span>
+                                        <span class="text-xs text-textmuted">ana.silva@empresa.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-50 text-trustblue border border-blue-100">
+                                    Técnico
+                                </span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                    <span class="text-sm font-medium text-navy">Ativa</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="text-sm font-semibold text-navy">45</span>
+                                <span class="text-xs text-textmuted ml-1">/ 50 limite</span>
+                            </td>
+                            <td class="py-4 px-6 text-center">
+                                <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle1" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer opacity-0 z-10" checked/>
+                                    <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                    <div class="toggle-circle absolute block w-5 h-5 rounded-full bg-white shadow inset-y-0 left-0 pointer-events-none mt-0.5 ml-0.5"></div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-lg flex items-center justify-center text-textmuted hover:bg-white hover:text-trustblue hover:shadow-sm border border-transparent hover:border-bordercolor transition-all">
+                                        <i class="fa-solid fa-gear"></i>
+                                    </button>
+                                    <button class="w-8 h-8 rounded-lg flex items-center justify-center text-textmuted hover:bg-red-50 hover:text-red-600 hover:shadow-sm border border-transparent hover:border-red-100 transition-all">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-offwhite transition-colors group">
+                            <td class="py-4 px-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border border-bordercolor">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-bold text-navy">Carlos Mendes</span>
+                                        <span class="text-xs text-textmuted">carlos.m@empresa.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-100">
+                                    Atendente
+                                </span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                    <span class="text-sm font-medium text-navy">Ativa</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="text-sm font-semibold text-navy">12</span>
+                                <span class="text-xs text-textmuted ml-1">/ 20 limite</span>
+                            </td>
+                            <td class="py-4 px-6 text-center">
+                                <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle2" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer opacity-0 z-10"/>
+                                    <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                    <div class="toggle-circle absolute block w-5 h-5 rounded-full bg-white shadow inset-y-0 left-0 pointer-events-none mt-0.5 ml-0.5"></div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-lg flex items-center justify-center text-textmuted hover:bg-white hover:text-trustblue hover:shadow-sm border border-transparent hover:border-bordercolor transition-all">
+                                        <i class="fa-solid fa-gear"></i>
+                                    </button>
+                                    <button class="w-8 h-8 rounded-lg flex items-center justify-center text-textmuted hover:bg-red-50 hover:text-red-600 hover:shadow-sm border border-transparent hover:border-red-100 transition-all">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-offwhite transition-colors group">
+                            <td class="py-4 px-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border border-bordercolor">
+                                        <div class="w-full h-full bg-gradient-to-br from-trustblue to-blue-400 flex items-center justify-center text-white font-bold text-sm">MB</div>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-bold text-navy">Mariana Costa</span>
+                                        <span class="text-xs text-textmuted">mariana.c@empresa.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-50 text-trustblue border border-blue-100">
+                                    Técnico
+                                </span>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-orange-400"></div>
+                                    <span class="text-sm font-medium text-navy">Pausada</span>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <span class="text-sm font-semibold text-navy">0</span>
+                                <span class="text-xs text-textmuted ml-1">/ 50 limite</span>
+                            </td>
+                            <td class="py-4 px-6 text-center">
+                                <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in opacity-50 cursor-not-allowed">
+                                    <input type="checkbox" name="toggle3" id="toggle3" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none opacity-0 z-10" disabled/>
+                                    <label for="toggle3" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300"></label>
+                                    <div class="toggle-circle absolute block w-5 h-5 rounded-full bg-white shadow inset-y-0 left-0 pointer-events-none mt-0.5 ml-0.5"></div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-lg flex items-center justify-center text-textmuted hover:bg-white hover:text-trustblue hover:shadow-sm border border-transparent hover:border-bordercolor transition-all">
+                                        <i class="fa-solid fa-gear"></i>
+                                    </button>
+                                    <button class="w-8 h-8 rounded-lg flex items-center justify-center text-textmuted hover:bg-red-50 hover:text-red-600 hover:shadow-sm border border-transparent hover:border-red-100 transition-all">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination Footer -->
+            <div class="p-4 border-t border-bordercolor/50 flex items-center justify-between bg-white">
+                <span class="text-sm text-textmuted">Mostrando <span class="font-semibold text-navy">1</span> a <span class="font-semibold text-navy">3</span> de <span class="font-semibold text-navy">8</span> resultados</span>
+                
+                <div class="flex items-center gap-1">
+                    <button class="w-8 h-8 rounded-lg border border-bordercolor flex items-center justify-center text-textmuted hover:bg-offwhite transition-colors disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-lg bg-trustblue text-white font-medium text-sm flex items-center justify-center shadow-sm">
+                        1
+                    </button>
+                    <button class="w-8 h-8 rounded-lg border border-transparent text-textmuted hover:bg-offwhite font-medium text-sm flex items-center justify-center transition-colors">
+                        2
+                    </button>
+                    <button class="w-8 h-8 rounded-lg border border-transparent text-textmuted hover:bg-offwhite font-medium text-sm flex items-center justify-center transition-colors">
+                        3
+                    </button>
+                    <button class="w-8 h-8 rounded-lg border border-bordercolor flex items-center justify-center text-textmuted hover:bg-offwhite transition-colors">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Simple script to handle custom toggle switch visual state if needed beyond CSS
+        document.querySelectorAll('.toggle-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                if(this.checked) {
+                    label.style.backgroundColor = '#0016dc';
+                } else {
+                    label.style.backgroundColor = '#cbd5e1';
+                }
+            });
+            // Init state
+            if(checkbox.checked) {
+                checkbox.nextElementSibling.style.backgroundColor = '#0016dc';
+            }
+        });
+    </script>
+</body>
+</html>

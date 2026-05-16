@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consolidated Company View</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQzhywO1B1sK5p1k21A11s7g52h171Z19O7/190GzZ1u039q278s6gq2/z4n7oO58I225sHq39A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        bordercolor: '#E5E7EB',
+                        textmuted: '#6B7280'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+        .bento-card {
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #F3F4F6;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+    <!-- Admin Control Bar -->
+    <header id="header" class="w-full bg-white border-b border-gray-100 px-6 py-4 sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2 text-sm font-medium text-textmuted">
+                <span class="hover:text-navy cursor-pointer transition-colors">Empresa</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-navy font-semibold">Visão Consolidada</span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="relative hidden md:block">
+                    <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" placeholder="Buscar métricas..." class="pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-trustblue/20 focus:border-trustblue w-64 transition-all">
+                </div>
+                <button onclick="window.location.href='Tela 5 - Tela de definição de permissões da subconta.html'" class="bg-trustblue hover:bg-trustblue/90 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-download"></i>
+                    Exportar DRE
+                </button>
+                <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm cursor-pointer ml-2">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full py-8 px-4 md:px-6 lg:px-8">
+        <div class="max-w-[1200px] mx-auto">
+            
+            <!-- Page Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-navy tracking-tight">Visão Consolidada</h1>
+                <p class="text-textmuted mt-1">Visão geral do desempenho financeiro e operacional da empresa.</p>
+            </div>
+
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min">
+                
+                <!-- Hero Financial Block (Top Left - ~65% width) -->
+                <div id="hero-financial" class="bento-card md:col-span-8 p-6 flex flex-col h-[420px]">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h2 class="text-lg font-semibold text-navy">Balanço Geral da Empresa</h2>
+                            <p class="text-sm text-textmuted">Crescimento de GMV vs. Semana Anterior</p>
+                        </div>
+                        <div class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-trend-up"></i> +14.2%
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-8 mb-6">
+                        <div>
+                            <p class="text-sm font-medium text-textmuted uppercase tracking-wider mb-1">GMV Total</p>
+                            <h3 class="text-4xl font-bold text-navy tracking-tight">R$ 2.450.890</h3>
+                        </div>
+                        <div class="pl-8 border-l border-gray-100">
+                            <p class="text-sm font-medium text-textmuted uppercase tracking-wider mb-1">Lucro Operacional Estimado</p>
+                            <h3 class="text-2xl font-bold text-trustblue tracking-tight">R$ 485.200</h3>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 w-full relative mt-2">
+                        <div id="chart-gmv" class="absolute inset-0 w-full h-full"></div>
+                    </div>
+                </div>
+
+                <!-- Reputation Block (Top Right - ~35% width) -->
+                <div id="reputation-block" class="bento-card md:col-span-4 p-6 flex flex-col h-[420px]">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-lg font-semibold text-navy">Saúde da Marca</h2>
+                        <button class="text-gray-400 hover:text-navy transition-colors"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col items-center justify-center">
+                        <div class="relative w-48 h-48 mb-6">
+                            <!-- SVG Gauge representation -->
+                            <svg class="w-full h-full" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#F3F4F6" stroke-width="8" stroke-linecap="round"/>
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#0016dc" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="14" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <span class="text-4xl font-bold text-navy">4.8</span>
+                                <div class="flex text-yellow-400 text-xs mt-1">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full space-y-3">
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                    <span class="text-textmuted">Positivas</span>
+                                </div>
+                                <span class="font-semibold text-navy">95%</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                    <span class="text-textmuted">Neutras</span>
+                                </div>
+                                <span class="font-semibold text-navy">4%</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                                    <span class="text-textmuted">Negativas</span>
+                                </div>
+                                <span class="font-semibold text-navy">1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-account Distribution (Bottom Left - ~40% width) -->
+                <div id="subaccount-dist" class="bento-card md:col-span-5 p-6 flex flex-col h-[400px]">
+                     <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h2 class="text-lg font-semibold text-navy">Desempenho por Categoria</h2>
+                            <p class="text-sm text-textmuted">Receita gerada por serviço</p>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full relative flex items-center justify-center">
+                        <div id="chart-categories" class="w-full h-[250px]"></div>
+                    </div>
+                </div>
+
+                <!-- Performance Matrix (Bottom Right - ~60% width) -->
+                <div id="performance-matrix" class="bento-card md:col-span-7 p-0 flex flex-col h-[400px] overflow-hidden">
+                    <div class="p-6 pb-4 border-b border-gray-100 flex justify-between items-center bg-white">
+                        <div>
+                            <h2 class="text-lg font-semibold text-navy">Matriz de Eficiência</h2>
+                            <p class="text-sm text-textmuted">Top 5 sub-contas mais lucrativas</p>
+                        </div>
+                        <button class="text-sm font-medium text-trustblue hover:text-trustblue/80 transition-colors">Ver todos</button>
+                    </div>
+                    
+                    <div class="overflow-auto flex-1">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-gray-50/50 text-textmuted text-xs uppercase tracking-wider sticky top-0">
+                                <tr>
+                                    <th class="px-6 py-3 font-medium">Sub-conta (Profissional)</th>
+                                    <th class="px-6 py-3 font-medium text-right">Custo de Leads</th>
+                                    <th class="px-6 py-3 font-medium text-right">Receita Fechada</th>
+                                    <th class="px-6 py-3 font-medium text-right">ROI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition-colors group">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-blue-100 text-trustblue flex items-center justify-center font-bold text-xs">
+                                                CS
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-navy">Carlos Silva</p>
+                                                <p class="text-xs text-textmuted">Elétrica</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-right font-medium text-gray-600">R$ 1.250</td>
+                                    <td class="px-6 py-4 text-right font-semibold text-navy">R$ 18.400</td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20">
+                                            14.7x
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors group">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs">
+                                                MR
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-navy">Mariana Rosa</p>
+                                                <p class="text-xs text-textmuted">Hidráulica</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-right font-medium text-gray-600">R$ 890</td>
+                                    <td class="px-6 py-4 text-right font-semibold text-navy">R$ 12.100</td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20">
+                                            13.5x
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors group">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center font-bold text-xs">
+                                                JP
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-navy">João Paulo</p>
+                                                <p class="text-xs text-textmuted">Climatização</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-right font-medium text-gray-600">R$ 2.100</td>
+                                    <td class="px-6 py-4 text-right font-semibold text-navy">R$ 22.500</td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20">
+                                            10.7x
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors group">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-xs">
+                                                AL
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-navy">Ana Lúcia</p>
+                                                <p class="text-xs text-textmuted">Pintura</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-right font-medium text-gray-600">R$ 450</td>
+                                    <td class="px-6 py-4 text-right font-semibold text-navy">R$ 4.200</td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-yellow-50 text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
+                                            9.3x
+                                        </span>
+                                    </td>
+                                </tr>
+                                 <tr class="hover:bg-gray-50 transition-colors group">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center font-bold text-xs">
+                                                FT
+                                            </div>
+                                            <div>
+                                                <p class="font-semibold text-navy">Fernando T.</p>
+                                                <p class="text-xs text-textmuted">Geral</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-right font-medium text-gray-600">R$ 600</td>
+                                    <td class="px-6 py-4 text-right font-semibold text-navy">R$ 4.800</td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-yellow-50 text-yellow-700 ring-1 ring-inset ring-yellow-600/20">
+                                            8.0x
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                // GMV Bar Chart with smooth area feel
+                const gmvData = [{
+                    type: 'bar',
+                    x: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                    y: [120, 150, 180, 220, 190, 310, 280],
+                    marker: {
+                        color: '#0016dc',
+                        opacity: 0.8,
+                        line: { width: 0 },
+                        border_radius: 4
+                    },
+                    hoverinfo: 'y',
+                }];
+
+                const gmvLayout = {
+                    margin: { t: 10, r: 10, b: 30, l: 30 },
+                    paper_bgcolor: 'transparent',
+                    plot_bgcolor: 'transparent',
+                    xaxis: {
+                        showgrid: false,
+                        tickfont: { color: '#6B7280', size: 12, family: 'Plus Jakarta Sans' },
+                        fixedrange: true
+                    },
+                    yaxis: {
+                        showgrid: true,
+                        gridcolor: '#F3F4F6',
+                        gridwidth: 1,
+                        zeroline: false,
+                        tickfont: { color: '#6B7280', size: 12, family: 'Plus Jakarta Sans' },
+                        fixedrange: true
+                    },
+                    showlegend: false,
+                    bargap: 0.4
+                };
+
+                Plotly.newPlot('chart-gmv', gmvData, gmvLayout, {responsive: true, displayModeBar: false});
+
+                // Categories Doughnut Chart
+                const catData = [{
+                    type: 'pie',
+                    hole: 0.7,
+                    labels: ['Elétrica', 'Hidráulica', 'Climatização', 'Pintura', 'Outros'],
+                    values: [50, 30, 10, 5, 5],
+                    marker: {
+                        colors: ['#0016dc', '#3B82F6', '#60A5FA', '#93C5FD', '#E5E7EB'],
+                        line: { color: '#FFFFFF', width: 2 }
+                    },
+                    textinfo: 'none',
+                    hoverinfo: 'label+percent'
+                }];
+
+                const catLayout = {
+                    margin: { t: 0, r: 0, b: 0, l: 0 },
+                    paper_bgcolor: 'transparent',
+                    plot_bgcolor: 'transparent',
+                    showlegend: true,
+                    legend: {
+                        orientation: 'v',
+                        x: 1,
+                        y: 0.5,
+                        font: { family: 'Plus Jakarta Sans', color: '#1A1A24', size: 12 }
+                    }
+                };
+
+                Plotly.newPlot('chart-categories', catData, catLayout, {responsive: true, displayModeBar: false});
+
+            } catch (e) {
+                console.error("Error initializing charts:", e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

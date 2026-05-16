@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Project Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav id="top-nav" class="bg-white w-full border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-white font-bold text-xl tracking-tighter">
+                    MMO
+                </div>
+                <span class="font-bold text-xl tracking-tight text-brand-navy">Platform</span>
+            </div>
+
+            <!-- Nav Links -->
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#" class="text-gray-500 hover:text-brand-navy font-medium transition-colors">Home</a>
+                <div class="relative">
+                    <a href="#" class="text-brand-navy font-bold transition-colors">Orders</a>
+                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-brand-blue rounded-full"></div>
+                </div>
+                <a href="#" class="text-gray-500 hover:text-brand-navy font-medium transition-colors">Messages</a>
+            </div>
+
+            <!-- Profile -->
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm cursor-pointer">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-6 py-10 flex flex-col gap-8">
+
+        <!-- Header Control Bar -->
+        <section id="header_control_bar" class="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-8 rounded-[24px] shadow-soft">
+            <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-3">
+                    <span class="px-3 py-1 bg-brand-blue/10 text-brand-blue text-xs font-bold rounded-full tracking-wide uppercase">Active Project</span>
+                    <span class="text-gray-400 text-sm font-medium">ID: #PRJ-8829</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">Projeto: Instalação e Automação</h1>
+                <p class="text-gray-500 font-medium max-w-2xl text-lg">Gerencie as diferentes frentes de trabalho, orçamentos e profissionais deste local.</p>
+            </div>
+            
+            <button class="whitespace-nowrap px-8 py-4 rounded-full border-2 border-gray-200 text-brand-navy font-bold hover:border-brand-blue hover:text-brand-blue transition-all duration-300 flex items-center gap-3 group">
+                <i class="fa-solid fa-plus group-hover:rotate-90 transition-transform duration-300"></i>
+                Adicionar Nova Especialidade
+            </button>
+        </section>
+
+        <!-- Asymmetrical Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column: Project Overview (30%) -->
+            <div id="project_overview_sidebar" class="lg:col-span-4 flex flex-col gap-6 sticky top-28">
+                <!-- Main Info Card -->
+                <div class="bg-white rounded-[24px] p-8 shadow-soft flex flex-col gap-8">
+                    
+                    <!-- Scope -->
+                    <div class="flex flex-col gap-3">
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest">Escopo do Projeto</h3>
+                        <p class="text-brand-navy font-semibold text-lg leading-snug">
+                            Reforma completa do andar corporativo, incluindo infraestrutura de rede, automação de iluminação e climatização inteligente.
+                        </p>
+                    </div>
+
+                    <hr class="border-gray-100">
+
+                    <!-- Location -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-400 shrink-0">
+                            <i class="fa-solid fa-location-dot text-xl"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sm font-bold text-brand-navy">Av. Paulista, 1578</span>
+                            <span class="text-sm text-gray-500">Bela Vista, São Paulo - SP</span>
+                            <span class="text-xs text-gray-400 mt-1">12º Andar - Conjunto 124</span>
+                        </div>
+                    </div>
+
+                    <!-- Photos Grid -->
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest">Fotos do Local</h3>
+                            <button class="text-xs font-bold text-brand-blue hover:underline">Ver todas</button>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100 relative group cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400" alt="Site photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100 relative group cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=400" alt="Site photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100 relative group cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356f58?auto=format&fit=crop&q=80&w=400" alt="Site photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100 relative group cursor-pointer flex items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1582657233895-0f37a3f150c0?auto=format&fit=crop&q=80&w=400" alt="Site photo" class="w-full h-full object-cover opacity-50">
+                                <div class="absolute inset-0 bg-brand-navy/40 flex items-center justify-center">
+                                    <span class="text-white font-bold">+12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Financial Summary -->
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Resumo Financeiro</h3>
+                        <div class="flex items-baseline gap-1 mb-4">
+                            <span class="text-gray-500 font-medium">R$</span>
+                            <span class="text-3xl font-extrabold text-brand-blue tracking-tight">145.800</span>
+                            <span class="text-gray-400 font-medium text-sm">,00</span>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-500">Comprometido</span>
+                                <span class="font-bold text-brand-navy">R$ 82.400,00</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-brand-blue h-2 rounded-full" style="width: 56%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Roles Manager (70%) -->
+            <div id="roles_manager_stack" class="lg:col-span-8 flex flex-col gap-6">
+                
+                <div class="flex items-center justify-between px-2">
+                    <h2 class="text-2xl font-extrabold text-brand-navy tracking-tight">Frentes de Trabalho e Profissionais</h2>
+                    <div class="flex gap-2">
+                        <button class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400 hover:text-brand-navy transition-colors">
+                            <i class="fa-solid fa-filter text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- List Stack -->
+                <div class="flex flex-col gap-4">
+                    
+                    <!-- Hired Row 1 -->
+                    <div class="bg-white p-6 rounded-[24px] shadow-soft flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-transparent hover:border-gray-100 transition-colors">
+                        <div class="flex items-center gap-5 w-full md:w-auto">
+                            <div class="w-14 h-14 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <div class="flex flex-col gap-1 w-full">
+                                <span class="text-sm font-bold text-gray-400 uppercase tracking-wider">Infraestrutura de Rede</span>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Avatar" class="w-full h-full object-cover">
+                                    </div>
+                                    <span class="font-bold text-brand-navy text-lg">Carlos Eduardo</span>
+                                    <span class="px-2 py-0.5 bg-green-50 text-green-600 text-[10px] font-bold rounded-full uppercase tracking-wider">Ativo</span>
+                                </div>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <div class="w-32 bg-gray-100 rounded-full h-1.5">
+                                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-gray-400">75% Concluído</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 w-full md:w-auto mt-4 md:mt-0">
+                            <button class="flex-1 md:flex-none px-6 py-3 rounded-full border border-gray-200 text-brand-navy font-bold text-sm hover:bg-gray-50 transition-colors">
+                                Ver Contrato
+                            </button>
+                            <button class="flex-1 md:flex-none px-6 py-3 rounded-full bg-brand-blue text-white font-bold text-sm hover:bg-blue-700 transition-colors shadow-sm">
+                                <i class="fa-regular fa-comment-dots mr-2"></i> Abrir Chat
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hired Row 2 -->
+                    <div class="bg-white p-6 rounded-[24px] shadow-soft flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-transparent hover:border-gray-100 transition-colors">
+                        <div class="flex items-center gap-5 w-full md:w-auto">
+                            <div class="w-14 h-14 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-snowflake"></i>
+                            </div>
+                            <div class="flex flex-col gap-1 w-full">
+                                <span class="text-sm font-bold text-gray-400 uppercase tracking-wider">Climatização</span>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Avatar" class="w-full h-full object-cover">
+                                    </div>
+                                    <span class="font-bold text-brand-navy text-lg">Mariana Silva</span>
+                                    <span class="px-2 py-0.5 bg-green-50 text-green-600 text-[10px] font-bold rounded-full uppercase tracking-wider">Ativo</span>
+                                </div>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <div class="w-32 bg-gray-100 rounded-full h-1.5">
+                                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 30%"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-gray-400">30% Concluído</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 w-full md:w-auto mt-4 md:mt-0">
+                            <button class="flex-1 md:flex-none px-6 py-3 rounded-full border border-gray-200 text-brand-navy font-bold text-sm hover:bg-gray-50 transition-colors">
+                                Ver Contrato
+                            </button>
+                            <button class="flex-1 md:flex-none px-6 py-3 rounded-full bg-brand-blue text-white font-bold text-sm hover:bg-blue-700 transition-colors shadow-sm">
+                                <i class="fa-regular fa-comment-dots mr-2"></i> Abrir Chat
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pending Row (Highlight) -->
+                    <div class="bg-white p-6 rounded-[24px] shadow-soft flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-2 border-brand-blue/10 relative overflow-hidden">
+                        <!-- Decorative gradient blob -->
+                        <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="flex items-center gap-5 relative z-10 w-full md:w-auto">
+                            <div class="w-14 h-14 rounded-full bg-purple-50 text-purple-500 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="font-extrabold text-brand-navy text-xl">Automação / Domótica</h3>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-xs font-bold rounded-full flex items-center gap-1.5">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse"></div>
+                                        Aguardando Contratação
+                                    </span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-500 text-xs font-bold rounded-full">
+                                        3 Propostas Recebidas
+                                    </span>
+                                </div>
+                                <p class="text-sm text-gray-400 mt-1 max-w-md">Orçamento estimado: R$ 35.000,00. Integração de luzes, persianas e som ambiente.</p>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-auto relative z-10 mt-4 md:mt-0">
+                            <button onclick="window.location.href='Tela 2 - Tela de detalhe da solicitação.html'" class="w-full md:w-auto px-8 py-4 rounded-full bg-brand-blue text-white font-extrabold text-sm hover:bg-blue-700 transition-all duration-300 shadow-glow hover:shadow-[0_0_25px_rgba(0,22,220,0.5)] transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                Analisar e Contratar <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Pending Row 2 -->
+                    <div class="bg-white p-6 rounded-[24px] shadow-soft flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-dashed border-gray-300 hover:border-solid hover:border-gray-200 transition-all">
+                        <div class="flex items-center gap-5 w-full md:w-auto opacity-70">
+                            <div class="w-14 h-14 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-paint-roller"></i>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="font-bold text-gray-500 text-lg">Pintura e Acabamento</h3>
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Ainda sem propostas</span>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-auto mt-4 md:mt-0">
+                            <button onclick="window.location.href='Tela 6 - Tela de oportunidades elegíveis.html'" class="w-full md:w-auto px-6 py-3 rounded-full border-2 border-gray-200 text-gray-500 font-bold text-sm hover:border-gray-300 hover:text-brand-navy transition-colors">
+                                Convidar Profissionais
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="minimalist_footer" class="bg-white border-t border-gray-100 py-8 mt-10">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-gray-400 text-sm font-medium">
+                <div class="w-6 h-6 bg-gray-100 rounded-md flex items-center justify-center text-gray-500 font-bold text-[10px]">
+                    M
+                </div>
+                &copy; 2026 MMO Platform. Todos os direitos reservados.
+            </div>
+            <div class="flex items-center gap-6 text-sm font-medium text-gray-400">
+                <a href="#" class="hover:text-brand-navy transition-colors">Suporte</a>
+                <a href="#" class="hover:text-brand-navy transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-brand-navy transition-colors">Privacidade</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

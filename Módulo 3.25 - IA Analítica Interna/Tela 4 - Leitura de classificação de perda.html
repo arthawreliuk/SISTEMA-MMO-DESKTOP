@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        accentBlue: '#0016dc',
+                        accentPurple: '#BF80FF',
+                        cardWhite: '#FFFFFF',
+                        cardGrey: '#F3F4F6',
+                        borderLight: '#E5E7EB',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'glow': '0 0 20px rgba(191, 128, 255, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .pattern-bg {
+            background-image: radial-gradient(#E5E7EB 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-textMain bg-background selection:bg-accentPurple selection:text-white">
+
+    <!-- Global Header -->
+    <header id="header" class="w-full bg-cardWhite border-b border-borderLight/60 sticky top-0 z-50 backdrop-blur-md bg-opacity-80">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-8 h-8 rounded-lg bg-accentBlue flex items-center justify-center text-white font-bold text-lg shadow-soft">
+                    M
+                </div>
+                <nav class="flex items-center text-sm font-medium text-textMuted" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-2">
+                        <li class="inline-flex items-center">
+                            <a href="#" class="hover:text-textMain transition-colors">IA Analítica</a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-chevron-right text-[10px] mx-2"></i>
+                                <span class="text-textMain font-semibold">Classificação de Perdas (Geral)</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button class="w-9 h-9 rounded-full bg-cardGrey flex items-center justify-center text-textMuted hover:text-textMain transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="w-9 h-9 rounded-full bg-borderLight overflow-hidden border-2 border-white shadow-sm cursor-pointer">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-[1200px] mx-auto px-6 py-8 pb-20">
+        
+        <!-- Header Section -->
+        <div class="mb-8 flex justify-between items-end">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight mb-2">Painel de Perdas Macro</h1>
+                <p class="text-textMuted text-sm font-medium">Análise de churn impulsionada por IA baseada em 12.450 interações recentes.</p>
+            </div>
+            <div class="flex gap-3">
+                <button class="px-4 py-2 rounded-xl bg-white border border-borderLight text-sm font-semibold hover:bg-gray-50 transition-colors flex items-center gap-2 shadow-soft">
+                    <i class="fa-regular fa-calendar"></i> Últimos 30 Dias
+                </button>
+                <button class="px-4 py-2 rounded-xl bg-textMain text-white text-sm font-semibold hover:bg-gray-800 transition-colors flex items-center gap-2 shadow-soft">
+                    <i class="fa-solid fa-download"></i> Exportar Relatório
+                </button>
+            </div>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="flex flex-col gap-6">
+            
+            <!-- Top Summary Canvas (Full Width Sankey) -->
+            <section id="sankey-canvas" class="w-full bg-cardWhite rounded-4xl p-8 shadow-soft relative overflow-hidden">
+                <div class="absolute inset-0 pattern-bg opacity-30 z-0"></div>
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-2xl font-bold tracking-tight">Onde estamos perdendo dinheiro?</h2>
+                        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-accentPurple/10 text-accentPurple text-xs font-bold tracking-wide uppercase border border-accentPurple/20">
+                            <i class="fa-solid fa-sparkles text-[10px]"></i> IA Analisando
+                        </div>
+                    </div>
+                    
+                    <!-- Sankey Chart Container -->
+                    <div id="sankey-chart" class="w-full h-[400px]"></div>
+                </div>
+            </section>
+
+            <!-- Bottom Grid (3 Columns) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Block 1: Top Reasons -->
+                <section id="top-reasons" class="bg-cardWhite rounded-4xl p-8 shadow-soft flex flex-col">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-2xl bg-cardGrey flex items-center justify-center text-textMain">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Principais Motivos</h3>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col gap-5 justify-center">
+                        <!-- Reason 1 -->
+                        <div class="group">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="font-semibold text-sm flex items-center gap-2">
+                                    <span class="w-5 h-5 rounded-full bg-accentPurple/10 text-accentPurple flex items-center justify-center text-[10px] font-bold">1</span>
+                                    Preço
+                                </span>
+                                <span class="font-bold text-textMain">45%</span>
+                            </div>
+                            <div class="h-2 w-full bg-cardGrey rounded-full overflow-hidden">
+                                <div class="h-full bg-accentPurple rounded-full group-hover:opacity-80 transition-opacity" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reason 2 -->
+                        <div class="group">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="font-semibold text-sm flex items-center gap-2 text-textMuted">
+                                    <span class="w-5 h-5 rounded-full bg-cardGrey text-textMuted flex items-center justify-center text-[10px] font-bold">2</span>
+                                    Prazo de Execução
+                                </span>
+                                <span class="font-bold text-textMuted">30%</span>
+                            </div>
+                            <div class="h-2 w-full bg-cardGrey rounded-full overflow-hidden">
+                                <div class="h-full bg-textMuted rounded-full opacity-40 group-hover:opacity-60 transition-opacity" style="width: 30%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reason 3 -->
+                        <div class="group">
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="font-semibold text-sm flex items-center gap-2 text-textMuted">
+                                    <span class="w-5 h-5 rounded-full bg-cardGrey text-textMuted flex items-center justify-center text-[10px] font-bold">3</span>
+                                    Falta de Confiança
+                                </span>
+                                <span class="font-bold text-textMuted">25%</span>
+                            </div>
+                            <div class="h-2 w-full bg-cardGrey rounded-full overflow-hidden">
+                                <div class="h-full bg-textMuted rounded-full opacity-30 group-hover:opacity-50 transition-opacity" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Block 2: AI Semantic Reading -->
+                <section id="semantic-reading" class="bg-cardGrey rounded-4xl p-8 shadow-inner flex flex-col relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-6 opacity-10">
+                        <i class="fa-solid fa-quote-right text-6xl"></i>
+                    </div>
+                    <div class="flex items-center gap-3 mb-6 relative z-10">
+                        <div class="w-10 h-10 rounded-2xl bg-white shadow-sm flex items-center justify-center text-textMain">
+                            <i class="fa-regular fa-comments"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">O que estão dizendo</h3>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mt-auto relative z-10">
+                        <div class="px-4 py-2 bg-white rounded-xl shadow-sm text-sm font-semibold text-textMain border border-borderLight/50 hover:-translate-y-1 transition-transform cursor-default">
+                            "Achei caro"
+                        </div>
+                        <div class="px-3 py-1.5 bg-white/60 rounded-lg text-xs font-medium text-textMuted border border-borderLight/30">
+                            "Preciso para ontem"
+                        </div>
+                        <div class="px-4 py-2 bg-white rounded-xl shadow-sm text-sm font-semibold text-textMain border border-borderLight/50 hover:-translate-y-1 transition-transform cursor-default">
+                            "Concorrente fez mais barato"
+                        </div>
+                        <div class="px-3 py-1.5 bg-white/60 rounded-lg text-xs font-medium text-textMuted border border-borderLight/30">
+                            "Prazo muito longo"
+                        </div>
+                        <div class="px-4 py-2 bg-white rounded-xl shadow-sm text-sm font-semibold text-textMain border border-borderLight/50 hover:-translate-y-1 transition-transform cursor-default">
+                            "Fora do meu budget"
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Block 3: AI Strategic Move -->
+                <section id="strategic-move" class="bg-accentBlue rounded-4xl p-8 shadow-glow flex flex-col relative overflow-hidden text-white">
+                    <!-- Abstract background shapes -->
+                    <div class="absolute -top-12 -right-12 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-accentPurple/30 rounded-full blur-2xl"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-xs font-bold tracking-wide uppercase border border-white/20 w-max mb-6 backdrop-blur-sm">
+                            <i class="fa-solid fa-bolt text-accentPurple"></i> Ação Sugerida
+                        </div>
+                        
+                        <p class="text-sm font-medium text-white/80 leading-relaxed mb-8">
+                            "Oferecer parcelamento em até 12x para orçamentos acima de R$ 5.000 reduziu as perdas em <strong class="text-white text-base">18%</strong> em perfis semelhantes."
+                        </p>
+                    </div>
+                    
+                    <button onclick="window.location.href='Tela 1 - Blocos de insights no admin.html'" class="mt-auto w-full py-3.5 bg-white text-accentBlue font-bold rounded-2xl hover:bg-gray-50 transition-colors shadow-lg flex items-center justify-center gap-2 relative z-10 group">
+                        Configurar Parcelamento
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                // Sankey Diagram Data
+                var data = {
+                    type: "sankey",
+                    orientation: "h",
+                    node: {
+                        pad: 20,
+                        thickness: 30,
+                        line: {
+                            color: "transparent",
+                            width: 0
+                        },
+                        label: ["Total Leads", "Qualificados", "Perdidos", "Gargalo de Preço", "Falta de Retorno", "Concorrência"],
+                        color: ["#0016dc", "#E5E7EB", "#E5E7EB", "#BF80FF", "#E5E7EB", "#E5E7EB"],
+                        customdata: ["10k", "4k", "6k", "2.7k", "1.8k", "1.5k"],
+                        hovertemplate: "%{label}<br>Volume: %{customdata}<extra></extra>"
+                    },
+                    link: {
+                        source: [0, 0, 2, 2, 2],
+                        target: [1, 2, 3, 4, 5],
+                        value:  [4000, 6000, 2700, 1800, 1500],
+                        color: ["rgba(229, 231, 235, 0.4)", "rgba(229, 231, 235, 0.4)", "rgba(191, 128, 255, 0.6)", "rgba(229, 231, 235, 0.4)", "rgba(229, 231, 235, 0.4)"],
+                        hovertemplate: "Fluxo: %{value}<extra></extra>"
+                    }
+                };
+
+                var layout = {
+                    font: {
+                        family: '"Plus Jakarta Sans", sans-serif',
+                        size: 13,
+                        color: '#1A1A24'
+                    },
+                    margin: { t: 20, l: 20, r: 20, b: 20 },
+                    paper_bgcolor: 'transparent',
+                    plot_bgcolor: 'transparent',
+                    hoverlabel: {
+                        bgcolor: "#1A1A24",
+                        font: { color: "white", family: '"Plus Jakarta Sans", sans-serif' },
+                        bordercolor: "transparent",
+                        namelength: 0
+                    }
+                };
+
+                var config = {
+                    responsive: true,
+                    displayModeBar: false,
+                    displaylogo: false
+                };
+
+                Plotly.newPlot('sankey-chart', [data], layout, config);
+            } catch(e) {
+                console.error("Chart initialization failed:", e);
+                document.getElementById('sankey-chart').innerHTML = '<div class="flex items-center justify-center h-full text-textMuted bg-cardGrey rounded-2xl">Gráfico indisponível</div>';
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

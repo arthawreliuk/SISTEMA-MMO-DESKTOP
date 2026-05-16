@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Audit Event Detail Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            purple: '#A78BFA',
+                            crimson: '#EC4899',
+                            green: '#14B8A6'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 20px rgba(167, 139, 250, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+        .diff-remove { background-color: rgba(236, 72, 153, 0.1); color: #EC4899; }
+        .diff-add { background-color: rgba(20, 184, 166, 0.1); color: #14B8A6; }
+        .glass-panel { background: rgba(26, 26, 36, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex flex-col items-center">
+
+    <!-- Global Header -->
+    <header id="header" class="w-full bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 text-sm font-medium text-gray-500">
+                <a href="#" class="hover:text-brand-blue transition-colors">Auditoria</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <a href="#" class="hover:text-brand-blue transition-colors">Log de Ações</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-brand-navy font-semibold px-2 py-1 bg-gray-50 rounded-md border border-gray-200">#EVT-909182A</span>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-500 hover:text-brand-navy transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-50">
+                    <i class="fa-solid fa-download"></i>
+                </button>
+                <button onclick="window.location.href='Tela 4 - Filtros mínimos de auditoria.html'" class="bg-brand-blue hover:bg-blue-800 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-sm shadow-brand-blue/20 flex items-center space-x-2">
+                    <i class="fa-solid fa-ban text-xs"></i>
+                    <span>Revogar Ação</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="w-full max-w-[1200px] mx-auto px-6 py-8 flex-1 flex flex-col gap-6">
+
+        <!-- Top Overview Bar -->
+        <section id="overview-bar" class="w-full bg-white rounded-[24px] p-6 shadow-soft border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-500 text-xl">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-brand-navy mb-1">Atualização de Plano de Assinatura</h1>
+                    <div class="flex items-center text-sm text-gray-500 space-x-4">
+                        <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock"></i> 24 Out 2023, 14:32:05 BRT</span>
+                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-layer-group"></i> Plano de Assinatura Pro</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 bg-gray-50 py-2 px-4 rounded-xl border border-gray-100">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Actor" class="w-8 h-8 rounded-full border-2 border-white shadow-sm">
+                <div class="flex flex-col">
+                    <span class="text-sm font-semibold text-brand-navy">Carlos Silva</span>
+                    <span class="text-xs text-gray-500">carlos.silva@empresa.com</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Forensic Canvas (Asymmetrical 2-Panel Layout) -->
+        <div class="flex flex-col lg:flex-row gap-6 h-full min-h-[600px]">
+            
+            <!-- Left Panel (The Payload/Diff Inspector - 70%) -->
+            <section id="forensic-diff" class="lg:w-[70%] bg-brand-navy rounded-[24px] shadow-soft border border-[#2A2A35] flex flex-col overflow-hidden relative">
+                <!-- Header -->
+                <div class="h-14 border-b border-[#2A2A35] flex items-center justify-between px-6 bg-[#15151E]">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-code-compare text-gray-400"></i>
+                        <span class="text-sm font-semibold text-gray-200">Payload Diff Inspector</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="px-2 py-1 rounded bg-brand-crimson/10 text-brand-crimson border border-brand-crimson/20">- 2 remoções</span>
+                        <span class="px-2 py-1 rounded bg-brand-green/10 text-brand-green border border-brand-green/20">+ 2 adições</span>
+                    </div>
+                </div>
+
+                <!-- Code Area -->
+                <div class="flex-1 overflow-auto p-4 font-mono text-sm leading-relaxed text-gray-300 bg-[#1A1A24]">
+                    <table class="w-full border-collapse">
+                        <tbody>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">1</td>
+                                <td class="pl-4 py-0.5">{</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">2</td>
+                                <td class="pl-8 py-0.5"><span class="text-brand-purple">"entity_id"</span>: <span class="text-blue-400">"sub_98127391"</span>,</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">3</td>
+                                <td class="pl-8 py-0.5"><span class="text-brand-purple">"action"</span>: <span class="text-blue-400">"update"</span>,</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">4</td>
+                                <td class="pl-8 py-0.5"><span class="text-brand-purple">"changes"</span>: {</td>
+                            </tr>
+                            <tr class="diff-remove">
+                                <td class="w-12 text-right pr-4 text-brand-crimson/50 select-none border-r border-brand-crimson/20">5</td>
+                                <td class="pl-12 py-0.5 relative"><span class="absolute left-4">-</span><span class="text-brand-purple opacity-80">"plan_tier"</span>: <span class="opacity-80">"basic_monthly"</span>,</td>
+                            </tr>
+                            <tr class="diff-add">
+                                <td class="w-12 text-right pr-4 text-brand-green/50 select-none border-r border-brand-green/20">6</td>
+                                <td class="pl-12 py-0.5 relative"><span class="absolute left-4">+</span><span class="text-brand-purple">"plan_tier"</span>: <span>"pro_annual"</span>,</td>
+                            </tr>
+                            <tr class="diff-remove">
+                                <td class="w-12 text-right pr-4 text-brand-crimson/50 select-none border-r border-brand-crimson/20">7</td>
+                                <td class="pl-12 py-0.5 relative"><span class="absolute left-4">-</span><span class="text-brand-purple opacity-80">"discount_applied"</span>: <span class="text-orange-300 opacity-80">false</span></td>
+                            </tr>
+                            <tr class="diff-add">
+                                <td class="w-12 text-right pr-4 text-brand-green/50 select-none border-r border-brand-green/20">8</td>
+                                <td class="pl-12 py-0.5 relative"><span class="absolute left-4">+</span><span class="text-brand-purple">"discount_applied"</span>: <span class="text-orange-300">true</span>,</td>
+                            </tr>
+                            <tr class="diff-add">
+                                <td class="w-12 text-right pr-4 text-brand-green/50 select-none border-r border-brand-green/20">9</td>
+                                <td class="pl-12 py-0.5 relative"><span class="absolute left-4">+</span><span class="text-brand-purple">"discount_code"</span>: <span>"UPGRADE2023"</span></td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">10</td>
+                                <td class="pl-8 py-0.5">},</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">11</td>
+                                <td class="pl-8 py-0.5"><span class="text-brand-purple">"metadata"</span>: {</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">12</td>
+                                <td class="pl-12 py-0.5"><span class="text-brand-purple">"source_ip"</span>: <span class="text-blue-400">"192.168.1.45"</span>,</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">13</td>
+                                <td class="pl-12 py-0.5"><span class="text-brand-purple">"client_version"</span>: <span class="text-blue-400">"v2.4.1"</span></td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">14</td>
+                                <td class="pl-8 py-0.5">}</td>
+                            </tr>
+                            <tr class="hover:bg-white/5">
+                                <td class="w-12 text-right pr-4 text-gray-600 select-none border-r border-[#2A2A35]">15</td>
+                                <td class="pl-4 py-0.5">}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Right Panel (Security Context - 30%) -->
+            <section id="security-context" class="lg:w-[30%] bg-white rounded-[24px] shadow-soft border border-gray-100 flex flex-col p-6">
+                <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
+                    <div class="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-gray-600">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-brand-navy">Análise de Segurança</h2>
+                </div>
+
+                <!-- AI Badge -->
+                <div class="bg-brand-purple/5 border border-brand-purple/20 rounded-xl p-4 mb-6 shadow-glow relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-brand-purple/10 blur-xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="flex items-start gap-3 relative z-10">
+                        <span class="text-brand-purple mt-0.5"><i class="fa-solid fa-sparkles"></i></span>
+                        <p class="text-sm text-brand-navy font-medium leading-relaxed">
+                            A IA classificou este evento como comportamento padrão do usuário.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Metadata Grid -->
+                <div class="flex flex-col gap-5 flex-1">
+                    <div>
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5 block">Método de Autenticação</span>
+                        <div class="flex items-center gap-2 text-sm text-brand-navy font-medium">
+                            <i class="fa-solid fa-mobile-screen text-gray-400"></i>
+                            MFA via SMS
+                            <span class="px-1.5 py-0.5 bg-green-50 text-green-600 rounded text-[10px] font-bold ml-auto border border-green-100">VERIFICADO</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5 block">Session ID</span>
+                        <div class="bg-gray-50 rounded-lg p-2.5 font-mono text-xs text-gray-600 border border-gray-100 break-all">
+                            sess_9f8a7b6c5d4e3f2a1b0c
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5 block">Endereço IP</span>
+                        <div class="flex items-center gap-2 text-sm text-brand-navy font-medium">
+                            <i class="fa-solid fa-globe text-gray-400"></i>
+                            189.122.45.102
+                            <span class="text-xs text-gray-500 font-normal ml-auto">São Paulo, BR</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5 block">User Agent</span>
+                        <div class="text-sm text-gray-600 leading-snug border-l-2 border-gray-200 pl-3 py-1">
+                            Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="window.location.href='Tela 4 - Filtros mínimos de auditoria.html'" class="w-full mt-6 py-2.5 text-sm font-semibold text-gray-600 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
+                    Ver Histórico da Sessão
+                </button>
+            </section>
+        </div>
+
+    </main>
+
+</body>
+</html>

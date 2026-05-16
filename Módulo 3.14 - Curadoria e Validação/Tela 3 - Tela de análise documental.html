@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Analysis - MMO Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        softred: '#FEF2F2',
+                        textred: '#DC2626',
+                        warningbg: '#FFF7ED',
+                        warningtext: '#C2410C',
+                        cyan: '#00FFFF',
+                        gray100: '#F3F4F6',
+                        gray200: '#E5E7EB',
+                        gray300: '#D1D5DB',
+                        gray400: '#9CA3AF',
+                        gray500: '#6B7280',
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 40px -10px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02)',
+                        'glow': '0 0 20px rgba(0, 255, 255, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .scanning-bracket {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #00FFFF;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            z-index: 10;
+        }
+        .bracket-tl { top: 20%; left: 15%; border-right: none; border-bottom: none; }
+        .bracket-tr { top: 20%; right: 15%; border-left: none; border-bottom: none; }
+        .bracket-bl { bottom: 30%; left: 15%; border-right: none; border-top: none; }
+        .bracket-br { bottom: 30%; right: 15%; border-left: none; border-top: none; }
+        .scan-line {
+            position: absolute;
+            top: 20%;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: #00FFFF;
+            box-shadow: 0 0 10px #00FFFF;
+            animation: scan 3s infinite linear;
+            z-index: 11;
+        }
+        @keyframes scan {
+            0% { top: 20%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 70%; opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header & Control Bar -->
+    <header id="header" class="w-full bg-white border-b border-gray-100 px-6 py-4 sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-navy flex items-center justify-center text-white font-bold text-lg">M</div>
+                    <span class="font-bold text-navy text-lg tracking-tight">MMO Admin</span>
+                </div>
+                
+                <div class="h-6 w-px bg-gray-200"></div>
+                
+                <!-- Breadcrumb -->
+                <nav class="flex text-sm font-medium text-gray-500">
+                    <a href="#" class="hover:text-navy transition-colors">Painel</a>
+                    <span class="mx-2 text-gray-300">/</span>
+                    <a href="#" class="hover:text-navy transition-colors">Curadoria</a>
+                    <span class="mx-2 text-gray-300">/</span>
+                    <span class="text-navy font-semibold">Análise Documental (Roberto Alves)</span>
+                </nav>
+            </div>
+
+            <!-- Alert Badge -->
+            <div class="bg-warningbg text-warningtext px-4 py-2 rounded-full flex items-center gap-2 text-sm font-semibold shadow-sm border border-orange-100">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Qualidade da Imagem: Média
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 w-full max-w-[1200px] mx-auto py-8 px-6 lg:px-0">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full min-h-[700px]">
+            
+            <!-- Left Column: Biometrics & OCR (25% -> col-span-3) -->
+            <div id="col-left" class="lg:col-span-3 flex flex-col gap-6">
+                <!-- Biometrics Card -->
+                <div class="bg-white rounded-[24px] p-5 shadow-premium border border-gray-100 flex flex-col">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Liveness / Selfie</h3>
+                    <div class="w-full aspect-square rounded-[16px] overflow-hidden bg-gray-100 relative group">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User Selfie" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 border-2 border-trustblue/20 rounded-[16px]"></div>
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-green-600 flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-check-circle"></i> Match: 98%
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OCR Data Card -->
+                <div class="bg-white rounded-[24px] p-5 shadow-premium border border-gray-100 flex-1">
+                    <div class="flex items-center justify-between mb-5">
+                        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Dados Extraídos</h3>
+                        <button class="text-trustblue hover:bg-blue-50 p-1.5 rounded-md transition-colors"><i class="fa-solid fa-rotate-right text-sm"></i></button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Data Field Normal -->
+                        <div class="group">
+                            <label class="text-xs font-semibold text-gray-400 block mb-1">Nome Completo</label>
+                            <div class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-navy flex justify-between items-center group-hover:border-gray-300 transition-colors">
+                                <span>Roberto Carlos Alves</span>
+                                <i class="fa-solid fa-check text-green-500 text-xs"></i>
+                            </div>
+                        </div>
+
+                        <!-- Data Field Error State -->
+                        <div class="group">
+                            <label class="text-xs font-semibold text-gray-400 block mb-1">CPF</label>
+                            <div class="bg-softred border border-red-200 rounded-xl px-4 py-3 text-sm font-semibold text-textred flex justify-between items-center relative">
+                                <span>123.456.789-00</span>
+                                <i class="fa-solid fa-circle-exclamation text-textred"></i>
+                                <div class="absolute -top-2 right-2 bg-textred text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">Divergência</div>
+                            </div>
+                            <p class="text-[11px] text-textred mt-1 font-medium ml-1">Receita Federal retornou: 123.456.789-11</p>
+                        </div>
+
+                        <!-- Data Field Normal -->
+                        <div class="group">
+                            <label class="text-xs font-semibold text-gray-400 block mb-1">Data de Nascimento</label>
+                            <div class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-navy flex justify-between items-center group-hover:border-gray-300 transition-colors">
+                                <span>15/08/1985</span>
+                                <i class="fa-solid fa-check text-green-500 text-xs"></i>
+                            </div>
+                        </div>
+                        
+                         <div class="group">
+                            <label class="text-xs font-semibold text-gray-400 block mb-1">Nome da Mãe</label>
+                            <div class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-navy flex justify-between items-center group-hover:border-gray-300 transition-colors">
+                                <span>Maria Aparecida Alves</span>
+                                <i class="fa-solid fa-check text-green-500 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Column: Document Inspector (50% -> col-span-6) -->
+            <div id="col-center" class="lg:col-span-6 flex flex-col">
+                <div class="bg-white rounded-[24px] p-2 shadow-premium border border-gray-100 h-full flex flex-col relative overflow-hidden group">
+                    
+                    <!-- Header -->
+                    <div class="absolute top-6 left-6 right-6 z-20 flex justify-between items-center pointer-events-none">
+                        <div class="bg-navy/80 backdrop-blur text-white px-4 py-2 rounded-full text-sm font-semibold pointer-events-auto shadow-lg flex items-center gap-2">
+                            <i class="fa-solid fa-id-card"></i> CNH Digital
+                        </div>
+                        <div class="bg-black/50 backdrop-blur text-white px-3 py-1.5 rounded-full text-xs font-bold pointer-events-auto">
+                            Verso
+                        </div>
+                    </div>
+
+                    <!-- Image Area -->
+                    <div class="bg-gray-900 rounded-[20px] h-full relative overflow-hidden flex items-center justify-center">
+                        <!-- AI Generated Document Placeholder -->
+                        <img src="https://images.unsplash.com/photo-1633265486064-086b219458ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ID Document" class="w-full h-full object-cover opacity-80" style="filter: contrast(1.1) brightness(0.9);">
+                        
+                        <!-- AI Scanning Overlays -->
+                        <div class="absolute inset-0 pointer-events-none">
+                            <div class="scanning-bracket bracket-tl"></div>
+                            <div class="scanning-bracket bracket-tr"></div>
+                            <div class="scanning-bracket bracket-bl"></div>
+                            <div class="scanning-bracket bracket-br"></div>
+                            <div class="scan-line"></div>
+                            
+                            <!-- Highlighted Text Box -->
+                            <div class="absolute top-[35%] left-[25%] w-[40%] h-[8%] border border-cyan/50 bg-cyan/10 rounded">
+                                <div class="absolute -top-5 left-0 text-[10px] text-cyan font-bold bg-navy/80 px-1.5 rounded">CPF DETECTED</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Controls -->
+                        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center gap-3 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20 shadow-2xl">
+                            <button class="bg-white text-navy px-5 py-2.5 rounded-full text-sm font-bold shadow-sm hover:bg-gray-50 transition-colors">Frente</button>
+                            <button class="bg-transparent text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-white/20 transition-colors">Verso</button>
+                            <div class="w-px h-6 bg-white/20 mx-1"></div>
+                            <button class="text-white p-2.5 hover:bg-white/20 rounded-full transition-colors"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                            <button class="text-white p-2.5 hover:bg-white/20 rounded-full transition-colors"><i class="fa-solid fa-rotate-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Decision Matrix (25% -> col-span-3) -->
+            <div id="col-right" class="lg:col-span-3 flex flex-col">
+                <div class="bg-white rounded-[24px] p-6 shadow-premium border border-gray-100 h-full flex flex-col">
+                    <div class="mb-6 pb-4 border-b border-gray-100">
+                        <h2 class="text-lg font-extrabold text-navy">Matriz de Decisão</h2>
+                        <p class="text-sm text-gray-500 mt-1">Selecione o veredito final para este usuário.</p>
+                    </div>
+
+                    <!-- Moderation Options -->
+                    <div class="flex-1 flex flex-col gap-3">
+                        <!-- Option 1: Approve -->
+                        <label class="cursor-pointer relative">
+                            <input type="radio" name="decision" class="peer sr-only" value="approve">
+                            <div class="w-full px-5 py-4 rounded-[16px] border-2 border-gray-100 bg-white hover:border-gray-200 hover:bg-gray-50 transition-all peer-checked:border-green-500 peer-checked:bg-green-50 flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center group-peer-checked:bg-green-500 group-peer-checked:text-white transition-colors">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <span class="font-bold text-navy group-peer-checked:text-green-700">Aprovar Tudo</span>
+                                </div>
+                                <div class="w-5 h-5 rounded-full border-2 border-gray-300 peer-checked:border-green-500 peer-checked:bg-green-500 flex items-center justify-center">
+                                    <div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Option 2: Reject Blurred -->
+                        <label class="cursor-pointer relative">
+                            <input type="radio" name="decision" class="peer sr-only" value="reject_blurred">
+                            <div class="w-full px-5 py-4 rounded-[16px] border-2 border-gray-100 bg-white hover:border-gray-200 hover:bg-gray-50 transition-all peer-checked:border-orange-500 peer-checked:bg-orange-50 flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center">
+                                        <i class="fa-solid fa-camera-rotate"></i>
+                                    </div>
+                                    <span class="font-bold text-navy">Rejeitar: Imagem Tremida</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Option 3: Reject Expired -->
+                        <label class="cursor-pointer relative">
+                            <input type="radio" name="decision" class="peer sr-only" value="reject_expired">
+                            <div class="w-full px-5 py-4 rounded-[16px] border-2 border-gray-100 bg-white hover:border-gray-200 hover:bg-gray-50 transition-all peer-checked:border-orange-500 peer-checked:bg-orange-50 flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center">
+                                        <i class="fa-solid fa-calendar-xmark"></i>
+                                    </div>
+                                    <span class="font-bold text-navy">Rejeitar: Doc Vencido</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Option 4: Reject Fraud -->
+                        <label class="cursor-pointer relative">
+                            <input type="radio" name="decision" class="peer sr-only" value="reject_fraud" checked>
+                            <div class="w-full px-5 py-4 rounded-[16px] border-2 border-gray-100 bg-white hover:border-gray-200 hover:bg-gray-50 transition-all peer-checked:border-textred peer-checked:bg-softred flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 text-textred flex items-center justify-center group-peer-checked:bg-textred group-peer-checked:text-white transition-colors">
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                    </div>
+                                    <span class="font-bold text-navy group-peer-checked:text-textred">Rejeitar: Suspeita Fraude</span>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <!-- Notes Textarea -->
+                        <div class="mt-2">
+                             <textarea class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy focus:outline-none focus:border-trustblue focus:ring-1 focus:ring-trustblue resize-none placeholder-gray-400" rows="3" placeholder="Adicionar nota interna (opcional)...">Divergência grave no CPF com a base da Receita Federal.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="mt-6 pt-4">
+                        <button onclick="window.location.href='Tela 4 - Tela de status de validação.html'" class="w-full bg-trustblue hover:bg-blue-800 text-white font-bold text-base py-4 px-6 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                            Confirmar Decisão de KYC
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full py-6 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 flex justify-between items-center text-xs text-gray-400 font-medium">
+            <p>&copy; 2026 MMO Admin Systems. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-navy transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-navy transition-colors">Termos</a>
+                <a href="#" class="hover:text-navy transition-colors">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

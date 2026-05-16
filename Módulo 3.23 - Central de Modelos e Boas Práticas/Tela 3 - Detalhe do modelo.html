@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Center Template Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'soft-white': '#F8F9FA',
+                        'trust-blue': '#0016dc',
+                        'deep-navy': '#1A1A24',
+                        'tinted-card': '#FBFBFC',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(26, 26, 36, 0.05)',
+                        'ambient-hover': '0 20px 50px -15px rgba(26, 26, 36, 0.08)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 0; background-color: #F8F9FA; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-soft-white text-deep-navy antialiased min-h-screen flex flex-col m-0 p-0">
+
+    <!-- Global Header -->
+    <header id="header" class="w-full bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-deep-navy font-bold text-xl tracking-tight">
+                <div class="w-8 h-8 rounded-lg bg-trust-blue flex items-center justify-center text-white">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                MMO Central
+            </div>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+                <a href="#" class="hover:text-trust-blue transition-colors">Templates</a>
+                <a href="#" class="hover:text-trust-blue transition-colors">Ferramentas</a>
+                <a href="#" class="hover:text-trust-blue transition-colors">Comunidade</a>
+                <a href="#" class="hover:text-trust-blue transition-colors">Suporte</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="text-gray-500 hover:text-deep-navy transition-colors">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <div class="w-10 h-10 rounded-full bg-gray-100 overflow-hidden border border-gray-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-6 py-8 md:py-12 flex flex-col gap-8">
+        
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="text-sm font-medium text-gray-400 flex items-center gap-2">
+            <a href="#" class="hover:text-trust-blue transition-colors">Central</a>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <a href="#" class="hover:text-trust-blue transition-colors">Financeiro</a>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <span class="text-deep-navy">Precificação</span>
+        </nav>
+
+        <!-- The Detail Canvas (Asymmetrical Layout) -->
+        <div class="flex flex-col lg:flex-row gap-8 items-start relative">
+            
+            <!-- Main Content Panel (Left - 65%) -->
+            <div id="main-panel" class="w-full lg:w-[65%] flex flex-col gap-8">
+                
+                <!-- Header Section -->
+                <div class="bg-white rounded-4xl p-8 md:p-12 shadow-ambient border border-gray-100/50">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-trust-blue/10 text-trust-blue text-xs font-bold mb-6">
+                        <i class="fa-solid fa-bolt text-[10px]"></i>
+                        TEMPLATE PREMIUM
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-deep-navy leading-tight tracking-tight mb-6">
+                        Calculadora de Custos para Gesso e Drywall
+                    </h1>
+                    <p class="text-lg text-gray-500 leading-relaxed mb-8 max-w-2xl">
+                        Automatize a precificação dos seus projetos de construção a seco. Esta planilha inteligente calcula materiais, mão de obra e margem de lucro com base nas métricas reais da obra.
+                    </p>
+                    
+                    <!-- Carousel Preview -->
+                    <div class="w-full overflow-hidden rounded-2xl bg-gray-50 border border-gray-100 group relative">
+                        <div class="absolute top-4 left-4 z-10 flex gap-2">
+                            <span class="px-3 py-1 bg-white/90 backdrop-blur text-xs font-semibold rounded-full shadow-sm">Visão Geral</span>
+                        </div>
+                        <div class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory h-[400px]">
+                            <div class="min-w-full snap-center h-full relative p-4 flex items-center justify-center">
+                                <img class="w-full h-full object-cover rounded-xl shadow-md border border-gray-200/50" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="High-fidelity UI mockup of a complex financial spreadsheet dashboard for construction costs, showing colorful charts, material lists, and clear data tables, modern clean design, light mode, Dribbble style" />
+                            </div>
+                            <div class="min-w-full snap-center h-full relative p-4 flex items-center justify-center">
+                                <img class="w-full h-full object-cover rounded-xl shadow-md border border-gray-200/50" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="Detailed UI mockup of a material estimation table for drywall projects, showing quantity inputs, unit costs, and total calculations, modern clean design, soft shadows" />
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                            <div class="w-2 h-2 rounded-full bg-trust-blue"></div>
+                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento Grid: O que está incluso -->
+                <div class="bg-white rounded-4xl p-8 md:p-12 shadow-ambient border border-gray-100/50">
+                    <h2 class="text-2xl font-bold text-deep-navy mb-8">O que está incluso</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Bento Item 1 -->
+                        <div class="p-6 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-md transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-trust-blue text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-cubes"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-deep-navy mb-2">Aba de Materiais</h3>
+                            <p class="text-sm text-gray-500 leading-relaxed">Banco de dados pré-configurado com os principais insumos (placas, perfis, parafusos, massas) e cálculo automático de perdas.</p>
+                        </div>
+                        
+                        <!-- Bento Item 2 -->
+                        <div class="p-6 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-md transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-trust-blue text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-deep-navy mb-2">Aba de Mão de Obra</h3>
+                            <p class="text-sm text-gray-500 leading-relaxed">Calculadora de horas/homem, encargos trabalhistas e custos de deslocamento por metro quadrado executado.</p>
+                        </div>
+
+                        <!-- Bento Item 3 -->
+                        <div class="p-6 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-md transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-trust-blue text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-deep-navy mb-2">Dashboard de Lucratividade</h3>
+                            <p class="text-sm text-gray-500 leading-relaxed">Gráficos dinâmicos mostrando a margem de lucro projetada, ponto de equilíbrio e distribuição de custos do projeto.</p>
+                        </div>
+
+                        <!-- Bento Item 4 -->
+                        <div class="p-6 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-md transition-all duration-300 group">
+                            <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-trust-blue text-xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-deep-navy mb-2">Gerador de Proposta</h3>
+                            <p class="text-sm text-gray-500 leading-relaxed">Aba formatada para impressão gerando automaticamente um orçamento profissional pronto para enviar ao cliente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Action Sidebar (Right - 35%) -->
+            <div id="sticky-sidebar" class="w-full lg:w-[35%] lg:sticky lg:top-28">
+                <div class="bg-tinted-card rounded-4xl p-8 shadow-ambient border border-gray-200/60 flex flex-col gap-8 relative overflow-hidden">
+                    <!-- Decorative background element -->
+                    <div class="absolute -top-24 -right-24 w-48 h-48 bg-trust-blue/5 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <!-- Meta Info -->
+                    <div class="flex flex-col gap-4 relative z-10">
+                        <div class="flex items-center justify-between py-3 border-b border-gray-200/50">
+                            <span class="text-sm text-gray-500 font-medium">Formato</span>
+                            <div class="flex items-center gap-2 bg-white px-3 py-1 rounded-full shadow-sm border border-gray-100">
+                                <i class="fa-solid fa-file-excel text-green-600"></i>
+                                <span class="text-sm font-bold text-deep-navy">XLSX</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between py-3 border-b border-gray-200/50">
+                            <span class="text-sm text-gray-500 font-medium">Versão</span>
+                            <span class="text-sm font-bold text-deep-navy">1.2 (Estável)</span>
+                        </div>
+                        <div class="flex items-center justify-between py-3">
+                            <span class="text-sm text-gray-500 font-medium">Última Atualização</span>
+                            <span class="text-sm font-bold text-deep-navy">Maio 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Download Action -->
+                    <div class="flex flex-col gap-4 relative z-10 mt-4">
+                        <button onclick="window.location.href='Tela 4 - Download de arquivo orientativo.html'" class="w-full bg-trust-blue hover:bg-blue-800 text-white font-bold text-lg py-5 px-6 rounded-full shadow-[0_8px_20px_-6px_rgba(0,22,220,0.4)] hover:shadow-[0_12px_25px_-6px_rgba(0,22,220,0.5)] transition-all duration-300 flex items-center justify-center gap-3 transform hover:-translate-y-1">
+                            <i class="fa-solid fa-cloud-arrow-down"></i>
+                            Baixar Planilha Gratuita
+                        </button>
+                        <p class="text-xs text-center text-gray-400 font-medium">Nenhum cartão de crédito necessário. Download imediato.</p>
+                    </div>
+
+                    <!-- Author Info -->
+                    <div class="mt-4 pt-6 border-t border-gray-200/50 flex items-center gap-4 relative z-10">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 border border-white shadow-sm flex items-center justify-center overflow-hidden">
+                            <i class="fa-solid fa-hard-hat text-gray-500 text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-medium mb-0.5">Criado por</p>
+                            <p class="text-sm font-bold text-deep-navy">MMO Equipe de Engenharia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Templates Section -->
+        <section id="related-templates" class="mt-16 pt-16 border-t border-gray-200/50">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold text-deep-navy">Você também pode gostar de...</h2>
+                <a href="#" class="text-sm font-bold text-trust-blue hover:underline hidden sm:block">Ver todos</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Related Card 1 -->
+                <a href="#" class="group bg-white rounded-3xl p-5 shadow-sm hover:shadow-ambient border border-gray-100 transition-all duration-300 flex flex-col gap-4 h-full">
+                    <div class="w-full h-40 rounded-2xl overflow-hidden bg-gray-50 relative">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="Minimalist UI mockup of a project schedule timeline Gantt chart template, soft colors, clean typography" />
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-[10px] font-bold text-deep-navy shadow-sm">
+                            CRONOGRAMA
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-deep-navy mb-2 group-hover:text-trust-blue transition-colors line-clamp-2">Cronograma de Obras com Gráfico de Gantt</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2">Gerencie prazos e dependências de tarefas da sua obra de forma visual e intuitiva.</p>
+                    </div>
+                    <div class="mt-auto pt-4 flex items-center justify-between text-sm font-medium text-gray-400">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-download"></i> 12k+</span>
+                        <span class="text-trust-blue bg-trust-blue/5 px-3 py-1 rounded-full text-xs">Gratuito</span>
+                    </div>
+                </a>
+
+                <!-- Related Card 2 -->
+                <a href="#" class="group bg-white rounded-3xl p-5 shadow-sm hover:shadow-ambient border border-gray-100 transition-all duration-300 flex flex-col gap-4 h-full">
+                    <div class="w-full h-40 rounded-2xl overflow-hidden bg-gray-50 relative">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/37dfcaf3db-b12aceeeb06b267ccdff.png" alt="Clean UI mockup of a material inventory tracking dashboard spreadsheet, showing stock levels and alerts, light theme" />
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-[10px] font-bold text-deep-navy shadow-sm">
+                            ESTOQUE
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-deep-navy mb-2 group-hover:text-trust-blue transition-colors line-clamp-2">Controle de Estoque de Materiais no Canteiro</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2">Evite desperdícios e faltas acompanhando as entradas e saídas de materiais diariamente.</p>
+                    </div>
+                    <div class="mt-auto pt-4 flex items-center justify-between text-sm font-medium text-gray-400">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-download"></i> 8.5k+</span>
+                        <span class="text-trust-blue bg-trust-blue/5 px-3 py-1 rounded-full text-xs">Gratuito</span>
+                    </div>
+                </a>
+
+                <!-- Related Card 3 -->
+                <a href="#" class="group bg-white rounded-3xl p-5 shadow-sm hover:shadow-ambient border border-gray-100 transition-all duration-300 flex flex-col gap-4 h-full sm:hidden lg:flex">
+                    <div class="w-full h-40 rounded-2xl overflow-hidden bg-gray-50 relative">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="Modern UI mockup of a daily construction report log template, showing weather, tasks completed, and crew attendance, structured layout" />
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-md text-[10px] font-bold text-deep-navy shadow-sm">
+                            DIÁRIO
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-deep-navy mb-2 group-hover:text-trust-blue transition-colors line-clamp-2">Relatório Diário de Obra (RDO) Automatizado</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2">Registre o progresso diário, clima e efetivo com este template pronto para impressão.</p>
+                    </div>
+                    <div class="mt-auto pt-4 flex items-center justify-between text-sm font-medium text-gray-400">
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-download"></i> 15k+</span>
+                        <span class="text-trust-blue bg-trust-blue/5 px-3 py-1 rounded-full text-xs">Gratuito</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Simple Footer to cap the page -->
+    <footer id="footer" class="w-full bg-white border-t border-gray-200 mt-12 py-8">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-gray-500 font-medium">© 2026 MMO Central. Todos os direitos reservados.</p>
+            <div class="flex gap-4">
+                <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-trust-blue hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-trust-blue hover:text-white transition-colors"><i class="fa-brands fa-twitter text-sm"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

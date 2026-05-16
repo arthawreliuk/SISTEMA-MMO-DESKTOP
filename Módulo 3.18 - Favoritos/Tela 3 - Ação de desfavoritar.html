@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unfavorite Confirmation Modal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        crimson: '#E11D48',
+                        darkbg: '#181A20',
+                        cardbg: '#1E2329',
+                        bordercolor: '#2B3139',
+                        textmuted: '#848E9C'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { display: none; }
+        body { margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-darkbg text-white h-[1024px] w-[1440px] overflow-hidden m-0 p-0 relative">
+
+    <!-- Background Context: Blurred Favorites Grid -->
+    <div id="blurred_favorites_grid" class="absolute inset-0 z-0 p-8 grid grid-cols-4 gap-6 content-start filter blur-md opacity-60 pointer-events-none">
+        
+        <!-- Header Mock -->
+        <div class="col-span-4 flex justify-between items-center mb-8">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-cardbg rounded-full flex items-center justify-center border border-bordercolor">
+                    <i class="fa-solid fa-arrow-left text-textmuted"></i>
+                </div>
+                <h1 class="text-2xl font-semibold">Meus Favoritos</h1>
+            </div>
+            <div class="flex gap-4">
+                <div class="bg-cardbg px-4 py-2 rounded-lg border border-bordercolor text-textmuted text-sm">Filtrar <i class="fa-solid fa-chevron-down ml-2"></i></div>
+            </div>
+        </div>
+
+        <!-- Grid Items Mock -->
+        <script>
+            for(let i=0; i<8; i++) {
+                document.write(`
+                <div class="bg-cardbg rounded-[16px] p-6 border border-bordercolor relative">
+                    <div class="absolute top-4 right-4 text-textmuted hover:text-white transition-colors">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-${(i%9)+1}.jpg" class="w-14 h-14 rounded-full object-cover border-2 border-bordercolor" alt="Avatar">
+                        <div>
+                            <h3 class="font-semibold text-lg text-white">Roberto Alves</h3>
+                            <p class="text-textmuted text-sm">Especialista Tributário</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-textmuted">Avaliação</span>
+                            <span class="text-white font-medium"><i class="fa-solid fa-star text-[#FCD535] text-xs mr-1"></i> 4.9</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-textmuted">Projetos</span>
+                            <span class="text-white font-medium">14 concluídos</span>
+                        </div>
+                    </div>
+                </div>
+                `);
+            }
+        </script>
+    </div>
+
+    <!-- Modal Overlay Container -->
+    <div id="modal_overlay_container" class="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+        
+        <!-- The Confirmation Modal -->
+        <div class="w-[450px] bg-white rounded-[24px] shadow-[0_20px_40px_rgba(0,0,0,0.15),0_0_0_1px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col relative">
+            
+            <div class="p-8 flex flex-col items-center text-center">
+                <!-- Modal Header Icon -->
+                <div id="modal_header_icon" class="w-16 h-16 rounded-full bg-[#F3F4F6] flex items-center justify-center mb-6 border border-[#E5E7EB]">
+                    <i class="fa-solid fa-heart-crack text-[28px] text-[#9CA3AF]"></i>
+                </div>
+
+                <!-- Confirmation Content Area -->
+                <div id="confirmation_content_area" class="space-y-3 mb-8">
+                    <h2 class="text-[22px] font-bold text-navy tracking-tight">Remover dos Favoritos?</h2>
+                    <p class="text-[15px] leading-relaxed text-[#6B7280] font-medium px-2">
+                        Você tem certeza que deseja remover Roberto Alves da sua equipe de confiança? Você poderá encontrá-lo novamente no balcão de serviços.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Modal Action Footer -->
+            <div id="modal_action_footer" class="px-8 py-6 bg-[#F9FAFB] border-t border-[#E5E7EB] flex justify-end items-center gap-3">
+                <button onclick="window.location.href='Tela 1 - Tela de favoritos.html'" class="px-6 py-2.5 rounded-full text-[14px] font-semibold text-[#4B5563] hover:bg-[#F3F4F6] transition-colors border border-transparent hover:border-[#E5E7EB]">
+                    Manter Salvo
+                </button>
+                <button onclick="window.location.href='Tela 1 - Tela de favoritos.html'" class="px-6 py-2.5 rounded-full text-[14px] font-semibold text-white bg-crimson hover:bg-[#BE123C] transition-colors shadow-sm">
+                    Sim, Remover
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

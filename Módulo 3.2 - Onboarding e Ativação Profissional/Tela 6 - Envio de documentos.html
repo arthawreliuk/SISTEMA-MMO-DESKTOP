@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Upload / Identity Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        pageBg: '#F8F9FA',
+                        primaryBlue: '#0016dc',
+                        deepNavy: '#1A1A24',
+                        lightBlueTint: '#f0f4ff',
+                        borderGray: '#E5E7EB',
+                        textGray: '#6B7280',
+                        infoBg: '#F3F4F6'
+                    },
+                    boxShadow: {
+                        'soft-ambient': '0 10px 40px -10px rgba(0,0,0,0.08), 0 4px 10px -4px rgba(0,0,0,0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-pageBg min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <nav id="header" class="w-full bg-white border-b border-borderGray px-6 py-4 flex items-center justify-between shadow-sm z-10 relative">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-primaryBlue rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                M
+            </div>
+            <span class="font-bold text-lg text-deepNavy hidden sm:block">MMO</span>
+        </div>
+        <div class="absolute left-1/2 transform -translate-x-1/2">
+            <h1 class="text-lg font-semibold text-deepNavy">Validação de Segurança</h1>
+        </div>
+        <div class="w-10"></div> <!-- Spacer for flex balance -->
+    </nav>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow flex items-center justify-center p-4 sm:p-8">
+        <div id="main-card" class="w-full max-w-[800px] bg-white rounded-[24px] shadow-soft-ambient p-8 sm:p-12 border border-borderGray/50">
+            
+            <!-- Header Area -->
+            <div class="text-center mb-10">
+                <div class="w-16 h-16 bg-lightBlueTint rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-shield-halved text-2xl text-primaryBlue"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-deepNavy mb-3">Validação de Identidade</h2>
+                <p class="text-textGray text-base max-w-md mx-auto leading-relaxed">
+                    Arraste e solte seus documentos abaixo para garantir seu selo de Mestre Verificado.
+                </p>
+            </div>
+
+            <!-- Drag & Drop Zones -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                
+                <!-- Zone 1: RG/CNH -->
+                <div id="upload-zone-1" class="relative group">
+                    <input type="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" aria-label="Upload RG ou CNH">
+                    <div class="h-64 rounded-[16px] border-2 border-dashed border-primaryBlue/40 bg-lightBlueTint hover:bg-[#e6edff] transition-colors duration-200 flex flex-col items-center justify-center p-6 text-center group-hover:border-primaryBlue">
+                        <div class="w-14 h-14 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 text-primaryBlue">
+                            <i class="fa-regular fa-id-card text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-deepNavy mb-2">Frente e Verso do RG/CNH</h3>
+                        <p class="text-sm text-textGray mb-6 px-4">Arraste seus arquivos aqui ou clique no botão abaixo.</p>
+                        <button class="bg-primaryBlue text-white px-6 py-2.5 rounded-full font-medium text-sm hover:bg-blue-800 transition-colors pointer-events-none">
+                            Procurar Arquivo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Zone 2: Selfie -->
+                <div id="upload-zone-2" class="relative group">
+                    <input type="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" aria-label="Upload Selfie">
+                    <div class="h-64 rounded-[16px] border-2 border-dashed border-primaryBlue/40 bg-lightBlueTint hover:bg-[#e6edff] transition-colors duration-200 flex flex-col items-center justify-center p-6 text-center group-hover:border-primaryBlue">
+                        <div class="w-14 h-14 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 text-primaryBlue">
+                            <i class="fa-solid fa-camera text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-deepNavy mb-2">Selfie Segurando o Documento</h3>
+                        <p class="text-sm text-textGray mb-6 px-4">Arraste sua foto aqui ou clique no botão abaixo.</p>
+                        <button class="bg-primaryBlue text-white px-6 py-2.5 rounded-full font-medium text-sm hover:bg-blue-800 transition-colors pointer-events-none">
+                            Procurar Arquivo
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Security Notice -->
+            <div id="security-notice" class="bg-infoBg rounded-xl p-5 flex items-start gap-4 mb-8 border border-borderGray/60">
+                <div class="mt-0.5 text-textGray">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-deepNavy mb-1">Seus dados estão seguros</h4>
+                    <p class="text-sm text-textGray leading-relaxed">
+                        Todas as informações e documentos enviados são criptografados de ponta a ponta e processados em estrita conformidade com as diretrizes da LGPD. Seus dados serão usados exclusivamente para fins de verificação de identidade.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom CTA -->
+            <button id="submit-btn" onclick="window.location.href='Tela 7 - Aceite contratual.html'" class="w-full bg-primaryBlue text-white py-4 rounded-full font-semibold text-lg hover:bg-blue-800 transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                Enviar para Curadoria Especializada
+                <i class="fa-solid fa-arrow-right text-sm ml-1"></i>
+            </button>
+
+        </div>
+    </main>
+
+</body>
+</html>

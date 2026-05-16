@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trust: '#0016dc',
+                        destructive: '#E11D48',
+                        offwhite: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E2E8F0',
+                        muted: '#9CA3AF'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'hover': '0 12px 32px rgba(0, 22, 220, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        .group:hover .tooltip { opacity: 1; transform: translateY(0); }
+        .tooltip { transition: all 0.2s ease-in-out; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen antialiased bg-offwhite m-0 p-0">
+
+    <!-- Global Top Nav -->
+    <header id="header" class="w-full bg-surface border-b border-border/50 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-trust text-white flex items-center justify-center font-bold text-lg">
+                        M
+                    </div>
+                    <span class="font-bold text-navy text-xl tracking-tight">MMO</span>
+                </div>
+                <!-- Breadcrumb -->
+                <nav class="hidden md:flex items-center text-sm font-medium text-muted gap-2">
+                    <a href="#" class="hover:text-navy transition-colors">Painel</a>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-navy">Meus Favoritos</span>
+                </nav>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center text-muted hover:text-navy hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="flex items-center gap-3 pl-4 border-l border-border/50 cursor-pointer">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                    <div class="hidden md:block">
+                        <p class="text-sm font-semibold text-navy leading-none mb-1">Carlos Eduardo</p>
+                        <p class="text-xs text-muted leading-none">Administrador</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-muted text-xs ml-1"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-[1200px] mx-auto px-6 py-12">
+        
+        <!-- Workspace Header & Filter Strip -->
+        <section id="workspace-header" class="mb-10">
+            <div class="mb-8">
+                <h1 class="text-[40px] font-extrabold text-navy tracking-tight leading-tight mb-2">Mestres Favoritos</h1>
+                <p class="text-lg text-muted font-medium">Sua equipe de profissionais salvos para acesso rápido.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <!-- Tabs -->
+                <div class="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+                    <button class="px-6 py-2.5 rounded-full bg-trust text-white font-semibold text-sm whitespace-nowrap shadow-sm transition-all">
+                        Todos
+                    </button>
+                    <button class="px-6 py-2.5 rounded-full bg-surface text-navy font-semibold text-sm whitespace-nowrap border border-border/50 hover:border-trust/30 hover:bg-trust/5 transition-all shadow-sm">
+                        Elétrica
+                    </button>
+                    <button class="px-6 py-2.5 rounded-full bg-surface text-navy font-semibold text-sm whitespace-nowrap border border-border/50 hover:border-trust/30 hover:bg-trust/5 transition-all shadow-sm">
+                        Construção Civil
+                    </button>
+                    <button class="px-6 py-2.5 rounded-full bg-surface text-navy font-semibold text-sm whitespace-nowrap border border-border/50 hover:border-trust/30 hover:bg-trust/5 transition-all shadow-sm">
+                        Encanamento
+                    </button>
+                </div>
+
+                <!-- Search -->
+                <div class="relative w-full md:w-[320px]">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
+                    <input type="text" placeholder="Buscar mestre..." class="w-full h-11 pl-11 pr-4 rounded-full bg-surface border border-border/50 text-sm font-medium text-navy placeholder:text-muted focus:outline-none focus:border-trust focus:ring-2 focus:ring-trust/20 shadow-sm transition-all">
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorites Grid -->
+        <section id="favorites-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Card 1 (Normal State) -->
+            <div onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 6 - Tela de perfil público do profissional.html'" class="bg-surface rounded-[24px] p-6 shadow-soft border border-border/30 relative flex flex-col items-center text-center transition-all duration-300 hover:shadow-hover group cursor-pointer">
+                <button onclick="event.stopPropagation(); window.location.href='Tela 3 - Ação de desfavoritar.html'" class="absolute top-5 right-5 text-trust transition-colors z-10 p-2 rounded-full hover:bg-gray-50">
+                    <i class="fa-solid fa-heart text-xl"></i>
+                </button>
+                
+                <div class="w-24 h-24 rounded-full p-1 border-2 border-trust/10 mb-4 mt-2">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-full h-full rounded-full object-cover" alt="Profile">
+                </div>
+                
+                <h3 class="text-lg font-bold text-navy mb-1">Roberto Alves</h3>
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-trust/10 text-trust text-xs font-bold mb-4">
+                    Elétrica
+                </div>
+                
+                <div class="w-full flex items-center justify-between pt-4 border-t border-border/40 mt-auto">
+                    <div class="flex flex-col items-start">
+                        <span class="text-[11px] text-muted font-semibold uppercase tracking-wider">Avaliação</span>
+                        <div class="flex items-center gap-1 text-sm font-bold text-navy mt-0.5">
+                            <i class="fa-solid fa-star text-[#FBBF24] text-xs"></i> 4.9
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end">
+                        <span class="text-[11px] text-muted font-semibold uppercase tracking-wider">Serviços</span>
+                        <span class="text-sm font-bold text-navy mt-0.5">142</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 (Hover/Interaction State) -->
+            <div class="bg-surface rounded-[24px] p-6 shadow-hover border border-trust/10 relative flex flex-col items-center text-center transition-all duration-300 group cursor-pointer transform -translate-y-1">
+                
+                <!-- Destructive Tooltip & Icon Container -->
+                <div class="absolute top-5 right-5 z-20 group/action">
+                    <!-- Tooltip -->
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 transform translate-y-2 pointer-events-none transition-all duration-200 group-hover/action:opacity-100 group-hover/action:translate-y-0 z-30">
+                        <div class="bg-destructive text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+                            Remover dos favoritos?
+                        </div>
+                    </div>
+                    <!-- Icon -->
+                    <button class="p-2 rounded-full bg-destructive/10 text-destructive border border-destructive/20 transition-all cursor-pointer">
+                        <i class="fa-regular fa-heart text-xl"></i>
+                    </button>
+                    <!-- Simulated Cursor -->
+                    <div class="absolute -bottom-4 -right-3 z-50 pointer-events-none">
+                        <i class="fa-solid fa-arrow-pointer text-navy text-lg drop-shadow-md transform -rotate-12"></i>
+                    </div>
+                </div>
+                
+                <div class="w-24 h-24 rounded-full p-1 border-2 border-trust/10 mb-4 mt-2">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-full h-full rounded-full object-cover" alt="Profile">
+                </div>
+                
+                <h3 class="text-lg font-bold text-navy mb-1">Mário Silva</h3>
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-trust/10 text-trust text-xs font-bold mb-4">
+                    Construção Civil
+                </div>
+                
+                <div class="w-full flex items-center justify-between pt-4 border-t border-border/40 mt-auto">
+                    <div class="flex flex-col items-start">
+                        <span class="text-[11px] text-muted font-semibold uppercase tracking-wider">Avaliação</span>
+                        <div class="flex items-center gap-1 text-sm font-bold text-navy mt-0.5">
+                            <i class="fa-solid fa-star text-[#FBBF24] text-xs"></i> 5.0
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end">
+                        <span class="text-[11px] text-muted font-semibold uppercase tracking-wider">Serviços</span>
+                        <span class="text-sm font-bold text-navy mt-0.5">284</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 6 - Tela de perfil público do profissional.html'" class="bg-surface rounded-[24px] p-6 shadow-soft border border-border/30 relative flex flex-col items-center text-center transition-all duration-300 hover:shadow-hover group cursor-pointer">
+                <button onclick="event.stopPropagation(); window.location.href='Tela 3 - Ação de desfavoritar.html'" class="absolute top-5 right-5 text-trust transition-colors z-10 p-2 rounded-full hover:bg-gray-50">
+                    <i class="fa-solid fa-heart text-xl"></i>
+                </button>
+                
+                <div class="w-24 h-24 rounded-full p-1 border-2 border-trust/10 mb-4 mt-2">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-full h-full rounded-full object-cover" alt="Profile">
+                </div>
+                
+                <h3 class="text-lg font-bold text-navy mb-1">Ana Costa</h3>
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-trust/10 text-trust text-xs font-bold mb-4">
+                    Encanamento
+                </div>
+                
+                <div class="w-full flex items-center justify-between pt-4 border-t border-border/40 mt-auto">
+                    <div class="flex flex-col items-start">
+                        <span class="text-[11px] text-muted font-semibold uppercase tracking-wider">Avaliação</span>
+                        <div class="flex items-center gap-1 text-sm font-bold text-navy mt-0.5">
+                            <i class="fa-solid fa-star text-[#FBBF24] text-xs"></i> 4.8
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end">
+                        <span class="text-[11px] text-muted font-semibold uppercase tracking-wider">Serviços</span>
+                        <span class="text-sm font-bold text-navy mt-0.5">89</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 6 - Tela de perfil público do profissional.html'" class="bg-surface rounded-[24px] p-6 shadow-soft border border-border/30 relative flex flex-col items-center text-center transition-all duration-300 hover:shadow-hover group cursor-pointer">
+                <button onclick="event.stopPropagation(); window.location.href='Tela 3 - Ação de desfavoritar.html'" class="absolute top-5 right-5 text-trust transition-colors z-10 p-2 rounded-full hover:bg-gray-50">
+                    <i class="fa-solid fa-heart text-xl"></i>
+                </button>
+                
+                <div class="w-24 h-24 rounded-full p-1 border-2 border-trust/10 mb-4 mt-2">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-full h-full rounded-full object-cover" alt="Profile">
+                </div>
+                
+                <h3 class="text-lg font-bold text-navy mb-1">Lucas Mendes</h3>
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-trust/10 text-trust text-xs font-bold mb-4">
+                    Construção Civil
+                </div>
+                
+                <div class="w-full flex items-center justify-between pt-4 border-t border-border/40 mt-auto">
+                    <div class="flex flex-col items-start">
+                        <span class="text-[11px] text-muted font-semibold uppercase tracking-wider">Avaliação</span>
+                        <div class="flex items-center gap-1 text-sm font-bold text-navy mt-0.5">
+                            <i class="fa-solid fa-star text-[#FBBF24] text-xs"></i> 4.7
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end">
+                        <span class="text-[11px] text-muted font-semibold uppercase tracking-wider">Serviços</span>
+                        <span class="text-sm font-bold text-navy mt-0.5">312</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

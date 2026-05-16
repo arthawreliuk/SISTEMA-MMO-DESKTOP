@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Center CMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        softgrey: '#FBFBFC',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        'pill': '9999px',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .row-hover:hover .quick-actions { opacity: 1; }
+        .quick-actions { opacity: 0; transition: opacity 0.2s ease; }
+    </style>
+</head>
+<body class="min-h-screen bg-offwhite font-sans antialiased text-navy">
+
+    <!-- Global Nav Header -->
+    <header id="global-header" class="w-full max-w-[1200px] mx-auto px-6 py-6 flex justify-between items-center">
+        <div class="flex items-center space-x-2 text-sm font-medium text-gray-500">
+            <span>Admin</span>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <span>Central de Modelos</span>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <span class="text-navy font-semibold">Gestão</span>
+        </div>
+        <button onclick="window.location.href='Tela 1 - Home da central.html'" class="bg-trustblue text-white px-6 py-2.5 rounded-pill font-medium text-sm shadow-md hover:bg-blue-700 transition-colors">
+            Novo Arquivo
+        </button>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="w-full max-w-[1200px] mx-auto px-6 pb-12">
+        
+        <!-- CMS Canvas Container -->
+        <div id="cms-canvas" class="bg-white rounded-4xl shadow-ambient overflow-hidden flex flex-col lg:flex-row min-h-[800px]">
+            
+            <!-- Master File Data Grid (70%) -->
+            <section id="master-grid" class="w-full lg:w-[70%] p-8 border-r border-gray-100 flex flex-col">
+                
+                <!-- Toolbar -->
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex space-x-2 overflow-x-auto pb-2 lg:pb-0">
+                        <button class="px-5 py-2 rounded-pill bg-trustblue text-white text-sm font-medium">Todos os Tipos</button>
+                        <button class="px-5 py-2 rounded-pill bg-gray-50 text-gray-600 hover:bg-gray-100 text-sm font-medium transition-colors">PDF</button>
+                        <button class="px-5 py-2 rounded-pill bg-gray-50 text-gray-600 hover:bg-gray-100 text-sm font-medium transition-colors">XLSX</button>
+                        <button class="px-5 py-2 rounded-pill bg-gray-50 text-gray-600 hover:bg-gray-100 text-sm font-medium transition-colors">DOCX</button>
+                    </div>
+                    <div class="relative w-64 hidden md:block">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                        <input type="text" placeholder="Buscar arquivos..." class="w-full bg-gray-50 rounded-pill py-2.5 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-trustblue/20">
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="flex-1 overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100">
+                                <th class="pb-4 pl-4 font-medium">Nome do Arquivo</th>
+                                <th class="pb-4 font-medium">Categoria</th>
+                                <th class="pb-4 font-medium">Tamanho</th>
+                                <th class="pb-4 font-medium hidden sm:table-cell">Upload em</th>
+                                <th class="pb-4 font-medium hidden md:table-cell">Downloads</th>
+                                <th class="pb-4 pr-4 text-right font-medium">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <!-- Row 1 -->
+                            <tr class="border-b border-gray-50 row-hover group transition-colors hover:bg-gray-50/50">
+                                <td class="py-4 pl-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-red-500">
+                                            <i class="fa-solid fa-file-pdf"></i>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-semibold text-navy">Relatório_Financeiro_Q3.pdf</span>
+                                            <div class="quick-actions flex space-x-3 mt-1 text-xs text-gray-400">
+                                                <button class="hover:text-trustblue"><i class="fa-solid fa-pen"></i> Edit</button>
+                                                <button class="hover:text-trustblue"><i class="fa-solid fa-rotate"></i> Replace</button>
+                                                <button class="hover:text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 text-gray-600">Financeiro</td>
+                                <td class="py-4 text-gray-600">2.4 MB</td>
+                                <td class="py-4 text-gray-600 hidden sm:table-cell">24 Out 2024</td>
+                                <td class="py-4 hidden md:table-cell">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="font-medium">1,245</span>
+                                        <i class="fa-solid fa-arrow-trend-up text-green-500 text-xs"></i>
+                                    </div>
+                                </td>
+                                <td class="py-4 pr-4 text-right">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" checked class="sr-only peer">
+                                        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-trustblue"></div>
+                                    </label>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr class="border-b border-gray-50 row-hover group transition-colors hover:bg-gray-50/50">
+                                <td class="py-4 pl-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center text-green-600">
+                                            <i class="fa-solid fa-file-excel"></i>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-semibold text-navy">Planilha_Projecao_2025.xlsx</span>
+                                            <div class="quick-actions flex space-x-3 mt-1 text-xs text-gray-400">
+                                                <button class="hover:text-trustblue"><i class="fa-solid fa-pen"></i> Edit</button>
+                                                <button class="hover:text-trustblue"><i class="fa-solid fa-rotate"></i> Replace</button>
+                                                <button class="hover:text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 text-gray-600">Estratégia</td>
+                                <td class="py-4 text-gray-600">856 KB</td>
+                                <td class="py-4 text-gray-600 hidden sm:table-cell">22 Out 2024</td>
+                                <td class="py-4 hidden md:table-cell">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="font-medium">892</span>
+                                        <i class="fa-solid fa-arrow-trend-up text-green-500 text-xs"></i>
+                                    </div>
+                                </td>
+                                <td class="py-4 pr-4 text-right">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" checked class="sr-only peer">
+                                        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-trustblue"></div>
+                                    </label>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3 -->
+                            <tr class="border-b border-gray-50 row-hover group transition-colors hover:bg-gray-50/50">
+                                <td class="py-4 pl-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-500">
+                                            <i class="fa-solid fa-file-word"></i>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-semibold text-navy">Contrato_Termos_Uso_v2.docx</span>
+                                            <div class="quick-actions flex space-x-3 mt-1 text-xs text-gray-400">
+                                                <button class="hover:text-trustblue"><i class="fa-solid fa-pen"></i> Edit</button>
+                                                <button class="hover:text-trustblue"><i class="fa-solid fa-rotate"></i> Replace</button>
+                                                <button class="hover:text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 text-gray-600">Legal</td>
+                                <td class="py-4 text-gray-600">1.2 MB</td>
+                                <td class="py-4 text-gray-600 hidden sm:table-cell">15 Out 2024</td>
+                                <td class="py-4 hidden md:table-cell">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="font-medium">45</span>
+                                        <i class="fa-solid fa-arrow-trend-down text-red-500 text-xs"></i>
+                                    </div>
+                                </td>
+                                <td class="py-4 pr-4 text-right">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer">
+                                        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-trustblue"></div>
+                                    </label>
+                                </td>
+                            </tr>
+                            
+                             <!-- Row 4 -->
+                             <tr class="border-b border-gray-50 row-hover group transition-colors hover:bg-gray-50/50">
+                                <td class="py-4 pl-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-red-500">
+                                            <i class="fa-solid fa-file-pdf"></i>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-semibold text-navy">Apresentacao_Board_Q3.pdf</span>
+                                            <div class="quick-actions flex space-x-3 mt-1 text-xs text-gray-400">
+                                                <button class="hover:text-trustblue"><i class="fa-solid fa-pen"></i> Edit</button>
+                                                <button class="hover:text-trustblue"><i class="fa-solid fa-rotate"></i> Replace</button>
+                                                <button class="hover:text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 text-gray-600">Institucional</td>
+                                <td class="py-4 text-gray-600">5.8 MB</td>
+                                <td class="py-4 text-gray-600 hidden sm:table-cell">10 Out 2024</td>
+                                <td class="py-4 hidden md:table-cell">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="font-medium">210</span>
+                                        <i class="fa-solid fa-arrow-trend-up text-green-500 text-xs"></i>
+                                    </div>
+                                </td>
+                                <td class="py-4 pr-4 text-right">
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" checked class="sr-only peer">
+                                        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-trustblue"></div>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination (Optional visual) -->
+                <div class="mt-6 flex justify-between items-center text-sm text-gray-500">
+                    <span>Mostrando 1 a 4 de 124 arquivos</span>
+                    <div class="flex space-x-2">
+                        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-50"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded-lg bg-trustblue text-white font-medium">1</button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-50 font-medium">2</button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-50 font-medium">3</button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-50"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Global Upload Studio Sidebar (30%) -->
+            <section id="upload-studio" class="w-full lg:w-[30%] bg-softgrey p-8 flex flex-col h-full border-l border-gray-100">
+                
+                <h2 class="text-lg font-bold text-navy mb-6">Upload Studio</h2>
+
+                <!-- The Dropzone -->
+                <div class="w-full h-48 border-2 border-dashed border-trustblue/40 rounded-2xl bg-trustblue/[0.02] flex flex-col items-center justify-center cursor-pointer hover:bg-trustblue/[0.05] transition-colors mb-8 group">
+                    <div class="w-12 h-12 rounded-full bg-trustblue/10 flex items-center justify-center text-trustblue mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
+                    </div>
+                    <p class="text-sm font-medium text-navy text-center px-4">Arraste o arquivo ou clique para selecionar</p>
+                    <p class="text-xs text-gray-400 mt-1">PDF, XLSX, DOCX (Max 50MB)</p>
+                </div>
+
+                <!-- Metadata Inputs -->
+                <div class="flex-1 space-y-5">
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 ml-2">Nome de Exibição</label>
+                        <input type="text" placeholder="Ex: Relatório Anual 2024" class="w-full bg-white rounded-pill py-3 px-5 text-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-trustblue/20 focus:border-trustblue transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 ml-2">Categoria</label>
+                        <div class="relative">
+                            <select class="w-full bg-white rounded-pill py-3 px-5 text-sm border border-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-trustblue/20 focus:border-trustblue transition-all text-gray-600">
+                                <option>Selecione uma categoria</option>
+                                <option>Financeiro</option>
+                                <option>Estratégia</option>
+                                <option>Legal</option>
+                                <option>Institucional</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 ml-2">Descrição Breve</label>
+                        <textarea rows="3" placeholder="Adicione uma descrição..." class="w-full bg-white rounded-[20px] py-3 px-5 text-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-trustblue/20 focus:border-trustblue transition-all resize-none"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 ml-2">Plano de Acesso</label>
+                        <div class="relative">
+                            <select class="w-full bg-white rounded-pill py-3 px-5 text-sm border border-gray-200 appearance-none focus:outline-none focus:ring-2 focus:ring-trustblue/20 focus:border-trustblue transition-all text-gray-600">
+                                <option>Gratuito</option>
+                                <option>Apenas Assinantes</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Publishing CTA -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <button class="w-full bg-trustblue text-white py-4 rounded-pill font-bold text-sm shadow-lg shadow-trustblue/20 hover:bg-blue-700 hover:shadow-xl transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <span>Publicar Material</span>
+                    </button>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+</body>
+</html>

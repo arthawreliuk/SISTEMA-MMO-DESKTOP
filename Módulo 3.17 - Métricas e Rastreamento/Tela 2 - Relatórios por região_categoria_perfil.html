@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#64748B',
+                        },
+                        border: '#F1F5F9',
+                        success: '#10B981',
+                        danger: '#EF4444',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    },
+                    borderRadius: {
+                        'xl': '24px',
+                        'pill': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-panel { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation / Admin Control Bar -->
+    <header id="admin-control-bar" class="w-full bg-surface border-b border-border px-8 py-4 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-[1440px] mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                    <i class="fa-solid fa-chart-pie text-xl"></i>
+                </div>
+                <nav class="flex items-center text-sm font-medium text-text-muted">
+                    <a href="#" class="hover:text-primary transition-colors">Painel</a>
+                    <i class="fa-solid fa-chevron-right text-[10px] mx-3"></i>
+                    <a href="#" class="hover:text-primary transition-colors">Analytics</a>
+                    <i class="fa-solid fa-chevron-right text-[10px] mx-3"></i>
+                    <span class="text-text-main font-semibold">Relatórios Detalhados</span>
+                </nav>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-3 border-r border-border pr-6">
+                    <button class="w-10 h-10 rounded-full hover:bg-background flex items-center justify-center text-text-muted transition-colors relative">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-danger rounded-full border-2 border-surface"></span>
+                    </button>
+                    <div class="flex items-center gap-3 cursor-pointer">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin" class="w-10 h-10 rounded-full object-cover border-2 border-border">
+                        <div class="hidden md:block">
+                            <p class="text-sm font-semibold text-text-main leading-tight">Gabriel Costa</p>
+                            <p class="text-xs text-text-muted">Principal Data Officer</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="window.location.href='Tela 3 - Blocos resumidos de desempenho.html'" class="bg-primary text-white px-6 py-3 rounded-pill font-semibold text-sm hover:bg-primary/90 transition-all shadow-[0_4px_14px_0_rgba(0,22,220,0.39)] flex items-center gap-2">
+                    <i class="fa-solid fa-download"></i>
+                    Exportar Massa de Dados
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="flex-1 w-full max-w-[1440px] mx-auto px-8 py-8 flex flex-col gap-6">
+
+        <!-- Advanced Filter Strip -->
+        <section id="filter-search-strip" class="bg-surface rounded-xl shadow-soft p-4 flex flex-col lg:flex-row justify-between items-center gap-4">
+            <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+                <div class="flex items-center gap-2 px-4 py-2.5 bg-background rounded-pill border border-border cursor-pointer hover:border-primary/30 transition-colors">
+                    <i class="fa-solid fa-location-dot text-text-muted text-sm"></i>
+                    <span class="text-sm font-medium text-text-main">Região: <span class="text-primary">SC - Litoral</span></span>
+                    <i class="fa-solid fa-chevron-down text-text-muted text-xs ml-2"></i>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2.5 bg-background rounded-pill border border-border cursor-pointer hover:border-primary/30 transition-colors">
+                    <i class="fa-solid fa-layer-group text-text-muted text-sm"></i>
+                    <span class="text-sm font-medium text-text-main">Categoria: <span class="text-primary">Construção Civil</span></span>
+                    <i class="fa-solid fa-chevron-down text-text-muted text-xs ml-2"></i>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2.5 bg-background rounded-pill border border-border cursor-pointer hover:border-primary/30 transition-colors">
+                    <i class="fa-solid fa-user-tie text-text-muted text-sm"></i>
+                    <span class="text-sm font-medium text-text-main">Perfil: <span class="text-primary">Contas Corporativas</span></span>
+                    <i class="fa-solid fa-chevron-down text-text-muted text-xs ml-2"></i>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2.5 bg-background rounded-pill border border-border cursor-pointer hover:border-primary/30 transition-colors">
+                    <i class="fa-regular fa-calendar text-text-muted text-sm"></i>
+                    <span class="text-sm font-medium text-text-main">Data: <span class="text-primary">Q2 2026</span></span>
+                    <i class="fa-solid fa-chevron-down text-text-muted text-xs ml-2"></i>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 w-full lg:w-auto">
+                <button class="px-5 py-2.5 text-sm font-medium text-text-muted hover:text-text-main transition-colors">
+                    Limpar
+                </button>
+                <button class="bg-text-main text-white px-6 py-2.5 rounded-pill font-semibold text-sm hover:bg-text-main/90 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-filter"></i>
+                    Aplicar Filtros
+                </button>
+            </div>
+        </section>
+
+        <!-- KPI Summary Cards -->
+        <section id="kpi-summary" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-surface rounded-xl p-6 shadow-soft border border-border/50 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-10 -mt-10"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-sm font-medium text-text-muted mb-1">Receita Total (Q2)</p>
+                        <h3 class="text-2xl font-bold text-text-main">R$ 14.2M</h3>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-success bg-success/10 px-2 py-0.5 rounded flex items-center gap-1 font-medium">
+                        <i class="fa-solid fa-arrow-trend-up text-xs"></i> +12.5%
+                    </span>
+                    <span class="text-text-muted">vs último trimestre</span>
+                </div>
+            </div>
+            
+            <div class="bg-surface rounded-xl p-6 shadow-soft border border-border/50 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#06B6D4]/5 rounded-bl-full -mr-10 -mt-10"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-sm font-medium text-text-muted mb-1">Ticket Médio</p>
+                        <h3 class="text-2xl font-bold text-text-main">R$ 84.5K</h3>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-[#06B6D4]/10 flex items-center justify-center text-[#06B6D4]">
+                        <i class="fa-solid fa-tag"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-success bg-success/10 px-2 py-0.5 rounded flex items-center gap-1 font-medium">
+                        <i class="fa-solid fa-arrow-trend-up text-xs"></i> +4.2%
+                    </span>
+                    <span class="text-text-muted">vs último trimestre</span>
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 shadow-soft border border-border/50 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#8B5CF6]/5 rounded-bl-full -mr-10 -mt-10"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-sm font-medium text-text-muted mb-1">Taxa de Conversão</p>
+                        <h3 class="text-2xl font-bold text-text-main">18.4%</h3>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-[#8B5CF6]/10 flex items-center justify-center text-[#8B5CF6]">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-danger bg-danger/10 px-2 py-0.5 rounded flex items-center gap-1 font-medium">
+                        <i class="fa-solid fa-arrow-trend-down text-xs"></i> -1.2%
+                    </span>
+                    <span class="text-text-muted">vs último trimestre</span>
+                </div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 shadow-soft border border-border/50 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#F59E0B]/5 rounded-bl-full -mr-10 -mt-10"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-sm font-medium text-text-muted mb-1">CAC Médio</p>
+                        <h3 class="text-2xl font-bold text-text-main">R$ 2.450</h3>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-[#F59E0B]/10 flex items-center justify-center text-[#F59E0B]">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-success bg-success/10 px-2 py-0.5 rounded flex items-center gap-1 font-medium">
+                        <i class="fa-solid fa-arrow-trend-down text-xs"></i> -8.5%
+                    </span>
+                    <span class="text-text-muted">vs último trimestre</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Macro Analytics Canvas -->
+        <section id="macro-analytics-canvas" class="bg-surface rounded-xl shadow-soft p-6 border border-border/50">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-lg font-bold text-text-main">Comparativo de Receita: Camboriú vs. Itajaí</h2>
+                    <p class="text-sm text-text-muted mt-1">Análise de crescimento regional ao longo de Q2 2026</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-primary"></span>
+                        <span class="text-sm text-text-main font-medium">Camboriú</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-[#06B6D4]"></span>
+                        <span class="text-sm text-text-main font-medium">Itajaí</span>
+                    </div>
+                    <div class="h-6 w-px bg-border mx-2"></div>
+                    <button class="p-2 text-text-muted hover:text-text-main transition-colors rounded-lg hover:bg-background">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mainChart" class="w-full h-[380px]"></div>
+        </section>
+
+        <!-- Micro Pivot Table Grid -->
+        <section id="micro-pivot-table-grid" class="bg-surface rounded-xl shadow-soft border border-border/50 overflow-hidden flex flex-col">
+            <div class="p-6 border-b border-border flex justify-between items-center bg-white">
+                <div>
+                    <h2 class="text-lg font-bold text-text-main">Detalhamento por Região e Categoria</h2>
+                    <p class="text-sm text-text-muted mt-1">Métricas operacionais e de conversão</p>
+                </div>
+                <div class="relative">
+                    <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-sm"></i>
+                    <input type="text" placeholder="Buscar na tabela..." class="pl-9 pr-4 py-2 bg-background border border-border rounded-lg text-sm focus:outline-none focus:border-primary w-64 transition-colors">
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-[#F8F9FA]/50 border-b border-border text-xs uppercase tracking-wider text-text-muted font-semibold">
+                            <th class="px-6 py-4">Região</th>
+                            <th class="px-6 py-4">Categoria</th>
+                            <th class="px-6 py-4 text-right">Ticket Médio</th>
+                            <th class="px-6 py-4 text-right">Total de Leads</th>
+                            <th class="px-6 py-4">Conversão % <span class="text-[10px] font-normal lowercase ml-1">(trend 30d)</span></th>
+                            <th class="px-6 py-4 text-right">CAC</th>
+                            <th class="px-6 py-4 text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm text-text-main divide-y divide-[#F1F5F9]">
+                        <tr class="hover:bg-background/50 transition-colors group">
+                            <td class="px-6 py-4 font-medium">Balneário Camboriú</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    Construção Civil
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-semibold">R$ 125.000</td>
+                            <td class="px-6 py-4 text-right">1,245</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-semibold text-success">22.4%</span>
+                                    <div id="spark1" class="w-16 h-6"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">R$ 1.850</td>
+                            <td class="px-6 py-4 text-center">
+                                <button class="text-text-muted hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-background/50 transition-colors group">
+                            <td class="px-6 py-4 font-medium">Itajaí</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                    Logística
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-semibold">R$ 95.500</td>
+                            <td class="px-6 py-4 text-right">890</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-semibold text-text-main">18.2%</span>
+                                    <div id="spark2" class="w-16 h-6"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">R$ 2.100</td>
+                            <td class="px-6 py-4 text-center">
+                                <button class="text-text-muted hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-background/50 transition-colors group">
+                            <td class="px-6 py-4 font-medium">Florianópolis</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                                    Tecnologia
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-semibold">R$ 45.200</td>
+                            <td class="px-6 py-4 text-right">2,100</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-semibold text-danger">14.5%</span>
+                                    <div id="spark3" class="w-16 h-6"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">R$ 950</td>
+                            <td class="px-6 py-4 text-center">
+                                <button class="text-text-muted hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-background/50 transition-colors group">
+                            <td class="px-6 py-4 font-medium">Joinville</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                                    Manufatura
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-semibold">R$ 210.000</td>
+                            <td class="px-6 py-4 text-right">450</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-semibold text-success">28.1%</span>
+                                    <div id="spark4" class="w-16 h-6"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">R$ 4.500</td>
+                            <td class="px-6 py-4 text-center">
+                                <button class="text-text-muted hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                            </td>
+                        </tr>
+                         <tr class="hover:bg-background/50 transition-colors group">
+                            <td class="px-6 py-4 font-medium">Blumenau</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+                                    Têxtil
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right font-semibold">R$ 68.000</td>
+                            <td class="px-6 py-4 text-right">1,050</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-semibold text-text-main">19.8%</span>
+                                    <div id="spark5" class="w-16 h-6"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">R$ 1.200</td>
+                            <td class="px-6 py-4 text-center">
+                                <button class="text-text-muted hover:text-primary transition-colors opacity-0 group-hover:opacity-100"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Table Pagination Footer -->
+            <div id="table-pagination-footer" class="p-4 border-t border-border bg-white flex items-center justify-between">
+                <span class="text-sm text-text-muted">Mostrando <span class="font-semibold text-text-main">1</span> a <span class="font-semibold text-text-main">5</span> de <span class="font-semibold text-text-main">42</span> resultados</span>
+                <div class="flex items-center gap-2">
+                    <button class="px-4 py-2 text-sm font-medium text-text-muted bg-background rounded-pill hover:bg-border transition-colors disabled:opacity-50" disabled>Anterior</button>
+                    <div class="flex items-center gap-1">
+                        <button class="w-8 h-8 flex items-center justify-center text-sm font-semibold bg-primary text-white rounded-full shadow-sm">1</button>
+                        <button class="w-8 h-8 flex items-center justify-center text-sm font-medium text-text-muted hover:bg-background rounded-full transition-colors">2</button>
+                        <button class="w-8 h-8 flex items-center justify-center text-sm font-medium text-text-muted hover:bg-background rounded-full transition-colors">3</button>
+                        <span class="text-text-muted mx-1">...</span>
+                        <button class="w-8 h-8 flex items-center justify-center text-sm font-medium text-text-muted hover:bg-background rounded-full transition-colors">9</button>
+                    </div>
+                    <button class="px-4 py-2 text-sm font-medium text-text-main bg-background rounded-pill hover:bg-border transition-colors border border-border">Próxima</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function initializeCharts() {
+            // Main Line Chart
+            const xLabels = ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7', 'Sem 8', 'Sem 9', 'Sem 10', 'Sem 11', 'Sem 12'];
+            
+            const trace1 = {
+                x: xLabels,
+                y: [4.2, 4.8, 5.1, 5.9, 6.2, 6.8, 7.5, 8.1, 8.9, 9.5, 10.2, 11.5],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Camboriú',
+                line: { shape: 'spline', smoothing: 1.3, color: '#0016dc', width: 3 },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(0, 22, 220, 0.05)'
+            };
+
+            const trace2 = {
+                x: xLabels,
+                y: [3.8, 4.1, 4.5, 4.8, 5.4, 5.7, 6.1, 6.5, 7.2, 7.8, 8.4, 9.1],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Itajaí',
+                line: { shape: 'spline', smoothing: 1.3, color: '#06B6D4', width: 3 },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(6, 182, 212, 0.05)'
+            };
+
+            const layout = {
+                margin: { t: 10, r: 10, b: 40, l: 40 },
+                plot_bgcolor: 'transparent',
+                paper_bgcolor: 'transparent',
+                showlegend: false,
+                xaxis: { 
+                    showgrid: true, 
+                    gridcolor: '#F1F5F9',
+                    tickfont: { color: '#64748B', family: '"Plus Jakarta Sans", sans-serif' },
+                    linecolor: 'transparent'
+                },
+                yaxis: { 
+                    showgrid: true, 
+                    gridcolor: '#F1F5F9',
+                    tickfont: { color: '#64748B', family: '"Plus Jakarta Sans", sans-serif' },
+                    linecolor: 'transparent',
+                    tickprefix: 'R$ ',
+                    ticksuffix: 'M'
+                },
+                hovermode: 'x unified'
+            };
+
+            Plotly.newPlot('mainChart', [trace1, trace2], layout, {responsive: true, displayModeBar: false});
+
+            // Sparklines
+            const sparkLayout = {
+                margin: { t: 0, r: 0, b: 0, l: 0 },
+                xaxis: { visible: false },
+                yaxis: { visible: false },
+                showlegend: false,
+                plot_bgcolor: 'transparent',
+                paper_bgcolor: 'transparent',
+                height: 24,
+                width: 64
+            };
+
+            const sparkData = [
+                { id: 'spark1', data: [15, 18, 16, 20, 22, 21, 25], color: '#10B981' },
+                { id: 'spark2', data: [20, 19, 18, 19, 17, 18, 18], color: '#64748B' },
+                { id: 'spark3', data: [22, 20, 18, 15, 16, 14, 12], color: '#EF4444' },
+                { id: 'spark4', data: [10, 15, 18, 22, 25, 28, 30], color: '#10B981' },
+                { id: 'spark5', data: [18, 19, 20, 19, 21, 20, 20], color: '#64748B' }
+            ];
+
+            sparkData.forEach(spark => {
+                const trace = {
+                    y: spark.data,
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: { shape: 'spline', smoothing: 1, color: spark.color, width: 2 }
+                };
+                Plotly.newPlot(spark.id, [trace], sparkLayout, {displayModeBar: false, staticPlot: true});
+            });
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

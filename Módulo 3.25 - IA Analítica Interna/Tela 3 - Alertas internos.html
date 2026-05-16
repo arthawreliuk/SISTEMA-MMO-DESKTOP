@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Crisis Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'off-white': '#F8F9FA',
+                        'deep-navy': '#1A1A24',
+                        'trust-blue': '#0016dc',
+                        'deep-crimson': '#EF4444',
+                        'neon-purple': '#BF80FF',
+                        'soft-grey': '#FBFBFC',
+                    },
+                    boxShadow: {
+                        'glow-purple': '0 0 20px rgba(191, 128, 255, 0.3)',
+                        'glow-red': '0 0 20px rgba(239, 68, 68, 0.15)',
+                        'bento': '0 4px 24px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .toggle-checkbox:checked { right: 0; border-color: #BF80FF; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #BF80FF; }
+        .toggle-checkbox:checked + .toggle-label:after { transform: translateX(100%); border-color: white; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col items-center">
+
+    <!-- Global Header -->
+    <header id="header" class="w-full bg-white border-t-[3px] border-t-deep-crimson border-b border-gray-100 shadow-sm sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-deep-navy flex items-center justify-center text-white">
+                    <i class="fa-solid fa-shield-halved text-sm"></i>
+                </div>
+                <span class="font-bold text-lg text-deep-navy tracking-tight">FinGuard AI</span>
+                <span class="px-2 py-0.5 ml-2 rounded text-[10px] font-bold bg-red-50 text-deep-crimson uppercase tracking-wider border border-red-100">War Room Active</span>
+            </div>
+            <nav class="flex items-center gap-6">
+                <a href="#" class="text-sm font-medium text-gray-500 hover:text-deep-navy transition-colors">Overview</a>
+                <a href="#" class="text-sm font-medium text-deep-navy border-b-2 border-deep-navy py-5">Active Incidents</a>
+                <a href="#" class="text-sm font-medium text-gray-500 hover:text-deep-navy transition-colors">Audit Logs</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors relative">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-deep-crimson rounded-full border-2 border-white"></span>
+                </button>
+                <div class="h-8 w-px bg-gray-200"></div>
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin" class="w-9 h-9 rounded-full object-cover border border-gray-200">
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="w-full max-w-[1200px] mx-auto px-6 py-8 flex-1 flex flex-col gap-6">
+        
+        <!-- Top Alert Banner -->
+        <section id="alert-banner" class="w-full bg-white rounded-[24px] p-8 shadow-glow-red border border-red-50 relative overflow-hidden flex items-center justify-between">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-50/50 to-transparent pointer-events-none"></div>
+            <div class="relative z-10 flex flex-col gap-2">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-deep-crimson">
+                        <i class="fa-solid fa-triangle-exclamation text-sm"></i>
+                    </span>
+                    <h1 class="text-3xl font-bold text-deep-navy tracking-tight">Incidente Preditivo Aberto: #INC-889</h1>
+                </div>
+                <p class="text-gray-500 text-sm ml-11">Detectado comportamento anômalo em múltiplos nós de autenticação.</p>
+            </div>
+            <div class="relative z-10">
+                <div class="px-4 py-2 rounded-full bg-orange-50 border border-orange-200 flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></div>
+                    <span class="text-sm font-semibold text-orange-700">Investigando (via IA)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Grid Bottom -->
+        <div class="flex flex-col lg:flex-row gap-6 h-full min-h-[500px]">
+            
+            <!-- Left Panel: Timeline (65%) -->
+            <section id="timeline-panel" class="w-full lg:w-[65%] bg-white rounded-[24px] p-8 shadow-bento border border-gray-100 flex flex-col">
+                <div class="flex items-center justify-between mb-8 border-b border-gray-100 pb-4">
+                    <h2 class="text-xl font-bold text-deep-navy flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-gray-400"></i>
+                        Linha do Tempo da Anomalia
+                    </h2>
+                    <button class="text-sm text-trust-blue font-medium hover:underline">Ver Logs Brutos</button>
+                </div>
+
+                <div class="relative flex-1 pl-4">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-[23px] top-4 bottom-4 w-px bg-gray-200"></div>
+
+                    <!-- Point 1 -->
+                    <div class="relative flex gap-6 mb-10 group">
+                        <div class="w-4 h-4 rounded-full bg-gray-200 border-4 border-white shadow-sm z-10 mt-1"></div>
+                        <div class="flex flex-col">
+                            <span class="text-sm font-bold text-gray-400 mb-1">08:00</span>
+                            <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                                <p class="text-deep-navy font-medium">Padrão normal de acessos.</p>
+                                <p class="text-sm text-gray-500 mt-1">Tráfego dentro da média histórica diária.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Point 2 (AI Detect) -->
+                    <div class="relative flex gap-6 mb-10 group">
+                        <div class="w-4 h-4 rounded-full bg-neon-purple border-4 border-white shadow-glow-purple z-10 mt-1 relative">
+                            <div class="absolute inset-0 rounded-full bg-neon-purple animate-ping opacity-40"></div>
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <span class="text-sm font-bold text-neon-purple mb-1 flex items-center gap-2">
+                                10:15 <i class="fa-solid fa-sparkles text-xs"></i> IA Detect
+                            </span>
+                            <div class="bg-purple-50 rounded-xl p-4 border border-purple-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute right-0 top-0 w-32 h-32 bg-neon-purple/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
+                                <p class="text-deep-navy font-semibold relative z-10">IA detecta pico de 300% em recusas de login em Balneário Camboriú.</p>
+                                <div class="mt-3 flex gap-2 relative z-10">
+                                    <span class="px-2 py-1 bg-white rounded text-xs font-medium text-gray-600 border border-gray-200">IPs: 45.x.x.x</span>
+                                    <span class="px-2 py-1 bg-white rounded text-xs font-medium text-gray-600 border border-gray-200">Tentativas: 12.4k/min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Point 3 (Current) -->
+                    <div class="relative flex gap-6 group">
+                        <div class="w-4 h-4 rounded-full bg-deep-crimson border-4 border-white shadow-glow-red z-10 mt-1"></div>
+                        <div class="flex flex-col w-full">
+                            <span class="text-sm font-bold text-deep-crimson mb-1">10:30 (Atual)</span>
+                            <div class="bg-red-50 rounded-xl p-4 border border-red-100 shadow-sm">
+                                <p class="text-deep-navy font-semibold">Bloqueio preventivo ativado pela IA.</p>
+                                <p class="text-sm text-gray-600 mt-1">Região isolada temporariamente do core bancário.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Mitigation (35%) -->
+            <section id="mitigation-panel" class="w-full lg:w-[35%] bg-soft-grey rounded-[24px] p-8 shadow-bento border border-gray-200 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-deep-navy flex items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-neon-purple"></i>
+                            Ações de Mitigação
+                        </h2>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6">Ações recomendadas pela IA com base no playbook de segurança nível 4.</p>
+
+                    <div class="flex flex-col gap-4">
+                        <!-- Action 1 -->
+                        <div class="bg-white rounded-xl p-4 border border-gray-200 flex items-center justify-between shadow-sm hover:border-neon-purple/50 transition-colors">
+                            <div class="flex flex-col pr-4">
+                                <span class="text-sm font-semibold text-deep-navy">Bloquear IPs suspeitos automaticamente</span>
+                                <span class="text-xs text-gray-500 mt-0.5">Aplica regras no WAF Cloudflare</span>
+                            </div>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="toggle1" checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 top-0 transition-transform duration-300 ease-in-out translate-x-6 border-neon-purple"/>
+                                <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-neon-purple cursor-pointer shadow-glow-purple"></label>
+                            </div>
+                        </div>
+
+                        <!-- Action 2 -->
+                        <div class="bg-white rounded-xl p-4 border border-gray-200 flex items-center justify-between shadow-sm">
+                            <div class="flex flex-col pr-4">
+                                <span class="text-sm font-semibold text-deep-navy">Forçar MFA para região afetada</span>
+                                <span class="text-xs text-gray-500 mt-0.5">Exige 2FA via App para SC</span>
+                            </div>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 top-0 transition-transform duration-300 ease-in-out border-gray-300"/>
+                                <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </div>
+                        
+                        <!-- Action 3 -->
+                        <div class="bg-white rounded-xl p-4 border border-gray-200 flex items-center justify-between shadow-sm">
+                            <div class="flex flex-col pr-4">
+                                <span class="text-sm font-semibold text-deep-navy">Notificar equipe SecOps</span>
+                                <span class="text-xs text-gray-500 mt-0.5">Dispara alerta no PagerDuty</span>
+                            </div>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="toggle3" checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 top-0 transition-transform duration-300 ease-in-out translate-x-6 border-neon-purple"/>
+                                <label for="toggle3" class="toggle-label block overflow-hidden h-6 rounded-full bg-neon-purple cursor-pointer shadow-glow-purple"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <button onclick="window.location.href='Tela 4 - Leitura de classificação de perda.html'" class="w-full bg-trust-blue hover:bg-blue-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check-double"></i>
+                        Resolver Incidente e Notificar Usuários
+                    </button>
+                    <p class="text-center text-xs text-gray-400 mt-3">Ação irreversível. Requer aprovação de nível 2.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full bg-white border-t border-gray-100 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between text-xs text-gray-400">
+            <span>&copy; 2026 FinGuard AI Systems. Secure Internal Network.</span>
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> System Status: Operational</span>
+                <span>Latency: 12ms</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple toggle logic for visual feedback
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                if(this.checked) {
+                    this.classList.replace('translate-x-0', 'translate-x-6');
+                    this.classList.replace('border-gray-300', 'border-neon-purple');
+                    label.classList.replace('bg-gray-300', 'bg-neon-purple');
+                    label.classList.add('shadow-glow-purple');
+                } else {
+                    this.classList.replace('translate-x-6', 'translate-x-0');
+                    this.classList.replace('border-neon-purple', 'border-gray-300');
+                    label.classList.replace('bg-neon-purple', 'bg-gray-300');
+                    label.classList.remove('shadow-glow-purple');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

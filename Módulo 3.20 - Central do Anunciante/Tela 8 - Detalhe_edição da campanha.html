@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Campaign Edit & Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        grey: {
+                            50: '#F9FAFB',
+                            100: '#F3F4F6',
+                            200: '#E5E7EB',
+                            300: '#D1D5DB',
+                            400: '#9CA3AF',
+                            500: '#6B7280',
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.02)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+    </style>
+</head>
+<body class="text-navy antialiased min-h-screen flex flex-col items-center py-10 px-4 md:px-8">
+
+    <!-- Top Nav / Control Bar -->
+    <header id="control-bar" class="w-full max-w-[1200px] mb-8 flex justify-between items-center">
+        <div class="flex items-center gap-3 text-sm font-medium text-grey-500">
+            <a href="#" class="hover:text-trustblue transition-colors">Central de Ads</a>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <a href="#" class="hover:text-trustblue transition-colors">Gerenciador</a>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <span class="text-navy font-semibold">Editar Campanha</span>
+        </div>
+        <button class="px-5 py-2.5 rounded-full border border-grey-200 text-navy font-semibold text-sm hover:border-trustblue hover:text-trustblue transition-all bg-white shadow-sm">
+            Ver Relatório Completo
+        </button>
+    </header>
+
+    <!-- The Control Room Canvas -->
+    <main id="control-room-canvas" class="w-full max-w-[1200px] bg-white rounded-[24px] shadow-ambient overflow-hidden flex flex-col">
+        
+        <!-- 3-Panel Split Layout -->
+        <div class="flex flex-col lg:flex-row w-full flex-grow">
+            
+            <!-- Panel 1: Global Status & Ad Preview (30%) -->
+            <section id="panel-1-preview" class="w-full lg:w-[30%] p-8 border-b lg:border-b-0 lg:border-r border-grey-100 flex flex-col items-center relative">
+                
+                <div class="w-full flex justify-between items-center mb-8">
+                    <h2 class="text-lg font-bold">Criativo</h2>
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold border border-emerald-100">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Rodando
+                    </span>
+                </div>
+
+                <!-- Mobile Wireframe Preview -->
+                <div class="relative w-[260px] h-[520px] bg-white rounded-[32px] border-[6px] border-grey-100 shadow-xl overflow-hidden mb-8 flex flex-col">
+                    <!-- Fake Header -->
+                    <div class="px-4 py-3 border-b border-grey-100 flex items-center gap-3">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Avatar" class="w-8 h-8 rounded-full object-cover">
+                        <div class="flex flex-col">
+                            <span class="text-xs font-bold">Sua Empresa</span>
+                            <span class="text-[10px] text-grey-500">Patrocinado</span>
+                        </div>
+                    </div>
+                    <!-- Ad Image Placeholder -->
+                    <div class="w-full h-[280px] bg-grey-50 relative overflow-hidden">
+                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d2967a26b0-7eef85616d59d46c2eef.png" alt="Modern fintech mobile app UI showing a sleek dashboard with dark theme and neon blue accents, hyper-realistic, high resolution" />
+                    </div>
+                    <!-- Ad Copy -->
+                    <div class="p-4 flex flex-col gap-2">
+                        <p class="text-xs font-semibold">Transforme sua gestão financeira hoje.</p>
+                        <p class="text-[10px] text-grey-500 line-clamp-2">Descubra a nova plataforma que simplifica seus pagamentos com taxas menores.</p>
+                        <button class="mt-2 w-full py-2 bg-grey-100 text-navy text-[10px] font-bold rounded-lg">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <button class="w-full py-3 rounded-full border border-grey-200 text-navy font-semibold text-sm hover:bg-grey-50 transition-colors flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-copy"></i> Duplicar Criativo
+                </button>
+            </section>
+
+            <!-- Panel 2: Editable Parameters (40%) -->
+            <section id="panel-2-editable" class="w-full lg:w-[40%] p-8 border-b lg:border-b-0 lg:border-r border-grey-100 flex flex-col gap-8">
+                
+                <div>
+                    <h2 class="text-xl font-bold mb-1">Ajustes Ativos</h2>
+                    <p class="text-sm text-grey-500">Configure o orçamento e o período de veiculação.</p>
+                </div>
+
+                <!-- Budget Injector -->
+                <div class="flex flex-col gap-4">
+                    <label class="text-sm font-bold text-navy flex items-center gap-2">
+                        Orçamento Diário
+                        <i class="fa-solid fa-circle-info text-grey-400 text-xs cursor-pointer"></i>
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-6 top-1/2 -translate-y-1/2 text-navy font-bold text-lg">R$</span>
+                        <input type="text" value="150,00" class="w-full h-16 pl-14 pr-6 rounded-full border border-grey-200 bg-white text-xl font-bold text-navy focus:outline-none focus:border-trustblue focus:ring-4 focus:ring-trustblue/10 transition-all shadow-inner-soft">
+                    </div>
+                    
+                    <!-- Projection Sparkline -->
+                    <div class="mt-2 p-4 rounded-2xl bg-grey-50 border border-grey-100 flex flex-col gap-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-semibold text-grey-500">Projeção de Alcance (+20% Orçamento)</span>
+                            <span class="font-bold text-emerald-600">+4.2k Vidas</span>
+                        </div>
+                        <div id="reach-chart" class="w-full h-[60px]"></div>
+                    </div>
+                </div>
+
+                <!-- Timeline Control -->
+                <div class="flex flex-col gap-4">
+                    <label class="text-sm font-bold text-navy">Período da Campanha</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Locked Start Date -->
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-semibold text-grey-500">Data de Início</span>
+                            <div class="h-12 px-4 rounded-xl border border-grey-200 bg-grey-50 flex items-center justify-between text-grey-400 cursor-not-allowed">
+                                <span class="text-sm font-medium">12/05/2026</span>
+                                <i class="fa-solid fa-lock text-xs"></i>
+                            </div>
+                        </div>
+                        <!-- Editable End Date -->
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-semibold text-grey-500">Data de Término</span>
+                            <div class="h-12 px-4 rounded-xl border-2 border-trustblue bg-white flex items-center justify-between text-navy cursor-pointer shadow-[0_0_0_4px_rgba(0,22,220,0.05)]">
+                                <span class="text-sm font-bold">30/05/2026</span>
+                                <i class="fa-regular fa-calendar text-trustblue"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Panel 3: Locked Targeting Specs (30%) -->
+            <section id="panel-3-locked" class="w-full lg:w-[30%] bg-[#FAFAFA] p-8 flex flex-col gap-8 rounded-br-[24px]">
+                
+                <div>
+                    <h2 class="text-lg font-bold mb-1 flex items-center gap-2">
+                        Segmentação
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-grey-200 text-grey-600 uppercase tracking-wider">Imutável</span>
+                    </h2>
+                    <p class="text-sm text-grey-500">Parâmetros fixos para esta campanha.</p>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <!-- Spec Row 1 -->
+                    <div class="p-4 rounded-2xl bg-white border border-grey-100 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-semibold text-grey-500">Objetivo Selecionado</span>
+                                <span class="text-sm font-bold text-navy">Conversão (Leads)</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-lock text-grey-300"></i>
+                    </div>
+
+                    <!-- Spec Row 2 -->
+                    <div class="p-4 rounded-2xl bg-white border border-grey-100 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-semibold text-grey-500">Raio de Alcance</span>
+                                <span class="text-sm font-bold text-navy">São Paulo + 50km</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-lock text-grey-300"></i>
+                    </div>
+
+                    <!-- Spec Row 3 -->
+                    <div class="p-4 rounded-2xl bg-white border border-grey-100 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-semibold text-grey-500">Segmento Alvo</span>
+                                <span class="text-sm font-bold text-navy">Finanças & Negócios</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-lock text-grey-300"></i>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- Footer of the Canvas -->
+        <footer id="canvas-footer" class="w-full p-6 border-t border-grey-100 bg-white flex flex-col sm:flex-row justify-end items-center gap-6 rounded-b-[24px]">
+            <a href="#" class="text-sm font-semibold text-grey-500 hover:text-red-500 transition-colors">
+                Pausar e arquivar campanha
+            </a>
+            <button class="px-8 py-4 rounded-full bg-trustblue text-white font-bold text-sm hover:bg-blue-800 transition-colors shadow-[0_8px_20px_-8px_rgba(0,22,220,0.5)]">
+                Salvar Alterações da Campanha
+            </button>
+        </footer>
+
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const trace = {
+                    x: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                    y: [1200, 1350, 1250, 1800, 2200, 2800, 3100],
+                    type: 'scatter',
+                    mode: 'lines',
+                    fill: 'tozeroy',
+                    line: {
+                        color: '#0016dc',
+                        width: 2,
+                        shape: 'spline',
+                        smoothing: 1.3
+                    },
+                    fillcolor: 'rgba(0, 22, 220, 0.1)'
+                };
+
+                const layout = {
+                    margin: { t: 5, r: 5, b: 5, l: 5 },
+                    xaxis: { visible: false },
+                    yaxis: { visible: false },
+                    showlegend: false,
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent',
+                    hovermode: 'x unified'
+                };
+
+                const config = {
+                    responsive: true,
+                    displayModeBar: false,
+                    displaylogo: false
+                };
+
+                Plotly.newPlot('reach-chart', [trace], layout, config);
+            } catch (e) {
+                console.error("Chart initialization failed:", e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

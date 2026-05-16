@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMO - Showcase & Discovery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        'primary-hover': '#0012b3',
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        'surface-hover': '#F3F4F6',
+                        border: '#E5E7EB',
+                        text: {
+                            main: '#111827',
+                            muted: '#6B7280',
+                            light: '#9CA3AF'
+                        },
+                        success: '#10B981',
+                        warning: '#F59E0B'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 16px -4px rgba(0, 0, 0, 0.02)',
+                        'header': '0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 2px -1px rgba(0, 0, 0, 0.01)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+        
+        .custom-checkbox {
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.15em;
+            height: 1.15em;
+            border: 1.5px solid #D1D5DB;
+            border-radius: 0.25em;
+            display: grid;
+            place-content: center;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        
+        .custom-checkbox::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em white;
+            background-color: white;
+            transform-origin: center;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+        
+        .custom-checkbox:checked {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        
+        .custom-checkbox:checked::before {
+            transform: scale(1);
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #E5E7EB;
+            transition: .3s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #0016dc;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body class="text-text-main antialiased bg-background flex flex-col min-h-screen m-0 p-0">
+
+    <!-- Top Navigation Bar -->
+    <header id="header" class="sticky top-0 z-50 bg-surface border-b border-border shadow-header h-[72px] flex items-center justify-between px-6 lg:px-10 w-full">
+        <!-- Logo -->
+        <div class="flex items-center gap-2 w-[240px] shrink-0 cursor-pointer">
+            <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                M
+            </div>
+            <span class="font-bold text-xl tracking-tight text-text-main">MMO</span>
+        </div>
+
+        <!-- Global Search -->
+        <div class="flex-1 max-w-2xl mx-8 relative hidden md:block">
+            <div class="relative flex items-center w-full h-12 rounded-full bg-background border border-border focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-sm overflow-hidden">
+                <div class="pl-5 pr-3 text-text-muted">
+                    <i class="fa-solid fa-search"></i>
+                </div>
+                <input type="text" placeholder="Qual serviço você precisa?" class="w-full h-full bg-transparent border-none focus:outline-none text-sm text-text-main placeholder-text-muted font-medium" />
+                <button onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 2 - Tela de listagem de profissionais.html'" class="h-10 px-6 mr-1 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded-full transition-colors">
+                    Buscar
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Actions -->
+        <div class="flex items-center gap-6 shrink-0">
+            <!-- Location -->
+            <button class="hidden lg:flex items-center gap-2 text-sm font-medium text-text-main hover:text-primary transition-colors cursor-pointer group px-3 py-2 rounded-lg hover:bg-surface-hover">
+                <i class="fa-solid fa-location-dot text-primary group-hover:scale-110 transition-transform"></i>
+                <span>Balneário Camboriú, SC</span>
+                <i class="fa-solid fa-chevron-down text-xs text-text-muted ml-1"></i>
+            </button>
+
+            <div class="w-px h-6 bg-border hidden lg:block"></div>
+
+            <!-- Notifications -->
+            <button class="relative text-text-muted hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-hover">
+                <i class="fa-regular fa-bell text-lg"></i>
+                <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-surface"></span>
+            </button>
+
+            <!-- User Profile -->
+            <button class="flex items-center gap-3 pl-2 pr-1 py-1 rounded-full border border-border hover:border-primary/30 hover:bg-surface-hover transition-all cursor-pointer">
+                <div class="hidden md:flex flex-col items-end mr-1">
+                    <span class="text-sm font-semibold text-text-main leading-tight">Arthur</span>
+                    <span class="text-xs text-text-muted leading-tight">Cliente</span>
+                </div>
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-8 h-8 rounded-full object-cover border border-border shadow-sm">
+                <i class="fa-solid fa-chevron-down text-xs text-text-muted pr-2"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="flex-1 w-full max-w-[1440px] mx-auto flex flex-col lg:flex-row relative">
+        
+        <!-- Left Sidebar (Filters) -->
+        <aside id="sidebar-filters" class="w-full lg:w-[280px] shrink-0 border-r border-border bg-surface lg:bg-transparent lg:border-none p-6 lg:py-8 lg:pr-8 lg:sticky lg:top-[72px] lg:h-[calc(100vh-72px)] overflow-y-auto hidden lg:block">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="font-bold text-lg text-text-main">Filtros</h2>
+                <button class="text-sm text-primary font-medium hover:underline">Limpar</button>
+            </div>
+
+            <!-- Disponibilidade -->
+            <div class="mb-8 pb-6 border-b border-border">
+                <h3 class="text-sm font-semibold text-text-main mb-4 uppercase tracking-wider">Disponibilidade</h3>
+                <div class="space-y-4">
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-md bg-yellow-100 text-yellow-600 flex items-center justify-center text-xs"><i class="fa-solid fa-bolt"></i></span>
+                            <span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Hoje</span>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </label>
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-md bg-green-100 text-green-600 flex items-center justify-center text-xs"><i class="fa-solid fa-circle text-[8px]"></i></span>
+                            <span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Esta semana</span>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Confiança -->
+            <div class="mb-8 pb-6 border-b border-border">
+                <h3 class="text-sm font-semibold text-text-main mb-4 uppercase tracking-wider">Confiança</h3>
+                <label class="flex items-center gap-3 cursor-pointer group p-3 rounded-xl border-2 border-primary/20 bg-primary/5 hover:border-primary/40 transition-all">
+                    <input type="checkbox" class="custom-checkbox" checked>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-primary"></i>
+                        <span class="text-sm font-bold text-primary">Apenas Selo MMO</span>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Avaliação -->
+            <div class="mb-8 pb-6 border-b border-border">
+                <h3 class="text-sm font-semibold text-text-main mb-4 uppercase tracking-wider">Avaliação Mínima</h3>
+                <div class="space-y-3">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="radio" name="rating" class="w-4 h-4 text-primary focus:ring-primary border-gray-300">
+                        <div class="flex items-center gap-1 text-warning text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-text-main font-medium ml-1">5.0</span>
+                        </div>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="radio" name="rating" class="w-4 h-4 text-primary focus:ring-primary border-gray-300" checked>
+                        <div class="flex items-center gap-1 text-warning text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                            <span class="text-text-main font-medium ml-1">4.0+</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Categorias -->
+            <div class="mb-8">
+                <h3 class="text-sm font-semibold text-text-main mb-4 uppercase tracking-wider">Categorias</h3>
+                <div class="space-y-3">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox" checked>
+                        <span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Elétrica</span>
+                        <span class="text-xs text-text-muted ml-auto bg-gray-100 px-2 py-0.5 rounded-full">42</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox">
+                        <span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Hidráulica</span>
+                        <span class="text-xs text-text-muted ml-auto bg-gray-100 px-2 py-0.5 rounded-full">28</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox">
+                        <span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Pintura</span>
+                        <span class="text-xs text-text-muted ml-auto bg-gray-100 px-2 py-0.5 rounded-full">15</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox">
+                        <span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Montagem de Móveis</span>
+                        <span class="text-xs text-text-muted ml-auto bg-gray-100 px-2 py-0.5 rounded-full">56</span>
+                    </label>
+                    <button class="text-sm text-primary font-medium hover:underline mt-2 flex items-center gap-1">
+                        Ver todas as categorias <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Main Content -->
+        <main id="main-content" class="flex-1 w-full lg:max-w-[calc(100%-280px)] p-6 lg:py-8 lg:px-10 overflow-x-hidden">
+            
+            <!-- Breadcrumb & Title Area -->
+            <div class="mb-8">
+                <div class="flex items-center gap-2 text-sm text-text-muted mb-3">
+                    <a href="#" class="hover:text-primary transition-colors">Início</a>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <a href="#" class="hover:text-primary transition-colors">Serviços Residenciais</a>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-text-main font-medium">Elétrica</span>
+                </div>
+                <h1 class="text-3xl font-bold text-text-main tracking-tight">Eletricistas em Balneário Camboriú</h1>
+                <p class="text-text-muted mt-2 text-sm">Encontre os melhores profissionais verificados para o seu projeto.</p>
+            </div>
+
+            <!-- Recomendados (Matching Area - Grid of 3) -->
+            <section id="recommended-section" class="mb-12">
+                <div class="flex items-center gap-2 mb-6">
+                    <i class="fa-solid fa-fire text-orange-500 text-lg"></i>
+                    <h2 class="text-xl font-bold text-text-main">Recomendados para Você</h2>
+                    <span class="ml-2 px-2.5 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-wide">Alta Compatibilidade</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Premium Card 1 -->
+                    <div class="bg-surface rounded-2xl p-6 border border-border shadow-card hover:shadow-soft hover:border-primary/30 transition-all duration-300 relative group flex flex-col h-full">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full border shadow-sm flex items-center gap-1.5 z-10 border-primary/20">
+                            <i class="fa-solid fa-shield-halved text-primary text-sm"></i>
+                            <span class="text-xs font-bold text-primary whitespace-nowrap">Selo de Validação MMO</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center text-center mt-4 flex-1">
+                            <div class="relative mb-4">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Carlos Silva" class="w-20 h-20 rounded-full object-cover border-4 border-surface shadow-md">
+                                <div class="absolute bottom-0 right-0 w-5 h-5 bg-success rounded-full border-2 border-surface flex items-center justify-center" title="Online Agora"></div>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold text-text-main mb-1">Carlos Silva</h3>
+                            <p class="text-sm text-text-muted mb-3">Eletricista Residencial & Predial</p>
+                            
+                            <div class="flex items-center gap-1.5 mb-4 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+                                <i class="fa-solid fa-star text-warning text-sm"></i>
+                                <span class="font-bold text-text-main text-sm">5.0</span>
+                                <span class="text-text-muted text-xs">(128 avaliações)</span>
+                            </div>
+                            
+                            <p class="text-sm text-text-muted line-clamp-2 mb-6">"Especialista em automação residencial e quadros de distribuição. Atendimento rápido."</p>
+                        </div>
+                        
+                        <button onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 6 - Tela de perfil público do profissional.html'" class="w-full py-2.5 bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-xl transition-colors text-sm mt-auto">
+                            Ver Perfil
+                        </button>
+                    </div>
+
+                    <!-- Premium Card 2 -->
+                    <div class="bg-surface rounded-2xl p-6 border border-border shadow-card hover:shadow-soft hover:border-primary/30 transition-all duration-300 relative group flex flex-col h-full">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full border shadow-sm flex items-center gap-1.5 z-10 border-primary/20">
+                            <i class="fa-solid fa-shield-halved text-primary text-sm"></i>
+                            <span class="text-xs font-bold text-primary whitespace-nowrap">Selo de Validação MMO</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center text-center mt-4 flex-1">
+                            <div class="relative mb-4">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Roberto Alves" class="w-20 h-20 rounded-full object-cover border-4 border-surface shadow-md">
+                                <div class="absolute bottom-0 right-0 w-5 h-5 bg-success rounded-full border-2 border-surface flex items-center justify-center" title="Online Agora"></div>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold text-text-main mb-1">Roberto Alves</h3>
+                            <p class="text-sm text-text-muted mb-3">Eletricista Industrial</p>
+                            
+                            <div class="flex items-center gap-1.5 mb-4 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+                                <i class="fa-solid fa-star text-warning text-sm"></i>
+                                <span class="font-bold text-text-main text-sm">4.9</span>
+                                <span class="text-text-muted text-xs">(94 avaliações)</span>
+                            </div>
+                            
+                            <p class="text-sm text-text-muted line-clamp-2 mb-6">"Projetos elétricos completos, laudos técnicos e instalação de ar condicionado."</p>
+                        </div>
+                        
+                        <button onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 6 - Tela de perfil público do profissional.html'" class="w-full py-2.5 bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-xl transition-colors text-sm mt-auto">
+                            Ver Perfil
+                        </button>
+                    </div>
+
+                    <!-- Premium Card 3 -->
+                    <div class="bg-surface rounded-2xl p-6 border border-border shadow-card hover:shadow-soft hover:border-primary/30 transition-all duration-300 relative group flex flex-col h-full hidden lg:flex">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full border shadow-sm flex items-center gap-1.5 z-10 border-primary/20">
+                            <i class="fa-solid fa-shield-halved text-primary text-sm"></i>
+                            <span class="text-xs font-bold text-primary whitespace-nowrap">Selo de Validação MMO</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center text-center mt-4 flex-1">
+                            <div class="relative mb-4">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Marcos Oliveira" class="w-20 h-20 rounded-full object-cover border-4 border-surface shadow-md">
+                                <div class="absolute bottom-0 right-0 w-5 h-5 bg-success rounded-full border-2 border-surface flex items-center justify-center" title="Online Agora"></div>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold text-text-main mb-1">Marcos Oliveira</h3>
+                            <p class="text-sm text-text-muted mb-3">Eletricista 24 Horas</p>
+                            
+                            <div class="flex items-center gap-1.5 mb-4 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+                                <i class="fa-solid fa-star text-warning text-sm"></i>
+                                <span class="font-bold text-text-main text-sm">4.8</span>
+                                <span class="text-text-muted text-xs">(215 avaliações)</span>
+                            </div>
+                            
+                            <p class="text-sm text-text-muted line-clamp-2 mb-6">"Atendimento emergencial. Resolvo curtos-circuitos e quedas de energia na hora."</p>
+                        </div>
+                        
+                        <button onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 6 - Tela de perfil público do profissional.html'" class="w-full py-2.5 bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-xl transition-colors text-sm mt-auto">
+                            Ver Perfil
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profissionais na sua região (Thumbtack Horizontal List) -->
+            <section id="directory-list-section">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                    <h2 class="text-xl font-bold text-text-main">Profissionais na sua região</h2>
+                    
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm text-text-muted">Ordenar por:</span>
+                        <div class="relative">
+                            <select class="appearance-none bg-surface border border-border rounded-lg py-2 pl-3 pr-8 text-sm font-medium text-text-main focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary cursor-pointer shadow-sm">
+                                <option>Mais Relevantes</option>
+                                <option>Maior Avaliação</option>
+                                <option>Mais Próximos</option>
+                                <option>Menor Preço Base</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-xs text-text-muted pointer-events-none"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <!-- Horizontal List Card 1 -->
+                    <div class="bg-surface rounded-2xl p-5 border border-border shadow-sm hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group flex flex-col md:flex-row gap-5 items-start md:items-center">
+                        <!-- Left: Avatar -->
+                        <div class="shrink-0 relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" alt="Eduardo Costa" class="w-24 h-24 rounded-xl object-cover border border-gray-100">
+                            <div class="absolute -bottom-2 -right-2 bg-surface p-1 rounded-full shadow-sm">
+                                <i class="fa-solid fa-bolt text-yellow-500 text-sm"></i>
+                            </div>
+                        </div>
+
+                        <!-- Middle-Left: Info -->
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <h3 class="text-lg font-bold text-text-main truncate group-hover:text-primary transition-colors">Eduardo Costa</h3>
+                                <div class="flex items-center gap-1 bg-blue-50 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border border-blue-100">
+                                    <i class="fa-solid fa-circle-check"></i> Verificado
+                                </div>
+                            </div>
+                            <p class="text-sm text-text-main font-medium mb-2">Eletricista Residencial e Comercial</p>
+                            <div class="flex items-center gap-1.5 text-xs font-semibold text-success bg-green-50 w-fit px-2 py-1 rounded-md mb-2 md:mb-0">
+                                <i class="fa-solid fa-circle text-[8px]"></i> Disponível esta semana
+                            </div>
+                        </div>
+
+                        <!-- Middle-Right: Pitch -->
+                        <div class="flex-1 md:max-w-[280px] lg:max-w-[320px] text-sm text-text-muted hidden md:block border-l border-border pl-5">
+                            <p class="line-clamp-2">"Trabalho com elétrica há 15 anos. Faço desde pequenas manutenções até projetos completos com garantia de serviço."</p>
+                        </div>
+
+                        <!-- Far Right: Rating & CTA -->
+                        <div class="shrink-0 flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-4 md:gap-3 md:pl-5 md:border-l border-border">
+                            <div class="flex flex-col items-start md:items-end">
+                                <div class="flex items-center gap-1">
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <span class="font-bold text-text-main">4.9</span>
+                                </div>
+                                <span class="text-xs text-text-muted underline decoration-dotted underline-offset-2">(120 avaliações)</span>
+                            </div>
+                            <button onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 6 - Tela de perfil público do profissional.html'" class="px-6 py-2.5 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded-xl transition-colors shadow-sm whitespace-nowrap">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal List Card 2 -->
+                    <div class="bg-surface rounded-2xl p-5 border border-border shadow-sm hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group flex flex-col md:flex-row gap-5 items-start md:items-center">
+                        <!-- Left: Avatar -->
+                        <div class="shrink-0 relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Juliana Mendes" class="w-24 h-24 rounded-xl object-cover border border-gray-100">
+                        </div>
+
+                        <!-- Middle-Left: Info -->
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <h3 class="text-lg font-bold text-text-main truncate group-hover:text-primary transition-colors">Juliana Mendes</h3>
+                                <div class="flex items-center gap-1 bg-blue-50 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border border-blue-100">
+                                    <i class="fa-solid fa-circle-check"></i> Verificado
+                                </div>
+                            </div>
+                            <p class="text-sm text-text-main font-medium mb-2">Instalações Elétricas e Luminotécnica</p>
+                            <div class="flex items-center gap-1.5 text-xs font-semibold text-text-muted bg-gray-100 w-fit px-2 py-1 rounded-md mb-2 md:mb-0">
+                                <i class="fa-regular fa-calendar"></i> Agenda para próx. semana
+                            </div>
+                        </div>
+
+                        <!-- Middle-Right: Pitch -->
+                        <div class="flex-1 md:max-w-[280px] lg:max-w-[320px] text-sm text-text-muted hidden md:block border-l border-border pl-5">
+                            <p class="line-clamp-2">"Especialista em iluminação decorativa e LED. Transformo ambientes com projetos elétricos seguros e estéticos."</p>
+                        </div>
+
+                        <!-- Far Right: Rating & CTA -->
+                        <div class="shrink-0 flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-4 md:gap-3 md:pl-5 md:border-l border-border">
+                            <div class="flex flex-col items-start md:items-end">
+                                <div class="flex items-center gap-1">
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <span class="font-bold text-text-main">5.0</span>
+                                </div>
+                                <span class="text-xs text-text-muted underline decoration-dotted underline-offset-2">(85 avaliações)</span>
+                            </div>
+                            <button onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 6 - Tela de perfil público do profissional.html'" class="px-6 py-2.5 bg-white border border-primary text-primary hover:bg-primary/5 text-sm font-semibold rounded-xl transition-colors whitespace-nowrap">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal List Card 3 -->
+                    <div class="bg-surface rounded-2xl p-5 border border-border shadow-sm hover:shadow-card hover:border-gray-300 transition-all cursor-pointer group flex flex-col md:flex-row gap-5 items-start md:items-center">
+                        <!-- Left: Avatar -->
+                        <div class="shrink-0 relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" alt="Fernando Torres" class="w-24 h-24 rounded-xl object-cover border border-gray-100">
+                            <div class="absolute -bottom-2 -right-2 bg-surface p-1 rounded-full shadow-sm">
+                                <i class="fa-solid fa-bolt text-yellow-500 text-sm"></i>
+                            </div>
+                        </div>
+
+                        <!-- Middle-Left: Info -->
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <h3 class="text-lg font-bold text-text-main truncate group-hover:text-primary transition-colors">Fernando Torres</h3>
+                                <div class="flex items-center gap-1 bg-gray-100 text-text-muted px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border border-gray-200">
+                                    Em análise
+                                </div>
+                            </div>
+                            <p class="text-sm text-text-main font-medium mb-2">Manutenção Elétrica Geral</p>
+                            <div class="flex items-center gap-1.5 text-xs font-semibold text-success bg-green-50 w-fit px-2 py-1 rounded-md mb-2 md:mb-0">
+                                <i class="fa-solid fa-circle text-[8px]"></i> Disponível esta semana
+                            </div>
+                        </div>
+
+                        <!-- Middle-Right: Pitch -->
+                        <div class="flex-1 md:max-w-[280px] lg:max-w-[320px] text-sm text-text-muted hidden md:block border-l border-border pl-5">
+                            <p class="line-clamp-2">"Instalação de tomadas, chuveiros, ventiladores de teto e troca de fiação antiga. Preço justo e serviço limpo."</p>
+                        </div>
+
+                        <!-- Far Right: Rating & CTA -->
+                        <div class="shrink-0 flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-4 md:gap-3 md:pl-5 md:border-l border-border">
+                            <div class="flex flex-col items-start md:items-end">
+                                <div class="flex items-center gap-1">
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <span class="font-bold text-text-main">4.7</span>
+                                </div>
+                                <span class="text-xs text-text-muted underline decoration-dotted underline-offset-2">(42 avaliações)</span>
+                            </div>
+                            <button onclick="window.location.href='../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 6 - Tela de perfil público do profissional.html'" class="px-6 py-2.5 bg-white border border-primary text-primary hover:bg-primary/5 text-sm font-semibold rounded-xl transition-colors whitespace-nowrap">
+                                Ver Perfil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-8 flex items-center justify-center gap-2">
+                    <button class="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-text-muted hover:bg-surface-hover hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-lg bg-primary text-white font-semibold flex items-center justify-center shadow-sm">1</button>
+                    <button class="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-text-main hover:bg-surface-hover hover:text-primary font-medium transition-colors">2</button>
+                    <button class="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-text-main hover:bg-surface-hover hover:text-primary font-medium transition-colors">3</button>
+                    <span class="text-text-muted px-2">...</span>
+                    <button class="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-text-main hover:bg-surface-hover hover:text-primary font-medium transition-colors">8</button>
+                    <button class="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-text-muted hover:bg-surface-hover hover:text-primary transition-colors">
+                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    </button>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-surface border-t border-border mt-auto pt-12 pb-8 px-6 lg:px-10">
+        <div class="max-w-[1440px] mx-auto w-full">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                <div class="col-span-2 lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                            M
+                        </div>
+                        <span class="font-bold text-xl tracking-tight text-text-main">MMO</span>
+                    </div>
+                    <p class="text-sm text-text-muted max-w-sm mb-6">O marketplace premium para conectar você aos melhores profissionais de serviços residenciais e corporativos da sua região.</p>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-muted hover:text-primary hover:border-primary transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-muted hover:text-primary hover:border-primary transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-muted hover:text-primary hover:border-primary transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-text-main mb-4">Para Clientes</h4>
+                    <ul class="space-y-3 text-sm text-text-muted">
+                        <li><a href="#" class="hover:text-primary transition-colors">Como funciona</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Garantia MMO</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Central de Ajuda</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Categorias de Serviços</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-text-main mb-4">Para Profissionais</h4>
+                    <ul class="space-y-3 text-sm text-text-muted">
+                        <li><a href="#" class="hover:text-primary transition-colors">Seja um Parceiro</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Planos e Preços</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Selo de Validação</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Histórias de Sucesso</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-text-main mb-4">Empresa</h4>
+                    <ul class="space-y-3 text-sm text-text-muted">
+                        <li><a href="#" class="hover:text-primary transition-colors">Sobre nós</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Carreiras</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Imprensa</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border text-sm text-text-muted gap-4">
+                <p>&copy; 2024 MMO Marketplace. Todos os direitos reservados.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-primary transition-colors">Termos de Uso</a>
+                    <a href="#" class="hover:text-primary transition-colors">Política de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

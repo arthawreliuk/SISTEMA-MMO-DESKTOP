@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Center Post-Download Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            softblue: '#F0F4FF',
+                            green: '#10B981',
+                            gray: '#6B7280',
+                            lightgray: '#E5E7EB'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 25px -5px rgba(0, 0, 0, 0.08)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Global Header -->
+    <header id="header" class="w-full bg-white border-b border-brand-lightgray sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-bold text-xl text-brand-navy">MMO</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-brand-navy font-medium hover:text-brand-blue transition-colors">Home</a>
+                <a href="#" class="text-brand-gray font-medium hover:text-brand-blue transition-colors">Recursos</a>
+                <a href="#" class="text-brand-gray font-medium hover:text-brand-blue transition-colors">Academy</a>
+                <a href="#" class="text-brand-gray font-medium hover:text-brand-blue transition-colors">Suporte</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button class="hidden md:block text-brand-navy font-medium hover:text-brand-blue transition-colors">Entrar</button>
+                <button class="bg-brand-blue text-white px-6 py-2.5 rounded-full font-medium hover:bg-opacity-90 transition-all shadow-sm">
+                    Painel
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-[1200px] mx-auto px-6 py-12 flex flex-col gap-8">
+        
+        <!-- Hero Success Banner -->
+        <section id="hero-success" class="w-full bg-white rounded-4xl p-12 text-center shadow-soft relative overflow-hidden flex flex-col items-center justify-center min-h-[400px]">
+            <!-- Decorative background elements -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div class="absolute top-[-50%] left-[-10%] w-[500px] h-[500px] rounded-full bg-brand-softblue opacity-50 blur-3xl"></div>
+                <div class="absolute bottom-[-50%] right-[-10%] w-[400px] h-[400px] rounded-full bg-brand-green opacity-10 blur-3xl"></div>
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center max-w-3xl mx-auto">
+                <div class="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mb-8 animate-float shadow-sm border border-green-100">
+                    <i class="fa-solid fa-file-circle-check text-4xl text-brand-green"></i>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl font-bold text-brand-navy mb-4 tracking-tight">
+                    Tudo certo! Seu download está pronto.
+                </h1>
+                
+                <p class="text-lg md:text-xl text-brand-gray font-medium">
+                    O arquivo <span class="font-bold text-brand-navy bg-brand-softblue px-2 py-1 rounded-md">[Guia_NR10_Eletricistas.pdf]</span> foi baixado para o seu computador.
+                </p>
+            </div>
+        </section>
+
+        <!-- Bento Grid -->
+        <section id="next-steps-bento" class="bento-grid">
+            
+            <!-- Main Guide Block (Left - 60%) -->
+            <div id="block-guide" class="col-span-12 lg:col-span-7 bg-white rounded-4xl p-10 shadow-soft flex flex-col h-full">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 rounded-full bg-brand-softblue flex items-center justify-center text-brand-blue">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-brand-navy">Como aproveitar este material ao máximo</h2>
+                </div>
+
+                <div class="relative flex-1 mt-4">
+                    <!-- Connecting Line -->
+                    <div class="absolute left-[23px] top-8 bottom-8 w-0.5 bg-brand-lightgray z-0"></div>
+                    <div class="absolute left-[23px] top-8 h-1/2 w-0.5 bg-brand-blue z-0"></div>
+
+                    <!-- Step 1 -->
+                    <div class="relative z-10 flex gap-6 mb-10">
+                        <div class="w-12 h-12 rounded-full bg-brand-blue text-white flex items-center justify-center font-bold text-lg shadow-sm border-4 border-white flex-shrink-0">
+                            1
+                        </div>
+                        <div class="pt-2">
+                            <h3 class="text-lg font-bold text-brand-navy mb-2">Estude os Requisitos</h3>
+                            <p class="text-brand-gray leading-relaxed text-sm">
+                                Leia o capítulo 3 sobre EPIs e EPCs obrigatórios antes de iniciar qualquer serviço em baixa ou alta tensão.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative z-10 flex gap-6 mb-10">
+                        <div class="w-12 h-12 rounded-full bg-white border-2 border-brand-blue text-brand-blue flex items-center justify-center font-bold text-lg shadow-sm flex-shrink-0">
+                            2
+                        </div>
+                        <div class="pt-2">
+                            <h3 class="text-lg font-bold text-brand-navy mb-2">Aplique o Checklist</h3>
+                            <p class="text-brand-gray leading-relaxed text-sm">
+                                Utilize a página 15 do guia como um checklist prático no campo para garantir a desenergização correta.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative z-10 flex gap-6">
+                        <div class="w-12 h-12 rounded-full bg-white border-2 border-brand-lightgray text-brand-gray flex items-center justify-center font-bold text-lg shadow-sm flex-shrink-0">
+                            3
+                        </div>
+                        <div class="pt-2">
+                            <h3 class="text-lg font-bold text-brand-navy mb-2">Emita o Laudo</h3>
+                            <p class="text-brand-gray leading-relaxed text-sm">
+                                Documente a conformidade do serviço utilizando os modelos de laudos técnicos fornecidos no anexo do guia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column (40%) -->
+            <div class="col-span-12 lg:col-span-5 flex flex-col gap-6 h-full">
+                
+                <!-- Cross-Sell/Academy Block -->
+                <div id="block-academy" class="bg-brand-softblue rounded-4xl p-8 shadow-soft flex-1 flex flex-col">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-brand-navy">Treinamento Recomendado</h2>
+                        <span class="text-xs font-bold text-brand-blue bg-white px-3 py-1 rounded-full uppercase tracking-wider">Academy</span>
+                    </div>
+
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm group cursor-pointer hover:shadow-md transition-all">
+                        <div class="h-40 overflow-hidden relative">
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/e40f71a1e6-b74a0e4b3651541cf504.png" alt="A high quality, modern thumbnail for a professional electrical safety training course, featuring an engineer inspecting a panel, blue and white corporate style, clean UI aesthetic" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                                <span class="text-white text-xs font-semibold bg-brand-blue/80 px-2 py-1 rounded">Certificação</span>
+                                <span class="text-white text-sm font-medium"><i class="fa-solid fa-clock mr-1"></i> 40h</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-brand-navy text-lg mb-2 group-hover:text-brand-blue transition-colors">Reciclagem NR10 Avançada</h3>
+                            <p class="text-sm text-brand-gray mb-4">Aprofunde seus conhecimentos práticos e renove sua certificação com especialistas.</p>
+                            <button onclick="window.location.href='Tela 5 - Gestão interna dos materiais.html'" class="w-full py-2.5 border-2 border-brand-lightgray rounded-full text-brand-navy font-semibold hover:border-brand-blue hover:text-brand-blue transition-colors flex items-center justify-center gap-2">
+                                Ver Detalhes <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Files Block -->
+                <div id="block-related" class="bg-white rounded-4xl p-8 shadow-soft flex-1 flex flex-col">
+                    <h2 class="text-xl font-bold text-brand-navy mb-6">Baixados Freqüentemente</h2>
+                    
+                    <div class="flex flex-col gap-4">
+                        <!-- File 1 -->
+                        <div class="flex items-center justify-between p-4 border border-brand-lightgray rounded-2xl hover:border-brand-blue/30 hover:bg-brand-softblue/30 transition-all group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center">
+                                    <i class="fa-solid fa-file-pdf text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-brand-navy text-sm group-hover:text-brand-blue transition-colors">Planilha de Riscos Elétricos</h4>
+                                    <p class="text-xs text-brand-gray">PDF • 2.4 MB</p>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 rounded-full bg-brand-offwhite text-brand-navy flex items-center justify-center hover:bg-brand-blue hover:text-white transition-colors">
+                                <i class="fa-solid fa-download text-sm"></i>
+                            </button>
+                        </div>
+
+                        <!-- File 2 -->
+                        <div class="flex items-center justify-between p-4 border border-brand-lightgray rounded-2xl hover:border-brand-blue/30 hover:bg-brand-softblue/30 transition-all group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-green-50 text-green-600 flex items-center justify-center">
+                                    <i class="fa-solid fa-file-excel text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-brand-navy text-sm group-hover:text-brand-blue transition-colors">Checklist de Inspeção Diária</h4>
+                                    <p class="text-xs text-brand-gray">XLSX • 1.1 MB</p>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 rounded-full bg-brand-offwhite text-brand-navy flex items-center justify-center hover:bg-brand-blue hover:text-white transition-colors">
+                                <i class="fa-solid fa-download text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full bg-brand-navy text-white py-12 mt-12">
+        <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-xl">M</div>
+                    <span class="font-bold text-xl text-white">MMO</span>
+                </div>
+                <p class="text-gray-400 text-sm">Plataforma líder em soluções e treinamentos para profissionais de engenharia e segurança.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold mb-4">Recursos</h4>
+                <ul class="flex flex-col gap-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Guias e Manuais</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Planilhas</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Webinars</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-bold mb-4">Empresa</h4>
+                <ul class="flex flex-col gap-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Sobre Nós</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Academy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-bold mb-4">Legal</h4>
+                <ul class="flex flex-col gap-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-[1200px] mx-auto px-6 mt-12 pt-8 border-t border-gray-800 flex justify-between items-center text-xs text-gray-500">
+            <p>&copy; 2024 MMO. Todos os direitos reservados.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter text-lg"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

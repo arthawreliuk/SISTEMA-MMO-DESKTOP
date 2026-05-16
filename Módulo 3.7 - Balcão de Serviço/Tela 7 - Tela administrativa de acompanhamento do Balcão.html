@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Board Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        'primary-light': '#E6E8FB',
+                        typography: '#1A1A24',
+                        'typography-light': '#6B7280',
+                        success: '#10B981',
+                        'success-bg': '#D1FAE5',
+                        danger: '#EF4444',
+                        'danger-bg': '#FEE2E2',
+                        warning: '#F59E0B',
+                        'warning-bg': '#FEF3C7',
+                        border: '#E5E7EB',
+                        card: '#FFFFFF',
+                    },
+                    boxShadow: {
+                        'soft': '0px 4px 20px rgba(0, 0, 0, 0.03)',
+                        'floating': '0px 8px 30px rgba(0, 0, 0, 0.06)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+
+        .table-row-hover:hover {
+            background-color: #F8F9FA !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-white border-b border-border sticky top-0 z-50 h-[72px] flex items-center justify-center">
+        <div class="w-full max-w-[1200px] px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
+                    <i class="fa-solid fa-layer-group text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-typography tracking-tight">MMO Admin</span>
+            </div>
+
+            <!-- Right Profile -->
+            <div class="flex items-center gap-6">
+                <button class="relative p-2 text-typography-light hover:text-primary transition-colors">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-danger rounded-full border-2 border-white"></span>
+                </button>
+                
+                <div class="flex items-center gap-3 cursor-pointer group">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-semibold text-typography group-hover:text-primary transition-colors">Admin User</p>
+                        <p class="text-xs text-typography-light">Super Admin</p>
+                    </div>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover border-2 border-transparent group-hover:border-primary transition-colors">
+                    <i class="fa-solid fa-chevron-down text-xs text-typography-light group-hover:text-primary transition-colors"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col items-center w-full pb-12">
+        <div class="w-full max-w-[1200px] px-6 flex flex-col gap-8">
+            
+            <!-- Admin Toolbar -->
+            <section id="admin-toolbar" class="mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-typography-light hover:text-primary cursor-pointer transition-colors">Painel</span>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-border"></i>
+                    <span class="font-semibold text-typography">Balcão de Serviços</span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <div class="bg-white border border-border rounded-full px-4 py-2 flex items-center gap-3 text-sm text-typography-light shadow-sm hover:border-primary transition-colors cursor-pointer">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>Últimos 30 dias</span>
+                        <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </div>
+                    <button class="bg-white border border-border text-typography hover:border-primary hover:text-primary rounded-full px-5 py-2 text-sm font-semibold shadow-sm transition-all flex items-center gap-2 group">
+                        <i class="fa-solid fa-download text-typography-light group-hover:text-primary transition-colors"></i>
+                        Exportar Relatório
+                    </button>
+                </div>
+            </section>
+
+            <!-- Analytics KPI Strip -->
+            <section id="analytics-strip" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- KPI Card 1 -->
+                <div class="bg-white rounded-4xl p-6 shadow-soft hover:shadow-floating transition-shadow border border-transparent hover:border-primary-light">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-light flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-chart-line text-xl"></i>
+                        </div>
+                        <div class="bg-success-bg text-success px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-up text-[10px]"></i> 12%
+                        </div>
+                    </div>
+                    <p class="text-sm text-typography-light font-medium mb-1">Total de Pedidos</p>
+                    <h3 class="text-3xl font-bold text-typography">2,845</h3>
+                </div>
+
+                <!-- KPI Card 2 -->
+                <div class="bg-white rounded-4xl p-6 shadow-soft hover:shadow-floating transition-shadow border border-transparent hover:border-primary-light">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-warning-bg flex items-center justify-center text-warning">
+                            <i class="fa-solid fa-clock-rotate-left text-xl"></i>
+                        </div>
+                        <div class="bg-danger-bg text-danger px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-down text-[10px]"></i> 3%
+                        </div>
+                    </div>
+                    <p class="text-sm text-typography-light font-medium mb-1">Tempo Médio Resposta</p>
+                    <h3 class="text-3xl font-bold text-typography">1.2h</h3>
+                </div>
+
+                <!-- KPI Card 3 -->
+                <div class="bg-white rounded-4xl p-6 shadow-soft hover:shadow-floating transition-shadow border border-transparent hover:border-primary-light">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-success-bg flex items-center justify-center text-success">
+                            <i class="fa-solid fa-handshake text-xl"></i>
+                        </div>
+                        <div class="bg-success-bg text-success px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-up text-[10px]"></i> 8%
+                        </div>
+                    </div>
+                    <p class="text-sm text-typography-light font-medium mb-1">Taxa de Conversão</p>
+                    <h3 class="text-3xl font-bold text-typography">68%</h3>
+                </div>
+
+                <!-- KPI Card 4 -->
+                <div class="bg-white rounded-4xl p-6 shadow-soft hover:shadow-floating transition-shadow border border-transparent hover:border-primary-light">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-light flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-bolt text-xl"></i>
+                        </div>
+                        <div class="bg-success-bg text-success px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-up text-[10px]"></i> 24%
+                        </div>
+                    </div>
+                    <p class="text-sm text-typography-light font-medium mb-1">Receita Upsell</p>
+                    <h3 class="text-3xl font-bold text-typography">R$ 45k</h3>
+                </div>
+            </section>
+
+            <!-- Master Data Table -->
+            <section id="master-table" class="bg-white rounded-4xl shadow-soft overflow-hidden flex flex-col">
+                <!-- Table Header & Controls -->
+                <div class="p-6 border-b border-border flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                    <h2 class="text-xl font-bold text-typography">Todos os Pedidos Ativos</h2>
+                    
+                    <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+                        <!-- Search -->
+                        <div class="relative w-full sm:w-64">
+                            <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-typography-light text-sm"></i>
+                            <input type="text" placeholder="Buscar ID, Cliente..." class="w-full bg-background border-none rounded-full py-2.5 pl-10 pr-4 text-sm text-typography placeholder-typography-light focus:ring-2 focus:ring-primary/20 focus:outline-none transition-shadow">
+                        </div>
+                        
+                        <!-- Filters -->
+                        <button class="bg-background hover:bg-border/50 text-typography rounded-full px-4 py-2.5 text-sm font-medium transition-colors flex items-center gap-2">
+                            Status <i class="fa-solid fa-chevron-down text-[10px] text-typography-light"></i>
+                        </button>
+                        <button class="bg-background hover:bg-border/50 text-typography rounded-full px-4 py-2.5 text-sm font-medium transition-colors flex items-center gap-2">
+                            Categoria <i class="fa-solid fa-chevron-down text-[10px] text-typography-light"></i>
+                        </button>
+                        <button class="bg-background hover:bg-border/50 text-typography rounded-full px-4 py-2.5 text-sm font-medium transition-colors flex items-center gap-2">
+                            Plano <i class="fa-solid fa-chevron-down text-[10px] text-typography-light"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Table Content -->
+                <div class="overflow-x-auto w-full">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-xs font-semibold text-typography-light uppercase tracking-wider bg-white border-b border-border">
+                                <th class="px-6 py-4">ID do Pedido</th>
+                                <th class="px-6 py-4">Cliente</th>
+                                <th class="px-6 py-4">Categoria</th>
+                                <th class="px-6 py-4">Localização</th>
+                                <th class="px-6 py-4">Status</th>
+                                <th class="px-6 py-4">Upsell</th>
+                                <th class="px-6 py-4 text-center">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <!-- Row 1 -->
+                            <tr class="bg-white border-b border-border/50 table-row-hover group">
+                                <td class="px-6 py-4 font-medium text-typography">#ORD-8472</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Client" class="w-8 h-8 rounded-full object-cover">
+                                        <span class="font-medium text-typography">Maria Silva</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-typography-light">Reforma Residencial</td>
+                                <td class="px-6 py-4 text-typography-light">São Paulo, SP</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-warning-bg text-warning">
+                                        Aguardando
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary-light text-primary">
+                                        <i class="fa-solid fa-bolt mr-1"></i> Turbo
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-typography-light hover:bg-primary hover:text-white transition-colors mx-auto opacity-0 group-hover:opacity-100">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr class="bg-background border-b border-border/50 table-row-hover group">
+                                <td class="px-6 py-4 font-medium text-typography">#ORD-8471</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client" class="w-8 h-8 rounded-full object-cover">
+                                        <span class="font-medium text-typography">João Santos</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-typography-light">Manutenção Elétrica</td>
+                                <td class="px-6 py-4 text-typography-light">Rio de Janeiro, RJ</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-success-bg text-success">
+                                        Match
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-border/50 text-typography-light">
+                                        Grátis
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-typography-light hover:bg-primary hover:text-white transition-colors mx-auto opacity-0 group-hover:opacity-100">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3 -->
+                            <tr class="bg-white border-b border-border/50 table-row-hover group">
+                                <td class="px-6 py-4 font-medium text-typography">#ORD-8470</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Client" class="w-8 h-8 rounded-full object-cover">
+                                        <span class="font-medium text-typography">Ana Oliveira</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-typography-light">Limpeza Pós-Obra</td>
+                                <td class="px-6 py-4 text-typography-light">Curitiba, PR</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-border text-typography-light">
+                                        Encerrado
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-border/50 text-typography-light">
+                                        Grátis
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-typography-light hover:bg-primary hover:text-white transition-colors mx-auto opacity-0 group-hover:opacity-100">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                             <!-- Row 4 -->
+                            <tr class="bg-background border-b border-border/50 table-row-hover group">
+                                <td class="px-6 py-4 font-medium text-typography">#ORD-8469</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Client" class="w-8 h-8 rounded-full object-cover">
+                                        <span class="font-medium text-typography">Carlos Mendes</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-typography-light">Pintura Comercial</td>
+                                <td class="px-6 py-4 text-typography-light">Belo Horizonte, MG</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-success-bg text-success">
+                                        Match
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary-light text-primary">
+                                        <i class="fa-solid fa-bolt mr-1"></i> Turbo
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-typography-light hover:bg-primary hover:text-white transition-colors mx-auto opacity-0 group-hover:opacity-100">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="p-4 border-t border-border flex items-center justify-between bg-white">
+                    <span class="text-sm text-typography-light">Mostrando 1 a 4 de 2,845 pedidos</span>
+                    <div class="flex gap-1">
+                        <button class="w-8 h-8 rounded-full flex items-center justify-center text-typography-light hover:bg-background transition-colors"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                        <button class="w-8 h-8 rounded-full flex items-center justify-center bg-primary text-white font-medium text-sm">1</button>
+                        <button class="w-8 h-8 rounded-full flex items-center justify-center text-typography hover:bg-background font-medium text-sm transition-colors">2</button>
+                        <button class="w-8 h-8 rounded-full flex items-center justify-center text-typography hover:bg-background font-medium text-sm transition-colors">3</button>
+                        <span class="w-8 h-8 flex items-center justify-center text-typography-light">...</span>
+                        <button class="w-8 h-8 rounded-full flex items-center justify-center text-typography-light hover:bg-background transition-colors"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-border py-6 mt-auto">
+        <div class="w-full max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-typography-light">© 2024 MMO Admin Dashboard. Todos os direitos reservados.</p>
+            <div class="flex gap-6 text-sm">
+                <a href="#" class="text-typography-light hover:text-primary transition-colors">Termos</a>
+                <a href="#" class="text-typography-light hover:text-primary transition-colors">Privacidade</a>
+                <a href="#" class="text-typography-light hover:text-primary transition-colors">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B Enterprise Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#1A1A24',
+                            blue: '#0016dc',
+                            offwhite: '#F8F9FA',
+                            gray: '#E5E7EB',
+                            text: '#4B5563',
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'ambient-hover': '0 20px 40px -10px rgba(0,22,220,0.1)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen text-brand-navy font-sans antialiased">
+
+    <!-- Global Header -->
+    <header id="header" class="w-full bg-white/80 backdrop-blur-md border-b border-brand-gray/50 sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-blue/20">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <nav class="text-sm font-medium text-brand-text flex items-center gap-2">
+                    <span class="hover:text-brand-navy cursor-pointer transition-colors">Minha Empresa</span>
+                    <i class="fa-solid fa-chevron-right text-xs opacity-50"></i>
+                    <span class="text-brand-navy font-semibold">Dashboard Central</span>
+                </nav>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-3 bg-brand-offwhite px-4 py-2 rounded-full border border-brand-gray/30">
+                    <i class="fa-solid fa-building text-brand-text"></i>
+                    <span class="text-sm font-semibold">Acme Corp</span>
+                </div>
+                <div class="h-8 w-px bg-brand-gray"></div>
+                <div class="flex items-center gap-3 cursor-pointer group">
+                    <div class="text-right">
+                        <p class="text-sm font-bold text-brand-navy group-hover:text-brand-blue transition-colors">Ana Silva</p>
+                        <p class="text-xs text-brand-text">Admin</p>
+                    </div>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full py-10">
+        <div class="max-w-[1200px] mx-auto px-6">
+            
+            <!-- Bento Grid Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Hero Block (65%) -->
+                <div id="hero-block" class="lg:col-span-8 bg-white rounded-4xl p-8 shadow-ambient flex flex-col justify-between border border-brand-gray/20 relative overflow-hidden group hover:shadow-ambient-hover transition-all duration-300">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+                    
+                    <div class="flex justify-between items-start mb-8 relative z-10">
+                        <div>
+                            <h2 class="text-lg font-semibold text-brand-text mb-1">Central Financeira</h2>
+                            <p class="text-sm text-brand-text/70">Saldo consolidado da carteira</p>
+                        </div>
+                        <button class="w-10 h-10 rounded-full bg-brand-offwhite flex items-center justify-center text-brand-text hover:bg-brand-blue hover:text-white transition-colors">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                        <div class="flex flex-col justify-center">
+                            <span class="text-sm font-medium text-brand-text mb-2 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-green-500"></span> Disponível
+                            </span>
+                            <h1 class="text-5xl font-extrabold tracking-tight mb-2">R$ 1.245.000<span class="text-2xl text-brand-text font-medium">,00</span></h1>
+                            <p class="text-sm font-medium text-green-600 flex items-center gap-1 bg-green-50 w-fit px-2 py-1 rounded-md">
+                                <i class="fa-solid fa-arrow-trend-up"></i> +12.5% vs. mês passado
+                            </p>
+                        </div>
+                        <div class="h-32 w-full relative">
+                            <div id="balance-chart" class="w-full h-full absolute inset-0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 mt-10 relative z-10">
+                        <button class="px-6 py-3 rounded-full border-2 border-brand-gray/50 text-brand-navy font-semibold hover:border-brand-navy transition-colors bg-white">
+                            <i class="fa-solid fa-file-invoice mr-2"></i> Extrato
+                        </button>
+                        <button onclick="window.location.href='Tela 3 - Gestão de subcontas.html'" class="px-6 py-3 rounded-full bg-brand-blue text-white font-semibold shadow-lg shadow-brand-blue/30 hover:bg-brand-blue/90 hover:shadow-brand-blue/50 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Recarregar Saldo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Team Health Block (35%) -->
+                <div id="team-health" class="lg:col-span-4 bg-brand-navy rounded-4xl p-8 shadow-ambient border border-brand-navy flex flex-col items-center justify-center relative overflow-hidden text-white group hover:shadow-ambient-hover transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+                    
+                    <div class="w-full flex justify-between items-start mb-6">
+                        <h2 class="text-lg font-semibold text-white/90">Status da Equipe</h2>
+                        <i class="fa-solid fa-users text-white/50"></i>
+                    </div>
+
+                    <div class="relative w-48 h-48 flex items-center justify-center mb-6">
+                        <!-- Custom SVG Gauge to match ref vibe -->
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="none" />
+                            <circle cx="50" cy="50" r="40" stroke="#0016dc" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="37.68" class="transition-all duration-1000 ease-out" />
+                        </svg>
+                        <div class="absolute flex flex-col items-center justify-center">
+                            <span class="text-4xl font-bold tracking-tighter">85%</span>
+                            <span class="text-xs text-white/60 font-medium uppercase tracking-wider">Ocupação</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 w-full text-center border border-white/5">
+                        <p class="text-sm font-medium text-white/80">12 de 15 profissionais</p>
+                        <p class="text-xs text-white/50 mt-1">em atendimento simultâneo</p>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Block (50%) -->
+                <div id="leaderboard" class="lg:col-span-6 bg-white rounded-4xl p-8 shadow-ambient border border-brand-gray/20 flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-lg font-bold text-brand-navy">Top Performers</h2>
+                        <button class="text-sm text-brand-blue font-semibold hover:underline">Ver todos</button>
+                    </div>
+
+                    <div class="flex-1 overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-xs font-semibold text-brand-text border-b border-brand-gray/30">
+                                    <th class="pb-3 px-2 font-medium uppercase tracking-wider">Sub-conta</th>
+                                    <th class="pb-3 px-2 font-medium uppercase tracking-wider text-center">Leads Unlocked</th>
+                                    <th class="pb-3 px-2 font-medium uppercase tracking-wider text-right">ROI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm divide-y divide-brand-gray/10">
+                                <tr class="group hover:bg-brand-offwhite/50 transition-colors">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center gap-3">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full object-cover shadow-sm" alt="Avatar">
+                                            <div>
+                                                <p class="font-bold text-brand-navy">Carlos Mendes</p>
+                                                <p class="text-xs text-brand-text">Vendas SP</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2 text-center">
+                                        <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue font-bold">142</span>
+                                    </td>
+                                    <td class="py-4 px-2 text-right">
+                                        <span class="font-bold text-green-600">345%</span>
+                                    </td>
+                                </tr>
+                                <tr class="group hover:bg-brand-offwhite/50 transition-colors">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center gap-3">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-10 h-10 rounded-full object-cover shadow-sm" alt="Avatar">
+                                            <div>
+                                                <p class="font-bold text-brand-navy">Juliana Costa</p>
+                                                <p class="text-xs text-brand-text">Vendas RJ</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2 text-center">
+                                        <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue font-bold">98</span>
+                                    </td>
+                                    <td class="py-4 px-2 text-right">
+                                        <span class="font-bold text-green-600">280%</span>
+                                    </td>
+                                </tr>
+                                <tr class="group hover:bg-brand-offwhite/50 transition-colors">
+                                    <td class="py-4 px-2">
+                                        <div class="flex items-center gap-3">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-10 h-10 rounded-full object-cover shadow-sm" alt="Avatar">
+                                            <div>
+                                                <p class="font-bold text-brand-navy">Roberto Alves</p>
+                                                <p class="text-xs text-brand-text">Expansão Sul</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-2 text-center">
+                                        <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue font-bold">75</span>
+                                    </td>
+                                    <td class="py-4 px-2 text-right">
+                                        <span class="font-bold text-green-600">215%</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recent Leads Block (50%) -->
+                <div id="recent-leads" class="lg:col-span-6 bg-white rounded-4xl p-8 shadow-ambient border border-brand-gray/20 flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-lg font-bold text-brand-navy">Últimos Leads Capturados</h2>
+                        <button class="w-8 h-8 rounded-full bg-brand-offwhite flex items-center justify-center text-brand-text hover:bg-brand-gray transition-colors">
+                            <i class="fa-solid fa-filter text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col gap-4 flex-1">
+                        <!-- Lead Item -->
+                        <div class="flex items-center justify-between p-4 rounded-2xl border border-brand-gray/30 hover:border-brand-blue/30 hover:shadow-md transition-all bg-brand-offwhite/30">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-lg shadow-sm">
+                                    <i class="fa-solid fa-building-shield"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brand-navy text-sm">Consultoria Jurídica</p>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="text-xs font-medium text-brand-text bg-white px-2 py-0.5 rounded-md border border-brand-gray/50"><i class="fa-solid fa-location-dot mr-1 text-brand-text/50"></i> Camboriú, SC</span>
+                                        <span class="text-xs text-brand-text/70">• por Carlos M.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <span class="bg-brand-navy text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">15 Créditos</span>
+                                <span class="text-[10px] text-brand-text mt-1">Há 10 min</span>
+                            </div>
+                        </div>
+
+                        <!-- Lead Item -->
+                        <div class="flex items-center justify-between p-4 rounded-2xl border border-brand-gray/30 hover:border-brand-blue/30 hover:shadow-md transition-all bg-brand-offwhite/30">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg shadow-sm">
+                                    <i class="fa-solid fa-laptop-code"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brand-navy text-sm">SaaS Enterprise</p>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="text-xs font-medium text-brand-text bg-white px-2 py-0.5 rounded-md border border-brand-gray/50"><i class="fa-solid fa-location-dot mr-1 text-brand-text/50"></i> São Paulo, SP</span>
+                                        <span class="text-xs text-brand-text/70">• por Juliana C.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <span class="bg-brand-navy text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">25 Créditos</span>
+                                <span class="text-[10px] text-brand-text mt-1">Há 45 min</span>
+                            </div>
+                        </div>
+
+                        <!-- Lead Item -->
+                        <div class="flex items-center justify-between p-4 rounded-2xl border border-brand-gray/30 hover:border-brand-blue/30 hover:shadow-md transition-all bg-brand-offwhite/30">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-lg shadow-sm">
+                                    <i class="fa-solid fa-industry"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brand-navy text-sm">Manufatura Avançada</p>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="text-xs font-medium text-brand-text bg-white px-2 py-0.5 rounded-md border border-brand-gray/50"><i class="fa-solid fa-location-dot mr-1 text-brand-text/50"></i> Joinville, SC</span>
+                                        <span class="text-xs text-brand-text/70">• por Roberto A.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-end">
+                                <span class="bg-brand-navy text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">40 Créditos</span>
+                                <span class="text-[10px] text-brand-text mt-1">Há 2 horas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const chartElement = document.getElementById('balance-chart');
+                if (!chartElement) return;
+
+                // Generate dummy 30-day data showing upward trend
+                const days = Array.from({length: 30}, (_, i) => `Dia ${i+1}`);
+                let baseValue = 900000;
+                const values = days.map(() => {
+                    baseValue += Math.random() * 50000 - 15000;
+                    return baseValue;
+                });
+
+                const trace = {
+                    x: days,
+                    y: values,
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: {
+                        color: '#0016dc',
+                        width: 3,
+                        shape: 'spline',
+                        smoothing: 1.3
+                    },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(0, 22, 220, 0.1)',
+                    hoverinfo: 'y',
+                    hovertemplate: 'R$ %{y:,.2f}<extra></extra>'
+                };
+
+                const layout = {
+                    margin: { t: 10, r: 10, b: 20, l: 10 },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    xaxis: {
+                        showgrid: false,
+                        showline: false,
+                        zeroline: false,
+                        showticklabels: false,
+                        fixedrange: true
+                    },
+                    yaxis: {
+                        showgrid: false,
+                        showline: false,
+                        zeroline: false,
+                        showticklabels: false,
+                        fixedrange: true
+                    },
+                    showlegend: false,
+                    hovermode: 'x unified'
+                };
+
+                const config = {
+                    responsive: true,
+                    displayModeBar: false,
+                    displaylogo: false
+                };
+
+                Plotly.newPlot('balance-chart', [trace], layout, config);
+            } catch (e) {
+                console.error("Error initializing chart:", e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Security Timeline Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            gray: '#E5E7EB',
+                            text: '#4B5563'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 24px -4px rgba(0, 0, 0, 0.04)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.15)',
+                        'glow-hover': '0 0 30px rgba(0, 22, 220, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F9FA;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background-color: #E5E7EB;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .event-card:hover .timeline-node {
+            background-color: #0016dc;
+            box-shadow: 0 0 0 4px rgba(0, 22, 220, 0.2);
+            transform: scale(1.2);
+        }
+
+        .event-card:hover .connection-line {
+            opacity: 1;
+        }
+
+        .timeline-node {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center pb-24">
+
+    <!-- Global Header -->
+    <header id="global-header" class="w-full bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center shadow-glow">
+                    <i class="fa-solid fa-shield-halved text-white text-lg"></i>
+                </div>
+                <h1 class="font-bold text-xl text-brand-navy tracking-tight">SecurOS</h1>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-text">
+                <a href="#" class="hover:text-brand-blue transition-colors">Dashboard</a>
+                <a href="#" class="text-brand-blue font-semibold">Auditoria</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Políticas</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Configurações</a>
+            </nav>
+
+            <button class="bg-brand-blue hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-glow hover:shadow-glow-hover flex items-center gap-2">
+                <i class="fa-solid fa-file-shield"></i>
+                Relatório de Conformidade
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Canvas -->
+    <main class="w-full max-w-[1200px] mx-auto mt-12 px-6">
+        
+        <!-- Header Section -->
+        <div class="mb-12 text-center">
+            <h2 class="text-4xl font-extrabold text-brand-navy mb-3 tracking-tight">Rastreamento de Atividades Sensíveis</h2>
+            <p class="text-brand-text text-lg font-medium">Auditoria inalterável com base em hash de segurança.</p>
+        </div>
+
+        <!-- Activity Summary Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div class="bg-white rounded-[24px] p-6 shadow-soft border border-gray-50 flex flex-col justify-between h-32">
+                <div class="flex justify-between items-start">
+                    <span class="text-sm font-semibold text-brand-text uppercase tracking-wider">Eventos Críticos</span>
+                    <div class="w-8 h-8 rounded-full bg-red-50 text-red-500 flex items-center justify-center">
+                        <i class="fa-solid fa-triangle-exclamation text-sm"></i>
+                    </div>
+                </div>
+                <div class="text-3xl font-bold text-brand-navy">14</div>
+            </div>
+            <div class="bg-white rounded-[24px] p-6 shadow-soft border border-gray-50 flex flex-col justify-between h-32">
+                <div class="flex justify-between items-start">
+                    <span class="text-sm font-semibold text-brand-text uppercase tracking-wider">Acessos Root</span>
+                    <div class="w-8 h-8 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center">
+                        <i class="fa-solid fa-user-shield text-sm"></i>
+                    </div>
+                </div>
+                <div class="text-3xl font-bold text-brand-navy">03</div>
+            </div>
+            <div class="bg-white rounded-[24px] p-6 shadow-soft border border-gray-50 flex flex-col justify-between h-32">
+                <div class="flex justify-between items-start">
+                    <span class="text-sm font-semibold text-brand-text uppercase tracking-wider">Alt. Políticas</span>
+                    <div class="w-8 h-8 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center">
+                        <i class="fa-solid fa-file-signature text-sm"></i>
+                    </div>
+                </div>
+                <div class="text-3xl font-bold text-brand-navy">08</div>
+            </div>
+            <div class="bg-white rounded-[24px] p-6 shadow-soft border border-gray-50 flex flex-col justify-between h-32">
+                <div class="flex justify-between items-start">
+                    <span class="text-sm font-semibold text-brand-text uppercase tracking-wider">Taxa Anomalia</span>
+                    <div class="w-8 h-8 rounded-full bg-green-50 text-green-500 flex items-center justify-center">
+                        <i class="fa-solid fa-chart-line text-sm"></i>
+                    </div>
+                </div>
+                <div class="text-3xl font-bold text-brand-navy">1.2%</div>
+            </div>
+        </div>
+
+        <!-- The Timeline Canvas -->
+        <div class="bg-white rounded-[24px] shadow-soft border border-gray-50 p-12 relative min-h-[800px]">
+            
+            <!-- Central Line -->
+            <div class="timeline-line"></div>
+
+            <!-- Date Divider -->
+            <div class="relative z-10 flex justify-center mb-16">
+                <div class="bg-brand-offwhite border border-gray-200 text-brand-text px-6 py-2 rounded-full text-sm font-bold tracking-wide shadow-sm">
+                    4 DE MAIO DE 2026
+                </div>
+            </div>
+
+            <!-- Event Block 1 -->
+            <div class="event-card relative z-10 w-full flex items-center justify-between mb-16 group">
+                <!-- Left Side: User Meta -->
+                <div class="w-[45%] flex justify-end pr-12">
+                    <div class="bg-white border border-gray-100 rounded-[20px] p-5 shadow-sm flex items-center gap-4 w-full max-w-sm transition-all group-hover:shadow-soft group-hover:border-brand-blue/20">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-gray-50">
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-base">Marcus Torres</h4>
+                            <p class="text-xs font-semibold text-brand-blue mb-1">Master Admin</p>
+                            <div class="flex items-center gap-1 text-xs text-gray-400">
+                                <i class="fa-solid fa-desktop"></i>
+                                <span>MacBook Pro 16" • IP 192.168.1.1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Node -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-gray-300 timeline-node z-20"></div>
+
+                <!-- Right Side: Action -->
+                <div class="w-[45%] pl-12">
+                    <div class="bg-white border border-red-100 rounded-[20px] p-6 shadow-sm relative overflow-hidden transition-all group-hover:shadow-soft group-hover:border-red-200">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-red-500"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded-md">CRÍTICO</span>
+                            <span class="text-xs text-gray-400 font-medium">14:32:05 BRT</span>
+                        </div>
+                        <p class="text-brand-navy font-semibold text-base mb-4 leading-relaxed">
+                            Deletou o contrato base de serviços elétricos.
+                        </p>
+                        <a href="Tela 3 - Detalhe de auditoria.html" class="text-sm font-bold text-brand-blue hover:text-blue-800 flex items-center gap-2 transition-colors">
+                            <i class="fa-solid fa-eye"></i>
+                            Ver Snapshot
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Block 2 -->
+            <div class="event-card relative z-10 w-full flex items-center justify-between mb-16 group">
+                <!-- Left Side: Action -->
+                <div class="w-[45%] flex justify-end pr-12 text-right">
+                    <div class="bg-white border border-orange-100 rounded-[20px] p-6 shadow-sm relative overflow-hidden transition-all group-hover:shadow-soft group-hover:border-orange-200 w-full max-w-md">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-orange-500"></div>
+                        <div class="flex justify-between items-start mb-3 flex-row-reverse">
+                            <span class="text-xs font-bold text-orange-500 bg-orange-50 px-2 py-1 rounded-md">ALTO</span>
+                            <span class="text-xs text-gray-400 font-medium">11:15:22 BRT</span>
+                        </div>
+                        <p class="text-brand-navy font-semibold text-base mb-4 leading-relaxed">
+                            Alterou política de acesso para grupo 'Engenharia'.
+                        </p>
+                        <a href="Tela 3 - Detalhe de auditoria.html" class="text-sm font-bold text-brand-blue hover:text-blue-800 flex items-center gap-2 justify-end transition-colors">
+                            Ver Diff <i class="fa-solid fa-code-compare"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Center Node -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-gray-300 timeline-node z-20"></div>
+
+                <!-- Right Side: User Meta -->
+                <div class="w-[45%] pl-12">
+                    <div class="bg-white border border-gray-100 rounded-[20px] p-5 shadow-sm flex items-center gap-4 w-full max-w-sm transition-all group-hover:shadow-soft group-hover:border-brand-blue/20">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="User" class="w-12 h-12 rounded-full object-cover border-2 border-gray-50">
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-base">Elena Silva</h4>
+                            <p class="text-xs font-semibold text-brand-text mb-1">SecOps Lead</p>
+                            <div class="flex items-center gap-1 text-xs text-gray-400">
+                                <i class="fa-solid fa-server"></i>
+                                <span>AWS Jump Server • IP 10.0.1.45</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date Divider -->
+            <div class="relative z-10 flex justify-center mb-16">
+                <div class="bg-brand-offwhite border border-gray-200 text-brand-text px-6 py-2 rounded-full text-sm font-bold tracking-wide shadow-sm">
+                    3 DE MAIO DE 2026
+                </div>
+            </div>
+
+            <!-- Event Block 3 -->
+            <div class="event-card relative z-10 w-full flex items-center justify-between group">
+                <!-- Left Side: User Meta -->
+                <div class="w-[45%] flex justify-end pr-12">
+                    <div class="bg-white border border-gray-100 rounded-[20px] p-5 shadow-sm flex items-center gap-4 w-full max-w-sm transition-all group-hover:shadow-soft group-hover:border-brand-blue/20">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center border-2 border-gray-50 text-gray-400">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy text-base">System Bot</h4>
+                            <p class="text-xs font-semibold text-gray-500 mb-1">Automated Process</p>
+                            <div class="flex items-center gap-1 text-xs text-gray-400">
+                                <i class="fa-solid fa-microchip"></i>
+                                <span>Cron Job #8492</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Node -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-gray-300 timeline-node z-20"></div>
+
+                <!-- Right Side: Action -->
+                <div class="w-[45%] pl-12">
+                    <div class="bg-white border border-blue-100 rounded-[20px] p-6 shadow-sm relative overflow-hidden transition-all group-hover:shadow-soft group-hover:border-blue-200">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-blue-400"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-bold text-blue-500 bg-blue-50 px-2 py-1 rounded-md">INFO</span>
+                            <span class="text-xs text-gray-400 font-medium">23:00:00 BRT</span>
+                        </div>
+                        <p class="text-brand-navy font-semibold text-base mb-4 leading-relaxed">
+                            Backup diário criptografado e transferido para cold storage.
+                        </p>
+                        <a href="Tela 3 - Detalhe de auditoria.html" class="text-sm font-bold text-brand-blue hover:text-blue-800 flex items-center gap-2 transition-colors">
+                            <i class="fa-solid fa-file-zipper"></i>
+                            Ver Log
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Compliance Footer -->
+    <footer id="compliance-footer" class="w-full max-w-[1200px] mx-auto mt-12 px-6 pb-12">
+        <div class="bg-white rounded-[24px] p-8 shadow-soft border border-gray-50 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                    <i class="fa-solid fa-check-double text-xl"></i>
+                </div>
+                <div>
+                    <h5 class="font-bold text-brand-navy text-base">Sistema 100% em Conformidade</h5>
+                    <p class="text-sm text-brand-text mt-1">Última auditoria SOC2 completada sem ressalvas.</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <span class="px-4 py-2 bg-gray-50 text-xs font-bold text-gray-500 rounded-lg border border-gray-100">ISO 27001</span>
+                <span class="px-4 py-2 bg-gray-50 text-xs font-bold text-gray-500 rounded-lg border border-gray-100">GDPR Compliant</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

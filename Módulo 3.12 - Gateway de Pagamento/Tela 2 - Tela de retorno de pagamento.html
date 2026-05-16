@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        trustBlue: '#0016dc',
+                        deepNavy: '#1A1A24',
+                        offWhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 20px 40px -15px rgba(0, 22, 220, 0.05), 0 0 100px -20px rgba(0, 22, 220, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        .bg-pattern {
+            background-image: radial-gradient(circle at 15% 50%, rgba(0, 22, 220, 0.03) 0%, transparent 25%),
+                              radial-gradient(circle at 85% 30%, rgba(0, 22, 220, 0.02) 0%, transparent 20%);
+        }
+        .pill-shape-1 {
+            position: absolute; top: 10%; left: 5%; width: 120px; height: 40px; border-radius: 40px;
+            background: linear-gradient(135deg, rgba(0,22,220,0.05), rgba(0,22,220,0.01)); transform: rotate(-15deg);
+        }
+        .pill-shape-2 {
+            position: absolute; bottom: 20%; right: 10%; width: 80px; height: 80px; border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0,22,220,0.04), rgba(0,22,220,0.01));
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative overflow-hidden bg-pattern">
+
+    <!-- Decorative Background Shapes -->
+    <div class="pill-shape-1 pointer-events-none"></div>
+    <div class="pill-shape-2 pointer-events-none"></div>
+
+    <!-- Minimalist Top Header -->
+    <header id="header" class="w-full py-6 px-8 flex items-center justify-between z-10 relative">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-trustBlue rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-trustBlue/20">
+                M
+            </div>
+            <span class="text-deepNavy font-bold text-xl tracking-tight">MMO</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm font-medium text-gray-500 bg-white/50 px-4 py-2 rounded-full border border-gray-200/50 backdrop-blur-sm">
+            <i class="fa-solid fa-lock text-trustBlue/70"></i>
+            <span>Transação Segura</span>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow flex items-center justify-center p-6 z-10 relative">
+        
+        <!-- Main Confirmation Container -->
+        <div id="success-container" class="w-full max-w-[800px] bg-white rounded-[24px] shadow-ambient border border-gray-100 p-10 md:p-14 relative overflow-hidden">
+            
+            <!-- Top Section (The Hook) -->
+            <div id="success-hook" class="flex flex-col items-center text-center mb-12">
+                <div class="relative mb-6">
+                    <div class="absolute inset-0 bg-trustBlue/10 rounded-full scale-150 animate-pulse"></div>
+                    <div class="w-20 h-20 bg-trustBlue/10 rounded-full flex items-center justify-center relative z-10 border border-trustBlue/20">
+                        <i class="fa-solid fa-check text-4xl text-trustBlue"></i>
+                    </div>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-deepNavy tracking-tight mb-3">Pagamento Concluído com Sucesso</h1>
+                <p class="text-gray-500 font-medium">Sua transação foi processada e confirmada.</p>
+            </div>
+
+            <!-- Middle Section (Split Data) -->
+            <div id="transaction-details" class="bg-offWhite rounded-[20px] p-8 border border-gray-100 mb-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    
+                    <!-- Left Side: Provider Info -->
+                    <div class="flex flex-col gap-4">
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Detalhes do Serviço</h3>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Provider Avatar" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-deepNavy text-lg">Dr. Roberto Silva</h4>
+                                <p class="text-sm text-gray-500">Consulta Cardiológica</p>
+                            </div>
+                        </div>
+                        <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full w-fit border border-green-100">
+                            <i class="fa-solid fa-shield-check"></i> Profissional Verificado
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Transaction Info -->
+                    <div class="flex flex-col gap-4 md:border-l border-gray-200 md:pl-8">
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Dados da Transação</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-500">Data</span>
+                                <span class="font-semibold text-deepNavy">30 Abr 2026, 14:30</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-500">Código Auth</span>
+                                <span class="font-mono font-semibold text-deepNavy bg-gray-100 px-2 py-0.5 rounded">#AUTH-9824A</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-500">Método</span>
+                                <div class="flex items-center gap-2 font-semibold text-deepNavy">
+                                    <i class="fa-brands fa-cc-mastercard text-gray-400"></i>
+                                    <span>•••• 1234</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Row -->
+                <div class="pt-8 border-t border-dashed border-gray-300 flex flex-col items-center justify-center">
+                    <span class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Total Pago</span>
+                    <div class="text-5xl md:text-6xl font-extrabold text-trustBlue tracking-tighter">
+                        R$ 450,00
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section (Action Area) -->
+            <div id="action-area" class="flex flex-col items-center gap-6">
+                <button class="w-full max-w-[400px] bg-trustBlue hover:bg-trustBlue/90 text-white font-bold text-lg py-4 px-8 rounded-full shadow-lg shadow-trustBlue/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                    <i class="fa-regular fa-file-pdf"></i>
+                    Salvar Comprovante
+                </button>
+                <p class="text-sm text-gray-400 font-medium">
+                    Você pode fechar esta aba agora.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Pedido - MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        'primary-hover': '#0012b3',
+                        navy: '#1A1A24',
+                        'navy-light': '#3A3A44',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#9CA3AF',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 2px 10px rgba(0, 0, 0, 0.02)',
+                    },
+                    borderRadius: {
+                        '2xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+        .timeline-line-active::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 50%; /* Adjust based on progress */
+            height: 2px;
+            background-color: #0016dc;
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-surface border-b border-border sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto w-full px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-navy rounded-xl flex items-center justify-center text-white font-bold text-xl">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight text-navy">MMO</span>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-navy-light hover:text-primary font-medium transition-colors">Home</a>
+                <div class="relative flex flex-col items-center">
+                    <a href="#" class="text-primary font-semibold transition-colors">Orders</a>
+                    <div class="absolute -bottom-2 w-1.5 h-1.5 bg-primary rounded-full"></div>
+                </div>
+                <a href="#" class="text-navy-light hover:text-primary font-medium transition-colors">Messages</a>
+                <a href="#" class="text-navy-light hover:text-primary font-medium transition-colors">Profile</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-navy p-2">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-6 py-8 flex flex-col gap-6">
+        
+        <!-- Top Control Bar -->
+        <div id="control-bar" class="flex items-center w-full">
+            <a href="#" class="inline-flex items-center gap-2 text-navy-light hover:text-primary font-medium transition-colors group">
+                <div class="w-8 h-8 rounded-full bg-white border border-border flex items-center justify-center group-hover:border-primary transition-colors shadow-sm">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </div>
+                Voltar para meus pedidos
+            </a>
+        </div>
+
+        <!-- 65/35 Split Layout -->
+        <div class="flex flex-col lg:flex-row gap-6 w-full items-start">
+            
+            <!-- Left Column: Request Data (65%) -->
+            <div id="request-data" class="w-full lg:w-[65%] flex flex-col gap-6">
+                <!-- Main Request Card -->
+                <div class="bg-surface rounded-2xl shadow-soft p-8 border border-border/50">
+                    
+                    <!-- Header & Meta -->
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="px-3 py-1 bg-gray-100 text-navy-light text-xs font-semibold rounded-full uppercase tracking-wider">Reparo Elétrico</span>
+                                <span class="text-muted text-sm"><i class="fa-regular fa-clock mr-1"></i> Postado há 2 horas</span>
+                            </div>
+                            <h1 class="text-3xl font-bold text-navy">Instalação de Quadro de Distribuição</h1>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-muted mb-1">ID do Pedido</p>
+                            <p class="font-mono font-medium text-navy">#REQ-8942</p>
+                        </div>
+                    </div>
+
+                    <!-- Status Timeline -->
+                    <div class="mb-10 relative">
+                        <h3 class="text-sm font-semibold text-navy-light mb-6 uppercase tracking-wider">Status do Pedido</h3>
+                        <div class="relative w-full h-12 flex justify-between items-center timeline-line timeline-line-active">
+                            
+                            <!-- Step 1: Criado -->
+                            <div class="relative z-10 flex flex-col items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-md ring-4 ring-white">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs font-bold text-primary">Criado</span>
+                            </div>
+
+                            <!-- Step 2: Em Análise -->
+                            <div class="relative z-10 flex flex-col items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-md ring-4 ring-white">
+                                    <i class="fa-solid fa-search text-xs"></i>
+                                </div>
+                                <span class="text-xs font-bold text-primary">Em Análise</span>
+                            </div>
+
+                            <!-- Step 3: Propostas -->
+                            <div class="relative z-10 flex flex-col items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center shadow-sm ring-4 ring-white">
+                                    <i class="fa-solid fa-handshake text-xs"></i>
+                                </div>
+                                <span class="text-xs font-bold text-primary">Aguardando Escolha</span>
+                            </div>
+
+                            <!-- Step 4: Aprovado -->
+                            <div class="relative z-10 flex flex-col items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gray-100 border-2 border-gray-200 text-gray-400 flex items-center justify-center ring-4 ring-white">
+                                    <i class="fa-solid fa-flag-checkered text-xs"></i>
+                                </div>
+                                <span class="text-xs font-medium text-muted">Concluído</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-border my-8">
+
+                    <!-- Problema Relatado -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold text-navy mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-align-left text-primary"></i> Problema Relatado
+                        </h3>
+                        <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 text-navy-light leading-relaxed">
+                            Preciso de um eletricista qualificado para substituir o quadro de distribuição antigo do meu apartamento. O atual está com disjuntores desarmando frequentemente e a fiação parece estar superaquecendo. É necessário avaliar a carga atual e instalar um quadro moderno com DR e DPS, seguindo as normas técnicas. O apartamento tem 3 quartos, 2 banheiros (com chuveiros elétricos) e ar condicionado na sala.
+                        </div>
+                    </div>
+
+                    <!-- Galeria de Fotos -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold text-navy mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-images text-primary"></i> Fotos do Local
+                        </h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="aspect-square rounded-xl overflow-hidden border border-border shadow-sm group relative cursor-pointer">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/577d45edd5-348423e867fa70583b1f.png" alt="Close up of an old, messy residential electrical distribution board with tangled wires and old circuit breakers, well lit, realistic" />
+                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                                    <i class="fa-solid fa-expand text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-md"></i>
+                                </div>
+                            </div>
+                            <div class="aspect-square rounded-xl overflow-hidden border border-border shadow-sm group relative cursor-pointer">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b9cc92a282-7f83deec0a72e3ccf468.png" alt="Wall area around an electrical panel showing some burn marks or discoloration, interior residential setting, realistic" />
+                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                                    <i class="fa-solid fa-expand text-white opacity-0 group-hover:opacity-100 transition-opacity text-xl drop-shadow-md"></i>
+                                </div>
+                            </div>
+                            <div class="aspect-square rounded-xl overflow-hidden border border-border shadow-sm group relative cursor-pointer bg-gray-50 flex flex-col items-center justify-center text-muted hover:text-primary transition-colors">
+                                <i class="fa-solid fa-plus text-2xl mb-2"></i>
+                                <span class="text-sm font-medium">Ver mais 2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Endereço do Serviço -->
+                    <div>
+                        <h3 class="text-lg font-bold text-navy mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-primary"></i> Endereço do Serviço
+                        </h3>
+                        <div class="flex items-start gap-4 bg-white border border-border rounded-xl p-5 shadow-sm">
+                            <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-primary flex-shrink-0">
+                                <i class="fa-solid fa-map-pin text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-navy text-lg">Rua das Flores, 123</p>
+                                <p class="text-navy-light mt-1">Apt 402, Bloco B - Residencial Primavera</p>
+                                <p class="text-muted text-sm mt-1">Bairro Pinheiros, São Paulo - SP, 05400-000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Right Column: Action & Bids (35%) -->
+            <div id="action-sidebar" class="w-full lg:w-[35%] flex flex-col gap-6 sticky top-28">
+                
+                <!-- Status Card -->
+                <div class="bg-surface rounded-2xl shadow-soft p-6 border border-border/50 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600 flex-shrink-0">
+                        <i class="fa-solid fa-bell text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-navy">Você tem 2 propostas</h2>
+                        <p class="text-sm text-navy-light mt-1">Profissionais avaliaram seu pedido.</p>
+                    </div>
+                </div>
+
+                <!-- Bids List -->
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-sm font-semibold text-navy-light uppercase tracking-wider ml-2">Profissionais Interessados</h3>
+                    
+                    <!-- Bid Card 1 -->
+                    <div class="bg-surface rounded-2xl shadow-card p-5 border border-border hover:border-primary/30 transition-colors group">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-sm flex-shrink-0">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Carlos Silva" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-bold text-navy text-lg">Carlos Silva</h4>
+                                    <div class="flex items-center gap-1 bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded text-sm font-bold">
+                                        <i class="fa-solid fa-star text-xs"></i> 4.9
+                                    </div>
+                                </div>
+                                <p class="text-sm text-muted">Eletricista Residencial • 15 anos exp.</p>
+                                <div class="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 text-primary rounded-md text-sm font-semibold border border-blue-100">
+                                    <i class="fa-solid fa-tag text-xs"></i> Est. R$ 450 - R$ 600
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-navy-light mb-5 line-clamp-2 italic">"Olá! Tenho muita experiência com troca de quadros para o padrão novo com DR. Posso fazer a visita amanhã..."</p>
+                        <button onclick="window.location.href='Tela 5 - Tela de detalhe do Grupo de Serviço.html'" class="w-full py-3 px-4 bg-primary hover:bg-primary-hover text-white font-bold rounded-full transition-all shadow-md hover:shadow-lg transform active:scale-[0.98]">
+                            Ver Detalhes e Contratar
+                        </button>
+                    </div>
+
+                    <!-- Bid Card 2 -->
+                    <div class="bg-surface rounded-2xl shadow-card p-5 border border-border hover:border-primary/30 transition-colors group">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-sm flex-shrink-0">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Roberto Alves" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-bold text-navy text-lg">Roberto Alves</h4>
+                                    <div class="flex items-center gap-1 bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded text-sm font-bold">
+                                        <i class="fa-solid fa-star text-xs"></i> 4.7
+                                    </div>
+                                </div>
+                                <p class="text-sm text-muted">Eletrotécnico Certificado</p>
+                                <div class="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 text-navy-light rounded-md text-sm font-medium border border-gray-200">
+                                    <i class="fa-solid fa-calculator text-xs"></i> A combinar após visita
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-navy-light mb-5 line-clamp-2 italic">"Boa tarde. Para dar um orçamento preciso de material e mão de obra, preciso fazer uma avaliação técnica da fiação..."</p>
+                        <button onclick="window.location.href='Tela 5 - Tela de detalhe do Grupo de Serviço.html'" class="w-full py-3 px-4 bg-white border-2 border-primary text-primary hover:bg-blue-50 font-bold rounded-full transition-all shadow-sm transform active:scale-[0.98]">
+                            Ver Detalhes da Proposta
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-surface border-t border-border mt-auto">
+        <div class="max-w-[1200px] mx-auto w-full px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                    M
+                </div>
+                <span class="font-semibold text-navy">MMO Services &copy; 2024</span>
+            </div>
+            <div class="flex gap-6 text-sm text-navy-light">
+                <a href="#" class="hover:text-primary transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-primary transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-primary transition-colors">Ajuda</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sub-account Permissions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        navy: '#1A1A24',
+                        trustBlue: '#0016dc',
+                        gray: {
+                            50: '#F8F9FA',
+                            100: '#F1F5F9',
+                            200: '#E2E8F0',
+                            400: '#9CA3AF',
+                            500: '#6B7280',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 40px -10px rgba(0,0,0,0.08), 0 4px 10px -4px rgba(0,0,0,0.04)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked { right: 0; border-color: #0016dc; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #0016dc; }
+        .toggle-checkbox:checked + .toggle-label:after { transform: translateX(100%); border-color: white; }
+        .toggle-label { width: 44px; height: 24px; background-color: #E2E8F0; border-radius: 9999px; position: relative; cursor: pointer; transition: background-color 0.2s ease-in-out; }
+        .toggle-label:after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background-color: white; border-radius: 50%; transition: transform 0.2s ease-in-out; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="text-navy min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+
+    <!-- Main Wrapper -->
+    <div class="w-full max-w-[1200px] mx-auto flex flex-col gap-6">
+
+        <!-- Admin Control Bar -->
+        <header id="admin-control-bar" class="flex items-center justify-between bg-transparent px-2">
+            <div class="flex items-center space-x-2 text-sm font-medium text-gray-500">
+                <a href="#" class="hover:text-trustBlue transition-colors">Minha Equipe</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <a href="#" class="hover:text-trustBlue transition-colors">Lucas Ferreira</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-navy font-semibold">Permissões</span>
+            </div>
+            <button class="px-5 py-2.5 rounded-full text-sm font-semibold text-gray-500 bg-white border border-gray-200 shadow-sm hover:bg-gray-50 hover:text-navy transition-all duration-200">
+                <i class="fa-solid fa-rotate-left mr-2"></i> Restaurar Padrões
+            </button>
+        </header>
+
+        <!-- Main Workspace (Split View) -->
+        <main id="main-workspace" class="bg-surface rounded-[24px] shadow-premium overflow-hidden flex flex-col md:flex-row min-h-[700px]">
+            
+            <!-- Left Sidebar (Employee Context) - 30% -->
+            <aside id="employee-sidebar" class="w-full md:w-[30%] bg-gray-50 p-8 border-r border-gray-100 flex flex-col">
+                <div class="flex flex-col items-center text-center mt-6">
+                    <div class="relative mb-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Lucas Ferreira" class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md">
+                        <div class="absolute bottom-1 right-1 w-6 h-6 bg-green-500 border-2 border-white rounded-full"></div>
+                    </div>
+                    <h2 class="text-2xl font-bold text-navy mb-1">Lucas Ferreira</h2>
+                    <p class="text-trustBlue font-medium text-sm mb-8 bg-blue-50 px-3 py-1 rounded-full">Operador de Caixa</p>
+                </div>
+
+                <div class="mt-4 bg-white rounded-[16px] p-6 shadow-sm border border-gray-100">
+                    <p class="text-sm text-gray-500 font-medium mb-2">Gasto neste mês</p>
+                    <div class="flex items-baseline space-x-1">
+                        <span class="text-lg font-semibold text-navy">R$</span>
+                        <span class="text-3xl font-bold text-navy">150,00</span>
+                    </div>
+                    <div class="mt-4 w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-trustBlue h-2 rounded-full" style="width: 45%"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2 text-right">45% do limite</p>
+                </div>
+            </aside>
+
+            <!-- Right Workspace (Permission Rows) - 70% -->
+            <section id="permissions-workspace" class="w-full md:w-[70%] bg-surface flex flex-col relative h-full">
+                
+                <div class="p-8 md:p-12 flex-1 overflow-y-auto pb-32">
+                    <div class="mb-10">
+                        <h1 class="text-2xl font-bold text-navy">Matriz de Acessos Individuais</h1>
+                        <p class="text-gray-500 mt-2 text-sm">Gerencie o que este colaborador pode visualizar e operar na plataforma.</p>
+                    </div>
+
+                    <!-- Group 1: OPERAÇÕES NO BALCÃO -->
+                    <div id="group-operations" class="mb-12">
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-6">Operações no Balcão</h3>
+                        <div class="space-y-0 border border-gray-100 rounded-[16px] overflow-hidden">
+                            
+                            <!-- Row 1 -->
+                            <div class="flex items-center justify-between p-5 bg-white border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-trustBlue mt-1">
+                                        <i class="fa-solid fa-cash-register"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-navy">Processar Vendas</h4>
+                                        <p class="text-xs text-gray-500 mt-1">Permite registrar novas transações no PDV.</p>
+                                    </div>
+                                </div>
+                                <div class="relative inline-block w-11 mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                                    <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+
+                            <!-- Row 2 -->
+                            <div class="flex items-center justify-between p-5 bg-white border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-trustBlue mt-1">
+                                        <i class="fa-solid fa-money-bill-transfer"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-navy">Realizar Estornos</h4>
+                                        <p class="text-xs text-gray-500 mt-1">Autorização para cancelar vendas concluídas.</p>
+                                    </div>
+                                </div>
+                                <div class="relative inline-block w-11 mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                                    <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group 2: LIMITES FINANCEIROS -->
+                    <div id="group-limits" class="mb-12">
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-6">Limites Financeiros</h3>
+                        <div class="space-y-0 border border-gray-100 rounded-[16px] overflow-hidden">
+                            
+                            <!-- Row 1 -->
+                            <div class="flex items-center justify-between p-5 bg-white border-b border-gray-100">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-trustBlue mt-1">
+                                        <i class="fa-solid fa-wallet"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-navy">Uso de Saldo Corporativo</h4>
+                                        <p class="text-xs text-gray-500 mt-1">Permite utilizar o saldo da conta principal.</p>
+                                    </div>
+                                </div>
+                                <div class="relative inline-block w-11 mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle" id="toggle3" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                                    <label for="toggle3" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+
+                            <!-- Row 2 Input -->
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-5 bg-white hover:bg-gray-50 transition-colors">
+                                <div class="flex items-start space-x-4 mb-4 sm:mb-0">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-trustBlue mt-1">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-navy">Teto de Gastos Diário</h4>
+                                        <p class="text-xs text-gray-500 mt-1">Limite máximo de operação por dia útil.</p>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-medium text-sm">R$</span>
+                                    <input type="text" value="500,00" class="pl-10 pr-4 py-3 w-40 bg-gray-50 border border-gray-200 rounded-full text-navy font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-trustBlue/20 focus:border-trustBlue transition-all text-right shadow-inner-soft" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group 3: DADOS PÚBLICOS -->
+                    <div id="group-public" class="mb-8">
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-6">Dados Públicos</h3>
+                        <div class="space-y-0 border border-gray-100 rounded-[16px] overflow-hidden">
+                            <div class="flex items-center justify-between p-5 bg-white hover:bg-gray-50 transition-colors">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-trustBlue mt-1">
+                                        <i class="fa-solid fa-address-card"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-navy">Editar Perfil Público</h4>
+                                        <p class="text-xs text-gray-500 mt-1">Alterar foto, descrição e portfólio visível.</p>
+                                    </div>
+                                </div>
+                                <div class="relative inline-block w-11 mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle" id="toggle4" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                                    <label for="toggle4" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Sticky Footer -->
+                <footer id="workspace-footer" class="absolute bottom-0 left-0 right-0 p-6 bg-white border-t border-gray-100 flex justify-end items-center rounded-br-[24px] shadow-[0_-4px_10px_rgba(0,0,0,0.02)]">
+                    <button onclick="window.location.href='Tela 2- Painel da empresa.html'" class="px-8 py-4 bg-trustBlue hover:bg-blue-800 text-white font-bold rounded-full text-sm shadow-lg shadow-trustBlue/30 transition-all duration-200 transform hover:-translate-y-0.5">
+                        Salvar Configurações da Subconta
+                    </button>
+                </footer>
+
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

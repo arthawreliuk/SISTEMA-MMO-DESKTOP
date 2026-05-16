@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pipeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        background: '#F8F9FA',
+                        card: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'drag': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+        .dragged-card { transform: rotate(3deg) scale(1.02); z-index: 50; position: relative; transition: all 0.2s ease; cursor: grabbing !important; }
+    </style>
+</head>
+<body class="bg-background text-navy antialiased min-h-screen flex flex-col items-center">
+
+    <!-- Top Navigation Shell -->
+    <nav id="top-nav" class="w-full bg-white border-b border-gray-100 flex justify-center py-4 px-6 md:px-8 sticky top-0 z-40">
+        <div class="w-full max-w-[1200px] flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-lg">M</div>
+                <span class="font-bold text-xl tracking-tight text-navy">MMO</span>
+            </div>
+
+            <!-- Nav Links -->
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#" class="text-muted hover:text-navy transition-colors">Dashboard</a>
+                <a href="#" class="text-muted hover:text-navy transition-colors">Clientes</a>
+                <a href="#" class="relative text-navy font-semibold flex flex-col items-center">
+                    Orders
+                    <div class="absolute -bottom-2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+                </a>
+                <a href="#" class="text-muted hover:text-navy transition-colors">Relatórios</a>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-muted hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="w-full max-w-[1200px] px-6 md:px-8 py-8 flex-1 flex flex-col gap-8">
+        
+        <!-- Control Header Bar -->
+        <header id="control-header" class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <h1 class="text-3xl font-bold text-navy tracking-tight">Visão Geral do Pipeline</h1>
+            
+            <div class="flex items-center gap-3">
+                <!-- Search -->
+                <div class="relative w-full md:w-64">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" placeholder="Buscar negócios..." class="w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm">
+                </div>
+                
+                <!-- Filter Pill -->
+                <button class="px-5 py-2.5 rounded-full border border-gray-200 bg-white text-sm font-medium text-navy flex items-center gap-2 hover:bg-gray-50 transition-all shadow-sm whitespace-nowrap">
+                    <i class="fa-regular fa-calendar text-gray-500"></i>
+                    Mês Atual
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-400 ml-1"></i>
+                </button>
+                
+                <!-- Add CTA -->
+                <button onclick="window.location.href='Tela 3 - Tela de detalhe do item do pipeline.html'" class="px-6 py-2.5 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition-all shadow-md shadow-primary/20 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-plus"></i>
+                    Adicionar Negócio
+                </button>
+            </div>
+        </header>
+
+        <!-- Kanban Board -->
+        <div id="kanban-board" class="flex-1 flex gap-6 overflow-x-auto pb-8 min-h-[600px]">
+            
+            <!-- Column 1: Novos Leads -->
+            <div class="flex-none w-[280px] flex flex-col gap-4">
+                <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center justify-between">
+                    <span class="text-sm font-semibold text-navy">Novos Leads</span>
+                    <span class="w-6 h-6 rounded-full bg-white text-xs font-bold flex items-center justify-center text-gray-600 shadow-sm">3</span>
+                </div>
+                
+                <div class="flex flex-col gap-3">
+                    <!-- Card 1 -->
+                    <div onclick="window.location.href='Tela 3 - Tela de detalhe do item do pipeline.html'" class="bg-card rounded-[16px] p-5 shadow-soft border border-gray-100 cursor-pointer hover:border-gray-200 transition-colors group">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 text-[11px] font-bold uppercase tracking-wide">Consultoria</span>
+                            <button class="text-gray-400 hover:text-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <h3 class="font-bold text-navy mb-1 leading-tight group-hover:text-primary transition-colors">TechCorp Redesign</h3>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-xs text-muted font-medium">Sarah Jenkins</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-50">
+                            <span class="text-[11px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> Há 2 dias</span>
+                            <span class="font-bold text-primary">R$ 12.500</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div onclick="window.location.href='Tela 3 - Tela de detalhe do item do pipeline.html'" class="bg-card rounded-[16px] p-5 shadow-soft border border-gray-100 cursor-pointer hover:border-gray-200 transition-colors group">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-purple-50 text-purple-600 text-[11px] font-bold uppercase tracking-wide">Marketing</span>
+                            <button class="text-gray-400 hover:text-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <h3 class="font-bold text-navy mb-1 leading-tight group-hover:text-primary transition-colors">Campanha Q3</h3>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-xs text-muted font-medium">Global Imports</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-50">
+                            <span class="text-[11px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-clock"></i> Hoje</span>
+                            <span class="font-bold text-primary">R$ 8.200</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Enviado Orçamento -->
+            <div class="flex-none w-[280px] flex flex-col gap-4">
+                <div class="px-4 py-2 bg-blue-50 rounded-full flex items-center justify-between">
+                    <span class="text-sm font-semibold text-blue-700">Enviado Orçamento</span>
+                    <span class="w-6 h-6 rounded-full bg-white text-xs font-bold flex items-center justify-center text-blue-700 shadow-sm">2</span>
+                </div>
+                
+                <div class="flex flex-col gap-3 relative">
+                    <!-- DRAGGED CARD STATE -->
+                    <div class="bg-card rounded-[16px] p-5 shadow-drag border border-primary/20 dragged-card absolute top-0 left-0 w-full">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-orange-50 text-orange-600 text-[11px] font-bold uppercase tracking-wide">Desenvolvimento</span>
+                            <button class="text-gray-400"><i class="fa-solid fa-grip-vertical"></i></button>
+                        </div>
+                        <h3 class="font-bold text-navy mb-1 leading-tight">App Mobile V2</h3>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-xs text-muted font-medium">Nexus Dynamics</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-50">
+                            <span class="text-[11px] text-orange-500 font-medium flex items-center gap-1"><i class="fa-solid fa-fire text-[10px]"></i> Quente</span>
+                            <span class="font-bold text-primary">R$ 45.000</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Placeholder for dragged card -->
+                    <div class="h-[160px] rounded-[16px] border-2 border-dashed border-gray-200 bg-gray-50/50"></div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-card rounded-[16px] p-5 shadow-soft border border-gray-100 cursor-pointer hover:border-gray-200 transition-colors group mt-2">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-600 text-[11px] font-bold uppercase tracking-wide">SEO</span>
+                            <button class="text-gray-400 hover:text-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <h3 class="font-bold text-navy mb-1 leading-tight group-hover:text-primary transition-colors">Otimização E-commerce</h3>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-xs text-muted font-medium">Loja Virtual XYZ</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-50">
+                            <span class="text-[11px] text-gray-400 flex items-center gap-1"><i class="fa-regular fa-envelope"></i> Enviado 12/04</span>
+                            <span class="font-bold text-primary">R$ 5.800</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3: Trabalho em Andamento -->
+            <div class="flex-none w-[280px] flex flex-col gap-4">
+                <div class="px-4 py-2 bg-indigo-50 rounded-full flex items-center justify-between">
+                    <span class="text-sm font-semibold text-indigo-700">Trabalho em Andamento</span>
+                    <span class="w-6 h-6 rounded-full bg-white text-xs font-bold flex items-center justify-center text-indigo-700 shadow-sm">2</span>
+                </div>
+                
+                <div class="flex flex-col gap-3">
+                    <!-- Card 4 (With Progress) -->
+                    <div onclick="window.location.href='Tela 3 - Tela de detalhe do item do pipeline.html'" class="bg-card rounded-[16px] p-5 shadow-soft border border-gray-100 cursor-pointer hover:border-gray-200 transition-colors group">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-pink-50 text-pink-600 text-[11px] font-bold uppercase tracking-wide">Design UI/UX</span>
+                            <button class="text-gray-400 hover:text-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <h3 class="font-bold text-navy mb-1 leading-tight group-hover:text-primary transition-colors">Sistema de Gestão</h3>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="flex -space-x-2">
+                                <img class="w-6 h-6 rounded-full border border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="">
+                                <img class="w-6 h-6 rounded-full border border-white" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="">
+                            </div>
+                            <span class="text-xs text-muted font-medium">Fintech BR</span>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-[10px] font-semibold mb-1.5">
+                                <span class="text-muted">Progresso</span>
+                                <span class="text-primary">65%</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-50">
+                            <span class="text-[11px] text-gray-400 flex items-center gap-1"><i class="fa-solid fa-list-check"></i> 12/18 Tasks</span>
+                            <span class="font-bold text-primary">R$ 28.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 (With Progress) -->
+                    <div onclick="window.location.href='Tela 3 - Tela de detalhe do item do pipeline.html'" class="bg-card rounded-[16px] p-5 shadow-soft border border-gray-100 cursor-pointer hover:border-gray-200 transition-colors group">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 text-[11px] font-bold uppercase tracking-wide">Consultoria</span>
+                            <button class="text-gray-400 hover:text-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <h3 class="font-bold text-navy mb-1 leading-tight group-hover:text-primary transition-colors">Auditoria de Segurança</h3>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-xs text-muted font-medium">Banco Digital</span>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mb-4">
+                            <div class="flex justify-between text-[10px] font-semibold mb-1.5">
+                                <span class="text-muted">Progresso</span>
+                                <span class="text-primary">90%</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-50">
+                            <span class="text-[11px] text-emerald-600 font-medium flex items-center gap-1"><i class="fa-solid fa-check-circle"></i> Fase Final</span>
+                            <span class="font-bold text-primary">R$ 15.400</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 4: Aguardando Pagamento -->
+            <div class="flex-none w-[280px] flex flex-col gap-4">
+                <div class="px-4 py-2 bg-emerald-50 rounded-full flex items-center justify-between">
+                    <span class="text-sm font-semibold text-emerald-700">Aguardando Pagamento</span>
+                    <span class="w-6 h-6 rounded-full bg-white text-xs font-bold flex items-center justify-center text-emerald-700 shadow-sm">1</span>
+                </div>
+                
+                <div class="flex flex-col gap-3">
+                    <!-- Card 6 -->
+                    <div class="bg-card rounded-[16px] p-5 shadow-soft border border-emerald-100 cursor-pointer hover:border-emerald-200 transition-colors group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-emerald-50 rounded-bl-full -z-10"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 rounded-md bg-gray-100 text-gray-600 text-[11px] font-bold uppercase tracking-wide">Infraestrutura</span>
+                            <button class="text-gray-400 hover:text-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        <h3 class="font-bold text-navy mb-1 leading-tight group-hover:text-primary transition-colors">Migração Cloud AWS</h3>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-xs text-muted font-medium">Logística Express</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-50">
+                            <span class="text-[11px] text-red-500 font-medium flex items-center gap-1"><i class="fa-solid fa-circle-exclamation text-[10px]"></i> Vence Hoje</span>
+                            <span class="font-bold text-primary">R$ 32.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

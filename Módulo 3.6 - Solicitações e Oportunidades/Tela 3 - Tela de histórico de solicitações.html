@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Requests History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280'
+                        },
+                        border: '#E5E7EB',
+                        surface: '#FFFFFF',
+                        status: {
+                            pending: '#FBBF24',
+                            progress: '#3B82F6',
+                            completed: '#22C55E'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'glow': '0 0 0 2px rgba(0, 22, 220, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav id="header" class="bg-surface border-b border-border sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-bold text-lg text-text-main tracking-tight">MMO</span>
+            </div>
+            <div class="flex items-center gap-8">
+                <a href="#" class="text-text-muted hover:text-text-main font-medium transition-colors">Home</a>
+                <a href="#" class="text-text-main font-semibold relative flex flex-col items-center">
+                    Orders
+                    <div class="absolute -bottom-2 w-1.5 h-1.5 bg-primary rounded-full"></div>
+                </a>
+                <a href="#" class="text-text-muted hover:text-text-main font-medium transition-colors">Messages</a>
+                <button class="w-10 h-10 rounded-full bg-gray-100 overflow-hidden border-2 border-transparent hover:border-primary transition-all">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-full h-full object-cover">
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-6 py-8 flex flex-col gap-8">
+        
+        <!-- Header Control Bar -->
+        <header id="page-header" class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <h1 class="text-[28px] font-bold text-text-main tracking-tight">Meus Pedidos e Solicitações</h1>
+                <p class="text-text-muted mt-1 text-sm">Gerencie suas solicitações de serviço e orçamentos.</p>
+            </div>
+            <button onclick="window.location.href='Tela 1 - Tela de criação de solicitação.html'" class="bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 transition-all shadow-md hover:shadow-lg">
+                <i class="fa-solid fa-plus text-sm"></i>
+                Novo Pedido
+            </button>
+        </header>
+
+        <!-- Layout Grid -->
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+            
+            <!-- Left Sidebar (Filters) -->
+            <aside id="sidebar-filters" class="w-full lg:w-1/4 bg-surface rounded-2xl shadow-soft p-4 sticky top-[104px]">
+                <h3 class="text-xs font-bold text-text-muted uppercase tracking-wider mb-4 px-3">Status do Pedido</h3>
+                <nav class="flex flex-col gap-1">
+                    <button class="w-full flex items-center justify-between px-4 py-3 bg-primary/10 text-primary rounded-xl font-semibold transition-colors">
+                        <span>Todos os Pedidos</span>
+                        <span class="bg-primary text-white text-xs py-0.5 px-2 rounded-full">32</span>
+                    </button>
+                    <button class="w-full flex items-center justify-between px-4 py-3 text-text-muted hover:bg-gray-50 rounded-xl font-medium transition-colors">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-status-pending"></div>
+                            <span>Aguardando Orçamento</span>
+                        </div>
+                        <span class="text-xs py-0.5 px-2 rounded-full bg-gray-100">8</span>
+                    </button>
+                    <button class="w-full flex items-center justify-between px-4 py-3 text-text-muted hover:bg-gray-50 rounded-xl font-medium transition-colors">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-status-progress"></div>
+                            <span>Em Andamento</span>
+                        </div>
+                        <span class="text-xs py-0.5 px-2 rounded-full bg-gray-100">12</span>
+                    </button>
+                    <button class="w-full flex items-center justify-between px-4 py-3 text-text-muted hover:bg-gray-50 rounded-xl font-medium transition-colors">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-status-completed"></div>
+                            <span>Finalizados</span>
+                        </div>
+                        <span class="text-xs py-0.5 px-2 rounded-full bg-gray-100">12</span>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Right Content (List View) -->
+            <section id="order-list" class="w-full lg:w-3/4 flex flex-col gap-4">
+                
+                <!-- Active Order Card -->
+                <article class="bg-surface rounded-2xl p-5 shadow-soft border border-primary/20 shadow-glow flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:-translate-y-0.5 cursor-pointer">
+                    <div class="flex items-center gap-4 flex-grow">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-wrench text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-text-main text-base">Manutenção Preventiva Ar Condicionado</h4>
+                            <div class="flex items-center gap-3 mt-1 text-sm text-text-muted">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-xs"></i> Av. Paulista, 1000 - SP</span>
+                                <span>•</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar text-xs"></i> 24 Out 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 sm:flex-col sm:items-end w-full sm:w-auto mt-2 sm:mt-0">
+                        <div class="flex items-center gap-1.5 bg-blue-50 text-status-progress px-3 py-1 rounded-full text-xs font-semibold border border-blue-100">
+                            <div class="w-1.5 h-1.5 rounded-full bg-status-progress"></div>
+                            Em Andamento
+                        </div>
+                        <a href="Tela 2 - Tela de detalhe da solicitação.html" class="text-primary font-semibold text-sm hover:underline flex items-center gap-1 ml-auto sm:ml-0">
+                            Acessar <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Standard Order Card -->
+                <article class="bg-surface rounded-2xl p-5 shadow-soft border border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-gray-300 cursor-pointer">
+                    <div class="flex items-center gap-4 flex-grow">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 text-text-muted flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-bolt text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-text-main text-base">Instalação Elétrica Completa</h4>
+                            <div class="flex items-center gap-3 mt-1 text-sm text-text-muted">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-xs"></i> R. Augusta, 500 - SP</span>
+                                <span>•</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar text-xs"></i> 20 Out 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 sm:flex-col sm:items-end w-full sm:w-auto mt-2 sm:mt-0">
+                        <div class="flex items-center gap-1.5 bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold border border-yellow-100">
+                            <div class="w-1.5 h-1.5 rounded-full bg-status-pending"></div>
+                            Aguardando Orçamento
+                        </div>
+                        <a href="Tela 2 - Tela de detalhe da solicitação.html" class="text-primary font-semibold text-sm hover:underline flex items-center gap-1 ml-auto sm:ml-0">
+                            Acessar <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Completed Order Card -->
+                <article class="bg-surface rounded-2xl p-5 shadow-soft border border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-gray-300 cursor-pointer opacity-80">
+                    <div class="flex items-center gap-4 flex-grow">
+                        <div class="w-12 h-12 rounded-full bg-green-50 text-status-completed flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-check text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-text-main text-base">Reparo Hidráulico Banheiro</h4>
+                            <div class="flex items-center gap-3 mt-1 text-sm text-text-muted">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-xs"></i> Alameda Santos, 200 - SP</span>
+                                <span>•</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar text-xs"></i> 15 Out 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 sm:flex-col sm:items-end w-full sm:w-auto mt-2 sm:mt-0">
+                        <div class="flex items-center gap-1.5 bg-green-50 text-status-completed px-3 py-1 rounded-full text-xs font-semibold border border-green-100">
+                            <div class="w-1.5 h-1.5 rounded-full bg-status-completed"></div>
+                            Finalizado
+                        </div>
+                        <a href="Tela 2 - Tela de detalhe da solicitação.html" class="text-primary font-semibold text-sm hover:underline flex items-center gap-1 ml-auto sm:ml-0">
+                            Acessar <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-surface border-t border-border py-8 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2 text-text-muted text-sm">
+                <div class="w-6 h-6 bg-gray-200 rounded-md flex items-center justify-center text-xs font-bold text-gray-500">M</div>
+                © 2023 MMO Services. Todos os direitos reservados.
+            </div>
+            <div class="flex gap-6 text-sm text-text-muted">
+                <a href="#" class="hover:text-primary transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-primary transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-primary transition-colors">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

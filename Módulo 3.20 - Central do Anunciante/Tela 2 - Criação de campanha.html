@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Campaign Creation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#1A1A24',
+                            blue: '#0016dc',
+                            offwhite: '#F8F9FA',
+                            white: '#FFFFFF',
+                            gray: '#E2E8F0',
+                            lightgray: '#F1F5F9',
+                            darkgray: '#64748B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0, 0, 0, 0.05)',
+                        'active': '0 0 0 2px #0016dc, 0 10px 40px -10px rgba(0, 22, 220, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen bg-brand-offwhite text-brand-navy antialiased flex flex-col items-center">
+
+    <!-- Top Navigation -->
+    <header id="top-nav" class="w-full h-20 bg-brand-offwhite flex items-center justify-between px-8 lg:px-12 sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <nav aria-label="Breadcrumb" class="flex items-center text-[15px] font-medium">
+                <a href="#" class="text-brand-darkgray hover:text-brand-navy transition-colors">Central de Ads</a>
+                <i class="fa-solid fa-chevron-right text-[10px] mx-3 text-brand-gray"></i>
+                <span class="text-brand-navy">Criar Nova Campanha</span>
+            </nav>
+        </div>
+        <button class="px-5 py-2.5 rounded-full border border-brand-gray text-brand-navy font-semibold text-[14px] hover:bg-brand-white hover:shadow-sm transition-all duration-200 flex items-center gap-2">
+            <i class="fa-regular fa-folder-open"></i>
+            Rascunhos Salvos
+        </button>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="w-full max-w-[1200px] px-6 lg:px-8 py-8 flex-1 flex flex-col items-center">
+        
+        <!-- Campaign Wizard Canvas -->
+        <div id="wizard-canvas" class="w-full max-w-[1000px] bg-brand-white rounded-[24px] shadow-ambient overflow-hidden flex flex-col">
+            
+            <!-- Top Stepper -->
+            <div id="stepper" class="w-full p-8 pb-4 border-b border-brand-gray/40">
+                <div class="flex items-center justify-between relative z-10 max-w-[800px] mx-auto">
+                    <!-- Step 1 (Active) -->
+                    <div class="flex flex-col items-center gap-2 relative z-20">
+                        <div class="h-10 px-5 rounded-full bg-brand-blue text-white flex items-center justify-center font-bold text-[14px] shadow-md">
+                            1. Objetivo
+                        </div>
+                    </div>
+                    <!-- Connector -->
+                    <div class="flex-1 h-[2px] bg-brand-blue/20 -mx-4 z-0 relative top-[-14px]"></div>
+                    
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center gap-2 relative z-20">
+                        <div class="h-10 px-5 rounded-full bg-brand-lightgray text-brand-darkgray border border-brand-gray flex items-center justify-center font-semibold text-[14px]">
+                            2. Segmentação
+                        </div>
+                    </div>
+                    <!-- Connector -->
+                    <div class="flex-1 h-[2px] bg-brand-gray -mx-4 z-0 relative top-[-14px]"></div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center gap-2 relative z-20">
+                        <div class="h-10 px-5 rounded-full bg-brand-lightgray text-brand-darkgray border border-brand-gray flex items-center justify-center font-semibold text-[14px]">
+                            3. Criativos
+                        </div>
+                    </div>
+                    <!-- Connector -->
+                    <div class="flex-1 h-[2px] bg-brand-gray -mx-4 z-0 relative top-[-14px]"></div>
+                    
+                    <!-- Step 4 -->
+                    <div class="flex flex-col items-center gap-2 relative z-20">
+                        <div class="h-10 px-5 rounded-full bg-brand-lightgray text-brand-darkgray border border-brand-gray flex items-center justify-center font-semibold text-[14px]">
+                            4. Pagamento
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Section -->
+            <div class="p-10 lg:p-14 flex-1">
+                <div class="text-center mb-12">
+                    <h1 class="text-[32px] lg:text-[40px] font-extrabold leading-tight tracking-tight mb-3 text-brand-navy">
+                        Qual é o objetivo desta campanha?
+                    </h1>
+                    <p class="text-[16px] lg:text-[18px] text-brand-darkgray font-medium">
+                        Isso define como otimizaremos a entrega do seu anúncio.
+                    </p>
+                </div>
+
+                <!-- Objective Selection Grid -->
+                <div id="objective-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Card A: Active State -->
+                    <div id="card-local" class="group relative bg-brand-blue/[0.03] rounded-[20px] p-8 cursor-pointer transition-all duration-300 shadow-active border border-brand-blue flex flex-col h-full">
+                        <div class="absolute top-4 right-4 w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center text-white shadow-sm">
+                            <i class="fa-solid fa-check text-[12px]"></i>
+                        </div>
+                        <div class="w-14 h-14 rounded-[16px] bg-brand-white shadow-sm flex items-center justify-center text-brand-blue text-[24px] mb-6 border border-brand-blue/10">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h3 class="text-[20px] font-bold mb-3 text-brand-navy">Alcance Local</h3>
+                        <p class="text-[14px] text-brand-darkgray leading-relaxed font-medium">
+                            Ideal para lojas físicas que querem ser vistas por todos os mestres e clientes da região.
+                        </p>
+                    </div>
+
+                    <!-- Card B: Standard State -->
+                    <div id="card-engagement" class="group relative bg-brand-white rounded-[20px] p-8 cursor-pointer transition-all duration-300 border border-brand-gray hover:border-brand-blue/50 hover:shadow-ambient flex flex-col h-full">
+                        <div class="w-14 h-14 rounded-[16px] bg-brand-lightgray flex items-center justify-center text-brand-navy text-[24px] mb-6 group-hover:bg-brand-blue/5 group-hover:text-brand-blue transition-colors">
+                            <i class="fa-solid fa-hand-pointer"></i>
+                        </div>
+                        <h3 class="text-[20px] font-bold mb-3 text-brand-navy">Engajamento/Cliques</h3>
+                        <p class="text-[14px] text-brand-darkgray leading-relaxed font-medium">
+                            Leve tráfego qualificado para o seu site ou aumente a interação com suas publicações.
+                        </p>
+                    </div>
+
+                    <!-- Card C: Standard State -->
+                    <div id="card-leads" class="group relative bg-brand-white rounded-[20px] p-8 cursor-pointer transition-all duration-300 border border-brand-gray hover:border-brand-blue/50 hover:shadow-ambient flex flex-col h-full">
+                        <div class="w-14 h-14 rounded-[16px] bg-brand-lightgray flex items-center justify-center text-brand-navy text-[24px] mb-6 group-hover:bg-brand-blue/5 group-hover:text-brand-blue transition-colors">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h3 class="text-[20px] font-bold mb-3 text-brand-navy">Geração de Leads B2B</h3>
+                        <p class="text-[14px] text-brand-darkgray leading-relaxed font-medium">
+                            Capture contatos de empresas e profissionais para o seu funil de vendas.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer Area -->
+            <div class="px-10 py-8 bg-brand-white border-t border-brand-gray/40 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="w-full md:w-3/5">
+                    <label for="campaign-name" class="sr-only">Nome da Campanha</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-brand-darkgray">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <input type="text" id="campaign-name" 
+                            class="w-full h-14 pl-12 pr-5 rounded-full bg-brand-lightgray border border-transparent focus:bg-brand-white focus:border-brand-blue focus:ring-4 focus:ring-brand-blue/10 text-[15px] font-medium text-brand-navy placeholder:text-brand-darkgray/70 transition-all outline-none"
+                            placeholder="Dê um nome para esta campanha (Ex: Black Friday 2026)">
+                    </div>
+                </div>
+                <button onclick="window.location.href='Tela 3 - Seleção de região_cidade.html'" class="w-full md:w-auto h-14 px-8 rounded-full bg-brand-blue text-white font-bold text-[16px] shadow-lg shadow-brand-blue/30 hover:bg-[#0012b3] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-3">
+                    Continuar para Segmentação
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

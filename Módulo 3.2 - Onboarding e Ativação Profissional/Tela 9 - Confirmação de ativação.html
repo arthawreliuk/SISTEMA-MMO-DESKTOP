@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activation Success | MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            muted: '#6B7280',
+                            border: '#E5E7EB'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 0 20px rgba(0, 22, 220, 0.03)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'glow': '0 0 40px rgba(0, 22, 220, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Subtle background glow effect inspired by reference */
+        .bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vh;
+            background: radial-gradient(circle, rgba(0,22,220,0.03) 0%, rgba(248,249,250,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- Background Ambient Glow -->
+    <div class="bg-glow"></div>
+
+    <!-- Navigation -->
+    <header id="header" class="w-full bg-white/80 backdrop-blur-md border-b border-brand-border/50 sticky top-0 z-50">
+        <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer">
+                <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-glow">
+                    M
+                </div>
+                <span class="font-bold text-xl text-brand-navy tracking-tight">MMO</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-sm font-medium text-brand-muted hover:text-brand-navy transition-colors">Plataforma</a>
+                <a href="#" class="text-sm font-medium text-brand-muted hover:text-brand-navy transition-colors">Comunidade</a>
+                <a href="#" class="text-sm font-medium text-brand-muted hover:text-brand-navy transition-colors">Suporte</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-brand-bg border border-brand-border flex items-center justify-center overflow-hidden">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Arthur" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow flex items-center justify-center py-20 px-4 relative z-10">
+        
+        <!-- Center Layout Container (1000px max) -->
+        <div class="w-full max-w-[1000px] flex justify-center">
+            
+            <!-- Main Workspace Card (800px wide) -->
+            <div id="success-card" class="w-full max-w-[800px] bg-white rounded-[24px] shadow-ambient p-10 md:p-16 relative overflow-hidden border border-white/50">
+                
+                <!-- Decorative Top Gradient Line -->
+                <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-blue via-[#3B82F6] to-brand-blue opacity-80"></div>
+
+                <div class="flex flex-col items-center text-center">
+                    
+                    <!-- 3D Seal / Icon Container -->
+                    <div class="relative w-32 h-32 mb-8 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-brand-blue/10 rounded-full blur-xl"></div>
+                        <div class="relative w-24 h-24 bg-gradient-to-br from-[#3B82F6] to-brand-blue rounded-2xl shadow-glow flex items-center justify-center transform rotate-3">
+                            <i class="fa-solid fa-shield-check text-5xl text-white drop-shadow-md"></i>
+                        </div>
+                        <!-- Sparkles -->
+                        <i class="fa-solid fa-sparkles absolute top-0 right-0 text-yellow-400 text-xl animate-pulse"></i>
+                        <i class="fa-solid fa-star absolute bottom-4 left-0 text-brand-blue text-sm opacity-60"></i>
+                    </div>
+
+                    <!-- Headlines -->
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-brand-navy mb-4 tracking-tight">
+                        Você agora é um Mestre!
+                    </h1>
+                    <p class="text-lg md:text-xl text-brand-muted max-w-2xl leading-relaxed mb-12">
+                        Parabéns, <span class="font-semibold text-brand-navy">Arthur!</span> Seu perfil profissional foi ativado com sucesso. Agora você faz parte do ecossistema de elite da MMO.
+                    </p>
+
+                    <!-- Next Steps Grid (3 small cards) -->
+                    <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-5 mb-14 text-left">
+                        
+                        <!-- Card 1 -->
+                        <div class="bg-brand-bg rounded-2xl p-6 border border-brand-border/60 hover:border-brand-blue/30 hover:shadow-card transition-all duration-300 group">
+                            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center mb-4 text-brand-blue group-hover:scale-110 transition-transform">
+                                <i class="fa-regular fa-user-pen text-lg"></i>
+                            </div>
+                            <h3 class="font-bold text-brand-navy mb-2 text-base">1. Perfil</h3>
+                            <p class="text-sm text-brand-muted leading-relaxed">Complete sua bio e adicione suas especialidades para atrair mais clientes.</p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bg-brand-bg rounded-2xl p-6 border border-brand-border/60 hover:border-brand-blue/30 hover:shadow-card transition-all duration-300 group">
+                            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center mb-4 text-brand-blue group-hover:scale-110 transition-transform">
+                                <i class="fa-regular fa-wallet text-lg"></i>
+                            </div>
+                            <h3 class="font-bold text-brand-navy mb-2 text-base">2. Carteira</h3>
+                            <p class="text-sm text-brand-muted leading-relaxed">Configure seus dados de recebimento para garantir pagamentos rápidos.</p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="bg-brand-bg rounded-2xl p-6 border border-brand-border/60 hover:border-brand-blue/30 hover:shadow-card transition-all duration-300 group">
+                            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center mb-4 text-brand-blue group-hover:scale-110 transition-transform">
+                                <i class="fa-regular fa-clipboard-list text-lg"></i>
+                            </div>
+                            <h3 class="font-bold text-brand-navy mb-2 text-base">3. Balcão</h3>
+                            <p class="text-sm text-brand-muted leading-relaxed">Acesse o painel e veja os pedidos de serviços mais próximos a você.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Primary Action -->
+                    <button onclick="window.location.href='../Módulo 3.3 - Cadastro e Perfil Profissional/Tela 1 - Edição do perfil profissional.html'" class="w-full sm:w-auto min-w-[320px] bg-brand-blue hover:bg-[#0012b3] text-white font-bold text-lg py-4 px-10 rounded-full shadow-glow transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-3">
+                        Ir para o Painel Profissional
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+
+                    <!-- Support Footer Link -->
+                    <div class="mt-8">
+                        <p class="text-sm text-brand-muted">
+                            Dúvidas sobre o funcionamento? 
+                            <a href="#" class="font-semibold text-brand-blue hover:underline underline-offset-4 ml-1">Acesse a Central de Ajuda.</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

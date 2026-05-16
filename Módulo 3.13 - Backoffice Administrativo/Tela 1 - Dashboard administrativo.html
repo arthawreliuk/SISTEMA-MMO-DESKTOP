@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 24px -4px rgba(0, 0, 0, 0.05)',
+                        'card': '0 10px 40px -10px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Main Top Navigation -->
+    <header id="header" class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Left: Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-blue/20">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight text-brand-navy">MMO Admin</span>
+            </div>
+
+            <!-- Right: Actions -->
+            <div class="flex items-center gap-6">
+                <button class="px-5 py-2.5 rounded-full border border-gray-200 text-brand-navy font-medium text-sm hover:bg-gray-50 transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-headset text-brand-blue"></i>
+                    Suporte Master
+                </button>
+                <div class="h-8 w-px bg-gray-200"></div>
+                <button class="flex items-center gap-3 group relative">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm ring-2 ring-gray-100 group-hover:ring-brand-blue/30 transition-all">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div class="text-left hidden sm:block">
+                        <div class="text-sm font-semibold text-brand-navy">Carlos Silva</div>
+                        <div class="text-xs text-gray-500">Super Admin</div>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-400 ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-[1200px] mx-auto w-full px-6 py-8 flex flex-col gap-8">
+
+        <!-- 1. Admin Toolbar -->
+        <section id="admin-toolbar" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-sm">
+                <span class="text-gray-500 hover:text-brand-blue cursor-pointer transition-colors">Painel</span>
+                <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                <span class="font-semibold text-brand-navy">Visão Geral</span>
+            </div>
+            
+            <div class="bg-white p-1.5 rounded-full shadow-sm border border-gray-100 flex items-center gap-1">
+                <button class="px-4 py-1.5 text-sm font-medium rounded-full bg-brand-blue text-white shadow-md shadow-brand-blue/20">Hoje</button>
+                <button class="px-4 py-1.5 text-sm font-medium rounded-full text-gray-600 hover:bg-gray-50 transition-colors">7D</button>
+                <button class="px-4 py-1.5 text-sm font-medium rounded-full text-gray-600 hover:bg-gray-50 transition-colors">30D</button>
+                <button class="px-4 py-1.5 text-sm font-medium rounded-full text-gray-600 hover:bg-gray-50 transition-colors">Ano</button>
+            </div>
+        </section>
+
+        <!-- 2. Analytics Strip (KPI Cards) -->
+        <section id="kpi-strip" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-card border border-white/50 relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wallet text-xl"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-up text-[10px]"></i> 12.5%
+                    </span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-500 mb-1">Receita Mensal (MRR)</h3>
+                <div class="text-3xl font-bold text-brand-navy tracking-tight">R$ 85.400</div>
+                <div id="sparkline-1" class="h-12 mt-4 -mx-2"></div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-card border border-white/50 relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-users text-xl"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-up text-[10px]"></i> 8.2%
+                    </span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-500 mb-1">Novos Clientes</h3>
+                <div class="text-3xl font-bold text-brand-navy tracking-tight">1,248</div>
+                <div id="sparkline-2" class="h-12 mt-4 -mx-2"></div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-card border border-white/50 relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-briefcase text-xl"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-down text-[10px]"></i> 2.4%
+                    </span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-500 mb-1">Pedidos Ativos</h3>
+                <div class="text-3xl font-bold text-brand-navy tracking-tight">342</div>
+                <div id="sparkline-3" class="h-12 mt-4 -mx-2"></div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-card border border-white/50 relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-500 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-clock text-xl"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-up text-[10px]"></i> 5.1%
+                    </span>
+                </div>
+                <h3 class="text-sm font-medium text-gray-500 mb-1">Tempo de Resposta</h3>
+                <div class="text-3xl font-bold text-brand-navy tracking-tight">1.2h</div>
+                <div id="sparkline-4" class="h-12 mt-4 -mx-2"></div>
+            </div>
+        </section>
+
+        <!-- 3. Master Operations Table -->
+        <section id="operations-table" class="bg-white rounded-[24px] shadow-card border border-gray-100 overflow-hidden flex flex-col">
+            <!-- Table Header -->
+            <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <h2 class="text-xl font-bold text-brand-navy">Últimos Pedidos no Balcão</h2>
+                
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                        <input type="text" placeholder="Buscar pedido..." class="pl-10 pr-4 py-2.5 rounded-full bg-gray-50 border-none focus:ring-2 focus:ring-brand-blue/20 text-sm w-64 outline-none transition-all">
+                    </div>
+                    <button class="px-4 py-2.5 rounded-full border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 flex items-center gap-2 transition-colors">
+                        <i class="fa-solid fa-filter text-xs"></i> Filtros
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table Content -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50/50">
+                            <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Cliente</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Profissional</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Cidade</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Valor Exposição</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50">
+                        <!-- Row 1 -->
+                        <tr class="bg-white hover:bg-gray-50/50 transition-colors group">
+                            <td class="px-6 py-4 text-sm font-medium text-brand-navy">#ORD-8921</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-8 h-8 rounded-full object-cover">
+                                    <span class="text-sm font-medium text-gray-900">Ana Souza</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500">Aguardando...</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">São Paulo, SP</td>
+                            <td class="px-6 py-4 text-sm font-semibold text-brand-navy">R$ 1.250,00</td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 rounded-full bg-blue-50 text-brand-blue text-xs font-semibold border border-blue-100">Aberto</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button onclick="window.location.href='Tela 2 - Gestão de usuários.html'" class="w-8 h-8 rounded-full hover:bg-gray-100 text-gray-400 hover:text-brand-blue transition-colors">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="bg-[#F8F9FA] hover:bg-gray-100/50 transition-colors group">
+                            <td class="px-6 py-4 text-sm font-medium text-brand-navy">#ORD-8920</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full object-cover">
+                                    <span class="text-sm font-medium text-gray-900">Marcos Lima</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-6 h-6 rounded-full object-cover">
+                                    <span class="text-sm text-gray-700">Roberto Eletricista</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Rio de Janeiro, RJ</td>
+                            <td class="px-6 py-4 text-sm font-semibold text-brand-navy">R$ 850,00</td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 rounded-full bg-amber-50 text-amber-600 text-xs font-semibold border border-amber-100">Em Negociação</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="w-8 h-8 rounded-full hover:bg-gray-200 text-gray-400 hover:text-brand-blue transition-colors">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr class="bg-white hover:bg-gray-50/50 transition-colors group">
+                            <td class="px-6 py-4 text-sm font-medium text-brand-navy">#ORD-8919</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover">
+                                    <span class="text-sm font-medium text-gray-900">Juliana Costa</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-6 h-6 rounded-full object-cover">
+                                    <span class="text-sm text-gray-700">Carlos Pinturas</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Curitiba, PR</td>
+                            <td class="px-6 py-4 text-sm font-semibold text-brand-navy">R$ 3.400,00</td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-semibold border border-emerald-100">Finalizado</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button onclick="window.location.href='Tela 2 - Gestão de usuários.html'" class="w-8 h-8 rounded-full hover:bg-gray-100 text-gray-400 hover:text-brand-blue transition-colors">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-4 border-t border-gray-100 bg-white flex justify-between items-center text-sm text-gray-500">
+                <span>Mostrando 1 a 3 de 248 registros</span>
+                <div class="flex gap-1">
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 disabled:opacity-50"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                    <button class="w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center">1</button>
+                    <button class="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center">2</button>
+                    <button class="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center">3</button>
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Bottom Analytics Row -->
+        <section id="bottom-analytics" class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+            <!-- Chart Card 1 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-card border border-gray-100">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-bold text-brand-navy">Categorias mais buscadas</h3>
+                    <button class="text-gray-400 hover:text-brand-blue"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div id="bar-chart" class="h-[300px] w-full"></div>
+            </div>
+
+            <!-- Chart Card 2 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-card border border-gray-100">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-bold text-brand-navy">Distribuição de Planos</h3>
+                    <button class="text-gray-400 hover:text-brand-blue"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div id="donut-chart" class="h-[300px] w-full"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        window.addEventListener('load', function() {
+            try {
+                // Common layout config for sparklines
+                const sparklineLayout = {
+                    margin: { t: 5, r: 5, b: 5, l: 5 },
+                    xaxis: { visible: false, fixedrange: true },
+                    yaxis: { visible: false, fixedrange: true },
+                    showlegend: false,
+                    paper_bgcolor: 'transparent',
+                    plot_bgcolor: 'transparent',
+                    height: 48,
+                    hovermode: false
+                };
+
+                // Sparkline 1 (MRR)
+                Plotly.newPlot('sparkline-1', [{
+                    y: [40, 45, 42, 55, 60, 58, 70, 85],
+                    type: 'scatter', mode: 'lines',
+                    line: { color: '#0016dc', width: 2, shape: 'spline', smoothing: 1.3 },
+                    fill: 'tozeroy', fillcolor: 'rgba(0, 22, 220, 0.1)'
+                }], sparklineLayout, {displayModeBar: false, responsive: true});
+
+                // Sparkline 2 (Users)
+                Plotly.newPlot('sparkline-2', [{
+                    y: [20, 25, 22, 35, 30, 45, 40, 50],
+                    type: 'scatter', mode: 'lines',
+                    line: { color: '#8b5cf6', width: 2, shape: 'spline', smoothing: 1.3 },
+                    fill: 'tozeroy', fillcolor: 'rgba(139, 92, 246, 0.1)'
+                }], sparklineLayout, {displayModeBar: false, responsive: true});
+
+                // Sparkline 3 (Orders)
+                Plotly.newPlot('sparkline-3', [{
+                    y: [60, 50, 55, 45, 40, 35, 38, 30],
+                    type: 'scatter', mode: 'lines',
+                    line: { color: '#f59e0b', width: 2, shape: 'spline', smoothing: 1.3 },
+                    fill: 'tozeroy', fillcolor: 'rgba(245, 158, 11, 0.1)'
+                }], sparklineLayout, {displayModeBar: false, responsive: true});
+
+                // Sparkline 4 (Time)
+                Plotly.newPlot('sparkline-4', [{
+                    y: [10, 15, 12, 18, 20, 15, 25, 22],
+                    type: 'scatter', mode: 'lines',
+                    line: { color: '#f43f5e', width: 2, shape: 'spline', smoothing: 1.3 },
+                    fill: 'tozeroy', fillcolor: 'rgba(244, 63, 94, 0.1)'
+                }], sparklineLayout, {displayModeBar: false, responsive: true});
+
+                // Main Bar Chart
+                Plotly.newPlot('bar-chart', [{
+                    x: ['Elétrica', 'Pintura', 'Hidráulica', 'Limpeza', 'Montagem'],
+                    y: [450, 320, 280, 210, 150],
+                    type: 'bar',
+                    marker: { 
+                        color: ['#0016dc', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe'],
+                        border: { radius: 8 } // Approximating rounded corners
+                    }
+                }], {
+                    margin: { t: 10, r: 10, b: 40, l: 40 },
+                    paper_bgcolor: 'transparent',
+                    plot_bgcolor: 'transparent',
+                    xaxis: { showgrid: false, tickfont: { color: '#6b7280' } },
+                    yaxis: { showgrid: true, gridcolor: '#f3f4f6', tickfont: { color: '#6b7280' } }
+                }, {displayModeBar: false, responsive: true});
+
+                // Donut Chart
+                Plotly.newPlot('donut-chart', [{
+                    labels: ['Plano Grátis', 'Plano Mestre', 'Plano Empresa'],
+                    values: [45, 35, 20],
+                    type: 'pie',
+                    hole: 0.6,
+                    marker: { colors: ['#94a3b8', '#0016dc', '#10b981'] },
+                    textinfo: 'percent',
+                    hoverinfo: 'label+value'
+                }], {
+                    margin: { t: 10, r: 10, b: 10, l: 10 },
+                    showlegend: true,
+                    legend: { orientation: 'h', y: -0.1, x: 0.5, xanchor: 'center' },
+                    paper_bgcolor: 'transparent',
+                    plot_bgcolor: 'transparent'
+                }, {displayModeBar: false, responsive: true});
+
+            } catch(e) { console.error('Chart error:', e); }
+        });
+    </script>
+</body>
+</html>

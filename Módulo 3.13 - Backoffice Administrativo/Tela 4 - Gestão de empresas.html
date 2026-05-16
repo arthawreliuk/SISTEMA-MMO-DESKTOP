@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trust: '#0016dc',
+                        offwhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 24px -4px rgba(0, 0, 0, 0.05)',
+                        'ambient-sm': '0 2px 12px -2px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-ambient-sm">
+        <div class="max-w-[1200px] mx-auto w-full px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-trust rounded-xl flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-bold text-xl tracking-tight text-navy">MMO Admin</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="relative text-gray-400 hover:text-navy transition-colors">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <div class="flex items-center gap-3 cursor-pointer">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                    <div class="hidden md:block text-sm">
+                        <p class="font-semibold text-navy">Admin User</p>
+                        <p class="text-gray-500 text-xs">Super Admin</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs ml-1"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-6 py-8 flex flex-col gap-8">
+        
+        <!-- Admin Control Bar -->
+        <section id="control-bar" class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div>
+                <nav class="flex text-sm text-gray-500 mb-1">
+                    <ol class="flex items-center space-x-2">
+                        <li><a href="#" class="hover:text-trust transition-colors">Painel</a></li>
+                        <li><i class="fa-solid fa-chevron-right text-[10px]"></i></li>
+                        <li class="font-semibold text-navy">Empresas B2B</li>
+                    </ol>
+                </nav>
+                <h1 class="text-3xl font-bold text-navy tracking-tight">Gerenciar Empresas</h1>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+                <div class="relative w-full sm:w-[320px]">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" placeholder="Search by CNPJ or Name..." class="w-full bg-white border-none shadow-ambient-sm rounded-full py-3 pl-11 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-trust/20 transition-all text-navy placeholder-gray-400">
+                </div>
+                <button onclick="window.location.href='Tela 5 - Gestão de categorias, serviços e cidades.html'" class="w-full sm:w-auto bg-trust hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-full shadow-ambient transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-plus text-sm"></i>
+                    Cadastrar Nova Empresa
+                </button>
+            </div>
+        </section>
+
+        <!-- B2B Analytics Strip -->
+        <section id="analytics-strip" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1">Total de Empresas</p>
+                    <h3 class="text-3xl font-bold text-navy">42</h3>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-trust">
+                    <i class="fa-solid fa-building text-xl"></i>
+                </div>
+            </div>
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1">Receita B2B Mensal</p>
+                    <h3 class="text-3xl font-bold text-navy">R$ 35k</h3>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                    <i class="fa-solid fa-chart-line text-xl"></i>
+                </div>
+            </div>
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1">Aprovações Pendentes</p>
+                    <h3 class="text-3xl font-bold text-navy">3</h3>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600">
+                    <i class="fa-solid fa-clock text-xl"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Master Data Table -->
+        <section id="data-table" class="bg-white rounded-[24px] shadow-ambient overflow-hidden">
+            <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                <h2 class="text-xl font-bold text-navy">Diretório de Empresas</h2>
+                <button class="text-gray-400 hover:text-navy transition-colors">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50/50 text-xs uppercase tracking-wider text-gray-500 font-semibold border-b border-gray-100">
+                            <th class="px-6 py-4 font-semibold">Razão Social / Fantasia</th>
+                            <th class="px-6 py-4 font-semibold">CNPJ</th>
+                            <th class="px-6 py-4 font-semibold">Administrador</th>
+                            <th class="px-6 py-4 font-semibold">Plano Atual</th>
+                            <th class="px-6 py-4 font-semibold">Equipe (Vagas)</th>
+                            <th class="px-6 py-4 font-semibold">Status CNPJ</th>
+                            <th class="px-6 py-4 font-semibold text-right">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-trust font-bold text-sm">TC</div>
+                                    <div>
+                                        <p class="font-bold text-navy text-sm">TechCorp Solutions LTDA</p>
+                                        <p class="text-xs text-gray-500">TechCorp</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-600">12.345.678/0001-90</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-6 h-6 rounded-full">
+                                    <span class="text-sm text-gray-700">Carlos Silva</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4"><span class="text-sm font-semibold text-navy bg-gray-100 px-3 py-1 rounded-full">Enterprise</span></td>
+                            <td class="px-6 py-4">
+                                <div class="flex flex-col gap-1 w-32">
+                                    <div class="flex justify-between text-xs font-medium">
+                                        <span class="text-trust">8/10</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5">
+                                        <div class="bg-trust h-1.5 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 border border-green-100">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                    Verified
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-trust hover:border-trust transition-colors flex items-center justify-center"><i class="fa-solid fa-eye text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-trust hover:border-trust transition-colors flex items-center justify-center"><i class="fa-solid fa-file-contract text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-navy hover:border-navy transition-colors flex items-center justify-center"><i class="fa-solid fa-gear text-xs"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-sm">GL</div>
+                                    <div>
+                                        <p class="font-bold text-navy text-sm">Global Logistics S.A.</p>
+                                        <p class="text-xs text-gray-500">GlobalLog</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-600">98.765.432/0001-10</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-6 h-6 rounded-full">
+                                    <span class="text-sm text-gray-700">Ana Costa</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4"><span class="text-sm font-semibold text-navy bg-gray-100 px-3 py-1 rounded-full">Pro</span></td>
+                            <td class="px-6 py-4">
+                                <div class="flex flex-col gap-1 w-32">
+                                    <div class="flex justify-between text-xs font-medium">
+                                        <span class="text-yellow-600">5/5</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5">
+                                        <div class="bg-yellow-500 h-1.5 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-700 border border-yellow-100">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>
+                                    Pending Validation
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-trust hover:border-trust transition-colors flex items-center justify-center"><i class="fa-solid fa-eye text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-trust hover:border-trust transition-colors flex items-center justify-center"><i class="fa-solid fa-file-contract text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-navy hover:border-navy transition-colors flex items-center justify-center"><i class="fa-solid fa-gear text-xs"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-700 font-bold text-sm">IM</div>
+                                    <div>
+                                        <p class="font-bold text-navy text-sm">Innova Marketing Digital</p>
+                                        <p class="text-xs text-gray-500">Innova</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-600">45.678.901/0001-23</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-6 h-6 rounded-full">
+                                    <span class="text-sm text-gray-700">Roberto Dias</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4"><span class="text-sm font-semibold text-navy bg-gray-100 px-3 py-1 rounded-full">Starter</span></td>
+                            <td class="px-6 py-4">
+                                <div class="flex flex-col gap-1 w-32">
+                                    <div class="flex justify-between text-xs font-medium">
+                                        <span class="text-trust">1/3</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5">
+                                        <div class="bg-trust h-1.5 rounded-full" style="width: 33%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-100">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                                    Blocked
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-trust hover:border-trust transition-colors flex items-center justify-center"><i class="fa-solid fa-eye text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-trust hover:border-trust transition-colors flex items-center justify-center"><i class="fa-solid fa-file-contract text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-navy hover:border-navy transition-colors flex items-center justify-center"><i class="fa-solid fa-gear text-xs"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination Footer -->
+            <div class="p-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
+                <span>Showing 1 to 3 of 42 entries</span>
+                <div class="flex items-center gap-2">
+                    <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                    <button class="w-8 h-8 rounded-full bg-trust text-white flex items-center justify-center font-medium shadow-sm">1</button>
+                    <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 font-medium">2</button>
+                    <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 font-medium">3</button>
+                    <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-gray-100 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
+            <p>&copy; 2024 MMO Admin Backoffice. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-navy transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-navy transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-navy transition-colors">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

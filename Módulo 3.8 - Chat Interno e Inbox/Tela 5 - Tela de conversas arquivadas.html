@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archived Conversations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            light: '#F8F9FA',
+                            navy: '#1A1A24',
+                            gray: '#64748B',
+                            border: '#E2E8F0',
+                            surface: '#FFFFFF'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CBD5E1; }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-white shadow-sm">
+                    <i class="fa-solid fa-gamepad text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-brand-navy tracking-tight">MMO.</span>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-brand-gray hover:text-brand-navy font-medium transition-colors text-sm">Home</a>
+                <a href="#" class="text-brand-gray hover:text-brand-navy font-medium transition-colors text-sm">Opportunities</a>
+                <div class="relative group cursor-pointer">
+                    <a href="#" class="text-brand-navy font-semibold text-sm">Messages</a>
+                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-brand-blue rounded-full"></div>
+                </div>
+                <a href="#" class="text-brand-gray hover:text-brand-navy font-medium transition-colors text-sm">Profile</a>
+            </nav>
+
+            <!-- User Actions -->
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center text-brand-gray hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm cursor-pointer">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-6 py-8 flex flex-col gap-6">
+
+        <!-- Breadcrumb & Controls -->
+        <section id="header-controls" class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-sm font-medium">
+                <a href="#" class="text-brand-gray hover:text-brand-navy transition-colors">Mensagens</a>
+                <i class="fa-solid fa-chevron-right text-[10px] text-brand-gray/50"></i>
+                <span class="text-brand-navy">Arquivo</span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <div class="relative w-full sm:w-64">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-brand-gray/50 text-sm"></i>
+                    <input type="text" placeholder="Buscar no arquivo..." class="w-full h-11 pl-10 pr-4 bg-white border border-gray-100 rounded-full text-sm focus:outline-none focus:border-brand-blue/30 focus:ring-2 focus:ring-brand-blue/10 transition-all shadow-sm placeholder:text-brand-gray/50 text-brand-navy">
+                </div>
+                <button class="h-11 px-5 bg-white border border-gray-100 rounded-full text-sm font-medium text-brand-navy flex items-center gap-2 hover:bg-gray-50 transition-colors shadow-sm w-full sm:w-auto justify-center">
+                    <i class="fa-regular fa-calendar text-brand-gray"></i>
+                    Últimos 6 meses
+                    <i class="fa-solid fa-chevron-down text-[10px] text-brand-gray ml-1"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Data Table Container -->
+        <section id="archives-dashboard" class="bg-white rounded-[24px] shadow-soft border border-gray-50 overflow-hidden flex flex-col">
+            
+            <!-- Table Header -->
+            <div class="grid grid-cols-12 gap-4 px-8 py-5 border-b border-gray-50 bg-gray-50/30 text-xs font-semibold text-brand-gray uppercase tracking-wider">
+                <div class="col-span-4">Contato</div>
+                <div class="col-span-3">Contexto</div>
+                <div class="col-span-2">Data de Encerramento</div>
+                <div class="col-span-2">Status Final</div>
+                <div class="col-span-1 text-right">Ações</div>
+            </div>
+
+            <!-- Table Body -->
+            <div class="flex flex-col divide-y divide-gray-50">
+                
+                <!-- Row 1 -->
+                <div class="grid grid-cols-12 gap-4 px-8 py-5 items-center hover:bg-gray-50/50 transition-colors group">
+                    <div class="col-span-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-gray-100 border border-gray-100">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Avatar" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-brand-navy text-sm">Mariana Costa</h4>
+                            <p class="text-xs text-brand-gray mt-0.5">ID: #8492-A</p>
+                        </div>
+                    </div>
+                    <div class="col-span-3">
+                        <p class="text-sm font-medium text-brand-navy">Instalação de Ar Condicionado</p>
+                        <p class="text-xs text-brand-gray mt-0.5">Serviço Residencial</p>
+                    </div>
+                    <div class="col-span-2">
+                        <p class="text-sm text-brand-navy font-medium">18/04/2026</p>
+                        <p class="text-xs text-brand-gray mt-0.5">14:30</p>
+                    </div>
+                    <div class="col-span-2 flex items-center">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">
+                            Finalizado
+                        </span>
+                    </div>
+                    <div class="col-span-1 flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button class="px-4 py-2 rounded-full text-xs font-semibold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 transition-colors whitespace-nowrap">
+                            Ler Histórico
+                        </button>
+                        <button class="w-8 h-8 rounded-full text-brand-gray hover:text-brand-navy hover:bg-gray-100 flex items-center justify-center transition-colors" title="Download PDF">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="grid grid-cols-12 gap-4 px-8 py-5 items-center hover:bg-gray-50/50 transition-colors group">
+                    <div class="col-span-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-gray-100 border border-gray-100">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-brand-navy text-sm">Roberto Almeida</h4>
+                            <p class="text-xs text-brand-gray mt-0.5">ID: #8491-B</p>
+                        </div>
+                    </div>
+                    <div class="col-span-3">
+                        <p class="text-sm font-medium text-brand-navy">Manutenção Elétrica</p>
+                        <p class="text-xs text-brand-gray mt-0.5">Comercial</p>
+                    </div>
+                    <div class="col-span-2">
+                        <p class="text-sm text-brand-navy font-medium">15/04/2026</p>
+                        <p class="text-xs text-brand-gray mt-0.5">09:15</p>
+                    </div>
+                    <div class="col-span-2 flex items-center">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-100">
+                            Orçamento Recusado
+                        </span>
+                    </div>
+                    <div class="col-span-1 flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button class="px-4 py-2 rounded-full text-xs font-semibold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 transition-colors whitespace-nowrap">
+                            Ler Histórico
+                        </button>
+                        <button class="w-8 h-8 rounded-full text-brand-gray hover:text-brand-navy hover:bg-gray-100 flex items-center justify-center transition-colors" title="Download PDF">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="grid grid-cols-12 gap-4 px-8 py-5 items-center hover:bg-gray-50/50 transition-colors group">
+                    <div class="col-span-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-gray-100 border border-gray-100">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Avatar" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-brand-navy text-sm">Juliana Silva</h4>
+                            <p class="text-xs text-brand-gray mt-0.5">ID: #8488-C</p>
+                        </div>
+                    </div>
+                    <div class="col-span-3">
+                        <p class="text-sm font-medium text-brand-navy">Consultoria de T.I</p>
+                        <p class="text-xs text-brand-gray mt-0.5">Suporte Remoto</p>
+                    </div>
+                    <div class="col-span-2">
+                        <p class="text-sm text-brand-navy font-medium">12/04/2026</p>
+                        <p class="text-xs text-brand-gray mt-0.5">16:45</p>
+                    </div>
+                    <div class="col-span-2 flex items-center">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
+                            Expirado no Balcão
+                        </span>
+                    </div>
+                    <div class="col-span-1 flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button class="px-4 py-2 rounded-full text-xs font-semibold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 transition-colors whitespace-nowrap">
+                            Ler Histórico
+                        </button>
+                        <button class="w-8 h-8 rounded-full text-brand-gray hover:text-brand-navy hover:bg-gray-100 flex items-center justify-center transition-colors" title="Download PDF">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="grid grid-cols-12 gap-4 px-8 py-5 items-center hover:bg-gray-50/50 transition-colors group">
+                    <div class="col-span-4 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-gray-100 border border-gray-100">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Avatar" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-brand-navy text-sm">Carlos Mendes</h4>
+                            <p class="text-xs text-brand-gray mt-0.5">ID: #8485-A</p>
+                        </div>
+                    </div>
+                    <div class="col-span-3">
+                        <p class="text-sm font-medium text-brand-navy">Limpeza Pós-Obra</p>
+                        <p class="text-xs text-brand-gray mt-0.5">Serviço Terceirizado</p>
+                    </div>
+                    <div class="col-span-2">
+                        <p class="text-sm text-brand-navy font-medium">10/04/2026</p>
+                        <p class="text-xs text-brand-gray mt-0.5">11:20</p>
+                    </div>
+                    <div class="col-span-2 flex items-center">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">
+                            Finalizado
+                        </span>
+                    </div>
+                    <div class="col-span-1 flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button class="px-4 py-2 rounded-full text-xs font-semibold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 transition-colors whitespace-nowrap">
+                            Ler Histórico
+                        </button>
+                        <button class="w-8 h-8 rounded-full text-brand-gray hover:text-brand-navy hover:bg-gray-100 flex items-center justify-center transition-colors" title="Download PDF">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination-control" class="px-8 py-4 border-t border-gray-50 bg-gray-50/30 flex items-center justify-between">
+                <p class="text-xs text-brand-gray font-medium">Mostrando 1 a 4 de 128 registros</p>
+                <div class="flex items-center gap-2">
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-brand-gray hover:bg-white hover:shadow-sm transition-all disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center bg-brand-blue text-white shadow-sm text-sm font-medium">1</button>
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-brand-gray hover:bg-white hover:shadow-sm transition-all text-sm font-medium">2</button>
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-brand-gray hover:bg-white hover:shadow-sm transition-all text-sm font-medium">3</button>
+                    <span class="text-brand-gray text-xs">...</span>
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-brand-gray hover:bg-white hover:shadow-sm transition-all text-sm font-medium">32</button>
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-brand-gray hover:bg-white hover:shadow-sm transition-all">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-gray-100 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between text-sm">
+            <p class="text-brand-gray font-medium">© 2026 MMO Platform. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="text-brand-gray hover:text-brand-navy transition-colors">Termos de Uso</a>
+                <a href="#" class="text-brand-gray hover:text-brand-navy transition-colors">Privacidade</a>
+                <a href="#" class="text-brand-gray hover:text-brand-navy transition-colors">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Editorial Blog Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0016dc',
+                            hover: '#0012b3',
+                            light: '#e6e8fc'
+                        },
+                        navy: {
+                            DEFAULT: '#1A1A24',
+                            light: '#2A2A35'
+                        },
+                        surface: {
+                            DEFAULT: '#F8F9FA',
+                            card: '#FFFFFF'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(26, 26, 36, 0.05)',
+                        'hover': '0 12px 30px -4px rgba(26, 26, 36, 0.08)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)'
+                    },
+                    borderRadius: {
+                        '4xl': '24px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F9FA;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .hover-scale {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Global Nav Header -->
+    <header id="header" class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Left: Logo & Links -->
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-white font-bold text-xl">M</div>
+                    <span class="font-bold text-xl tracking-tight text-navy">MMO</span>
+                </div>
+                <nav class="hidden md:flex items-center gap-1">
+                    <a href="#" class="px-4 py-2 text-sm font-medium text-navy hover:bg-surface rounded-full transition-colors">Recursos</a>
+                    <a href="#" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-navy hover:bg-surface rounded-full transition-colors">Produtos</a>
+                    <a href="#" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-navy hover:bg-surface rounded-full transition-colors">Sobre</a>
+                </nav>
+            </div>
+
+            <!-- Center: Search -->
+            <div class="hidden lg:flex flex-1 max-w-md mx-8">
+                <div class="relative w-full">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" placeholder="Buscar artigos, guias..." class="w-full bg-surface border-none rounded-full py-2.5 pl-10 pr-4 text-sm focus:ring-2 focus:ring-brand/20 focus:bg-white transition-all outline-none text-navy placeholder:text-gray-400">
+                </div>
+            </div>
+
+            <!-- Right: Actions -->
+            <div class="flex items-center gap-3">
+                <a href="#" class="hidden sm:inline-flex px-5 py-2.5 text-sm font-semibold text-navy hover:bg-surface rounded-full transition-colors">Ir para Plataforma</a>
+                <a href="Tela 2 - Listagem de artigos.html" class="inline-flex px-6 py-2.5 text-sm font-semibold text-white bg-brand hover:bg-brand-hover rounded-full transition-colors shadow-sm">Assinar Grátis</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-6 py-12 flex flex-col gap-12">
+
+        <!-- Hero Editorial Canvas -->
+        <section id="hero-canvas" class="w-full flex flex-col lg:flex-row gap-6 h-auto lg:h-[600px]">
+            
+            <!-- Left Canvas (Featured - 65%) -->
+            <div class="w-full lg:w-[65%] h-[500px] lg:h-full relative rounded-4xl overflow-hidden shadow-soft group cursor-pointer">
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/2eb9362bf0-0d57589d91b7c6214500.png" alt="High-end abstract 3D business illustration, blue and white tones, modern corporate aesthetic" />
+                
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent"></div>
+
+                <!-- Glass Content Box -->
+                <div class="absolute bottom-6 left-6 right-6 lg:bottom-8 lg:left-8 lg:right-8 glass-panel rounded-3xl p-8 shadow-glass transform transition-transform duration-300 group-hover:-translate-y-2">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand bg-brand-light rounded-full">Estratégia</span>
+                            <span class="text-sm font-medium text-gray-500"><i class="fa-regular fa-clock mr-1.5"></i>8 min de leitura</span>
+                        </div>
+                        <h1 class="text-3xl lg:text-4xl font-bold text-navy leading-tight tracking-tight">Como escalar operações de SaaS sem perder a cultura de inovação</h1>
+                        <p class="text-gray-600 line-clamp-2 text-sm lg:text-base">Descubra os frameworks utilizados pelas empresas que mais crescem no mercado para manter times alinhados durante fases de hiper-crescimento.</p>
+                        <div class="pt-2 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Author" class="w-10 h-10 rounded-full border-2 border-white shadow-sm">
+                                <div>
+                                    <p class="text-sm font-semibold text-navy">Carlos Eduardo</p>
+                                    <p class="text-xs text-gray-500">VP of Operations</p>
+                                </div>
+                            </div>
+                            <button class="px-6 py-2.5 bg-brand text-white text-sm font-semibold rounded-full hover:bg-brand-hover transition-colors shadow-sm flex items-center gap-2">
+                                Ler Agora <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Canvas (Trending - 35%) -->
+            <div class="w-full lg:w-[35%] flex flex-col gap-6 h-full">
+                <!-- Card 1 -->
+                <div class="flex-1 bg-white rounded-4xl p-8 shadow-soft flex flex-col justify-between hover:shadow-hover transition-shadow cursor-pointer group border border-gray-50">
+                    <div class="flex flex-col gap-4">
+                        <span class="self-start px-3 py-1 text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 rounded-full">Finanças</span>
+                        <h3 class="text-xl font-bold text-navy leading-snug group-hover:text-brand transition-colors">Métricas de SaaS: O que realmente importa para investidores em 2024</h3>
+                    </div>
+                    <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-100">
+                        <span class="text-sm font-medium text-gray-500">Ler em 4 min</span>
+                        <div class="w-8 h-8 rounded-full bg-surface flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors text-gray-400">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="flex-1 bg-white rounded-4xl p-8 shadow-soft flex flex-col justify-between hover:shadow-hover transition-shadow cursor-pointer group border border-gray-50">
+                    <div class="flex flex-col gap-4">
+                        <span class="self-start px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 rounded-full">Produto</span>
+                        <h3 class="text-xl font-bold text-navy leading-snug group-hover:text-brand transition-colors">A evolução do PLG: Do freemium à monetização baseada em uso</h3>
+                    </div>
+                    <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-100">
+                        <span class="text-sm font-medium text-gray-500">Ler em 6 min</span>
+                        <div class="w-8 h-8 rounded-full bg-surface flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors text-gray-400">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="flex-1 bg-white rounded-4xl p-8 shadow-soft flex flex-col justify-between hover:shadow-hover transition-shadow cursor-pointer group border border-gray-50">
+                    <div class="flex flex-col gap-4">
+                        <span class="self-start px-3 py-1 text-xs font-bold uppercase tracking-wider text-purple-600 bg-purple-50 rounded-full">Liderança</span>
+                        <h3 class="text-xl font-bold text-navy leading-snug group-hover:text-brand transition-colors">Construindo times de alta performance em ambientes remotos</h3>
+                    </div>
+                    <div class="flex items-center justify-between mt-6 pt-6 border-t border-gray-100">
+                        <span class="text-sm font-medium text-gray-500">Ler em 5 min</span>
+                        <div class="w-8 h-8 rounded-full bg-surface flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors text-gray-400">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Navigation -->
+        <section id="categories" class="w-full bg-white rounded-4xl p-4 shadow-soft border border-gray-50">
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 hide-scrollbar">
+                <button class="shrink-0 px-6 py-2.5 bg-navy text-white text-sm font-semibold rounded-full shadow-sm">Todos os Artigos</button>
+                <button class="shrink-0 px-6 py-2.5 bg-surface text-navy hover:bg-gray-100 text-sm font-medium rounded-full transition-colors">Estratégia</button>
+                <button class="shrink-0 px-6 py-2.5 bg-surface text-navy hover:bg-gray-100 text-sm font-medium rounded-full transition-colors">Produto & Design</button>
+                <button class="shrink-0 px-6 py-2.5 bg-surface text-navy hover:bg-gray-100 text-sm font-medium rounded-full transition-colors">Engenharia</button>
+                <button class="shrink-0 px-6 py-2.5 bg-surface text-navy hover:bg-gray-100 text-sm font-medium rounded-full transition-colors">Customer Success</button>
+                <button class="shrink-0 px-6 py-2.5 bg-surface text-navy hover:bg-gray-100 text-sm font-medium rounded-full transition-colors">Vendas B2B</button>
+                <button class="shrink-0 px-6 py-2.5 bg-surface text-navy hover:bg-gray-100 text-sm font-medium rounded-full transition-colors">Cultura</button>
+            </div>
+        </section>
+
+        <!-- Recent Posts Grid -->
+        <section id="recent-posts" class="w-full">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold text-navy">Artigos Recentes</h2>
+                <a href="Tela 2 - Listagem de artigos.html" class="text-sm font-semibold text-brand hover:text-brand-hover flex items-center gap-2">Ver todos <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Grid Card 1 -->
+                <div class="bg-white rounded-4xl p-4 shadow-soft hover:shadow-hover transition-all group cursor-pointer border border-gray-50 flex flex-col h-full">
+                    <div class="w-full aspect-video rounded-3xl overflow-hidden mb-6 relative">
+                        <img class="w-full h-full object-cover hover-scale" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="Modern minimal workspace with laptop and charts, bright lighting" />
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand bg-white/90 backdrop-blur-sm rounded-full shadow-sm">Produto</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 px-2">
+                        <h3 class="text-lg font-bold text-navy leading-snug mb-3 group-hover:text-brand transition-colors">O impacto da IA generativa no roadmap de produtos B2B</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2 mb-6 flex-1">Análise profunda sobre como as principais empresas de software estão integrando inteligência artificial em seus core products.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Author" class="w-8 h-8 rounded-full">
+                                <span class="text-xs font-semibold text-navy">Marina Silva</span>
+                            </div>
+                            <span class="text-xs font-medium text-gray-400">12 Out 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid Card 2 -->
+                <div class="bg-white rounded-4xl p-4 shadow-soft hover:shadow-hover transition-all group cursor-pointer border border-gray-50 flex flex-col h-full">
+                    <div class="w-full aspect-video rounded-3xl overflow-hidden mb-6 relative">
+                        <img class="w-full h-full object-cover hover-scale" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="Abstract data visualization concept, glowing nodes and lines" />
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-600 bg-white/90 backdrop-blur-sm rounded-full shadow-sm">Engenharia</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 px-2">
+                        <h3 class="text-lg font-bold text-navy leading-snug mb-3 group-hover:text-brand transition-colors">Migrando para micro-frontends: Lições aprendidas após 1 ano</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2 mb-6 flex-1">Um estudo de caso técnico sobre os desafios de arquitetura e ganhos de produtividade na modernização do nosso stack.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Author" class="w-8 h-8 rounded-full">
+                                <span class="text-xs font-semibold text-navy">Roberto Almeida</span>
+                            </div>
+                            <span class="text-xs font-medium text-gray-400">10 Out 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid Card 3 -->
+                <div class="bg-white rounded-4xl p-4 shadow-soft hover:shadow-hover transition-all group cursor-pointer border border-gray-50 flex flex-col h-full">
+                    <div class="w-full aspect-video rounded-3xl overflow-hidden mb-6 relative">
+                        <img class="w-full h-full object-cover hover-scale" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="Business meeting handshake, corporate modern office setting" />
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider text-orange-600 bg-white/90 backdrop-blur-sm rounded-full shadow-sm">Vendas</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 px-2">
+                        <h3 class="text-lg font-bold text-navy leading-snug mb-3 group-hover:text-brand transition-colors">Ciclos de vendas Enterprise: Como reduzir o tempo de fechamento</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2 mb-6 flex-1">Táticas comprovadas para acelerar deals complexos e melhorar a previsibilidade do seu pipeline de vendas.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Author" class="w-8 h-8 rounded-full">
+                                <span class="text-xs font-semibold text-navy">Ana Costa</span>
+                            </div>
+                            <span class="text-xs font-medium text-gray-400">08 Out 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Newsletter Interruption Block -->
+    <section id="newsletter" class="w-full bg-brand py-20 mt-8">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div class="w-full lg:w-1/2 flex flex-col gap-6 text-center lg:text-left">
+                <h2 class="text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">Domine o mercado<br>de serviços SaaS.</h2>
+                <p class="text-brand-light text-lg max-w-md mx-auto lg:mx-0">Junte-se a mais de 15.000 líderes e receba nossos melhores insights semanais direto na sua caixa de entrada.</p>
+            </div>
+            
+            <div class="w-full lg:w-1/2 max-w-md">
+                <form class="bg-white/10 backdrop-blur-sm p-2 rounded-full flex items-center border border-white/20 shadow-glass focus-within:bg-white/20 transition-colors">
+                    <div class="flex-1 flex items-center pl-4">
+                        <i class="fa-regular fa-envelope text-brand-light text-lg"></i>
+                        <input type="email" placeholder="Seu melhor e-mail corporativo" class="w-full bg-transparent border-none text-white placeholder:text-brand-light/70 focus:ring-0 px-4 outline-none text-sm font-medium">
+                    </div>
+                    <button type="submit" class="px-8 py-3.5 bg-navy text-white text-sm font-bold rounded-full hover:bg-navy-light transition-colors shadow-sm whitespace-nowrap">
+                        Inscrever-se
+                    </button>
+                </form>
+                <p class="text-xs text-brand-light/70 text-center lg:text-left mt-4 pl-4"><i class="fa-solid fa-shield-halved mr-1"></i> Prometemos não enviar spam. Cancele quando quiser.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-gray-100 py-12">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-bold text-xl tracking-tight text-navy">MMO</span>
+            </div>
+            <p class="text-sm text-gray-500 font-medium">© 2024 MMO. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-4 text-gray-400">
+                <a href="#" class="hover:text-brand transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                <a href="#" class="hover:text-brand transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                <a href="#" class="hover:text-brand transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

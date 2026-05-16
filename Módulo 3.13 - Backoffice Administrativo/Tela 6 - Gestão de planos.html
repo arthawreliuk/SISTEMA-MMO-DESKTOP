@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans Management - MMO Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        'primary-hover': '#0012b3',
+                        navy: {
+                            DEFAULT: '#1A1A24',
+                            light: '#4B5563',
+                            lighter: '#9CA3AF'
+                        },
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        active: {
+                            bg: '#EFF6FF',
+                            border: '#3B82F6'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'floating': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .drag-handle { cursor: grab; }
+        .drag-handle:active { cursor: grabbing; }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased text-navy bg-background flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-surface border-b border-border sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-xl">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <span class="font-bold text-lg text-navy tracking-tight">MMO Admin</span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-navy-light transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="flex items-center gap-3 pl-4 border-l border-border">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin User" class="w-9 h-9 rounded-full object-cover border border-border">
+                    <div class="hidden md:block">
+                        <p class="text-sm font-semibold text-navy">Admin User</p>
+                        <p class="text-xs text-navy-light">Super Admin</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-xs text-navy-lighter ml-1"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-8 flex flex-col gap-8">
+
+        <!-- Admin Control Bar -->
+        <section id="admin-control-bar" class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <div class="flex items-center gap-2 text-sm text-navy-light mb-1">
+                    <a href="#" class="hover:text-primary transition-colors">Painel</a>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-navy font-medium">Gestão de Planos</span>
+                </div>
+                <h1 class="text-2xl font-bold text-navy">Planos de Assinatura</h1>
+            </div>
+
+            <div class="flex items-center gap-4 bg-surface p-2 rounded-full shadow-soft border border-border">
+                <div class="flex bg-gray-100 rounded-full p-1 relative">
+                    <div class="absolute inset-y-1 left-1 w-1/2 bg-surface rounded-full shadow-sm transition-transform duration-300"></div>
+                    <button class="relative z-10 px-4 py-1.5 text-sm font-medium text-primary rounded-full">Visão de Edição</button>
+                    <button class="relative z-10 px-4 py-1.5 text-sm font-medium text-navy-light hover:text-navy rounded-full transition-colors">Visão do Cliente</button>
+                </div>
+                <div class="w-px h-6 bg-border"></div>
+                <button class="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors flex items-center gap-2 mr-1">
+                    <i class="fa-solid fa-plus"></i>
+                    Novo Plano Promocional
+                </button>
+            </div>
+        </section>
+
+        <!-- Master Analytics Strip -->
+        <section id="analytics-strip" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Metric 1 -->
+            <div class="bg-surface rounded-[16px] p-5 shadow-soft border border-border flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-primary text-xl">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-navy-light mb-1">Receita Recorrente (MRR)</p>
+                    <div class="flex items-baseline gap-2">
+                        <h3 class="text-2xl font-bold text-navy">R$ 85.400</h3>
+                        <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full"><i class="fa-solid fa-arrow-up mr-1"></i>12%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Metric 2 -->
+            <div class="bg-surface rounded-[16px] p-5 shadow-soft border border-border flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 text-xl">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-navy-light mb-1">Ticket Médio</p>
+                    <div class="flex items-baseline gap-2">
+                        <h3 class="text-2xl font-bold text-navy">R$ 55,00</h3>
+                        <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full"><i class="fa-solid fa-arrow-up mr-1"></i>3%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metric 3 -->
+            <div class="bg-surface rounded-[16px] p-5 shadow-soft border border-border flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center text-rose-600 text-xl">
+                    <i class="fa-solid fa-users-slash"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-navy-light mb-1">Churn Rate</p>
+                    <div class="flex items-baseline gap-2">
+                        <h3 class="text-2xl font-bold text-navy">2.1%</h3>
+                        <span class="text-xs font-medium text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full"><i class="fa-solid fa-arrow-up mr-1"></i>0.4%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Grid Editor -->
+        <section id="pricing-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
+            
+            <!-- Plan Card 1: Basic -->
+            <div class="bg-surface rounded-[24px] border border-border shadow-soft flex flex-col overflow-hidden relative group">
+                <div class="p-6 border-b border-border bg-gray-50/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <input type="text" value="Plano Iniciante" class="text-xl font-bold text-navy bg-transparent border-b border-dashed border-gray-300 focus:border-primary focus:outline-none w-2/3 pb-1" />
+                        
+                        <!-- Toggle -->
+                        <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle1" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-all duration-300 z-10" checked/>
+                            <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer transition-colors duration-300"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-end gap-2 mb-2">
+                        <span class="text-gray-500 font-medium">R$</span>
+                        <input type="text" value="29,90" class="text-4xl font-bold text-navy bg-transparent border-b border-dashed border-gray-300 focus:border-primary focus:outline-none w-32 pb-1" />
+                        <span class="text-gray-500 text-sm mb-2">/mês</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 mt-4 text-xs font-medium text-navy-light bg-white border border-border rounded-full px-3 py-1.5 w-fit">
+                        <i class="fa-solid fa-users text-gray-400"></i>
+                        <span>320 Ativos (Gerando R$ 9.568/mês)</span>
+                    </div>
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col">
+                    <p class="text-sm font-semibold text-navy mb-4">Recursos Inclusos</p>
+                    <ul class="space-y-3 mb-6 flex-1">
+                        <!-- Feature Item -->
+                        <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Acesso a 5 servidores básicos" class="text-sm text-navy-light bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                        <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Suporte via ticket (48h)" class="text-sm text-navy-light bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                        <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Avatar padrão" class="text-sm text-navy-light bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full py-2 border border-dashed border-gray-300 rounded-full text-sm font-medium text-navy-light hover:text-primary hover:border-primary hover:bg-blue-50 transition-all mb-6">
+                        + Adicionar Recurso
+                    </button>
+                    
+                    <button class="w-full bg-gray-100 hover:bg-gray-200 text-navy font-semibold py-3 rounded-full transition-colors mt-auto">
+                        Atualizar Plano
+                    </button>
+                </div>
+            </div>
+
+            <!-- Plan Card 2: Pro (Active/Highlighted state based on reference 1) -->
+            <div class="bg-active-bg rounded-[24px] border-2 border-active-border shadow-floating flex flex-col overflow-hidden relative transform scale-105 z-10">
+                <div class="absolute top-0 inset-x-0 h-1 bg-primary"></div>
+                <div class="p-6 border-b border-blue-100 bg-white/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <input type="text" value="Plano Mestre" class="text-xl font-bold text-navy bg-transparent border-b border-dashed border-primary/30 focus:border-primary focus:outline-none w-2/3 pb-1" />
+                        
+                        <!-- Toggle -->
+                        <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle2" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-all duration-300 z-10" checked/>
+                            <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer transition-colors duration-300"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-end gap-2 mb-2">
+                        <span class="text-primary font-medium">R$</span>
+                        <input type="text" value="55,00" class="text-4xl font-bold text-navy bg-transparent border-b border-dashed border-primary/30 focus:border-primary focus:outline-none w-32 pb-1" />
+                        <span class="text-gray-500 text-sm mb-2">/mês</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 mt-4 text-xs font-medium text-navy bg-white border border-blue-200 shadow-sm rounded-full px-3 py-1.5 w-fit">
+                        <i class="fa-solid fa-users text-primary"></i>
+                        <span>850 Ativos (Gerando R$ 46.750/mês)</span>
+                    </div>
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col bg-white">
+                    <p class="text-sm font-semibold text-navy mb-4">Recursos Inclusos</p>
+                    <ul class="space-y-3 mb-6 flex-1">
+                        <!-- Feature Item -->
+                        <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Acesso a TODOS os servidores" class="text-sm font-medium text-navy bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                        <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Suporte Prioritário (1h)" class="text-sm text-navy-light bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                        <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Avatares Exclusivos (Skins)" class="text-sm text-navy-light bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                         <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Tag de 'Mestre' no chat" class="text-sm text-navy-light bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full py-2 border border-dashed border-gray-300 rounded-full text-sm font-medium text-navy-light hover:text-primary hover:border-primary hover:bg-blue-50 transition-all mb-6">
+                        + Adicionar Recurso
+                    </button>
+                    
+                    <button onclick="window.location.href='Tela 7 - Gestão de campanhas de anunciantes.html'" class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-3 rounded-full transition-colors shadow-md mt-auto">
+                        Atualizar Plano
+                    </button>
+                </div>
+            </div>
+
+            <!-- Plan Card 3: Enterprise -->
+            <div class="bg-surface rounded-[24px] border border-border shadow-soft flex flex-col overflow-hidden relative group opacity-80 hover:opacity-100 transition-opacity">
+                <div class="p-6 border-b border-border bg-gray-50/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <input type="text" value="Plano Guilda" class="text-xl font-bold text-navy bg-transparent border-b border-dashed border-gray-300 focus:border-primary focus:outline-none w-2/3 pb-1" />
+                        
+                        <!-- Toggle (Off state) -->
+                        <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle3" id="toggle3" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-all duration-300 z-10"/>
+                            <label for="toggle3" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-end gap-2 mb-2">
+                        <span class="text-gray-500 font-medium">R$</span>
+                        <input type="text" value="199,00" class="text-4xl font-bold text-navy bg-transparent border-b border-dashed border-gray-300 focus:border-primary focus:outline-none w-32 pb-1" />
+                        <span class="text-gray-500 text-sm mb-2">/mês</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 mt-4 text-xs font-medium text-navy-light bg-white border border-border rounded-full px-3 py-1.5 w-fit">
+                        <i class="fa-solid fa-users text-gray-400"></i>
+                        <span>45 Ativos (Gerando R$ 8.955/mês)</span>
+                    </div>
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col">
+                    <p class="text-sm font-semibold text-navy mb-4">Recursos Inclusos</p>
+                    <ul class="space-y-3 mb-6 flex-1">
+                        <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Até 50 membros vinculados" class="text-sm text-navy-light bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                        <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Servidor privado de Guilda" class="text-sm text-navy-light bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                        <li class="flex items-center gap-3 group/item">
+                            <i class="fa-solid fa-grip-vertical text-gray-300 drag-handle hover:text-gray-500"></i>
+                            <input type="text" value="Gerenciamento de permissões" class="text-sm text-navy-light bg-transparent border-b border-transparent hover:border-dashed hover:border-gray-300 focus:border-primary focus:outline-none flex-1 py-1" />
+                            <button class="text-gray-300 hover:text-rose-500 transition-colors opacity-0 group-hover/item:opacity-100"><i class="fa-solid fa-trash-can"></i></button>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full py-2 border border-dashed border-gray-300 rounded-full text-sm font-medium text-navy-light hover:text-primary hover:border-primary hover:bg-blue-50 transition-all mb-6">
+                        + Adicionar Recurso
+                    </button>
+                    
+                    <button class="w-full bg-gray-100 hover:bg-gray-200 text-navy font-semibold py-3 rounded-full transition-colors mt-auto">
+                        Atualizar Plano
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-surface border-t border-border mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-navy-light">© 2026 MMO Admin Backoffice. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-6 text-sm font-medium text-navy-light">
+                <a href="#" class="hover:text-primary transition-colors">Documentação da API</a>
+                <a href="#" class="hover:text-primary transition-colors">Suporte Técnico</a>
+                <a href="#" class="hover:text-primary transition-colors">Termos de Serviço</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

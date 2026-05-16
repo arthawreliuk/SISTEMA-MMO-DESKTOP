@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results / Professional Listing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+        /* Custom range slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #0016dc;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 2px 6px rgba(0,22,220,0.3);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #E5E7EB;
+            border-radius: 2px;
+        }
+        /* Custom checkbox */
+        .custom-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox:checked {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        .custom-checkbox:checked::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            position: absolute;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        /* Toggle Switch */
+        .toggle-checkbox:checked { right: 0; border-color: #0016dc; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #0016dc; }
+        .toggle-checkbox:checked + .toggle-label:after { transform: translateX(100%); border-color: white; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-surface sticky top-0 z-50 border-b border-border">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer">
+                <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-glow">
+                    M
+                </div>
+                <span class="font-bold text-2xl tracking-tight text-textMain">MMO</span>
+            </div>
+
+            <!-- Nav Icons -->
+            <nav class="flex items-center gap-8">
+                <a href="#" class="flex flex-col items-center gap-1 text-primary relative group">
+                    <i class="fa-solid fa-house text-xl"></i>
+                    <span class="absolute -bottom-3 w-1.5 h-1.5 bg-primary rounded-full"></span>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
+                    <i class="fa-solid fa-clipboard-list text-xl"></i>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors relative">
+                    <i class="fa-solid fa-message text-xl"></i>
+                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+                </a>
+                <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-8 h-8 rounded-full object-cover border-2 border-transparent hover:border-primary transition-all">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-[1200px] mx-auto w-full px-6 py-8 flex flex-col gap-8">
+
+        <!-- Top Search Bar Area -->
+        <section id="search-area" class="w-full relative">
+            <div class="bg-surface rounded-full p-2 pl-6 pr-2 flex items-center shadow-soft border border-border/50 focus-within:border-primary/30 focus-within:shadow-glow transition-all">
+                <i class="fa-solid fa-magnifying-glass text-textMuted text-lg"></i>
+                <input type="text" value="Desenvolvedor Frontend Sênior em São Paulo" class="flex-grow bg-transparent border-none outline-none px-4 py-3 text-textMain font-medium text-lg placeholder-textMuted" placeholder="O que você está procurando?">
+                <div class="flex items-center gap-2">
+                    <span class="bg-background px-4 py-2 rounded-full text-sm font-medium text-textMuted hidden md:block border border-border">Remoto</span>
+                    <button class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors shadow-glow">
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Layout (Asymmetrical 2-Columns) -->
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+            
+            <!-- Left Sidebar (Filters - 25%) -->
+            <aside id="filters-sidebar" class="w-full lg:w-1/4 flex-shrink-0 bg-surface rounded-[24px] p-6 shadow-soft border border-border/50 sticky top-28">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="font-bold text-xl text-textMain">Filtros</h2>
+                    <button class="text-sm text-textMuted hover:text-primary font-medium transition-colors">Limpar</button>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Distância -->
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <label class="font-semibold text-textMain">Distância</label>
+                            <span class="text-sm font-bold text-primary bg-primary/10 px-2 py-1 rounded-md">Até 15km</span>
+                        </div>
+                        <div class="relative pt-2">
+                            <input type="range" min="0" max="50" value="15" class="w-full">
+                            <div class="absolute top-4 left-0 h-1 bg-primary rounded-l-full" style="width: 30%;"></div>
+                        </div>
+                        <div class="flex justify-between text-xs text-textMuted font-medium">
+                            <span>0km</span>
+                            <span>50km+</span>
+                        </div>
+                    </div>
+
+                    <!-- Categorias -->
+                    <div class="space-y-4">
+                        <label class="font-semibold text-textMain">Categorias</label>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" class="custom-checkbox" checked>
+                                <span class="text-textMain font-medium group-hover:text-primary transition-colors">Desenvolvimento Web</span>
+                                <span class="ml-auto text-xs text-textMuted bg-background px-2 py-1 rounded-full">24</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="text-textMain font-medium group-hover:text-primary transition-colors">Mobile App</span>
+                                <span class="ml-auto text-xs text-textMuted bg-background px-2 py-1 rounded-full">12</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="text-textMain font-medium group-hover:text-primary transition-colors">UI/UX Design</span>
+                                <span class="ml-auto text-xs text-textMuted bg-background px-2 py-1 rounded-full">8</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="text-textMain font-medium group-hover:text-primary transition-colors">DevOps</span>
+                                <span class="ml-auto text-xs text-textMuted bg-background px-2 py-1 rounded-full">3</span>
+                            </label>
+                        </div>
+                        <button class="text-primary text-sm font-semibold hover:underline mt-2">Ver mais categorias +</button>
+                    </div>
+
+                    <!-- Avaliação Mínima -->
+                    <div class="space-y-4">
+                        <label class="font-semibold text-textMain">Avaliação Mínima</label>
+                        <div class="flex gap-2">
+                            <button class="flex-1 py-2 rounded-xl border-2 border-primary bg-primary/5 text-primary font-bold flex items-center justify-center gap-1 transition-all">
+                                4.5 <i class="fa-solid fa-star text-xs"></i>
+                            </button>
+                            <button class="flex-1 py-2 rounded-xl border border-border bg-surface text-textMuted font-medium hover:border-primary/50 hover:text-textMain transition-all flex items-center justify-center gap-1">
+                                4.0 <i class="fa-solid fa-star text-xs"></i>
+                            </button>
+                            <button class="flex-1 py-2 rounded-xl border border-border bg-surface text-textMuted font-medium hover:border-primary/50 hover:text-textMain transition-all flex items-center justify-center gap-1">
+                                3.0 <i class="fa-solid fa-star text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Toggle Apenas Visita Grátis -->
+                    <div class="pt-4 border-t border-border/50 flex items-center justify-between">
+                        <div>
+                            <label class="font-semibold text-textMain block">Apenas Visita Grátis</label>
+                            <span class="text-xs text-textMuted">Profissionais sem taxa de orçamento</span>
+                        </div>
+                        <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-border appearance-none cursor-pointer z-10 top-0 left-0 transition-all duration-300" checked/>
+                            <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-border cursor-pointer transition-all duration-300"></label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Content (Detailed Results - 75%) -->
+            <section id="results-content" class="w-full lg:w-3/4 flex flex-col gap-6">
+                
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface p-4 rounded-2xl shadow-soft border border-border/50">
+                    <h1 class="text-xl font-bold text-textMain">Exibindo os melhores Mestres para sua necessidade</h1>
+                    <div class="flex items-center gap-3 text-sm">
+                        <span class="text-textMuted font-medium">Ordenar por:</span>
+                        <select class="bg-background border border-border rounded-lg px-3 py-2 font-semibold text-textMain outline-none focus:border-primary cursor-pointer">
+                            <option>Relevância (Match)</option>
+                            <option>Maior Avaliação</option>
+                            <option>Mais Próximo</option>
+                            <option>Menor Preço Base</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- List View (Horizontal Cards) -->
+                <div class="space-y-5">
+                    
+                    <!-- Card 1 -->
+                    <article class="bg-surface rounded-[24px] p-6 shadow-soft border border-border/50 hover:border-primary/30 hover:shadow-glow transition-all duration-300 flex flex-col md:flex-row gap-6 relative overflow-hidden group">
+                        
+                        <!-- Left Column: Avatar & Badge -->
+                        <div class="flex flex-col items-center gap-3 w-full md:w-48 flex-shrink-0">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Lucas Silva" class="w-28 h-28 rounded-full object-cover border-4 border-background shadow-sm group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center" title="Online Agora"></div>
+                            </div>
+                            <div class="bg-blue-50 text-primary border border-primary/20 px-3 py-1.5 rounded-full flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                <i class="fa-solid fa-shield-check"></i> Mestre Verificado
+                            </div>
+                        </div>
+
+                        <!-- Center Column: Info & Portfolio -->
+                        <div class="flex-grow flex flex-col justify-between py-1">
+                            <div>
+                                <div class="flex items-start justify-between mb-1">
+                                    <h3 class="text-2xl font-bold text-textMain group-hover:text-primary transition-colors">Lucas Silva</h3>
+                                    <div class="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-100">
+                                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                        <span class="font-bold text-textMain">4.9</span>
+                                        <span class="text-textMuted text-xs">(124)</span>
+                                    </div>
+                                </div>
+                                <p class="text-textMuted font-medium text-sm mb-3">Especialista em React, Next.js e TailwindCSS. Mais de 8 anos de experiência criando interfaces de alta conversão.</p>
+                                
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-background text-textMain px-3 py-1 rounded-full text-xs font-semibold border border-border">React.js</span>
+                                    <span class="bg-background text-textMain px-3 py-1 rounded-full text-xs font-semibold border border-border">TypeScript</span>
+                                    <span class="bg-background text-textMain px-3 py-1 rounded-full text-xs font-semibold border border-border">UI/UX</span>
+                                </div>
+                            </div>
+
+                            <!-- Mini Portfolio Grid -->
+                            <div class="grid grid-cols-4 gap-2 mt-auto">
+                                <div class="h-16 rounded-xl overflow-hidden bg-gray-100 border border-border/50 group-hover:border-primary/20 transition-colors">
+                                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Portfolio 1" class="w-full h-full object-cover">
+                                </div>
+                                <div class="h-16 rounded-xl overflow-hidden bg-gray-100 border border-border/50 group-hover:border-primary/20 transition-colors">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Portfolio 2" class="w-full h-full object-cover">
+                                </div>
+                                <div class="h-16 rounded-xl overflow-hidden bg-gray-100 border border-border/50 group-hover:border-primary/20 transition-colors flex items-center justify-center relative cursor-pointer">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Portfolio 3" class="w-full h-full object-cover opacity-50">
+                                    <span class="absolute text-textMain font-bold text-sm bg-white/80 px-2 py-1 rounded-lg backdrop-blur-sm">+5</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Match & CTA -->
+                        <div class="flex flex-col items-center justify-between w-full md:w-56 flex-shrink-0 border-t md:border-t-0 md:border-l border-border/50 pt-4 md:pt-0 md:pl-6">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-20 h-20 rounded-full border-4 border-primary/20 flex items-center justify-center relative mb-2">
+                                    <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="46" fill="none" stroke="#0016dc" stroke-width="8" stroke-dasharray="289" stroke-dashoffset="20" class="text-primary"></circle>
+                                    </svg>
+                                    <div class="flex flex-col items-center justify-center">
+                                        <span class="text-xl font-extrabold text-primary leading-none">94%</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-textMain uppercase tracking-wider">Match Score</span>
+                            </div>
+                            
+                            <div class="w-full space-y-3">
+                                <div class="flex items-center justify-between text-xs font-medium text-textMuted bg-background px-3 py-2 rounded-lg">
+                                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock"></i> Responde em</span>
+                                    <span class="text-textMain font-bold">~15 min</span>
+                                </div>
+                                <button onclick="window.location.href='Tela 6 - Tela de perfil público do profissional.html'" class="w-full bg-primary text-white font-bold py-3.5 px-4 rounded-full hover:bg-primary/90 hover:shadow-glow transition-all transform active:scale-95 text-sm">
+                                    Ver Perfil Completo
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="bg-surface rounded-[24px] p-6 shadow-soft border border-border/50 hover:border-primary/30 hover:shadow-glow transition-all duration-300 flex flex-col md:flex-row gap-6 relative overflow-hidden group">
+                        
+                        <!-- Left Column: Avatar & Badge -->
+                        <div class="flex flex-col items-center gap-3 w-full md:w-48 flex-shrink-0">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Mariana Costa" class="w-28 h-28 rounded-full object-cover border-4 border-background shadow-sm group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute -bottom-2 -right-2 bg-gray-400 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center" title="Offline"></div>
+                            </div>
+                            <div class="bg-background text-textMuted border border-border px-3 py-1.5 rounded-full flex items-center gap-1.5 text-xs font-bold w-full justify-center">
+                                Profissional
+                            </div>
+                        </div>
+
+                        <!-- Center Column: Info & Portfolio -->
+                        <div class="flex-grow flex flex-col justify-between py-1">
+                            <div>
+                                <div class="flex items-start justify-between mb-1">
+                                    <h3 class="text-2xl font-bold text-textMain group-hover:text-primary transition-colors">Mariana Costa</h3>
+                                    <div class="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-100">
+                                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                        <span class="font-bold text-textMain">4.7</span>
+                                        <span class="text-textMuted text-xs">(89)</span>
+                                    </div>
+                                </div>
+                                <p class="text-textMuted font-medium text-sm mb-3">Desenvolvedora Fullstack focada em soluções escaláveis. Experiência robusta em Node.js e Vue.js para startups.</p>
+                                
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-background text-textMain px-3 py-1 rounded-full text-xs font-semibold border border-border">Vue.js</span>
+                                    <span class="bg-background text-textMain px-3 py-1 rounded-full text-xs font-semibold border border-border">Node.js</span>
+                                    <span class="bg-background text-textMain px-3 py-1 rounded-full text-xs font-semibold border border-border">AWS</span>
+                                </div>
+                            </div>
+
+                            <!-- Mini Portfolio Grid -->
+                            <div class="grid grid-cols-4 gap-2 mt-auto">
+                                <div class="h-16 rounded-xl overflow-hidden bg-gray-100 border border-border/50 group-hover:border-primary/20 transition-colors">
+                                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Portfolio 1" class="w-full h-full object-cover">
+                                </div>
+                                <div class="h-16 rounded-xl overflow-hidden bg-gray-100 border border-border/50 group-hover:border-primary/20 transition-colors">
+                                    <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Portfolio 2" class="w-full h-full object-cover">
+                                </div>
+                                <div class="col-span-2 h-16 rounded-xl overflow-hidden bg-background border border-dashed border-border/80 flex items-center justify-center text-textMuted text-xs font-medium">
+                                    Sem mais projetos
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Match & CTA -->
+                        <div class="flex flex-col items-center justify-between w-full md:w-56 flex-shrink-0 border-t md:border-t-0 md:border-l border-border/50 pt-4 md:pt-0 md:pl-6">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-20 h-20 rounded-full border-4 border-primary/10 flex items-center justify-center relative mb-2">
+                                    <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="46" fill="none" stroke="#0016dc" stroke-width="8" stroke-dasharray="289" stroke-dashoffset="60" class="text-primary/70"></circle>
+                                    </svg>
+                                    <div class="flex flex-col items-center justify-center">
+                                        <span class="text-xl font-extrabold text-primary/80 leading-none">82%</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-textMain uppercase tracking-wider">Match Score</span>
+                            </div>
+                            
+                            <div class="w-full space-y-3">
+                                <div class="flex items-center justify-between text-xs font-medium text-textMuted bg-background px-3 py-2 rounded-lg">
+                                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock"></i> Responde em</span>
+                                    <span class="text-textMain font-bold">~2 horas</span>
+                                </div>
+                                <button onclick="window.location.href='Tela 6 - Tela de perfil público do profissional.html'" class="w-full bg-primary text-white font-bold py-3.5 px-4 rounded-full hover:bg-primary/90 hover:shadow-glow transition-all transform active:scale-95 text-sm">
+                                    Ver Perfil Completo
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center items-center gap-2 mt-8">
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center border border-border text-textMuted hover:border-primary hover:text-primary transition-colors disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center bg-primary text-white font-bold shadow-glow">1</button>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center border border-border text-textMain font-bold hover:border-primary hover:text-primary transition-colors">2</button>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center border border-border text-textMain font-bold hover:border-primary hover:text-primary transition-colors">3</button>
+                    <span class="text-textMuted px-2">...</span>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center border border-border text-textMain font-bold hover:border-primary hover:text-primary transition-colors">12</button>
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center border border-border text-textMain hover:border-primary hover:text-primary transition-colors">
+                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    </button>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-surface border-t border-border mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm">M</div>
+                <span class="font-bold text-lg text-textMain">MMO Platform</span>
+            </div>
+            <div class="flex gap-6 text-sm font-medium text-textMuted">
+                <a href="#" class="hover:text-primary transition-colors">Sobre</a>
+                <a href="#" class="hover:text-primary transition-colors">Termos</a>
+                <a href="#" class="hover:text-primary transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-primary transition-colors">Suporte</a>
+            </div>
+            <p class="text-sm text-textMuted">© 2026 MMO. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

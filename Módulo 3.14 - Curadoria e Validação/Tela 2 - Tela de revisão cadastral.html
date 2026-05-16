@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Review</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+    </style>
+</head>
+<body class="bg-background text-navy antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-surface border-b border-border h-[72px] flex items-center justify-between px-6 lg:px-12 sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                M
+            </div>
+            <span class="font-bold text-xl tracking-tight">MMO Admin</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-3 text-sm text-muted hidden md:flex">
+                <i class="fa-regular fa-bell text-lg hover:text-navy cursor-pointer transition-colors"></i>
+                <div class="w-px h-5 bg-border mx-2"></div>
+                <div class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 py-1.5 px-2 rounded-full transition-colors">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin" class="w-8 h-8 rounded-full object-cover border border-border">
+                    <span class="font-medium hidden lg:block">Admin User</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] hidden lg:block"></i>
+                </div>
+            </div>
+            <button class="md:hidden text-navy">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-8 flex flex-col gap-6">
+        
+        <!-- Admin Control Bar -->
+        <div id="control-bar" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface p-4 sm:px-6 rounded-2xl shadow-soft border border-border/50">
+            <div class="flex items-center gap-2 text-sm font-medium text-muted">
+                <a href="#" class="hover:text-primary transition-colors">Painel</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <a href="#" class="hover:text-primary transition-colors">Curadoria</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-navy font-semibold">Revisão de Roberto Alves</span>
+            </div>
+            <div class="flex items-center gap-2 bg-blue-50 text-primary px-3 py-1.5 rounded-full text-sm font-semibold border border-blue-100">
+                <i class="fa-regular fa-clock"></i>
+                <span id="review-timer">04:23</span>
+            </div>
+        </div>
+
+        <!-- 360 Inspection Layout -->
+        <div id="inspection-layout" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Column: Profile Snapshot (25% on lg -> 3 cols) -->
+            <div id="profile-snapshot" class="lg:col-span-3 lg:sticky lg:top-[104px] flex flex-col gap-4">
+                <div class="bg-surface rounded-3xl p-6 shadow-soft border border-border/50 text-center flex flex-col items-center">
+                    <div class="relative mb-4">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Roberto Alves" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-sm">
+                        <div class="absolute bottom-1 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+                    </div>
+                    <h2 class="text-xl font-bold text-navy mb-1">Roberto Alves</h2>
+                    <p class="text-sm text-muted mb-6">Desenvolvedor Sênior</p>
+                    
+                    <div class="w-full flex flex-col gap-3 text-left">
+                        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-muted shrink-0">
+                                <i class="fa-regular fa-envelope text-sm"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-xs text-muted">Email</p>
+                                <p class="text-sm font-medium text-navy truncate">roberto.alves@email.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-muted shrink-0">
+                                <i class="fa-solid fa-phone text-sm"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-xs text-muted">Telefone</p>
+                                <p class="text-sm font-medium text-navy truncate">+55 11 98765-4321</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full mt-6 pt-4 border-t border-border">
+                        <p class="text-xs text-muted mb-2 text-left font-semibold uppercase tracking-wider">Timeline</p>
+                        <div class="flex items-start gap-3 relative">
+                            <div class="absolute left-[7px] top-6 bottom-0 w-px bg-border"></div>
+                            <div class="w-4 h-4 rounded-full border-2 border-primary bg-white z-10 shrink-0 mt-1"></div>
+                            <div class="text-left pb-4">
+                                <p class="text-sm font-medium text-navy">Registro Criado</p>
+                                <p class="text-xs text-muted">12 Out 2023, 14:30</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 relative">
+                            <div class="w-4 h-4 rounded-full border-2 border-gray-300 bg-white z-10 shrink-0 mt-1"></div>
+                            <div class="text-left">
+                                <p class="text-sm font-medium text-navy">Documentos Enviados</p>
+                                <p class="text-xs text-muted">12 Out 2023, 15:45</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Column: The Audit Trail (50% on lg -> 6 cols) -->
+            <div id="audit-trail" class="lg:col-span-6 flex flex-col gap-6">
+                <div class="bg-surface rounded-3xl shadow-soft border border-border/50 overflow-hidden">
+                    <div class="p-6 border-b border-border flex justify-between items-center bg-gray-50/50">
+                        <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                            <i class="fa-regular fa-id-card text-primary"></i>
+                            Dados Pessoais
+                        </h3>
+                        <button class="text-muted hover:text-primary transition-colors p-2 rounded-full hover:bg-white shadow-sm border border-transparent hover:border-border">
+                            <i class="fa-solid fa-pen text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
+                        <div>
+                            <p class="text-xs text-muted mb-1">Nome Completo</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">Roberto Carlos Alves Silva</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted mb-1">CPF</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">123.456.789-00</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted mb-1">Data de Nascimento</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">15/05/1988</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted mb-1">Nacionalidade</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">Brasileiro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-3xl shadow-soft border border-border/50 overflow-hidden">
+                    <div class="p-6 border-b border-border flex justify-between items-center bg-gray-50/50">
+                        <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-primary"></i>
+                            Endereço
+                        </h3>
+                        <button class="text-muted hover:text-primary transition-colors p-2 rounded-full hover:bg-white shadow-sm border border-transparent hover:border-border">
+                            <i class="fa-solid fa-pen text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
+                        <div class="sm:col-span-2">
+                            <p class="text-xs text-muted mb-1">Logradouro</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">Rua das Flores, 123 - Apto 45</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted mb-1">Bairro</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">Jardim Botânico</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted mb-1">CEP</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">01234-567</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted mb-1">Cidade</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">São Paulo</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted mb-1">Estado</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">SP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-3xl shadow-soft border border-border/50 overflow-hidden">
+                    <div class="p-6 border-b border-border flex justify-between items-center bg-gray-50/50">
+                        <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                            <i class="fa-solid fa-building-columns text-primary"></i>
+                            Dados Bancários
+                        </h3>
+                        <button class="text-muted hover:text-primary transition-colors p-2 rounded-full hover:bg-white shadow-sm border border-transparent hover:border-border">
+                            <i class="fa-solid fa-pen text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
+                        <div class="sm:col-span-2">
+                            <p class="text-xs text-muted mb-1">Banco</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50 flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-[10px] font-bold">N</span>
+                                Nubank (260)
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted mb-1">Agência</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">0001</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted mb-1">Conta Corrente</p>
+                            <p class="text-sm font-semibold text-navy bg-gray-50 p-2.5 rounded-xl border border-border/50">1234567-8</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Moderation Actions (25% on lg -> 3 cols) -->
+            <div id="moderation-actions" class="lg:col-span-3 flex flex-col gap-4 lg:sticky lg:top-[104px]">
+                <div class="bg-surface rounded-3xl shadow-soft border border-border/50 overflow-hidden flex flex-col h-full">
+                    <div class="p-5 border-b border-border bg-gray-50/50">
+                        <h3 class="text-lg font-bold text-navy text-center">Decisão Cadastral</h3>
+                    </div>
+                    
+                    <div class="p-5 flex-1 flex flex-col gap-4">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-medium text-navy">Nota Interna / Mensagem</label>
+                            <textarea class="w-full h-32 p-3 rounded-xl border border-border bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary resize-none placeholder-muted/70 transition-all" placeholder="Adicione observações ou o motivo de correção..."></textarea>
+                            <p class="text-[11px] text-muted text-right">0/500 caracteres</p>
+                        </div>
+                        
+                        <div class="flex flex-col gap-3 mt-auto pt-4 border-t border-border/50">
+                            <button onclick="window.location.href='Tela 4 - Tela de status de validação.html'" class="w-full py-3.5 px-4 rounded-full border-2 border-red-500 text-red-500 font-bold text-sm hover:bg-red-50 transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                Solicitar Correção
+                            </button>
+                            <button onclick="window.location.href='Tela 4 - Tela de status de validação.html'" class="w-full py-3.5 px-4 rounded-full bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-colors shadow-md shadow-primary/20 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-check"></i>
+                                Dados Aprovados
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-surface border-t border-border mt-auto py-6">
+        <div class="max-w-[1200px] mx-auto px-6 text-center text-sm text-muted">
+            <p>&copy; 2023 MMO Admin Backoffice. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple timer logic for demonstration
+        let seconds = 263; // 04:23
+        const timerEl = document.getElementById('review-timer');
+        
+        setInterval(() => {
+            seconds++;
+            const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            if(timerEl) timerEl.textContent = `${mins}:${secs}`;
+        }, 1000);
+    </script>
+</body>
+</html>

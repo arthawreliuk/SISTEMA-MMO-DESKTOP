@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos | MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            gray: '#8E8E93',
+                            light: '#F2F2F7'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'nav': '0 4px 20px -2px rgba(0,0,0,0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E5EA; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D1D6; }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col selection:bg-brand-blue selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="top-nav" class="bg-white sticky top-0 z-50 shadow-nav">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-white font-bold text-xl tracking-tighter">
+                    M
+                </div>
+                <span class="text-brand-navy font-extrabold text-xl tracking-tight">MMO</span>
+            </div>
+            
+            <div class="flex items-center gap-8">
+                <a href="Tela 1 - Tela inicial de busca.html" class="text-brand-gray hover:text-brand-navy transition-colors flex flex-col items-center gap-1 group">
+                    <i class="fa-solid fa-house text-lg group-hover:-translate-y-0.5 transition-transform"></i>
+                </a>
+                <a href="#" class="text-brand-gray hover:text-brand-navy transition-colors flex flex-col items-center gap-1 group">
+                    <i class="fa-solid fa-clipboard-list text-lg group-hover:-translate-y-0.5 transition-transform"></i>
+                </a>
+                <a href="#" class="text-brand-gray hover:text-brand-navy transition-colors flex flex-col items-center gap-1 relative group">
+                    <i class="fa-regular fa-comment-dots text-lg group-hover:-translate-y-0.5 transition-transform"></i>
+                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+                </a>
+                <a href="#" class="text-brand-blue flex flex-col items-center gap-1.5 relative">
+                    <i class="fa-solid fa-user text-lg"></i>
+                    <div class="w-1.5 h-1.5 bg-brand-blue rounded-full absolute -bottom-3"></div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-6 py-12">
+        
+        <!-- Header Section -->
+        <header id="page-header" class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-brand-navy tracking-tight mb-3">
+                    Mestres Favoritos <span class="text-brand-gray text-3xl font-medium">(12)</span>
+                </h1>
+                <p class="text-brand-gray text-lg max-w-xl">
+                    Gerencie os profissionais de elite que você salvou para contatos futuros.
+                </p>
+            </div>
+            
+            <div class="relative w-full md:w-80 group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-brand-gray group-focus-within:text-brand-blue transition-colors"></i>
+                </div>
+                <input type="text" placeholder="Buscar nos favoritos..." 
+                    class="w-full bg-white border border-gray-200 text-brand-navy rounded-full py-3.5 pl-11 pr-4 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all shadow-sm placeholder:text-gray-400 font-medium">
+            </div>
+        </header>
+
+        <!-- Grid -->
+        <div id="favorites-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Card 1 -->
+            <article class="bg-white rounded-[24px] shadow-soft overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-300">
+                <div class="h-32 bg-brand-light relative">
+                    <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(#0016dc 1px, transparent 1px); background-size: 16px 16px;"></div>
+                    <button class="absolute top-4 right-4 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-blue hover:scale-110 transition-transform shadow-sm">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </button>
+                    <div class="absolute -bottom-10 left-6">
+                        <div class="w-20 h-20 rounded-full border-4 border-white shadow-sm overflow-hidden bg-white">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/223a50cdb1-670e8333eaacb7494d64.png" alt="Professional headshot of a mature male architect/engineer looking confident, white background" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pt-14 px-6 pb-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-brand-navy leading-tight mb-1">Roberto Almeida</h3>
+                    <p class="text-brand-gray text-sm mb-4">Mestre de Obras Sênior</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-brand-light text-brand-navy text-xs font-bold rounded-full tracking-wide uppercase">Estrutural</span>
+                        <span class="px-3 py-1 bg-brand-light text-brand-navy text-xs font-bold rounded-full tracking-wide uppercase">Alvenaria</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 text-sm text-brand-gray mb-6 mt-auto">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Responde em ~2h</span>
+                    </div>
+                    
+                    <button onclick="window.location.href='Tela 6 - Tela de perfil público do profissional.html'" class="w-full bg-brand-blue hover:bg-blue-800 text-white font-bold py-3.5 rounded-full transition-colors flex items-center justify-center gap-2">
+                        Solicitar Orçamento
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="bg-white rounded-[24px] shadow-soft overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-300">
+                <div class="h-32 bg-brand-light relative">
+                    <div class="absolute inset-0 opacity-30" style="background-image: linear-gradient(45deg, #0016dc 25%, transparent 25%, transparent 75%, #0016dc 75%, #0016dc), linear-gradient(45deg, #0016dc 25%, transparent 25%, transparent 75%, #0016dc 75%, #0016dc); background-size: 20px 20px; background-position: 0 0, 10px 10px;"></div>
+                    <button class="absolute top-4 right-4 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-blue hover:scale-110 transition-transform shadow-sm">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </button>
+                    <div class="absolute -bottom-10 left-6">
+                        <div class="w-20 h-20 rounded-full border-4 border-white shadow-sm overflow-hidden bg-white">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/7425ead6bc-a2117662eab13ff18de3.png" alt="Professional headshot of a female electrician/technician smiling, well lit" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pt-14 px-6 pb-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-brand-navy leading-tight mb-1">Carla Mendes</h3>
+                    <p class="text-brand-gray text-sm mb-4">Engenheira Elétrica</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-brand-light text-brand-navy text-xs font-bold rounded-full tracking-wide uppercase">Elétrica</span>
+                        <span class="px-3 py-1 bg-brand-light text-brand-navy text-xs font-bold rounded-full tracking-wide uppercase">Projetos</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 text-sm text-brand-gray mb-6 mt-auto">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Responde em ~30m</span>
+                    </div>
+                    
+                    <button onclick="window.location.href='Tela 6 - Tela de perfil público do profissional.html'" class="w-full bg-brand-blue hover:bg-blue-800 text-white font-bold py-3.5 rounded-full transition-colors flex items-center justify-center gap-2">
+                        Solicitar Orçamento
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="bg-white rounded-[24px] shadow-soft overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-300">
+                <div class="h-32 bg-brand-light relative">
+                    <div class="absolute inset-0 opacity-40" style="background-image: repeating-linear-gradient(45deg, #0016dc 25%, transparent 25%, transparent 75%, #0016dc 75%, #0016dc), repeating-linear-gradient(45deg, #0016dc 25%, #F8F9FA 25%, #F8F9FA 75%, #0016dc 75%, #0016dc); background-position: 0 0, 10px 10px; background-size: 20px 20px;"></div>
+                    <button class="absolute top-4 right-4 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-blue hover:scale-110 transition-transform shadow-sm">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </button>
+                    <div class="absolute -bottom-10 left-6">
+                        <div class="w-20 h-20 rounded-full border-4 border-white shadow-sm overflow-hidden bg-white">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/df8a5c75f5-51229f9e6c93cf69ef79.png" alt="Professional headshot of a young male plumber/specialist in uniform" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pt-14 px-6 pb-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-brand-navy leading-tight mb-1">Thiago Silva</h3>
+                    <p class="text-brand-gray text-sm mb-4">Especialista Hidráulico</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-brand-light text-brand-navy text-xs font-bold rounded-full tracking-wide uppercase">Hidráulica</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 text-sm text-brand-gray mb-6 mt-auto">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Responde em ~1h</span>
+                    </div>
+                    
+                    <button onclick="window.location.href='Tela 6 - Tela de perfil público do profissional.html'" class="w-full bg-brand-blue hover:bg-blue-800 text-white font-bold py-3.5 rounded-full transition-colors flex items-center justify-center gap-2">
+                        Solicitar Orçamento
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="bg-white rounded-[24px] shadow-soft overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-300">
+                <div class="h-32 bg-brand-light relative">
+                    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at center, #0016dc 0, transparent 100%);"></div>
+                    <button class="absolute top-4 right-4 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-blue hover:scale-110 transition-transform shadow-sm">
+                        <i class="fa-solid fa-heart text-sm"></i>
+                    </button>
+                    <div class="absolute -bottom-10 left-6">
+                        <div class="w-20 h-20 rounded-full border-4 border-white shadow-sm overflow-hidden bg-white">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/55dd576deb-3507c8217bf1be1660f6.png" alt="Professional headshot of a male HVAC specialist" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pt-14 px-6 pb-6 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-brand-navy leading-tight mb-1">Marcos Costa</h3>
+                    <p class="text-brand-gray text-sm mb-4">Técnico em Refrigeração</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-brand-light text-brand-navy text-xs font-bold rounded-full tracking-wide uppercase">Climatização</span>
+                        <span class="px-3 py-1 bg-brand-light text-brand-navy text-xs font-bold rounded-full tracking-wide uppercase">HVAC</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 text-sm text-brand-gray mb-6 mt-auto">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Responde em ~4h</span>
+                    </div>
+                    
+                    <button onclick="window.location.href='Tela 6 - Tela de perfil público do profissional.html'" class="w-full bg-brand-blue hover:bg-blue-800 text-white font-bold py-3.5 rounded-full transition-colors flex items-center justify-center gap-2">
+                        Solicitar Orçamento
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+            </article>
+
+        </div>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-gray-100 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-brand-navy rounded-md flex items-center justify-center text-white font-bold text-xs">M</div>
+                <span class="text-brand-navy font-bold text-sm">MMO © 2026</span>
+            </div>
+            <p class="text-brand-gray text-sm font-medium">Feito para Camboriú.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

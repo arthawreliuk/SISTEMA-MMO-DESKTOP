@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            border: '#E5E7EB',
+                            muted: '#6B7280'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .toggle-checkbox:checked { right: 0; border-color: #0016dc; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #0016dc; }
+        .slider-thumb::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0016dc;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-brand-navy bg-brand-bg antialiased">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-white border-b border-brand-border sticky top-0 z-50 shadow-sm">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-bold text-xl tracking-tight">MMO</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-brand-muted hover:text-brand-navy font-medium transition-colors">Home</a>
+                <div class="relative flex flex-col items-center">
+                    <a href="#" class="text-brand-navy font-semibold">Opportunities</a>
+                    <div class="w-1.5 h-1.5 rounded-full bg-brand-blue absolute -bottom-2"></div>
+                </div>
+                <a href="#" class="text-brand-muted hover:text-brand-navy font-medium transition-colors">Messages</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full border border-brand-border flex items-center justify-center text-brand-muted hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="flex items-center gap-3 pl-4 border-l border-brand-border cursor-pointer">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover">
+                    <div class="hidden lg:block text-sm">
+                        <p class="font-semibold">Carlos R.</p>
+                        <p class="text-brand-muted text-xs">Professional</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-xs text-brand-muted ml-2"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-[1200px] mx-auto px-6 py-8">
+        
+        <!-- Header Control Bar -->
+        <div id="page-header" class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-bold mb-2">Mural de Oportunidades</h1>
+                <p class="text-brand-muted">Encontre clientes precisando dos seus serviços na sua região.</p>
+            </div>
+            <div class="flex items-center gap-3 bg-white p-2 rounded-2xl shadow-soft border border-brand-border w-full md:w-auto">
+                <div class="relative w-full md:w-64">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-brand-muted"></i>
+                    <input type="text" placeholder="Buscar por serviço..." class="w-full pl-10 pr-4 py-2.5 bg-transparent border-none focus:outline-none text-sm placeholder-brand-muted">
+                </div>
+                <button class="bg-brand-blue text-white px-6 py-2.5 rounded-xl font-medium hover:bg-blue-700 transition-colors whitespace-nowrap">
+                    Buscar
+                </button>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Left Sidebar (Filters) -->
+            <aside id="sidebar-filters" class="w-full lg:w-1/4 shrink-0">
+                <div class="bg-white rounded-[24px] p-6 shadow-soft border border-brand-border sticky top-28">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="font-bold text-lg">Filtros</h2>
+                        <button class="text-sm text-brand-blue hover:underline font-medium">Limpar</button>
+                    </div>
+
+                    <!-- Distance Slider -->
+                    <div class="mb-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-semibold text-sm">Raio de Atendimento</h3>
+                            <span class="text-sm font-bold text-brand-blue bg-blue-50 px-2 py-1 rounded-md">15 km</span>
+                        </div>
+                        <input type="range" min="1" max="50" value="15" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb accent-brand-blue">
+                        <div class="flex justify-between text-xs text-brand-muted mt-2">
+                            <span>1 km</span>
+                            <span>50 km</span>
+                        </div>
+                    </div>
+
+                    <hr class="border-brand-border my-6">
+
+                    <!-- Categories -->
+                    <div class="mb-8">
+                        <h3 class="font-semibold text-sm mb-4">Categorias</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <div class="w-5 h-5 rounded border border-gray-300 flex items-center justify-center group-hover:border-brand-blue transition-colors bg-brand-blue border-brand-blue">
+                                    <i class="fa-solid fa-check text-white text-xs"></i>
+                                </div>
+                                <span class="text-sm">Reformas em Geral</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <div class="w-5 h-5 rounded border border-gray-300 flex items-center justify-center group-hover:border-brand-blue transition-colors bg-brand-blue border-brand-blue">
+                                    <i class="fa-solid fa-check text-white text-xs"></i>
+                                </div>
+                                <span class="text-sm">Elétrica</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <div class="w-5 h-5 rounded border border-gray-300 flex items-center justify-center group-hover:border-brand-blue transition-colors">
+                                </div>
+                                <span class="text-sm">Hidráulica</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <div class="w-5 h-5 rounded border border-gray-300 flex items-center justify-center group-hover:border-brand-blue transition-colors">
+                                </div>
+                                <span class="text-sm">Pintura</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <hr class="border-brand-border my-6">
+
+                    <!-- Advanced Toggles -->
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-brand-navy">Ocultar orçamentos já respondidos</span>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-gray-300 appearance-none cursor-pointer z-10 transition-all duration-300" checked/>
+                                <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300"></label>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-brand-navy">Apenas clientes verificados</span>
+                            <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" name="toggle" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-gray-300 appearance-none cursor-pointer z-10 transition-all duration-300"/>
+                                <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Content (Feed) -->
+            <div id="job-feed" class="w-full lg:w-3/4 space-y-4">
+                
+                <!-- Job Card 1 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-soft border border-brand-border hover:border-brand-blue/30 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-50 text-orange-500 flex items-center justify-center text-2xl shrink-0">
+                        <i class="fa-solid fa-hammer"></i>
+                    </div>
+                    
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-bold text-lg text-brand-blue">Reforma Completa de Banheiro</h3>
+                            <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Urgente</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-brand-muted mb-3">
+                            <i class="fa-regular fa-user"></i>
+                            <span class="font-medium text-brand-navy">Cliente Anônimo</span>
+                            <span>•</span>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Vila Mariana, São Paulo</span>
+                        </div>
+                        <p class="text-sm text-brand-muted line-clamp-2">Preciso de um profissional para reformar meu banheiro inteiro. Troca de piso, azulejos, instalação de novo box e vaso sanitário. Material já comprado.</p>
+                    </div>
+
+                    <div class="w-full md:w-auto flex flex-col md:items-end gap-4 shrink-0 border-t md:border-t-0 md:border-l border-brand-border pt-4 md:pt-0 md:pl-6">
+                        <div class="flex md:flex-col gap-4 md:gap-1 text-sm text-brand-muted">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-route text-brand-blue/60"></i>
+                                <span class="font-medium text-brand-navy">2.5 km</span> de você
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-regular fa-clock text-brand-blue/60"></i>
+                                <span>Há 2 horas</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='Tela 7 - Tela de detalhe da oportunidade elegível.html'" class="w-full md:w-auto bg-brand-blue hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-colors shadow-md shadow-brand-blue/20">
+                            Analisar Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-soft border border-brand-border hover:border-brand-blue/30 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center text-2xl shrink-0">
+                        <i class="fa-solid fa-plug"></i>
+                    </div>
+                    
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-bold text-lg text-brand-blue">Instalação de Tomadas 220v</h3>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-brand-muted mb-3">
+                            <i class="fa-regular fa-user"></i>
+                            <span class="font-medium text-brand-navy">Roberto S.</span>
+                            <i class="fa-solid fa-circle-check text-blue-500 text-xs" title="Cliente Verificado"></i>
+                            <span>•</span>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Pinheiros, São Paulo</span>
+                        </div>
+                        <p class="text-sm text-brand-muted line-clamp-2">Preciso converter 3 tomadas de 110v para 220v na cozinha para instalação de novos eletrodomésticos. Fiação do quadro parece estar ok.</p>
+                    </div>
+
+                    <div class="w-full md:w-auto flex flex-col md:items-end gap-4 shrink-0 border-t md:border-t-0 md:border-l border-brand-border pt-4 md:pt-0 md:pl-6">
+                        <div class="flex md:flex-col gap-4 md:gap-1 text-sm text-brand-muted">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-route text-brand-blue/60"></i>
+                                <span class="font-medium text-brand-navy">5.1 km</span> de você
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-regular fa-clock text-brand-blue/60"></i>
+                                <span>Há 5 horas</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='Tela 7 - Tela de detalhe da oportunidade elegível.html'" class="w-full md:w-auto bg-brand-blue hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-colors shadow-md shadow-brand-blue/20">
+                            Analisar Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-soft border border-brand-border hover:border-brand-blue/30 transition-all flex flex-col md:flex-row gap-6 items-start md:items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-teal-50 text-teal-500 flex items-center justify-center text-2xl shrink-0">
+                        <i class="fa-solid fa-faucet-drip"></i>
+                    </div>
+                    
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-bold text-lg text-brand-blue">Vazamento na Pia da Cozinha</h3>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-brand-muted mb-3">
+                            <i class="fa-regular fa-user"></i>
+                            <span class="font-medium text-brand-navy">Cliente Anônimo</span>
+                            <span>•</span>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Moema, São Paulo</span>
+                        </div>
+                        <p class="text-sm text-brand-muted line-clamp-2">O sifão da pia está vazando muito, tentei apertar mas acho que quebrou. Preciso de conserto rápido pois não consigo usar a pia.</p>
+                    </div>
+
+                    <div class="w-full md:w-auto flex flex-col md:items-end gap-4 shrink-0 border-t md:border-t-0 md:border-l border-brand-border pt-4 md:pt-0 md:pl-6">
+                        <div class="flex md:flex-col gap-4 md:gap-1 text-sm text-brand-muted">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-route text-brand-blue/60"></i>
+                                <span class="font-medium text-brand-navy">8.0 km</span> de você
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-regular fa-clock text-brand-blue/60"></i>
+                                <span>Ontem</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='Tela 7 - Tela de detalhe da oportunidade elegível.html'" class="w-full md:w-auto bg-brand-blue hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-colors shadow-md shadow-brand-blue/20">
+                            Analisar Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center items-center gap-2 pt-6">
+                    <button class="w-10 h-10 rounded-xl border border-brand-border flex items-center justify-center text-brand-muted hover:bg-gray-50 disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-xl bg-brand-blue text-white font-semibold flex items-center justify-center shadow-md">1</button>
+                    <button class="w-10 h-10 rounded-xl border border-brand-border hover:bg-gray-50 font-medium flex items-center justify-center">2</button>
+                    <button class="w-10 h-10 rounded-xl border border-brand-border hover:bg-gray-50 font-medium flex items-center justify-center">3</button>
+                    <span class="text-brand-muted mx-1">...</span>
+                    <button class="w-10 h-10 rounded-xl border border-brand-border hover:bg-gray-50 font-medium flex items-center justify-center">12</button>
+                    <button class="w-10 h-10 rounded-xl border border-brand-border flex items-center justify-center text-brand-navy hover:bg-gray-50">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-brand-border mt-12 py-12">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-sm">M</div>
+                <span class="font-bold text-lg tracking-tight">MMO</span>
+            </div>
+            
+            <div class="flex gap-6 text-sm font-medium text-brand-muted">
+                <a href="#" class="hover:text-brand-blue transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Suporte</a>
+            </div>
+            
+            <p class="text-xs text-brand-muted">© 2024 MMO. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

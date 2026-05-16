@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Confiança e Privacidade - MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            softblue: '#F0F4FF',
+                            gray: '#6B7280',
+                            border: '#E5E7EB'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 40px -2px rgba(26, 26, 36, 0.05)',
+                        'nav': '0 1px 3px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .legal-content h2 { color: #1A1A24; font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.025em; }
+        .legal-content h3 { color: #1A1A24; font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; }
+        .legal-content p { color: #4B5563; line-height: 1.8; margin-bottom: 1.25rem; font-size: 1.0625rem; }
+        .legal-content ul { list-style-type: disc; padding-left: 1.5rem; color: #4B5563; margin-bottom: 1.5rem; }
+        .legal-content li { margin-bottom: 0.5rem; line-height: 1.7; }
+    </style>
+</head>
+<body class="text-brand-navy">
+
+    <!-- Global Nav Header -->
+    <header id="global-nav" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-brand-border shadow-nav w-full">
+        <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-lg">M</div>
+                <span class="font-bold text-xl tracking-tight text-brand-navy">MMO</span>
+            </div>
+            <nav class="flex items-center gap-4">
+                <a href="#" class="px-5 py-2.5 rounded-full text-sm font-semibold text-brand-gray hover:text-brand-navy hover:bg-gray-50 transition-colors">Suporte</a>
+                <a href="Tela 6 - Gestão interna de conteúdo.html" class="px-5 py-2.5 rounded-full text-sm font-semibold text-brand-blue border border-brand-blue/20 hover:bg-brand-softblue transition-colors flex items-center gap-2">
+                    Voltar ao App <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section id="hero-header" class="w-full bg-white pt-24 pb-20 border-b border-brand-border">
+        <div class="max-w-[1200px] mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-softblue text-brand-blue text-sm font-semibold mb-8">
+                <i class="fa-solid fa-shield-halved"></i> Trust Center
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-brand-navy tracking-tight mb-6 leading-[1.1]">
+                Central de Confiança <br/>e Privacidade
+            </h1>
+            <p class="text-xl text-brand-gray max-w-2xl mx-auto font-medium">
+                Transparência total sobre como protegemos você e seus dados.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="max-w-[1200px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-10 relative">
+        
+        <!-- Left Sidebar (Sticky - 25%) -->
+        <aside id="sidebar-nav" class="w-full lg:w-1/4 lg:sticky lg:top-[104px] self-start">
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient border border-brand-border/50">
+                
+                <div class="mb-8">
+                    <h4 class="text-xs font-bold text-brand-gray uppercase tracking-wider mb-4 pl-3">Nossa Empresa</h4>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-brand-gray hover:bg-gray-50 hover:text-brand-navy transition-colors">Sobre a MMO</a></li>
+                        <li><a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-brand-gray hover:bg-gray-50 hover:text-brand-navy transition-colors">Compliance</a></li>
+                    </ul>
+                </div>
+
+                <div class="mb-8 relative">
+                    <h4 class="text-xs font-bold text-brand-gray uppercase tracking-wider mb-4 pl-3">Legal & Privacidade</h4>
+                    <ul class="space-y-1 relative">
+                        <!-- Active Indicator -->
+                        <div class="absolute left-0 top-1 w-1 h-8 bg-brand-blue rounded-r-full"></div>
+                        
+                        <li><a href="#" class="block px-3 py-2 rounded-xl text-sm font-semibold text-brand-blue bg-brand-softblue">Política de Privacidade</a></li>
+                        <li><a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-brand-gray hover:bg-gray-50 hover:text-brand-navy transition-colors">Termos de Uso</a></li>
+                        <li><a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-brand-gray hover:bg-gray-50 hover:text-brand-navy transition-colors">LGPD & Direitos</a></li>
+                        <li><a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-brand-gray hover:bg-gray-50 hover:text-brand-navy transition-colors">Cookies</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-brand-gray uppercase tracking-wider mb-4 pl-3">Segurança</h4>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-brand-gray hover:bg-gray-50 hover:text-brand-navy transition-colors">Segurança da Informação</a></li>
+                        <li><a href="#" class="block px-3 py-2 rounded-xl text-sm font-medium text-brand-gray hover:bg-gray-50 hover:text-brand-navy transition-colors">Reportar Vulnerabilidade</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Center Canvas (The Document - 75%) -->
+        <article id="document-canvas" class="w-full lg:w-3/4">
+            <div class="bg-white rounded-[24px] shadow-ambient border border-brand-border/50 p-8 md:p-14 relative">
+                
+                <!-- Floating Action Row -->
+                <div class="absolute top-8 right-8 md:top-14 md:right-14 flex items-center gap-3">
+                    <button class="w-10 h-10 rounded-full border border-brand-border flex items-center justify-center text-brand-gray hover:text-brand-navy hover:bg-gray-50 transition-all" title="Imprimir">
+                        <i class="fa-solid fa-print"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-full border border-brand-border flex items-center justify-center text-brand-gray hover:text-brand-navy hover:bg-gray-50 transition-all" title="Baixar PDF">
+                        <i class="fa-solid fa-download"></i>
+                    </button>
+                </div>
+
+                <div class="mb-10 max-w-2xl">
+                    <p class="text-sm font-semibold text-brand-blue mb-2 uppercase tracking-wide">Atualizado em 15 de Maio, 2026</p>
+                    <h1 class="text-3xl md:text-4xl font-bold text-brand-navy tracking-tight mb-4">Política de Privacidade</h1>
+                    <p class="text-brand-gray">Versão 2.4 — Efetiva a partir da data de publicação.</p>
+                </div>
+
+                <!-- Resumo Simples (TL;DR) -->
+                <div class="bg-brand-softblue rounded-[20px] p-8 mb-12 border border-brand-blue/10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-navy m-0">Resumo Simples</h3>
+                    </div>
+                    <p class="text-brand-navy/80 mb-4 font-medium">Sabemos que o seu tempo é valioso. Aqui está o essencial sobre como tratamos seus dados:</p>
+                    <ul class="space-y-3 m-0 pl-0 list-none">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-blue mt-1"></i>
+                            <span class="text-brand-navy/80"><strong>Seus dados são seus.</strong> Nós apenas os utilizamos para fornecer e melhorar os serviços da MMO que você contratou.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-blue mt-1"></i>
+                            <span class="text-brand-navy/80"><strong>Não vendemos informações.</strong> Suas informações financeiras e pessoais nunca serão comercializadas com terceiros.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-blue mt-1"></i>
+                            <span class="text-brand-navy/80"><strong>Segurança de nível bancário.</strong> Aplicamos criptografia ponta a ponta e auditorias regulares para garantir a proteção máxima.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Legal Content Formatted -->
+                <div class="legal-content">
+                    <h2>1. Introdução</h2>
+                    <p>A MMO ("nós", "nosso" ou "empresa") está comprometida em proteger a sua privacidade. Esta Política de Privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações quando você usa nossa plataforma SaaS, aplicativos móveis e serviços relacionados (coletivamente, os "Serviços").</p>
+                    <p>Ao acessar ou usar nossos Serviços, você concorda com as práticas descritas nesta política. Se você não concordar com esta política, por favor, não acesse ou use nossos Serviços.</p>
+
+                    <h2>2. Informações que Coletamos</h2>
+                    <p>Coletamos informações que identificam, se relacionam, descrevem, fazem referência, são capazes de ser associadas ou poderiam razoavelmente ser vinculadas, direta ou indiretamente, a um consumidor particular ou dispositivo ("informações pessoais").</p>
+                    
+                    <h3>2.1 Informações Fornecidas por Você</h3>
+                    <ul>
+                        <li><strong>Dados de Conta:</strong> Nome, endereço de e-mail, número de telefone, nome da empresa e credenciais de login.</li>
+                        <li><strong>Dados Financeiros:</strong> Informações de faturamento, histórico de transações vinculadas à plataforma e dados necessários para processamento de pagamentos.</li>
+                        <li><strong>Comunicações:</strong> Registros de suas interações com nosso suporte ao cliente.</li>
+                    </ul>
+
+                    <h3>2.2 Informações Coletadas Automaticamente</h3>
+                    <p>Quando você navega em nossos Serviços, coletamos automaticamente detalhes de uso, endereços IP e informações coletadas por meio de cookies e outras tecnologias de rastreamento para melhorar a performance e segurança da plataforma.</p>
+
+                    <h2>3. Como Usamos Suas Informações</h2>
+                    <p>Utilizamos as informações que coletamos para diversos fins comerciais e operacionais, incluindo:</p>
+                    <ul>
+                        <li>Fornecer, manter e melhorar nossos Serviços;</li>
+                        <li>Processar suas transações e enviar avisos relacionados;</li>
+                        <li>Detectar, prevenir e investigar atividades fraudulentas ou ilegais;</li>
+                        <li>Cumprir obrigações legais e regulatórias aplicáveis ao setor financeiro.</li>
+                    </ul>
+
+                    <h2>4. Compartilhamento de Informações</h2>
+                    <p>Não vendemos suas informações pessoais. Podemos compartilhar suas informações nas seguintes circunstâncias limitadas:</p>
+                    <p><strong>Provedores de Serviço:</strong> Compartilhamos dados com terceiros confiáveis que nos auxiliam na operação da plataforma (ex: provedores de hospedagem em nuvem, processadores de pagamento), estritamente sob acordos de confidencialidade.</p>
+                </div>
+
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-brand-border mt-20 py-12">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-md bg-brand-navy flex items-center justify-center text-white font-bold text-xs">M</div>
+                <span class="font-bold text-lg tracking-tight text-brand-navy">MMO</span>
+            </div>
+            <p class="text-sm text-brand-gray">© 2026 MMO SaaS. Todos os direitos reservados.</p>
+            <div class="flex gap-4">
+                <a href="#" class="text-brand-gray hover:text-brand-navy transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                <a href="#" class="text-brand-gray hover:text-brand-navy transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

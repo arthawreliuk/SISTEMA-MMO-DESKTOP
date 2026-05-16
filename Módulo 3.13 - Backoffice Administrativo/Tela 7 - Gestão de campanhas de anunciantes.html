@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertiser Campaigns Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        text: '#1A1A24',
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        info: '#3B82F6'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 10px 30px -5px rgba(0, 0, 0, 0.08)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { display: none; }
+        body { background-color: #F8F9FA; color: #1A1A24; margin: 0; padding: 0; }
+        .table-row-hover:hover { background-color: #F8F9FA; }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-surface border-b border-border sticky top-0 z-50 h-[72px] flex items-center shadow-sm">
+        <div class="w-full max-w-[1440px] mx-auto px-6 md:px-8 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight text-text">MMO Admin</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <button class="text-muted hover:text-text transition-colors relative">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-primary rounded-full border-2 border-white"></span>
+                </button>
+                <div class="flex items-center gap-3 pl-6 border-l border-border cursor-pointer group">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-semibold text-text group-hover:text-primary transition-colors">Admin User</p>
+                        <p class="text-xs text-muted">Super Admin</p>
+                    </div>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Profile" class="w-10 h-10 rounded-full border border-border shadow-sm">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 w-full max-w-[1200px] mx-auto px-4 md:px-6 py-8 flex flex-col gap-8">
+        
+        <!-- Admin Control Bar -->
+        <section id="control-bar" class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 w-full">
+            <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2 text-sm text-muted font-medium">
+                    <span class="hover:text-text cursor-pointer transition-colors">Painel</span>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-primary font-semibold">Rede de Anúncios</span>
+                </div>
+                <h1 class="text-3xl font-bold text-text tracking-tight mt-1">Gestão de Campanhas</h1>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+                <div class="relative w-full sm:w-[320px]">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
+                    <input type="text" placeholder="Buscar anunciante ou campanha..." class="w-full h-12 pl-11 pr-4 rounded-full border border-border bg-white text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-soft transition-all">
+                </div>
+                <button onclick="window.location.href='Tela 8 - Gestão do Balcão de Serviço.html'" class="w-full sm:w-auto h-12 px-6 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-plus"></i>
+                    Novo Anunciante
+                </button>
+            </div>
+        </section>
+
+        <!-- Ads Analytics Strip -->
+        <section id="analytics-strip" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- KPI 1 -->
+            <div class="bg-surface rounded-3xl p-6 shadow-soft border border-border/50 flex flex-col gap-3 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                <div class="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-1">
+                    <i class="fa-solid fa-users text-lg"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-muted font-medium mb-1">Anunciantes Ativos</p>
+                    <div class="flex items-end gap-2">
+                        <h3 class="text-3xl font-bold text-text">12</h3>
+                        <span class="text-xs font-semibold text-success bg-success/10 px-2 py-0.5 rounded-full mb-1">+2 hoje</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 2 -->
+            <div class="bg-surface rounded-3xl p-6 shadow-soft border border-border/50 flex flex-col gap-3 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-info/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                <div class="w-10 h-10 rounded-2xl bg-info/10 flex items-center justify-center text-info mb-1">
+                    <i class="fa-solid fa-eye text-lg"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-muted font-medium mb-1">Impressões</p>
+                    <div class="flex items-end gap-2">
+                        <h3 class="text-3xl font-bold text-text">1.2M</h3>
+                        <span class="text-xs font-semibold text-success bg-success/10 px-2 py-0.5 rounded-full mb-1">+15%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 3 -->
+            <div class="bg-surface rounded-3xl p-6 shadow-soft border border-border/50 flex flex-col gap-3 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-warning/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                <div class="w-10 h-10 rounded-2xl bg-warning/10 flex items-center justify-center text-warning mb-1">
+                    <i class="fa-solid fa-hand-pointer text-lg"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-muted font-medium mb-1">Taxa de Clique (CTR)</p>
+                    <div class="flex items-end gap-2">
+                        <h3 class="text-3xl font-bold text-text">3.4%</h3>
+                        <span class="text-xs font-semibold text-success bg-success/10 px-2 py-0.5 rounded-full mb-1">+0.2%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 4 -->
+            <div class="bg-surface rounded-3xl p-6 shadow-soft border border-border/50 flex flex-col gap-3 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-success/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                <div class="w-10 h-10 rounded-2xl bg-success/10 flex items-center justify-center text-success mb-1">
+                    <i class="fa-solid fa-wallet text-lg"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-muted font-medium mb-1">Receita de Mídia</p>
+                    <div class="flex items-end gap-2">
+                        <h3 class="text-3xl font-bold text-text">R$ 15k</h3>
+                        <span class="text-xs font-semibold text-success bg-success/10 px-2 py-0.5 rounded-full mb-1">+8%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Master Ads Data Table -->
+        <section id="data-table" class="bg-surface rounded-4xl shadow-card border border-border/40 overflow-hidden flex flex-col">
+            <div class="p-6 border-b border-border/50 flex justify-between items-center bg-white">
+                <h2 class="text-xl font-bold text-text">Campanhas Ativas</h2>
+                <div class="flex gap-2">
+                    <button class="w-10 h-10 rounded-full border border-border text-muted hover:text-text hover:bg-gray-50 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-filter"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-full border border-border text-muted hover:text-text hover:bg-gray-50 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-download"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto w-full">
+                <table class="w-full text-left border-collapse min-w-[1000px]">
+                    <thead>
+                        <tr class="bg-gray-50/50 border-b border-border/50 text-xs uppercase tracking-wider text-muted font-semibold">
+                            <th class="px-6 py-4 rounded-tl-3xl">Anunciante</th>
+                            <th class="px-6 py-4">Nome da Campanha</th>
+                            <th class="px-6 py-4">Criativo</th>
+                            <th class="px-6 py-4">Orçamento</th>
+                            <th class="px-6 py-4 w-[200px]">Gasto Atual</th>
+                            <th class="px-6 py-4">CTR</th>
+                            <th class="px-6 py-4">Status</th>
+                            <th class="px-6 py-4 text-right rounded-tr-3xl">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-border/30">
+                        <!-- Row 1 -->
+                        <tr class="table-row-hover transition-colors group bg-white">
+                            <td class="px-6 py-5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xs">NL</div>
+                                    <span class="font-semibold text-text">NeoLaunch</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-5 font-medium text-text">Lançamento Q3 - Tech</td>
+                            <td class="px-6 py-5">
+                                <div class="w-12 h-8 rounded bg-gray-200 overflow-hidden border border-border/50 shadow-sm relative">
+                                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/551a647a5f-621997bef83060aff2c7.png" alt="abstract colorful tech 3d rendering banner ad thumbnail" />
+                                </div>
+                            </td>
+                            <td class="px-6 py-5 font-medium">R$ 5.000</td>
+                            <td class="px-6 py-5">
+                                <div class="flex flex-col gap-1.5">
+                                    <div class="flex justify-between text-xs">
+                                        <span class="font-semibold text-text">R$ 3.750</span>
+                                        <span class="text-muted">75%</span>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-5 font-semibold text-text">4.2%</td>
+                            <td class="px-6 py-5">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-success/10 text-success border border-success/20">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                                    Veiculando
+                                </span>
+                            </td>
+                            <td class="px-6 py-5 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-muted hover:text-primary hover:bg-primary/10 flex items-center justify-center transition-colors"><i class="fa-solid fa-eye text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-muted hover:text-primary hover:bg-primary/10 flex items-center justify-center transition-colors"><i class="fa-solid fa-pen text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-muted hover:text-warning hover:bg-warning/10 flex items-center justify-center transition-colors"><i class="fa-solid fa-pause text-xs"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 2 -->
+                        <tr class="table-row-hover transition-colors group bg-white">
+                            <td class="px-6 py-5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-xs">VX</div>
+                                    <span class="font-semibold text-text">Vortex Media</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-5 font-medium text-text">Retargeting Black Friday</td>
+                            <td class="px-6 py-5">
+                                <div class="w-12 h-8 rounded bg-gray-200 overflow-hidden border border-border/50 shadow-sm relative">
+                                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/c0a2f5e716-c5aa4a8d16148303d282.png" alt="minimalist black friday sale banner ad thumbnail" />
+                                </div>
+                            </td>
+                            <td class="px-6 py-5 font-medium">R$ 12.000</td>
+                            <td class="px-6 py-5">
+                                <div class="flex flex-col gap-1.5">
+                                    <div class="flex justify-between text-xs">
+                                        <span class="font-semibold text-text">R$ 2.400</span>
+                                        <span class="text-muted">20%</span>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary rounded-full" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-5 font-semibold text-text">2.8%</td>
+                            <td class="px-6 py-5">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-warning/10 text-warning border border-warning/20">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-warning animate-pulse"></span>
+                                    Em Análise
+                                </span>
+                            </td>
+                            <td class="px-6 py-5 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-muted hover:text-primary hover:bg-primary/10 flex items-center justify-center transition-colors"><i class="fa-solid fa-eye text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-muted hover:text-primary hover:bg-primary/10 flex items-center justify-center transition-colors"><i class="fa-solid fa-pen text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-muted hover:text-warning hover:bg-warning/10 flex items-center justify-center transition-colors"><i class="fa-solid fa-pause text-xs"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="table-row-hover transition-colors group bg-white">
+                            <td class="px-6 py-5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs">EX</div>
+                                    <span class="font-semibold text-text">EcoX</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-5 font-medium text-text">Sustentabilidade 2024</td>
+                            <td class="px-6 py-5">
+                                <div class="w-12 h-8 rounded bg-gray-200 overflow-hidden border border-border/50 shadow-sm relative">
+                                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/46d5c88da1-0492be1a0649decd0e01.png" alt="green eco friendly simple banner ad thumbnail" />
+                                </div>
+                            </td>
+                            <td class="px-6 py-5 font-medium">R$ 3.500</td>
+                            <td class="px-6 py-5">
+                                <div class="flex flex-col gap-1.5">
+                                    <div class="flex justify-between text-xs">
+                                        <span class="font-semibold text-text">R$ 3.500</span>
+                                        <span class="text-muted">100%</span>
+                                    </div>
+                                    <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-gray-400 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-5 font-semibold text-text">5.1%</td>
+                            <td class="px-6 py-5">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-muted border border-gray-200">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                                    Pausado
+                                </span>
+                            </td>
+                            <td class="px-6 py-5 text-right">
+                                <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-muted hover:text-primary hover:bg-primary/10 flex items-center justify-center transition-colors"><i class="fa-solid fa-eye text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-muted hover:text-primary hover:bg-primary/10 flex items-center justify-center transition-colors"><i class="fa-solid fa-pen text-xs"></i></button>
+                                    <button class="w-8 h-8 rounded-full bg-gray-50 text-muted hover:text-success hover:bg-success/10 flex items-center justify-center transition-colors"><i class="fa-solid fa-play text-xs"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-4 border-t border-border/50 bg-gray-50/30 flex justify-between items-center text-sm">
+                <span class="text-muted">Mostrando 1-3 de 12 campanhas</span>
+                <div class="flex gap-1">
+                    <button class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted hover:bg-white disabled:opacity-50" disabled><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                    <button class="w-8 h-8 rounded-full border border-border bg-primary text-white flex items-center justify-center">1</button>
+                    <button class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted hover:bg-white">2</button>
+                    <button class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted hover:bg-white">3</button>
+                    <button class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted hover:bg-white"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Panel (Performance Insights) -->
+        <section id="performance-insights" class="bg-surface rounded-4xl shadow-card border border-border/40 p-6 flex flex-col gap-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold text-text">Performance: Impressões vs. Cliques</h2>
+                    <p class="text-sm text-muted mt-1">Visão geral dos últimos 30 dias</p>
+                </div>
+                <div class="flex bg-gray-100 p-1 rounded-full">
+                    <button class="px-4 py-1.5 text-xs font-semibold rounded-full bg-white shadow-sm text-text">30 Dias</button>
+                    <button class="px-4 py-1.5 text-xs font-medium rounded-full text-muted hover:text-text">7 Dias</button>
+                    <button class="px-4 py-1.5 text-xs font-medium rounded-full text-muted hover:text-text">24 Horas</button>
+                </div>
+            </div>
+            
+            <div id="chart-container" class="w-full h-[350px] relative">
+                <!-- Chart will be injected here -->
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const dates = Array.from({length: 30}, (_, i) => {
+                    const d = new Date();
+                    d.setDate(d.getDate() - (29 - i));
+                    return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
+                });
+
+                // Generate realistic looking curve data
+                const impressions = dates.map((_, i) => 15000 + Math.sin(i/3) * 5000 + Math.random() * 2000);
+                const clicks = impressions.map(imp => imp * (0.02 + Math.random() * 0.015));
+
+                const trace1 = {
+                    x: dates,
+                    y: impressions,
+                    name: 'Impressões',
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: {
+                        shape: 'spline',
+                        smoothing: 1.3,
+                        color: '#0016dc',
+                        width: 3
+                    },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(0, 22, 220, 0.08)'
+                };
+
+                const trace2 = {
+                    x: dates,
+                    y: clicks,
+                    name: 'Cliques',
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: {
+                        shape: 'spline',
+                        smoothing: 1.3,
+                        color: '#22D3EE',
+                        width: 3
+                    },
+                    yaxis: 'y2'
+                };
+
+                const layout = {
+                    margin: { t: 10, r: 40, b: 40, l: 40 },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent',
+                    showlegend: true,
+                    legend: {
+                        orientation: 'h',
+                        y: -0.2,
+                        x: 0.5,
+                        xanchor: 'center'
+                    },
+                    xaxis: {
+                        showgrid: false,
+                        tickfont: { color: '#6B7280', size: 11 },
+                        tickangle: -45,
+                        nticks: 10
+                    },
+                    yaxis: {
+                        showgrid: true,
+                        gridcolor: 'rgba(229, 231, 235, 0.5)',
+                        tickfont: { color: '#6B7280', size: 11 },
+                        zeroline: false
+                    },
+                    yaxis2: {
+                        overlaying: 'y',
+                        side: 'right',
+                        showgrid: false,
+                        tickfont: { color: '#6B7280', size: 11 },
+                        zeroline: false
+                    },
+                    hovermode: 'x unified',
+                    hoverlabel: {
+                        bgcolor: '#1A1A24',
+                        font: { color: '#FFFFFF', family: 'Plus Jakarta Sans' },
+                        bordercolor: 'transparent'
+                    }
+                };
+
+                const config = {
+                    responsive: true,
+                    displayModeBar: false,
+                    displaylogo: false
+                };
+
+                Plotly.newPlot('chart-container', [trace1, trace2], layout, config);
+            } catch (error) {
+                console.error("Error initializing chart:", error);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

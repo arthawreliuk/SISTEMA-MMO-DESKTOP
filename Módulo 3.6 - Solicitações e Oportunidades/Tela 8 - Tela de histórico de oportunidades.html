@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunities History - MMO Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            light: '#e6e8fb',
+                        },
+                        navy: {
+                            DEFAULT: '#1A1A24',
+                            light: '#4A4A5A',
+                        },
+                        bg: {
+                            light: '#F8F9FA',
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 24px rgba(0, 0, 0, 0.04)',
+                        'glow': '0 0 0 2px rgba(0, 22, 220, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-bg-light text-navy min-h-screen flex flex-col">
+
+    <!-- Top Nav -->
+    <nav id="top-nav" class="bg-white px-8 h-[72px] flex items-center justify-between border-b border-gray-100 shadow-sm sticky top-0 z-50">
+        <div class="flex items-center gap-12">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-bold text-xl tracking-tight">MMO</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 h-full">
+                <a href="#" class="text-navy-light hover:text-navy font-medium transition-colors h-full flex items-center">Home</a>
+                <a href="#" class="text-brand-blue font-semibold h-full flex items-center relative">
+                    Opportunities
+                    <span class="absolute bottom-4 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-brand-blue rounded-full"></span>
+                </a>
+                <a href="#" class="text-navy-light hover:text-navy font-medium transition-colors h-full flex items-center">Messages</a>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-navy-light hover:bg-gray-100 transition-colors">
+                <i class="fa-regular fa-bell"></i>
+            </button>
+            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover cursor-pointer">
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-6 py-8 flex flex-col gap-8">
+
+        <!-- Header Control Bar -->
+        <header id="page-header" class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-[28px] font-bold text-navy tracking-tight">Análise de Propostas Enviadas</h1>
+                <p class="text-navy-light mt-1">Acompanhe o histórico e performance das suas bids.</p>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="bg-white px-4 py-2.5 rounded-full border border-gray-200 flex items-center gap-3 shadow-sm cursor-pointer hover:border-gray-300 transition-colors">
+                    <i class="fa-regular fa-calendar text-navy-light"></i>
+                    <span class="text-sm font-medium text-navy">Últimos 30 dias</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-400 ml-2"></i>
+                </div>
+                <button class="bg-brand-blue text-white px-6 py-2.5 rounded-full font-medium shadow-md shadow-brand-blue/20 hover:bg-blue-700 transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-download text-sm"></i> Exportar
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Analytics Dashboard -->
+        <section id="stats-dashboard" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Stat Card 1 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-card border border-gray-50 flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 rounded-full bg-brand-light flex items-center justify-center text-brand-blue">
+                        <i class="fa-solid fa-paper-plane text-xl"></i>
+                    </div>
+                    <span class="bg-green-50 text-green-600 text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-trend-up"></i> +12%
+                    </span>
+                </div>
+                <p class="text-navy-light text-sm font-medium mb-1">Total Enviadas</p>
+                <h3 class="text-3xl font-bold text-navy">148</h3>
+                <div class="h-[60px] w-full mt-4 -mx-2 -mb-2" id="chart-sent"></div>
+            </div>
+
+            <!-- Stat Card 2 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-card border border-gray-50 flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                        <i class="fa-solid fa-trophy text-xl"></i>
+                    </div>
+                    <span class="bg-green-50 text-green-600 text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-trend-up"></i> +5%
+                    </span>
+                </div>
+                <p class="text-navy-light text-sm font-medium mb-1">Bids Ganhadas</p>
+                <h3 class="text-3xl font-bold text-navy">42</h3>
+                <div class="h-[60px] w-full mt-4 -mx-2 -mb-2" id="chart-won"></div>
+            </div>
+
+            <!-- Stat Card 3 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-card border border-gray-50 flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+                        <i class="fa-solid fa-chart-pie text-xl"></i>
+                    </div>
+                    <span class="bg-red-50 text-red-600 text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-trend-down"></i> -2%
+                    </span>
+                </div>
+                <p class="text-navy-light text-sm font-medium mb-1">Taxa de Conversão</p>
+                <h3 class="text-3xl font-bold text-navy">28.4%</h3>
+                <div class="h-[60px] w-full mt-4 -mx-2 -mb-2" id="chart-conv"></div>
+            </div>
+        </section>
+
+        <!-- Main Content Area (Data-Dense Table) -->
+        <section id="table-section" class="bg-white rounded-[24px] shadow-card border border-gray-50 overflow-hidden flex flex-col">
+            <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <h2 class="text-lg font-bold text-navy">Histórico Detalhado</h2>
+                <div class="relative">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" placeholder="Buscar bids..." class="pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm w-full sm:w-64 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50/50 border-b border-gray-100">
+                            <th class="px-6 py-4 text-xs font-semibold text-navy-light uppercase tracking-wider">Categoria</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-navy-light uppercase tracking-wider">Cliente</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-navy-light uppercase tracking-wider">Data de Envio</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-navy-light uppercase tracking-wider">Valor Proposto</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-navy-light uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-4 text-xs font-semibold text-navy-light uppercase tracking-wider text-right">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50">
+                        <!-- Row 1: Ganhada -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group shadow-glow relative z-10 bg-white">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue">
+                                        <i class="fa-solid fa-code text-xs"></i>
+                                    </div>
+                                    <span class="font-medium text-navy text-sm">Desenvolvimento Web</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-[10px] text-gray-500 font-bold">C*</div>
+                                    <span class="text-sm text-navy-light">Cliente Confidencial</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-navy-light">24 Out 2023</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-semibold text-navy text-sm">R$ 12.500,00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span> Ganhada
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-brand-blue hover:text-blue-800 transition-colors font-semibold">Ver Detalhes</a>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2: Em Análise -->
+                        <tr class="hover:bg-gray-50/50 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+                                        <i class="fa-solid fa-pen-nib text-xs"></i>
+                                    </div>
+                                    <span class="font-medium text-navy text-sm">UI/UX Design</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-[10px] text-gray-500 font-bold">E*</div>
+                                    <span class="text-sm text-navy-light">Empresa Tech S.A.</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-navy-light">22 Out 2023</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-semibold text-navy text-sm">R$ 8.200,00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-50 text-yellow-700 border border-yellow-200">
+                                    <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full mr-1.5"></span> Em Análise
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-navy-light hover:text-brand-blue transition-colors">Ver Detalhes</a>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3: Perdida -->
+                        <tr class="hover:bg-gray-50/50 transition-colors opacity-75">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center text-orange-600">
+                                        <i class="fa-solid fa-bullhorn text-xs"></i>
+                                    </div>
+                                    <span class="font-medium text-navy text-sm">Marketing Digital</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-[10px] text-gray-500 font-bold">S*</div>
+                                    <span class="text-sm text-navy-light">Startup XYZ</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-navy-light">15 Out 2023</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-semibold text-navy text-sm">R$ 4.500,00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
+                                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full mr-1.5"></span> Perdida
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-navy-light hover:text-brand-blue transition-colors">Ver Detalhes</a>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 4: Ganhada -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group shadow-glow relative z-10 bg-white mt-1">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-brand-blue">
+                                        <i class="fa-solid fa-mobile-screen text-xs"></i>
+                                    </div>
+                                    <span class="font-medium text-navy text-sm">App Mobile</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-[10px] text-gray-500 font-bold">M*</div>
+                                    <span class="text-sm text-navy-light">Multinacional Corp</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-navy-light">10 Out 2023</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-semibold text-navy text-sm">R$ 35.000,00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span> Ganhada
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-brand-blue hover:text-blue-800 transition-colors font-semibold">Ver Detalhes</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="p-4 border-t border-gray-100 flex items-center justify-between bg-gray-50/30">
+                <span class="text-sm text-navy-light">Mostrando 4 de 148 registros</span>
+                <div class="flex items-center gap-2">
+                    <button class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 hover:text-navy hover:border-gray-300 transition-colors" disabled>
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center text-sm font-medium shadow-sm">1</button>
+                    <button class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-navy hover:bg-gray-50 transition-colors text-sm font-medium">2</button>
+                    <button class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-navy hover:bg-gray-50 transition-colors text-sm font-medium">3</button>
+                    <span class="text-gray-400 px-1">...</span>
+                    <button class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-navy hover:text-navy hover:border-gray-300 transition-colors">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-gray-100 py-6 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-navy-light">&copy; 2024 MMO Platform. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-6 text-sm font-medium text-navy-light">
+                <a href="#" class="hover:text-brand-blue transition-colors">Termos</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chart Initialization
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                try {
+                    const commonLayout = {
+                        margin: { t: 5, r: 0, b: 0, l: 0 },
+                        xaxis: { visible: false, fixedrange: true },
+                        yaxis: { visible: false, fixedrange: true },
+                        showlegend: false,
+                        paper_bgcolor: 'transparent',
+                        plot_bgcolor: 'transparent',
+                        height: 60
+                    };
+
+                    const commonConfig = { responsive: true, displayModeBar: false };
+
+                    // Sent Chart (Blue)
+                    Plotly.newPlot('chart-sent', [{
+                        y: [12, 19, 15, 25, 22, 30, 28, 35, 32, 40],
+                        type: 'scatter',
+                        mode: 'lines',
+                        fill: 'tozeroy',
+                        line: { color: '#0016dc', width: 2, shape: 'spline', smoothing: 1.3 },
+                        fillcolor: 'rgba(0, 22, 220, 0.1)',
+                        hoverinfo: 'none'
+                    }], commonLayout, commonConfig);
+
+                    // Won Chart (Green)
+                    Plotly.newPlot('chart-won', [{
+                        y: [5, 8, 6, 12, 10, 15, 14, 18, 16, 22],
+                        type: 'scatter',
+                        mode: 'lines',
+                        fill: 'tozeroy',
+                        line: { color: '#16a34a', width: 2, shape: 'spline', smoothing: 1.3 },
+                        fillcolor: 'rgba(22, 163, 74, 0.1)',
+                        hoverinfo: 'none'
+                    }], commonLayout, commonConfig);
+
+                    // Conv Chart (Purple)
+                    Plotly.newPlot('chart-conv', [{
+                        y: [20, 22, 21, 24, 23, 26, 25, 28, 27, 28.4],
+                        type: 'scatter',
+                        mode: 'lines',
+                        fill: 'tozeroy',
+                        line: { color: '#9333ea', width: 2, shape: 'spline', smoothing: 1.3 },
+                        fillcolor: 'rgba(147, 51, 234, 0.1)',
+                        hoverinfo: 'none'
+                    }], commonLayout, commonConfig);
+
+                } catch (e) {
+                    console.error("Plotly charts failed to initialize:", e);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

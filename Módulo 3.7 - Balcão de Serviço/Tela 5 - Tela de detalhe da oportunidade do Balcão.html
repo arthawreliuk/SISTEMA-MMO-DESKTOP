@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunity Details & Bid Submission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        bordercolor: '#E5E7EB',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 24px -4px rgba(0, 0, 0, 0.04), 0 12px 48px -12px rgba(0, 0, 0, 0.08)',
+                        'floating': '0 20px 40px -10px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+        
+        .gauge-container {
+            width: 120px;
+            height: 60px;
+            overflow: hidden;
+            position: relative;
+        }
+        .gauge-arc {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 12px solid #E5E7EB;
+            border-bottom-color: transparent;
+            border-right-color: transparent;
+            transform: rotate(-45deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .gauge-fill {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 12px solid #0016dc;
+            border-bottom-color: transparent;
+            border-right-color: transparent;
+            transform: rotate(-15deg); /* Adjust for fill amount */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 1s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-offwhite text-navy m-0 p-0">
+
+    <!-- Top Navigation -->
+    <nav id="top-nav" class="bg-white sticky top-0 z-50 border-b border-bordercolor/50 px-6 py-4 shadow-sm">
+        <div class="max-w-[1200px] mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-trustblue flex items-center justify-center text-white font-bold text-lg">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight">MMO</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#" class="text-navy/70 hover:text-navy transition-colors">Home</a>
+                <div class="relative">
+                    <a href="#" class="text-navy font-semibold">Opportunities</a>
+                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-trustblue"></div>
+                </div>
+                <a href="#" class="text-navy/70 hover:text-navy transition-colors">Messages</a>
+                <div class="flex items-center gap-2 cursor-pointer ml-4">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-8 h-8 rounded-full object-cover border border-bordercolor">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24">
+        
+        <!-- Control Header Bar -->
+        <header id="control-header" class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+            <div class="flex items-center text-sm text-navy/60 font-medium">
+                <a href="#" class="hover:text-trustblue transition-colors">Oportunidades</a>
+                <i class="fa-solid fa-chevron-right text-[10px] mx-3"></i>
+                <span class="text-navy font-semibold">Troca de Fiação Completa</span>
+            </div>
+            <button class="px-5 py-2.5 rounded-full border border-bordercolor bg-white text-navy font-semibold text-sm hover:bg-gray-50 transition-colors flex items-center gap-2 shadow-sm">
+                <i class="fa-regular fa-flag"></i> Reportar Problema
+            </button>
+        </header>
+
+        <!-- Main Layout (Asymmetrical 2-Columns) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Column (Deep Dive Request - 65%) -->
+            <div id="left-column" class="lg:col-span-8 flex flex-col gap-6">
+                
+                <!-- Main Details Card -->
+                <div class="bg-white rounded-[24px] p-8 shadow-ambient border border-bordercolor/30">
+                    
+                    <!-- Urgency & Timeline -->
+                    <div class="flex flex-wrap items-center gap-3 mb-8 pb-6 border-b border-bordercolor/40">
+                        <span class="px-4 py-1.5 bg-red-50 text-red-600 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+                            <i class="fa-solid fa-fire text-[10px]"></i> Alta Urgência
+                        </span>
+                        <span class="px-4 py-1.5 bg-gray-100 text-navy/80 rounded-full text-sm font-medium flex items-center gap-2">
+                            <i class="fa-regular fa-calendar"></i> Cliente quer resolver até Sexta-feira
+                        </span>
+                        <span class="px-4 py-1.5 bg-gray-100 text-navy/80 rounded-full text-sm font-medium flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot"></i> São Paulo, SP (Zona Sul)
+                        </span>
+                    </div>
+
+                    <!-- Job Title & Description -->
+                    <div class="mb-10">
+                        <h1 class="text-3xl font-bold mb-4 tracking-tight leading-tight">Troca de Fiação Completa Residencial</h1>
+                        <div class="prose prose-navy max-w-none text-navy/80 leading-relaxed">
+                            <p class="mb-4">Preciso de um eletricista qualificado para realizar a troca completa da fiação de um apartamento antigo (aprox. 80m²). A fiação atual tem mais de 30 anos e está causando curtos-circuitos frequentes.</p>
+                            <p class="mb-4">O serviço inclui:</p>
+                            <ul class="list-disc pl-5 mb-4 space-y-2">
+                                <li>Remoção da fiação antiga.</li>
+                                <li>Passagem de novos cabos (iluminação e tomadas).</li>
+                                <li>Instalação de um novo quadro de distribuição com disjuntores DIN e DR.</li>
+                                <li>Revisão de todas as tomadas (padrão novo).</li>
+                            </ul>
+                            <p>O apartamento estará vazio durante a obra. Preciso de um orçamento detalhado incluindo mão de obra e estimativa de materiais.</p>
+                        </div>
+                    </div>
+
+                    <!-- Luxurious Gallery -->
+                    <div class="mb-10">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-regular fa-image text-trustblue"></i> Fotos do Local
+                        </h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="rounded-2xl overflow-hidden aspect-square border border-bordercolor/50 shadow-sm group cursor-pointer relative">
+                                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ae172e2fbd-cf531ce44aa0b7d9cfe8.png" alt="Old electrical distribution board in an apartment, exposed wires, messy, realistic lighting" />
+                                <div class="absolute inset-0 bg-navy/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="rounded-2xl overflow-hidden aspect-square border border-bordercolor/50 shadow-sm group cursor-pointer relative">
+                                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/c37ca4122c-70ff70dc302bf10fc427.png" alt="Old apartment living room, empty, showing old wall outlets, daylight" />
+                                <div class="absolute inset-0 bg-navy/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="rounded-2xl overflow-hidden aspect-square border border-bordercolor/50 shadow-sm group cursor-pointer relative bg-gray-100 flex items-center justify-center">
+                                <div class="text-center text-navy/60">
+                                    <i class="fa-solid fa-images text-2xl mb-2"></i>
+                                    <p class="text-sm font-medium">+3 Fotos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Client Trust Indicators -->
+                    <div class="pt-6 border-t border-bordercolor/40 flex flex-wrap items-center gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center text-navy font-bold text-lg border-2 border-white shadow-sm">
+                                RC
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Roberto C.</h4>
+                                <p class="text-xs text-navy/60">Membro desde Out 2023</p>
+                            </div>
+                        </div>
+                        <div class="h-8 w-px bg-bordercolor hidden sm:block mx-2"></div>
+                        <div class="flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1.5 rounded-full text-xs font-bold">
+                            <i class="fa-solid fa-shield-check"></i> Conta Verificada
+                        </div>
+                        <div class="flex items-center gap-2 bg-blue-50 text-trustblue px-3 py-1.5 rounded-full text-xs font-bold">
+                            <i class="fa-solid fa-star"></i> Cliente Novo na MMO
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Right Column (Sticky Bid Studio - 35%) -->
+            <div id="right-column" class="lg:col-span-4">
+                <div class="sticky top-24">
+                    <div class="bg-white rounded-[24px] p-8 shadow-floating border border-bordercolor/50 relative overflow-hidden">
+                        
+                        <!-- Top Accent Line -->
+                        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-trustblue to-blue-400"></div>
+
+                        <div class="flex justify-between items-start mb-8">
+                            <h2 class="text-2xl font-bold tracking-tight">Sua Proposta Comercial</h2>
+                        </div>
+
+                        <!-- Scarcity Meter -->
+                        <div class="bg-gray-50 rounded-2xl p-5 mb-8 border border-bordercolor/50 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-navy/50 uppercase tracking-wider mb-1">Concorrência</p>
+                                <p class="text-sm font-bold text-navy">2 Vagas Restantes</p>
+                                <p class="text-xs text-navy/60 mt-1">de 5 orçamentos permitidos</p>
+                            </div>
+                            <div class="gauge-container">
+                                <div class="gauge-arc"></div>
+                                <div class="gauge-fill" style="transform: rotate(30deg);"></div>
+                                <div class="absolute bottom-0 left-0 w-full text-center pb-2">
+                                    <span class="text-xl font-bold text-trustblue">3/5</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Inputs -->
+                        <form class="space-y-5">
+                            
+                            <div>
+                                <label class="block text-sm font-bold text-navy mb-2 ml-1">Valor do Serviço (R$)</label>
+                                <div class="relative">
+                                    <span class="absolute left-5 top-1/2 transform -translate-y-1/2 text-navy/50 font-bold">R$</span>
+                                    <input type="text" placeholder="0,00" class="w-full bg-gray-50 border border-bordercolor rounded-full py-4 pl-12 pr-6 text-navy font-bold focus:outline-none focus:ring-2 focus:ring-trustblue/20 focus:border-trustblue transition-all" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-navy mb-2 ml-1">Prazo Estimado (Dias)</label>
+                                <div class="relative">
+                                    <i class="fa-regular fa-clock absolute left-5 top-1/2 transform -translate-y-1/2 text-navy/50"></i>
+                                    <input type="number" placeholder="Ex: 5" class="w-full bg-gray-50 border border-bordercolor rounded-full py-4 pl-12 pr-6 text-navy font-bold focus:outline-none focus:ring-2 focus:ring-trustblue/20 focus:border-trustblue transition-all" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-navy mb-2 ml-1">Mensagem de Apresentação</label>
+                                <textarea rows="4" placeholder="Destaque sua experiência e como você pode resolver o problema..." class="w-full bg-gray-50 border border-bordercolor rounded-[20px] py-4 px-5 text-navy text-sm focus:outline-none focus:ring-2 focus:ring-trustblue/20 focus:border-trustblue transition-all resize-none"></textarea>
+                            </div>
+
+                            <div class="pt-4">
+                                <button type="button" onclick="window.location.href='Tela 6 - Tela de fila_limite de interessados por vaga.html'" class="w-full bg-trustblue hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-[0_8px_20px_-6px_rgba(0,22,220,0.5)] hover:shadow-[0_12px_24px_-8px_rgba(0,22,220,0.6)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                    Submeter Orçamento <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <p class="text-center text-xs text-navy/50 mt-4 font-medium">Ao submeter, você concorda com os termos de serviço.</p>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Minimalist Footer -->
+    <footer id="footer" class="bg-white border-t border-bordercolor/50 py-8 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                <div class="w-6 h-6 rounded-full bg-navy flex items-center justify-center text-white font-bold text-xs">
+                    M
+                </div>
+                <span class="font-bold text-sm tracking-tight text-navy">MMO</span>
+            </div>
+            <div class="flex gap-6 text-sm font-medium text-navy/60">
+                <a href="#" class="hover:text-trustblue transition-colors">Termos</a>
+                <a href="#" class="hover:text-trustblue transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-trustblue transition-colors">Ajuda</a>
+            </div>
+            <div class="text-xs text-navy/40 font-medium">
+                &copy; 2024 MMO Platform. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

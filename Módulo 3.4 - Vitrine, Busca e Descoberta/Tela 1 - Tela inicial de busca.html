@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="antialiased">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        offwhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'softer': '0 2px 10px -2px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="m-0 p-0 min-h-screen flex flex-col font-sans">
+
+    <!-- Navigation -->
+    <header id="header" class="bg-white sticky top-0 z-50 shadow-softer">
+        <div class="max-w-[1200px] mx-auto px-6 h-[80px] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-[8px] flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="text-2xl font-bold text-navy tracking-tight">MMO</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="relative text-navy font-semibold text-[15px] hover:text-primary transition-colors">
+                    Home
+                    <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-primary rounded-full"></span>
+                </a>
+                <a href="#" class="text-gray-500 font-medium text-[15px] hover:text-navy transition-colors">Orders</a>
+                <a href="#" class="text-gray-500 font-medium text-[15px] hover:text-navy transition-colors">Messages</a>
+                <div class="w-10 h-10 rounded-full bg-gray-100 border border-gray-200 overflow-hidden cursor-pointer ml-2">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-full h-full object-cover">
+                </div>
+            </nav>
+            <button class="md:hidden text-navy text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center pt-16 pb-24">
+        
+        <!-- Hero Search Section -->
+        <section id="hero-search" class="w-full max-w-[1200px] px-6 flex flex-col items-center text-center mb-16">
+            <h1 class="text-[44px] md:text-[56px] font-extrabold text-navy leading-[1.1] mb-10 max-w-[800px] tracking-tight">
+                Contrate Mestres Verificados em um clique
+            </h1>
+            
+            <div class="w-full max-w-[800px] relative flex items-center bg-white rounded-full shadow-soft p-2 border border-gray-100">
+                <div class="pl-6 pr-4 text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                </div>
+                <input type="text" placeholder="O que você precisa hoje? (Ex: Eletricista, Pintor...)" class="flex-grow bg-transparent border-none outline-none text-[16px] text-navy placeholder-gray-400 h-14">
+                <button onclick="window.location.href='Tela 2 - Tela de listagem de profissionais.html'" class="bg-primary hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-colors h-14 flex items-center justify-center whitespace-nowrap">
+                    Explorar
+                </button>
+            </div>
+        </section>
+
+        <!-- Categories Ribbon -->
+        <section id="categories" class="w-full max-w-[1200px] px-6 mb-20 overflow-x-auto pb-4">
+            <div class="flex items-center justify-center gap-3 min-w-max mx-auto">
+                <button class="px-6 py-3 bg-navy text-white rounded-full font-medium text-[14px] shadow-sm transition-transform hover:scale-105">Destaques</button>
+                <button class="px-6 py-3 bg-white text-navy border border-gray-200 rounded-full font-medium text-[14px] shadow-sm hover:border-gray-300 transition-all">Elétrica</button>
+                <button class="px-6 py-3 bg-white text-navy border border-gray-200 rounded-full font-medium text-[14px] shadow-sm hover:border-gray-300 transition-all">Pintura</button>
+                <button class="px-6 py-3 bg-white text-navy border border-gray-200 rounded-full font-medium text-[14px] shadow-sm hover:border-gray-300 transition-all">Climatização</button>
+                <button class="px-6 py-3 bg-white text-navy border border-gray-200 rounded-full font-medium text-[14px] shadow-sm hover:border-gray-300 transition-all">Montagem de Móveis</button>
+            </div>
+        </section>
+
+        <!-- Grid of Excellence -->
+        <section id="grid-excellence" class="w-full max-w-[1200px] px-6 mb-24">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-[24px] font-bold text-navy">Profissionais em Destaque</h2>
+                <a href="Tela 2 - Tela de listagem de profissionais.html" class="text-primary font-semibold text-[14px] hover:underline">Ver todos</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-[24px] p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow group flex flex-col h-full">
+                    <div class="h-[200px] rounded-[16px] overflow-hidden mb-5 relative bg-gray-100">
+                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ef9d973e35-6da119ce8bf2cb127e8b.png" alt="Professional electrician working on a modern electrical panel, high quality, bright lighting" />
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[12px] font-bold text-navy flex items-center gap-1 shadow-sm">
+                            <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i> 4.9
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 mb-4">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-[18px] font-bold text-navy">Carlos Silva</h3>
+                                <i class="fa-solid fa-circle-check text-primary text-[14px]" title="Verificado"></i>
+                            </div>
+                            <p class="text-[14px] text-gray-500">Mestre Eletricista • 15 anos exp.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-6 flex-grow">
+                        <div class="flex items-center gap-3 text-[13px] text-gray-600 border-b border-gray-50 pb-2">
+                            <i class="fa-solid fa-location-dot w-4 text-center text-gray-400"></i>
+                            <span>Atende em Balneário Camboriú e Itajaí</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[13px] text-gray-600 border-b border-gray-50 pb-2">
+                            <i class="fa-solid fa-check w-4 text-center text-gray-400"></i>
+                            <span>Instalação, Manutenção, Projetos</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[13px] text-gray-600">
+                            <i class="fa-solid fa-comment w-4 text-center text-gray-400"></i>
+                            <span>142 avaliações 5 estrelas</span>
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='Tela 6 - Tela de perfil público do profissional.html'" class="w-full py-3.5 bg-gray-50 hover:bg-primary hover:text-white text-navy font-semibold rounded-full text-[14px] transition-colors border border-gray-200 hover:border-primary">
+                        Solicitar Orçamento
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-[24px] p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow group flex flex-col h-full">
+                    <div class="h-[200px] rounded-[16px] overflow-hidden mb-5 relative bg-gray-100">
+                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3146024ab1-5af5c27e6cef47ae151c.png" alt="Modern interior painting job, clean lines, professional painter rolling wall, bright" />
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[12px] font-bold text-navy flex items-center gap-1 shadow-sm">
+                            <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i> 5.0
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 mb-4">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-[18px] font-bold text-navy">Ana Costa</h3>
+                                <i class="fa-solid fa-circle-check text-primary text-[14px]" title="Verificado"></i>
+                            </div>
+                            <p class="text-[14px] text-gray-500">Pintura Premium • 8 anos exp.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-6 flex-grow">
+                        <div class="flex items-center gap-3 text-[13px] text-gray-600 border-b border-gray-50 pb-2">
+                            <i class="fa-solid fa-location-dot w-4 text-center text-gray-400"></i>
+                            <span>Atende em Itapema e Meia Praia</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[13px] text-gray-600 border-b border-gray-50 pb-2">
+                            <i class="fa-solid fa-check w-4 text-center text-gray-400"></i>
+                            <span>Residencial, Texturas, Acabamento Fino</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[13px] text-gray-600">
+                            <i class="fa-solid fa-comment w-4 text-center text-gray-400"></i>
+                            <span>89 avaliações 5 estrelas</span>
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='Tela 6 - Tela de perfil público do profissional.html'" class="w-full py-3.5 bg-gray-50 hover:bg-primary hover:text-white text-navy font-semibold rounded-full text-[14px] transition-colors border border-gray-200 hover:border-primary">
+                        Solicitar Orçamento
+                    </button>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-[24px] p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow group flex flex-col h-full">
+                    <div class="h-[200px] rounded-[16px] overflow-hidden mb-5 relative bg-gray-100">
+                        <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/0096fb6e4d-02d852765efe44f2d3bd.png" alt="Professional HVAC technician installing modern air conditioning unit, clean, well lit" />
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[12px] font-bold text-navy flex items-center gap-1 shadow-sm">
+                            <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i> 4.8
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 mb-4">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-[18px] font-bold text-navy">Roberto Alves</h3>
+                                <i class="fa-solid fa-circle-check text-primary text-[14px]" title="Verificado"></i>
+                            </div>
+                            <p class="text-[14px] text-gray-500">Climatização • 12 anos exp.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-6 flex-grow">
+                        <div class="flex items-center gap-3 text-[13px] text-gray-600 border-b border-gray-50 pb-2">
+                            <i class="fa-solid fa-location-dot w-4 text-center text-gray-400"></i>
+                            <span>Atende em Toda Região</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[13px] text-gray-600 border-b border-gray-50 pb-2">
+                            <i class="fa-solid fa-check w-4 text-center text-gray-400"></i>
+                            <span>Split, VRF, Limpeza, Manutenção</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[13px] text-gray-600">
+                            <i class="fa-solid fa-comment w-4 text-center text-gray-400"></i>
+                            <span>215 avaliações 5 estrelas</span>
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='Tela 6 - Tela de perfil público do profissional.html'" class="w-full py-3.5 bg-gray-50 hover:bg-primary hover:text-white text-navy font-semibold rounded-full text-[14px] transition-colors border border-gray-200 hover:border-primary">
+                        Solicitar Orçamento
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Banner -->
+        <section id="trust-banner" class="w-full bg-white border-y border-gray-100 py-16 mt-8">
+            <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="flex-1 max-w-[600px]">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-primary rounded-full text-[13px] font-bold mb-6">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Garantia MMO
+                    </div>
+                    <h2 class="text-[32px] font-bold text-navy leading-[1.2] mb-4">Serviço seguro e profissionais 100% verificados.</h2>
+                    <p class="text-gray-500 text-[16px] leading-relaxed mb-8">
+                        Todos os mestres na plataforma passam por uma rigorosa checagem de antecedentes, portfólio e referências. Seu pagamento fica retido conosco até que o serviço seja concluído com sucesso.
+                    </p>
+                    <div class="flex gap-8">
+                        <div>
+                            <div class="text-[24px] font-bold text-navy mb-1">10k+</div>
+                            <div class="text-[13px] text-gray-500 font-medium">Serviços realizados</div>
+                        </div>
+                        <div>
+                            <div class="text-[24px] font-bold text-navy mb-1">R$ 0</div>
+                            <div class="text-[13px] text-gray-500 font-medium">Taxa de orçamento</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 flex justify-center md:justify-end w-full">
+                    <div class="relative w-full max-w-[400px] aspect-square bg-gray-50 rounded-[32px] p-8 border border-gray-100 shadow-soft flex flex-col justify-center items-center text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-check-double text-[32px] text-primary"></i>
+                        </div>
+                        <h3 class="text-[20px] font-bold text-navy mb-2">Selo de Verificação</h3>
+                        <p class="text-[14px] text-gray-500">Apenas os melhores profissionais da região recebem nosso selo de qualidade após aprovação.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-white border-t border-gray-100 py-10 mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-primary rounded-[6px] flex items-center justify-center text-white font-bold text-[12px]">M</div>
+                <span class="text-xl font-bold text-navy tracking-tight">MMO</span>
+            </div>
+            <p class="text-[14px] text-gray-500 font-medium text-center md:text-left">
+                MMO © 2026. Feito para Camboriú e região.
+            </p>
+            <div class="flex items-center gap-4 text-gray-400">
+                <a href="#" class="hover:text-primary transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                <a href="#" class="hover:text-primary transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            border: '#E5E7EB',
+                            muted: '#6B7280'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased text-brand-navy">
+
+    <!-- Header -->
+    <header id="minimalist_header" class="w-full py-6 px-8 flex justify-between items-center bg-transparent max-w-[1200px] mx-auto">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white font-bold text-xl">
+                M
+            </div>
+            <span class="font-bold text-xl tracking-tight">MMO</span>
+        </div>
+        <div class="flex items-center gap-2 text-sm font-medium text-brand-muted bg-white px-4 py-2 rounded-full shadow-sm border border-brand-border">
+            <i class="fa-solid fa-lock text-brand-blue"></i>
+            <span>Pagamento 100% Seguro</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center p-4 sm:p-8">
+        
+        <!-- Checkout Container -->
+        <div id="checkout_main_container" class="w-full max-w-[1000px] bg-brand-card rounded-[24px] shadow-soft flex flex-col lg:flex-row overflow-hidden border border-brand-border/50 relative">
+            
+            <!-- Left Column: Form & Methods -->
+            <div id="payment_methods_form" class="w-full lg:w-[60%] p-8 lg:p-12 relative z-10">
+                <h1 class="text-2xl font-bold mb-8 text-brand-navy">Finalize seu pagamento</h1>
+
+                <!-- Payment Methods -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="payment_method" class="peer sr-only" value="pix">
+                        <div class="w-full p-5 rounded-[16px] border border-brand-border bg-white flex flex-col items-center justify-center gap-3 transition-all peer-checked:border-brand-blue peer-checked:ring-1 peer-checked:ring-brand-blue hover:border-brand-blue/50">
+                            <i class="fa-brands fa-pix text-3xl text-emerald-500"></i>
+                            <span class="font-semibold text-sm">PIX</span>
+                        </div>
+                    </label>
+
+                    <label class="cursor-pointer relative">
+                        <input type="radio" name="payment_method" class="peer sr-only" value="credit" checked>
+                        <div class="w-full p-5 rounded-[16px] border-2 border-brand-blue bg-blue-50/30 flex flex-col items-center justify-center gap-3 transition-all">
+                            <i class="fa-regular fa-credit-card text-3xl text-brand-blue"></i>
+                            <span class="font-semibold text-sm text-brand-blue">Cartão de Crédito</span>
+                            <div class="absolute top-3 right-3 w-4 h-4 rounded-full bg-brand-blue flex items-center justify-center">
+                                <i class="fa-solid fa-check text-[10px] text-white"></i>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Credit Card Form -->
+                <form class="space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-brand-navy ml-1">Número do Cartão</label>
+                        <div class="relative">
+                            <input type="text" placeholder="0000 0000 0000 0000" class="w-full px-5 py-4 rounded-full border border-brand-border bg-brand-bg/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all text-brand-navy placeholder:text-brand-muted tracking-wide">
+                            <i class="fa-brands fa-cc-mastercard absolute right-5 top-1/2 -translate-y-1/2 text-2xl text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-brand-navy ml-1">Nome no Cartão</label>
+                        <input type="text" placeholder="Como impresso no cartão" class="w-full px-5 py-4 rounded-full border border-brand-border bg-brand-bg/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all text-brand-navy placeholder:text-brand-muted">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-brand-navy ml-1">Validade</label>
+                            <input type="text" placeholder="MM/AA" class="w-full px-5 py-4 rounded-full border border-brand-border bg-brand-bg/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all text-brand-navy placeholder:text-brand-muted text-center">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-brand-navy ml-1">CVC</label>
+                            <div class="relative">
+                                <input type="text" placeholder="123" class="w-full px-5 py-4 rounded-full border border-brand-border bg-brand-bg/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all text-brand-navy placeholder:text-brand-muted text-center">
+                                <i class="fa-regular fa-circle-question absolute right-5 top-1/2 -translate-y-1/2 text-brand-muted cursor-help"></i>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Vertical Divider (Desktop) -->
+            <div class="hidden lg:block w-px bg-brand-border/60 absolute left-[60%] top-8 bottom-8 z-20"></div>
+
+            <!-- Right Column: Order Context -->
+            <div id="order_summary_sidebar" class="w-full lg:w-[40%] bg-brand-bg/30 p-8 lg:p-12 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-brand-border/50 relative z-10">
+                
+                <div class="space-y-8">
+                    <!-- Professional Profile -->
+                    <div class="flex items-center gap-4 bg-white p-4 rounded-[16px] border border-brand-border/50 shadow-sm">
+                        <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Professional" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-brand-navy text-lg">Carlos Eduardo</h3>
+                            <div class="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md w-fit mt-1">
+                                <i class="fa-solid fa-shield-check"></i>
+                                Profissional Verificado
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Summary -->
+                    <div class="space-y-4">
+                        <h4 class="text-sm font-bold text-brand-navy uppercase tracking-wider">Resumo do Serviço</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-brand-muted">
+                                <i class="fa-solid fa-check text-brand-blue mt-1"></i>
+                                <span>Design de Interface UI/UX Completo</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-brand-muted">
+                                <i class="fa-solid fa-check text-brand-blue mt-1"></i>
+                                <span>3 Telas de alta fidelidade (Desktop)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-brand-muted">
+                                <i class="fa-solid fa-check text-brand-blue mt-1"></i>
+                                <span>Entrega em 48 horas</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Total & CTA -->
+                <div class="mt-8 pt-8 border-t border-brand-border/60 space-y-6">
+                    <div class="flex justify-between items-end">
+                        <span class="text-sm font-medium text-brand-muted">Total a Pagar</span>
+                        <span class="text-2xl font-bold text-brand-blue">R$ 450,00</span>
+                    </div>
+                    
+                    <button onclick="window.location.href='Tela 2 - Tela de retorno de pagamento.html'" class="w-full py-4 px-6 bg-brand-blue hover:bg-brand-blue/90 text-white rounded-full font-bold text-lg shadow-lg shadow-brand-blue/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex justify-center items-center gap-2">
+                        Pagar Agora
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    
+                    <div id="trust_security_footer" class="flex items-center justify-center gap-2 text-xs text-brand-muted text-center pt-2">
+                        <i class="fa-solid fa-lock text-brand-blue/70"></i>
+                        <span>Seus dados estão protegidos pela <strong>MMO Pagamentos</strong></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

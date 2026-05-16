@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Filters Modal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            gray: '#F3F4F6',
+                            border: '#E5E7EB',
+                            text: '#6B7280'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'modal': '0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Range Slider Styling to match reference */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #0016dc;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #E5E7EB;
+            border-radius: 2px;
+        }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #E5E7EB;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 2.5rem;
+            height: 1.25rem;
+            background-color: #E5E7EB;
+            border-radius: 9999px;
+            transition: all 0.3s;
+        }
+        .toggle-dot {
+            top: 0.125rem;
+            left: 0.125rem;
+            width: 1rem;
+            height: 1rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .toggle-checkbox:checked ~ .toggle-dot {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="bg-[#111827] min-h-screen flex items-center justify-center relative overflow-hidden">
+
+    <!-- Background context (simulated marketplace behind glass) -->
+    <div class="absolute inset-0 z-0 opacity-40">
+        <div class="grid grid-cols-4 gap-6 p-10 h-full">
+            <div class="bg-white/10 rounded-xl h-64"></div>
+            <div class="bg-white/10 rounded-xl h-64"></div>
+            <div class="bg-white/10 rounded-xl h-64"></div>
+            <div class="bg-white/10 rounded-xl h-64"></div>
+            <div class="bg-white/10 rounded-xl h-64"></div>
+            <div class="bg-white/10 rounded-xl h-64"></div>
+            <div class="bg-white/10 rounded-xl h-64"></div>
+            <div class="bg-white/10 rounded-xl h-64"></div>
+        </div>
+    </div>
+
+    <!-- Heavy Glassmorphism Overlay -->
+    <div class="absolute inset-0 z-10 backdrop-blur-md bg-[#111827]/70"></div>
+
+    <!-- The Modal Container -->
+    <main id="search-filter-modal" class="relative z-20 w-full max-w-[850px] bg-white rounded-[24px] shadow-modal flex flex-col max-h-[90vh] overflow-hidden mx-4">
+        
+        <!-- Modal Header -->
+        <header id="modal-header" class="px-8 py-6 flex items-center justify-between border-b border-brand-border bg-white z-10 sticky top-0">
+            <h1 class="text-[22px] font-bold text-brand-navy tracking-tight">Refinar Resultados da Busca</h1>
+            <button class="text-[14px] font-semibold text-brand-text hover:text-brand-navy transition-colors duration-200">
+                Limpar todos os filtros
+            </button>
+        </header>
+
+        <!-- Modal Content Scrollable Area -->
+        <div class="overflow-y-auto flex-1 p-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Left Column: Onde e O Quê -->
+                <section id="col-left" class="space-y-8">
+                    <div>
+                        <h2 class="text-[18px] font-bold text-brand-navy mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-blue text-[16px]"></i>
+                            Onde e O Quê
+                        </h2>
+                        
+                        <!-- Location Input -->
+                        <div class="space-y-3 mb-8">
+                            <label class="text-[14px] font-semibold text-brand-navy block">Localização</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-brand-text"></i>
+                                <input type="text" placeholder="Cidade ou Bairro..." class="w-full bg-brand-gray border border-transparent focus:border-brand-blue focus:bg-white focus:ring-4 focus:ring-brand-blue/10 rounded-full py-3 pl-11 pr-4 text-[14px] font-medium text-brand-navy placeholder:text-brand-text outline-none transition-all duration-200">
+                            </div>
+                        </div>
+
+                        <!-- Radius Slider -->
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center justify-between">
+                                <label class="text-[14px] font-semibold text-brand-navy block">Raio de Busca</label>
+                                <span class="text-[14px] font-bold text-brand-blue bg-brand-blue/10 px-3 py-1 rounded-full">Até 15 km</span>
+                            </div>
+                            <div class="relative pt-4 pb-2 px-2">
+                                <input type="range" min="1" max="50" value="15" class="w-full relative z-10">
+                                <!-- Active track simulation -->
+                                <div class="absolute h-1 bg-brand-blue rounded-l-full top-[24px] left-2 w-[30%] z-0"></div>
+                            </div>
+                            <div class="flex justify-between text-[12px] font-medium text-brand-text px-2">
+                                <span>1 km</span>
+                                <span>50 km</span>
+                            </div>
+                        </div>
+
+                        <!-- Categories Cloud -->
+                        <div class="space-y-4">
+                            <label class="text-[14px] font-semibold text-brand-navy block">Categorias de Serviço</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="px-5 py-2.5 rounded-full text-[14px] font-semibold bg-brand-blue text-white border border-brand-blue transition-all duration-200">Encanador</button>
+                                <button class="px-5 py-2.5 rounded-full text-[14px] font-semibold bg-brand-gray text-brand-navy hover:bg-gray-200 border border-transparent transition-all duration-200">Eletricista</button>
+                                <button class="px-5 py-2.5 rounded-full text-[14px] font-semibold bg-brand-gray text-brand-navy hover:bg-gray-200 border border-transparent transition-all duration-200">Pintor</button>
+                                <button class="px-5 py-2.5 rounded-full text-[14px] font-semibold bg-brand-gray text-brand-navy hover:bg-gray-200 border border-transparent transition-all duration-200">Montador</button>
+                                <button class="px-5 py-2.5 rounded-full text-[14px] font-semibold bg-brand-gray text-brand-navy hover:bg-gray-200 border border-transparent transition-all duration-200">Limpeza</button>
+                                <button class="px-5 py-2.5 rounded-full text-[14px] font-semibold bg-brand-gray text-brand-navy hover:bg-gray-200 border border-transparent transition-all duration-200">Frete</button>
+                                <button class="px-5 py-2.5 rounded-full text-[14px] font-semibold bg-white text-brand-blue border border-brand-blue/30 hover:bg-brand-blue/5 transition-all duration-200">+ Ver Todas</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Right Column: Qualidade e Preço -->
+                <section id="col-right" class="space-y-8">
+                    <div>
+                        <h2 class="text-[18px] font-bold text-brand-navy mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-star text-brand-blue text-[16px]"></i>
+                            Critérios de Escolha
+                        </h2>
+
+                        <!-- Minimum Rating -->
+                        <div class="space-y-4 mb-8">
+                            <label class="text-[14px] font-semibold text-brand-navy block">Avaliação Mínima</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="flex items-center justify-center gap-2 py-3 rounded-[12px] border-2 border-brand-blue bg-brand-blue/5 text-brand-navy font-bold text-[14px] transition-all">
+                                    4.5+ <i class="fa-solid fa-star text-yellow-400"></i>
+                                </button>
+                                <button class="flex items-center justify-center gap-2 py-3 rounded-[12px] border border-brand-border hover:border-gray-300 bg-white text-brand-navy font-semibold text-[14px] transition-all">
+                                    4.0+ <i class="fa-solid fa-star text-yellow-400"></i>
+                                </button>
+                                <button class="flex items-center justify-center gap-2 py-3 rounded-[12px] border border-brand-border hover:border-gray-300 bg-white text-brand-navy font-semibold text-[14px] transition-all">
+                                    3.5+ <i class="fa-solid fa-star text-yellow-400"></i>
+                                </button>
+                                <button class="flex items-center justify-center gap-2 py-3 rounded-[12px] border border-brand-border hover:border-gray-300 bg-white text-brand-navy font-semibold text-[14px] transition-all">
+                                    Qualquer <i class="fa-regular fa-star text-brand-text"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Toggles -->
+                        <div class="space-y-5 bg-brand-gray/50 rounded-[16px] p-5 border border-brand-border/50">
+                            
+                            <!-- Toggle Item 1 -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-[15px] font-bold text-brand-navy">Visita Grátis</span>
+                                    <span class="text-[13px] text-brand-text">Profissionais que não cobram orçamento</span>
+                                </div>
+                                <div class="relative inline-block w-10 mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle" id="toggle1" checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full bg-brand-blue cursor-pointer"></label>
+                                    <div class="toggle-dot absolute block w-5 h-5 rounded-full bg-white border-2 border-brand-blue shadow inset-y-0 right-0 transform translate-x-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="h-px w-full bg-brand-border/60"></div>
+
+                            <!-- Toggle Item 2 -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-[15px] font-bold text-brand-navy flex items-center gap-2">
+                                        Aceita Pix/Cartão
+                                        <i class="fa-brands fa-pix text-[#32BCAD] text-[12px]"></i>
+                                    </span>
+                                    <span class="text-[13px] text-brand-text">Pagamento digital direto na plataforma</span>
+                                </div>
+                                <div class="relative inline-block w-10 mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle2" id="toggle2" checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full bg-brand-blue cursor-pointer"></label>
+                                    <div class="toggle-dot absolute block w-5 h-5 rounded-full bg-white border-2 border-brand-blue shadow inset-y-0 right-0 transform translate-x-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="h-px w-full bg-brand-border/60"></div>
+
+                            <!-- Toggle Item 3 -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-[15px] font-bold text-brand-navy flex items-center gap-2">
+                                        Atende Emergências
+                                        <span class="bg-red-100 text-red-600 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Hoje</span>
+                                    </span>
+                                    <span class="text-[13px] text-brand-text">Disponibilidade imediata (24h)</span>
+                                </div>
+                                <div class="relative inline-block w-10 mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle3" id="toggle3" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle3" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                    <div class="toggle-dot absolute block w-5 h-5 rounded-full bg-white border-2 border-gray-300 shadow inset-y-0 left-0"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <footer id="modal-footer" class="px-8 py-5 border-t border-brand-border bg-white flex items-center justify-between z-10 sticky bottom-0">
+            <button onclick="window.location.href='Tela 2 - Tela de listagem de profissionais.html'" class="px-6 py-3.5 rounded-full text-[15px] font-bold text-brand-navy hover:bg-brand-gray transition-colors duration-200">
+                Cancelar
+            </button>
+            <button onclick="window.location.href='Tela 2 - Tela de listagem de profissionais.html'" class="px-10 py-3.5 rounded-full text-[15px] font-bold text-white bg-brand-blue hover:bg-blue-800 shadow-lg shadow-brand-blue/30 transition-all duration-200 flex items-center gap-2">
+                Aplicar Filtros e Buscar
+                <i class="fa-solid fa-arrow-right text-[14px]"></i>
+            </button>
+        </footer>
+
+    </main>
+
+    <!-- Script to handle custom toggles logic for visual feedback -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggles = document.querySelectorAll('.toggle-checkbox');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('change', (e) => {
+                    const dot = e.target.parentElement.querySelector('.toggle-dot');
+                    const label = e.target.parentElement.querySelector('.toggle-label');
+                    if(e.target.checked) {
+                        dot.style.borderColor = '#0016dc';
+                        label.style.backgroundColor = '#0016dc';
+                    } else {
+                        dot.style.borderColor = '#E5E7EB';
+                        label.style.backgroundColor = '#E5E7EB';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

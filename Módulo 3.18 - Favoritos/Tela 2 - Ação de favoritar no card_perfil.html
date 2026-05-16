@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustBlue: '#0016dc',
+                        offWhite: '#F8F9FA',
+                        cardBg: '#FFFFFF',
+                        borderGray: '#E5E7EB',
+                        textMuted: '#6B7280'
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 30px -5px rgba(0, 0, 0, 0.08)',
+                        'toast': '0 8px 24px -4px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        .group:hover .tooltip { opacity: 1; transform: translateY(0); }
+        .tooltip { opacity: 0; transform: translateY(4px); transition: all 0.2s ease; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-sans">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-white border-b border-borderGray sticky top-0 z-50">
+        <div class="max-w-[1440px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-trustBlue flex items-center justify-center text-white font-bold text-lg">
+                        M
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">MMO</span>
+                </div>
+                
+                <!-- Breadcrumbs -->
+                <nav class="hidden md:flex items-center text-sm font-medium text-textMuted gap-2">
+                    <a href="#" class="hover:text-navy transition-colors">Balcão</a>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-navy">Eletricistas</span>
+                </nav>
+            </div>
+
+            <!-- Right Nav -->
+            <div class="flex items-center gap-6 relative">
+                <!-- Floating Toast Notification -->
+                <div class="absolute -bottom-16 right-0 bg-white shadow-toast rounded-xl p-3 flex items-center gap-3 w-max z-50 animate-fade-in border border-borderGray">
+                    <div class="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center">
+                        <i class="fa-solid fa-check text-trustBlue text-xs"></i>
+                    </div>
+                    <span class="text-sm font-medium text-navy">Mestre Aline adicionado à sua equipe favorita</span>
+                </div>
+
+                <button class="text-textMuted hover:text-navy transition-colors">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                </button>
+                
+                <div class="flex items-center gap-3 pl-6 border-l border-borderGray cursor-pointer">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div class="hidden md:block text-sm">
+                        <p class="font-semibold text-navy leading-tight">João Silva</p>
+                        <p class="text-textMuted text-xs">Administrador</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-textMuted text-xs ml-1"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-[1440px] mx-auto px-6 py-8">
+        
+        <!-- Header Section -->
+        <div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-navy mb-2">Eletricistas Profissionais</h1>
+                <p class="text-textMuted">Encontre os melhores profissionais para sua obra.</p>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-textMuted"></i>
+                    <input type="text" placeholder="Buscar por nome ou especialidade..." class="pl-11 pr-4 py-2.5 bg-white border border-borderGray rounded-xl text-sm focus:outline-none focus:border-trustBlue focus:ring-1 focus:ring-trustBlue w-64 md:w-80 transition-all shadow-sm">
+                </div>
+                <button onclick="window.location.href='Tela 3 - Ação de desfavoritar.html'" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-borderGray rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors shadow-sm text-navy">
+                    <i class="fa-solid fa-sliders text-textMuted"></i>
+                    Filtros
+                </button>
+            </div>
+        </div>
+
+        <!-- 3x3 Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            
+            <!-- Card A (Active State) -->
+            <div id="card-a" class="bg-cardBg rounded-[24px] p-6 shadow-ambient border border-transparent hover:border-borderGray transition-all relative group">
+                <button class="absolute top-6 right-6 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-blue-50/50">
+                    <i class="fa-solid fa-heart text-trustBlue text-lg"></i>
+                </button>
+                
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden border border-borderGray/50">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Aline" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-navy leading-tight mb-1">Aline Pintura</h3>
+                        <div class="flex items-center gap-2 text-sm text-textMuted">
+                            <i class="fa-solid fa-bolt text-yellow-500"></i>
+                            <span>Eletricista Residencial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 mb-5 flex-wrap">
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Instalação</span>
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Manutenção</span>
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Projetos</span>
+                </div>
+
+                <div class="flex items-center justify-between pt-5 border-t border-gray-100">
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <span class="font-bold text-navy text-sm">4.9</span>
+                        <span class="text-textMuted text-xs">(124)</span>
+                    </div>
+                    <span class="font-semibold text-navy">R$ 150<span class="text-textMuted text-xs font-normal">/h</span></span>
+                </div>
+            </div>
+
+            <!-- Card B (Hover/Action State) -->
+            <div id="card-b" class="bg-cardBg rounded-[24px] p-6 shadow-hover border border-borderGray transition-all relative group -translate-y-1">
+                <div class="absolute -top-10 right-2 tooltip bg-navy text-white text-xs py-1.5 px-3 rounded-full font-medium shadow-lg whitespace-nowrap z-20 pointer-events-none">
+                    Salvar nos Favoritos
+                    <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-navy rotate-45"></div>
+                </div>
+                
+                <button class="absolute top-6 right-6 z-10 w-8 h-8 flex items-center justify-center rounded-full transition-transform hover:scale-110">
+                    <i class="fa-regular fa-heart text-textMuted text-lg group-hover:text-trustBlue transition-colors drop-shadow-[0_0_8px_rgba(0,22,220,0.3)]"></i>
+                </button>
+                
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden border border-borderGray/50">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Carlos" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-navy leading-tight mb-1">Carlos Obras</h3>
+                        <div class="flex items-center gap-2 text-sm text-textMuted">
+                            <i class="fa-solid fa-bolt text-yellow-500"></i>
+                            <span>Eletricista Industrial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 mb-5 flex-wrap">
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Alta Tensão</span>
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Painéis</span>
+                </div>
+
+                <div class="flex items-center justify-between pt-5 border-t border-gray-100">
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <span class="font-bold text-navy text-sm">4.8</span>
+                        <span class="text-textMuted text-xs">(89)</span>
+                    </div>
+                    <span class="font-semibold text-navy">R$ 180<span class="text-textMuted text-xs font-normal">/h</span></span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-cardBg rounded-[24px] p-6 shadow-ambient border border-transparent hover:border-borderGray transition-all relative group">
+                <button class="absolute top-6 right-6 z-10 w-8 h-8 flex items-center justify-center rounded-full">
+                    <i class="fa-regular fa-heart text-textMuted text-lg hover:text-trustBlue transition-colors"></i>
+                </button>
+                
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden border border-borderGray/50">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Roberto" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-navy leading-tight mb-1">Roberto Luz</h3>
+                        <div class="flex items-center gap-2 text-sm text-textMuted">
+                            <i class="fa-solid fa-bolt text-yellow-500"></i>
+                            <span>Eletricista Predial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 mb-5 flex-wrap">
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Automação</span>
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Redes</span>
+                </div>
+
+                <div class="flex items-center justify-between pt-5 border-t border-gray-100">
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <span class="font-bold text-navy text-sm">5.0</span>
+                        <span class="text-textMuted text-xs">(210)</span>
+                    </div>
+                    <span class="font-semibold text-navy">R$ 160<span class="text-textMuted text-xs font-normal">/h</span></span>
+                </div>
+            </div>
+
+             <!-- Card 4 -->
+             <div class="bg-cardBg rounded-[24px] p-6 shadow-ambient border border-transparent hover:border-borderGray transition-all relative group">
+                <button class="absolute top-6 right-6 z-10 w-8 h-8 flex items-center justify-center rounded-full">
+                    <i class="fa-regular fa-heart text-textMuted text-lg hover:text-trustBlue transition-colors"></i>
+                </button>
+                
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden border border-borderGray/50">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Mariana" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-navy leading-tight mb-1">Mariana Energia</h3>
+                        <div class="flex items-center gap-2 text-sm text-textMuted">
+                            <i class="fa-solid fa-bolt text-yellow-500"></i>
+                            <span>Engenheira Elétrica</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 mb-5 flex-wrap">
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Laudos</span>
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">ART</span>
+                </div>
+
+                <div class="flex items-center justify-between pt-5 border-t border-gray-100">
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <span class="font-bold text-navy text-sm">4.9</span>
+                        <span class="text-textMuted text-xs">(65)</span>
+                    </div>
+                    <span class="font-semibold text-navy">R$ 250<span class="text-textMuted text-xs font-normal">/h</span></span>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="bg-cardBg rounded-[24px] p-6 shadow-ambient border border-transparent hover:border-borderGray transition-all relative group">
+                <button class="absolute top-6 right-6 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-blue-50/50">
+                    <i class="fa-solid fa-heart text-trustBlue text-lg"></i>
+                </button>
+                
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden border border-borderGray/50">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Fernando" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-navy leading-tight mb-1">Fernando Fios</h3>
+                        <div class="flex items-center gap-2 text-sm text-textMuted">
+                            <i class="fa-solid fa-bolt text-yellow-500"></i>
+                            <span>Eletricista Comercial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 mb-5 flex-wrap">
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Lojas</span>
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Iluminação</span>
+                </div>
+
+                <div class="flex items-center justify-between pt-5 border-t border-gray-100">
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <span class="font-bold text-navy text-sm">4.7</span>
+                        <span class="text-textMuted text-xs">(112)</span>
+                    </div>
+                    <span class="font-semibold text-navy">R$ 140<span class="text-textMuted text-xs font-normal">/h</span></span>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="bg-cardBg rounded-[24px] p-6 shadow-ambient border border-transparent hover:border-borderGray transition-all relative group">
+                <button class="absolute top-6 right-6 z-10 w-8 h-8 flex items-center justify-center rounded-full">
+                    <i class="fa-regular fa-heart text-textMuted text-lg hover:text-trustBlue transition-colors"></i>
+                </button>
+                
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden border border-borderGray/50">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Juliana" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-navy leading-tight mb-1">Juliana Tec</h3>
+                        <div class="flex items-center gap-2 text-sm text-textMuted">
+                            <i class="fa-solid fa-bolt text-yellow-500"></i>
+                            <span>Técnica em Eletrotécnica</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 mb-5 flex-wrap">
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Quadros</span>
+                    <span class="px-3 py-1 bg-gray-100 text-navy text-xs font-medium rounded-lg">Comandos</span>
+                </div>
+
+                <div class="flex items-center justify-between pt-5 border-t border-gray-100">
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                        <span class="font-bold text-navy text-sm">4.9</span>
+                        <span class="text-textMuted text-xs">(45)</span>
+                    </div>
+                    <span class="font-semibold text-navy">R$ 170<span class="text-textMuted text-xs font-normal">/h</span></span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex items-center justify-center gap-2 pb-12">
+            <button class="w-10 h-10 rounded-xl border border-borderGray flex items-center justify-center text-textMuted hover:bg-white hover:text-navy transition-colors bg-transparent">
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+            <button class="w-10 h-10 rounded-xl bg-trustBlue text-white font-medium flex items-center justify-center shadow-sm">1</button>
+            <button class="w-10 h-10 rounded-xl border border-borderGray flex items-center justify-center text-navy hover:bg-white transition-colors bg-transparent font-medium">2</button>
+            <button class="w-10 h-10 rounded-xl border border-borderGray flex items-center justify-center text-navy hover:bg-white transition-colors bg-transparent font-medium">3</button>
+            <span class="text-textMuted px-1">...</span>
+            <button class="w-10 h-10 rounded-xl border border-borderGray flex items-center justify-center text-navy hover:bg-white transition-colors bg-transparent font-medium">8</button>
+            <button class="w-10 h-10 rounded-xl border border-borderGray flex items-center justify-center text-textMuted hover:bg-white hover:text-navy transition-colors bg-transparent">
+                <i class="fa-solid fa-chevron-right text-sm"></i>
+            </button>
+        </div>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Messaging Inbox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        background: '#F8F9FA',
+                        navy: '#1A1A24',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280'
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 24px -4px rgba(26, 26, 36, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+    </style>
+</head>
+<body class="bg-background text-navy antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-surface border-b border-border w-full sticky top-0 z-50">
+        <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                    M
+                </div>
+                <span class="font-bold text-lg text-navy tracking-tight">MMO Platform</span>
+            </div>
+            
+            <nav class="flex items-center gap-8">
+                <a href="#" class="text-sm font-medium text-muted hover:text-navy transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-house text-xs"></i> Home
+                </a>
+                <a href="#" class="text-sm font-medium text-muted hover:text-navy transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-box text-xs"></i> Orders
+                </a>
+                <a href="#" class="text-sm font-semibold text-primary flex items-center gap-2 relative">
+                    <i class="fa-solid fa-message text-xs"></i> Messages
+                    <span class="absolute -bottom-[18px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-primary rounded-full"></span>
+                </a>
+                <a href="#" class="text-sm font-medium text-muted hover:text-navy transition-colors flex items-center gap-2">
+                    <i class="fa-regular fa-user text-xs"></i> Profile
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button class="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted hover:text-navy hover:bg-background transition-colors">
+                    <i class="fa-regular fa-bell text-sm"></i>
+                </button>
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-8 h-8 rounded-full object-cover border border-border">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto py-8 px-4 sm:px-6 flex">
+        
+        <!-- Main Container -->
+        <div class="w-full bg-surface rounded-[24px] shadow-ambient flex overflow-hidden border border-border/50 min-h-[700px]">
+            
+            <!-- Left Panel - Inbox Feed -->
+            <aside id="inbox-sidebar" class="w-[30%] min-w-[320px] flex flex-col border-r border-background bg-surface">
+                <!-- Sidebar Header -->
+                <div class="p-6 pb-4 border-b border-border/40">
+                    <h1 class="text-xl font-bold text-navy mb-4">Central de Mensagens</h1>
+                    
+                    <!-- Search Input -->
+                    <div class="relative mb-4">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-muted text-sm"></i>
+                        <input type="text" placeholder="Buscar conversas..." class="w-full bg-background border-none rounded-full py-2.5 pl-10 pr-4 text-sm text-navy placeholder-muted focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                    </div>
+
+                    <!-- Filter Tabs -->
+                    <div class="flex gap-2">
+                        <button class="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold transition-colors">
+                            Todas
+                        </button>
+                        <button class="px-4 py-1.5 rounded-full bg-transparent text-muted hover:bg-background text-sm font-medium transition-colors border border-border">
+                            Orçamentos
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Message List -->
+                <div class="flex-1 overflow-y-auto">
+                    <!-- Unread Chat Item -->
+                    <div onclick="window.location.href='Tela 4 - Tela de detalhe da conversa.html'" class="p-4 border-b border-border/40 hover:bg-background/50 cursor-pointer transition-colors relative bg-primary/[0.02]">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-r-full"></div>
+                        <div class="flex items-start gap-3">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Avatar" class="w-10 h-10 rounded-full object-cover">
+                                <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-surface rounded-full"></span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h3 class="text-sm font-bold text-navy truncate pr-2">Studio Alpha Design</h3>
+                                    <span class="text-[11px] font-medium text-primary whitespace-nowrap">10:42 AM</span>
+                                </div>
+                                <p class="text-sm text-navy font-medium truncate mb-2">Poderia enviar o orçamento atualizado?</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 rounded-md bg-blue-50 text-primary border border-blue-100 text-[10px] font-bold uppercase tracking-wider">
+                                        [Agendado]
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+                        </div>
+                    </div>
+
+                    <!-- Read Chat Item 1 -->
+                    <div onclick="window.location.href='Tela 4 - Tela de detalhe da conversa.html'" class="p-4 border-b border-border/40 hover:bg-background/50 cursor-pointer transition-colors">
+                        <div class="flex items-start gap-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-10 h-10 rounded-full object-cover">
+                            <div class="flex-1 min-w-0">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h3 class="text-sm font-semibold text-navy truncate pr-2">TechCorp Solutions</h3>
+                                    <span class="text-[11px] text-muted whitespace-nowrap">Ontem</span>
+                                </div>
+                                <p class="text-sm text-muted truncate mb-2">Os arquivos finais foram recebidos, obrigado.</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 rounded-md bg-gray-50 text-muted border border-border text-[10px] font-semibold uppercase tracking-wider">
+                                        [Concluído]
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Read Chat Item 2 -->
+                    <div onclick="window.location.href='Tela 4 - Tela de detalhe da conversa.html'" class="p-4 border-b border-border/40 hover:bg-background/50 cursor-pointer transition-colors">
+                        <div class="flex items-start gap-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Avatar" class="w-10 h-10 rounded-full object-cover">
+                            <div class="flex-1 min-w-0">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h3 class="text-sm font-semibold text-navy truncate pr-2">Maria Silva Fotografia</h3>
+                                    <span class="text-[11px] text-muted whitespace-nowrap">Segunda</span>
+                                </div>
+                                <p class="text-sm text-muted truncate mb-2">Preciso de um ajuste na cor da foto 3.</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 rounded-md bg-yellow-50 text-yellow-700 border border-yellow-200 text-[10px] font-semibold uppercase tracking-wider">
+                                        [Em Andamento]
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Read Chat Item 3 -->
+                    <div onclick="window.location.href='Tela 4 - Tela de detalhe da conversa.html'" class="p-4 border-b border-border/40 hover:bg-background/50 cursor-pointer transition-colors">
+                        <div class="flex items-start gap-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Avatar" class="w-10 h-10 rounded-full object-cover">
+                            <div class="flex-1 min-w-0">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h3 class="text-sm font-semibold text-navy truncate pr-2">Carlos Mendes</h3>
+                                    <span class="text-[11px] text-muted whitespace-nowrap">12 Mar</span>
+                                </div>
+                                <p class="text-sm text-muted truncate mb-2">Olá, qual o prazo para entrega?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Panel - Workspace Placeholder -->
+            <section id="chat-workspace" class="flex-1 bg-surface flex flex-col items-center justify-center p-8 text-center relative">
+                
+                <!-- Graphic / Illustration -->
+                <div class="w-64 h-64 mb-8 bg-background/50 rounded-full flex items-center justify-center border border-border/50 shadow-sm relative">
+                    <!-- Abstract representation of secure communication -->
+                    <div class="absolute w-48 h-48 bg-primary/5 rounded-full animate-pulse"></div>
+                    <div class="relative z-10 w-24 h-24 bg-white rounded-2xl shadow-sm border border-border flex items-center justify-center -rotate-6">
+                        <i class="fa-solid fa-shield-halved text-4xl text-primary"></i>
+                    </div>
+                    <div class="relative z-20 w-20 h-20 bg-white rounded-2xl shadow-sm border border-border flex items-center justify-center rotate-12 absolute -bottom-4 right-10">
+                        <i class="fa-solid fa-comment-dots text-3xl text-navy"></i>
+                    </div>
+                    <div class="absolute top-10 right-10 w-4 h-4 bg-green-400 rounded-full border-2 border-white shadow-sm"></div>
+                </div>
+
+                <!-- Typography -->
+                <h2 class="text-2xl font-bold text-navy mb-3 max-w-md">Suas conversas estão protegidas.</h2>
+                <p class="text-muted text-sm max-w-md leading-relaxed mb-8">
+                    Utilize o chat para enviar fotos, solicitar ajustes de orçamento e manter o histórico do serviço registrado com segurança.
+                </p>
+
+                <!-- Action Button -->
+                <button onclick="window.location.href='../Módulo 3.7 - Balcão de Serviço/Tela 1 - Tela de criação de Balcão de Serviço.html'" class="px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200 flex items-center gap-2 group">
+                    <i class="fa-solid fa-plus group-hover:rotate-90 transition-transform"></i>
+                    Iniciar novo pedido no Balcão
+                </button>
+
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>

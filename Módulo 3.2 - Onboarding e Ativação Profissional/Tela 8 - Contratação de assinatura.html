@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plan Selection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            light: '#E6E8FC',
+                        },
+                        navy: {
+                            DEFAULT: '#1A1A24',
+                            light: '#2D2D3B',
+                        },
+                        offwhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 20px 40px -15px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Toggle Switch Custom Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="font-sans text-navy antialiased min-h-screen flex flex-col items-center">
+
+    <!-- Top Navigation -->
+    <nav id="top-nav" class="w-full bg-white border-b border-gray-100 px-6 py-4 flex justify-center fixed top-0 z-50">
+        <div class="w-full max-w-[1000px] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-xl">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight text-navy">MMO</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+                <a href="#" class="hover:text-brand-blue transition-colors">Recursos</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Soluções</a>
+                <a href="#" class="text-navy font-semibold">Preços</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Contato</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="../Módulo 3.1 - Acesso, Conta e Identidade/Tela 2 - Login.html" class="text-sm font-medium text-gray-500 hover:text-navy transition-colors">Entrar</a>
+                <a href="#" class="text-sm font-semibold bg-brand-blue text-white px-5 py-2.5 rounded-full hover:bg-blue-800 transition-colors shadow-sm">Começar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Workspace Container -->
+    <main id="workspace" class="w-full max-w-[1000px] px-4 sm:px-6 lg:px-8 pt-32 pb-20 flex-grow flex flex-col items-center">
+        
+        <!-- Header Section -->
+        <header id="plan-header" class="text-center max-w-3xl mx-auto mb-16 w-full">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-brand-blue text-xs font-semibold uppercase tracking-wider mb-6">
+                <i class="fa-solid fa-sparkles text-[10px]"></i> Preços Transparentes
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-[56px] leading-[1.1] font-extrabold text-navy mb-6 tracking-tight">
+                Escolha seu Plano de <br class="hidden md:block"> Crescimento
+            </h1>
+            <p class="text-lg text-gray-500 mb-10 max-w-xl mx-auto">
+                Selecione o plano ideal para o seu momento e comece a receber pedidos com mais eficiência e controle.
+            </p>
+
+            <!-- Toggle Switch -->
+            <div class="flex items-center justify-center gap-4">
+                <span class="text-sm font-medium text-gray-500">Mensal</span>
+                
+                <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                    <input type="checkbox" name="toggle" id="billing-toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-gray-200 appearance-none cursor-pointer z-10 transition-transform duration-300 ease-in-out"/>
+                    <label for="billing-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-200 cursor-pointer transition-colors duration-300 ease-in-out"></label>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <span class="text-sm font-semibold text-navy">Anual</span>
+                    <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Save 20%</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Pricing Grid -->
+        <section id="pricing-grid" class="w-full max-w-[900px] grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center mb-16">
+            
+            <!-- Basic Plan Card -->
+            <div id="card-basic" class="bg-white rounded-[24px] p-8 lg:p-10 shadow-soft border border-gray-100 h-full flex flex-col relative transition-transform hover:-translate-y-1 duration-300">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-navy mb-2">Básico</h3>
+                    <p class="text-sm text-gray-500 mb-6">Para quem está começando e precisa do essencial.</p>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-4xl font-extrabold text-navy">R$ 0</span>
+                        <span class="text-gray-500 font-medium">/mês</span>
+                    </div>
+                </div>
+
+                <div class="mb-10 flex-grow">
+                    <p class="text-sm font-semibold text-navy mb-4">O que está incluído:</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-brand-blue"></i>
+                            </div>
+                            <span class="text-sm text-navy-light">Até 50 pedidos por mês</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-brand-blue"></i>
+                            </div>
+                            <span class="text-sm text-navy-light">Catálogo online simples</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-brand-blue"></i>
+                            </div>
+                            <span class="text-sm text-navy-light">Recebimento via WhatsApp</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-brand-blue"></i>
+                            </div>
+                            <span class="text-sm text-navy-light">Suporte por email</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <button onclick="window.location.href='Tela 9 - Confirmação de ativação.html'" class="w-full py-3.5 px-6 rounded-full border-2 border-brand-blue text-brand-blue font-bold text-sm hover:bg-blue-50 transition-colors">
+                    Começar Grátis
+                </button>
+            </div>
+
+            <!-- Premium Plan Card (Highlighted) -->
+            <div id="card-premium" class="bg-brand-light rounded-[24px] p-8 lg:p-10 shadow-glow border-2 border-brand-blue h-full flex flex-col relative transform md:scale-105 z-10 transition-transform hover:-translate-y-2 duration-300">
+                <!-- Badge -->
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-blue text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+                    Recomendado
+                </div>
+
+                <div class="mb-8 mt-2">
+                    <h3 class="text-2xl font-bold text-navy mb-2">Mestre VIP</h3>
+                    <p class="text-sm text-navy/70 mb-6">Para negócios em expansão que buscam automação.</p>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-5xl font-extrabold text-brand-blue">R$ 49,90</span>
+                        <span class="text-navy/70 font-medium">/mês</span>
+                    </div>
+                </div>
+
+                <div class="mb-10 flex-grow">
+                    <p class="text-sm font-semibold text-navy mb-4">Tudo do Básico, mais:</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-brand-blue flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-white"></i>
+                            </div>
+                            <span class="text-sm text-navy font-medium">Pedidos Ilimitados</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-brand-blue flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-white"></i>
+                            </div>
+                            <span class="text-sm text-navy font-medium">Pagamento Online Integrado</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-brand-blue flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-white"></i>
+                            </div>
+                            <span class="text-sm text-navy font-medium">Gestão de Estoque Avançada</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-brand-blue flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-white"></i>
+                            </div>
+                            <span class="text-sm text-navy font-medium">Relatórios Financeiros</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-brand-blue flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-[10px] text-white"></i>
+                            </div>
+                            <span class="text-sm text-navy font-medium">Suporte Prioritário WhatsApp</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <button onclick="window.location.href='Tela 9 - Confirmação de ativação.html'" class="w-full py-4 px-6 rounded-full bg-brand-blue text-white font-bold text-sm hover:bg-blue-800 transition-colors shadow-md flex items-center justify-center gap-2">
+                    Assinar Mestre VIP <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Trust / Footer Section -->
+        <footer id="trust-footer" class="w-full max-w-[600px] text-center pb-10">
+            <div class="flex items-center justify-center gap-4 mb-4 opacity-60">
+                <i class="fa-brands fa-stripe text-3xl"></i>
+                <i class="fa-brands fa-cc-visa text-2xl"></i>
+                <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+            </div>
+            <p class="text-sm text-gray-500 mb-2 font-medium">
+                <i class="fa-solid fa-lock text-xs mr-1"></i> Pagamento seguro via Stripe. Cancele quando quiser.
+            </p>
+            <a href="#" class="text-xs text-brand-blue hover:underline font-medium">Ver todos os detalhes e taxas aplicáveis.</a>
+        </footer>
+
+    </main>
+
+    <script>
+        // Simple toggle logic for visual feedback (annual/monthly)
+        document.getElementById('billing-toggle').addEventListener('change', function(e) {
+            const pricePremium = document.querySelector('#card-premium .text-5xl');
+            const priceBasic = document.querySelector('#card-basic .text-4xl');
+            
+            if(e.target.checked) {
+                // Anual - 20% off example
+                pricePremium.innerHTML = 'R$ 39,90';
+            } else {
+                // Mensal
+                pricePremium.innerHTML = 'R$ 49,90';
+            }
+        });
+    </script>
+</body>
+</html>

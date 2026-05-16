@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS AI Operational Digest Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        primary: '#0016dc',
+                        primaryHover: '#0010a3',
+                        aiAccent: '#BF80FF',
+                        aiAccentLight: 'rgba(191, 128, 255, 0.1)',
+                        cardShadow: 'rgba(0, 0, 0, 0.04)',
+                        borderLight: '#E5E7EB'
+                    },
+                    boxShadow: {
+                        'soft-ambient': '0 10px 40px -10px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02)',
+                        'glow-purple': '0 0 15px rgba(191, 128, 255, 0.3)',
+                        'button-primary': '0 4px 14px 0 rgba(0, 22, 220, 0.39)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        'pill': '9999px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af; 
+        }
+        .ai-gradient-text {
+            background: linear-gradient(135deg, #0016dc, #BF80FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+    <!-- Global Header -->
+    <header id="header" class="w-full bg-surface/80 backdrop-blur-md sticky top-0 z-50 border-b border-borderLight h-[72px] flex items-center justify-center px-6">
+        <div class="w-full max-w-[1200px] flex items-center justify-between">
+            <!-- Logo area -->
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-aiAccent flex items-center justify-center shadow-sm">
+                    <i class="fa-solid fa-chart-pie text-white text-sm"></i>
+                </div>
+                <span class="font-bold text-lg tracking-tight">FinOps<span class="text-primary">.AI</span></span>
+            </div>
+            
+            <!-- Center Nav (Minimalist) -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-textMuted">
+                <a href="#" class="text-textMain hover:text-primary transition-colors">Dashboard</a>
+                <a href="#" class="hover:text-primary transition-colors">Relatórios</a>
+                <a href="#" class="hover:text-primary transition-colors">Integrações</a>
+                <a href="#" class="hover:text-primary transition-colors">Configurações</a>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-4">
+                <button class="px-5 py-2.5 rounded-pill text-sm font-semibold text-textMain bg-transparent border border-borderLight hover:bg-gray-50 transition-colors hidden sm:block">
+                    <i class="fa-regular fa-file-pdf mr-2"></i>Exportar PDF
+                </button>
+                <button class="px-6 py-2.5 rounded-pill text-sm font-semibold text-white bg-primary hover:bg-primaryHover shadow-button-primary transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-plus mr-2 text-white/80"></i>Novo Relatório IA
+                </button>
+                <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-borderLight ml-2">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout Container -->
+    <main class="flex-1 w-full flex flex-col items-center pt-10 pb-20 px-4 sm:px-6">
+        <div class="w-full max-w-[1200px] flex flex-col gap-10">
+
+            <!-- Top Canvas: The Prompt Bar -->
+            <section id="prompt-bar-section" class="w-full flex flex-col items-center text-center pt-8 pb-4">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+                    Comando <span class="ai-gradient-text">Operacional IA</span>
+                </h1>
+                <p class="text-textMuted text-lg mb-8 max-w-2xl">
+                    Sintetize dados complexos, identifique anomalias e gere planos de ação em segundos com nossa inteligência artificial financeira.
+                </p>
+
+                <!-- Massive Pill Input -->
+                <div class="w-full max-w-4xl bg-surface p-2 rounded-pill shadow-soft-ambient border border-aiAccent/30 focus-within:border-aiAccent focus-within:shadow-glow-purple transition-all duration-300 flex items-center relative group">
+                    <div class="pl-6 pr-3 text-aiAccent">
+                        <i class="fa-solid fa-sparkles text-xl"></i>
+                    </div>
+                    <input type="text" 
+                           class="flex-1 bg-transparent border-none outline-none py-4 text-base md:text-lg text-textMain placeholder:text-gray-400 w-full"
+                           placeholder="O que você quer analisar hoje? Ex: Resuma a performance dos serviços em Camboriú.">
+                    <button class="ml-2 px-8 py-3.5 rounded-pill bg-aiAccent hover:bg-purple-500 text-white font-bold text-base shadow-[0_4px_14px_0_rgba(191,128,255,0.4)] transition-all transform hover:scale-[1.02] flex items-center gap-2 whitespace-nowrap">
+                        Gerar <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+                </div>
+                
+                <!-- Quick Prompts -->
+                <div class="flex flex-wrap justify-center gap-3 mt-6">
+                    <button class="px-4 py-1.5 rounded-pill bg-white border border-gray-200 text-sm font-medium text-gray-600 hover:border-aiAccent hover:text-aiAccent transition-colors">
+                        Análise de Churn Q3
+                    </button>
+                    <button class="px-4 py-1.5 rounded-pill bg-white border border-gray-200 text-sm font-medium text-gray-600 hover:border-aiAccent hover:text-aiAccent transition-colors">
+                        Comparativo Receita YOY
+                    </button>
+                    <button class="px-4 py-1.5 rounded-pill bg-white border border-gray-200 text-sm font-medium text-gray-600 hover:border-aiAccent hover:text-aiAccent transition-colors">
+                        Gargalos Operacionais
+                    </button>
+                </div>
+            </section>
+
+            <!-- Main Content: The Executive Briefing -->
+            <section id="executive-briefing" class="w-full bg-surface rounded-4xl shadow-soft-ambient p-8 md:p-10 border border-gray-100">
+                
+                <!-- Header of the Briefing -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-100 pb-6 mb-8 gap-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2.5 py-1 rounded-md bg-aiAccentLight text-aiAccent text-xs font-bold uppercase tracking-wider">Briefing Executivo</span>
+                            <span class="text-sm text-textMuted"><i class="fa-regular fa-clock mr-1"></i>Gerado há 2 min</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold">Performance de Serviços: Unidade Camboriú</h2>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="w-10 h-10 rounded-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-textMuted transition-colors">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-textMuted transition-colors">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Macro Overview Metrics -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <!-- Metric 1 -->
+                    <div class="bg-background rounded-2xl p-5 border border-gray-100 hover:border-primary/20 transition-colors group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
+                                <i class="fa-solid fa-layer-group text-lg"></i>
+                            </div>
+                            <span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">
+                                <i class="fa-solid fa-arrow-trend-up mr-1"></i>+8.4%
+                            </span>
+                        </div>
+                        <p class="text-sm font-medium text-textMuted mb-1">Volume de Transações</p>
+                        <h3 class="text-2xl font-bold text-textMain mb-3">14.280</h3>
+                        <div class="flex items-start gap-2 bg-white p-2.5 rounded-lg border border-gray-100">
+                            <i class="fa-solid fa-sparkles text-aiAccent text-xs mt-0.5"></i>
+                            <p class="text-xs text-textMuted leading-tight font-medium">Performance 12% acima do esperado pela IA para o período.</p>
+                        </div>
+                    </div>
+
+                    <!-- Metric 2 -->
+                    <div class="bg-background rounded-2xl p-5 border border-gray-100 hover:border-primary/20 transition-colors group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600">
+                                <i class="fa-solid fa-receipt text-lg"></i>
+                            </div>
+                            <span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">
+                                <i class="fa-solid fa-arrow-trend-up mr-1"></i>+3.2%
+                            </span>
+                        </div>
+                        <p class="text-sm font-medium text-textMuted mb-1">Ticket Médio</p>
+                        <h3 class="text-2xl font-bold text-textMain mb-3">R$ 342,50</h3>
+                        <div class="flex items-start gap-2 bg-white p-2.5 rounded-lg border border-gray-100">
+                            <i class="fa-solid fa-sparkles text-aiAccent text-xs mt-0.5"></i>
+                            <p class="text-xs text-textMuted leading-tight font-medium">Crescimento impulsionado por upsell na categoria Premium.</p>
+                        </div>
+                    </div>
+
+                    <!-- Metric 3 -->
+                    <div class="bg-background rounded-2xl p-5 border border-gray-100 hover:border-primary/20 transition-colors group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600">
+                                <i class="fa-solid fa-stopwatch text-lg"></i>
+                            </div>
+                            <span class="flex items-center text-xs font-bold text-red-600 bg-red-50 px-2 py-1 rounded-md">
+                                <i class="fa-solid fa-arrow-trend-down mr-1"></i>-15%
+                            </span>
+                        </div>
+                        <p class="text-sm font-medium text-textMuted mb-1">Tempo de Resposta</p>
+                        <h3 class="text-2xl font-bold text-textMain mb-3">4.2 min</h3>
+                        <div class="flex items-start gap-2 bg-white p-2.5 rounded-lg border border-red-100 bg-red-50/30">
+                            <i class="fa-solid fa-triangle-exclamation text-red-500 text-xs mt-0.5"></i>
+                            <p class="text-xs text-red-700 leading-tight font-medium">Alerta: Picos de lentidão detectados entre 14h e 16h.</p>
+                        </div>
+                    </div>
+
+                    <!-- Metric 4 -->
+                    <div class="bg-background rounded-2xl p-5 border border-gray-100 hover:border-primary/20 transition-colors group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center text-teal-600">
+                                <i class="fa-regular fa-face-smile text-lg"></i>
+                            </div>
+                            <span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">
+                                <i class="fa-solid fa-arrow-trend-up mr-1"></i>+1.1 pt
+                            </span>
+                        </div>
+                        <p class="text-sm font-medium text-textMuted mb-1">Satisfação (NPS)</p>
+                        <h3 class="text-2xl font-bold text-textMain mb-3">78</h3>
+                        <div class="flex items-start gap-2 bg-white p-2.5 rounded-lg border border-gray-100">
+                            <i class="fa-solid fa-sparkles text-aiAccent text-xs mt-0.5"></i>
+                            <p class="text-xs text-textMuted leading-tight font-medium">Estável na zona de excelência. Feedback positivo em 'Agilidade'.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Narrative: 2-Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+                    
+                    <!-- Left Column: O que aconteceu -->
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                <i class="fa-solid fa-align-left"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-textMain">O que aconteceu</h3>
+                        </div>
+                        
+                        <div class="prose prose-sm max-w-none text-textMain/80 leading-relaxed space-y-5">
+                            <p class="text-base">
+                                A unidade de Camboriú apresentou um volume de transações <strong class="text-textMain">12% superior</strong> à projeção base da IA para a última semana. Este pico concentrou-se majoritariamente nos dias úteis (terça a quinta), contrariando o padrão histórico de sazonalidade de finais de semana.
+                            </p>
+                            
+                            <div class="bg-gray-50 border-l-4 border-primary p-4 rounded-r-lg my-6">
+                                <h4 class="text-sm font-bold text-textMain mb-2">Ponto de Atenção Operacional</h4>
+                                <p class="text-sm">
+                                    Apesar do aumento em receita, o sistema registrou um gargalo no processamento de pagamentos via gateway secundário, resultando em um aumento de 15% no Tempo de Resposta médio, gerando <strong class="text-textMain">42 tickets de suporte</strong> relacionados a lentidão.
+                                </p>
+                            </div>
+                            
+                            <p class="text-base">
+                                O Ticket Médio subiu para R$ 342,50, impulsionado por uma adoção orgânica de 8% nos serviços de categoria Premium, sugerindo que a recente campanha de e-mail marketing teve alta conversão nesta praça específica.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Ações Recomendadas -->
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-8 rounded-full bg-aiAccentLight flex items-center justify-center text-aiAccent">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-textMain">Ações Recomendadas pela IA</h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Action Item 1 -->
+                            <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                            <h4 class="font-bold text-textMain text-base">Redirecionamento de Tráfego de Gateway</h4>
+                                        </div>
+                                        <p class="text-sm text-textMuted mb-4">
+                                            Desviar 30% do volume do Gateway B para o Gateway A nos horários de pico (14h-16h) para estabilizar o tempo de resposta. Risco de falha mitigado.
+                                        </p>
+                                        <div class="flex items-center gap-3 text-xs font-medium text-gray-500">
+                                            <span class="bg-gray-100 px-2 py-1 rounded">Infraestrutura</span>
+                                            <span><i class="fa-solid fa-bolt text-yellow-500 mr-1"></i>Impacto Alto</span>
+                                        </div>
+                                    </div>
+                                    <button onclick="window.location.href='Tela 3 - Alertas internos.html'" class="shrink-0 px-5 py-2.5 rounded-xl bg-primary hover:bg-primaryHover text-white text-sm font-bold shadow-button-primary transition-colors flex items-center">
+                                        Aplicar <i class="fa-solid fa-check ml-2 text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Action Item 2 -->
+                            <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                            <h4 class="font-bold text-textMain text-base">Escalar Campanha Premium</h4>
+                                        </div>
+                                        <p class="text-sm text-textMuted mb-4">
+                                            Aumentar budget de ads em 25% para o público de Camboriú focando no pacote Premium, aproveitando a tração atual de conversão identificada.
+                                        </p>
+                                        <div class="flex items-center gap-3 text-xs font-medium text-gray-500">
+                                            <span class="bg-gray-100 px-2 py-1 rounded">Marketing</span>
+                                            <span><i class="fa-solid fa-money-bill-trend-up text-emerald-500 mr-1"></i>ROI Estimado: +18%</span>
+                                        </div>
+                                    </div>
+                                    <button onclick="window.location.href='Tela 3 - Alertas internos.html'" class="shrink-0 px-5 py-2.5 rounded-xl bg-primary hover:bg-primaryHover text-white text-sm font-bold shadow-button-primary transition-colors flex items-center">
+                                        Aplicar <i class="fa-solid fa-check ml-2 text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Action Item 3 -->
+                            <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow opacity-70">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                            <h4 class="font-bold text-textMain text-base">Alocação de Suporte Temporário</h4>
+                                        </div>
+                                        <p class="text-sm text-textMuted mb-3">
+                                            Remanejar 2 agentes do turno da manhã para a tarde (13h-18h) até sexta-feira para zerar a fila de tickets de lentidão.
+                                        </p>
+                                    </div>
+                                    <button class="shrink-0 px-5 py-2.5 rounded-xl bg-white border border-gray-300 text-textMain hover:bg-gray-50 text-sm font-bold transition-colors">
+                                        Revisar
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+</body>
+</html>

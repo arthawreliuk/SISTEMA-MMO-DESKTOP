@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Validation Status</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                        },
+                        status: {
+                            green: { bg: '#E8F5E9', text: '#2E7D32' },
+                            orange: { bg: '#FFF3E0', text: '#E65100' },
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0,0,0,0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans text-brand-navy antialiased">
+
+    <!-- Top Navigation -->
+    <header id="header" class="w-full bg-white border-b border-gray-100 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-white font-bold text-xl">
+                M
+            </div>
+            <span class="font-bold text-xl tracking-tight">MMO</span>
+        </div>
+        <button class="px-5 py-2.5 rounded-full border border-gray-200 text-sm font-semibold hover:bg-gray-50 transition-colors flex items-center gap-2 text-brand-navy">
+            <i class="fa-regular fa-circle-question"></i>
+            Falar com Suporte
+        </button>
+    </header>
+
+    <!-- Main Workspace -->
+    <main id="main-workspace" class="flex-grow flex items-center justify-center p-6 md:p-12">
+        
+        <!-- Status Container -->
+        <div id="status-container" class="w-full max-w-[800px] bg-white rounded-[24px] shadow-soft overflow-hidden border border-gray-100">
+            
+            <!-- Top Section: The Hook -->
+            <div id="section-hook" class="p-10 pb-8 flex flex-col items-center text-center border-b border-gray-50 relative">
+                <div class="w-20 h-20 bg-status-orange-bg rounded-full flex items-center justify-center mb-6 relative shadow-inner-soft border border-orange-100/50">
+                    <i class="fa-solid fa-folder-open text-3xl text-status-orange-text"></i>
+                    <div class="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-circle-exclamation text-status-orange-text text-sm"></i>
+                    </div>
+                </div>
+                <h1 class="text-3xl font-bold mb-3 tracking-tight">Ajuste na sua Documentação</h1>
+                <p class="text-gray-500 max-w-md mx-auto text-sm leading-relaxed">
+                    Identificamos uma pendência nos documentos enviados. Por favor, verifique os itens abaixo para continuarmos seu processo de validação.
+                </p>
+            </div>
+
+            <!-- Middle Section: The Checklist -->
+            <div id="section-checklist" class="px-10 py-8 bg-gray-50/30">
+                <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Status dos Documentos</h2>
+                
+                <div class="space-y-3">
+                    <!-- Approved Item -->
+                    <div class="flex items-center justify-between p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-400">
+                                <i class="fa-regular fa-file-lines"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm">Comprovante de Residência</h3>
+                                <p class="text-xs text-gray-400 mt-0.5">Enviado em 12/05/2026</p>
+                            </div>
+                        </div>
+                        <div class="px-3 py-1.5 bg-status-green-bg text-status-green-text rounded-full text-xs font-bold flex items-center gap-1.5">
+                            <i class="fa-solid fa-check"></i> Aprovado
+                        </div>
+                    </div>
+
+                    <!-- Attention Item -->
+                    <div class="flex items-center justify-between p-4 bg-white rounded-2xl border border-orange-100 shadow-sm ring-1 ring-orange-50">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center text-status-orange-text">
+                                <i class="fa-regular fa-id-card"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm">Documento com Foto (CNH/RG)</h3>
+                                <p class="text-xs text-gray-400 mt-0.5">Enviado em 12/05/2026</p>
+                            </div>
+                        </div>
+                        <div class="px-3 py-1.5 bg-status-orange-bg text-status-orange-text rounded-full text-xs font-bold flex items-center gap-1.5 border border-orange-100">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Precisa de Atenção
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Fix Area -->
+            <div id="section-fix-area" class="px-10 py-8 border-t border-gray-100">
+                <div class="bg-brand-offwhite rounded-2xl p-6 mb-6 border border-gray-200">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-comment-dots text-gray-400 mt-1"></i>
+                        <div>
+                            <h4 class="text-sm font-bold mb-1">Feedback do Analista</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                "A imagem enviada do documento de identidade está cortada nas bordas e ilegível no campo da data de nascimento. Por favor, envie uma nova foto onde todas as informações e bordas do documento estejam visíveis."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drag and Drop Zone -->
+                <div class="border-2 border-dashed border-gray-200 rounded-[20px] p-10 flex flex-col items-center justify-center text-center bg-white hover:bg-gray-50 hover:border-brand-blue/30 transition-all cursor-pointer group">
+                    <div class="w-14 h-14 bg-brand-offwhite rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-50 transition-colors">
+                        <i class="fa-solid fa-cloud-arrow-up text-xl text-gray-400 group-hover:text-brand-blue transition-colors"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-1">Anexar novo documento em alta resolução</h4>
+                    <p class="text-xs text-gray-400 mb-4">Arraste e solte seu arquivo aqui ou clique para procurar</p>
+                    <div class="flex gap-2 text-[10px] text-gray-400 font-medium">
+                        <span class="px-2 py-1 bg-gray-100 rounded-md">JPG</span>
+                        <span class="px-2 py-1 bg-gray-100 rounded-md">PNG</span>
+                        <span class="px-2 py-1 bg-gray-100 rounded-md">PDF</span>
+                        <span class="px-2 py-1 bg-gray-100 rounded-md">Max 5MB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer of Container -->
+            <div id="section-footer" class="p-10 pt-6 bg-white border-t border-gray-50 flex flex-col items-center">
+                <button onclick="window.location.href='Tela 1 - Fila de validação cadastral.html'" class="w-full bg-brand-blue text-white font-bold py-4 rounded-full shadow-lg shadow-brand-blue/20 hover:bg-blue-700 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                    Enviar e Solicitar Nova Análise
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </button>
+                <p class="text-xs text-gray-400 mt-4 flex items-center gap-1.5 font-medium">
+                    <i class="fa-regular fa-clock"></i>
+                    Nossa equipe analisará seu novo envio em até 4 horas úteis.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

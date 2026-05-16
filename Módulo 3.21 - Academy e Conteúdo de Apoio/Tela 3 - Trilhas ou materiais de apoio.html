@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Learning Path Master Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 40px rgba(0, 0, 0, 0.04)',
+                        'sm-ambient': '0 2px 10px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .bento-card {
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- 1. SaaS Global Header -->
+    <header id="global-header" class="w-full bg-white border-b border-gray-100 py-4 px-6 md:px-12 sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2 text-sm font-medium text-gray-500">
+                <a href="#" class="hover:text-trustblue transition-colors">Academy</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <a href="#" class="hover:text-trustblue transition-colors">Minhas Trilhas</a>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-navy font-semibold">Gestão de Equipes</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-gray-400 hover:text-navy transition-colors relative">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+                <div class="flex items-center gap-3 cursor-pointer group">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-transparent group-hover:border-trustblue transition-colors">
+                    <div class="hidden md:block">
+                        <p class="text-sm font-bold text-navy">Carlos Silva</p>
+                        <p class="text-xs text-gray-500">Líder de Operações</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs ml-1 group-hover:text-navy transition-colors"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-4 md:px-6 py-8 flex flex-col gap-8">
+
+        <!-- 2. Hero Header -->
+        <section id="hero-header" class="bento-card w-full p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+            <!-- Decorative Background Element -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-trustblue/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
+            
+            <div class="flex-1 z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-trustblue/10 text-trustblue rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-route"></i> Trilha de Liderança
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-navy leading-tight mb-4 tracking-tight">Formação de Líderes</h1>
+                <p class="text-lg text-gray-600 max-w-xl">Escale sua operação gerenciando subcontas com eficiência. Domine as ferramentas e processos essenciais.</p>
+            </div>
+
+            <div class="flex flex-col items-center justify-center bg-gray-50 rounded-3xl p-6 border border-gray-100 z-10 min-w-[240px]">
+                <div class="relative w-32 h-32 flex items-center justify-center">
+                    <!-- SVG Circular Progress -->
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" stroke="#E5E7EB" stroke-width="8" fill="none" />
+                        <circle cx="50" cy="50" r="40" stroke="#0016dc" stroke-width="8" fill="none" stroke-dasharray="251.2" stroke-dashoffset="87.92" stroke-linecap="round" class="transition-all duration-1000 ease-out" />
+                    </svg>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <span class="text-2xl font-extrabold text-navy">65%</span>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <p class="text-sm font-bold text-navy">Concluído</p>
+                    <p class="text-xs text-gray-500 font-medium mt-1 flex items-center justify-center gap-1">
+                        <i class="fa-regular fa-clock"></i> Est. 2h restantes
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The Roadmap Canvas (Asymmetrical Split) -->
+        <section id="roadmap-canvas" class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Main Content (The Path Grid - 70%) -->
+            <div class="lg:w-[70%] flex flex-col gap-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-2xl font-bold text-navy">Cursos da Trilha</h2>
+                    <span class="text-sm font-medium text-gray-500">4 Cursos • 12 Módulos</span>
+                </div>
+
+                <!-- Active Course Card -->
+                <div class="bento-card p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-stretch relative border-l-4 border-l-trustblue">
+                    <!-- Connector line logic for path -->
+                    <div class="hidden sm:block absolute -bottom-6 left-16 w-1 h-6 bg-gray-200 z-0"></div>
+
+                    <div class="w-full sm:w-48 h-32 rounded-xl overflow-hidden relative flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Course Cover" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <span class="absolute bottom-3 left-3 text-white text-xs font-bold px-2 py-1 bg-black/30 backdrop-blur-md rounded-md">Módulo 2</span>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col justify-between w-full">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold uppercase rounded-full">Em Progresso</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-navy mb-2">Gestão de Subcontas e Permissões</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Aprenda a estruturar a hierarquia da sua equipe, definindo papéis, acessos e limites operacionais com segurança.</p>
+                        </div>
+                        
+                        <div class="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div class="w-full sm:w-1/2">
+                                <div class="flex justify-between text-xs font-semibold text-navy mb-1">
+                                    <span>Progresso da Aula</span>
+                                    <span>4/10 Lições</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-trustblue rounded-full" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            <button onclick="window.location.href='Tela 4 - Detalhe do conteúdo.html'" class="w-full sm:w-auto px-6 py-3 bg-trustblue hover:bg-blue-800 text-white text-sm font-bold rounded-xl transition-colors shadow-lg shadow-trustblue/30 flex items-center justify-center gap-2 group whitespace-nowrap">
+                                Continuar Aula <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Locked Course Card 1 -->
+                <div class="bento-card p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-stretch relative opacity-70 hover:opacity-100 transition-opacity">
+                    <!-- Connector lines -->
+                    <div class="hidden sm:block absolute -top-6 left-16 w-1 h-6 bg-gray-200 z-0"></div>
+                    <div class="hidden sm:block absolute -bottom-6 left-16 w-1 h-6 bg-gray-200 z-0"></div>
+
+                    <div class="w-full sm:w-48 h-32 rounded-xl overflow-hidden relative flex-shrink-0 bg-gray-100 border border-gray-200 flex items-center justify-center">
+                        <i class="fa-solid fa-lock text-3xl text-gray-400"></i>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col justify-center w-full">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lock text-gray-400 text-xs"></i>
+                            <span class="text-xs font-bold text-gray-500 uppercase">Bloqueado</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-400 mb-2">Análise de Performance de Equipes</h3>
+                        <p class="text-sm text-gray-400">Desbloqueia após concluir "Gestão de Subcontas e Permissões".</p>
+                    </div>
+                </div>
+
+                <!-- Locked Course Card 2 -->
+                 <div class="bento-card p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-stretch relative opacity-70 hover:opacity-100 transition-opacity">
+                    <!-- Connector line -->
+                    <div class="hidden sm:block absolute -top-6 left-16 w-1 h-6 bg-gray-200 z-0"></div>
+
+                    <div class="w-full sm:w-48 h-32 rounded-xl overflow-hidden relative flex-shrink-0 bg-gray-100 border border-gray-200 flex items-center justify-center">
+                        <i class="fa-solid fa-lock text-3xl text-gray-400"></i>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col justify-center w-full">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lock text-gray-400 text-xs"></i>
+                            <span class="text-xs font-bold text-gray-500 uppercase">Bloqueado</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-400 mb-2">Estratégias de Escalonamento</h3>
+                        <p class="text-sm text-gray-400">Módulo final. Desbloqueia após concluir todos os módulos anteriores.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sidebar Content (Resources & Community - 30%) -->
+            <div class="lg:w-[30%] flex flex-col gap-6">
+                
+                <!-- Container 1: Material de Apoio -->
+                <div class="bento-card p-6">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-trustblue/10 flex items-center justify-center text-trustblue">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-navy">Material de Apoio</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- Item 1 -->
+                        <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl transition-colors group cursor-pointer border border-transparent hover:border-gray-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded bg-red-50 flex items-center justify-center text-red-500">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-navy group-hover:text-trustblue transition-colors">Guia de Permissões</p>
+                                    <p class="text-xs text-gray-500">2.4 MB • PDF</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-300 group-hover:text-trustblue transition-colors">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl transition-colors group cursor-pointer border border-transparent hover:border-gray-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded bg-green-50 flex items-center justify-center text-green-600">
+                                    <i class="fa-solid fa-file-excel"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-navy group-hover:text-trustblue transition-colors">Planilha de Metas KPI</p>
+                                    <p class="text-xs text-gray-500">1.1 MB • XLSX</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-300 group-hover:text-trustblue transition-colors">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
+
+                         <!-- Item 3 -->
+                         <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl transition-colors group cursor-pointer border border-transparent hover:border-gray-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded bg-red-50 flex items-center justify-center text-red-500">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-navy group-hover:text-trustblue transition-colors">Checklist de Onboarding</p>
+                                    <p class="text-xs text-gray-500">850 KB • PDF</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-300 group-hover:text-trustblue transition-colors">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full mt-4 py-2 text-sm font-bold text-trustblue hover:bg-trustblue/5 rounded-lg transition-colors">
+                        Ver todos os materiais
+                    </button>
+                </div>
+
+                <!-- Container 2: Comunidade da Trilha -->
+                <div class="bento-card p-6 bg-gradient-to-br from-white to-gray-50/50 border border-gray-100 relative overflow-hidden">
+                    <!-- Decorative element -->
+                    <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-trustblue/5 rounded-full blur-2xl"></div>
+
+                    <div class="flex flex-col items-center text-center relative z-10">
+                        <div class="w-12 h-12 rounded-xl bg-trustblue/10 flex items-center justify-center text-trustblue mb-4">
+                            <i class="fa-solid fa-users text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-navy mb-1">Comunidade da Trilha</h3>
+                        <p class="text-sm text-gray-500 mb-6 px-2">Junte-se a 4.500 mestres certificados e troque experiências.</p>
+                        
+                        <div class="flex -space-x-3 mb-6">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User 1">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User 2">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm z-10" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User 3">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm z-20" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User 4">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-600 shadow-sm z-30">
+                                +4k
+                            </div>
+                        </div>
+
+                        <button class="w-full py-2.5 bg-white border border-gray-200 hover:border-trustblue hover:text-trustblue text-navy text-sm font-bold rounded-xl transition-all shadow-sm">
+                            Acessar Fórum
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

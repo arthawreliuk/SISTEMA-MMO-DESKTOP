@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Campaign Status Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            purewhite: '#FFFFFF',
+                            gray: '#9CA3AF',
+                            lightgray: '#F1F5F9'
+                        },
+                        status: {
+                            green: { bg: '#ECFDF5', text: '#059669' },
+                            orange: { bg: '#FFF7ED', text: '#EA580C' },
+                            gray: { bg: '#F3F4F6', text: '#4B5563' },
+                            red: { bg: '#FEF2F2', text: '#DC2626' }
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 24px -4px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.02)',
+                        'nav': '0 2px 12px rgba(0, 0, 0, 0.03)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked { right: 0; border-color: #0016dc; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #0016dc; }
+        .toggle-checkbox:checked + .toggle-label:after { transform: translateX(100%); border-color: white; }
+    </style>
+</head>
+<body class="min-h-screen bg-brand-offwhite font-sans text-brand-navy antialiased">
+
+    <!-- Top Navigation / Ads Control Bar -->
+    <header id="header" class="sticky top-0 z-50 bg-brand-purewhite shadow-nav border-b border-brand-lightgray/50">
+        <div class="max-w-[1200px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <!-- Breadcrumb -->
+            <div class="flex items-center gap-3 text-sm font-medium">
+                <a href="#" class="text-brand-gray hover:text-brand-navy transition-colors">Central de Ads</a>
+                <i class="fa-solid fa-chevron-right text-[10px] text-brand-gray/50"></i>
+                <span class="text-brand-navy font-semibold">Gerenciador</span>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-6">
+                <!-- User Profile -->
+                <div class="flex items-center gap-3 pl-6 border-l border-brand-lightgray">
+                    <div class="text-right hidden md:block">
+                        <p class="text-sm font-semibold text-brand-navy">Phillip Geidt</p>
+                        <p class="text-[12px] text-brand-gray">geidt@mail.com</p>
+                    </div>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-10 h-10 rounded-full object-cover border-2 border-brand-lightgray">
+                </div>
+                
+                <!-- CTA -->
+                <button onclick="window.location.href='Tela 2 - Criação de campanha.html'" class="h-10 px-5 bg-brand-blue hover:bg-brand-blue/90 text-white rounded-full text-sm font-semibold flex items-center gap-2 transition-all shadow-[0_4px_12px_rgba(0,22,220,0.2)]">
+                    <i class="fa-solid fa-plus text-[12px]"></i>
+                    Nova Campanha
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-[1200px] mx-auto px-6 py-8 pb-24 flex flex-col gap-6">
+
+        <!-- Performance Summary Cards -->
+        <section id="performance-summary" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-brand-purewhite rounded-[24px] p-6 shadow-ambient border border-brand-lightgray/30">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-sm font-semibold text-brand-gray">Orçamento Total</h3>
+                    <button class="text-brand-gray hover:text-brand-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div class="flex items-end gap-4">
+                    <h2 class="text-3xl font-bold text-brand-navy">R$ 124.500,00</h2>
+                    <span class="bg-status-green-bg text-status-green-text text-xs font-bold px-2.5 py-1 rounded-full mb-1">+12%</span>
+                </div>
+            </div>
+            
+            <div class="bg-brand-purewhite rounded-[24px] p-6 shadow-ambient border border-brand-lightgray/30">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-sm font-semibold text-brand-gray">Custo por Clique (CPC)</h3>
+                    <button class="text-brand-gray hover:text-brand-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div class="flex items-end gap-4">
+                    <h2 class="text-3xl font-bold text-brand-navy">R$ 1,42</h2>
+                    <span class="bg-status-red-bg text-status-red-text text-xs font-bold px-2.5 py-1 rounded-full mb-1">-3%</span>
+                </div>
+            </div>
+
+            <div class="bg-brand-purewhite rounded-[24px] p-6 shadow-ambient border border-brand-lightgray/30">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-sm font-semibold text-brand-gray">Conversões Ativas</h3>
+                    <button class="text-brand-gray hover:text-brand-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div class="flex items-end gap-4">
+                    <h2 class="text-3xl font-bold text-brand-navy">8,492</h2>
+                    <span class="bg-status-green-bg text-status-green-text text-xs font-bold px-2.5 py-1 rounded-full mb-1">+24%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Data Grid Area -->
+        <section id="campaign-grid" class="bg-brand-purewhite rounded-[24px] shadow-ambient border border-brand-lightgray/30 flex flex-col overflow-hidden">
+            
+            <!-- Macro Filters Strip -->
+            <div class="p-6 border-b border-brand-lightgray flex flex-col md:flex-row justify-between items-center gap-4">
+                <!-- Left Tabs -->
+                <div class="flex bg-brand-lightgray/50 p-1 rounded-full">
+                    <button class="px-5 py-2 text-sm font-semibold rounded-full bg-brand-purewhite text-brand-navy shadow-sm transition-all">Todas as Campanhas</button>
+                    <button class="px-5 py-2 text-sm font-semibold rounded-full text-brand-gray hover:text-brand-navy transition-all">Ativas</button>
+                    <button class="px-5 py-2 text-sm font-semibold rounded-full text-brand-gray hover:text-brand-navy transition-all">Concluídas</button>
+                </div>
+
+                <!-- Right Controls -->
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-brand-gray text-sm"></i>
+                        <input type="text" placeholder="Buscar campanha..." class="h-10 pl-10 pr-4 rounded-full border border-brand-lightgray text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue w-64">
+                    </div>
+                    <button class="h-10 px-5 rounded-full border border-brand-lightgray text-sm font-semibold text-brand-navy flex items-center gap-2 hover:bg-brand-lightgray/50 transition-colors">
+                        <i class="fa-regular fa-calendar text-brand-gray"></i>
+                        Últimos 7 dias
+                        <i class="fa-solid fa-chevron-down text-[10px] ml-1 text-brand-gray"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Master Status Table -->
+            <div class="w-full overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-brand-lightgray">
+                            <th class="py-5 px-6 text-[13px] font-semibold text-brand-gray uppercase tracking-wider">Campanha</th>
+                            <th class="py-5 px-6 text-[13px] font-semibold text-brand-gray uppercase tracking-wider">Status</th>
+                            <th class="py-5 px-6 text-[13px] font-semibold text-brand-gray uppercase tracking-wider">Entrega</th>
+                            <th class="py-5 px-6 text-[13px] font-semibold text-brand-gray uppercase tracking-wider">Orçamento Consumido</th>
+                            <th class="py-5 px-6 text-[13px] font-semibold text-brand-gray uppercase tracking-wider text-right">Ação Rápida</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-brand-lightgray/60">
+                        
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-brand-lightgray/20 transition-colors group">
+                            <td class="py-5 px-6">
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-brand-navy text-[15px]">Black Friday 2024 - Remarketing</span>
+                                    <span class="text-xs text-brand-gray mt-1">ID: #CMP-8821 • Meta Ads</span>
+                                </div>
+                            </td>
+                            <td class="py-5 px-6">
+                                <span class="inline-flex items-center gap-1.5 bg-status-green-bg text-status-green-text px-3 py-1.5 rounded-full text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-green-text"></span>
+                                    Rodando
+                                </span>
+                            </td>
+                            <td class="py-5 px-6">
+                                <div class="flex flex-col">
+                                    <span class="font-semibold text-brand-navy">1.2M Impressões</span>
+                                    <span class="text-xs text-brand-gray mt-1">45k Cliques</span>
+                                </div>
+                            </td>
+                            <td class="py-5 px-6">
+                                <div class="flex flex-col">
+                                    <span class="font-semibold text-brand-navy">R$ 15.420,00</span>
+                                    <div class="w-32 h-1.5 bg-brand-lightgray rounded-full mt-2 overflow-hidden">
+                                        <div class="h-full bg-brand-blue w-[65%] rounded-full"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-5 px-6 text-right">
+                                <div class="flex items-center justify-end gap-4">
+                                    <button class="w-8 h-8 rounded-full bg-brand-lightgray/50 text-brand-gray hover:text-brand-blue hover:bg-brand-blue/10 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-chart-simple text-[13px]"></i>
+                                    </button>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" value="" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-brand-lightgray peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-blue"></div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-brand-lightgray/20 transition-colors group">
+                            <td class="py-5 px-6">
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-brand-navy text-[15px]">Lançamento Produto X - Topo de Funil</span>
+                                    <span class="text-xs text-brand-gray mt-1">ID: #CMP-8822 • Google Ads</span>
+                                </div>
+                            </td>
+                            <td class="py-5 px-6">
+                                <span class="inline-flex items-center gap-1.5 bg-status-orange-bg text-status-orange-text px-3 py-1.5 rounded-full text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-orange-text"></span>
+                                    Em Análise
+                                </span>
+                            </td>
+                            <td class="py-5 px-6">
+                                <div class="flex flex-col">
+                                    <span class="font-semibold text-brand-navy">0 Impressões</span>
+                                    <span class="text-xs text-brand-gray mt-1">Aguardando aprovação</span>
+                                </div>
+                            </td>
+                            <td class="py-5 px-6">
+                                <div class="flex flex-col">
+                                    <span class="font-semibold text-brand-navy">R$ 0,00</span>
+                                    <div class="w-32 h-1.5 bg-brand-lightgray rounded-full mt-2 overflow-hidden">
+                                        <div class="h-full bg-brand-blue w-0 rounded-full"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-5 px-6 text-right">
+                                <div class="flex items-center justify-end gap-4">
+                                    <button class="w-8 h-8 rounded-full bg-brand-lightgray/50 text-brand-gray hover:text-brand-blue hover:bg-brand-blue/10 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-chart-simple text-[13px]"></i>
+                                    </button>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" value="" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-brand-lightgray peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-blue"></div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-brand-lightgray/20 transition-colors group opacity-70">
+                            <td class="py-5 px-6">
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-brand-navy text-[15px]">Campanha Institucional Q3</span>
+                                    <span class="text-xs text-brand-gray mt-1">ID: #CMP-8790 • LinkedIn Ads</span>
+                                </div>
+                            </td>
+                            <td class="py-5 px-6">
+                                <span class="inline-flex items-center gap-1.5 bg-status-gray-bg text-status-gray-text px-3 py-1.5 rounded-full text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-status-gray-text"></span>
+                                    Pausada
+                                </span>
+                            </td>
+                            <td class="py-5 px-6">
+                                <div class="flex flex-col">
+                                    <span class="font-semibold text-brand-navy">850k Impressões</span>
+                                    <span class="text-xs text-brand-gray mt-1">12k Cliques</span>
+                                </div>
+                            </td>
+                            <td class="py-5 px-6">
+                                <div class="flex flex-col">
+                                    <span class="font-semibold text-brand-navy">R$ 8.900,00</span>
+                                    <div class="w-32 h-1.5 bg-brand-lightgray rounded-full mt-2 overflow-hidden">
+                                        <div class="h-full bg-brand-blue w-[100%] rounded-full opacity-50"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-5 px-6 text-right">
+                                <div class="flex items-center justify-end gap-4">
+                                    <button class="w-8 h-8 rounded-full bg-brand-lightgray/50 text-brand-gray hover:text-brand-blue hover:bg-brand-blue/10 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-chart-simple text-[13px]"></i>
+                                    </button>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" value="" class="sr-only peer">
+                                        <div class="w-11 h-6 bg-brand-lightgray peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-blue"></div>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination Footer -->
+            <div class="p-6 border-t border-brand-lightgray flex justify-between items-center bg-brand-purewhite">
+                <span class="text-sm text-brand-gray">Mostrando 1 a 3 de 24 campanhas</span>
+                <div class="flex gap-2">
+                    <button class="w-8 h-8 rounded-full border border-brand-lightgray flex items-center justify-center text-brand-gray hover:text-brand-navy hover:bg-brand-lightgray transition-colors"><i class="fa-solid fa-chevron-left text-[10px]"></i></button>
+                    <button class="w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center text-sm font-semibold">1</button>
+                    <button class="w-8 h-8 rounded-full border border-brand-lightgray flex items-center justify-center text-brand-navy hover:bg-brand-lightgray transition-colors text-sm font-semibold">2</button>
+                    <button class="w-8 h-8 rounded-full border border-brand-lightgray flex items-center justify-center text-brand-navy hover:bg-brand-lightgray transition-colors text-sm font-semibold">3</button>
+                    <button class="w-8 h-8 rounded-full border border-brand-lightgray flex items-center justify-center text-brand-gray hover:text-brand-navy hover:bg-brand-lightgray transition-colors"><i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer id="footer" class="border-t border-brand-lightgray/50 bg-brand-purewhite mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-brand-blue rounded flex items-center justify-center text-white text-[10px]">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <span class="font-bold text-brand-navy">Finve Ads</span>
+            </div>
+            <div class="flex items-center gap-6 text-sm text-brand-gray">
+                <a href="#" class="hover:text-brand-navy transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-brand-navy transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-brand-navy transition-colors">Suporte</a>
+            </div>
+            <p class="text-sm text-brand-gray">© 2024 Finve Ads Platform.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

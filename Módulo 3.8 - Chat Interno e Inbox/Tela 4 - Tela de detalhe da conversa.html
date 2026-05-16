@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Chat - MMO Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        offwhite: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        bubble: '#F0F2F5',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'card': '0 10px 30px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CBD5E1; }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden font-sans bg-offwhite">
+
+    <!-- Top Navigation -->
+    <header id="top-nav" class="w-full bg-surface h-16 flex items-center justify-between px-8 shadow-soft z-10 shrink-0">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-xl">M</div>
+            <span class="font-bold text-navy text-lg tracking-tight">MMO Platform</span>
+        </div>
+        <nav class="flex items-center gap-6">
+            <a href="#" class="text-gray-500 hover:text-navy font-medium text-sm transition-colors">Dashboard</a>
+            <a href="#" class="text-gray-500 hover:text-navy font-medium text-sm transition-colors">Properties</a>
+            <div class="relative flex items-center gap-1 cursor-pointer group">
+                <span class="text-primary font-semibold text-sm">Messages</span>
+                <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+            </div>
+            <a href="#" class="text-gray-500 hover:text-navy font-medium text-sm transition-colors">Clients</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button class="w-10 h-10 rounded-full bg-offwhite flex items-center justify-center text-gray-500 hover:text-navy transition-colors">
+                <i class="fa-regular fa-bell"></i>
+            </button>
+            <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-surface shadow-sm cursor-pointer">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main id="main-workspace" class="flex-1 w-full max-w-[1200px] mx-auto my-6 bg-surface rounded-[24px] shadow-card flex overflow-hidden border border-gray-100">
+        
+        <!-- Left Panel: Inbox (25%) -->
+        <section id="panel-inbox" class="w-1/4 min-w-[280px] border-r border-gray-100 flex flex-col bg-surface z-10">
+            <div class="p-5 border-b border-gray-50 flex items-center justify-between shrink-0">
+                <h2 class="font-bold text-navy text-lg">Messages</h2>
+                <button class="w-8 h-8 rounded-full bg-offwhite flex items-center justify-center text-gray-500 hover:text-primary transition-colors">
+                    <i class="fa-solid fa-pen-to-square text-sm"></i>
+                </button>
+            </div>
+            <div class="p-4 shrink-0">
+                <div class="relative w-full">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" placeholder="Search chats..." class="w-full bg-offwhite text-sm text-navy rounded-full py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-gray-400">
+                </div>
+            </div>
+            <div class="flex-1 overflow-y-auto p-2 space-y-1">
+                <!-- Active Chat Item -->
+                <div class="flex items-center gap-3 p-3 rounded-2xl bg-primary/5 cursor-pointer relative group">
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full"></div>
+                    <div class="relative">
+                        <div class="w-12 h-12 rounded-full overflow-hidden shrink-0">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-surface rounded-full"></div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-baseline mb-0.5">
+                            <h3 class="font-semibold text-navy text-sm truncate">Mariana Silva</h3>
+                            <span class="text-xs font-medium text-primary">10:42</span>
+                        </div>
+                        <p class="text-xs text-primary font-medium truncate">Ok, combinado para amanhã!</p>
+                    </div>
+                </div>
+                
+                <!-- Other Chat Items -->
+                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-offwhite cursor-pointer transition-colors group">
+                    <div class="w-12 h-12 rounded-full overflow-hidden shrink-0">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-baseline mb-0.5">
+                            <h3 class="font-medium text-navy text-sm truncate">Carlos Eduardo</h3>
+                            <span class="text-xs text-gray-400">Ontem</span>
+                        </div>
+                        <p class="text-xs text-gray-500 truncate">Pode me enviar as fotos?</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-offwhite cursor-pointer transition-colors group">
+                    <div class="w-12 h-12 rounded-full overflow-hidden shrink-0">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-baseline mb-0.5">
+                            <h3 class="font-medium text-navy text-sm truncate">Fernanda Costa</h3>
+                            <span class="text-xs text-gray-400">Terça</span>
+                        </div>
+                        <p class="text-xs text-gray-500 truncate">Vou analisar a proposta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Center Panel: The Conversation (50%) -->
+        <section id="panel-chat" class="w-2/4 flex flex-col bg-[#FAFAFC] relative">
+            <!-- Chat Header -->
+            <div class="h-20 bg-surface/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between px-6 shrink-0 sticky top-0 z-20">
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full overflow-hidden">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-surface rounded-full"></div>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-navy text-base">Mariana Silva</h2>
+                        <p class="text-xs text-gray-500 font-medium">Online agora</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button class="w-9 h-9 rounded-full bg-offwhite flex items-center justify-center text-gray-500 hover:text-navy transition-colors">
+                        <i class="fa-solid fa-phone text-sm"></i>
+                    </button>
+                    <button class="w-9 h-9 rounded-full bg-offwhite flex items-center justify-center text-gray-500 hover:text-navy transition-colors">
+                        <i class="fa-solid fa-video text-sm"></i>
+                    </button>
+                    <button class="w-9 h-9 rounded-full bg-offwhite flex items-center justify-center text-gray-500 hover:text-navy transition-colors">
+                        <i class="fa-solid fa-ellipsis-vertical text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Feed -->
+            <div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
+                <!-- Date Pill -->
+                <div class="flex justify-center">
+                    <span class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-500 text-xs font-semibold tracking-wide">Hoje</span>
+                </div>
+
+                <!-- Receiver Message -->
+                <div class="flex gap-3 max-w-[85%]">
+                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 mt-auto">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="bg-surface border border-gray-100 px-5 py-3 rounded-2xl rounded-bl-sm shadow-sm">
+                            <p class="text-sm text-navy leading-relaxed">Olá! Gostei muito do imóvel que vimos ontem. Gostaria de agendar uma nova visita técnica para levar meu arquiteto.</p>
+                        </div>
+                        <span class="text-[10px] text-gray-400 ml-1">09:15</span>
+                    </div>
+                </div>
+
+                <!-- Sender Message -->
+                <div class="flex gap-3 max-w-[85%] self-end flex-row-reverse">
+                    <div class="flex flex-col gap-1 items-end">
+                        <div class="bg-primary px-5 py-3 rounded-2xl rounded-br-sm shadow-[0_4px_14px_rgba(0,22,220,0.25)]">
+                            <p class="text-sm text-white leading-relaxed">Olá Mariana! Que ótima notícia. Claro, podemos agendar sim. Qual seria o melhor horário amanhã para vocês?</p>
+                        </div>
+                        <div class="flex items-center gap-1 mr-1">
+                            <span class="text-[10px] text-gray-400">09:30</span>
+                            <i class="fa-solid fa-check-double text-[10px] text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Receiver Message -->
+                <div class="flex gap-3 max-w-[85%]">
+                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 mt-auto">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="bg-surface border border-gray-100 px-5 py-3 rounded-2xl rounded-bl-sm shadow-sm">
+                            <p class="text-sm text-navy leading-relaxed">Pode ser às 14h? Fica bom para ele.</p>
+                        </div>
+                        <span class="text-[10px] text-gray-400 ml-1">09:45</span>
+                    </div>
+                </div>
+
+                <!-- Sender Message -->
+                <div class="flex gap-3 max-w-[85%] self-end flex-row-reverse">
+                    <div class="flex flex-col gap-1 items-end">
+                        <div class="bg-primary px-5 py-3 rounded-2xl rounded-br-sm shadow-[0_4px_14px_rgba(0,22,220,0.25)]">
+                            <p class="text-sm text-white leading-relaxed">Perfeito! Vou confirmar no sistema e já te aviso.</p>
+                        </div>
+                        <div class="flex items-center gap-1 mr-1">
+                            <span class="text-[10px] text-gray-400">09:50</span>
+                            <i class="fa-solid fa-check-double text-[10px] text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Event Pill -->
+                <div class="flex justify-center my-4">
+                    <div class="bg-surface border border-gray-200 shadow-sm px-6 py-2.5 rounded-full flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-calendar-check text-primary text-xs"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-navy">A visita técnica foi confirmada para amanhã, 14h</span>
+                    </div>
+                </div>
+
+                <!-- Receiver Message -->
+                <div class="flex gap-3 max-w-[85%]">
+                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 mt-auto">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="bg-surface border border-gray-100 px-5 py-3 rounded-2xl rounded-bl-sm shadow-sm">
+                            <p class="text-sm text-navy leading-relaxed">Ok, combinado para amanhã!</p>
+                        </div>
+                        <span class="text-[10px] text-gray-400 ml-1">10:42</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="p-4 bg-[#FAFAFC] shrink-0 pb-6">
+                <!-- Quick Actions (Ghost Pills) -->
+                <div class="flex gap-2 mb-3 px-2 overflow-x-auto no-scrollbar">
+                    <button class="px-4 py-1.5 rounded-full bg-white border border-gray-200 text-xs font-medium text-navy hover:border-primary hover:text-primary transition-all shadow-sm whitespace-nowrap">
+                        <i class="fa-solid fa-file-invoice-dollar mr-1.5 opacity-70"></i> Enviar Tabela de Preços
+                    </button>
+                    <button class="px-4 py-1.5 rounded-full bg-white border border-gray-200 text-xs font-medium text-navy hover:border-primary hover:text-primary transition-all shadow-sm whitespace-nowrap">
+                        <i class="fa-solid fa-location-dot mr-1.5 opacity-70"></i> Pedir Endereço
+                    </button>
+                    <button class="px-4 py-1.5 rounded-full bg-white border border-gray-200 text-xs font-medium text-navy hover:border-primary hover:text-primary transition-all shadow-sm whitespace-nowrap">
+                        <i class="fa-solid fa-calendar-plus mr-1.5 opacity-70"></i> Agendar Reunião
+                    </button>
+                </div>
+
+                <!-- Input Field -->
+                <div class="bg-surface rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-gray-100 flex items-center p-1.5 px-2">
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-navy transition-colors shrink-0">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </button>
+                    <input type="text" placeholder="Digite sua mensagem..." class="flex-1 bg-transparent border-none outline-none text-sm text-navy px-3 placeholder:text-gray-400">
+                    <button class="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-navy transition-colors shrink-0 mr-1">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </button>
+                    <button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 hover:bg-primary/90 transition-colors shadow-[0_4px_10px_rgba(0,22,220,0.3)]">
+                        <i class="fa-solid fa-paper-plane text-sm -ml-0.5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Deal Context / CRM (25%) -->
+        <section id="panel-crm" class="w-1/4 min-w-[300px] border-l border-gray-100 bg-surface flex flex-col z-10 p-6">
+            
+            <!-- Client Info Card -->
+            <div class="flex flex-col items-center text-center mb-8">
+                <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-offwhite shadow-sm mb-3">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Client" class="w-full h-full object-cover">
+                </div>
+                <h2 class="font-bold text-navy text-lg">Mariana Silva</h2>
+                <div class="flex items-center gap-1.5 text-gray-500 text-sm mt-1">
+                    <i class="fa-solid fa-location-dot text-xs text-gray-400"></i>
+                    <span>Camboriú, SC</span>
+                </div>
+                
+                <div class="flex gap-2 mt-4 w-full">
+                    <button class="flex-1 py-2 rounded-xl bg-offwhite text-navy font-semibold text-sm hover:bg-gray-100 transition-colors border border-gray-100">
+                        Perfil
+                    </button>
+                    <button class="w-10 rounded-xl bg-offwhite text-navy flex items-center justify-center hover:bg-gray-100 transition-colors border border-gray-100">
+                        <i class="fa-solid fa-envelope text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Deal Status Stepper -->
+            <div class="flex-1">
+                <h3 class="font-bold text-navy text-sm uppercase tracking-wider mb-5">Status da Negociação</h3>
+                
+                <div class="relative pl-3 space-y-6">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-[17px] top-2 bottom-6 w-[2px] bg-gray-100 rounded-full"></div>
+                    <div class="absolute left-[17px] top-2 h-[45%] w-[2px] bg-primary rounded-full"></div>
+
+                    <!-- Step 1 -->
+                    <div class="relative flex items-start gap-4 group">
+                        <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-[0_0_0_4px_white] z-10">
+                            <i class="fa-solid fa-check text-white text-[10px]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy text-sm">Contato Inicial</h4>
+                            <p class="text-xs text-gray-500 mt-0.5">Finalizado em 12/04</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 (Active) -->
+                    <div class="relative flex items-start gap-4 group">
+                        <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-[0_0_0_4px_white,0_2px_8px_rgba(0,22,220,0.3)] z-10">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primary text-sm">Visita Técnica</h4>
+                            <p class="text-xs text-gray-500 mt-0.5">Agendada para amanhã, 14h</p>
+                            <div class="mt-2 bg-blue-50 border border-blue-100 rounded-lg p-2.5 flex items-center gap-2">
+                                <i class="fa-solid fa-house-chimney text-primary/70 text-xs"></i>
+                                <span class="text-xs font-semibold text-primary">Apt 402 - Ed. Splendour</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 (Pending) -->
+                    <div class="relative flex items-start gap-4 group opacity-60">
+                        <div class="w-6 h-6 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shrink-0 shadow-[0_0_0_4px_white] z-10">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy text-sm">Orçamento</h4>
+                            <p class="text-xs text-gray-500 mt-0.5">Pendente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Primary Action CTA -->
+            <div class="pt-6 mt-auto">
+                <button class="w-full py-4 rounded-full bg-primary text-white font-bold text-sm shadow-[0_8px_24px_rgba(0,22,220,0.3)] hover:bg-primary/90 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    Gerar Recibo de Pagamento
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

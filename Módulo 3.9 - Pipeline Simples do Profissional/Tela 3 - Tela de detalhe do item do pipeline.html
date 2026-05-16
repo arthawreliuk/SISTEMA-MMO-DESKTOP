@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Item Detail / Deal Record</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#1A1A24',
+                            light: '#4B5563',
+                        },
+                        trust: {
+                            blue: '#0016dc',
+                            light: '#E6E8FB',
+                        },
+                        offwhite: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        success: {
+                            bg: '#ECFDF5',
+                            text: '#059669',
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="m-0 p-0 bg-offwhite text-navy min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-surface border-b border-border sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-trust-blue rounded-xl flex items-center justify-center text-white font-bold text-xl">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight">MMO Platform</span>
+            </div>
+            <nav class="flex items-center gap-8">
+                <a href="#" class="text-navy-light hover:text-navy font-medium transition-colors">Dashboard</a>
+                <a href="#" class="text-navy-light hover:text-navy font-medium transition-colors">Clientes</a>
+                <div class="relative group">
+                    <a href="#" class="text-navy font-semibold">Orders</a>
+                    <div class="absolute -bottom-7 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-trust-blue rounded-full"></div>
+                </div>
+                <a href="#" class="text-navy-light hover:text-navy font-medium transition-colors">Relatórios</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-navy-light hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <button class="w-10 h-10 rounded-full overflow-hidden border border-border">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-full h-full object-cover">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-1 max-w-[1200px] mx-auto w-full px-6 py-8 flex flex-col gap-6">
+
+        <!-- Control Header Bar -->
+        <section id="control-header" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-2 text-sm text-navy-light font-medium">
+                    <a href="#" class="hover:text-trust-blue transition-colors">Pipeline</a>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-navy">Detalhes do Negócio</span>
+                </div>
+                <h1 class="text-2xl font-bold text-navy">Projeto de Identidade Visual - TechCorp</h1>
+            </div>
+            
+            <div class="flex items-center gap-3 bg-surface border border-border rounded-full p-1.5 pl-4 pr-1.5 shadow-sm">
+                <span class="text-sm font-medium text-navy-light">Status Atual:</span>
+                <button class="flex items-center gap-2 bg-trust-light text-trust-blue px-4 py-2 rounded-full text-sm font-bold transition-colors hover:bg-blue-100">
+                    <span class="w-2 h-2 rounded-full bg-trust-blue"></span>
+                    Em Orçamento
+                    <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Asymmetrical 2-Columns Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Column (Deal Core & Timeline - 65%) -->
+            <div class="lg:col-span-8 flex flex-col gap-6">
+                
+                <!-- Core Deal Card -->
+                <div id="deal-core" class="bg-surface rounded-[24px] shadow-ambient border border-border p-8 flex flex-col gap-8">
+                    
+                    <!-- Pipeline Tracker -->
+                    <div class="flex flex-col gap-4">
+                        <h2 class="text-lg font-bold text-navy">Progresso do Negócio</h2>
+                        <div class="relative flex items-center justify-between pt-2 pb-6">
+                            <!-- Background Line -->
+                            <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 z-0 rounded-full"></div>
+                            <!-- Active Line -->
+                            <div class="absolute top-1/2 left-0 w-[40%] h-1 bg-trust-blue -translate-y-1/2 z-0 rounded-full"></div>
+                            
+                            <!-- Stages -->
+                            <div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer">
+                                <div class="w-8 h-8 rounded-full bg-trust-blue text-white flex items-center justify-center shadow-md">
+                                    <i class="fa-solid fa-check text-sm"></i>
+                                </div>
+                                <span class="text-xs font-bold text-trust-blue absolute -bottom-6 whitespace-nowrap">Contato Inicial</span>
+                            </div>
+                            <div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer">
+                                <div class="w-8 h-8 rounded-full border-2 border-trust-blue bg-surface text-trust-blue flex items-center justify-center shadow-sm">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-trust-blue"></div>
+                                </div>
+                                <span class="text-xs font-bold text-trust-blue absolute -bottom-6 whitespace-nowrap">Em Orçamento</span>
+                            </div>
+                            <div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer">
+                                <div class="w-8 h-8 rounded-full border-2 border-border bg-surface text-gray-300 flex items-center justify-center transition-colors group-hover:border-gray-400">
+                                    <span class="w-2 h-2 rounded-full bg-transparent"></span>
+                                </div>
+                                <span class="text-xs font-medium text-navy-light absolute -bottom-6 whitespace-nowrap">Aprovação</span>
+                            </div>
+                            <div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer">
+                                <div class="w-8 h-8 rounded-full border-2 border-border bg-surface text-gray-300 flex items-center justify-center transition-colors group-hover:border-gray-400">
+                                    <span class="w-2 h-2 rounded-full bg-transparent"></span>
+                                </div>
+                                <span class="text-xs font-medium text-navy-light absolute -bottom-6 whitespace-nowrap">Execução</span>
+                            </div>
+                            <div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer">
+                                <div class="w-8 h-8 rounded-full border-2 border-border bg-surface text-gray-300 flex items-center justify-center transition-colors group-hover:border-gray-400">
+                                    <span class="w-2 h-2 rounded-full bg-transparent"></span>
+                                </div>
+                                <span class="text-xs font-medium text-navy-light absolute -bottom-6 whitespace-nowrap">Finalizado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-border">
+
+                    <!-- Job Requirements -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-bold text-navy">Requisitos do Serviço</h2>
+                            <button class="text-sm font-semibold text-trust-blue hover:underline">Editar Detalhes</button>
+                        </div>
+                        <div class="bg-offwhite rounded-2xl p-5 border border-border">
+                            <p class="text-navy-light leading-relaxed text-sm">
+                                O cliente necessita de uma reformulação completa da identidade visual, incluindo novo logotipo, paleta de cores institucional, tipografia primária e secundária, e manual de marca em PDF (mínimo 20 páginas). Adicionalmente, solicitaram templates para redes sociais (Instagram e LinkedIn) e design de papelaria básica (cartão de visita e papel timbrado). Prazo estipulado para primeira entrega é de 15 dias após aprovação do orçamento.
+                            </p>
+                            
+                            <div class="mt-6 flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-surface border border-border rounded-full text-xs font-semibold text-navy flex items-center gap-2">
+                                    <i class="fa-solid fa-tag text-navy-light"></i> Branding
+                                </span>
+                                <span class="px-3 py-1.5 bg-surface border border-border rounded-full text-xs font-semibold text-navy flex items-center gap-2">
+                                    <i class="fa-solid fa-tag text-navy-light"></i> Design Gráfico
+                                </span>
+                                <span class="px-3 py-1.5 bg-surface border border-border rounded-full text-xs font-semibold text-navy flex items-center gap-2">
+                                    <i class="fa-regular fa-clock text-navy-light"></i> Alta Prioridade
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Document Viewer -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-md font-bold text-navy">Anexos & Documentos</h3>
+                            <button class="w-8 h-8 rounded-full bg-offwhite border border-border flex items-center justify-center text-navy hover:bg-gray-100 transition-colors">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <!-- Doc 1 -->
+                            <div class="border border-border rounded-xl p-3 flex flex-col gap-3 hover:border-trust-blue hover:shadow-sm transition-all cursor-pointer group">
+                                <div class="h-24 bg-red-50 rounded-lg flex items-center justify-center text-red-500">
+                                    <i class="fa-solid fa-file-pdf text-3xl"></i>
+                                </div>
+                                <div class="flex flex-col gap-0.5">
+                                    <span class="text-sm font-semibold text-navy truncate group-hover:text-trust-blue transition-colors">Briefing_Inicial.pdf</span>
+                                    <span class="text-xs text-navy-light">2.4 MB • Ontem</span>
+                                </div>
+                            </div>
+                            <!-- Doc 2 -->
+                            <div class="border border-border rounded-xl p-3 flex flex-col gap-3 hover:border-trust-blue hover:shadow-sm transition-all cursor-pointer group">
+                                <div class="h-24 bg-blue-50 rounded-lg flex items-center justify-center text-blue-500">
+                                    <i class="fa-solid fa-file-word text-3xl"></i>
+                                </div>
+                                <div class="flex flex-col gap-0.5">
+                                    <span class="text-sm font-semibold text-navy truncate group-hover:text-trust-blue transition-colors">Requisitos_V2.docx</span>
+                                    <span class="text-xs text-navy-light">1.1 MB • 12 Abr</span>
+                                </div>
+                            </div>
+                            <!-- Image -->
+                            <div class="border border-border rounded-xl p-3 flex flex-col gap-3 hover:border-trust-blue hover:shadow-sm transition-all cursor-pointer group">
+                                <div class="h-24 rounded-lg overflow-hidden relative">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Reference" class="w-full h-full object-cover blur-[2px]">
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <i class="fa-solid fa-image text-white text-2xl drop-shadow-md"></i>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-0.5">
+                                    <span class="text-sm font-semibold text-navy truncate group-hover:text-trust-blue transition-colors">Ref_Concorrente.png</span>
+                                    <span class="text-xs text-navy-light">4.5 MB • 11 Abr</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Activity Log -->
+                <div id="activity-log" class="bg-surface rounded-[24px] shadow-ambient border border-border p-8 flex flex-col gap-6">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-bold text-navy">Histórico de Atividades</h2>
+                        <div class="flex items-center gap-2 bg-offwhite rounded-full p-1 border border-border">
+                            <button class="px-4 py-1.5 rounded-full bg-surface shadow-sm text-xs font-bold text-navy">Tudo</button>
+                            <button class="px-4 py-1.5 rounded-full text-xs font-medium text-navy-light hover:text-navy">Notas</button>
+                            <button class="px-4 py-1.5 rounded-full text-xs font-medium text-navy-light hover:text-navy">Status</button>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-4 flex flex-col gap-6 mt-2">
+                        <!-- Vertical Line -->
+                        <div class="absolute top-2 bottom-2 left-[23px] w-px bg-border z-0"></div>
+
+                        <!-- Item 1 -->
+                        <div class="relative z-10 flex gap-4 items-start">
+                            <div class="w-10 h-10 rounded-full bg-trust-light text-trust-blue flex items-center justify-center flex-shrink-0 border-4 border-surface shadow-sm">
+                                <i class="fa-regular fa-comment-dots text-sm"></i>
+                            </div>
+                            <div class="flex-1 bg-offwhite rounded-2xl p-4 border border-border">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-bold text-navy">Você adicionou uma nota interna</span>
+                                    <span class="text-xs text-navy-light font-medium">Hoje, 14:30</span>
+                                </div>
+                                <p class="text-sm text-navy-light">
+                                    Cliente solicitou inclusão de design para cartão de visitas no pacote. Atualizei o escopo do projeto, preparando novo orçamento para envio amanhã.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="relative z-10 flex gap-4 items-start">
+                            <div class="w-10 h-10 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center flex-shrink-0 border-4 border-surface shadow-sm">
+                                <i class="fa-solid fa-arrow-right-arrow-left text-sm"></i>
+                            </div>
+                            <div class="flex-1 pt-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm text-navy-light">Status alterado de</span>
+                                    <span class="px-2.5 py-1 rounded-full bg-gray-100 text-xs font-semibold text-navy">Contato Inicial</span>
+                                    <span class="text-sm text-navy-light">para</span>
+                                    <span class="px-2.5 py-1 rounded-full bg-trust-light text-trust-blue text-xs font-bold">Em Orçamento</span>
+                                </div>
+                                <span class="block text-xs text-navy-light mt-1">Ontem, 09:15</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="relative z-10 flex gap-4 items-start">
+                            <div class="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center flex-shrink-0 border-4 border-surface shadow-sm overflow-hidden">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-1 pt-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm font-bold text-navy">Carlos Eduardo</span>
+                                    <span class="text-sm text-navy-light">enviou um email</span>
+                                </div>
+                                <span class="block text-xs text-navy-light mt-1">12 Abr, 16:45</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Note Input -->
+                    <div class="mt-4 relative">
+                        <input type="text" placeholder="Adicionar uma nota interna..." class="w-full bg-offwhite border border-border rounded-full py-3 pl-5 pr-12 text-sm text-navy focus:outline-none focus:border-trust-blue focus:ring-1 focus:ring-trust-blue transition-all">
+                        <button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-trust-blue text-white flex items-center justify-center hover:bg-blue-800 transition-colors">
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column (Sticky Actions & Info - 35%) -->
+            <div class="lg:col-span-4 sticky top-28 flex flex-col gap-6">
+                
+                <!-- Sticky Action Card -->
+                <div id="sticky-actions" class="bg-surface rounded-[24px] shadow-card border border-border p-6 flex flex-col gap-6">
+                    
+                    <!-- Client Profile Summary -->
+                    <div class="flex flex-col gap-4 items-center text-center pb-6 border-b border-border">
+                        <div class="w-20 h-20 rounded-full border-4 border-surface shadow-md overflow-hidden relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client Avatar" class="w-full h-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-5 h-5 bg-green-500 border-2 border-surface rounded-full"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-navy">Carlos Eduardo</h3>
+                            <p class="text-sm font-medium text-navy-light mt-1">TechCorp Solutions LTDA</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-center gap-3 mt-2 w-full">
+                            <button class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-navy-light hover:text-trust-blue hover:border-trust-blue transition-all">
+                                <i class="fa-solid fa-phone text-sm"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-navy-light hover:text-trust-blue hover:border-trust-blue transition-all">
+                                <i class="fa-regular fa-envelope text-sm"></i>
+                            </button>
+                            <button class="flex-1 h-10 rounded-full border-2 border-trust-blue text-trust-blue font-bold text-sm hover:bg-trust-light transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                Enviar Mensagem
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Info Meta -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-navy-light">Data de Criação</span>
+                            <span class="text-sm font-bold text-navy">10 Abr 2024</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-navy-light">Responsável</span>
+                            <div class="flex items-center gap-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Owner" class="w-6 h-6 rounded-full object-cover">
+                                <span class="text-sm font-bold text-navy">Você</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-navy-light">Probabilidade</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="w-[75%] h-full bg-orange-400 rounded-full"></div>
+                                </div>
+                                <span class="text-sm font-bold text-navy">75%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Financial Block -->
+                    <div class="bg-success-bg border border-green-100 rounded-[20px] p-5 flex flex-col gap-3 mt-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-success-text">Total do Serviço</span>
+                            <span class="text-lg font-bold text-success-text">R$ 8.500</span>
+                        </div>
+                        <div class="w-full h-px bg-green-200/50"></div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-medium text-green-700">Sinal recebido (50%)</span>
+                            <span class="text-sm font-bold text-green-700">R$ 4.250</span>
+                        </div>
+                    </div>
+
+                    <!-- Massive CTA -->
+                    <button onclick="window.location.href='../Módulo 3.12 - Gateway de Pagamento/Tela 1 - Tela de checkout integrada.html'" class="w-full h-14 bg-trust-blue text-white rounded-full font-bold text-sm shadow-md hover:bg-blue-800 hover:shadow-lg transition-all flex items-center justify-center gap-2 mt-2">
+                        Finalizar Serviço e Solicitar Pagamento
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-surface border-t border-border mt-auto">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="text-sm text-navy-light font-medium">&copy; 2024 MMO Platform. All rights reserved.</span>
+            <div class="flex items-center gap-6">
+                <a href="#" class="text-sm text-navy-light hover:text-navy transition-colors">Termos de Uso</a>
+                <a href="#" class="text-sm text-navy-light hover:text-navy transition-colors">Privacidade</a>
+                <a href="#" class="text-sm text-navy-light hover:text-navy transition-colors">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

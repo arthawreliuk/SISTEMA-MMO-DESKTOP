@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanctions & Strike History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#F8F9FA',
+                            text: '#1A1A24',
+                            blue: '#0016dc',
+                            red: '#E11D48',
+                            orange: '#F97316',
+                            darkRed: '#7F1D1D',
+                            surface: '#FFFFFF',
+                            border: '#E5E7EB',
+                            muted: '#6B7280'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 24px -6px rgba(0, 0, 0, 0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased flex flex-col">
+
+    <!-- Admin Control Bar -->
+    <header id="header" class="glass-header sticky top-0 z-50 border-b border-brand-border px-6 lg:px-12 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-2 text-sm font-medium text-brand-muted">
+            <a href="#" class="hover:text-brand-text transition-colors">Painel</a>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <a href="#" class="hover:text-brand-text transition-colors">Segurança</a>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <a href="#" class="hover:text-brand-text transition-colors">Prontuário</a>
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            <span class="text-brand-text font-semibold">Roberto Alves</span>
+        </div>
+        <button class="flex items-center gap-2 px-4 py-2 rounded-full border border-brand-border hover:bg-brand-bg transition-colors text-sm font-semibold text-brand-text shadow-sm">
+            <i class="fa-regular fa-file-pdf text-brand-muted"></i>
+            Exportar Histórico (PDF)
+        </button>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-8 flex flex-col gap-8">
+
+        <!-- Master KPI & Health Strip -->
+        <section id="kpi-strip" class="bg-brand-surface rounded-[24px] shadow-soft p-6 lg:p-8 border border-brand-border/50">
+            <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center justify-between mb-8">
+                <!-- User Profile & Status -->
+                <div class="flex items-center gap-5">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Roberto Alves" class="w-16 h-16 rounded-full object-cover border-2 border-brand-surface shadow-sm">
+                        <div class="absolute bottom-0 right-0 w-4 h-4 bg-brand-orange border-2 border-brand-surface rounded-full"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-brand-text mb-1">Roberto Alves</h1>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2.5 py-1 rounded-full bg-brand-orange/10 text-brand-orange font-semibold border border-brand-orange/20">
+                                Status: Ativo sob aviso
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPIs -->
+                <div class="flex flex-wrap gap-6 lg:gap-10">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-medium text-brand-muted mb-1">Strikes Acumulados</span>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-3xl font-bold text-brand-text">2</span>
+                            <span class="text-lg font-medium text-brand-muted">/3</span>
+                        </div>
+                        <div class="w-full bg-brand-bg h-1.5 rounded-full mt-2 overflow-hidden">
+                            <div class="bg-brand-red w-2/3 h-full rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="w-px h-12 bg-brand-border hidden sm:block"></div>
+                    <div class="flex flex-col">
+                        <span class="text-sm font-medium text-brand-muted mb-1">Última Infração</span>
+                        <span class="text-xl font-bold text-brand-text">Há 5 dias</span>
+                        <span class="text-xs text-brand-muted mt-1">12 Out 2023, 14:30</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Chart -->
+            <div class="w-full h-[200px] mt-6" id="timeline-chart"></div>
+        </section>
+
+        <!-- Compliance Ledger -->
+        <section id="compliance-ledger" class="bg-brand-surface rounded-[24px] shadow-soft border border-brand-border/50 flex flex-col overflow-hidden">
+            
+            <!-- Ledger Header -->
+            <div class="p-6 lg:p-8 border-b border-brand-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-brand-surface">
+                <div>
+                    <h2 class="text-xl font-bold text-brand-text">Log de Sanções Irreversíveis</h2>
+                    <p class="text-sm text-brand-muted mt-1">Histórico completo de penalidades aplicadas ao usuário.</p>
+                </div>
+                
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <div class="relative w-full sm:w-64">
+                        <i class="fa-solid fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-muted text-sm"></i>
+                        <input type="text" placeholder="Buscar ticket ou motivo..." class="w-full pl-10 pr-4 py-2.5 bg-brand-bg border border-brand-border rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all">
+                    </div>
+                    <button class="p-2.5 border border-brand-border rounded-full hover:bg-brand-bg transition-colors text-brand-text">
+                        <i class="fa-solid fa-filter text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="w-full overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[900px]">
+                    <thead>
+                        <tr class="bg-brand-bg/50 border-b border-brand-border text-xs uppercase tracking-wider font-semibold text-brand-muted">
+                            <th class="px-6 py-4">Data/Hora</th>
+                            <th class="px-6 py-4">Tipo de Sanção</th>
+                            <th class="px-6 py-4">Motivo Registrado</th>
+                            <th class="px-6 py-4">Ticket Relacionado</th>
+                            <th class="px-6 py-4">Moderador</th>
+                            <th class="px-6 py-4 text-right">Status da Pena</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-brand-border/50">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-brand-bg/80 transition-colors group cursor-pointer">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="font-medium text-brand-text">12 Out 2023</div>
+                                <div class="text-xs text-brand-muted">14:30 BRT</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-red/10 text-brand-red font-semibold text-xs border border-brand-red/20">
+                                    <i class="fa-solid fa-ban text-[10px]"></i> Suspensão
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-brand-text font-medium truncate max-w-[200px]">Uso de software de terceiros (Bot)</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="#" class="text-brand-blue hover:underline font-medium">#TK-8921</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-6 h-6 rounded-full" alt="Mod">
+                                    <span class="text-brand-text font-medium">Ana M.</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <span class="text-brand-text font-semibold bg-brand-bg px-2.5 py-1 rounded-md text-xs border border-brand-border">Ativa (7 Dias)</span>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-brand-bg/80 transition-colors group cursor-pointer">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="font-medium text-brand-text">05 Set 2023</div>
+                                <div class="text-xs text-brand-muted">09:15 BRT</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange/10 text-brand-orange font-semibold text-xs border border-brand-orange/20">
+                                    <i class="fa-solid fa-triangle-exclamation text-[10px]"></i> Advertência
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-brand-text font-medium truncate max-w-[200px]">Comportamento tóxico no chat global</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="#" class="text-brand-blue hover:underline font-medium">#TK-7442</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-6 h-6 rounded-full" alt="Mod">
+                                    <span class="text-brand-text font-medium">Carlos D.</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <span class="text-brand-muted font-medium bg-brand-bg px-2.5 py-1 rounded-md text-xs border border-brand-border">Expirada</span>
+                            </td>
+                        </tr>
+                         <!-- Row 3 -->
+                         <tr class="hover:bg-brand-bg/80 transition-colors group cursor-pointer">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="font-medium text-brand-text">10 Fev 2023</div>
+                                <div class="text-xs text-brand-muted">22:45 BRT</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-orange/10 text-brand-orange font-semibold text-xs border border-brand-orange/20">
+                                    <i class="fa-solid fa-triangle-exclamation text-[10px]"></i> Advertência
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-brand-text font-medium truncate max-w-[200px]">Exploit de bug em dungeon (Minor)</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="#" class="text-brand-blue hover:underline font-medium">#TK-4109</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center text-xs font-bold">S</div>
+                                    <span class="text-brand-text font-medium">Sistema</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <span class="text-brand-muted font-medium bg-brand-bg px-2.5 py-1 rounded-md text-xs border border-brand-border">Expirada</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Ledger Footer Pagination -->
+            <div class="p-4 border-t border-brand-border bg-brand-surface flex items-center justify-between">
+                <span class="text-sm text-brand-muted">Mostrando 1 a 3 de 3 registros</span>
+                <div class="flex items-center gap-2">
+                    <button class="w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-muted hover:bg-brand-bg disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center text-sm font-medium shadow-sm">1</button>
+                    <button class="w-8 h-8 rounded-full border border-brand-border flex items-center justify-center text-brand-muted hover:bg-brand-bg disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const dates = ['2022-01-01', '2022-06-15', '2023-02-10', '2023-09-05', '2023-10-12', '2023-10-17'];
+                const values = [0, 0, 1, 2, 3, 3]; // Cumulative severity or strike count over time
+                
+                const trace1 = {
+                    x: dates,
+                    y: values,
+                    type: 'scatter',
+                    mode: 'lines+markers',
+                    line: {
+                        color: '#0016dc',
+                        width: 3,
+                        shape: 'spline',
+                        smoothing: 0.5
+                    },
+                    marker: {
+                        size: 8,
+                        color: ['#0016dc', '#0016dc', '#F97316', '#F97316', '#E11D48', '#E11D48'],
+                        line: {
+                            color: '#FFFFFF',
+                            width: 2
+                        }
+                    },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(0, 22, 220, 0.05)',
+                    hovertemplate: '<b>Data:</b> %{x}<br><b>Nível de Risco:</b> %{y}<extra></extra>'
+                };
+
+                const layout = {
+                    margin: { t: 10, r: 20, b: 30, l: 30 },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    xaxis: {
+                        showgrid: false,
+                        zeroline: false,
+                        tickfont: { color: '#6B7280', size: 10, family: 'Plus Jakarta Sans' },
+                        linecolor: '#E5E7EB'
+                    },
+                    yaxis: {
+                        showgrid: true,
+                        gridcolor: '#E5E7EB',
+                        gridwidth: 1,
+                        griddash: 'dot',
+                        zeroline: false,
+                        tickfont: { color: '#6B7280', size: 10, family: 'Plus Jakarta Sans' },
+                        tickvals: [0, 1, 2, 3],
+                        ticktext: ['Limpo', 'Adv.', 'Adv. 2', 'Strike']
+                    },
+                    showlegend: false,
+                    hovermode: 'x unified'
+                };
+
+                const config = {
+                    responsive: true,
+                    displayModeBar: false
+                };
+
+                Plotly.newPlot('timeline-chart', [trace1], layout, config);
+            } catch (e) {
+                console.error('Chart initialization failed:', e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+</body>
+</html>

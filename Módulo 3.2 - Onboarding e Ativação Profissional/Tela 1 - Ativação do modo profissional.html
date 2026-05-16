@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Mode Activation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#0A1128',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            gray: '#6B7280',
+                            light: '#F3F4F6'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 40px rgba(10, 17, 40, 0.06)',
+                        'nav': '0 2px 20px rgba(0, 0, 0, 0.04)',
+                        'card': '0 8px 30px rgba(0, 0, 0, 0.04)',
+                        'btn': '0 10px 25px rgba(0, 22, 220, 0.2)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #0A1128; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-brand-bg font-sans m-0 p-0 min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="fixed top-0 w-full bg-white shadow-nav z-50 transition-all duration-300">
+        <div class="max-w-[1000px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div onclick="window.location.href='../Módulo 3.1 - Acesso, Conta e Identidade/Tela 6 - Painel Inicial Pós-Login.html'" class="flex items-center gap-3 cursor-pointer">
+                <div class="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white font-bold text-xl shadow-btn">
+                    M
+                </div>
+                <span class="text-xl font-bold text-brand-navy tracking-tight">MMO</span>
+            </div>
+            
+            <nav class="flex items-center gap-8">
+                <a href="#" class="text-brand-navy hover:text-brand-blue font-medium transition-colors">Ajuda</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow pt-32 pb-24 px-6">
+        <div class="max-w-[1000px] mx-auto">
+            
+            <!-- Hero Section -->
+            <section id="hero" class="text-center mb-16 max-w-3xl mx-auto pt-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-brand-blue font-semibold text-sm mb-6 border border-blue-100">
+                    <i class="fa-solid fa-bolt text-amber-400"></i>
+                    Modo Profissional
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold text-brand-navy leading-[1.1] mb-6 tracking-tight">
+                    Transforme seu trabalho em um <span class="text-brand-blue relative whitespace-nowrap">
+                        negócio
+                        <svg class="absolute -bottom-2 left-0 w-full h-3 text-brand-blue/20" viewBox="0 0 100 20" preserveAspectRatio="none">
+                            <path d="M0 10 Q 50 20 100 10" stroke="currentColor" stroke-width="4" fill="none" />
+                        </svg>
+                    </span>.
+                </h1>
+                <p class="text-xl text-brand-gray leading-relaxed max-w-2xl mx-auto font-medium">
+                    Arthur, a MMO conecta você aos melhores clientes de Balneário Camboriú e região.
+                </p>
+            </section>
+
+            <!-- Main Canvas / Features Area -->
+            <section id="main-canvas" class="bg-white rounded-[24px] shadow-card p-10 md:p-14 mb-16 border border-gray-100 relative overflow-hidden">
+                <!-- Decorative background elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-50/50 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none"></div>
+
+                <div class="relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                        
+                        <!-- Feature 1 -->
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-16 h-16 rounded-[16px] bg-blue-50 flex items-center justify-center text-brand-blue mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-lg group-hover:bg-brand-blue group-hover:text-white">
+                                <i class="fa-solid fa-bell-concierge text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-navy mb-3">Receba Pedidos</h3>
+                            <p class="text-brand-gray leading-relaxed text-sm">
+                                Nosso sistema inteligente cruza suas habilidades com as necessidades dos clientes em tempo real, enviando oportunidades qualificadas direto para você.
+                            </p>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-16 h-16 rounded-[16px] bg-blue-50 flex items-center justify-center text-brand-blue mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-lg group-hover:bg-brand-blue group-hover:text-white">
+                                <i class="fa-solid fa-store text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-navy mb-3">Use o Balcão</h3>
+                            <p class="text-brand-gray leading-relaxed text-sm">
+                                Explore nosso marketplace reverso. Veja demandas abertas na sua região e ofereça seus serviços ativamente para clientes que já estão procurando.
+                            </p>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="flex flex-col items-center text-center group">
+                            <div class="w-16 h-16 rounded-[16px] bg-blue-50 flex items-center justify-center text-brand-blue mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-lg group-hover:bg-brand-blue group-hover:text-white">
+                                <i class="fa-solid fa-star text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-navy mb-3">Reputação</h3>
+                            <p class="text-brand-gray leading-relaxed text-sm">
+                                Construa seu histórico. Avaliações positivas aumentam sua visibilidade no algoritmo, garantindo que os melhores profissionais recebam os melhores projetos.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section id="cta-area" class="text-center flex flex-col items-center justify-center">
+                <button onclick="window.location.href='Tela 2 - Seleção de serviço principal e serviços atendidos .html'" class="bg-brand-blue text-white text-lg font-bold py-5 px-12 rounded-full shadow-btn hover:shadow-[0_15px_35px_rgba(0,22,220,0.3)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 w-full max-w-md justify-center mb-6">
+                    Ativar Perfil Profissional Agora
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </button>
+                
+                <div class="flex items-center gap-4 justify-center">
+                    <div class="flex -space-x-3">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User" class="w-8 h-8 rounded-full border-2 border-brand-bg object-cover">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-8 h-8 rounded-full border-2 border-brand-bg object-cover">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-8 h-8 rounded-full border-2 border-brand-bg object-cover">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-8 h-8 rounded-full border-2 border-brand-bg object-cover">
+                    </div>
+                    <p class="text-sm text-brand-gray font-medium">
+                        Junte-se a centenas de Mestres já validados no ecossistema.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer id="footer" class="py-8 text-center text-brand-gray text-sm mt-auto border-t border-gray-200 bg-white">
+        <p>&copy; 2026 MMO. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

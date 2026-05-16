@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertiser Account Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#1A1A24',
+                            blue: '#0016dc',
+                            offwhite: '#F8F9FA',
+                            border: '#E2E8F0',
+                            gray: '#64748B'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05), 0 4px 10px -4px rgba(0,0,0,0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Input Styles to match references */
+        .input-pill {
+            @apply w-full rounded-full border border-brand-border bg-white px-6 py-4 text-base text-brand-navy outline-none transition-all duration-200 placeholder:text-brand-gray/60;
+        }
+        .input-pill:focus {
+            @apply border-brand-blue ring-4 ring-brand-blue/10;
+        }
+        .input-pill:hover:not(:focus) {
+            @apply border-brand-gray/40;
+        }
+        
+        /* Custom Select styling to match pill shape */
+        select.input-pill {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231A1A24%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.5rem top 50%;
+            background-size: 0.65rem auto;
+            padding-right: 3rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+    <!-- Global Minimalist Header -->
+    <header id="header" class="w-full py-8 flex justify-center items-center z-10 relative">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-blue/20">
+                <i class="fa-solid fa-bolt text-xl"></i>
+            </div>
+            <span class="text-2xl font-bold tracking-tight text-brand-navy">MMO Ads</span>
+        </div>
+    </header>
+
+    <!-- Main Registration Area -->
+    <main class="flex-1 flex items-center justify-center p-4 md:p-8 w-full z-10 relative">
+        
+        <!-- Center Stage Canvas -->
+        <div id="registration-canvas" class="w-full max-w-[800px] bg-white rounded-[24px] shadow-ambient overflow-hidden">
+            
+            <div class="p-8 md:p-12 lg:p-16 flex flex-col gap-10">
+                
+                <!-- Progress Navigation -->
+                <nav id="progress-nav" class="flex items-center justify-between relative mb-2">
+                    <!-- Progress Track Background -->
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-brand-border -z-10"></div>
+                    <!-- Active Progress Track -->
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-[2px] bg-brand-blue -z-10 transition-all duration-500"></div>
+
+                    <!-- Step 1 (Active) -->
+                    <div class="flex flex-col items-center gap-3 bg-white px-2">
+                        <div class="h-8 rounded-full bg-brand-blue text-white px-4 flex items-center justify-center text-sm font-semibold shadow-md shadow-brand-blue/20">
+                            1. Identificação
+                        </div>
+                    </div>
+
+                    <!-- Step 2 (Inactive) -->
+                    <div class="flex flex-col items-center gap-3 bg-white px-2">
+                        <div class="h-8 rounded-full bg-white border border-brand-border text-brand-gray px-4 flex items-center justify-center text-sm font-medium">
+                            2. Detalhes da Marca
+                        </div>
+                    </div>
+
+                    <!-- Step 3 (Inactive) -->
+                    <div class="flex flex-col items-center gap-3 bg-white px-2">
+                        <div class="h-8 rounded-full bg-white border border-brand-border text-brand-gray px-4 flex items-center justify-center text-sm font-medium">
+                            3. Faturamento
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Header Content -->
+                <div id="form-header" class="flex flex-col gap-3 text-center md:text-left">
+                    <h1 class="text-3xl md:text-4xl lg:text-[40px] leading-tight font-extrabold text-brand-navy tracking-tight">
+                        Bem-vindo ao MMO Ads
+                    </h1>
+                    <p class="text-base md:text-lg text-brand-gray font-medium max-w-xl">
+                        Conecte sua marca aos melhores profissionais e clientes da região.
+                    </p>
+                </div>
+
+                <!-- Form Layout -->
+                <form id="advertiser-form" class="flex flex-col gap-6">
+                    
+                    <!-- Row 1: Full Width -->
+                    <div class="w-full flex flex-col gap-2 relative">
+                        <label for="cnpj" class="text-sm font-semibold text-brand-navy ml-2">CNPJ/CPF</label>
+                        <div class="relative">
+                            <input type="text" id="cnpj" class="input-pill" placeholder="00.000.000/0000-00" value="12.345.678/0001-90">
+                            <div class="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-2 text-emerald-500 bg-emerald-50 px-3 py-1 rounded-full text-xs font-semibold">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span>Autopreenchimento ativado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: 50/50 Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label for="brand-name" class="text-sm font-semibold text-brand-navy ml-2">Nome da Marca</label>
+                            <input type="text" id="brand-name" class="input-pill" placeholder="Ex: TechCorp Solutions" value="TechCorp Solutions">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="category" class="text-sm font-semibold text-brand-navy ml-2">Categoria do Anunciante</label>
+                            <select id="category" class="input-pill">
+                                <option value="" disabled>Selecione uma categoria</option>
+                                <option value="tech" selected>Tecnologia & Software</option>
+                                <option value="retail">Varejo & E-commerce</option>
+                                <option value="services">Serviços B2B</option>
+                                <option value="finance">Finanças & Seguros</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: 50/50 Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label for="email" class="text-sm font-semibold text-brand-navy ml-2">E-mail do Responsável</label>
+                            <input type="email" id="email" class="input-pill" placeholder="contato@empresa.com.br" value="marketing@techcorp.com.br">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="phone" class="text-sm font-semibold text-brand-navy ml-2">Telefone</label>
+                            <div class="relative">
+                                <div class="absolute left-6 top-1/2 -translate-y-1/2 flex items-center gap-2 text-brand-gray border-r border-brand-border pr-3">
+                                    <i class="fa-brands fa-whatsapp text-lg text-emerald-500"></i>
+                                    <span class="text-sm font-medium">+55</span>
+                                </div>
+                                <input type="tel" id="phone" class="input-pill pl-[100px]" placeholder="(00) 00000-0000" value="(11) 98765-4321">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="w-full h-[1px] bg-brand-border my-4"></div>
+
+                    <!-- Footer Action Area -->
+                    <div id="footer-actions" class="flex flex-col-reverse md:flex-row items-center justify-between gap-4 mt-2">
+                        <button type="button" class="w-full md:w-auto px-8 py-4 rounded-full text-brand-gray font-semibold hover:bg-brand-border/50 hover:text-brand-navy transition-colors duration-200">
+                            Voltar para a Home
+                        </button>
+                        
+                        <button type="button" onclick="window.location.href='Tela 2 - Criação de campanha.html'" class="w-full md:w-auto bg-brand-blue hover:bg-brand-blue/90 text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg shadow-brand-blue/25 transition-all duration-200 flex items-center justify-center gap-3 group">
+                            Configurar Conta de Anúncios
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Minimal Footer -->
+    <footer id="footer" class="w-full py-6 text-center text-sm text-brand-gray font-medium z-10 relative">
+        <p>&copy; 2026 MMO Ads. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

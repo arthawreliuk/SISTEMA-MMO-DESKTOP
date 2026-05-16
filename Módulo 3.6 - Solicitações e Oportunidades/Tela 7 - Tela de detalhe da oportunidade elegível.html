@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunity Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            border: '#E5E7EB',
+                            text: '#4B5563',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 2px 10px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-brand-bg m-0 p-0 text-brand-navy min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-brand-card w-full border-b border-brand-border sticky top-0 z-50">
+        <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-brand-blue rounded-xl flex items-center justify-center text-white font-bold text-xl">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight">MMO</span>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#" class="text-brand-text hover:text-brand-navy transition-colors">Home</a>
+                <div class="relative flex flex-col items-center">
+                    <a href="#" class="text-brand-navy font-semibold">Opportunities</a>
+                    <div class="absolute -bottom-3 w-1.5 h-1.5 bg-brand-blue rounded-full"></div>
+                </div>
+                <a href="#" class="text-brand-text hover:text-brand-navy transition-colors">Messages</a>
+                <a href="#" class="text-brand-text hover:text-brand-navy transition-colors">Profile</a>
+            </nav>
+
+            <!-- User Actions -->
+            <div class="flex items-center gap-4">
+                <button class="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-text hover:text-brand-navy transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-brand-bg">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Profile" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-6 py-8">
+        
+        <!-- Control Bar -->
+        <div class="mb-6 flex items-center">
+            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-brand-text hover:text-brand-blue transition-colors group">
+                <i class="fa-solid fa-chevron-left text-xs group-hover:-translate-x-1 transition-transform"></i>
+                Voltar ao Mural de Oportunidades
+            </a>
+        </div>
+
+        <!-- 2-Column Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column (Context & Media - 65%) -->
+            <div class="lg:col-span-8 flex flex-col gap-6">
+                <!-- Main Detail Card -->
+                <article id="opportunity-details" class="bg-brand-card rounded-[24px] p-8 shadow-soft border border-brand-border/50">
+                    <!-- Header & Pills -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 pb-6 border-b border-brand-border/50">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-blue-50 text-brand-blue rounded-full text-xs font-bold tracking-wide uppercase">Instalação Elétrica</span>
+                                <span class="px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-bold tracking-wide uppercase">Urgente</span>
+                            </div>
+                            <h1 class="text-3xl font-bold leading-tight mb-2">Revisão Completa do Quadro de Distribuição</h1>
+                            <p class="text-brand-text text-sm flex items-center gap-2">
+                                <i class="fa-regular fa-clock"></i> Publicado há 2 horas
+                            </p>
+                        </div>
+                        
+                        <!-- Key Metrics -->
+                        <div class="flex flex-wrap gap-3">
+                            <div class="bg-brand-bg px-4 py-2.5 rounded-full flex items-center gap-2 border border-brand-border/50">
+                                <i class="fa-solid fa-location-dot text-brand-blue text-sm"></i>
+                                <span class="text-sm font-semibold">2.5 km</span>
+                            </div>
+                            <div class="bg-brand-bg px-4 py-2.5 rounded-full flex items-center gap-2 border border-brand-border/50">
+                                <i class="fa-regular fa-calendar text-brand-blue text-sm"></i>
+                                <span class="text-sm font-semibold">Para Amanhã</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <section class="mb-10">
+                        <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-align-left text-brand-blue"></i> Descrição do Problema
+                        </h2>
+                        <div class="prose prose-sm max-w-none text-brand-text leading-relaxed">
+                            <p class="mb-4">
+                                Preciso de um eletricista qualificado para revisar e possivelmente substituir disjuntores no meu quadro principal. Recentemente, começamos a ter quedas de energia frequentes quando ligamos o ar-condicionado e o chuveiro ao mesmo tempo.
+                            </p>
+                            <p>
+                                O quadro é antigo (cerca de 15 anos) e parece haver um leve cheiro de queimado próximo a ele. Preciso de um diagnóstico rápido e orçamento para resolução definitiva. O apartamento fica no 3º andar, com fácil acesso ao quadro.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Gallery -->
+                    <section>
+                        <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-regular fa-images text-brand-blue"></i> Fotos do Local
+                        </h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="aspect-square rounded-2xl overflow-hidden cursor-pointer group relative">
+                                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/1239ffce29-211a3a404a62e03c23ab.png" alt="Close up of an old, slightly burnt electrical distribution board in a residential apartment, realistic lighting" />
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <i class="fa-solid fa-magnifying-glass text-white text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="aspect-square rounded-2xl overflow-hidden cursor-pointer group relative">
+                                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d949eb5237-91762b1bf68d74d6e8d6.png" alt="Wide shot of an electrical panel in a hallway wall, showing the surrounding context, modern photography" />
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <i class="fa-solid fa-magnifying-glass text-white text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="aspect-square rounded-2xl overflow-hidden cursor-pointer group relative bg-brand-bg border-2 border-dashed border-brand-border flex items-center justify-center">
+                                <div class="text-center">
+                                    <span class="block text-xl font-bold text-brand-blue mb-1">+2</span>
+                                    <span class="text-xs text-brand-text font-medium">Ver todas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+
+            <!-- Right Column (Action & Client Info - 35%) -->
+            <div class="lg:col-span-4 flex flex-col gap-6">
+                
+                <!-- Client Info Card -->
+                <aside id="client-info" class="bg-brand-card rounded-[24px] p-6 shadow-soft border border-brand-border/50">
+                    <h3 class="text-sm font-bold text-brand-text uppercase tracking-wider mb-4">Sobre o Cliente</h3>
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-brand-bg">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg leading-tight">Mariana S.</h4>
+                            <p class="text-sm text-brand-text">Membro desde 2022</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-brand-bg rounded-xl p-3 text-center border border-brand-border/50">
+                            <div class="text-xl font-bold text-brand-navy mb-1 flex items-center justify-center gap-1">
+                                4.8 <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                            </div>
+                            <div class="text-[11px] font-semibold text-brand-text uppercase">Avaliação</div>
+                        </div>
+                        <div class="bg-brand-bg rounded-xl p-3 text-center border border-brand-border/50">
+                            <div class="text-xl font-bold text-brand-navy mb-1">3</div>
+                            <div class="text-[11px] font-semibold text-brand-text uppercase">Pedidos Concluídos</div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Bid System Card (Sticky) -->
+                <div class="sticky top-28">
+                    <aside id="bid-system" class="bg-brand-card rounded-[24px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-brand-border">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold mb-2">Enviar Orçamento</h3>
+                            <p class="text-sm text-brand-text">Envie sua proposta para resolver este problema. O cliente avaliará seu perfil e valor.</p>
+                        </div>
+
+                        <form class="space-y-5">
+                            <!-- Price Input -->
+                            <div>
+                                <label class="block text-sm font-bold mb-2">Valor Estimado (R$)</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <span class="text-brand-text font-medium">R$</span>
+                                    </div>
+                                    <input type="number" placeholder="0,00" class="w-full pl-10 pr-4 py-3 bg-brand-bg border border-brand-border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all font-medium">
+                                </div>
+                                <p class="text-xs text-brand-text mt-1.5"><i class="fa-solid fa-circle-info text-brand-blue mr-1"></i> A taxa da plataforma (10%) será deduzida deste valor.</p>
+                            </div>
+
+                            <!-- Date Input -->
+                            <div>
+                                <label class="block text-sm font-bold mb-2">Disponibilidade</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i class="fa-regular fa-calendar text-brand-text"></i>
+                                    </div>
+                                    <input type="date" class="w-full pl-10 pr-4 py-3 bg-brand-bg border border-brand-border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all font-medium text-brand-navy">
+                                </div>
+                            </div>
+                            
+                            <!-- Message Input -->
+                            <div>
+                                <label class="block text-sm font-bold mb-2">Mensagem (Opcional)</label>
+                                <textarea rows="3" placeholder="Destaque sua experiência com quadros de distribuição..." class="w-full px-4 py-3 bg-brand-bg border border-brand-border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all font-medium text-sm resize-none"></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="button" onclick="window.location.href='Tela 8 - Tela de histórico de oportunidades.html'" class="w-full bg-brand-blue hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-full transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-blue/30 flex items-center justify-center gap-2">
+                                Enviar Orçamento Agora
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </aside>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-brand-card border-t border-brand-border mt-auto w-full">
+        <div class="max-w-[1200px] mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                    M
+                </div>
+                <span class="font-bold text-sm tracking-tight text-brand-text">© 2026 MMO Platform. Todos os direitos reservados.</span>
+            </div>
+            <div class="flex gap-6 text-sm font-medium text-brand-text">
+                <a href="#" class="hover:text-brand-blue transition-colors">Termos de Uso</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-brand-blue transition-colors">Ajuda</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

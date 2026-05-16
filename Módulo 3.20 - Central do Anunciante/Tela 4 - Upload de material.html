@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Campaign Creative Upload</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#F8F9FA',
+                            navy: '#1A1A24',
+                            blue: '#0016dc',
+                            blueLight: '#E6E8FB',
+                            grayLight: '#F1F5F9',
+                            grayMedium: '#9CA3AF',
+                            border: '#E2E8F0',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(26, 26, 36, 0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(26, 26, 36, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .custom-dashed { border: 2px dashed #0016dc; opacity: 0.4; transition: opacity 0.3s ease; }
+        .custom-dashed:hover { opacity: 0.8; }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased flex flex-col items-center py-8 px-4 sm:px-8">
+
+    <!-- Top Navigation / Breadcrumb -->
+    <nav id="top-nav" class="w-full max-w-[1200px] mb-6 flex items-center justify-between">
+        <div class="flex items-center space-x-2 text-sm font-medium text-brand-grayMedium">
+            <a href="#" class="hover:text-brand-navy transition-colors">Central de Ads</a>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+            <a href="#" class="hover:text-brand-navy transition-colors">Nova Campanha</a>
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+            <span class="text-brand-navy font-semibold">Criativos</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-navy hover:bg-gray-50 transition-colors">
+                <i class="fa-regular fa-bell"></i>
+            </button>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Studio Canvas -->
+    <main id="studio-canvas" class="w-full max-w-[1200px] bg-white rounded-[24px] shadow-soft overflow-hidden flex flex-col min-h-[800px]">
+        
+        <!-- 3-Panel Split Layout -->
+        <div class="flex flex-col lg:flex-row flex-grow">
+            
+            <!-- Panel 1: Media Asset Library (30%) -->
+            <section id="panel-media" class="w-full lg:w-[30%] p-8 border-b lg:border-b-0 lg:border-r border-brand-border flex flex-col">
+                <h2 class="text-xl font-bold text-brand-navy mb-6">Seus Arquivos</h2>
+                
+                <!-- Drag & Drop Zone -->
+                <div class="w-full h-48 rounded-[16px] bg-brand-blueLight/30 custom-dashed flex flex-col items-center justify-center cursor-pointer mb-8 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-brand-blue/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-blue mb-3 z-10">
+                        <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
+                    </div>
+                    <p class="text-sm font-medium text-brand-navy z-10">Arraste e solte seus criativos</p>
+                    <p class="text-xs text-brand-grayMedium mt-1 z-10">JPG, PNG, MP4 até 50MB</p>
+                </div>
+
+                <!-- History Grid -->
+                <div class="flex-grow">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-semibold text-brand-navy">Recentes</h3>
+                        <button class="text-xs text-brand-blue font-medium hover:underline">Ver todos</button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="aspect-square rounded-[12px] bg-brand-grayLight overflow-hidden relative group cursor-pointer border border-transparent hover:border-brand-blue transition-colors">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Ad Creative 1" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 w-6 h-6 rounded-full bg-white/90 shadow-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-check text-brand-blue text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="aspect-square rounded-[12px] bg-brand-grayLight overflow-hidden relative group cursor-pointer border border-transparent hover:border-brand-blue transition-colors">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Ad Creative 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square rounded-[12px] bg-brand-grayLight overflow-hidden relative group cursor-pointer border border-transparent hover:border-brand-blue transition-colors">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Ad Creative 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square rounded-[12px] bg-brand-grayLight flex items-center justify-center cursor-pointer hover:bg-gray-100 transition-colors">
+                            <i class="fa-solid fa-plus text-brand-grayMedium text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Panel 2: Copywriting & Setup (40%) -->
+            <section id="panel-copy" class="w-full lg:w-[40%] p-8 border-b lg:border-b-0 lg:border-r border-brand-border bg-[#FAFAFC]">
+                <h2 class="text-xl font-bold text-brand-navy mb-6">Texto e Destino</h2>
+                
+                <form class="space-y-6">
+                    <!-- Título Principal -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-brand-navy">Título Principal</label>
+                        <div class="relative">
+                            <input type="text" placeholder="Ex: Escale suas vendas hoje" class="w-full h-14 px-5 rounded-full bg-white border border-brand-border text-brand-navy text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all shadow-inner-soft placeholder-brand-grayMedium">
+                            <span class="absolute right-5 top-1/2 -translate-y-1/2 text-xs text-brand-grayMedium">0/40</span>
+                        </div>
+                    </div>
+
+                    <!-- Texto Complementar -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-brand-navy">Texto Complementar</label>
+                        <div class="relative">
+                            <textarea placeholder="Conte mais sobre a oferta..." class="w-full h-32 py-4 px-5 rounded-[24px] bg-white border border-brand-border text-brand-navy text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all shadow-inner-soft placeholder-brand-grayMedium resize-none"></textarea>
+                            <span class="absolute right-5 bottom-4 text-xs text-brand-grayMedium">0/125</span>
+                        </div>
+                    </div>
+
+                    <!-- URL de Destino -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-brand-navy">URL de Destino</label>
+                        <div class="relative flex items-center">
+                            <div class="absolute left-5 text-brand-grayMedium">
+                                <i class="fa-solid fa-link text-sm"></i>
+                            </div>
+                            <input type="url" placeholder="https://seusite.com.br/oferta" class="w-full h-14 pl-12 pr-5 rounded-full bg-white border border-brand-border text-brand-navy text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all shadow-inner-soft placeholder-brand-grayMedium">
+                        </div>
+                    </div>
+
+                    <!-- CTA Dropdown -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-brand-navy">Call to Action (CTA)</label>
+                        <div class="relative">
+                            <select class="w-full h-14 px-5 rounded-full bg-white border border-brand-border text-brand-navy text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all shadow-inner-soft appearance-none cursor-pointer">
+                                <option value="saiba_mais">Saiba Mais</option>
+                                <option value="comprar_agora">Comprar Agora</option>
+                                <option value="cadastre_se">Cadastre-se</option>
+                                <option value="baixar">Baixar</option>
+                            </select>
+                            <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-brand-grayMedium">
+                                <i class="fa-solid fa-chevron-down text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Panel 3: Omni-channel Preview (30%) -->
+            <section id="panel-preview" class="w-full lg:w-[30%] bg-brand-bg p-8 flex flex-col relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
+                
+                <div class="flex items-center justify-between mb-6 z-10">
+                    <h2 class="text-xl font-bold text-brand-navy">Preview</h2>
+                    <div class="flex bg-white rounded-full p-1 shadow-sm border border-brand-border">
+                        <button class="px-4 py-1.5 rounded-full bg-brand-blue text-white text-xs font-semibold shadow-sm">Mobile</button>
+                        <button class="px-4 py-1.5 rounded-full text-brand-grayMedium text-xs font-semibold hover:text-brand-navy transition-colors">Desktop</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Device Wireframe -->
+                <div class="flex-grow flex items-center justify-center z-10">
+                    <div class="w-[280px] h-[580px] bg-white rounded-[36px] shadow-xl border-[6px] border-white ring-1 ring-brand-border p-3 flex flex-col relative">
+                        <!-- Notch -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-white rounded-b-[16px] z-20"></div>
+                        
+                        <!-- Social Header -->
+                        <div class="flex items-center space-x-2 mb-3 px-1 mt-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-grayLight"></div>
+                            <div class="flex-col">
+                                <div class="w-20 h-2.5 bg-brand-grayLight rounded-full mb-1"></div>
+                                <div class="w-12 h-2 bg-brand-grayLight rounded-full opacity-50"></div>
+                            </div>
+                        </div>
+
+                        <!-- Post Text -->
+                        <div class="space-y-1.5 mb-3 px-1">
+                            <div class="w-full h-2 bg-brand-grayLight rounded-full"></div>
+                            <div class="w-5/6 h-2 bg-brand-grayLight rounded-full"></div>
+                        </div>
+
+                        <!-- Ad Image Placeholder -->
+                        <div class="w-full h-[280px] bg-brand-grayLight rounded-[16px] mb-3 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fa-regular fa-image text-4xl text-brand-grayMedium/30"></i>
+                            </div>
+                        </div>
+
+                        <!-- Ad Link Info -->
+                        <div class="bg-brand-grayLight/50 rounded-[12px] p-3 mb-3">
+                            <div class="w-16 h-2 bg-brand-grayLight rounded-full mb-2"></div>
+                            <div class="flex items-center justify-between">
+                                <div class="w-32 h-3 bg-brand-grayMedium/20 rounded-full"></div>
+                                <div class="px-3 py-1.5 bg-brand-grayLight rounded-full text-[10px] font-bold text-brand-grayMedium">Saiba Mais</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Actions -->
+                        <div class="flex items-center justify-between px-2 mt-auto pb-2 border-t border-brand-border pt-3">
+                            <div class="flex space-x-4 text-brand-grayMedium">
+                                <i class="fa-regular fa-heart"></i>
+                                <i class="fa-regular fa-comment"></i>
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </div>
+                            <i class="fa-regular fa-bookmark text-brand-grayMedium"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer Actions -->
+        <footer id="canvas-footer" class="w-full px-8 py-6 border-t border-brand-border bg-white flex items-center justify-between shrink-0">
+            <div class="text-sm font-medium text-brand-grayMedium">
+                Rascunho salvo às 14:32
+            </div>
+            <div class="flex items-center space-x-4">
+                <button onclick="window.location.href='Tela 6 - Status da campanha.html'" class="px-8 py-3.5 rounded-full border border-brand-border text-brand-navy font-semibold hover:bg-gray-50 transition-colors shadow-sm">
+                    Salvar Rascunho
+                </button>
+                <button onclick="window.location.href='Tela 5 - Checkout da campanha.html'" class="px-8 py-3.5 rounded-full bg-brand-blue text-white font-semibold hover:bg-brand-blue/90 transition-colors shadow-[0_4px_14px_0_rgba(0,22,220,0.39)]">
+                    Ir para o Checkout
+                </button>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>
