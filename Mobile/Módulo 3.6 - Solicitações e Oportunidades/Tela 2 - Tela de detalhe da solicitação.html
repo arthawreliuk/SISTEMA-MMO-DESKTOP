@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Detalhes do Pedido</title>
+    <title>Tela de detalhe da solicitação - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,7 +40,7 @@
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="min-h-[100dvh] flex justify-center bg-gray-100">
+<body class="pb-28 min-h-[100dvh] flex justify-center bg-gray-100">
 
     <!-- Mobile Wrapper -->
     <div id="app-container" class="w-full max-w-[375px] h-[840px] bg-background relative overflow-hidden shadow-2xl mx-auto sm:my-8 sm:rounded-[40px] sm:h-[840px]">
@@ -154,28 +154,7 @@
             <div class="h-10"></div>
         </main>
 
-        <!-- Floating Pill Navigation -->
-        <nav id="bottom-nav" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-48px)] bg-white rounded-full shadow-nav px-6 py-4 flex justify-between items-center z-50 border border-gray-100/50 backdrop-blur-xl">
-            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-text transition-colors w-12">
-                <i class="fa-solid fa-house text-[20px]"></i>
-            </button>
-            
-            <button class="flex flex-col items-center gap-1 text-primary w-12 relative">
-                <i class="fa-solid fa-file-lines text-[20px]"></i>
-                <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-3"></div>
-            </button>
-            
-            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-text transition-colors w-12 relative">
-                <i class="fa-solid fa-message text-[20px]"></i>
-                <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white flex items-center justify-center text-[8px] text-white font-bold">2</div>
-            </button>
-            
-            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-text transition-colors w-12">
-                <i class="fa-regular fa-user text-[20px]"></i>
-            </button>
-        </nav>
 
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

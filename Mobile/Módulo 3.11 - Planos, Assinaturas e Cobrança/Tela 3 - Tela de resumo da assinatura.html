@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscription Management</title>
+    <title>Tela de resumo da assinatura - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -43,7 +43,7 @@
         .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     </style>
 </head>
-<body class="bg-background text-text min-h-screen flex justify-center pb-24">
+<body class="pb-28 bg-background text-text min-h-screen flex justify-center pb-24">
 
     <!-- Mobile Container (375x840 constraint logic) -->
     <main id="mobile-app-container" class="w-full max-w-[375px] min-h-[840px] relative bg-background shadow-2xl overflow-x-hidden flex flex-col mx-auto sm:my-8 sm:rounded-[40px] sm:border-[8px] border-white">
@@ -151,24 +151,9 @@
 
         </div>
 
-        <!-- Floating Bottom Navigation -->
-        <nav id="bottom-nav" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[320px] bg-surface rounded-full shadow-nav p-2 flex items-center justify-between px-6 z-50">
-            <a href="#" class="p-3 text-textLight hover:text-text transition-colors relative flex flex-col items-center">
-                <i class="fa-solid fa-house text-lg"></i>
-            </a>
-            <a href="#" class="p-3 text-textLight hover:text-text transition-colors relative flex flex-col items-center">
-                <i class="fa-solid fa-magnifying-glass text-lg"></i>
-            </a>
-            <a href="#" class="p-3 text-textLight hover:text-text transition-colors relative flex flex-col items-center">
-                <i class="fa-regular fa-bell text-lg"></i>
-            </a>
-            <a href="#" class="p-3 text-primary transition-colors relative flex flex-col items-center">
-                <i class="fa-solid fa-user text-lg"></i>
-                <span class="absolute -bottom-1 w-1.5 h-1.5 bg-primary rounded-full"></span>
-            </a>
-        </nav>
 
     </main>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

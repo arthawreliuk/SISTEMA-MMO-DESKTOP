@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LMS Learning Path</title>
+    <title>Trilhas ou materiais de apoio - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +57,7 @@
         }
     </style>
 </head>
-<body class="bg-background min-h-screen flex justify-center font-sans">
+<body class="pb-28 bg-background min-h-screen flex justify-center font-sans">
 
     <!-- Mobile Container Wrapper -->
     <div class="w-full max-w-[430px] bg-background min-h-screen relative pb-[100px] flex flex-col shadow-2xl overflow-hidden sm:border sm:border-gray-200">
@@ -190,29 +190,7 @@
 
         </main>
 
-        <!-- Floating Bottom Navigation -->
-        <nav id="bottom-nav" class="absolute bottom-6 left-6 right-6 bg-cardBg rounded-full shadow-nav flex justify-between items-center px-6 py-4 z-50 border border-gray-100">
-            <button class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-house text-[20px]"></i>
-                <span class="text-[10px] font-bold">Início</span>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-primary relative">
-                <!-- Active dot -->
-                <div class="absolute -top-2 w-1.5 h-1.5 bg-primary rounded-full"></div>
-                <i class="fa-solid fa-route text-[20px]"></i>
-                <span class="text-[10px] font-bold">Trilhas</span>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-regular fa-compass text-[20px]"></i>
-                <span class="text-[10px] font-bold">Explorar</span>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-regular fa-user text-[20px]"></i>
-                <span class="text-[10px] font-bold">Perfil</span>
-            </button>
-        </nav>
 
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

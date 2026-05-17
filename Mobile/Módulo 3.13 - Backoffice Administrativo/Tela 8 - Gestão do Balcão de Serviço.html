@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MMO Admin - Service Desk</title>
+    <title>Gestão do Balcão de Serviço - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,7 +54,7 @@
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.2); }
     </style>
 </head>
-<body class="bg-background min-h-[100dvh] flex justify-center font-sans">
+<body class="pb-28 bg-background min-h-[100dvh] flex justify-center font-sans">
     
     <!-- Mobile Container (375x840 constraint) -->
     <div id="app-container" class="w-full max-w-[375px] h-[100dvh] bg-background relative overflow-hidden flex flex-col shadow-2xl sm:border sm:border-borderLight">
@@ -175,33 +175,7 @@
             </section>
         </main>
 
-        <!-- 4. Floating Pill Navigation -->
-        <div class="absolute bottom-6 left-0 w-full px-6 z-50 pointer-events-none">
-            <nav id="bottom-nav" class="glass-nav rounded-pill shadow-nav flex justify-between items-center px-6 py-3.5 pointer-events-auto">
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
-                    <i class="fa-solid fa-chart-pie text-xl"></i>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center relative text-primary">
-                    <div class="bg-primary/10 w-12 h-10 rounded-pill flex items-center justify-center">
-                        <i class="fa-solid fa-layer-group text-xl"></i>
-                    </div>
-                    <div class="absolute -bottom-1 w-1 h-1 bg-primary rounded-full"></div>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
-                    <i class="fa-solid fa-wallet text-xl"></i>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
-                    <i class="fa-solid fa-gear text-xl"></i>
-                </a>
 
-            </nav>
-        </div>
-
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

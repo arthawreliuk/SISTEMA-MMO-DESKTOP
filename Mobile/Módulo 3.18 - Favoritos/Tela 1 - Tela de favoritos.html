@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Perfil do Mestre</title>
+    <title>Tela de favoritos - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -68,7 +68,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-brand-offwhite flex justify-center items-start">
+<body class="pb-28 min-h-screen bg-brand-offwhite flex justify-center items-start">
 
     <!-- Mobile Container (375x840 constraint) -->
     <main id="app-container" class="w-full max-w-[375px] min-h-[840px] h-[100dvh] bg-brand-offwhite relative overflow-hidden flex flex-col shadow-2xl sm:my-8 sm:rounded-[40px] sm:h-[840px] sm:border-[8px] sm:border-gray-900">
@@ -185,25 +185,6 @@
             </button>
         </div>
 
-        <!-- Floating Bottom Navigation -->
-        <nav id="bottom-nav" class="absolute bottom-5 left-1/2 -translate-x-1/2 w-[90%] bg-white rounded-full px-6 py-3.5 shadow-floating flex justify-between items-center z-50">
-            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
-                <i class="fa-solid fa-house text-lg"></i>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
-                <i class="fa-solid fa-magnifying-glass text-lg"></i>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-brand-navy relative">
-                <i class="fa-solid fa-heart text-xl"></i>
-                <span class="absolute -bottom-2 w-1 h-1 bg-brand-navy rounded-full"></span>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
-                <i class="fa-regular fa-message text-lg"></i>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-navy transition-colors">
-                <i class="fa-regular fa-user text-lg"></i>
-            </button>
-        </nav>
 
     </main>
 
@@ -218,5 +199,6 @@
             }
         }, 3000);
     </script>
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

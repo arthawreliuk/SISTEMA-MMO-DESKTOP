@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Card - Favorite Action</title>
+    <title>Ação de favoritar no card_perfil - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -61,7 +61,7 @@
         }
     </style>
 </head>
-<body class="text-textDark font-sans flex justify-center min-h-screen bg-background">
+<body class="pb-28 text-textDark font-sans flex justify-center min-h-screen bg-background">
 
     <!-- Mobile Container (375x840 constraint) -->
     <div id="app-container" class="w-full max-w-[375px] h-[840px] bg-background relative overflow-hidden shadow-2xl mx-auto flex flex-col">
@@ -174,41 +174,7 @@
             </div>
         </div>
 
-        <!-- Floating Pill Navigation -->
-        <div id="floating_pill_navigation" class="absolute bottom-8 left-0 w-full px-6 z-30">
-            <nav class="bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-6 py-4 flex justify-between items-center relative">
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-textMuted w-12">
-                    <i class="fa-solid fa-house text-xl"></i>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-textMuted w-12">
-                    <i class="fa-solid fa-magnifying-glass text-xl"></i>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-primary w-12 relative">
-                    <i class="fa-solid fa-heart text-xl"></i>
-                    <!-- Notification Dot -->
-                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-primary rounded-full"></div>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-textMuted w-12">
-                    <i class="fa-solid fa-message text-xl"></i>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-textMuted w-12">
-                    <i class="fa-regular fa-user text-xl"></i>
-                </a>
-                
-            </nav>
-        </div>
 
-        <!-- Home Indicator -->
-        <div class="absolute bottom-2 left-0 w-full flex justify-center z-50">
-            <div class="w-32 h-1 bg-textDark rounded-full opacity-20"></div>
-        </div>
-
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

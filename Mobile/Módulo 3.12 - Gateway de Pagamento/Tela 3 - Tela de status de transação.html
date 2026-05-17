@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Detalhes da Transação</title>
+    <title>Tela de status de transação - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,7 +85,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 flex justify-center items-start min-h-screen">
+<body class="pb-28 bg-gray-100 flex justify-center items-start min-h-screen">
 
     <!-- Mobile Viewport Wrapper -->
     <main class="mobile-container pb-[120px]">
@@ -214,27 +214,9 @@
             </button>
         </div>
 
-        <!-- 6. Floating Pill Navigation -->
-        <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] glass-nav rounded-full px-6 py-3.5 shadow-nav z-50 border border-white/50 flex justify-between items-center">
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-house text-lg"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-chart-simple text-lg"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-primary relative">
-                <div class="absolute -top-1 -right-1 w-2 h-2 bg-danger rounded-full border border-white"></div>
-                <i class="fa-solid fa-wallet text-xl"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-bell text-lg"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-regular fa-user text-lg"></i>
-            </a>
-        </nav>
 
     </main>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

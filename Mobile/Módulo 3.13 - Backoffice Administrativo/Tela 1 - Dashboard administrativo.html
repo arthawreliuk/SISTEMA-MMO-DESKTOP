@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaaS Admin Dashboard - MMO Platform</title>
+    <title>Dashboard administrativo - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -229,33 +229,7 @@
 
     </main>
 
-    <!-- Floating Pill Navigation (Admin Mode) -->
-    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-sm">
-        <div class="glass rounded-full px-6 py-3.5 flex justify-between items-center shadow-float border border-white/50">
-            
-            <!-- Dashboard (Active) -->
-            <a href="#" class="flex flex-col items-center gap-1.5 w-14 relative group">
-                <i class="fa-solid fa-chart-pie text-brand-blue text-xl transition-transform group-active:scale-95"></i>
-                <div class="w-1.5 h-1.5 bg-brand-blue rounded-full absolute -bottom-2"></div>
-            </a>
 
-            <!-- Users -->
-            <a href="#" class="flex flex-col items-center gap-1.5 w-14 group">
-                <i class="fa-solid fa-users text-gray-400 hover:text-gray-600 text-xl transition-all group-active:scale-95"></i>
-            </a>
-
-            <!-- Finances -->
-            <a href="#" class="flex flex-col items-center gap-1.5 w-14 group">
-                <i class="fa-solid fa-wallet text-gray-400 hover:text-gray-600 text-xl transition-all group-active:scale-95"></i>
-            </a>
-
-            <!-- Settings -->
-            <a href="#" class="flex flex-col items-center gap-1.5 w-14 group">
-                <i class="fa-solid fa-gear text-gray-400 hover:text-gray-600 text-xl transition-all group-active:scale-95"></i>
-            </a>
-            
-        </div>
-    </nav>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

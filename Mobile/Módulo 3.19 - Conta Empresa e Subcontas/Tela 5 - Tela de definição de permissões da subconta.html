@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Permissões da Subconta - MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        primary: '#0016dc',
+                        background: '#F8F9FA',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        surface: '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .toggle-track { width: 48px; height: 26px; border-radius: 100px; position: relative; cursor: pointer; transition: background 0.25s; flex-shrink: 0; }
+        .toggle-track.on { background: #0016dc; }
+        .toggle-track.off { background: #D1D5DB; }
+        .toggle-thumb { width: 22px; height: 22px; border-radius: 50%; background: white; position: absolute; top: 2px; transition: left 0.25s; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+        .toggle-track.on .toggle-thumb { left: 24px; }
+        .toggle-track.off .toggle-thumb { left: 2px; }
+        .perm-row { background: #fff; border-radius: 16px; padding: 15px 16px; display: flex; align-items: center; gap-12px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); cursor: pointer; transition: background 0.1s; }
+        .perm-row:active { background: #f9fafb; }
+        .role-card { border: 2px solid #E5E7EB; border-radius: 16px; padding: 14px; cursor: pointer; transition: all 0.2s; background: #fff; }
+        .role-card.selected { border-color: #0016dc; background: #EEF0FF; }
+        .role-card:active { transform: scale(0.97); }
+        .save-btn { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); width: calc(100% - 32px); max-width: 398px; z-index: 40; }
+    </style>
+</head>
+<body class="font-sans bg-background min-h-screen pb-40">
+
+    <!-- Header -->
+    <div class="bg-white sticky top-0 z-30" style="box-shadow: 0 1px 0 #F3F4F6;">
+        <div class="max-w-[430px] mx-auto px-4 pt-12 pb-4 flex items-center gap-3">
+            <a href="Tela 3 - Gestão de subcontas.html">
+                <button class="w-9 h-9 flex items-center justify-center rounded-full bg-background text-textMain">
+                    <i class="fa-solid fa-arrow-left text-sm"></i>
+                </button>
+            </a>
+            <div class="flex-1">
+                <p class="text-xs text-textMuted font-medium">Construtora Horizonte</p>
+                <h1 class="text-base font-bold text-textMain leading-tight">Permissões da Subconta</h1>
+            </div>
+            <button class="w-9 h-9 flex items-center justify-center rounded-full bg-red-50 text-red-500">
+                <i class="fa-solid fa-trash text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="max-w-[430px] mx-auto px-4 pt-4 space-y-5">
+
+        <!-- User info card -->
+        <div class="bg-white rounded-[24px] p-5" style="box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+            <div class="flex items-center gap-4">
+                <div class="relative flex-shrink-0">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center font-black text-2xl text-white" style="background: linear-gradient(135deg, #667eea, #764ba2);">AL</div>
+                    <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                        <i class="fa-solid fa-check text-white text-[8px]"></i>
+                    </span>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-base font-bold text-textMain">Ana Lima</h2>
+                    <p class="text-xs text-textMuted mt-0.5">Gestora de Obras</p>
+                    <p class="text-xs text-textMuted">ana.lima@horizonte.com</p>
+                </div>
+                <div class="text-right">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Ativa</span>
+                    <p class="text-[11px] text-textMuted mt-1.5">Membro há 14 dias</p>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-gray-50 grid grid-cols-3 gap-2 text-center">
+                <div>
+                    <p class="text-base font-black text-textMain">12</p>
+                    <p class="text-[11px] text-textMuted">Solicitações</p>
+                </div>
+                <div>
+                    <p class="text-base font-black text-textMain">3</p>
+                    <p class="text-[11px] text-textMuted">Projetos</p>
+                </div>
+                <div>
+                    <p class="text-base font-black text-textMain">R$ 24k</p>
+                    <p class="text-[11px] text-textMuted">Aprovados</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preset de função -->
+        <div>
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-sm font-bold text-textMain">Perfil de acesso</h2>
+                <span class="text-xs text-textMuted">Ajuste individual abaixo</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2.5">
+
+                <div class="role-card selected" onclick="selectRole(this, 'admin')">
+                    <div class="w-8 h-8 rounded-xl bg-purple-100 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-crown text-purple-600 text-sm"></i>
+                    </div>
+                    <p class="text-xs font-bold text-textMain">Admin</p>
+                    <p class="text-[10px] text-textMuted mt-0.5">Acesso total</p>
+                </div>
+
+                <div class="role-card" onclick="selectRole(this, 'gestor')">
+                    <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-user-tie text-primary text-sm"></i>
+                    </div>
+                    <p class="text-xs font-bold text-textMain">Gestor</p>
+                    <p class="text-[10px] text-textMuted mt-0.5">Sem financeiro</p>
+                </div>
+
+                <div class="role-card" onclick="selectRole(this, 'operador')">
+                    <div class="w-8 h-8 rounded-xl bg-gray-100 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-hard-hat text-gray-500 text-sm"></i>
+                    </div>
+                    <p class="text-xs font-bold text-textMain">Operador</p>
+                    <p class="text-[10px] text-textMuted mt-0.5">Só criar</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Permissões individuais -->
+        <div>
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-sm font-bold text-textMain">Permissões individuais</h2>
+                <button onclick="toggleAll()" class="text-xs text-primary font-semibold">Desmarcar tudo</button>
+            </div>
+            <div class="space-y-2.5">
+
+                <!-- Permissão 1 -->
+                <div class="perm-row" onclick="togglePerm(this)">
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-file-circle-plus text-primary text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-textMain">Criar solicitações</p>
+                            <p class="text-xs text-textMuted">Abrir novos pedidos de serviço</p>
+                        </div>
+                        <div class="toggle-track on ml-3" onclick="event.stopPropagation(); toggleTrack(this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permissão 2 -->
+                <div class="perm-row" onclick="togglePerm(this)">
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-chart-line text-green-600 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-textMain">Ver relatórios</p>
+                            <p class="text-xs text-textMuted">Acessar métricas e dashboards</p>
+                        </div>
+                        <div class="toggle-track on ml-3" onclick="event.stopPropagation(); toggleTrack(this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permissão 3 -->
+                <div class="perm-row" onclick="togglePerm(this)">
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-people-group text-purple-600 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-textMain">Gerenciar profissionais</p>
+                            <p class="text-xs text-textMuted">Contratar, avaliar e dispensar</p>
+                        </div>
+                        <div class="toggle-track on ml-3" onclick="event.stopPropagation(); toggleTrack(this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permissão 4 -->
+                <div class="perm-row" onclick="togglePerm(this)">
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 rounded-xl bg-yellow-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-file-signature text-yellow-600 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-textMain">Aprovação de orçamentos</p>
+                            <p class="text-xs text-textMuted">Aprovar ou recusar propostas</p>
+                        </div>
+                        <div class="toggle-track on ml-3" onclick="event.stopPropagation(); toggleTrack(this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permissão 5 -->
+                <div class="perm-row" onclick="togglePerm(this)">
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-vault text-red-500 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-textMain">Acesso ao financeiro</p>
+                            <p class="text-xs text-textMuted">Ver faturas, extratos e pagamentos</p>
+                        </div>
+                        <div class="toggle-track on ml-3" onclick="event.stopPropagation(); toggleTrack(this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permissão 6 -->
+                <div class="perm-row" onclick="togglePerm(this)">
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-comment-dots text-indigo-500 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-textMain">Chat com profissionais</p>
+                            <p class="text-xs text-textMuted">Comunicação direta via inbox</p>
+                        </div>
+                        <div class="toggle-track off ml-3" onclick="event.stopPropagation(); toggleTrack(this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permissão 7 -->
+                <div class="perm-row" onclick="togglePerm(this)">
+                    <div class="flex items-center gap-3 flex-1">
+                        <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-users-gear text-orange-500 text-sm"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-bold text-textMain">Gerenciar subcontas</p>
+                            <p class="text-xs text-textMuted">Criar e editar outros usuários</p>
+                        </div>
+                        <div class="toggle-track off ml-3" onclick="event.stopPropagation(); toggleTrack(this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Limite de gasto -->
+        <div class="bg-white rounded-[20px] p-5" style="box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            <h3 class="text-sm font-bold text-textMain mb-1">Limite de aprovação</h3>
+            <p class="text-xs text-textMuted mb-4">Valor máximo que esta subconta pode aprovar sem revisão do administrador</p>
+            <div class="bg-background rounded-xl p-4 flex items-center gap-3">
+                <span class="text-textMuted font-semibold text-sm">R$</span>
+                <input type="text" value="15.000" class="flex-1 bg-transparent text-2xl font-black text-textMain outline-none" inputmode="numeric">
+                <span class="text-xs text-textMuted">/serviço</span>
+            </div>
+            <p class="text-[11px] text-textMuted mt-2 text-center">Acima disso, uma notificação será enviada ao admin</p>
+        </div>
+
+        <!-- Danger zone -->
+        <div class="border border-red-200 rounded-[20px] p-4">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-8 h-8 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-triangle-exclamation text-red-500 text-sm"></i>
+                </div>
+                <h3 class="text-sm font-bold text-textMain">Zona de risco</h3>
+            </div>
+            <button class="w-full py-3 rounded-xl border border-red-200 text-red-500 text-sm font-semibold flex items-center justify-center gap-2">
+                <i class="fa-solid fa-ban text-sm"></i>
+                Suspender acesso temporariamente
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Fixed save button -->
+    <div class="save-btn px-0">
+        <button onclick="showSaved()" class="w-full bg-primary text-white font-bold rounded-full py-4 text-base flex items-center justify-center gap-2" style="box-shadow: 0 8px 24px rgba(0,22,220,0.3);">
+            <i class="fa-solid fa-floppy-disk text-sm"></i>
+            Salvar alterações
+        </button>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-32 left-1/2 -translate-x-1/2 bg-green-600 text-white text-sm font-semibold px-5 py-3 rounded-full flex items-center gap-2 z-50 opacity-0 transition-opacity duration-300 pointer-events-none">
+        <i class="fa-solid fa-check-circle"></i>
+        Permissões salvas com sucesso!
+    </div>
+
+    <script>
+        function toggleTrack(track) {
+            if (track.classList.contains('on')) {
+                track.classList.remove('on'); track.classList.add('off');
+            } else {
+                track.classList.remove('off'); track.classList.add('on');
+            }
+        }
+        function selectRole(card, role) {
+            document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            const allTracks = document.querySelectorAll('.toggle-track');
+            if (role === 'admin') {
+                allTracks.forEach(t => { t.classList.add('on'); t.classList.remove('off'); });
+            } else if (role === 'gestor') {
+                allTracks.forEach((t, i) => {
+                    if (i < 4) { t.classList.add('on'); t.classList.remove('off'); }
+                    else { t.classList.add('off'); t.classList.remove('on'); }
+                });
+            } else {
+                allTracks.forEach((t, i) => {
+                    if (i === 0) { t.classList.add('on'); t.classList.remove('off'); }
+                    else { t.classList.add('off'); t.classList.remove('on'); }
+                });
+            }
+        }
+        let allOn = true;
+        function toggleAll() {
+            allOn = !allOn;
+            document.querySelectorAll('.toggle-track').forEach(t => {
+                if (allOn) { t.classList.add('on'); t.classList.remove('off'); }
+                else { t.classList.add('off'); t.classList.remove('on'); }
+            });
+        }
+        function showSaved() {
+            const t = document.getElementById('toast');
+            t.style.opacity = '1';
+            setTimeout(() => { t.style.opacity = '0'; }, 2500);
+        }
+    </script>
+    <script src="../../_mobile-nav.js"></script>
+</body>
+</html>

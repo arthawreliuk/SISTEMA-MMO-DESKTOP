@@ -59,10 +59,10 @@
     </nav>
 
     <!-- Main Workspace Container -->
-    <main id="main-workspace" class="w-full max-w-[1200px] h-[800px] bg-surface rounded-[24px] shadow-ambient flex overflow-hidden border border-gray-100">
-        
+    <main id="main-workspace" class="w-full max-w-[1200px] h-auto min-h-[400px] lg:h-[800px] bg-surface rounded-[24px] shadow-ambient flex flex-col lg:flex-row lg:overflow-hidden border border-gray-100">
+
         <!-- Left Panel: Sales Inbox (30%) -->
-        <section id="inbox-sidebar" class="w-[30%] min-w-[320px] h-full flex flex-col border-r border-[#F8F9FA] bg-surface relative z-10">
+        <section id="inbox-sidebar" class="w-full lg:w-[30%] min-w-0 lg:min-w-[320px] h-auto lg:h-full flex flex-col border-b lg:border-b-0 lg:border-r border-[#F8F9FA] bg-surface relative z-10">
             
             <!-- Sidebar Header -->
             <div class="p-6 pb-4 border-b border-[#F8F9FA]">
@@ -141,7 +141,7 @@
         </section>
 
         <!-- Right Panel: Chat Workspace Placeholder (70%) -->
-        <section id="chat-workspace" class="flex-1 h-full bg-surface flex flex-col items-center justify-center relative overflow-hidden">
+        <section id="chat-workspace" class="flex-1 h-auto lg:h-full bg-surface flex flex-col items-center justify-center relative overflow-hidden min-h-[300px]">
             
             <!-- Subtle background decorative elements -->
             <div class="absolute top-[-100px] right-[-100px] w-[400px] h-[400px] bg-primary/[0.02] rounded-full blur-[80px] pointer-events-none"></div>

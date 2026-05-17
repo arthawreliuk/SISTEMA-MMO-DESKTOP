@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Home Search Discovery</title>
+    <title>Tela inicial de busca - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -251,44 +251,9 @@
 
         </div>
 
-        <!-- 5. Floating Pill Navigation -->
-        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[390px] bg-white rounded-full shadow-float px-6 py-4 z-50 border border-gray-50">
-            <ul class="flex justify-between items-center relative">
-                <!-- Home (Active) -->
-                <li class="relative flex flex-col items-center justify-center w-12">
-                    <button class="text-primary hover:text-primary transition-colors">
-                        <i class="fa-solid fa-house text-xl"></i>
-                    </button>
-                    <!-- Active Dot Indicator -->
-                    <div class="absolute -bottom-2 w-1 h-1 bg-primary rounded-full"></div>
-                </li>
-                
-                <!-- Orders -->
-                <li class="flex flex-col items-center justify-center w-12">
-                    <button class="text-soft-gray hover:text-navy transition-colors">
-                        <i class="fa-regular fa-file-lines text-xl"></i>
-                    </button>
-                </li>
-                
-                <!-- Messages -->
-                <li class="flex flex-col items-center justify-center w-12 relative">
-                    <button class="text-soft-gray hover:text-navy transition-colors">
-                        <i class="fa-regular fa-comment-dots text-xl"></i>
-                    </button>
-                    <!-- Unread badge -->
-                    <span class="absolute top-0 right-1 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-                </li>
-                
-                <!-- Profile -->
-                <li class="flex flex-col items-center justify-center w-12">
-                    <button class="text-soft-gray hover:text-navy transition-colors">
-                        <i class="fa-regular fa-user text-xl"></i>
-                    </button>
-                </li>
-            </ul>
-        </nav>
 
     </main>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

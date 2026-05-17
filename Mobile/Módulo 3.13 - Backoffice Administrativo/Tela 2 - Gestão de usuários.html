@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>User Management</title>
+    <title>Gestão de usuários - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +52,7 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased text-textMain bg-background min-h-[100dvh] flex flex-col relative pb-24">
+<body class="pb-28 font-sans antialiased text-textMain bg-background min-h-[100dvh] flex flex-col relative pb-24">
 
     <!-- Top Header -->
     <header id="header" class="glass-header sticky top-0 z-50 px-5 py-4 flex items-center justify-between transition-all duration-300">
@@ -203,29 +203,7 @@
         </section>
     </main>
 
-    <!-- Floating Bottom Navigation -->
-    <nav id="FloatingPillNavigation" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] bg-white/90 backdrop-blur-xl rounded-full shadow-nav px-6 py-3.5 flex items-center justify-between border border-white/40 z-50">
-        <!-- Nav Item 1 -->
-        <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
-            <i class="fa-solid fa-chart-pie text-[20px]"></i>
-        </a>
-        
-        <!-- Nav Item 2 (Active) -->
-        <a href="#" class="flex flex-col items-center gap-1 text-primary relative">
-            <i class="fa-solid fa-users text-[20px]"></i>
-            <span class="absolute -bottom-2.5 w-1.5 h-1.5 bg-primary rounded-full"></span>
-        </a>
-        
-        <!-- Nav Item 3 -->
-        <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
-            <i class="fa-solid fa-wallet text-[20px]"></i>
-        </a>
-        
-        <!-- Nav Item 4 -->
-        <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
-            <i class="fa-solid fa-gear text-[20px]"></i>
-        </a>
-    </nav>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

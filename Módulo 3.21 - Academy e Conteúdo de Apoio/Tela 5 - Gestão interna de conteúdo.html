@@ -86,10 +86,10 @@
         </div>
     </header>
 
-    <div class="flex flex-1 overflow-hidden h-[calc(100vh-72px)]">
-        
+    <div class="flex flex-col lg:flex-row flex-1 lg:overflow-hidden h-auto lg:h-[calc(100vh-72px)]">
+
         <!-- Left Sidebar Navigation -->
-        <aside id="sidebar-nav" class="w-[240px] bg-surface border-r border-borderLight flex flex-col py-6">
+        <aside id="sidebar-nav" class="w-full lg:w-[240px] bg-surface border-r border-borderLight flex flex-col py-6">
             <div class="px-6 mb-6">
                 <h2 class="text-xs font-bold text-textMuted uppercase tracking-wider mb-4">Gestão do Curso</h2>
                 <ul class="space-y-1">
@@ -131,10 +131,10 @@
                 </div>
 
                 <!-- Studio Canvas Split -->
-                <div class="flex-1 bg-surface rounded-[24px] shadow-soft border border-borderLight flex overflow-hidden min-h-[700px]">
-                    
+                <div class="flex-1 bg-surface rounded-[24px] shadow-soft border border-borderLight flex flex-col lg:flex-row lg:overflow-hidden min-h-[700px]">
+
                     <!-- Left Column: Syllabus Builder (35%) -->
-                    <div id="syllabus-builder" class="w-[35%] border-r border-borderLight flex flex-col bg-surface">
+                    <div id="syllabus-builder" class="w-full lg:w-[35%] border-r border-borderLight flex flex-col bg-surface">
                         <div class="p-6 border-b border-borderLight flex justify-between items-center bg-white z-10">
                             <h3 class="font-bold text-textMain">Estrutura do Curso</h3>
                             <span class="text-xs font-semibold bg-gray-100 text-textMuted px-2 py-1 rounded-md">12 Aulas</span>
@@ -215,7 +215,7 @@
                     </div>
 
                     <!-- Right Column: Lesson Editor (65%) -->
-                    <div id="lesson-editor" class="w-[65%] bg-surfaceTint flex flex-col relative">
+                    <div id="lesson-editor" class="w-full lg:w-[65%] bg-surfaceTint flex flex-col relative">
                         <div class="p-8 flex-1 overflow-y-auto">
                             
                             <!-- Media Dropzone -->

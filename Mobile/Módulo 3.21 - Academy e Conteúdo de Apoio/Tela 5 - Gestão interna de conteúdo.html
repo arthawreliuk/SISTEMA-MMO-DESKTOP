@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LMS CMS Admin</title>
+    <title>Gestão interna de conteúdo - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -46,7 +46,7 @@
         .safe-bottom { padding-bottom: calc(env(safe-area-inset-bottom) + 100px); }
     </style>
 </head>
-<body class="text-brand-navy min-h-screen relative max-w-[430px] mx-auto bg-brand-offwhite shadow-2xl">
+<body class="pb-28 text-brand-navy min-h-screen relative max-w-[430px] mx-auto bg-brand-offwhite shadow-2xl">
 
     <!-- Header -->
     <header id="header" class="sticky top-0 z-40 bg-white px-5 py-4 flex items-center justify-between shadow-soft rounded-b-[24px]">
@@ -153,27 +153,7 @@
 
     </main>
 
-    <!-- Floating Action Button -->
-    <button class="fixed bottom-[100px] right-6 w-14 h-14 bg-brand-blue rounded-full shadow-fab flex items-center justify-center text-white hover:scale-105 transition-transform z-50">
-        <i class="fa-solid fa-plus text-xl"></i>
-    </button>
 
-    <!-- Bottom Navigation -->
-    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] bg-white rounded-full shadow-nav px-2 py-2 flex justify-between items-center z-50 border border-gray-100">
-        <a href="#" class="flex flex-col items-center justify-center w-14 h-12 rounded-full bg-brand-offwhite text-brand-blue relative">
-            <i class="fa-solid fa-house text-[18px] mb-0.5"></i>
-            <div class="absolute -bottom-1 w-1 h-1 rounded-full bg-brand-blue"></div>
-        </a>
-        <a href="#" class="flex flex-col items-center justify-center w-14 h-12 rounded-full text-gray-400 hover:text-brand-navy transition-colors">
-            <i class="fa-solid fa-chart-simple text-[18px]"></i>
-        </a>
-        <a href="#" class="flex flex-col items-center justify-center w-14 h-12 rounded-full text-gray-400 hover:text-brand-navy transition-colors">
-            <i class="fa-regular fa-folder text-[18px]"></i>
-        </a>
-        <a href="#" class="flex flex-col items-center justify-center w-14 h-12 rounded-full text-gray-400 hover:text-brand-navy transition-colors">
-            <i class="fa-regular fa-user text-[18px]"></i>
-        </a>
-    </nav>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

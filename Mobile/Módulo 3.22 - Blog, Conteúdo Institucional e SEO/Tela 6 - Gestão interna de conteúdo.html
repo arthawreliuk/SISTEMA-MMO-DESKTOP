@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SaaS Editorial CMS Admin</title>
+    <title>Gestão interna de conteúdo - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -63,7 +63,7 @@
         }
     </style>
 </head>
-<body class="min-h-[100dvh] flex flex-col relative pb-24">
+<body class="pb-28 min-h-[100dvh] flex flex-col relative pb-24">
 
     <!-- Top Header -->
     <header id="top-header" class="sticky top-0 z-40 bg-surface shadow-sm px-5 py-4 flex items-center justify-between">
@@ -198,34 +198,7 @@
 
     </main>
 
-    <!-- Floating Action Button -->
-    <div class="fixed bottom-[100px] right-5 z-50">
-        <button class="w-14 h-14 bg-primary rounded-full shadow-fab flex items-center justify-center text-white hover:scale-105 active:scale-95 transition-transform duration-200">
-            <i class="fa-solid fa-pen text-xl"></i>
-        </button>
-    </div>
 
-    <!-- Floating Bottom Navigation -->
-    <div class="fixed bottom-6 left-0 w-full z-50 flex justify-center px-5 pointer-events-none">
-        <nav class="bg-surface rounded-full shadow-nav px-6 py-3 flex items-center justify-between gap-8 pointer-events-auto border border-gray-100 w-full max-w-[320px]">
-            <a href="#" class="flex flex-col items-center gap-1 text-primary">
-                <i class="fa-solid fa-house text-[18px]"></i>
-                <span class="text-[9px] font-bold">Início</span>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-text-muted hover:text-text-main transition-colors">
-                <i class="fa-solid fa-chart-simple text-[18px]"></i>
-                <span class="text-[9px] font-medium">Métricas</span>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-text-muted hover:text-text-main transition-colors">
-                <i class="fa-regular fa-folder text-[18px]"></i>
-                <span class="text-[9px] font-medium">Arquivos</span>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-text-muted hover:text-text-main transition-colors">
-                <i class="fa-regular fa-user text-[18px]"></i>
-                <span class="text-[9px] font-medium">Perfil</span>
-            </a>
-        </nav>
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

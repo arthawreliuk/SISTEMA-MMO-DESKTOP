@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Minhas Avaliações</title>
+    <title>Tela de histórico de avaliações do profissional - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,7 +72,7 @@
         }
     </style>
 </head>
-<body class="bg-background min-h-[100dvh] pb-24 relative overflow-x-hidden">
+<body class="pb-28 bg-background min-h-[100dvh] pb-24 relative overflow-x-hidden">
 
     <!-- Mobile Container Wrapper -->
     <div class="w-full max-w-[375px] mx-auto min-h-screen relative bg-background shadow-2xl overflow-hidden md:border-x md:border-border/50">
@@ -250,32 +250,7 @@
 
         </main>
 
-        <!-- 5. Floating Pill Navigation -->
-        <div class="fixed bottom-6 left-0 right-0 z-50 flex justify-center px-5 pointer-events-none w-full max-w-[375px] mx-auto">
-            <nav id="bottom-nav" class="glass-nav rounded-full px-6 py-3.5 shadow-nav border border-border/40 flex items-center justify-between gap-8 pointer-events-auto">
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors w-12 active:scale-95">
-                    <i class="fa-solid fa-house text-[18px]"></i>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors w-12 active:scale-95 relative">
-                    <i class="fa-solid fa-briefcase text-[18px]"></i>
-                    <span class="absolute top-0 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors w-12 active:scale-95">
-                    <i class="fa-solid fa-clipboard-list text-[18px]"></i>
-                </a>
-                
-                <a href="#" class="flex flex-col items-center gap-1.5 text-primary transition-colors w-12 active:scale-95 relative">
-                    <i class="fa-solid fa-user text-[18px]"></i>
-                    <span class="w-1 h-1 bg-primary rounded-full absolute -bottom-2"></span>
-                </a>
-                
-            </nav>
-        </div>
 
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

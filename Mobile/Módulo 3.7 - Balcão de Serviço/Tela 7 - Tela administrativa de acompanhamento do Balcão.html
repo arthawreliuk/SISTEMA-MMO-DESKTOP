@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Service Board Admin Dashboard</title>
+    <title>Tela administrativa de acompanhamento do Balcão - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -65,7 +65,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-200">
+<body class="pb-28 bg-gray-200">
 
 <div class="mobile-container pb-[100px]">
     
@@ -204,33 +204,7 @@
 
     </main>
 
-    <!-- 5. Floating Pill Navigation -->
-    <div class="absolute bottom-6 left-0 w-full px-5 z-50 pointer-events-none">
-        <nav id="bottom-nav" class="pointer-events-auto bg-white/95 backdrop-blur-xl rounded-full h-[72px] shadow-float border border-white/20 flex items-center justify-between px-6">
-            
-            <!-- Active Item -->
-            <a href="#" class="flex flex-col items-center justify-center w-12 h-12 gap-1 text-primary relative">
-                <i class="fa-solid fa-chart-pie text-[20px]"></i>
-                <div class="w-1.5 h-1.5 rounded-full bg-primary absolute -bottom-1"></div>
-            </a>
-            
-            <!-- Inactive Items -->
-            <a href="#" class="flex flex-col items-center justify-center w-12 h-12 gap-1 text-textMuted hover:text-textMain transition-colors">
-                <i class="fa-solid fa-users text-[20px]"></i>
-            </a>
-            
-            <a href="#" class="flex flex-col items-center justify-center w-12 h-12 gap-1 text-textMuted hover:text-textMain transition-colors">
-                <i class="fa-solid fa-wallet text-[20px]"></i>
-            </a>
-            
-            <a href="#" class="flex flex-col items-center justify-center w-12 h-12 gap-1 text-textMuted hover:text-textMain transition-colors">
-                <i class="fa-solid fa-gear text-[20px]"></i>
-            </a>
 
-        </nav>
-    </div>
-
-</div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

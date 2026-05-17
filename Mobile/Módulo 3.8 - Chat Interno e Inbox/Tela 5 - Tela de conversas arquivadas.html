@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archived Conversations</title>
+    <title>Tela de conversas arquivadas - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,7 +44,7 @@
         .glass-header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     </style>
 </head>
-<body class="relative min-h-[100dvh] w-full max-w-[430px] mx-auto bg-bg overflow-x-hidden flex flex-col pb-24">
+<body class="pb-28 relative min-h-[100dvh] w-full max-w-[430px] mx-auto bg-bg overflow-x-hidden flex flex-col pb-24">
 
     <!-- 1. Top Header -->
     <header id="StickyHeader" class="sticky top-0 z-50 glass-header px-5 py-4 flex items-center justify-between border-b border-gray-100">
@@ -137,24 +137,7 @@
 
     </main>
 
-    <!-- 4. Floating Pill Navigation -->
-    <div id="FloatingPillNav" class="fixed bottom-6 left-0 right-0 px-6 z-50 flex justify-center pointer-events-none">
-        <nav class="bg-white rounded-[32px] shadow-nav px-6 py-3.5 flex items-center justify-between w-full max-w-[320px] pointer-events-auto border border-gray-50/50">
-            <a href="#" class="flex flex-col items-center justify-center w-12 text-gray-400 hover:text-gray-600 transition-colors">
-                <i class="fa-solid fa-house text-xl mb-1"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center justify-center w-12 text-gray-400 hover:text-gray-600 transition-colors">
-                <i class="fa-solid fa-clipboard-list text-xl mb-1"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center justify-center w-12 text-primary relative">
-                <i class="fa-solid fa-message text-xl mb-1"></i>
-                <span class="w-1 h-1 bg-primary rounded-full absolute -bottom-1"></span>
-            </a>
-            <a href="#" class="flex flex-col items-center justify-center w-12 text-gray-400 hover:text-gray-600 transition-colors">
-                <i class="fa-regular fa-user text-xl mb-1"></i>
-            </a>
-        </nav>
-    </div>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Blocos resumidos de desempenho.html - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -47,7 +47,7 @@
         }
     </style>
 </head>
-<body class="text-brand-navy min-h-[100dvh] pb-[140px]">
+<body class="pb-28 text-brand-navy min-h-[100dvh] pb-[140px]">
 
     <!-- Mobile Wrapper -->
     <div class="w-full max-w-[430px] mx-auto min-h-[100dvh] relative flex flex-col pt-[max(env(safe-area-inset-top),20px)] px-5">
@@ -159,39 +159,7 @@
 
         </main>
 
-        <!-- Floating Bottom Navigation & CTA -->
-        <div class="fixed bottom-0 left-0 w-full z-50 px-5 pb-[max(env(safe-area-inset-bottom),24px)] pt-6 bg-gradient-to-t from-[#F8F9FA] via-[#F8F9FA]/90 to-transparent">
-            <div class="max-w-[430px] mx-auto flex flex-col gap-4">
-                
-                <!-- Massive Pinned CTA -->
-                <button class="w-full bg-brand-blue text-white h-[60px] rounded-[20px] font-bold text-[16px] shadow-[0_12px_24px_-8px_rgba(0,22,220,0.4)] flex items-center justify-center gap-3 active:scale-[0.98] transition-transform">
-                    Ver Relatório Completo
-                    <i class="fa-solid fa-arrow-right text-sm"></i>
-                </button>
 
-                <!-- Floating Pill Nav -->
-                <nav class="bg-white h-[64px] rounded-full shadow-nav flex items-center justify-between px-6 border border-gray-100">
-                    <a href="#" class="flex flex-col items-center gap-1 text-brand-blue">
-                        <i class="fa-solid fa-house text-lg"></i>
-                        <span class="text-[10px] font-medium">Início</span>
-                    </a>
-                    <a href="#" class="flex flex-col items-center gap-1 text-brand-navy/40 hover:text-brand-navy transition-colors">
-                        <i class="fa-solid fa-chart-pie text-lg"></i>
-                        <span class="text-[10px] font-medium">Métricas</span>
-                    </a>
-                    <a href="#" class="flex flex-col items-center gap-1 text-brand-navy/40 hover:text-brand-navy transition-colors">
-                        <i class="fa-solid fa-wallet text-lg"></i>
-                        <span class="text-[10px] font-medium">Carteira</span>
-                    </a>
-                    <a href="#" class="flex flex-col items-center gap-1 text-brand-navy/40 hover:text-brand-navy transition-colors">
-                        <i class="fa-regular fa-user text-lg"></i>
-                        <span class="text-[10px] font-medium">Perfil</span>
-                    </a>
-                </nav>
-            </div>
-        </div>
-
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

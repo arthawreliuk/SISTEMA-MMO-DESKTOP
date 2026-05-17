@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pipeline Item Detail / Deal Record</title>
+    <title>Tela de detalhe do item do pipeline - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -53,7 +53,7 @@
         }
     </style>
 </head>
-<body class="bg-background text-text selection:bg-primary selection:text-white pb-32">
+<body class="pb-28 bg-background text-text selection:bg-primary selection:text-white pb-32">
 
     <!-- Mobile Container (Max width for larger screens to maintain mobile layout) -->
     <div class="max-w-[375px] mx-auto min-h-screen relative shadow-2xl bg-background overflow-hidden">
@@ -180,30 +180,7 @@
             </div>
         </div>
 
-        <!-- 5. Floating Pill Navigation -->
-        <nav id="bottom-nav" class="fixed bottom-6 left-6 right-6 max-w-[327px] mx-auto bg-white rounded-full shadow-float px-6 py-4 flex items-center justify-between z-50 border border-gray-100/50">
-            <button class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors">
-                <i class="fa-solid fa-house text-lg"></i>
-            </button>
-            
-            <button class="flex flex-col items-center gap-1 text-primary relative">
-                <i class="fa-solid fa-briefcase text-lg"></i>
-                <div class="w-1 h-1 bg-primary rounded-full absolute -bottom-2"></div>
-            </button>
-            
-            <button class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors">
-                <i class="fa-regular fa-bell text-lg"></i>
-            </button>
-            
-            <button class="flex flex-col items-center gap-1 text-muted hover:text-text transition-colors">
-                <i class="fa-regular fa-user text-lg"></i>
-            </button>
-        </nav>
 
-        <!-- Gradient fade for scroll area behind actions -->
-        <div class="fixed bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/90 to-transparent pointer-events-none z-30 max-w-[375px] mx-auto"></div>
-
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

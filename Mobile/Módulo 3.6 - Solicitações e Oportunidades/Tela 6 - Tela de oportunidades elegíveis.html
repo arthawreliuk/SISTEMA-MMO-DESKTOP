@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Eligible Opportunities</title>
+    <title>Tela de oportunidades elegíveis - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
@@ -73,7 +73,7 @@
         }
     </style>
 </head>
-<body>
+<body class="pb-28">
 
 <div class="mobile-container" id="app-root">
 
@@ -240,36 +240,7 @@
 
     </main>
 
-    <!-- 4. Floating Pill Navigation -->
-    <div class="fixed bottom-6 left-0 w-full max-w-[430px] px-6 z-50 flex justify-center pointer-events-none">
-        <nav class="bg-white rounded-full shadow-nav px-6 py-3.5 flex items-center justify-between w-full max-w-[320px] pointer-events-auto border border-gray-100">
-            
-            <!-- Home -->
-            <button class="flex flex-col items-center gap-1 w-12 text-content-tertiary hover:text-content-primary transition-colors">
-                <i class="fa-solid fa-house text-lg"></i>
-            </button>
 
-            <!-- Orders/Opportunities (ACTIVE) -->
-            <button class="flex flex-col items-center gap-1 w-12 text-brand relative">
-                <i class="fa-solid fa-list-ul text-lg"></i>
-                <div class="w-1 h-1 rounded-full bg-brand absolute -bottom-2"></div>
-            </button>
-
-            <!-- Messages -->
-            <button class="flex flex-col items-center gap-1 w-12 text-content-tertiary hover:text-content-primary transition-colors relative">
-                <i class="fa-regular fa-comment-dots text-lg"></i>
-                <div class="absolute top-0 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></div>
-            </button>
-
-            <!-- Profile -->
-            <button class="flex flex-col items-center gap-1 w-12 text-content-tertiary hover:text-content-primary transition-colors">
-                <i class="fa-regular fa-user text-lg"></i>
-            </button>
-            
-        </nav>
-    </div>
-
-</div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

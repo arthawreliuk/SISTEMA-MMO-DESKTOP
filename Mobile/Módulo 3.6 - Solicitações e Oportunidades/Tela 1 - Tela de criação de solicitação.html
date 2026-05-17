@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nova Solicitação</title>
+    <title>Tela de criação de solicitação - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -40,7 +40,7 @@
         textarea:focus { outline: none; }
     </style>
 </head>
-<body class="m-0 p-0 bg-offwhite font-sans text-navy antialiased">
+<body class="pb-28 m-0 p-0 bg-offwhite font-sans text-navy antialiased">
 
     <!-- Mobile App Container -->
     <main id="app-container" class="w-full max-w-[430px] mx-auto min-h-[100dvh] relative flex flex-col bg-offwhite overflow-hidden shadow-xl sm:shadow-none">
@@ -115,31 +115,9 @@
             </section>
         </div>
 
-        <!-- Floating Pill Navigation -->
-        <nav id="floating-pill-nav" class="absolute bottom-6 left-5 right-5 z-50">
-            <div class="bg-white rounded-[100px] py-4 px-8 flex justify-between items-center shadow-ambient-nav border border-gray-50/50 backdrop-blur-xl">
-                
-                <button class="text-navy/40 hover:text-navy/70 transition-colors flex flex-col items-center gap-1">
-                    <i class="fa-solid fa-house text-[22px]"></i>
-                </button>
-
-                <button class="text-trustblue relative flex flex-col items-center gap-1">
-                    <i class="fa-solid fa-file-lines text-[22px]"></i>
-                    <div class="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-trustblue rounded-full"></div>
-                </button>
-
-                <button class="text-navy/40 hover:text-navy/70 transition-colors flex flex-col items-center gap-1">
-                    <i class="fa-solid fa-message text-[22px]"></i>
-                </button>
-
-                <button class="text-navy/40 hover:text-navy/70 transition-colors flex flex-col items-center gap-1">
-                    <i class="fa-solid fa-user text-[22px]"></i>
-                </button>
-
-            </div>
-        </nav>
 
     </main>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

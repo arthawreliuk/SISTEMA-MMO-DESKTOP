@@ -16,6 +16,51 @@
       cursor: pointer !important;
       position: relative !important;
     }
+
+    /* ── Global responsive fixes ──────────────────────────── */
+    html, body { overflow-x: hidden !important; }
+
+    /* Responsive navbar: hide links on narrow screens */
+    #mmo-nav-links { display: flex; }
+    #mmo-hamburger { display: none; }
+    #mmo-mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; right: 0;
+      background: #fff; border-bottom: 1px solid #f0f0f0;
+      box-shadow: 0 8px 24px rgba(26,26,36,.1); z-index: 999;
+      padding: 12px 24px 20px; flex-direction: column; gap: 4px;
+    }
+    #mmo-mobile-menu.open { display: flex; }
+    #mmo-mobile-menu a {
+      font-size: 15px; font-weight: 600; color: #1a1a24;
+      text-decoration: none; padding: 12px 8px;
+      border-bottom: 1px solid #f5f5f5; font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    #mmo-mobile-menu a:last-child { border-bottom: none; }
+    #mmo-mobile-menu a.active { color: #0016dc; }
+
+    @media (max-width: 1023px) {
+      #mmo-nav-links { display: none !important; }
+      #mmo-hamburger { display: flex !important; }
+      #mmo-nav-avatar { display: none !important; }
+    }
+    @media (max-width: 767px) {
+      /* Sidebar + main layouts: force vertical stacking */
+      .mmo-sidebar-wrap {
+        flex-direction: column !important;
+        height: auto !important;
+      }
+      .mmo-sidebar-wrap > * {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+      }
+      /* Un-clip fixed-height workspace panels */
+      .mmo-sidebar-wrap [style*="h-[800"],
+      .mmo-sidebar-wrap [style*="h-[700"],
+      .mmo-sidebar-wrap [style*="h-[600"] {
+        height: auto !important; min-height: 400px !important;
+      }
+    }
     /* FAB */
     #mmo-fab {
       position: fixed;
@@ -117,7 +162,7 @@
       keys: ['3.4', 'vitrine', 'busca e descoberta'] },
     { label: 'Pedidos',
       href: '../Módulo 3.6 - Solicitações e Oportunidades/Tela 3 - Tela de histórico de solicitações.html',
-      keys: ['3.6', '3.7', 'solicita', 'balção'] },
+      keys: ['3.6', '3.7', 'solicita', 'balcão'] },
     { label: 'Mensagens',
       href: '../Módulo 3.8 - Chat Interno e Inbox/Tela 1 - Inbox do cliente.html',
       keys: ['3.8', 'chat', 'inbox'] },
@@ -130,50 +175,107 @@
   ];
 
   function standardizeNav() {
-    const header = document.querySelector('header, #header');
-    let targetEl, resetStyles;
-
-    if (header) {
-      // Standard pattern: replace the <nav> inside <header>
-      targetEl = header.querySelector('nav');
-      resetStyles = true;
-    } else {
-      // Standalone pill/floating nav: find the child div that holds the links
-      const nav = document.querySelector('nav');
-      if (!nav) return;
-      resetStyles = false;
-      // Pick the first child div that contains <a> tags (skip logo/avatar divs)
-      for (const child of nav.children) {
-        if (child.tagName === 'DIV' && child.querySelector('a')) {
-          targetEl = child; break;
-        }
-      }
-      if (!targetEl) { targetEl = nav; resetStyles = true; }
-    }
-
-    if (!targetEl) return;
-
     const path = decodeURIComponent(window.location.pathname).toLowerCase();
 
-    if (resetStyles) {
-      targetEl.removeAttribute('class');
-      targetEl.style.cssText = 'display:flex!important;align-items:center;gap:32px;';
+    /* find target: <header> element, or a standalone <nav> */
+    const target = document.querySelector('header, #header') ||
+                   document.querySelector('nav');
+    if (!target) return;
+
+    /* build centered nav links */
+    const linksHTML = NAV_ITEMS.map(item => {
+      const active = item.keys.some(k => path.includes(k));
+      const c  = active ? '#0016dc' : '#6b7280';
+      const fw = active ? '700' : '500';
+      return (
+        '<div style="position:relative;display:flex;flex-direction:column;align-items:center;">' +
+          `<a href="${item.href}" ` +
+              `style="font-size:14px;font-weight:${fw};color:${c};text-decoration:none;` +
+              `white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;padding:4px 0;"` +
+              `onmouseover="this.style.color='#1a1a24'"` +
+              `onmouseout="this.style.color='${c}'">${item.label}</a>` +
+          (active
+            ? '<span style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);' +
+              'width:5px;height:5px;background:#0016dc;border-radius:50%;display:block;"></span>'
+            : '') +
+        '</div>'
+      );
+    }).join('');
+
+    /* override visual styles while preserving existing position/top/z-index */
+    const cs = window.getComputedStyle(target);
+    const pos    = cs.position === 'fixed' ? 'fixed'    :
+                   cs.position === 'sticky' ? 'sticky'  : 'relative';
+    const top    = pos === 'fixed' || pos === 'sticky' ? '0' : cs.top;
+    const zIndex = parseInt(cs.zIndex) >= 100 ? cs.zIndex : '1000';
+
+    target.setAttribute('style',
+      `position:${pos};top:${top};left:0;right:0;` +
+      `background:#ffffff !important;` +
+      `border-bottom:1px solid #f0f0f0 !important;` +
+      `box-shadow:0 2px 16px rgba(26,26,36,.05) !important;` +
+      `border-radius:0 !important;` +
+      `height:72px !important;min-height:72px !important;` +
+      `z-index:${zIndex};` +
+      `display:flex !important;align-items:center;justify-content:center;` +
+      `padding:0 !important;margin:0 !important;` +
+      `width:100%;max-width:100%;box-sizing:border-box;`
+    );
+
+    /* inject full header content: logo | centered links | hamburger | avatar */
+    target.innerHTML =
+      '<div style="width:100%;max-width:1200px;margin:0 auto;padding:0 32px;' +
+           'display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;">' +
+
+        /* logo */
+        '<a href="../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 1 - Tela inicial de busca.html" ' +
+            'style="display:flex;align-items:center;text-decoration:none;flex-shrink:0;">' +
+          '<img src="../assets/logo-mmo.png" style="height:42px;width:auto;" alt="MMO">' +
+        '</a>' +
+
+        /* nav links (hidden on <1024px via CSS) */
+        `<div id="mmo-nav-links" style="display:flex;align-items:center;gap:32px;">${linksHTML}</div>` +
+
+        /* right side: hamburger (shown on <1024px) + avatar */
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          /* hamburger */
+          '<button id="mmo-hamburger" aria-label="Menu" ' +
+              'style="display:none;width:40px;height:40px;border:none;background:transparent;' +
+              'cursor:pointer;border-radius:8px;flex-direction:column;align-items:center;' +
+              'justify-content:center;gap:5px;">' +
+            '<span style="display:block;width:22px;height:2px;background:#1a1a24;border-radius:2px;"></span>' +
+            '<span style="display:block;width:22px;height:2px;background:#1a1a24;border-radius:2px;"></span>' +
+            '<span style="display:block;width:16px;height:2px;background:#1a1a24;border-radius:2px;"></span>' +
+          '</button>' +
+          /* avatar */
+          '<div id="mmo-nav-avatar" onclick="window.location.href=\'../Módulo 3.3 - Cadastro e Perfil Profissional/Tela 1 - Edição do perfil profissional.html\'" ' +
+               'style="width:38px;height:38px;border-radius:50%;background:#f0f0f5;' +
+               'border:1.5px solid #e5e7eb;overflow:hidden;cursor:pointer;flex-shrink:0;">' +
+            '<img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" ' +
+                 'style="width:100%;height:100%;object-fit:cover;" alt="Perfil">' +
+          '</div>' +
+        '</div>' +
+
+      '</div>';
+
+    /* mobile dropdown menu */
+    if (!document.getElementById('mmo-mobile-menu')) {
+      const menu = document.createElement('div');
+      menu.id = 'mmo-mobile-menu';
+      menu.innerHTML = NAV_ITEMS.map(item => {
+        const active = item.keys.some(k => path.includes(k));
+        return `<a href="${item.href}" class="${active ? 'active' : ''}">${item.label}</a>`;
+      }).join('') +
+        `<a href="../Módulo 3.3 - Cadastro e Perfil Profissional/Tela 1 - Edição do perfil profissional.html">Perfil</a>`;
+      document.body.appendChild(menu);
     }
 
-    targetEl.innerHTML = NAV_ITEMS.map(item => {
-      const active = item.keys.some(k => path.includes(k));
-      const c = active ? '#0016dc' : '#6b7280';
-      const w = active ? '700' : '500';
-      return [
-        '<div style="position:relative;display:flex;flex-direction:column;align-items:center;">',
-          `<a href="${item.href}" style="font-size:14px;font-weight:${w};color:${c};text-decoration:none;`,
-          `white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.01em;"`,
-          `onmouseover="this.style.color='#1a1a24'"`,
-          `onmouseout="this.style.color='${c}'">${item.label}</a>`,
-          active ? '<span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);width:5px;height:5px;background:#0016dc;border-radius:50%;display:block;"></span>' : '',
-        '</div>',
-      ].join('');
-    }).join('');
+    /* hamburger toggle */
+    const hbtn = document.getElementById('mmo-hamburger');
+    const mmenu = document.getElementById('mmo-mobile-menu');
+    if (hbtn && mmenu) {
+      hbtn.addEventListener('click', () => mmenu.classList.toggle('open'));
+    }
   }
   standardizeNav();
 

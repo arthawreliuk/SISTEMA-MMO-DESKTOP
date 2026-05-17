@@ -123,10 +123,10 @@
     <main id="main-content" class="flex-1 flex items-center justify-center p-8">
       <!-- Workspace Card -->
       <div id="workspace-card"
-        class="w-full max-w-[1000px] h-[700px] bg-surface rounded-[24px] shadow-soft flex overflow-hidden">
+        class="w-full max-w-[1000px] h-auto min-h-[400px] lg:h-[700px] bg-surface rounded-[24px] shadow-soft flex flex-col lg:flex-row lg:overflow-hidden">
         <!-- Left Side: Map Visualization -->
         <div id="map-section"
-          class="w-1/2 relative bg-gray-100 hidden md:block">
+          class="w-full lg:w-1/2 relative bg-gray-100 hidden md:block">
           <!-- AI Generated Map Background --><img
             src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80"
             alt="Map View"
@@ -152,7 +152,7 @@
           </div>
         </div><!-- Right Side: Controls & Form -->
         <div id="form-section"
-          class="w-full md:w-1/2 p-12 flex flex-col h-full bg-white relative">
+          class="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col h-auto lg:h-full bg-white relative">
           <div class="mb-10"><button onclick="window.location.href='Tela 3 - Gestão de serviços.html'"
               class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-muted hover:bg-gray-100 transition-colors mb-6"><i
                 class="fa-solid fa-arrow-left"></i></button>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gestão de Subcontas - MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        primary: '#0016dc',
+                        background: '#F8F9FA',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        surface: '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .toggle-track { width: 44px; height: 24px; border-radius: 100px; position: relative; cursor: pointer; transition: background 0.25s; }
+        .toggle-track.on { background: #0016dc; }
+        .toggle-track.off { background: #D1D5DB; }
+        .toggle-thumb { width: 20px; height: 20px; border-radius: 50%; background: white; position: absolute; top: 2px; transition: left 0.25s; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+        .toggle-track.on .toggle-thumb { left: 22px; }
+        .toggle-track.off .toggle-thumb { left: 2px; }
+        .subconta-card { background: #fff; border-radius: 20px; padding: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.15s; }
+        .subconta-card:active { transform: scale(0.98); }
+        .role-chip { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; }
+        .search-bar { background: #fff; border: 1.5px solid #E5E7EB; border-radius: 14px; padding: 12px 16px 12px 44px; font-size: 14px; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; outline: none; width: 100%; box-sizing: border-box; }
+        .search-bar:focus { border-color: #0016dc; }
+    </style>
+</head>
+<body class="font-sans bg-background min-h-screen pb-28">
+
+    <!-- Header -->
+    <div class="bg-white sticky top-0 z-30" style="box-shadow: 0 1px 0 #F3F4F6;">
+        <div class="max-w-[430px] mx-auto px-4 pt-12 pb-4 flex items-center gap-3">
+            <a href="Tela 2- Painel da empresa.html">
+                <button class="w-9 h-9 flex items-center justify-center rounded-full bg-background text-textMain">
+                    <i class="fa-solid fa-arrow-left text-sm"></i>
+                </button>
+            </a>
+            <div class="flex-1">
+                <p class="text-xs text-textMuted font-medium">Construtora Horizonte</p>
+                <h1 class="text-base font-bold text-textMain leading-tight">Subcontas</h1>
+            </div>
+            <button class="w-9 h-9 flex items-center justify-center rounded-full bg-background text-textMuted">
+                <i class="fa-solid fa-ellipsis-vertical text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="max-w-[430px] mx-auto px-4 pt-4 space-y-4">
+
+        <!-- Summary strip -->
+        <div class="grid grid-cols-3 gap-2.5">
+            <div class="bg-white rounded-[16px] p-3 text-center" style="box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                <p class="text-xl font-black text-primary">3</p>
+                <p class="text-[11px] text-textMuted font-medium mt-0.5">Total</p>
+            </div>
+            <div class="bg-white rounded-[16px] p-3 text-center" style="box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                <p class="text-xl font-black text-green-600">2</p>
+                <p class="text-[11px] text-textMuted font-medium mt-0.5">Ativas</p>
+            </div>
+            <div class="bg-white rounded-[16px] p-3 text-center" style="box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                <p class="text-xl font-black text-gray-400">1</p>
+                <p class="text-[11px] text-textMuted font-medium mt-0.5">Inativa</p>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="relative">
+            <input type="text" class="search-bar" placeholder="Buscar subconta...">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-textMuted text-sm"></i>
+        </div>
+
+        <!-- Filter chips -->
+        <div class="flex gap-2 overflow-x-auto pb-1" style="scrollbar-width: none;">
+            <button class="flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold bg-primary text-white">Todos</button>
+            <button class="flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold bg-white text-textMuted border border-gray-200">Admin</button>
+            <button class="flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold bg-white text-textMuted border border-gray-200">Gestor</button>
+            <button class="flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold bg-white text-textMuted border border-gray-200">Operador</button>
+            <button class="flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold bg-white text-textMuted border border-gray-200">Ativas</button>
+        </div>
+
+        <!-- Subconta 1 — Admin, ativa -->
+        <a href="Tela 5 - Tela de definição de permissões da subconta.html">
+            <div class="subconta-card">
+                <div class="flex items-center gap-3">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center font-black text-lg text-white" style="background: linear-gradient(135deg, #667eea, #764ba2);">AL</div>
+                        <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <p class="text-sm font-bold text-textMain">Ana Lima</p>
+                            <span class="role-chip bg-purple-100 text-purple-700">Admin</span>
+                        </div>
+                        <p class="text-xs text-textMuted mt-0.5">Gestora de Obras · ana.lima@horizonte.com</p>
+                        <p class="text-[11px] text-textMuted mt-1">Último acesso: hoje, 09:24</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                        <div class="toggle-track on" onclick="toggleSwitch(event, this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+                    </div>
+                </div>
+                <!-- Permissions preview -->
+                <div class="mt-3 pt-3 border-t border-gray-50 flex flex-wrap gap-1.5">
+                    <span class="text-[10px] bg-blue-50 text-blue-600 font-semibold px-2.5 py-1 rounded-full">Solicitações</span>
+                    <span class="text-[10px] bg-blue-50 text-blue-600 font-semibold px-2.5 py-1 rounded-full">Relatórios</span>
+                    <span class="text-[10px] bg-blue-50 text-blue-600 font-semibold px-2.5 py-1 rounded-full">Financeiro</span>
+                    <span class="text-[10px] bg-gray-100 text-textMuted font-semibold px-2.5 py-1 rounded-full">+2 mais</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Subconta 2 — Gestor, ativa -->
+        <a href="Tela 5 - Tela de definição de permissões da subconta.html">
+            <div class="subconta-card">
+                <div class="flex items-center gap-3">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center font-black text-lg text-white" style="background: linear-gradient(135deg, #f093fb, #f5576c);">CS</div>
+                        <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <p class="text-sm font-bold text-textMain">Carlos Souza</p>
+                            <span class="role-chip bg-blue-100 text-blue-700">Gestor</span>
+                        </div>
+                        <p class="text-xs text-textMuted mt-0.5">Coord. de Projetos · carlos.s@horizonte.com</p>
+                        <p class="text-[11px] text-textMuted mt-1">Último acesso: ontem, 17:03</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                        <div class="toggle-track on" onclick="toggleSwitch(event, this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-50 flex flex-wrap gap-1.5">
+                    <span class="text-[10px] bg-blue-50 text-blue-600 font-semibold px-2.5 py-1 rounded-full">Solicitações</span>
+                    <span class="text-[10px] bg-blue-50 text-blue-600 font-semibold px-2.5 py-1 rounded-full">Profissionais</span>
+                    <span class="text-[10px] bg-gray-100 text-textMuted font-semibold px-2.5 py-1 rounded-full">+1 mais</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Subconta 3 — Operador, inativa -->
+        <a href="Tela 5 - Tela de definição de permissões da subconta.html">
+            <div class="subconta-card opacity-60">
+                <div class="flex items-center gap-3">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center font-black text-lg text-white bg-gray-400">MF</div>
+                        <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-gray-400 rounded-full border-2 border-white"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <p class="text-sm font-bold text-textMain">Marcos Faria</p>
+                            <span class="role-chip bg-gray-100 text-gray-500">Operador</span>
+                        </div>
+                        <p class="text-xs text-textMuted mt-0.5">Assistente de Campo · marcos.f@horizonte.com</p>
+                        <p class="text-[11px] text-textMuted mt-1">Inativo desde: 02 mai 2026</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                        <div class="toggle-track off" onclick="toggleSwitch(event, this)">
+                            <div class="toggle-thumb"></div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-50 flex flex-wrap gap-1.5">
+                    <span class="text-[10px] bg-gray-100 text-textMuted font-semibold px-2.5 py-1 rounded-full">Solicitações</span>
+                    <span class="text-[10px] bg-gray-100 text-textMuted font-semibold px-2.5 py-1 rounded-full">Somente leitura</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Invite placeholder -->
+        <div class="border-2 border-dashed border-gray-200 rounded-[20px] p-5 flex flex-col items-center gap-3 text-center">
+            <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center">
+                <i class="fa-solid fa-user-plus text-primary text-lg"></i>
+            </div>
+            <div>
+                <p class="text-sm font-bold text-textMain">Convidar colaborador</p>
+                <p class="text-xs text-textMuted mt-0.5">Envie um convite por e-mail para criar a subconta</p>
+            </div>
+            <button class="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-full" style="box-shadow: 0 4px 16px rgba(0,22,220,0.2);">
+                Enviar convite
+            </button>
+        </div>
+
+    </div>
+
+    <!-- FAB -->
+    <a href="Tela 5 - Tela de definição de permissões da subconta.html">
+        <button class="fixed right-5 bottom-24 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center z-40" style="box-shadow: 0 8px 24px rgba(0,22,220,0.35);">
+            <i class="fa-solid fa-plus text-xl"></i>
+        </button>
+    </a>
+
+    <script>
+        function toggleSwitch(e, track) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (track.classList.contains('on')) {
+                track.classList.remove('on');
+                track.classList.add('off');
+            } else {
+                track.classList.remove('off');
+                track.classList.add('on');
+            }
+        }
+    </script>
+    <script src="../../_mobile-nav.js"></script>
+</body>
+</html>

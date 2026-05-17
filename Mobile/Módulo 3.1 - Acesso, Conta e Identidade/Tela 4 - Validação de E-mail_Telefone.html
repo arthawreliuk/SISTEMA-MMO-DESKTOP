@@ -1,105 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <script>
-        window.FontAwesomeConfig = {
-          autoReplaceSvg: 'nest'
-        };
-      </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Recovery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Validação de E-mail_Telefone - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            blue: '#0016dc',
-                        },
-                        navy: {
-                            900: '#0a192f',
-                            800: '#112240',
-                            600: '#233554',
-                            400: '#8892b0',
-                        },
-                        offwhite: '#F8F9FA'
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        body { margin: 0; padding: 0; background-color: #F8F9FA; }
-        ::-webkit-scrollbar { display: none; }
+        * { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { -webkit-tap-highlight-color: transparent; }
+        .otp-input { text-align: center; caret-color: #0016dc; }
+        .otp-input:focus { outline: none; border-color: #0016dc; box-shadow: 0 0 0 3px rgba(0,22,220,0.12); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center font-sans text-navy-900 bg-offwhite antialiased">
+<body class="min-h-screen bg-[#F8F9FA] flex flex-col" style="max-width:390px;margin:0 auto;">
 
-    <!-- Centered Workspace Container -->
-    <main class="w-full max-w-[450px] px-6 sm:px-0 flex flex-col items-center">
-        
-        <!-- Branding Logo -->
-        <div id="branding-logo" class="mb-8 flex justify-center w-full">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="48" height="48" rx="12" fill="#0016dc"/>
-                <path d="M14 28V16L24 24L34 16V28" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+    <div class="flex-1 overflow-y-auto no-scrollbar px-5 py-8 flex flex-col">
+
+        <!-- Back button -->
+        <div class="mb-6">
+            <button
+                onclick="window.location.href='Tela 3 - Recuperação de Acesso.html'"
+                class="w-10 h-10 rounded-xl border border-gray-200 bg-white shadow-sm flex items-center justify-center text-[#1A1A24] active:scale-95 transition-all"
+            >
+                <i class="fa-solid fa-arrow-left text-sm"></i>
+            </button>
         </div>
 
-        <!-- Main Content Canvas (Pure White Card) -->
-        <div id="recovery-card" class="w-full bg-white rounded-[16px] shadow-soft p-8 sm:p-10 flex flex-col items-center text-center">
-            
-            <h1 class="text-[24px] font-bold text-navy-900 mb-3 tracking-tight">Esqueceu sua senha?</h1>
-            
-            <p class="text-[15px] text-navy-600 mb-8 leading-relaxed max-w-[320px]">
-                Sem problemas. Digite seu e-mail abaixo e nós cuidamos do resto.
+        <!-- Icon hero -->
+        <div class="flex flex-col items-center text-center mb-8 mt-4">
+            <div class="w-20 h-20 bg-[#0016dc] rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-[#0016dc]/25">
+                <i class="fa-solid fa-shield-halved text-3xl text-white"></i>
+            </div>
+            <h1 class="text-2xl font-extrabold text-[#1A1A24] mb-2">Verifique seu e-mail</h1>
+            <p class="text-sm text-[#6B7280] leading-relaxed max-w-[270px]">
+                Enviamos um código de 6 dígitos para
+                <span class="font-semibold text-[#1A1A24]">seu@email.com</span>
             </p>
-
-            <form class="w-full flex flex-col gap-6" onsubmit="event.preventDefault();">
-                <!-- Input Field -->
-                <div class="flex flex-col text-left w-full">
-                    <label for="email" class="text-[13px] font-semibold text-navy-800 mb-2 ml-1">E-mail da sua conta</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        placeholder="seu@email.com"
-                        class="w-full h-[52px] px-4 rounded-[12px] border border-gray-200 bg-white text-[15px] text-navy-900 placeholder:text-gray-400 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all duration-200"
-                        required
-                    >
-                </div>
-
-                <!-- Action Area -->
-                <button 
-                    type="submit" 
-                    id="submit-btn"
-                    class="w-full h-[52px] bg-brand-blue text-white rounded-full font-semibold text-[15px] hover:bg-opacity-90 hover:-translate-y-[1px] hover:shadow-lg transition-all duration-200 mt-2"
-                >
-                    Enviar Instruções de Acesso
-                </button>
-            </form>
         </div>
 
-        <!-- Support Link -->
-        <div id="support-footer" class="w-full mt-6 flex justify-end">
-            <a href="#" class="text-[13px] font-medium text-navy-600 hover:text-brand-blue transition-colors duration-200">
-                Precisa de ajuda com seu acesso?
-            </a>
+        <!-- Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-5">
+
+            <!-- OTP inputs -->
+            <div class="flex justify-between gap-2 mb-6" id="otpGroup">
+                <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                    class="otp-input w-12 h-14 bg-gray-50 border-2 border-gray-100 rounded-xl text-xl font-bold text-[#1A1A24] transition-all">
+                <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                    class="otp-input w-12 h-14 bg-gray-50 border-2 border-gray-100 rounded-xl text-xl font-bold text-[#1A1A24] transition-all">
+                <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                    class="otp-input w-12 h-14 bg-gray-50 border-2 border-gray-100 rounded-xl text-xl font-bold text-[#1A1A24] transition-all">
+                <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                    class="otp-input w-12 h-14 bg-gray-50 border-2 border-gray-100 rounded-xl text-xl font-bold text-[#1A1A24] transition-all">
+                <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                    class="otp-input w-12 h-14 bg-gray-50 border-2 border-gray-100 rounded-xl text-xl font-bold text-[#1A1A24] transition-all">
+                <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                    class="otp-input w-12 h-14 bg-gray-50 border-2 border-gray-100 rounded-xl text-xl font-bold text-[#1A1A24] transition-all">
+            </div>
+
+            <!-- Confirmar -->
+            <button
+                onclick="window.location.href='Tela 5 - Seleção_Alternância de Contexto.html'"
+                class="w-full h-12 bg-[#0016dc] text-white font-bold rounded-full text-sm shadow-md shadow-[#0016dc]/20 active:scale-95 transition-all mb-4"
+            >
+                <i class="fa-solid fa-check mr-2"></i>
+                Confirmar código
+            </button>
+
+            <!-- Reenviar -->
+            <div class="text-center">
+                <p class="text-sm text-[#6B7280]">
+                    Não recebeu?
+                    <button id="resendBtn" class="text-[#6B7280] font-semibold ml-1 cursor-default" disabled>
+                        Reenviar em <span id="countdown">30</span>s
+                    </button>
+                </p>
+            </div>
+
         </div>
 
-    </main>
+        <!-- Nota spam -->
+        <div class="flex items-center justify-center gap-2">
+            <i class="fa-regular fa-circle-question text-[#6B7280] text-xs"></i>
+            <p class="text-xs text-[#6B7280]">Verifique sua caixa de spam</p>
+        </div>
 
+    </div>
+
+    <script>
+        // OTP auto-advance
+        const inputs = document.querySelectorAll('#otpGroup input');
+        inputs.forEach((input, i) => {
+            input.addEventListener('input', () => {
+                if (input.value.length === 1 && i < inputs.length - 1) {
+                    inputs[i + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !input.value && i > 0) {
+                    inputs[i - 1].focus();
+                }
+            });
+        });
+
+        // Countdown resend
+        let seconds = 30;
+        const countdownEl = document.getElementById('countdown');
+        const resendBtn = document.getElementById('resendBtn');
+        const timer = setInterval(() => {
+            seconds--;
+            countdownEl.textContent = seconds;
+            if (seconds <= 0) {
+                clearInterval(timer);
+                resendBtn.disabled = false;
+                resendBtn.innerHTML = 'Reenviar código';
+                resendBtn.classList.remove('cursor-default');
+                resendBtn.classList.add('text-[#0016dc]', 'cursor-pointer');
+            }
+        }, 1000);
+    </script>
+
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

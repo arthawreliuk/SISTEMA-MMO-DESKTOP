@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cadastro da Empresa - MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        primary: '#0016dc',
+                        background: '#F8F9FA',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        surface: '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .input-field {
+            width: 100%;
+            background: #fff;
+            border: 1.5px solid #E5E7EB;
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1A1A24;
+            outline: none;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        .input-field:focus { border-color: #0016dc; }
+        .input-field::placeholder { color: #9CA3AF; }
+        select.input-field { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+        .size-btn { border: 1.5px solid #E5E7EB; background: #fff; border-radius: 12px; padding: 10px 14px; font-size: 13px; font-weight: 600; color: #6B7280; cursor: pointer; transition: all 0.18s; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .size-btn.active { border-color: #0016dc; background: #EEF0FF; color: #0016dc; }
+        .logo-upload { border: 2px dashed #D1D5DB; border-radius: 20px; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 28px 16px; cursor: pointer; transition: border-color 0.2s; }
+        .logo-upload:hover { border-color: #0016dc; }
+    </style>
+</head>
+<body class="font-sans bg-background min-h-screen pb-28">
+
+    <!-- Header -->
+    <div class="bg-white sticky top-0 z-30" style="box-shadow: 0 1px 0 #F3F4F6;">
+        <div class="max-w-[430px] mx-auto px-4 py-4 flex items-center gap-3">
+            <button class="w-9 h-9 flex items-center justify-center rounded-full bg-background text-textMain" onclick="history.back()">
+                <i class="fa-solid fa-arrow-left text-sm"></i>
+            </button>
+            <div>
+                <p class="text-xs text-textMuted font-medium">Conta Empresarial</p>
+                <h1 class="text-base font-bold text-textMain leading-tight">Cadastro da Empresa</h1>
+            </div>
+        </div>
+        <!-- Progress -->
+        <div class="max-w-[430px] mx-auto px-4 pb-3">
+            <div class="flex items-center gap-2">
+                <div class="flex-1 h-1.5 rounded-full bg-primary"></div>
+                <div class="flex-1 h-1.5 rounded-full bg-gray-200"></div>
+                <div class="flex-1 h-1.5 rounded-full bg-gray-200"></div>
+            </div>
+            <p class="text-xs text-textMuted mt-1.5">Passo 1 de 3 — Dados da empresa</p>
+        </div>
+    </div>
+
+    <div class="max-w-[430px] mx-auto px-4 pt-5 space-y-5">
+
+        <!-- Logo Upload -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">Logotipo da empresa</label>
+            <div class="logo-upload" onclick="this.querySelector('input').click()">
+                <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center">
+                    <i class="fa-solid fa-building text-primary text-xl"></i>
+                </div>
+                <p class="text-sm font-semibold text-textMain">Fazer upload do logotipo</p>
+                <p class="text-xs text-textMuted text-center">PNG, JPG ou SVG · máx. 5 MB<br>Recomendado: 400 × 400 px</p>
+                <input type="file" accept="image/*" class="hidden">
+            </div>
+        </div>
+
+        <!-- Razão Social -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">Razão social <span class="text-red-500">*</span></label>
+            <input type="text" class="input-field" placeholder="Ex.: Construtora Horizonte Ltda." value="">
+        </div>
+
+        <!-- Nome Fantasia -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">Nome fantasia</label>
+            <input type="text" class="input-field" placeholder="Como a empresa é conhecida" value="">
+        </div>
+
+        <!-- CNPJ -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">CNPJ <span class="text-red-500">*</span></label>
+            <div class="relative">
+                <input type="text" class="input-field" placeholder="00.000.000/0001-00" inputmode="numeric" style="padding-left: 44px;">
+                <i class="fa-solid fa-id-card absolute left-4 top-1/2 -translate-y-1/2 text-textMuted text-sm"></i>
+            </div>
+        </div>
+
+        <!-- Setor -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">Setor de atuação <span class="text-red-500">*</span></label>
+            <select class="input-field">
+                <option value="" disabled selected>Selecione o setor</option>
+                <option>Construção Civil</option>
+                <option>Tecnologia da Informação</option>
+                <option>Serviços Gerais</option>
+                <option>Saúde e Bem-estar</option>
+                <option>Educação</option>
+                <option>Varejo e Comércio</option>
+                <option>Logística e Transporte</option>
+                <option>Alimentação e Gastronomia</option>
+                <option>Outro</option>
+            </select>
+        </div>
+
+        <!-- Porte da empresa -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">Porte da empresa <span class="text-red-500">*</span></label>
+            <div class="grid grid-cols-4 gap-2">
+                <button class="size-btn active" onclick="selectSize(this)">
+                    <div class="text-lg mb-0.5">🏢</div>
+                    MEI
+                    <div class="text-[10px] font-normal mt-0.5 opacity-70">até 1</div>
+                </button>
+                <button class="size-btn" onclick="selectSize(this)">
+                    <div class="text-lg mb-0.5">🏬</div>
+                    Pequena
+                    <div class="text-[10px] font-normal mt-0.5 opacity-70">2–49</div>
+                </button>
+                <button class="size-btn" onclick="selectSize(this)">
+                    <div class="text-lg mb-0.5">🏗️</div>
+                    Média
+                    <div class="text-[10px] font-normal mt-0.5 opacity-70">50–249</div>
+                </button>
+                <button class="size-btn" onclick="selectSize(this)">
+                    <div class="text-lg mb-0.5">🏭</div>
+                    Grande
+                    <div class="text-[10px] font-normal mt-0.5 opacity-70">250+</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-3">
+            <div class="flex-1 h-px bg-gray-200"></div>
+            <span class="text-xs font-semibold text-textMuted uppercase tracking-wide">Contato principal</span>
+            <div class="flex-1 h-px bg-gray-200"></div>
+        </div>
+
+        <!-- Nome responsável -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">Nome do responsável <span class="text-red-500">*</span></label>
+            <div class="relative">
+                <input type="text" class="input-field" placeholder="Nome completo" style="padding-left: 44px;">
+                <i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-textMuted text-sm"></i>
+            </div>
+        </div>
+
+        <!-- Cargo -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">Cargo</label>
+            <input type="text" class="input-field" placeholder="Ex.: Diretor de Operações">
+        </div>
+
+        <!-- Email -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">E-mail corporativo <span class="text-red-500">*</span></label>
+            <div class="relative">
+                <input type="email" class="input-field" placeholder="contato@empresa.com.br" style="padding-left: 44px;">
+                <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-textMuted text-sm"></i>
+            </div>
+        </div>
+
+        <!-- Telefone -->
+        <div>
+            <label class="block text-sm font-semibold text-textMain mb-2">Telefone / WhatsApp <span class="text-red-500">*</span></label>
+            <div class="relative">
+                <input type="tel" class="input-field" placeholder="(11) 99999-0000" inputmode="tel" style="padding-left: 44px;">
+                <i class="fa-solid fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-textMuted text-sm"></i>
+            </div>
+        </div>
+
+        <!-- Termos -->
+        <div class="bg-blue-50 rounded-2xl p-4 flex gap-3 items-start">
+            <div class="w-5 h-5 rounded-md bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fa-solid fa-check text-white text-[10px]"></i>
+            </div>
+            <p class="text-xs text-textMuted leading-relaxed">
+                Ao continuar, declaro que as informações acima são verdadeiras e aceito os
+                <span class="text-primary font-semibold">Termos de Uso Empresarial</span> e a
+                <span class="text-primary font-semibold">Política de Privacidade</span> da plataforma MMO.
+            </p>
+        </div>
+
+        <!-- CTA -->
+        <a href="Tela 2- Painel da empresa.html">
+            <button class="w-full bg-primary text-white font-bold rounded-full py-4 text-base flex items-center justify-center gap-2 mt-2" style="box-shadow: 0 8px 24px rgba(0,22,220,0.25);">
+                Criar conta empresarial
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+            </button>
+        </a>
+
+        <p class="text-center text-xs text-textMuted pb-2">
+            Já tem uma conta? <span class="text-primary font-semibold">Entrar</span>
+        </p>
+
+    </div>
+
+    <script>
+        function selectSize(btn) {
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+    <script src="../../_mobile-nav.js"></script>
+</body>
+</html>

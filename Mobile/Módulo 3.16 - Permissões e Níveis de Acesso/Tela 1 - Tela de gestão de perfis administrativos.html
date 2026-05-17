@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Administrative Profile Management</title>
+    <title>Tela de gestão de perfis administrativos - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +70,7 @@
         }
     </style>
 </head>
-<body class="bg-background text-textMain min-h-[100dvh] flex flex-col items-center">
+<body class="pb-28 bg-background text-textMain min-h-[100dvh] flex flex-col items-center">
 
     <!-- Mobile Wrapper for Desktop viewing -->
     <div class="w-full max-w-[375px] bg-background min-h-[100dvh] relative flex flex-col shadow-2xl overflow-hidden mx-auto">
@@ -174,51 +174,6 @@
             </button>
         </div>
 
-        <!-- Floating Navigation -->
-        <nav id="floating_nav" class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface px-6 py-3.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center gap-8 z-50 border border-gray-100">
-            <button class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-house text-[18px]"></i>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-chart-pie text-[18px]"></i>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-primary relative">
-                <i class="fa-solid fa-users-gear text-[18px]"></i>
-                <span class="absolute -bottom-2 w-1 h-1 bg-primary rounded-full"></span>
-            </button>
-            <button class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-gear text-[18px]"></i>
-            </button>
-        </nav>
-
-    </div>
-
-    <script>
-        // Simple toggle switch logic for visual feedback
-        document.querySelectorAll('.toggle-checkbox').forEach(toggle => {
-            toggle.addEventListener('change', function() {
-                const card = this.closest('.bg-surface');
-                const avatar = card.querySelector('img');
-                const statusDot = card.querySelector('.absolute.bottom-0');
-                const badge = card.querySelector('span');
-                
-                if(this.checked) {
-                    card.classList.remove('opacity-60');
-                    avatar.classList.remove('grayscale');
-                    statusDot.classList.remove('bg-gray-400');
-                    statusDot.classList.add('bg-green-500');
-                    badge.classList.remove('bg-gray-100', 'text-textMuted');
-                    badge.classList.add('bg-primary/10', 'text-primary');
-                } else {
-                    card.classList.add('opacity-60');
-                    avatar.classList.add('grayscale');
-                    statusDot.classList.remove('bg-green-500');
-                    statusDot.classList.add('bg-gray-400');
-                    badge.classList.remove('bg-primary/10', 'text-primary');
-                    badge.classList.add('bg-gray-100', 'text-textMuted');
-                }
-            });
-        });
-    </script>
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

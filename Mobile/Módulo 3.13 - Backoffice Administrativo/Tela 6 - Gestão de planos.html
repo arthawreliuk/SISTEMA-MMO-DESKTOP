@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Subscription Plans Management</title>
+    <title>Gestão de planos - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -46,7 +46,7 @@
         .toggle-checkbox:checked + .toggle-label:after { transform: translateX(100%); border-color: white; }
     </style>
 </head>
-<body class="bg-background min-h-[100dvh] flex justify-center pb-32">
+<body class="pb-28 bg-background min-h-[100dvh] flex justify-center pb-32">
 
     <!-- Mobile Wrapper -->
     <main id="mobile-app-container" class="w-full max-w-[430px] min-h-[100dvh] relative bg-background shadow-2xl overflow-hidden flex flex-col">
@@ -204,27 +204,6 @@
             </button>
         </div>
 
-        <!-- 5. Floating Pill Navigation -->
-        <nav id="bottom-nav" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-gray-50 px-6 py-4 flex items-center justify-between z-50">
-            
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-chart-pie text-xl"></i>
-            </a>
-
-            <a href="#" class="flex flex-col items-center gap-1 text-primary relative">
-                <i class="fa-solid fa-layer-group text-xl"></i>
-                <div class="absolute -bottom-2.5 w-1.5 h-1.5 rounded-full bg-primary"></div>
-            </a>
-
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-wallet text-xl"></i>
-            </a>
-
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-primary transition-colors">
-                <i class="fa-solid fa-gear text-xl"></i>
-            </a>
-
-        </nav>
 
     </main>
 
@@ -249,5 +228,6 @@
             });
         });
     </script>
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

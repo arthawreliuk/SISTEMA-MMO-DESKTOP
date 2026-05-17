@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard de métricas administrativas - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 flex justify-center items-start min-h-screen">
+<body class="pb-28 bg-gray-100 flex justify-center items-start min-h-screen">
 
     <div class="mobile-wrapper" id="app-container">
         
@@ -230,115 +230,6 @@
 
         </main>
 
-        <!-- Floating Pill Navigation -->
-        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[335px] bg-white/90 backdrop-blur-xl rounded-[24px] shadow-nav border border-white/50 px-6 py-4 flex justify-between items-center z-50">
-            
-            <a href="#" class="flex flex-col items-center gap-1 text-primary relative group">
-                <div class="w-10 h-10 bg-primary/10 rounded-[14px] flex items-center justify-center nav-glow">
-                    <i class="fa-solid fa-chart-pie text-[18px]"></i>
-                </div>
-                <span class="absolute -bottom-3 w-1 h-1 bg-primary rounded-full"></span>
-            </a>
-
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
-                <div class="w-10 h-10 rounded-[14px] flex items-center justify-center hover:bg-gray-50">
-                    <i class="fa-solid fa-users text-[18px]"></i>
-                </div>
-            </a>
-
-            <div class="relative -top-6">
-                <button class="w-14 h-14 bg-textMain text-white rounded-[20px] flex items-center justify-center shadow-[0_8px_20px_rgba(26,26,36,0.3)] hover:-translate-y-1 transition-transform">
-                    <i class="fa-solid fa-plus text-xl"></i>
-                </button>
-            </div>
-
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
-                <div class="w-10 h-10 rounded-[14px] flex items-center justify-center hover:bg-gray-50">
-                    <i class="fa-solid fa-wallet text-[18px]"></i>
-                </div>
-            </a>
-
-            <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textMain transition-colors">
-                <div class="w-10 h-10 rounded-[14px] flex items-center justify-center hover:bg-gray-50">
-                    <i class="fa-solid fa-gear text-[18px]"></i>
-                </div>
-            </a>
-
-        </nav>
-
-    </div>
-
-    <script>
-        window.addEventListener('load', function() {
-            try {
-                const initChart = () => {
-                    const trace1 = {
-                        x: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-                        y: [120, 180, 150, 240, 210, 310, 280],
-                        type: 'scatter',
-                        mode: 'lines',
-                        line: {
-                            color: '#0016dc',
-                            width: 3,
-                            shape: 'spline',
-                            smoothing: 1.3
-                        },
-                        fill: 'tozeroy',
-                        fillcolor: 'rgba(0, 22, 220, 0.08)',
-                        hoverinfo: 'y',
-                        marker: {
-                            size: 0,
-                            color: '#0016dc'
-                        }
-                    };
-
-                    const layout = {
-                        autosize: true,
-                        margin: { t: 10, r: 10, b: 20, l: 30 },
-                        paper_bgcolor: 'transparent',
-                        plot_bgcolor: 'transparent',
-                        showlegend: false,
-                        xaxis: {
-                            showgrid: false,
-                            zeroline: false,
-                            showline: false,
-                            tickfont: { color: '#6B7280', size: 10, family: 'Plus Jakarta Sans' },
-                            fixedrange: true
-                        },
-                        yaxis: {
-                            showgrid: true,
-                            gridcolor: 'rgba(229, 231, 235, 0.5)',
-                            gridwidth: 1,
-                            zeroline: false,
-                            showline: false,
-                            tickfont: { color: '#6B7280', size: 10, family: 'Plus Jakarta Sans' },
-                            nticks: 4,
-                            fixedrange: true
-                        },
-                        hovermode: 'x unified',
-                        hoverlabel: {
-                            bgcolor: '#1A1A24',
-                            font: { color: '#FFFFFF', family: 'Plus Jakarta Sans' },
-                            bordercolor: 'transparent'
-                        }
-                    };
-
-                    const config = {
-                        responsive: true,
-                        displayModeBar: false,
-                        displaylogo: false
-                    };
-
-                    Plotly.newPlot('leadsChart', [trace1], layout, config);
-                };
-
-                initChart();
-                setTimeout(initChart, 1200);
-
-            } catch(e) {
-                console.error('Chart initialization failed:', e);
-            }
-        });
-    </script>
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

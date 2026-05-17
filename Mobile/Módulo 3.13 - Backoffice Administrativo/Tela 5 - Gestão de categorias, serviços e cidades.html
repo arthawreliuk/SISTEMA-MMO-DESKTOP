@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Categories Management - MMO Admin</title>
+    <title>Gestão de categorias, serviços e cidades - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +55,7 @@
         .toggle-checkbox:checked + .toggle-label:after { transform: translateX(20px); }
     </style>
 </head>
-<body class="bg-background text-textDark flex justify-center min-h-[100dvh]">
+<body class="pb-28 bg-background text-textDark flex justify-center min-h-[100dvh]">
 
     <!-- Mobile Container Wrapper -->
     <div class="w-full max-w-[430px] min-h-[100dvh] relative bg-background flex flex-col shadow-2xl overflow-hidden md:rounded-[32px] md:my-8 md:h-[840px] md:min-h-0 border border-borderLight/50">
@@ -207,34 +207,7 @@
             </button>
         </div>
 
-        <!-- 5. Floating Pill Navigation -->
-        <nav id="floating-nav" class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[380px] bg-white rounded-full shadow-nav border border-borderLight/50 px-6 py-3.5 z-30 flex items-center justify-between">
-            <button class="flex flex-col items-center gap-1 text-textGray hover:text-textDark transition-colors">
-                <i class="fa-solid fa-chart-pie text-lg"></i>
-                <span class="text-[10px] font-semibold">Dash</span>
-            </button>
-            
-            <button class="flex flex-col items-center gap-1 text-primary relative">
-                <i class="fa-solid fa-layer-group text-lg"></i>
-                <span class="text-[10px] font-bold">Setup</span>
-                <div class="absolute -bottom-1.5 w-1 h-1 rounded-full bg-primary"></div>
-            </button>
-            
-            <button class="flex flex-col items-center gap-1 text-textGray hover:text-textDark transition-colors">
-                <i class="fa-solid fa-wallet text-lg"></i>
-                <span class="text-[10px] font-semibold">Finance</span>
-            </button>
-            
-            <button class="flex flex-col items-center gap-1 text-textGray hover:text-textDark transition-colors">
-                <i class="fa-solid fa-gear text-lg"></i>
-                <span class="text-[10px] font-semibold">Config</span>
-            </button>
-        </nav>
 
-        <!-- Gradient fade for bottom scroll -->
-        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-10"></div>
-
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

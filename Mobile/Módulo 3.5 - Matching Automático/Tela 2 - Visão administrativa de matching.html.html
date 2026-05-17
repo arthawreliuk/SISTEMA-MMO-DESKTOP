@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo de Matching</title>
+    <title>Visão administrativa de matching.html - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -52,7 +52,7 @@
         }
     </style>
 </head>
-<body class="font-sans min-h-[100dvh] pb-32">
+<body class="pb-28 font-sans min-h-[100dvh] pb-32">
 
     <!-- Screen Wrapper: Mobile Target (375x840 intent) -->
     <div id="app-container" class="w-full max-w-[430px] mx-auto min-h-[100dvh] relative bg-background flex flex-col">
@@ -242,86 +242,6 @@
 
         </main>
 
-        <!-- 5. Floating Pill Navigation -->
-        <div class="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-6">
-            <nav id="bottom-nav" class="bg-surface px-6 py-4 rounded-full shadow-floating-nav border border-gray-100 pointer-events-auto flex items-center justify-between w-full max-w-[320px]">
-                
-                <!-- Dashboard (Active) -->
-                <a href="#" class="flex flex-col items-center gap-1 relative group w-12">
-                    <i class="fa-solid fa-house text-primary text-lg transition-transform group-active:scale-90"></i>
-                    <!-- Active Dot -->
-                    <div class="absolute -bottom-2.5 w-1 h-1 bg-primary rounded-full"></div>
-                </a>
-
-                <!-- Reports -->
-                <a href="#" class="flex flex-col items-center gap-1 relative group w-12">
-                    <i class="fa-regular fa-file-lines text-textMuted hover:text-textMain text-lg transition-colors group-active:scale-90"></i>
-                </a>
-
-                <!-- Users -->
-                <a href="#" class="flex flex-col items-center gap-1 relative group w-12">
-                    <i class="fa-regular fa-user text-textMuted hover:text-textMain text-lg transition-colors group-active:scale-90"></i>
-                </a>
-
-                <!-- Settings -->
-                <a href="#" class="flex flex-col items-center gap-1 relative group w-12">
-                    <i class="fa-solid fa-gear text-textMuted hover:text-textMain text-lg transition-colors group-active:scale-90"></i>
-                </a>
-
-            </nav>
-        </div>
-
-    </div>
-
-    <!-- Scripts for Sparklines -->
-    <script>
-        function initializeCharts() {
-            const commonLayout = {
-                margin: { t: 0, r: 0, b: 0, l: 0 },
-                xaxis: { showgrid: false, zeroline: false, showticklabels: false },
-                yaxis: { showgrid: false, zeroline: false, showticklabels: false },
-                showlegend: false,
-                plot_bgcolor: 'transparent',
-                paper_bgcolor: 'transparent',
-                height: 32,
-                staticPlot: true
-            };
-
-            const config = { displayModeBar: false, responsive: true };
-
-            // Sparkline 1
-            Plotly.newPlot('sparkline-1', [{
-                y: [40, 60, 45, 80, 50, 90, 142],
-                type: 'scatter',
-                mode: 'lines',
-                line: { color: '#0016dc', width: 2, shape: 'spline', smoothing: 1.3 },
-                fill: 'tozeroy',
-                fillcolor: 'rgba(0, 22, 220, 0.1)'
-            }], commonLayout, config);
-
-            // Sparkline 2
-            Plotly.newPlot('sparkline-2', [{
-                y: [85, 88, 92, 90, 94, 95, 96],
-                type: 'scatter',
-                mode: 'lines',
-                line: { color: '#0016dc', width: 2, shape: 'spline', smoothing: 1.3 },
-                fill: 'tozeroy',
-                fillcolor: 'rgba(0, 22, 220, 0.1)'
-            }], commonLayout, config);
-
-            // Sparkline 3
-            Plotly.newPlot('sparkline-3', [{
-                y: [15, 12, 14, 10, 9, 11, 8],
-                type: 'scatter',
-                mode: 'lines',
-                line: { color: '#10B981', width: 2, shape: 'spline', smoothing: 1.3 },
-                fill: 'tozeroy',
-                fillcolor: 'rgba(16, 185, 129, 0.1)'
-            }], commonLayout, config);
-        }
-
-        window.addEventListener('load', initializeCharts);
-        setTimeout(initializeCharts, 1200);
-    </script>
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

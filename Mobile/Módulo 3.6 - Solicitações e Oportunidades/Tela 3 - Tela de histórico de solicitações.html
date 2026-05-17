@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Meus Pedidos - MMO</title>
+    <title>Tela de histórico de solicitações - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -79,7 +79,7 @@
         }
     </style>
 </head>
-<body>
+<body class="pb-28">
 
 <div class="mobile-container pb-[100px]"> <!-- Padding bottom for floating nav -->
 
@@ -256,38 +256,7 @@
         </section>
     </main>
 
-    <!-- 5. Floating Pill Navigation -->
-    <div class="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-5">
-        <!-- The pill itself is pointer-events-auto -->
-        <nav class="bg-white/95 backdrop-blur-xl border border-white/20 shadow-floating rounded-full px-6 py-3.5 flex items-center gap-8 pointer-events-auto w-full max-w-[340px] justify-between">
-            
-            <!-- Inactive Home -->
-            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors relative w-12">
-                <i class="fa-solid fa-house text-[22px]"></i>
-            </a>
 
-            <!-- Active Orders -->
-            <a href="#" class="flex flex-col items-center gap-1 text-brand-blue transition-colors relative w-12">
-                <i class="fa-solid fa-file-lines text-[22px]"></i>
-                <div class="w-1.5 h-1.5 bg-brand-blue rounded-full absolute -bottom-2.5 shadow-[0_2px_6px_rgba(0,22,220,0.4)]"></div>
-            </a>
-
-            <!-- Inactive Messages -->
-            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors relative w-12">
-                <i class="fa-regular fa-message text-[22px]"></i>
-                <!-- Notification badge -->
-                <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></div>
-            </a>
-
-            <!-- Inactive Profile -->
-            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors relative w-12">
-                <i class="fa-regular fa-user text-[22px]"></i>
-            </a>
-            
-        </nav>
-    </div>
-
-</div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

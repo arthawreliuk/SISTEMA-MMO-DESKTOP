@@ -63,7 +63,7 @@
 <body class="text-brand-navy min-h-screen flex flex-col items-center justify-center p-4 lg:p-8">
 
     <!-- Main Container Wrapper -->
-    <div class="w-full max-w-[1200px] mx-auto flex flex-col h-[calc(100vh-4rem)]">
+    <div class="w-full max-w-[1200px] mx-auto flex flex-col h-auto lg:h-[calc(100vh-4rem)]">
         
         <!-- Admin Control Bar -->
         <header id="admin-control-bar" class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
@@ -80,10 +80,10 @@
         </header>
 
         <!-- Main Workspace (Split-View Container) -->
-        <main id="main-workspace" class="flex-1 bg-white rounded-[24px] shadow-ambient flex flex-col lg:flex-row overflow-hidden border border-gray-100">
+        <main id="main-workspace" class="flex-1 bg-white rounded-[24px] shadow-ambient flex flex-col lg:flex-row lg:overflow-hidden border border-gray-100">
             
             <!-- Left Sidebar (Role Selection - 30%) -->
-            <aside id="left-sidebar" class="w-full lg:w-[30%] bg-brand-bg border-b lg:border-b-0 lg:border-r border-brand-divider flex flex-col h-full">
+            <aside id="left-sidebar" class="w-full lg:w-[30%] bg-brand-bg border-b lg:border-b-0 lg:border-r border-brand-divider flex flex-col h-auto lg:h-full">
                 <!-- Search -->
                 <div class="p-6 border-b border-brand-divider">
                     <div class="relative">
@@ -135,7 +135,7 @@
             </aside>
 
             <!-- Right Workspace (Permission Details - 70%) -->
-            <section id="right-workspace" class="w-full lg:w-[70%] bg-white flex flex-col h-full relative">
+            <section id="right-workspace" class="w-full lg:w-[70%] bg-white flex flex-col h-auto lg:h-full relative">
                 
                 <!-- Header -->
                 <div class="p-8 lg:p-10 border-b border-brand-divider flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Management</title>
+    <title>Tela de detalhe_gestão da publicação do Balcão - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +45,7 @@
         ::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="text-navy antialiased">
+<body class="pb-28 text-navy antialiased">
 
     <!-- Mobile Device Wrapper -->
     <main class="w-full max-w-[375px] min-h-[840px] bg-offwhite relative overflow-hidden flex flex-col shadow-2xl">
@@ -174,26 +174,8 @@
             </section>
         </div>
 
-        <!-- Floating Pill Navigation -->
-        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-[343px] z-50">
-            <div class="bg-white rounded-full px-8 py-4 flex items-center justify-between shadow-nav border border-gray-100/50 backdrop-blur-xl">
-                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
-                    <i class="fa-solid fa-house text-[20px]"></i>
-                </button>
-                <button class="flex flex-col items-center gap-1 text-brand relative">
-                    <i class="fa-solid fa-clipboard-list text-[20px]"></i>
-                    <div class="w-1.5 h-1.5 bg-brand rounded-full absolute -bottom-2.5"></div>
-                </button>
-                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors relative">
-                    <i class="fa-regular fa-message text-[20px]"></i>
-                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
-                </button>
-                <button class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
-                    <i class="fa-regular fa-user text-[20px]"></i>
-                </button>
-            </div>
-        </nav>
 
     </main>
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

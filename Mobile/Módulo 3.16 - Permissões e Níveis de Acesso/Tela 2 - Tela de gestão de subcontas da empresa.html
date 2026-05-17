@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Minha Equipe</title>
+    <title>Tela de gestão de subcontas da empresa - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -61,7 +61,7 @@
         }
     </style>
 </head>
-<body class="bg-background text-navy font-sans antialiased m-0 p-0 selection:bg-primary selection:text-white">
+<body class="pb-28 bg-background text-navy font-sans antialiased m-0 p-0 selection:bg-primary selection:text-white">
 
     <div class="mobile-container flex flex-col relative shadow-2xl sm:shadow-none bg-background">
         
@@ -224,43 +224,7 @@
 
         </main>
 
-        <!-- Floating Bottom Navigation & CTA -->
-        <div class="fixed bottom-0 left-0 right-0 w-full max-w-md mx-auto z-50 pointer-events-none flex flex-col items-center pb-6 px-5 gap-4">
-            
-            <!-- 4. Primary Action (Pinned Bottom) -->
-            <button class="w-full pointer-events-auto bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-full shadow-float flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-[0.98]">
-                <i class="fa-solid fa-user-plus text-lg"></i>
-                <span class="text-base tracking-wide">Convidar Novo Profissional</span>
-            </button>
 
-            <!-- White floating pill-shaped bottom navigation bar -->
-            <nav class="pointer-events-auto w-[90%] bg-surface px-6 py-4 rounded-[32px] shadow-soft border border-border/20 flex items-center justify-between backdrop-blur-xl bg-surface/90">
-                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors w-12">
-                    <i class="fa-solid fa-house text-xl"></i>
-                    <span class="text-[10px] font-semibold">Início</span>
-                </a>
-                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors w-12">
-                    <i class="fa-solid fa-wallet text-xl"></i>
-                    <span class="text-[10px] font-semibold">Saldo</span>
-                </a>
-                <a href="#" class="flex flex-col items-center gap-1 text-primary w-12 relative">
-                    <div class="absolute -top-12 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-float border-4 border-background">
-                        <i class="fa-solid fa-users text-xl"></i>
-                    </div>
-                    <span class="text-[10px] font-bold mt-2">Equipe</span>
-                </a>
-                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors w-12">
-                    <i class="fa-solid fa-chart-simple text-xl"></i>
-                    <span class="text-[10px] font-semibold">Relatórios</span>
-                </a>
-                <a href="#" class="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors w-12">
-                    <i class="fa-solid fa-gear text-xl"></i>
-                    <span class="text-[10px] font-semibold">Ajustes</span>
-                </a>
-            </nav>
-        </div>
-
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

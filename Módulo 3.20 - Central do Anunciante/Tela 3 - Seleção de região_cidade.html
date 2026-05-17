@@ -68,7 +68,7 @@
 <body class="min-h-screen font-sans antialiased flex flex-col items-center pt-8 pb-12">
 
     <!-- Main Wrapper (1200px Centered) -->
-    <div class="w-full max-w-[1200px] px-6 flex flex-col gap-6 h-[900px]">
+    <div class="w-full max-w-[1200px] px-6 flex flex-col gap-6 h-auto lg:h-[900px]">
         
         <!-- Ads Control Bar -->
         <header id="control-bar" class="w-full bg-white rounded-[24px] shadow-ambient px-6 py-4 flex items-center justify-between">
@@ -91,10 +91,10 @@
         </header>
 
         <!-- 3-Panel Split Layout -->
-        <main class="flex-1 flex gap-6 h-full overflow-hidden">
+        <main class="flex-1 flex flex-col lg:flex-row gap-6 h-full lg:overflow-hidden">
             
             <!-- Panel 1: Search & Hierarchy (25%) -->
-            <aside id="panel-search" class="w-[25%] bg-white rounded-[24px] shadow-ambient flex flex-col overflow-hidden">
+            <aside id="panel-search" class="w-full lg:w-[25%] bg-white rounded-[24px] shadow-ambient flex flex-col overflow-hidden">
                 <div class="p-6 border-b border-gray-100">
                     <h2 class="text-lg font-bold text-navy-900 mb-4">Adicionar Localização</h2>
                     <div class="relative">
@@ -157,7 +157,7 @@
             </aside>
 
             <!-- Panel 2: The Map Engine (50%) -->
-            <section id="panel-map" class="w-[50%] bg-white rounded-[24px] shadow-ambient overflow-hidden relative flex flex-col">
+            <section id="panel-map" class="w-full lg:w-[50%] bg-white rounded-[24px] shadow-ambient overflow-hidden relative flex flex-col">
                 <div class="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-gray-100 flex items-center gap-2">
                     <div class="w-2 h-2 rounded-full bg-trust-blue animate-pulse"></div>
                     <span class="text-xs font-bold text-navy-900">Visualização Ativa</span>
@@ -200,7 +200,7 @@
             </section>
 
             <!-- Panel 3: Audience Intelligence (25%) -->
-            <aside id="panel-intelligence" class="w-[25%] bg-white rounded-[24px] shadow-ambient flex flex-col justify-between p-6">
+            <aside id="panel-intelligence" class="w-full lg:w-[25%] bg-white rounded-[24px] shadow-ambient flex flex-col justify-between p-6">
                 
                 <div class="flex flex-col gap-8">
                     <!-- Title -->

@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Resource Center Home</title>
+    <title>Home da central - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +53,7 @@
         .hide-scroll > div { scroll-snap-align: start; }
     </style>
 </head>
-<body class="text-brand-navy min-h-screen relative pb-24 font-sans flex justify-center bg-brand-lightgray/30">
+<body class="pb-28 text-brand-navy min-h-screen relative pb-24 font-sans flex justify-center bg-brand-lightgray/30">
 
     <!-- Mobile Container (375x840 constraint applied visually while remaining responsive) -->
     <div id="app-container" class="w-full max-w-[375px] mx-auto bg-brand-offwhite min-h-screen relative shadow-2xl overflow-hidden flex flex-col">
@@ -247,27 +247,7 @@
 
         </main>
 
-        <!-- Floating Bottom Navigation -->
-        <nav id="bottom-nav" class="absolute bottom-6 left-6 right-6 bg-brand-white rounded-pill shadow-float px-6 py-4 flex justify-between items-center z-50 border border-brand-lightgray/30">
-            <a href="#" class="flex flex-col items-center gap-1 text-brand-gray hover:text-brand-navy transition-colors">
-                <i class="fa-solid fa-house text-[20px]"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-brand-blue relative">
-                <i class="fa-solid fa-folder-open text-[20px]"></i>
-                <div class="absolute -bottom-2 w-1 h-1 bg-brand-blue rounded-full"></div>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-brand-gray hover:text-brand-navy transition-colors relative">
-                <i class="fa-solid fa-bookmark text-[20px]"></i>
-                <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-1 text-brand-gray hover:text-brand-navy transition-colors">
-                <div class="w-[22px] h-[22px] rounded-full overflow-hidden border border-brand-lightgray">
-                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-full h-full object-cover" alt="Profile">
-                </div>
-            </a>
-        </nav>
 
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advertiser Campaigns Management</title>
+    <title>Gestão de campanhas de anunciantes - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -71,7 +71,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-background font-sans overflow-x-hidden pb-32">
+<body class="pb-28 min-h-screen bg-background font-sans overflow-x-hidden pb-32">
 
     <!-- Top Header -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-borderLight shadow-sm">
@@ -294,33 +294,7 @@
         </button>
     </div>
 
-    <!-- Floating Pill Navigation (Admin) -->
-    <nav id="bottom-nav" class="fixed bottom-6 left-4 right-4 max-w-[340px] mx-auto z-50 glass-nav rounded-full shadow-glass border border-white/40 px-6 py-3.5 flex justify-between items-center">
-        <!-- Nav Item 1 -->
-        <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textDark transition-colors">
-            <i class="fa-solid fa-chart-pie text-lg"></i>
-            <span class="text-[10px] font-semibold">Dashboard</span>
-        </a>
-        
-        <!-- Nav Item 2 (Active) -->
-        <a href="#" class="flex flex-col items-center gap-1 text-primary relative">
-            <i class="fa-solid fa-bullhorn text-lg"></i>
-            <span class="text-[10px] font-bold">Ads</span>
-            <div class="absolute -bottom-2.5 w-1 h-1 bg-primary rounded-full"></div>
-        </a>
-        
-        <!-- Nav Item 3 -->
-        <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textDark transition-colors">
-            <i class="fa-solid fa-wallet text-lg"></i>
-            <span class="text-[10px] font-semibold">Finances</span>
-        </a>
-        
-        <!-- Nav Item 4 -->
-        <a href="#" class="flex flex-col items-center gap-1 text-textMuted hover:text-textDark transition-colors">
-            <i class="fa-solid fa-gear text-lg"></i>
-            <span class="text-[10px] font-semibold">Settings</span>
-        </a>
-    </nav>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

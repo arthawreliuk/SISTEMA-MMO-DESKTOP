@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Visão Consolidada - MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        primary: '#0016dc',
+                        background: '#F8F9FA',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        surface: '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .filter-chip { padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; border: 1.5px solid transparent; transition: all 0.15s; }
+        .filter-chip.active { background: #0016dc; color: #fff; }
+        .filter-chip.inactive { background: #fff; color: #6B7280; border-color: #E5E7EB; }
+        .metric-card { background: #fff; border-radius: 20px; padding: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .bar-segment { border-radius: 100px; height: 100%; transition: width 0.6s ease; }
+        .donut-ring { width: 120px; height: 120px; border-radius: 50%; position: relative; }
+        .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    </style>
+</head>
+<body class="font-sans bg-background min-h-screen pb-28">
+
+    <!-- Header -->
+    <div class="bg-white sticky top-0 z-30" style="box-shadow: 0 1px 0 #F3F4F6;">
+        <div class="max-w-[430px] mx-auto px-4 pt-12 pb-4 flex items-center gap-3">
+            <a href="Tela 2- Painel da empresa.html">
+                <button class="w-9 h-9 flex items-center justify-center rounded-full bg-background text-textMain">
+                    <i class="fa-solid fa-arrow-left text-sm"></i>
+                </button>
+            </a>
+            <div class="flex-1">
+                <p class="text-xs text-textMuted font-medium">Construtora Horizonte</p>
+                <h1 class="text-base font-bold text-textMain leading-tight">Visão Consolidada</h1>
+            </div>
+            <button class="w-9 h-9 flex items-center justify-center rounded-full bg-background text-textMuted">
+                <i class="fa-solid fa-download text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="max-w-[430px] mx-auto px-4 pt-4 space-y-4">
+
+        <!-- Filter chips -->
+        <div>
+            <p class="text-xs font-semibold text-textMuted mb-2 uppercase tracking-wide">Período</p>
+            <div class="flex gap-2 overflow-x-auto pb-1" style="scrollbar-width: none;">
+                <button class="filter-chip inactive">7 dias</button>
+                <button class="filter-chip active">30 dias</button>
+                <button class="filter-chip inactive">90 dias</button>
+                <button class="filter-chip inactive">6 meses</button>
+                <button class="filter-chip inactive">Personalizado</button>
+            </div>
+        </div>
+
+        <!-- Filter row 2 -->
+        <div class="flex gap-2 overflow-x-auto" style="scrollbar-width: none;">
+            <button class="filter-chip active">Todas regiões</button>
+            <button class="filter-chip inactive">SP</button>
+            <button class="filter-chip inactive">RJ</button>
+            <button class="filter-chip inactive">MG</button>
+            <button class="filter-chip inactive">Todas categorias</button>
+        </div>
+
+        <!-- KPI row -->
+        <div class="grid grid-cols-2 gap-3">
+            <div class="metric-card">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs font-semibold text-textMuted">Gasto total</p>
+                        <p class="text-2xl font-black text-textMain mt-1">R$ 87,4k</p>
+                    </div>
+                    <div class="w-9 h-9 rounded-xl bg-green-50 flex items-center justify-center">
+                        <i class="fa-solid fa-arrow-trend-up text-green-600 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 mt-2">
+                    <span class="text-xs font-semibold text-green-600">▲ 12,4%</span>
+                    <span class="text-[11px] text-textMuted">vs mês anterior</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs font-semibold text-textMuted">Serviços concluídos</p>
+                        <p class="text-2xl font-black text-textMain mt-1">43</p>
+                    </div>
+                    <div class="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center">
+                        <i class="fa-solid fa-circle-check text-primary text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 mt-2">
+                    <span class="text-xs font-semibold text-primary">▲ 8</span>
+                    <span class="text-[11px] text-textMuted">vs mês anterior</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs font-semibold text-textMuted">Nota média</p>
+                        <p class="text-2xl font-black text-textMain mt-1">4,8 ★</p>
+                    </div>
+                    <div class="w-9 h-9 rounded-xl bg-yellow-50 flex items-center justify-center">
+                        <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 mt-2">
+                    <span class="text-xs font-semibold text-green-600">▲ 0,2</span>
+                    <span class="text-[11px] text-textMuted">vs mês anterior</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <p class="text-xs font-semibold text-textMuted">Tempo médio</p>
+                        <p class="text-2xl font-black text-textMain mt-1">5,2 dias</p>
+                    </div>
+                    <div class="w-9 h-9 rounded-xl bg-purple-50 flex items-center justify-center">
+                        <i class="fa-solid fa-clock text-purple-600 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 mt-2">
+                    <span class="text-xs font-semibold text-green-600">▼ 1,1 dia</span>
+                    <span class="text-[11px] text-textMuted">melhorou</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gastos por projeto — bar chart -->
+        <div class="metric-card">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-bold text-textMain">Gasto por projeto</h3>
+                <span class="text-xs text-primary font-semibold">Detalhes</span>
+            </div>
+            <div class="space-y-3.5">
+                <!-- Bar 1 -->
+                <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <p class="text-xs font-semibold text-textMain">Reforma Sede SP</p>
+                        <p class="text-xs font-bold text-textMain">R$ 38.200</p>
+                    </div>
+                    <div class="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="bar-segment bg-primary" style="width: 87%;"></div>
+                    </div>
+                    <p class="text-[10px] text-textMuted mt-1">87% do orçamento · 72% concluído</p>
+                </div>
+                <!-- Bar 2 -->
+                <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <p class="text-xs font-semibold text-textMain">Elétrica Filial RJ</p>
+                        <p class="text-xs font-bold text-textMain">R$ 14.600</p>
+                    </div>
+                    <div class="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="bar-segment bg-yellow-400" style="width: 42%;"></div>
+                    </div>
+                    <p class="text-[10px] text-textMuted mt-1">42% do orçamento · 30% concluído</p>
+                </div>
+                <!-- Bar 3 -->
+                <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <p class="text-xs font-semibold text-textMain">HVAC Galpão MG</p>
+                        <p class="text-xs font-bold text-textMain">R$ 9.800</p>
+                    </div>
+                    <div class="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="bar-segment bg-green-400" style="width: 18%;"></div>
+                    </div>
+                    <p class="text-[10px] text-textMuted mt-1">18% do orçamento · em início</p>
+                </div>
+                <!-- Bar 4 -->
+                <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <p class="text-xs font-semibold text-textMain">Pintura Geral RS</p>
+                        <p class="text-xs font-bold text-textMain">R$ 24.800</p>
+                    </div>
+                    <div class="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="bar-segment" style="width: 100%; background: #6366f1;"></div>
+                    </div>
+                    <p class="text-[10px] text-textMuted mt-1">100% — concluído</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Distribuição por categoria — donut simulado -->
+        <div class="metric-card">
+            <h3 class="text-sm font-bold text-textMain mb-4">Categorias de serviço</h3>
+            <div class="flex items-center gap-4">
+                <!-- Donut visual (CSS conic-gradient) -->
+                <div class="flex-shrink-0 w-28 h-28 rounded-full" style="background: conic-gradient(#0016dc 0% 38%, #facc15 38% 59%, #6366f1 59% 74%, #34d399 74% 86%, #f87171 86% 100%); box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+                    <div class="w-full h-full rounded-full flex items-center justify-center" style="background: #fff; margin: 18px; width: calc(100% - 36px); height: calc(100% - 36px);">
+                        <div class="text-center">
+                            <p class="text-xs font-black text-textMain">43</p>
+                            <p class="text-[10px] text-textMuted">serviços</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Legend -->
+                <div class="flex-1 space-y-2.5">
+                    <div class="flex items-center gap-2">
+                        <div class="legend-dot" style="background: #0016dc;"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="text-xs font-semibold text-textMain">Reforma Civil</span>
+                                <span class="text-xs font-bold text-textMain">38%</span>
+                            </div>
+                            <div class="w-full h-1 bg-gray-100 rounded-full mt-1"><div class="h-full rounded-full" style="width:38%; background:#0016dc;"></div></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="legend-dot bg-yellow-400"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="text-xs font-semibold text-textMain">Elétrica</span>
+                                <span class="text-xs font-bold text-textMain">21%</span>
+                            </div>
+                            <div class="w-full h-1 bg-gray-100 rounded-full mt-1"><div class="h-full bg-yellow-400 rounded-full" style="width:21%;"></div></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="legend-dot" style="background: #6366f1;"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="text-xs font-semibold text-textMain">Climatização</span>
+                                <span class="text-xs font-bold text-textMain">15%</span>
+                            </div>
+                            <div class="w-full h-1 bg-gray-100 rounded-full mt-1"><div class="h-full rounded-full" style="width:15%; background:#6366f1;"></div></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="legend-dot bg-green-400"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="text-xs font-semibold text-textMain">Pintura</span>
+                                <span class="text-xs font-bold text-textMain">12%</span>
+                            </div>
+                            <div class="w-full h-1 bg-gray-100 rounded-full mt-1"><div class="h-full bg-green-400 rounded-full" style="width:12%;"></div></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="legend-dot bg-red-400"></div>
+                        <div class="flex-1">
+                            <div class="flex justify-between">
+                                <span class="text-xs font-semibold text-textMain">Outros</span>
+                                <span class="text-xs font-bold text-textMain">14%</span>
+                            </div>
+                            <div class="w-full h-1 bg-gray-100 rounded-full mt-1"><div class="h-full bg-red-400 rounded-full" style="width:14%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Distribuição por região -->
+        <div class="metric-card">
+            <h3 class="text-sm font-bold text-textMain mb-4">Distribuição por região</h3>
+            <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                        <span class="text-[10px] font-black text-primary">SP</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-xs font-semibold text-textMain">São Paulo</span>
+                            <span class="text-xs font-bold text-textMain">R$ 52.800</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary rounded-full" style="width:61%;"></div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-textMuted w-8 text-right">61%</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-yellow-50 flex items-center justify-center flex-shrink-0">
+                        <span class="text-[10px] font-black text-yellow-600">RJ</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-xs font-semibold text-textMain">Rio de Janeiro</span>
+                            <span class="text-xs font-bold text-textMain">R$ 18.200</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-yellow-400 rounded-full" style="width:21%;"></div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-textMuted w-8 text-right">21%</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center flex-shrink-0">
+                        <span class="text-[10px] font-black text-purple-600">MG</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-xs font-semibold text-textMain">Minas Gerais</span>
+                            <span class="text-xs font-bold text-textMain">R$ 16.400</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full rounded-full" style="width:18%; background:#6366f1;"></div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-textMuted w-8 text-right">18%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export CTA -->
+        <button class="w-full flex items-center justify-center gap-2 py-4 rounded-full border-2 border-primary text-primary font-bold text-sm mb-2">
+            <i class="fa-solid fa-file-export"></i>
+            Exportar relatório completo
+        </button>
+
+    </div>
+
+    <script src="../../_mobile-nav.js"></script>
+</body>
+</html>

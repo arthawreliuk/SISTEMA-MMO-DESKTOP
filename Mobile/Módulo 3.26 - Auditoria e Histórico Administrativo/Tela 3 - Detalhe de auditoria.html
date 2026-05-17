@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaaS Audit Event Detail</title>
+    <title>Detalhe de auditoria - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@
         ::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="antialiased min-h-[100dvh] flex flex-col relative pb-24">
+<body class="pb-28 antialiased min-h-[100dvh] flex flex-col relative pb-24">
 
     <!-- Header -->
     <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-bordergrey/50 px-4 py-4 flex items-center justify-between">
@@ -151,21 +151,7 @@
 
     </main>
 
-    <!-- Floating Pill Navigation -->
-    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-full px-6 py-3.5 shadow-float border border-gray-100 flex items-center gap-8 z-50 w-max">
-        <a href="#" class="flex flex-col items-center gap-1 text-trustblue">
-            <i class="fa-solid fa-file-lines text-lg"></i>
-            <span class="text-[10px] font-bold">Details</span>
-        </a>
-        <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
-            <i class="fa-solid fa-clock-rotate-left text-lg"></i>
-            <span class="text-[10px] font-bold">Timeline</span>
-        </a>
-        <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-navy transition-colors">
-            <i class="fa-solid fa-shield-halved text-lg"></i>
-            <span class="text-[10px] font-bold">Policy</span>
-        </a>
-    </nav>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

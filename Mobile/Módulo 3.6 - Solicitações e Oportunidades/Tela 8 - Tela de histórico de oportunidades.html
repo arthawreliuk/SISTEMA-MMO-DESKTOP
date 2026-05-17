@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Histórico de Propostas - MMO</title>
+    <title>Tela de histórico de oportunidades - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -44,7 +44,7 @@
         .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     </style>
 </head>
-<body class="bg-background min-h-[100dvh] flex justify-center pb-24">
+<body class="pb-28 bg-background min-h-[100dvh] flex justify-center pb-24">
 
     <!-- Mobile Container (Max Width 430px for accurate mobile feel on desktop) -->
     <div class="w-full max-w-[430px] relative min-h-[100dvh] flex flex-col">
@@ -207,80 +207,6 @@
             </section>
         </main>
 
-        <!-- 4. Floating Pill Navigation -->
-        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[390px] bg-white/90 backdrop-blur-xl shadow-nav rounded-full px-6 py-4 flex justify-between items-center z-50 border border-white/40">
-            
-            <a href="#" class="flex flex-col items-center gap-1 group w-12">
-                <i class="fa-solid fa-house text-text-muted group-hover:text-text transition-colors text-[18px]"></i>
-            </a>
-
-            <a href="#" class="flex flex-col items-center gap-1 group w-12 relative">
-                <i class="fa-solid fa-briefcase text-primary text-[18px]"></i>
-                <div class="w-1 h-1 rounded-full bg-primary absolute -bottom-2"></div>
-            </a>
-
-            <a href="#" class="flex flex-col items-center gap-1 group w-12 relative">
-                <i class="fa-regular fa-message text-text-muted group-hover:text-text transition-colors text-[18px]"></i>
-                <div class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white"></div>
-            </a>
-
-            <a href="#" class="flex flex-col items-center gap-1 group w-12">
-                <i class="fa-regular fa-user text-text-muted group-hover:text-text transition-colors text-[18px]"></i>
-            </a>
-
-        </nav>
-
-    </div>
-
-    <!-- Charts Initialization Script -->
-    <script>
-        function initializeCharts() {
-            const commonConfig = {responsive: true, displayModeBar: false};
-            const commonLayout = {
-                margin: {t: 0, r: 0, b: 0, l: 0},
-                xaxis: {visible: false},
-                yaxis: {visible: false},
-                showlegend: false,
-                paper_bgcolor: 'transparent',
-                plot_bgcolor: 'transparent',
-                height: 32
-            };
-
-            // Sent Sparkline
-            try {
-                Plotly.newPlot('chart-sent', [{
-                    y: [12, 15, 10, 20, 18, 25, 22],
-                    type: 'scatter',
-                    mode: 'lines',
-                    line: {color: '#9CA3AF', width: 2, shape: 'spline', smoothing: 1.3}
-                }], commonLayout, commonConfig);
-            } catch(e) {}
-
-            // Won Sparkline
-            try {
-                Plotly.newPlot('chart-won', [{
-                    y: [2, 3, 1, 4, 3, 6, 5],
-                    type: 'scatter',
-                    mode: 'lines',
-                    line: {color: '#0016dc', width: 2.5, shape: 'spline', smoothing: 1.3},
-                    fill: 'tozeroy',
-                    fillcolor: 'rgba(0, 22, 220, 0.1)'
-                }], commonLayout, commonConfig);
-            } catch(e) {}
-
-            // Conv Sparkline
-            try {
-                Plotly.newPlot('chart-conv', [{
-                    y: [15, 20, 10, 25, 22, 30, 26],
-                    type: 'scatter',
-                    mode: 'lines',
-                    line: {color: '#1A1A24', width: 2, shape: 'spline', smoothing: 1.3}
-                }], commonLayout, commonConfig);
-            } catch(e) {}
-        }
-
-        window.addEventListener('load', initializeCharts);
-        setTimeout(initializeCharts, 1200);
-    </script>
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

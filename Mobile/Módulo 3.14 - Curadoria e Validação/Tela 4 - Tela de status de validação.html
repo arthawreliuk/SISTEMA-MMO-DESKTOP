@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KYC Validation Status</title>
+    <title>Tela de status de validação - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -50,7 +50,7 @@
         }
     </style>
 </head>
-<body class="bg-off-white text-deep-navy font-sans antialiased min-h-screen flex justify-center pb-32 relative">
+<body class="pb-28 bg-off-white text-deep-navy font-sans antialiased min-h-screen flex justify-center pb-32 relative">
 
     <!-- Main Mobile Container -->
     <main id="app-container" class="w-full max-w-[430px] min-h-screen flex flex-col relative bg-off-white mx-auto shadow-2xl overflow-hidden md:rounded-[40px] md:my-8 md:h-[840px] md:min-h-[840px]">
@@ -161,22 +161,9 @@
             </button>
         </div>
 
-        <!-- Floating Bottom Navigation -->
-        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[390px] bg-white/90 backdrop-blur-xl rounded-full h-[64px] shadow-nav flex items-center justify-around px-2 z-50 border border-white/50 md:absolute">
-            <a href="#" class="flex flex-col items-center justify-center w-14 h-14 text-dark-gray hover:text-trust-blue transition-colors">
-                <i class="fa-solid fa-house text-xl mb-1"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center justify-center w-14 h-14 text-dark-gray hover:text-trust-blue transition-colors">
-                <i class="fa-solid fa-wallet text-xl mb-1"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center justify-center w-14 h-14 relative">
-                <div class="absolute inset-0 bg-trust-blue/10 rounded-full scale-90"></div>
-                <i class="fa-solid fa-user text-trust-blue text-xl mb-1 z-10"></i>
-                <div class="absolute -bottom-1 w-1 h-1 bg-trust-blue rounded-full"></div>
-            </a>
-        </nav>
 
     </main>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

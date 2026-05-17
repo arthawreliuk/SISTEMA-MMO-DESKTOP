@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <script>
         window.FontAwesomeConfig = {
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Service Board Exposure Checkout</title>
+    <title>Tela de checkout da exposição do Balcão - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
@@ -49,7 +49,7 @@
         }
     </style>
 </head>
-<body class="text-text-main font-sans min-h-[100dvh] flex flex-col relative pb-32">
+<body class="pb-28 text-text-main font-sans min-h-[100dvh] flex flex-col relative pb-32">
 
     <!-- Top Header -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 glass-header px-6 py-4 flex items-center justify-between shadow-sm">
@@ -165,27 +165,7 @@
         </button>
     </div>
 
-    <!-- Floating Pill Navigation -->
-    <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] bg-white rounded-full shadow-floating py-3 px-6 z-50 flex justify-between items-center border border-gray-100">
-        <!-- Home (Active) -->
-        <a href="#" class="flex flex-col items-center gap-1 text-primary relative px-2">
-            <i class="fa-solid fa-house text-xl"></i>
-            <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-2"></div>
-        </a>
-        <!-- Orders -->
-        <a href="#" class="flex flex-col items-center text-gray-400 hover:text-text-main transition-colors px-2">
-            <i class="fa-solid fa-clipboard-list text-xl"></i>
-        </a>
-        <!-- Messages -->
-        <a href="#" class="flex flex-col items-center text-gray-400 hover:text-text-main transition-colors px-2 relative">
-            <i class="fa-regular fa-comment-dots text-xl"></i>
-            <div class="absolute top-0 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></div>
-        </a>
-        <!-- Profile -->
-        <a href="#" class="flex flex-col items-center text-gray-400 hover:text-text-main transition-colors px-2">
-            <i class="fa-regular fa-user text-xl"></i>
-        </a>
-    </nav>
 
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

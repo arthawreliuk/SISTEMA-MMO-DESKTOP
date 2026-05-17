@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Painel da Empresa - MMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        primary: '#0016dc',
+                        background: '#F8F9FA',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        surface: '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { display: none; }
+        .stat-card { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 16px; padding: 14px 16px; backdrop-filter: blur(8px); }
+        .quick-action { background: #fff; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.15s; }
+        .quick-action:active { transform: scale(0.97); }
+        .activity-item { background: #fff; border-radius: 16px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; }
+    </style>
+</head>
+<body class="font-sans bg-background min-h-screen pb-28">
+
+    <!-- Hero Header -->
+    <div style="background: linear-gradient(135deg, #0016dc 0%, #001aa8 60%, #0d1a8a 100%); padding-bottom: 60px;" class="relative overflow-hidden">
+        <!-- Decorative circles -->
+        <div class="absolute -top-8 -right-8 w-40 h-40 rounded-full opacity-10" style="background: rgba(255,255,255,0.3);"></div>
+        <div class="absolute top-20 -right-4 w-24 h-24 rounded-full opacity-10" style="background: rgba(255,255,255,0.2);"></div>
+
+        <div class="max-w-[430px] mx-auto px-4 pt-12 pb-2">
+            <!-- Top bar -->
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                    <!-- Company logo avatar -->
+                    <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-lg flex-shrink-0">
+                        <span class="text-primary font-black text-lg">CH</span>
+                    </div>
+                    <div>
+                        <p class="text-white/70 text-xs font-medium">Conta Empresarial</p>
+                        <h1 class="text-white font-bold text-base leading-tight">Construtora Horizonte</h1>
+                    </div>
+                </div>
+                <button class="w-10 h-10 rounded-full flex items-center justify-center relative" style="background: rgba(255,255,255,0.15);">
+                    <i class="fa-solid fa-bell text-white text-sm"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-yellow-400 rounded-full"></span>
+                </button>
+            </div>
+
+            <!-- Saudação -->
+            <p class="text-white/80 text-sm mb-1">Bom dia, Ricardo 👋</p>
+            <p class="text-white font-bold text-2xl mb-6">Resumo de hoje</p>
+
+            <!-- Stats row -->
+            <div class="grid grid-cols-3 gap-3">
+                <div class="stat-card">
+                    <p class="text-white/70 text-[11px] font-medium leading-tight mb-1">Projetos ativos</p>
+                    <p class="text-white font-black text-2xl">7</p>
+                    <div class="flex items-center gap-1 mt-1">
+                        <i class="fa-solid fa-arrow-trend-up text-green-300 text-[10px]"></i>
+                        <span class="text-green-300 text-[10px] font-semibold">+2 semana</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <p class="text-white/70 text-[11px] font-medium leading-tight mb-1">Profissionais</p>
+                    <p class="text-white font-black text-2xl">24</p>
+                    <div class="flex items-center gap-1 mt-1">
+                        <i class="fa-solid fa-circle text-yellow-300 text-[8px]"></i>
+                        <span class="text-yellow-300 text-[10px] font-semibold">3 pendentes</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <p class="text-white/70 text-[11px] font-medium leading-tight mb-1">Budget usado</p>
+                    <p class="text-white font-black text-xl">68%</p>
+                    <div class="w-full h-1 bg-white/20 rounded-full mt-2">
+                        <div class="h-full bg-yellow-400 rounded-full" style="width: 68%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content lifts over hero -->
+    <div class="max-w-[430px] mx-auto px-4 -mt-8 relative z-10 space-y-5">
+
+        <!-- Ações rápidas -->
+        <div class="bg-white rounded-[24px] p-4" style="box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
+            <h2 class="text-sm font-bold text-textMain mb-3">Ações rápidas</h2>
+            <div class="grid grid-cols-2 gap-3">
+
+                <a href="../Módulo 3.6 - Solicitações e Oportunidades/Tela 3 - Tela de histórico de solicitações.html" class="quick-action">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                        <i class="fa-solid fa-plus text-primary text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-textMain">Nova solicitação</p>
+                        <p class="text-xs text-textMuted">Contratar profissional</p>
+                    </div>
+                </a>
+
+                <a href="Tela 3 - Gestão de subcontas.html" class="quick-action">
+                    <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center">
+                        <i class="fa-solid fa-users text-purple-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-textMain">Subcontas</p>
+                        <p class="text-xs text-textMuted">Gerencie a equipe</p>
+                    </div>
+                </a>
+
+                <a href="Tela 4 - Visão consolidada da empresa.html" class="quick-action">
+                    <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
+                        <i class="fa-solid fa-chart-bar text-green-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-textMain">Relatórios</p>
+                        <p class="text-xs text-textMuted">Visão consolidada</p>
+                    </div>
+                </a>
+
+                <div class="quick-action">
+                    <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center">
+                        <i class="fa-solid fa-file-invoice-dollar text-orange-500 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-textMain">Financeiro</p>
+                        <p class="text-xs text-textMuted">Notas e pagamentos</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Projetos em andamento -->
+        <div>
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-sm font-bold text-textMain">Projetos em andamento</h2>
+                <span class="text-xs text-primary font-semibold">Ver todos</span>
+            </div>
+
+            <div class="bg-white rounded-[20px] overflow-hidden" style="box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+                <!-- Project item 1 -->
+                <div class="p-4 border-b border-gray-50">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-hard-hat text-primary text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between gap-2">
+                                <p class="text-sm font-bold text-textMain truncate">Reforma Sede SP</p>
+                                <span class="badge bg-green-100 text-green-700">Em andamento</span>
+                            </div>
+                            <p class="text-xs text-textMuted mt-0.5">4 profissionais · prazo: 28 jun</p>
+                            <div class="w-full h-1.5 bg-gray-100 rounded-full mt-2">
+                                <div class="h-full bg-primary rounded-full" style="width: 72%;"></div>
+                            </div>
+                            <p class="text-[10px] text-textMuted mt-1">72% concluído</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project item 2 -->
+                <div class="p-4 border-b border-gray-50">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-yellow-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-plug text-yellow-500 text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between gap-2">
+                                <p class="text-sm font-bold text-textMain truncate">Elétrica Filial RJ</p>
+                                <span class="badge bg-yellow-100 text-yellow-700">Aguardando</span>
+                            </div>
+                            <p class="text-xs text-textMuted mt-0.5">2 profissionais · prazo: 15 jul</p>
+                            <div class="w-full h-1.5 bg-gray-100 rounded-full mt-2">
+                                <div class="h-full bg-yellow-400 rounded-full" style="width: 30%;"></div>
+                            </div>
+                            <p class="text-[10px] text-textMuted mt-1">30% concluído</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project item 3 -->
+                <div class="p-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-purple-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-snowflake text-purple-500 text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between gap-2">
+                                <p class="text-sm font-bold text-textMain truncate">HVAC Galpão MG</p>
+                                <span class="badge bg-blue-100 text-blue-700">Iniciando</span>
+                            </div>
+                            <p class="text-xs text-textMuted mt-0.5">6 profissionais · prazo: 10 ago</p>
+                            <div class="w-full h-1.5 bg-gray-100 rounded-full mt-2">
+                                <div class="h-full bg-blue-400 rounded-full" style="width: 8%;"></div>
+                            </div>
+                            <p class="text-[10px] text-textMuted mt-1">8% concluído</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Atividade recente -->
+        <div>
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-sm font-bold text-textMain">Atividade recente</h2>
+                <span class="text-xs text-primary font-semibold">Histórico</span>
+            </div>
+            <div class="space-y-2.5">
+                <div class="activity-item">
+                    <div class="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-check text-green-600 text-xs"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-textMain">Orçamento aprovado</p>
+                        <p class="text-xs text-textMuted">Reforma Sede SP · R$ 12.400</p>
+                    </div>
+                    <p class="text-[11px] text-textMuted flex-shrink-0">há 2h</p>
+                </div>
+                <div class="activity-item">
+                    <div class="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-user-plus text-primary text-xs"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-textMain">Subconta criada</p>
+                        <p class="text-xs text-textMuted">Ana Lima — Gestora de Obras</p>
+                    </div>
+                    <p class="text-[11px] text-textMuted flex-shrink-0">ontem</p>
+                </div>
+                <div class="activity-item">
+                    <div class="w-9 h-9 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-star text-orange-500 text-xs"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-textMain">Avaliação recebida</p>
+                        <p class="text-xs text-textMuted">João Elétrica · ★★★★★</p>
+                    </div>
+                    <p class="text-[11px] text-textMuted flex-shrink-0">ontem</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Subcontas -->
+        <a href="Tela 3 - Gestão de subcontas.html">
+            <button class="w-full bg-primary text-white font-bold rounded-full py-4 text-base flex items-center justify-center gap-2 mt-1" style="box-shadow: 0 8px 24px rgba(0,22,220,0.25);">
+                <i class="fa-solid fa-users text-sm"></i>
+                Gerenciar Subcontas
+            </button>
+        </a>
+
+    </div>
+
+    <script src="../../_mobile-nav.js"></script>
+</body>
+</html>

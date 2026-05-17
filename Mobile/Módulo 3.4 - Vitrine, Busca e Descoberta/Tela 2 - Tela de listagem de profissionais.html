@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
+    <title>Tela de listagem de profissionais - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +43,7 @@
         }
     </style>
 </head>
-<body class="bg-background text-textMain font-sans antialiased min-h-screen relative pb-32">
+<body class="pb-28 bg-background text-textMain font-sans antialiased min-h-screen relative pb-32">
 
     <!-- Mobile Container -->
     <div class="w-full max-w-[375px] mx-auto min-h-screen relative shadow-[0_0_40px_rgba(0,0,0,0.05)] bg-background">
@@ -190,32 +190,7 @@
             </div>
         </main>
 
-        <!-- Floating Pill Navigation (Dynamic Island) -->
-        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-[335px] bg-white rounded-full py-4 px-8 shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-gray-100 flex justify-between items-center z-50">
-            <!-- Home (Active) -->
-            <a href="#" class="flex flex-col items-center gap-1.5 relative group">
-                <i class="fa-solid fa-house text-primary text-[20px]"></i>
-                <div class="w-1.5 h-1.5 bg-primary rounded-full absolute -bottom-3"></div>
-            </a>
-            
-            <!-- Orders -->
-            <a href="#" class="flex flex-col items-center gap-1 text-[#A0A5AA] hover:text-textMain transition-colors">
-                <i class="fa-solid fa-clipboard-list text-[20px]"></i>
-            </a>
-            
-            <!-- Messages -->
-            <a href="#" class="flex flex-col items-center gap-1 text-[#A0A5AA] hover:text-textMain transition-colors relative">
-                <i class="fa-solid fa-message text-[20px]"></i>
-                <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#FF4E00] rounded-full border-2 border-white"></div>
-            </a>
-            
-            <!-- Profile -->
-            <a href="#" class="flex flex-col items-center gap-1 text-[#A0A5AA] hover:text-textMain transition-colors">
-                <i class="fa-solid fa-user text-[20px]"></i>
-            </a>
-        </nav>
 
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>

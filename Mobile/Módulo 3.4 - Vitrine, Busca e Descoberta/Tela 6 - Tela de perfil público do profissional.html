@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Professional Public Profile</title>
+    <title>Tela de perfil público do profissional - MMO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,7 +61,7 @@
         }
     </style>
 </head>
-<body class="pb-32">
+<body class="pb-28 pb-32">
 
     <!-- Mobile Wrapper -->
     <div class="w-full max-w-[375px] mx-auto min-h-screen bg-brand-offwhite relative overflow-hidden flex flex-col">
@@ -222,42 +222,7 @@
 
         </main>
 
-        <!-- 6. Floating Primary Action -->
-        <div class="fixed bottom-[88px] w-full max-w-[375px] px-5 z-40">
-            <button class="w-full bg-brand-blue text-white py-4 rounded-full font-bold text-base shadow-[0_8px_24px_-6px_rgba(0,22,220,0.4)] transition-transform active:scale-[0.98] flex items-center justify-center gap-2">
-                <span>Solicitar Orçamento Grátis</span>
-                <i class="fa-solid fa-arrow-right text-sm"></i>
-            </button>
-        </div>
 
-        <!-- 7. Floating Pill Navigation -->
-        <nav id="bottom-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[335px] bg-white rounded-full shadow-nav z-50 px-6 py-3 border border-gray-100/50 flex justify-between items-center">
-            
-            <!-- Home (Active) -->
-            <a href="#" class="flex flex-col items-center gap-1 text-brand-blue relative w-12">
-                <i class="fa-solid fa-house text-xl"></i>
-                <div class="w-1 h-1 bg-brand-blue rounded-full absolute -bottom-2"></div>
-            </a>
-            
-            <!-- Orders -->
-            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors w-12">
-                <i class="fa-solid fa-clipboard-list text-xl"></i>
-            </a>
-            
-            <!-- Messages -->
-            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors w-12 relative">
-                <i class="fa-regular fa-message text-xl"></i>
-                <div class="absolute top-0 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></div>
-            </a>
-            
-            <!-- Profile -->
-            <a href="#" class="flex flex-col items-center gap-1 text-gray-400 hover:text-gray-600 transition-colors w-12">
-                <i class="fa-regular fa-user text-xl"></i>
-            </a>
-            
-        </nav>
-
-    </div>
-
+    <script src="../../_mobile-nav.js"></script>
 </body>
 </html>
