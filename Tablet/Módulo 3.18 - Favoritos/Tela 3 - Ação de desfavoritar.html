@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ação de desfavoritar - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        destructive: '#E11D48',
+                        navy: '#1A1A24',
+                        muted: '#6B7280'
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'tooltip': '0 4px 12px rgba(225, 29, 72, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans antialiased bg-background text-navy h-screen w-full flex">
+
+
+    <!-- Main Workspace -->
+    <main id="main-workspace" class="flex-1 h-screen overflow-y-auto hide-scrollbar p-6 lg:p-10 flex flex-col relative">
+        
+        <!-- Header Section -->
+        <header id="header" class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
+            <div>
+                <h1 class="text-3xl lg:text-4xl font-bold tracking-tight mb-2">Mestres Favoritos</h1>
+                <p class="text-muted font-medium">Gerencie seus especialistas e mentores salvos.</p>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
+                    <input type="text" placeholder="Buscar mestre..." class=" pr-6 py-3 bg-white rounded-full text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-sm w-64 lg:w-80 placeholder:text-muted/60">
+                </div>
+                <button class="h-12 px-6 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Novo</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Filters -->
+        <div id="quick-filters" class="flex gap-3 mb-8 overflow-x-auto hide-scrollbar pb-2">
+            <button class="px-6 py-2.5 bg-navy text-white rounded-full text-sm font-semibold whitespace-nowrap shadow-sm">Todos</button>
+            <button class="px-6 py-2.5 bg-white text-muted hover:text-navy rounded-full text-sm font-semibold whitespace-nowrap shadow-sm transition-colors border border-transparent hover:border-gray-200">Investimentos</button>
+            <button class="px-6 py-2.5 bg-white text-muted hover:text-navy rounded-full text-sm font-semibold whitespace-nowrap shadow-sm transition-colors border border-transparent hover:border-gray-200">Cripto</button>
+            <button class="px-6 py-2.5 bg-white text-muted hover:text-navy rounded-full text-sm font-semibold whitespace-nowrap shadow-sm transition-colors border border-transparent hover:border-gray-200">Imóveis</button>
+            <button class="px-6 py-2.5 bg-white text-muted hover:text-navy rounded-full text-sm font-semibold whitespace-nowrap shadow-sm transition-colors border border-transparent hover:border-gray-200">Mentoria de Carreira</button>
+        </div>
+
+        <!-- Favorites Grid -->
+        <div id="favorites-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-20">
+            
+            <!-- Standard Card 1 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient flex flex-col relative group">
+                <button class="absolute top-6 right-6 text-primary hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-heart text-xl"></i>
+                </button>
+                <div class="flex items-center gap-4 mb-6">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-16 h-16 rounded-full object-cover">
+                    <div>
+                        <h3 class="text-lg font-bold">Roberto Silva</h3>
+                        <p class="text-sm text-primary font-semibold">Especialista em Ações</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-6">
+                    <span class="px-3 py-1 bg-gray-100 text-muted rounded-full text-xs font-semibold">B3</span>
+                    <span class="px-3 py-1 bg-gray-100 text-muted rounded-full text-xs font-semibold">Dividendos</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex items-center gap-1 text-sm font-medium">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <span>4.9</span>
+                        <span class="text-muted">(120)</span>
+                    </div>
+                    <button class="text-primary text-sm font-bold hover:underline">Ver Perfil</button>
+                </div>
+            </div>
+
+            <!-- INTERACTION FOCUS CARD (Dimmed) -->
+            <div id="interaction-card" class="bg-white rounded-[24px] p-6 shadow-ambient flex flex-col relative opacity-50 transition-opacity duration-300">
+                <!-- Tooltip -->
+                <div class="absolute -top-4 right-2 bg-destructive text-white text-xs font-bold px-4 py-2 rounded-full shadow-tooltip z-10 whitespace-nowrap animate-pulse">
+                    Remover dos favoritos?
+                    <div class="absolute -bottom-1 right-6 w-2 h-2 bg-destructive rotate-45"></div>
+                </div>
+                
+                <button class="absolute top-6 right-6 text-muted hover:text-navy transition-colors">
+                    <i class="fa-regular fa-heart text-xl"></i>
+                </button>
+                
+                <div class="flex items-center gap-4 mb-6">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Avatar" class="w-16 h-16 rounded-full object-cover grayscale">
+                    <div>
+                        <h3 class="text-lg font-bold">Camila Santos</h3>
+                        <p class="text-sm text-primary font-semibold">Criptomoedas</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-6">
+                    <span class="px-3 py-1 bg-gray-100 text-muted rounded-full text-xs font-semibold">DeFi</span>
+                    <span class="px-3 py-1 bg-gray-100 text-muted rounded-full text-xs font-semibold">Web3</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex items-center gap-1 text-sm font-medium text-muted">
+                        <i class="fa-solid fa-star text-gray-300"></i>
+                        <span>4.7</span>
+                        <span>(85)</span>
+                    </div>
+                    <button class="text-muted text-sm font-bold">Ver Perfil</button>
+                </div>
+            </div>
+
+            <!-- Standard Card 3 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient flex flex-col relative group">
+                <button class="absolute top-6 right-6 text-primary hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-heart text-xl"></i>
+                </button>
+                <div class="flex items-center gap-4 mb-6">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Avatar" class="w-16 h-16 rounded-full object-cover">
+                    <div>
+                        <h3 class="text-lg font-bold">André Costa</h3>
+                        <p class="text-sm text-primary font-semibold">Fundos Imobiliários</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-6">
+                    <span class="px-3 py-1 bg-gray-100 text-muted rounded-full text-xs font-semibold">FIIs</span>
+                    <span class="px-3 py-1 bg-gray-100 text-muted rounded-full text-xs font-semibold">Renda Passiva</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex items-center gap-1 text-sm font-medium">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <span>5.0</span>
+                        <span class="text-muted">(210)</span>
+                    </div>
+                    <button class="text-primary text-sm font-bold hover:underline">Ver Perfil</button>
+                </div>
+            </div>
+
+             <!-- Standard Card 4 -->
+             <div class="bg-white rounded-[24px] p-6 shadow-ambient flex flex-col relative group">
+                <button class="absolute top-6 right-6 text-primary hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-heart text-xl"></i>
+                </button>
+                <div class="flex items-center gap-4 mb-6">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Avatar" class="w-16 h-16 rounded-full object-cover">
+                    <div>
+                        <h3 class="text-lg font-bold">Mariana Luz</h3>
+                        <p class="text-sm text-primary font-semibold">Planejamento Tributário</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-6">
+                    <span class="px-3 py-1 bg-gray-100 text-muted rounded-full text-xs font-semibold">Impostos</span>
+                    <span class="px-3 py-1 bg-gray-100 text-muted rounded-full text-xs font-semibold">PJ</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex items-center gap-1 text-sm font-medium">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <span>4.8</span>
+                        <span class="text-muted">(92)</span>
+                    </div>
+                    <button class="text-primary text-sm font-bold hover:underline">Ver Perfil</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

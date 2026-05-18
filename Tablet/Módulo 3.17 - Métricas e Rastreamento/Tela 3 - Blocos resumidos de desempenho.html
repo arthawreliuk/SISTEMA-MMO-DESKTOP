@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blocos resumidos de desempenho - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: '#0016dc',
+                        surface: '#F8F9FA',
+                        navy: '#1A1A24',
+                        card: '#FFFFFF',
+                        danger: '#FEE2E2',
+                        dangerText: '#EF4444'
+                    },
+                    boxShadow: {
+                        'bento': '0 4px 24px -4px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex text-navy bg-surface">
+
+
+    <!-- Main Content -->
+    <main class="ml-[80px] lg:ml-[100px] w-full p-6 lg:p-10 max-w-[1400px] mx-auto min-h-screen flex flex-col gap-8">
+        
+        <!-- Header -->
+        <header id="header" class="flex justify-between items-end w-full">
+            <div>
+                <h1 class="text-4xl lg:text-5xl font-bold tracking-tight text-navy mb-2">Cockpit de Desempenho</h1>
+                <p class="text-gray-500 text-lg font-medium">Insights rápidos e blocos de saúde do ecossistema.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="w-12 h-12 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-600 hover:text-brand transition-colors">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                </button>
+                <button class="px-6 py-3 rounded-full bg-white shadow-sm border border-gray-100 font-semibold text-navy hover:border-gray-200 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-download text-sm"></i> Exportar
+                </button>
+            </div>
+        </header>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+            
+            <!-- Top Left: Termômetro Financeiro (Large Square) -->
+            <div id="block-thermometer" class="bg-card rounded-[24px] p-8 shadow-bento lg:col-span-2 flex flex-col relative ">
+                <div class="flex justify-between items-start mb-6 z-10">
+                    <div>
+                        <h2 class="text-2xl font-bold text-navy">Termômetro Financeiro</h2>
+                        <p class="text-gray-500 font-medium mt-1">Progresso da meta GMV mensal</p>
+                    </div>
+                    <div class="px-4 py-2 rounded-full bg-gray-50 text-sm font-semibold text-gray-600 border border-gray-100">
+                        Novembro 2023 <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
+                    </div>
+                </div>
+                
+                <div class="flex-1 flex items-center justify-center relative z-10">
+                    <div class="w-full max-w-[400px] relative">
+                        <div id="gauge-chart" class="w-full h-[300px]"></div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/4 text-center">
+                            <span class="block text-5xl font-extrabold text-navy tracking-tight">R$ 2.4M</span>
+                            <span class="block text-brand font-semibold mt-2 bg-brand/10 px-3 py-1 rounded-full inline-block text-sm">+14.2% vs mês ant.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Right: Mestres em Alta (Wide Rect / Square on Desktop) -->
+            <div id="block-masters" class="bg-card rounded-[24px] p-8 shadow-bento flex flex-col">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-bold text-navy">Mestres em Alta</h2>
+                    <button class="text-gray-400 hover:text-navy transition-colors"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                
+                <div class="flex flex-col gap-6 flex-1 justify-center">
+                    <!-- Item 1 -->
+                    <div class="flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer border border-transparent hover:border-gray-200">
+                        <div class="flex items-center gap-4">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-brand text-white rounded-full flex items-center justify-center text-[10px] font-bold border-2 border-white">1</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy">Sarah Jenkins</h4>
+                                <p class="text-xs text-gray-500 font-medium">Design System</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-navy">R$ 14.2k</div>
+                            <div class="text-xs text-green-500 font-semibold"><i class="fa-solid fa-arrow-trend-up mr-1"></i> Hoje</div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer border border-transparent hover:border-gray-200">
+                        <div class="flex items-center gap-4">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-gray-800 text-white rounded-full flex items-center justify-center text-[10px] font-bold border-2 border-white">2</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy">Marcus Silva</h4>
+                                <p class="text-xs text-gray-500 font-medium">Fullstack</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-navy">R$ 9.8k</div>
+                            <div class="text-xs text-green-500 font-semibold"><i class="fa-solid fa-arrow-trend-up mr-1"></i> Hoje</div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer border border-transparent hover:border-gray-200">
+                        <div class="flex items-center gap-4">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-gray-400 text-white rounded-full flex items-center justify-center text-[10px] font-bold border-2 border-white">3</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy">Elena Costa</h4>
+                                <p class="text-xs text-gray-500 font-medium">UX Research</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-navy">R$ 7.1k</div>
+                            <div class="text-xs text-green-500 font-semibold"><i class="fa-solid fa-arrow-trend-up mr-1"></i> Hoje</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Left: Disputas & Moderação (Vertical Rect) -->
+            <div id="block-alerts" class="bg-card rounded-[24px] p-8 shadow-bento lg:col-span-2 flex flex-col">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-danger/50 flex items-center justify-center text-dangerText">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-navy">Disputas & Moderação</h2>
+                    </div>
+                    <a href="#" class="text-sm font-semibold text-brand hover:underline">Ver todas</a>
+                </div>
+
+                <div class="overflow-x-auto w-full">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-xs text-gray-400 uppercase tracking-wider border-b border-gray-100">
+                                <th class="pb-4 font-semibold ">ID Chamado</th>
+                                <th class="pb-4 font-semibold">Projeto</th>
+                                <th class="pb-4 font-semibold">Status</th>
+                                <th class="pb-4 font-semibold text-right pr-2">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm font-medium">
+                            <tr class="border-b border-gray-50 hover:bg-gray-50/50 transition-colors group">
+                                <td class="py-5 text-navy font-bold">#REQ-8942</td>
+                                <td class="py-5 text-gray-600">App Redesign - Pagamento Retido</td>
+                                <td class="py-5">
+                                    <span class="px-3 py-1 rounded-full bg-danger text-dangerText text-xs font-bold">Urgente</span>
+                                </td>
+                                <td class="py-5 text-right pr-2">
+                                    <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 group-hover:bg-brand group-hover:text-white transition-colors">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-50 hover:bg-gray-50/50 transition-colors group">
+                                <td class="py-5 text-navy font-bold">#REQ-8941</td>
+                                <td class="py-5 text-gray-600">E-commerce API - Escopo</td>
+                                <td class="py-5">
+                                    <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold">Em Análise</span>
+                                </td>
+                                <td class="py-5 text-right pr-2">
+                                    <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 group-hover:bg-brand group-hover:text-white transition-colors">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50/50 transition-colors group">
+                                <td class="py-5 text-navy font-bold">#REQ-8938</td>
+                                <td class="py-5 text-gray-600">Logo Design - Reembolso</td>
+                                <td class="py-5">
+                                    <span class="px-3 py-1 rounded-full bg-danger text-dangerText text-xs font-bold">Urgente</span>
+                                </td>
+                                <td class="py-5 text-right pr-2">
+                                    <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 group-hover:bg-brand group-hover:text-white transition-colors">
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bottom Right: Tempo de Match (Small Square) -->
+            <div id="block-match-time" class="bg-navy rounded-[24px] p-8 shadow-bento flex flex-col relative text-white">
+                <!-- Background decorative element -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand rounded-full blur-[80px] opacity-30 -mr-20 -mt-20"></div>
+                
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-2">
+                        <h2 class="text-lg font-medium text-gray-300">Tempo de Match</h2>
+                        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm">
+                            <i class="fa-solid fa-stopwatch text-white text-sm"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="text-5xl font-extrabold tracking-tighter">3m 45s</div>
+                        <div class="text-sm text-green-400 font-semibold mt-2 flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-down"></i> -12s vs média
+                        </div>
+                    </div>
+
+                    <div class="flex-1 mt-6 -mx-4 -mb-4 relative">
+                        <div id="line-chart" class="w-full h-full absolute inset-0"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            // Gauge Chart (Termômetro)
+            try {
+                const gaugeData = [{
+                    type: "indicator",
+                    mode: "gauge+number",
+                    value: 78,
+                    number: { suffix: "%", font: { size: 0, color: 'transparent' } }, // Hide default number
+                    gauge: {
+                        axis: { range: [null, 100], tickwidth: 0, tickcolor: "transparent", showticklabels: false },
+                        bar: { color: "#0016dc", thickness: 0.15 },
+                        bgcolor: "#F3F4F6",
+                        borderwidth: 0,
+                        bordercolor: "transparent",
+                        steps: [
+                            { range: [0, 100], color: "#F3F4F6" }
+                        ],
+                        shape: "angular"
+                    }
+                }];
+
+                const gaugeLayout = {
+                    margin: { t: 20, b: 20, l: 20, r: 20 },
+                    paper_bgcolor: "transparent",
+                    plot_bgcolor: "transparent",
+                    font: { family: "Plus Jakarta Sans, sans-serif" }
+                };
+
+                Plotly.newPlot('gauge-chart', gaugeData, gaugeLayout, {displayModeBar: false, responsive: true});
+            } catch(e) { console.error("Gauge chart error:", e); }
+
+            // Line Chart (Tempo de Match)
+            try {
+                const lineData = [{
+                    x: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                    y: [5.2, 4.8, 4.5, 4.1, 3.9, 3.8, 3.75],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: {
+                        color: '#FFFFFF',
+                        width: 3,
+                        shape: 'spline',
+                        smoothing: 1.3
+                    },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(255, 255, 255, 0.1)'
+                }];
+
+                const lineLayout = {
+                    margin: { t: 10, b: 20, l: 0, r: 0 },
+                    paper_bgcolor: "transparent",
+                    plot_bgcolor: "transparent",
+                    xaxis: {
+                        showgrid: false,
+                        showline: false,
+                        zeroline: false,
+                        tickfont: { color: 'rgba(255,255,255,0.5)', size: 10, family: "Plus Jakarta Sans" }
+                    },
+                    yaxis: {
+                        showgrid: false,
+                        showline: false,
+                        zeroline: false,
+                        showticklabels: false
+                    },
+                    showlegend: false,
+                    hovermode: false
+                };
+
+                Plotly.newPlot('line-chart', lineData, lineLayout, {displayModeBar: false, responsive: true});
+            } catch(e) { console.error("Line chart error:", e); }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

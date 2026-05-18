@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdo por serviço_região - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trust: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        softgrey: '#FBFBFC',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'card': '0 4px 20px -2px rgba(0,0,0,0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col items-center">
+
+    <!-- Minimalist Top Bar -->
+    <header id="header" class="w-full max-w-[1024px] mx-auto px-6 py-4 flex items-center justify-between sticky top-0 z-50 glass-nav bg-offwhite/80 border-b border-gray-100">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-trust flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-trust/20">
+                M
+            </div>
+            <span class="font-bold text-xl tracking-tight text-navy">MMO</span>
+        </div>
+        <nav class="flex items-center gap-2 text-sm font-medium text-gray-500 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+            <span class="hover:text-trust cursor-pointer transition-colors">Início</span>
+            <i class="fa-solid fa-chevron-right text-[10px] text-gray-300"></i>
+            <span class="text-navy font-semibold">Camboriú / Serviços</span>
+        </nav>
+    </header>
+
+    <!-- Main Workspace (Tablet Landscape Target: 1024px width) -->
+    <main class="w-full max-w-[1024px] mx-auto flex-1 flex flex-col md:flex-row gap-6 p-6 h-[calc(100vh-80px)]">
+        
+        <!-- Left Column: Local Guide (55%) -->
+        <section id="local-guide" class="w-full md:w-[55%] bg-white rounded-[24px] shadow-ambient flex flex-col h-full border border-gray-50">
+            <div class="p-8 pb-4 border-b border-gray-50">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-trust text-xs font-semibold mb-4 border border-blue-100">
+                    <i class="fa-solid fa-location-dot"></i> Guia Oficial da Região
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-navy leading-tight tracking-tight mb-4">
+                    Guia de Manutenção:<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-trust to-blue-400">Camboriú e Litoral</span>
+                </h1>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Padrões de serviço, médias de custo e exigências legais para contratação de profissionais na região de Balneário Camboriú e arredores.
+                </p>
+            </div>
+
+            <!-- Scrollable Content Area -->
+            <div class="flex-1 overflow-y-auto hide-scroll p-8 pt-6 space-y-8">
+                
+                <!-- Service Standards -->
+                <div id="service-standards" class="space-y-4">
+                    <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                        <i class="fa-solid fa-shield-check text-trust"></i> Padrões de Qualidade
+                    </h3>
+                    <div class="grid grid-cols-1 gap-3">
+                        <div class="p-4 rounded-2xl bg-gray-50 border border-gray-100 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-trust shrink-0">
+                                <i class="fa-solid fa-file-contract"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy text-sm mb-1">Garantia Obrigatória</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Serviços residenciais em SC exigem garantia mínima de 90 dias conforme código de defesa do consumidor.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-gray-50 border border-gray-100 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-trust shrink-0">
+                                <i class="fa-solid fa-building-user"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy text-sm mb-1">Regras de Condomínio</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Horário permitido para obras em Balneário Camboriú: 08h às 12h e 14h às 18h (Seg-Sex).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Average Costs Table -->
+                <div id="cost-averages" class="space-y-4">
+                    <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line text-trust"></i> Média de Valores (2024)
+                    </h3>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-gray-50 text-gray-500 text-xs uppercase font-semibold">
+                                <tr>
+                                    <th class="px-4 py-3">Serviço Base</th>
+                                    <th class="px-4 py-3 text-right">Valor Médio</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-50">
+                                <tr>
+                                    <td class="px-4 py-3 text-navy font-medium">Visita Técnica (Elétrica)</td>
+                                    <td class="px-4 py-3 text-right font-semibold text-gray-700">R$ 120 - 180</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-navy font-medium">Limpeza de Ar Condicionado</td>
+                                    <td class="px-4 py-3 text-right font-semibold text-gray-700">R$ 150 - 250</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-navy font-medium">Diária Pedreiro Especializado</td>
+                                    <td class="px-4 py-3 text-right font-semibold text-gray-700">R$ 250 - 350</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- FAQ Accordion -->
+                <div id="faq-section" class="space-y-4 pb-8">
+                    <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                        <i class="fa-regular fa-circle-question text-trust"></i> Dúvidas Frequentes
+                    </h3>
+                    <div class="space-y-2">
+                        <details class="group bg-gray-50 rounded-full border border-gray-100 cursor-pointer" open>
+                            <summary class="flex items-center justify-between px-6 py-4 font-semibold text-sm text-navy list-none">
+                                Como verificar referências locais?
+                                <span class="transition group-open:rotate-180 text-gray-400">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                            </summary>
+                            <div class="px-6 pb-4 text-xs text-gray-500 leading-relaxed pt-0">
+                                Recomendamos solicitar o CNPJ ou registro municipal, além de buscar por avaliações em plataformas de serviços da região do Vale do Itajaí.
+                            </div>
+                        </details>
+                        <details class="group bg-gray-50 rounded-full border border-gray-100 cursor-pointer">
+                            <summary class="flex items-center justify-between px-6 py-4 font-semibold text-sm text-navy list-none">
+                                É necessário contrato para pequenos reparos?
+                                <span class="transition group-open:rotate-180 text-gray-400">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </span>
+                            </summary>
+                            <div class="px-6 pb-4 text-xs text-gray-500 leading-relaxed pt-0">
+                                Para serviços acima de R$ 500,00, um contrato simples documentando escopo, prazo e valor é fortemente recomendado para segurança de ambas as partes.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Right Column: Professional Sidebar (45%) -->
+        <aside id="professional-sidebar" class="w-full md:w-[45%] bg-softgrey rounded-[24px] flex flex-col h-full border border-gray-100/50 shadow-inner relative ">
+            
+            <!-- Decorative background elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+
+            <div class="p-6 pb-4 relative z-10">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-xl font-bold text-navy">Disponíveis hoje</h2>
+                    <span class="flex h-3 w-3 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                </div>
+                <p class="text-xs text-gray-500">Profissionais verificados em Camboriú</p>
+            </div>
+
+            <!-- Cards List -->
+            <div class="flex-1 overflow-y-auto hide-scroll px-6 space-y-4 relative z-10 pb-24">
+                
+                <!-- Card 1 -->
+                <div class="bg-white rounded-[20px] p-4 shadow-card border border-gray-100 hover:border-trust/30 transition-colors cursor-pointer group">
+                    <div class="flex gap-4">
+                        <div class="w-14 h-14 rounded-full border-2 border-white shadow-sm shrink-0">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="professional middle aged male electrician portrait smiling confident white background" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm">Carlos Silva</h4>
+                                    <p class="text-xs text-trust font-medium">Eletricista Residencial</p>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs font-bold text-amber-500 bg-amber-50 px-2 py-1 rounded-md">
+                                    <i class="fa-solid fa-star text-[10px]"></i> 4.9
+                                </div>
+                            </div>
+                            <div class="mt-3 flex gap-2">
+                                <span class="text-[10px] font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Instalações</span>
+                                <span class="text-[10px] font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Reparos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-[20px] p-4 shadow-card border border-gray-100 hover:border-trust/30 transition-colors cursor-pointer group">
+                    <div class="flex gap-4">
+                        <div class="w-14 h-14 rounded-full border-2 border-white shadow-sm shrink-0">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/default-placeholder.png" alt="professional female plumber in uniform smiling confident white background" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm">Mariana Costa</h4>
+                                    <p class="text-xs text-trust font-medium">Encanadora / Hidráulica</p>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs font-bold text-amber-500 bg-amber-50 px-2 py-1 rounded-md">
+                                    <i class="fa-solid fa-star text-[10px]"></i> 5.0
+                                </div>
+                            </div>
+                            <div class="mt-3 flex gap-2">
+                                <span class="text-[10px] font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Vazamentos</span>
+                                <span class="text-[10px] font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Tubulações</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-[20px] p-4 shadow-card border border-gray-100 hover:border-trust/30 transition-colors cursor-pointer group">
+                    <div class="flex gap-4">
+                        <div class="w-14 h-14 rounded-full border-2 border-white shadow-sm shrink-0">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b39a17961b-235cd505afb4c368ba3a.png" alt="professional male hvac technician portrait confident white background" />
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm">Roberto Alves</h4>
+                                    <p class="text-xs text-trust font-medium">Climatização</p>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs font-bold text-amber-500 bg-amber-50 px-2 py-1 rounded-md">
+                                    <i class="fa-solid fa-star text-[10px]"></i> 4.8
+                                </div>
+                            </div>
+                            <div class="mt-3 flex gap-2">
+                                <span class="text-[10px] font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Ar Condicionado</span>
+                                <span class="text-[10px] font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Limpeza</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA Area (Sticky inside right column) -->
+            <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-softgrey via-softgrey to-transparent pt-12 z-20">
+                <button class="w-full bg-trust hover:bg-blue-800 text-white font-bold text-base py-4 px-6 rounded-full shadow-lg shadow-trust/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    Solicitar Orçamento na Região
+                    <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

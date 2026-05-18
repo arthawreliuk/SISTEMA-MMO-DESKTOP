@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full antialiased">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de região_cidade - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            gray: '#F3F4F6',
+                            border: '#E5E7EB'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'floating': '0 20px 40px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            width: 44px;
+            height: 24px;
+            background-color: #E5E7EB;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Map Styles */
+        .map-container {
+            background-color: #f0f2f5;
+            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23d1d5db" fill-opacity="0.2" fill-rule="evenodd"/%3E%3C/svg%3E');
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans text-brand-navy bg-brand-offwhite ">
+
+    <!-- Top Navigation Bar -->
+    <header id="header" class="w-full h-[80px] bg-brand-offwhite flex items-center justify-between px-8 lg:px-12 flex-shrink-0 z-10 relative">
+        <div class="w-1/3 flex items-center">
+            <button class="flex items-center gap-3 text-brand-navy hover:text-brand-blue transition-colors group px-4 py-2 rounded-full hover:bg-white hover:shadow-sm">
+                <div class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center group-hover:bg-brand-blue group-hover:text-white transition-all">
+                    <i class="fa-solid fa-arrow-left text-sm"></i>
+                </div>
+                <span class="font-semibold text-[15px]">Voltar</span>
+            </button>
+        </div>
+        
+        <div class="w-1/3 flex justify-center">
+            <h1 class="text-[18px] font-bold tracking-tight text-brand-navy">Segmentação de Localização</h1>
+        </div>
+        
+        <div class="w-1/3 flex justify-end items-center gap-4">
+            <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-full shadow-sm">
+                <div class="w-8 h-8 rounded-full bg-brand-gray">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-[13px] font-bold leading-tight">Admin User</span>
+                    <span class="text-[11px] text-gray-500 leading-tight">Campaign Manager</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main id="main-workspace" class="flex-1 w-full max-w-[1400px] mx-auto px-6 pb-8 pt-2 flex flex-col">
+        
+        <!-- Massive Pure White Container -->
+        <div class="flex-1 bg-white rounded-[32px] shadow-soft flex flex-col lg:flex-row relative">
+            
+            <!-- Left Column (Targeting Controls - 40%) -->
+            <section id="targeting-controls" class="w-full lg:w-[40%] flex flex-col border-r border-brand-border/60 bg-white z-10">
+                
+                <!-- Search Area -->
+                <div class="p-8 pb-6">
+                    <h2 class="text-[16px] font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-brand-blue"></i>
+                        Buscar Regiões
+                    </h2>
+                    
+                    <!-- Luxurious Pill Search -->
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-search text-gray-400 group-focus-within:text-brand-blue transition-colors"></i>
+                        </div>
+                        <input type="text" class="w-full block pr-4 py-4 bg-brand-offwhite border-none rounded-full text-[15px] text-brand-navy placeholder-gray-400 focus:ring-2 focus:ring-brand-blue/20 focus:bg-white transition-all shadow-inner" placeholder="Digite uma cidade, estado ou CEP...">
+                        <div class="absolute inset-y-0 right-2 flex items-center">
+                            <button class="bg-brand-navy text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-brand-blue transition-colors">
+                                <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Selected Locations List -->
+                <div class="flex-1 overflow-y-auto px-8 py-2">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-[14px] font-bold text-gray-500 uppercase tracking-wider">Locais Selecionados</h3>
+                        <span class="bg-brand-blue/10 text-brand-blue text-[12px] font-bold px-3 py-1 rounded-full">2 ativos</span>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <!-- Location Item 1 -->
+                        <div class="group flex items-center justify-between p-4 rounded-[20px] border border-gray-100 hover:border-brand-blue/30 hover:bg-brand-blue/[0.02] transition-all bg-white">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-gray flex items-center justify-center text-gray-500 group-hover:text-brand-blue group-hover:bg-brand-blue/10 transition-colors">
+                                    <i class="fa-solid fa-city"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-[15px]">Camboriú</h4>
+                                    <p class="text-[13px] text-gray-500">Apenas a cidade (Exata)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="relative inline-block w-[44px] mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle1" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                                    <label for="toggle1" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                                <button class="text-gray-400 hover:text-red-500 transition-colors p-2">
+                                    <i class="fa-solid fa-trash-can text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Location Item 2 -->
+                        <div class="group flex items-center justify-between p-4 rounded-[20px] border border-gray-100 hover:border-brand-blue/30 hover:bg-brand-blue/[0.02] transition-all bg-white">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-gray flex items-center justify-center text-gray-500 group-hover:text-brand-blue group-hover:bg-brand-blue/10 transition-colors">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-[15px]">Balneário Camboriú</h4>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="text-[13px] text-gray-500">Raio:</span>
+                                        <span class="text-[11px] font-bold bg-gray-100 px-2 py-0.5 rounded-md text-brand-navy">+10km</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="relative inline-block w-[44px] mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle2" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                                    <label for="toggle2" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                                <button class="text-gray-400 hover:text-red-500 transition-colors p-2">
+                                    <i class="fa-solid fa-trash-can text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full mt-4 py-4 border-2 border-dashed border-gray-200 rounded-[20px] text-gray-500 font-semibold text-[14px] hover:border-brand-blue hover:text-brand-blue hover:bg-brand-blue/5 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-plus"></i> Adicionar Região
+                    </button>
+                </div>
+
+                <!-- Daily Estimate Widget -->
+                <div class="p-8 border-t border-brand-border/60 bg-brand-offwhite/50">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-[15px] font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-brand-blue"></i>
+                            Estimativa Diária
+                        </h3>
+                        <div class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400 hover:text-brand-navy cursor-pointer">
+                            <i class="fa-solid fa-circle-info text-xs"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-[24px] p-6 shadow-sm border border-gray-100 relative ">
+                        <!-- Decorative background glow -->
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-blue/5 rounded-full blur-2xl"></div>
+                        
+                        <div class="relative z-10">
+                            <p class="text-[13px] text-gray-500 font-medium mb-1">Alcance Potencial</p>
+                            <div class="flex items-end gap-3 mb-6">
+                                <span class="text-[36px] font-extrabold leading-none tracking-tight text-brand-navy">3.2k</span>
+                                <span class="text-[14px] font-semibold text-gray-500 mb-1">visualizações/dia</span>
+                            </div>
+                            
+                            <!-- Gauge / Progress Bar styled for B2B -->
+                            <div class="w-full h-3 bg-gray-100 rounded-full mb-3">
+                                <div class="h-full bg-brand-blue rounded-full relative" style="width: 65%;">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/30"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between text-[12px] font-medium text-gray-400">
+                                <span>1k (Mínimo)</span>
+                                <span class="text-brand-blue font-bold">Ótimo</span>
+                                <span>10k+ (Amplo)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column (Interactive Map Canvas - 60%) -->
+            <section id="map-canvas" class="w-full lg:w-[60%] relative map-container h-[500px] lg:h-auto">
+                
+                <!-- Map Overlay UI Controls (Top Right) -->
+                <div class="absolute top-6 right-6 z-20 flex flex-col gap-3">
+                    <div class="bg-white p-2 rounded-[16px] shadow-soft flex flex-col gap-2">
+                        <button class="w-10 h-10 rounded-[12px] bg-brand-offwhite text-brand-navy hover:bg-brand-blue hover:text-white transition-colors flex items-center justify-center">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="w-full h-[1px] bg-gray-100"></div>
+                        <button class="w-10 h-10 rounded-[12px] bg-brand-offwhite text-brand-navy hover:bg-brand-blue hover:text-white transition-colors flex items-center justify-center">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                    </div>
+                    
+                    <button class="w-14 h-14 rounded-[16px] bg-white shadow-soft text-brand-navy hover:text-brand-blue transition-colors flex items-center justify-center mt-2">
+                        <i class="fa-solid fa-location-crosshairs text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Abstract Map Visualization (CSS/SVG Based for design purposes) -->
+                <div class="absolute inset-0 z-0 flex items-center justify-center ">
+                    <!-- Base Map Lines (Abstracted) -->
+                    <svg class="absolute w-[150%] h-[150%] opacity-10" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100,0 L100,1000 M300,0 L300,1000 M500,0 L500,1000 M700,0 L700,1000 M900,0 L900,1000" stroke="#1A1A24" stroke-width="1"/>
+                        <path d="M0,100 L1000,100 M0,300 L1000,300 M0,500 L1000,500 M0,700 L1000,700 M0,900 L1000,900" stroke="#1A1A24" stroke-width="1"/>
+                        <path d="M200,200 Q400,300 500,500 T800,800" stroke="#1A1A24" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M100,600 Q300,500 600,600 T900,400" stroke="#1A1A24" stroke-width="2" stroke-dasharray="10 10"/>
+                    </svg>
+
+                    <!-- Targeting Radius 1 (Balneário Camboriú +10km) -->
+                    <div class="absolute top-[45%] left-[55%] -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center">
+                        <div class="absolute w-[300px] h-[300px] rounded-full bg-brand-blue/10 border border-brand-blue/30 animate-pulse" style="animation-duration: 4s;"></div>
+                        <div class="absolute w-[150px] h-[150px] rounded-full bg-brand-blue/20 border border-brand-blue/40"></div>
+                        <div class="w-6 h-6 rounded-full bg-brand-blue border-4 border-white shadow-lg relative z-20">
+                            <!-- Tooltip -->
+                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 bg-white px-4 py-2 rounded-[12px] shadow-soft whitespace-nowrap border border-gray-100">
+                                <p class="text-[13px] font-bold text-brand-navy">Balneário Camboriú</p>
+                                <p class="text-[11px] text-brand-blue font-semibold">+10km raio</p>
+                                <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-white"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Targeting Point 2 (Camboriú Exact) -->
+                    <div class="absolute top-[52%] left-[42%] -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center">
+                        <div class="w-5 h-5 rounded-full bg-brand-navy border-4 border-white shadow-lg relative z-20">
+                            <!-- Tooltip -->
+                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 bg-white px-3 py-1.5 rounded-[10px] shadow-soft whitespace-nowrap border border-gray-100">
+                                <p class="text-[12px] font-bold text-brand-navy">Camboriú</p>
+                                <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-white"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Floating Action Container -->
+                <div class="absolute bottom-8 left-0 right-0 z-30 flex justify-center px-6 pointer-events-none">
+                    <div class="bg-white/80 backdrop-blur-md p-2 rounded-full shadow-floating pointer-events-auto border border-white/50">
+                        <button class="bg-brand-blue text-white px-10 py-4 rounded-full font-bold text-[16px] hover:bg-blue-800 transition-all shadow-[0_8px_20px_-6px_rgba(0,22,220,0.5)] flex items-center gap-3 group">
+                            Avançar para Criativos
+                            <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

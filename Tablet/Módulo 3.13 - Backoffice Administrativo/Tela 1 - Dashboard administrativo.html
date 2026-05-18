@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard administrativo - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0016dc',
+                            light: '#e6e8fc',
+                        },
+                        navy: {
+                            DEFAULT: '#1A1A24',
+                            muted: '#6B7280',
+                        },
+                        surface: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'floating': '0 20px 40px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex bg-surface antialiased">
+
+
+    <!-- Main Content Workspace -->
+    <main class="flex-1 h-screen overflow-y-auto p-8 lg:p-12">
+        <div class="max-w-[1400px] mx-auto space-y-8">
+            
+            <!-- Header Area -->
+            <header id="page-header" class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4">
+                <div>
+                    <h1 class="text-4xl lg:text-5xl font-extrabold text-navy tracking-tight mb-3">Painel de Controle MMO</h1>
+                    <p class="text-lg text-navy-muted font-medium">Monitoramento global de usuários, serviços e faturamento.</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="bg-white text-navy font-semibold px-6 py-3 rounded-full shadow-soft hover:shadow-lg transition-all flex items-center gap-2 border border-gray-100">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>Últimos 30 Dias</span>
+                        <i class="fa-solid fa-chevron-down text-xs ml-2"></i>
+                    </button>
+                    <div class="h-12 w-12 rounded-full bg-white shadow-soft p-1 border border-gray-100 cursor-pointer hover:scale-105 transition-transform">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Admin" class="w-full h-full rounded-full object-cover">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Top KPI Grid -->
+            <section id="kpi-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- KPI Card 1 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-soft relative group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-[16px] bg-brand-light text-brand flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <span class="bg-green-50 text-green-600 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-trend-up"></i> +14.5%
+                        </span>
+                    </div>
+                    <p class="text-navy-muted font-medium text-sm mb-1">Total MRR</p>
+                    <h3 class="text-3xl font-extrabold text-navy">R$ 248.590</h3>
+                </div>
+
+                <!-- KPI Card 2 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-soft relative group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-[16px] bg-brand-light text-brand flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <span class="bg-green-50 text-green-600 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-trend-up"></i> +8.2%
+                        </span>
+                    </div>
+                    <p class="text-navy-muted font-medium text-sm mb-1">Active Professionals</p>
+                    <h3 class="text-3xl font-extrabold text-navy">12,450</h3>
+                </div>
+
+                <!-- KPI Card 3 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-soft relative group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-[16px] bg-brand-light text-brand flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-unlock-keyhole"></i>
+                        </div>
+                        <span class="bg-green-50 text-green-600 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-trend-up"></i> +22.4%
+                        </span>
+                    </div>
+                    <p class="text-navy-muted font-medium text-sm mb-1">Total Leads Unlocked</p>
+                    <h3 class="text-3xl font-extrabold text-navy">84,205</h3>
+                </div>
+
+                <!-- KPI Card 4 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-soft relative group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-[16px] bg-brand-light text-brand flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <span class="bg-brand-light text-brand text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                            Estável
+                        </span>
+                    </div>
+                    <p class="text-navy-muted font-medium text-sm mb-1">Platform Health</p>
+                    <h3 class="text-3xl font-extrabold text-navy">99.98%</h3>
+                </div>
+            </section>
+
+            <!-- Split Layout -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Left Column (Growth Chart - 60%) -->
+                <div class="lg:col-span-7 bg-white rounded-[24px] p-6 shadow-soft flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h2 class="text-xl font-bold text-navy">Volume de Pedidos vs. Conclusões</h2>
+                            <p class="text-sm text-navy-muted mt-1">Comparativo dos últimos 7 dias</p>
+                        </div>
+                        <button class="w-10 h-10 rounded-full hover:bg-gray-50 flex items-center justify-center text-navy-muted transition-colors">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </div>
+                    <div class="flex-1 w-full relative min-h-[350px]">
+                        <div id="growth-chart" class="absolute inset-0"></div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Moderation Queue - 40%) -->
+                <div class="lg:col-span-5 bg-white rounded-[24px] p-6 shadow-soft flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h2 class="text-xl font-bold text-navy">Fila de Aprovação</h2>
+                            <p class="text-sm text-navy-muted mt-1">Profissionais aguardando validação</p>
+                        </div>
+                        <span class="bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full">12 Pendentes</span>
+                    </div>
+
+                    <div class="flex flex-col gap-4 overflow-y-auto pr-2 max-h-[350px]">
+                        <!-- Queue Item 1 -->
+                        <div class="flex items-center justify-between p-4 rounded-[16px] border border-gray-100 hover:border-brand-light hover:bg-gray-50/50 transition-all group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gray-100">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm">Carolina Silva</h4>
+                                    <p class="text-xs text-navy-muted">Psicóloga Clínica • Há 2 horas</p>
+                                </div>
+                            </div>
+                            <button class="bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-blue-800 shadow-floating">
+                                Ver Documentos
+                            </button>
+                        </div>
+
+                        <!-- Queue Item 2 -->
+                        <div class="flex items-center justify-between p-4 rounded-[16px] border border-gray-100 hover:border-brand-light hover:bg-gray-50/50 transition-all group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gray-100">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm">Roberto Almeida</h4>
+                                    <p class="text-xs text-navy-muted">Encanador • Há 4 horas</p>
+                                </div>
+                            </div>
+                            <button class="bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-blue-800 shadow-floating">
+                                Ver Documentos
+                            </button>
+                        </div>
+
+                        <!-- Queue Item 3 -->
+                        <div class="flex items-center justify-between p-4 rounded-[16px] border border-gray-100 hover:border-brand-light hover:bg-gray-50/50 transition-all group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gray-100">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm">Mariana Costa</h4>
+                                    <p class="text-xs text-navy-muted">Personal Trainer • Há 5 horas</p>
+                                </div>
+                            </div>
+                            <button class="bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-blue-800 shadow-floating">
+                                Ver Documentos
+                            </button>
+                        </div>
+                        
+                        <!-- Queue Item 4 -->
+                        <div class="flex items-center justify-between p-4 rounded-[16px] border border-gray-100 hover:border-brand-light hover:bg-gray-50/50 transition-all group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gray-100">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy text-sm">Thiago Mendes</h4>
+                                    <p class="text-xs text-navy-muted">Eletricista • Há 6 horas</p>
+                                </div>
+                            </div>
+                            <button class="bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-blue-800 shadow-floating">
+                                Ver Documentos
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="mt-4 w-full py-3 text-sm font-bold text-brand hover:bg-brand-light rounded-full transition-colors">
+                        Ver Todos (12)
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const chartData = [
+                    {
+                        type: 'scatter',
+                        mode: 'lines',
+                        name: 'Pedidos',
+                        x: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                        y: [1200, 1450, 1300, 1700, 2100, 1900, 2400],
+                        line: {
+                            color: '#0016dc',
+                            width: 3,
+                            shape: 'spline',
+                            smoothing: 1.3
+                        },
+                        fill: 'tozeroy',
+                        fillcolor: 'rgba(0, 22, 220, 0.1)'
+                    },
+                    {
+                        type: 'scatter',
+                        mode: 'lines',
+                        name: 'Conclusões',
+                        x: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                        y: [900, 1100, 1050, 1400, 1600, 1500, 1900],
+                        line: {
+                            color: '#6B7280',
+                            width: 2,
+                            shape: 'spline',
+                            dash: 'dot'
+                        }
+                    }
+                ];
+
+                const layout = {
+                    margin: { t: 10, r: 10, b: 40, l: 40 },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent',
+                    showlegend: true,
+                    legend: {
+                        orientation: 'h',
+                        y: -0.2,
+                        x: 0.5,
+                        xanchor: 'center',
+                        font: { family: 'Plus Jakarta Sans', color: '#6B7280' }
+                    },
+                    xaxis: {
+                        showgrid: false,
+                        tickfont: { family: 'Plus Jakarta Sans', color: '#6B7280' },
+                        fixedrange: true
+                    },
+                    yaxis: {
+                        showgrid: true,
+                        gridcolor: 'rgba(107, 114, 128, 0.1)',
+                        tickfont: { family: 'Plus Jakarta Sans', color: '#6B7280' },
+                        fixedrange: true,
+                        zeroline: false
+                    },
+                    hovermode: 'x unified'
+                };
+
+                const config = {
+                    responsive: true,
+                    displayModeBar: false,
+                    displaylogo: false
+                };
+
+                Plotly.newPlot('growth-chart', chartData, layout, config);
+            } catch (e) {
+                console.error('Chart initialization failed:', e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

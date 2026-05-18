@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout da campanha - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280',
+                        },
+                        accent: {
+                            green: '#50A755',
+                            mint: '#79D6C4',
+                            peach: '#FFBC80',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0,0,0,0.02)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        'pill': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Input Styling */
+        input:focus {
+            outline: none;
+            border-color: #0016dc;
+            box-shadow: 0 0 0 3px rgba(0, 22, 220, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans bg-background">
+
+    <!-- Minimalist Top Bar -->
+    <header id="top-bar" class="w-full bg-surface py-6 px-8 md:px-12 flex justify-between items-center shadow-sm z-10 sticky top-0">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                M
+            </div>
+            <span class="text-text-main font-bold text-xl tracking-tight">MMO Ads</span>
+        </div>
+        
+        <div class="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full border border-green-100">
+            <i class="fa-solid fa-lock text-accent-green text-sm"></i>
+            <span class="text-accent-green font-medium text-sm">Ambiente Seguro (SSL)</span>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main id="main-workspace" class="flex-1 w-full max-w-[1200px] mx-auto p-6 md:p-10 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Left Column: Payment Gateway (60%) -->
+        <section id="payment-gateway-form" class="w-full lg:w-[60%] bg-surface rounded-4xl p-8 shadow-soft flex flex-col gap-8">
+            
+            <div class="flex flex-col gap-2">
+                <h1 class="text-3xl font-bold text-text-main tracking-tight">Dados de Pagamento</h1>
+                <p class="text-text-muted text-base">Escolha a forma de pagamento para sua campanha.</p>
+            </div>
+
+            <!-- Toggle Pills -->
+            <div class="flex gap-4 p-2 bg-background rounded-full border border-gray-100">
+                <button class="flex-1 py-3 px-6 bg-surface text-primary font-semibold rounded-full shadow-sm border border-gray-200 flex items-center justify-center gap-2 transition-all">
+                    <i class="fa-regular fa-credit-card"></i>
+                    Cartão de Crédito
+                </button>
+                <button class="flex-1 py-3 px-6 text-text-muted hover:text-text-main font-medium rounded-full flex items-center justify-center gap-2 transition-all">
+                    <i class="fa-brands fa-pix"></i>
+                    PIX
+                </button>
+            </div>
+
+            <!-- The Form -->
+            <form class="flex flex-col gap-6">
+                <!-- Card Holder -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-semibold text-text-main ml-2">Nome no Cartão</label>
+                    <div class="relative">
+                        <i class="fa-regular fa-user absolute left-5 top-1/2 -translate-y-1/2 text-text-muted"></i>
+                        <input type="text" placeholder="Como impresso no cartão" class="w-full bg-background border border-gray-200 rounded-pill py-4 pr-6 text-text-main font-medium placeholder:text-gray-400 transition-all">
+                    </div>
+                </div>
+
+                <!-- Card Number -->
+                <div class="flex flex-col gap-2">
+                    <label class="text-sm font-semibold text-text-main ml-2">Número do Cartão</label>
+                    <div class="relative">
+                        <i class="fa-regular fa-credit-card absolute left-5 top-1/2 -translate-y-1/2 text-text-muted"></i>
+                        <input type="text" placeholder="0000 0000 0000 0000" class="w-full bg-background border border-gray-200 rounded-pill py-4 pr-6 text-text-main font-medium placeholder:text-gray-400 transition-all">
+                        <div class="absolute right-5 top-1/2 -translate-y-1/2 flex gap-1">
+                            <i class="fa-brands fa-cc-visa text-gray-400 text-xl"></i>
+                            <i class="fa-brands fa-cc-mastercard text-gray-400 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expiry and CVC Row -->
+                <div class="flex gap-6">
+                    <div class="flex-1 flex flex-col gap-2">
+                        <label class="text-sm font-semibold text-text-main ml-2">Validade</label>
+                        <div class="relative">
+                            <i class="fa-regular fa-calendar absolute left-5 top-1/2 -translate-y-1/2 text-text-muted"></i>
+                            <input type="text" placeholder="MM/AA" class="w-full bg-background border border-gray-200 rounded-pill py-4 pr-6 text-text-main font-medium placeholder:text-gray-400 transition-all">
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col gap-2">
+                        <label class="text-sm font-semibold text-text-main ml-2">CVC</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-lock absolute left-5 top-1/2 -translate-y-1/2 text-text-muted text-sm"></i>
+                            <input type="text" placeholder="123" class="w-full bg-background border border-gray-200 rounded-pill py-4 pr-6 text-text-main font-medium placeholder:text-gray-400 transition-all">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div id="confirmation-action-bar" class="mt-6">
+                    <button type="button" class="w-full bg-primary hover:bg-blue-800 text-white font-bold text-lg rounded-pill py-5 px-8 flex items-center justify-between shadow-lg shadow-blue-900/20 transition-all transform hover:-translate-y-0.5">
+                        <span class="flex items-center gap-3">
+                            <i class="fa-solid fa-check-circle"></i>
+                            Confirmar Pagamento
+                        </span>
+                        <span>R$ 500,00</span>
+                    </button>
+                </div>
+                
+                <div class="text-center text-sm text-text-muted flex items-center justify-center gap-2 mt-2">
+                    <i class="fa-solid fa-shield-halved text-gray-400"></i>
+                    Seus dados estão criptografados e seguros.
+                </div>
+            </form>
+        </section>
+
+        <!-- Right Column: Order Summary (40%) -->
+        <aside id="campaign-order-summary" class="w-full lg:w-[40%]">
+            <div class="bg-surface rounded-4xl p-8 shadow-soft sticky top-28 flex flex-col gap-8 border border-gray-50">
+                
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold text-text-main tracking-tight">Resumo da Campanha</h2>
+                    <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                </div>
+
+                <!-- Campaign Details List -->
+                <div class="flex flex-col gap-5 bg-background p-6 rounded-3xl">
+                    
+                    <div class="flex justify-between items-start">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Campanha</span>
+                            <span class="font-semibold text-text-main">Lançamento Imobiliário SC</span>
+                        </div>
+                    </div>
+                    
+                    <hr class="border-gray-200">
+
+                    <div class="flex justify-between items-start">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Objetivo</span>
+                            <span class="font-medium text-text-main flex items-center gap-2">
+                                <i class="fa-solid fa-bullseye text-primary text-sm"></i>
+                                Geração de Leads
+                            </span>
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-200">
+
+                    <div class="flex justify-between items-start">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Região Alvo</span>
+                            <span class="font-medium text-text-main flex items-center gap-2">
+                                <i class="fa-solid fa-map-location-dot text-accent-mint text-sm"></i>
+                                Camboriú +15km
+                            </span>
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-200">
+
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Orçamento Diário</span>
+                            <span class="font-medium text-text-main">R$ 50,00 / dia</span>
+                        </div>
+                        <div class="flex flex-col gap-1 text-right">
+                            <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Duração</span>
+                            <span class="font-medium text-text-main">10 dias</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total -->
+                <div class="pt-4 border-t-2 border-dashed border-gray-200 mt-2">
+                    <div class="flex justify-between items-end">
+                        <span class="text-lg font-medium text-text-muted">Total</span>
+                        <span class="text-4xl font-extrabold text-text-main tracking-tight">R$ 500,00</span>
+                    </div>
+                </div>
+                
+                <!-- Guarantee Badge -->
+                <div id="secure-badge-footer" class="bg-gray-50 rounded-2xl p-4 flex gap-4 items-center border border-gray-100">
+                    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-award text-accent-peach text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-text-main mb-1">Garantia de Entrega</h4>
+                        <p class="text-xs text-text-muted leading-relaxed">Seus anúncios começarão a rodar em até 24h após a aprovação do pagamento.</p>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

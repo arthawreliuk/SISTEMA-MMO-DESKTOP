@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de usuários - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#64748B',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E2E8F0',
+                        badgeActiveBg: '#E0E7FF',
+                        badgeActiveText: '#0016dc',
+                        badgeInactiveBg: '#F1F5F9',
+                        badgeInactiveText: '#64748B',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'nav': '0 4px 20px rgba(0,0,0,0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex bg-background">
+
+
+    <!-- Main Content Workspace -->
+    <main class="flex-1 p-8 lg:p-12 h-screen overflow-y-auto">
+        
+        <!-- Header Area -->
+        <header id="header" class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 mt-4">
+            <div>
+                <h1 class="text-4xl font-bold text-textDark tracking-tight mb-2">Gestão de Clientes</h1>
+                <p class="text-textMuted text-base font-medium">Visualize e gerencie todos os usuários que solicitam serviços.</p>
+            </div>
+            <button class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-all duration-300 group shadow-sm hover:shadow-primary/20">
+                <i class="fa-solid fa-plus text-sm group-hover:rotate-90 transition-transform duration-300"></i>
+                Novo Usuário
+            </button>
+        </header>
+
+        <!-- Stats Summary -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient flex items-center gap-4 border border-borderLight/50">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <i class="fa-solid fa-users text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-textMuted mb-1">Total de Clientes</p>
+                    <h3 class="text-2xl font-bold text-textDark">1,248</h3>
+                </div>
+            </div>
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient flex items-center gap-4 border border-borderLight/50">
+                <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center text-green-600">
+                    <i class="fa-solid fa-user-check text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-textMuted mb-1">Ativos (30d)</p>
+                    <h3 class="text-2xl font-bold text-textDark">892</h3>
+                </div>
+            </div>
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient flex items-center gap-4 border border-borderLight/50">
+                <div class="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-600">
+                    <i class="fa-solid fa-clock-rotate-left text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-textMuted mb-1">Pendentes</p>
+                    <h3 class="text-2xl font-bold text-textDark">45</h3>
+                </div>
+            </div>
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient flex items-center gap-4 border border-borderLight/50">
+                <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-600">
+                    <i class="fa-solid fa-chart-line text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-textMuted mb-1">Crescimento</p>
+                    <h3 class="text-2xl font-bold text-textDark">+12.5%</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Data Container -->
+        <div id="data-container" class="bg-white rounded-[24px] shadow-ambient border border-borderLight/50 flex flex-col h-[calc(100vh-320px)] min-h-[500px]">
+            
+            <!-- Table Toolbar -->
+            <div class="p-6 border-b border-borderLight/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="relative w-full sm:w-80">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-textMuted"></i>
+                    <input type="text" placeholder="Buscar por nome ou email..." class="w-full pr-4 py-3 rounded-full bg-gray-50 border border-transparent focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm font-medium text-textDark placeholder-textMuted">
+                </div>
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <button class="px-4 py-2.5 rounded-full border border-borderLight text-textDark text-sm font-medium hover:bg-gray-50 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-filter text-textMuted"></i> Filtros
+                    </button>
+                    <button class="px-4 py-2.5 rounded-full border border-borderLight text-textDark text-sm font-medium hover:bg-gray-50 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-download text-textMuted"></i> Exportar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="flex-1 overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="bg-gray-50/50">
+                            <th class="py-4 px-6 text-xs font-semibold text-textMuted uppercase tracking-wider border-b border-borderLight/50">Foto</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textMuted uppercase tracking-wider border-b border-borderLight/50">Nome Completo</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textMuted uppercase tracking-wider border-b border-borderLight/50">E-mail</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textMuted uppercase tracking-wider border-b border-borderLight/50">Data de Cadastro</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textMuted uppercase tracking-wider border-b border-borderLight/50">Status</th>
+                            <th class="py-4 px-6 text-xs font-semibold text-textMuted uppercase tracking-wider border-b border-borderLight/50 text-right">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-borderLight/50">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="py-4 px-6">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-10 h-10 rounded-full object-cover border border-borderLight" alt="Avatar">
+                            </td>
+                            <td class="py-4 px-6 font-semibold text-textDark text-sm">Mariana Silva Costa</td>
+                            <td class="py-4 px-6 text-textMuted text-sm">mariana.costa@exemplo.com</td>
+                            <td class="py-4 px-6 text-textMuted text-sm">12 Out, 2023</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-badgeActiveBg text-badgeActiveText border border-primary/10">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span> Ativo
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="px-4 py-1.5 rounded-full border border-borderLight text-textDark text-xs font-semibold hover:bg-gray-50 transition-colors">
+                                        Ver Ficha
+                                    </button>
+                                    <button class="w-8 h-8 rounded-full text-textMuted hover:bg-gray-100 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="py-4 px-6">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-10 h-10 rounded-full object-cover border border-borderLight" alt="Avatar">
+                            </td>
+                            <td class="py-4 px-6 font-semibold text-textDark text-sm">Carlos Eduardo Lima</td>
+                            <td class="py-4 px-6 text-textMuted text-sm">carlos.lima@exemplo.com</td>
+                            <td class="py-4 px-6 text-textMuted text-sm">10 Out, 2023</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-badgeInactiveBg text-badgeInactiveText border border-borderLight">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-textMuted mr-1.5"></span> Inativo
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="px-4 py-1.5 rounded-full border border-borderLight text-textDark text-xs font-semibold hover:bg-gray-50 transition-colors">
+                                        Ver Ficha
+                                    </button>
+                                    <button class="w-8 h-8 rounded-full text-textMuted hover:bg-gray-100 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="py-4 px-6">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm border border-primary/20">
+                                    AP
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 font-semibold text-textDark text-sm">Ana Paula Santos</td>
+                            <td class="py-4 px-6 text-textMuted text-sm">ana.santos@exemplo.com</td>
+                            <td class="py-4 px-6 text-textMuted text-sm">08 Out, 2023</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-badgeActiveBg text-badgeActiveText border border-primary/10">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span> Ativo
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="px-4 py-1.5 rounded-full border border-borderLight text-textDark text-xs font-semibold hover:bg-gray-50 transition-colors">
+                                        Ver Ficha
+                                    </button>
+                                    <button class="w-8 h-8 rounded-full text-textMuted hover:bg-gray-100 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="py-4 px-6">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-10 h-10 rounded-full object-cover border border-borderLight" alt="Avatar">
+                            </td>
+                            <td class="py-4 px-6 font-semibold text-textDark text-sm">Roberto Alves</td>
+                            <td class="py-4 px-6 text-textMuted text-sm">roberto.alves@exemplo.com</td>
+                            <td class="py-4 px-6 text-textMuted text-sm">05 Out, 2023</td>
+                            <td class="py-4 px-6">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-orange-50 text-orange-600 border border-orange-100">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500 mr-1.5"></span> Pendente
+                                </span>
+                            </td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="px-4 py-1.5 rounded-full border border-borderLight text-textDark text-xs font-semibold hover:bg-gray-50 transition-colors">
+                                        Ver Ficha
+                                    </button>
+                                    <button class="w-8 h-8 rounded-full text-textMuted hover:bg-gray-100 flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="p-4 border-t border-borderLight/50 flex items-center justify-between bg-gray-50/30">
+                <span class="text-sm font-medium text-textMuted">Mostrando 1 a 4 de 1,248</span>
+                <div class="flex items-center gap-2">
+                    <button class="px-5 py-2 rounded-full border border-borderLight text-textMuted text-sm font-semibold hover:bg-white transition-colors disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-chevron-left mr-2 text-xs"></i> Anterior
+                    </button>
+                    <button class="px-5 py-2 rounded-full border border-borderLight text-textDark text-sm font-semibold hover:bg-white hover:border-primary/30 transition-colors bg-white shadow-sm">
+                        Próximo <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

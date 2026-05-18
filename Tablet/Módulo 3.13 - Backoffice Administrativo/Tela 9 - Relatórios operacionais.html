@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios operacionais - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E5E7EB',
+                        success: '#10B981',
+                        danger: '#EF4444',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 2px 10px -2px rgba(0, 0, 0, 0.03)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="flex h-screen antialiased text-textDark bg-background font-sans">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class="flex-1 h-full overflow-y-auto overflow-x-hidden p-8 lg:p-10 hide-scroll">
+        <div class="max-w-[1600px] mx-auto w-full flex flex-col gap-8 h-full pb-12">
+            
+            <!-- Header Area -->
+            <header id="header" class="flex flex-col md:flex-row md:items-end justify-between gap-6 shrink-0">
+                <div class="flex flex-col gap-2">
+                    <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-textDark">Business Intelligence</h1>
+                    <p class="text-textMuted text-lg font-medium max-w-2xl">Analise tendências, retenção e performance financeira da plataforma.</p>
+                </div>
+                
+                <!-- Toolbar -->
+                <div id="toolbar" class="flex items-center gap-3 flex-wrap">
+                    <div class="flex items-center bg-cardBg rounded-full p-1.5 shadow-card border border-borderLight/50">
+                        <button class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-gray-50 transition-colors text-textDark">
+                            <i class="fa-regular fa-calendar text-textMuted"></i>
+                            Período: Este Ano
+                            <i class="fa-solid fa-chevron-down text-xs text-textMuted ml-1"></i>
+                        </button>
+                        <div class="w-px h-6 bg-borderLight mx-1"></div>
+                        <button class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-gray-50 transition-colors text-textDark">
+                            <i class="fa-solid fa-location-dot text-textMuted"></i>
+                            Cidade: Todas
+                            <i class="fa-solid fa-chevron-down text-xs text-textMuted ml-1"></i>
+                        </button>
+                        <div class="w-px h-6 bg-borderLight mx-1"></div>
+                        <button class="px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-gray-50 transition-colors text-textDark">
+                            <i class="fa-solid fa-eye text-textMuted"></i>
+                            Visão: Financeira
+                            <i class="fa-solid fa-chevron-down text-xs text-textMuted ml-1"></i>
+                        </button>
+                    </div>
+                    
+                    <button class="px-6 py-3 rounded-full text-sm font-bold border-2 border-borderLight hover:border-primary text-textDark hover:text-primary transition-colors flex items-center gap-2 bg-cardBg shadow-sm">
+                        <i class="fa-solid fa-download"></i>
+                        Gerar CSV
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main BI Canvas (Grid Layout) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1 min-h-0">
+                
+                <!-- Top Section (Full Width) -->
+                <div id="revenue-chart-card" class="lg:col-span-2 bg-cardBg rounded-[24px] shadow-soft border border-borderLight/40 p-6 lg:p-8 flex flex-col relative group min-h-[400px]">
+                    <div class="flex justify-between items-start mb-6 z-10 relative">
+                        <div>
+                            <h3 class="text-xl font-bold text-textDark mb-1">Receita de Assinaturas vs. Receita do Balcão</h3>
+                            <div class="flex items-center gap-4 text-sm font-medium">
+                                <span class="flex items-center gap-1.5 text-textMuted">
+                                    <span class="w-3 h-3 rounded-full bg-primary"></span>
+                                    Assinaturas
+                                </span>
+                                <span class="flex items-center gap-1.5 text-textMuted">
+                                    <span class="w-3 h-3 rounded-full bg-indigo-300"></span>
+                                    Balcão
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 bg-gray-50 rounded-full p-1 border border-borderLight/50">
+                            <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-white shadow-sm text-textDark">12M</button>
+                            <button class="px-4 py-1.5 rounded-full text-xs font-bold text-textMuted hover:text-textDark">6M</button>
+                            <button class="px-4 py-1.5 rounded-full text-xs font-bold text-textMuted hover:text-textDark">30D</button>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full relative z-10" id="area-chart"></div>
+                </div>
+
+                <!-- Bottom Left (50%) -->
+                <div id="plan-distribution-card" class="bg-cardBg rounded-[24px] shadow-soft border border-borderLight/40 p-6 lg:p-8 flex flex-col min-h-[360px]">
+                    <h3 class="text-xl font-bold text-textDark mb-6">Distribuição de Planos</h3>
+                    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-8 relative">
+                        <div class="w-full md:w-1/2 h-[240px] relative" id="donut-chart"></div>
+                        <div class="w-full md:w-1/2 flex flex-col gap-4">
+                            <div class="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-borderLight">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                        <div class="w-3 h-3 rounded-full bg-primary"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-textDark text-sm">Empresa</p>
+                                        <p class="text-xs font-medium text-textMuted">45% do total</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-textDark">1,245</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-borderLight">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                                        <div class="w-3 h-3 rounded-full bg-indigo-500"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-textDark text-sm">Mestre</p>
+                                        <p class="text-xs font-medium text-textMuted">35% do total</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-textDark">968</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-borderLight">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                                        <div class="w-3 h-3 rounded-full bg-gray-400"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-textDark text-sm">Grátis</p>
+                                        <p class="text-xs font-medium text-textMuted">20% do total</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-textDark">553</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Right (50%) -->
+                <div id="city-growth-card" class="bg-cardBg rounded-[24px] shadow-soft border border-borderLight/40 p-6 lg:p-8 flex flex-col min-h-[360px] ">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-textDark">Crescimento por Cidade</h3>
+                        <button class="text-primary text-sm font-bold hover:underline">Ver Todas</button>
+                    </div>
+                    <div class="flex-1 overflow-x-auto hide-scroll">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-borderLight/50">
+                                    <th class="pb-3 text-xs font-bold text-textMuted uppercase tracking-wider w-2/5">Cidade</th>
+                                    <th class="pb-3 text-xs font-bold text-textMuted uppercase tracking-wider text-right">Usuários</th>
+                                    <th class="pb-3 text-xs font-bold text-textMuted uppercase tracking-wider text-right">M/M Crescimento</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm">
+                                <tr class="border-b border-gray-50 hover:bg-gray-50/50 transition-colors group">
+                                    <td class="py-4 font-bold text-textDark flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-textMuted text-xs"><i class="fa-solid fa-city"></i></div>
+                                        Balneário Camboriú
+                                    </td>
+                                    <td class="py-4 text-right font-medium text-textDark">12,450</td>
+                                    <td class="py-4 text-right">
+                                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-success/10 text-success font-bold text-xs">
+                                            <i class="fa-solid fa-arrow-trend-up text-[10px]"></i> +14.5%
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-50 hover:bg-gray-50/50 transition-colors group">
+                                    <td class="py-4 font-bold text-textDark flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-textMuted text-xs"><i class="fa-solid fa-city"></i></div>
+                                        Itajaí
+                                    </td>
+                                    <td class="py-4 text-right font-medium text-textDark">8,230</td>
+                                    <td class="py-4 text-right">
+                                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-success/10 text-success font-bold text-xs">
+                                            <i class="fa-solid fa-arrow-trend-up text-[10px]"></i> +8.2%
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-50 hover:bg-gray-50/50 transition-colors group">
+                                    <td class="py-4 font-bold text-textDark flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-textMuted text-xs"><i class="fa-solid fa-city"></i></div>
+                                        Florianópolis
+                                    </td>
+                                    <td class="py-4 text-right font-medium text-textDark">6,120</td>
+                                    <td class="py-4 text-right">
+                                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-danger/10 text-danger font-bold text-xs">
+                                            <i class="fa-solid fa-arrow-trend-down text-[10px]"></i> -2.1%
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50/50 transition-colors group">
+                                    <td class="py-4 font-bold text-textDark flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-textMuted text-xs"><i class="fa-solid fa-city"></i></div>
+                                        Joinville
+                                    </td>
+                                    <td class="py-4 text-right font-medium text-textDark">4,890</td>
+                                    <td class="py-4 text-right">
+                                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-success/10 text-success font-bold text-xs">
+                                            <i class="fa-solid fa-arrow-trend-up text-[10px]"></i> +5.4%
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                // Common layout config
+                const commonLayout = {
+                    font: { family: '"Plus Jakarta Sans", sans-serif', color: '#6B7280' },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    margin: { t: 10, r: 10, b: 40, l: 40 },
+                    showlegend: false,
+                };
+                
+                const commonConfig = { responsive: true, displayModeBar: false };
+
+                // Area Chart (Revenue)
+                const areaMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const dataAssinaturas = [45000, 48000, 52000, 51000, 58000, 62000, 68000, 72000, 78000, 85000, 92000, 98000];
+                const dataBalcao = [20000, 22000, 21000, 24000, 23000, 26000, 25000, 28000, 27000, 30000, 32000, 35000];
+
+                const trace1 = {
+                    x: areaMonths, y: dataAssinaturas,
+                    type: 'scatter', mode: 'lines', fill: 'tozeroy',
+                    name: 'Assinaturas',
+                    line: { color: '#0016dc', width: 3, shape: 'spline', smoothing: 1.3 },
+                    fillcolor: 'rgba(0, 22, 220, 0.1)',
+                };
+
+                const trace2 = {
+                    x: areaMonths, y: dataBalcao,
+                    type: 'scatter', mode: 'lines', fill: 'tozeroy',
+                    name: 'Balcão',
+                    line: { color: '#818cf8', width: 2, shape: 'spline', smoothing: 1.3 },
+                    fillcolor: 'rgba(129, 140, 248, 0.05)',
+                };
+
+                const layoutArea = {
+                    ...commonLayout,
+                    xaxis: { showgrid: false, zeroline: false, tickfont: { size: 12, weight: 600 } },
+                    yaxis: { showgrid: true, gridcolor: '#f3f4f6', zeroline: false, tickfont: { size: 12 }, tickprefix: 'R$ ' },
+                    hovermode: 'x unified'
+                };
+
+                Plotly.newPlot('area-chart', [trace2, trace1], layoutArea, commonConfig);
+
+                // Donut Chart (Plan Distribution)
+                const dataDonut = [{
+                    values: [45, 35, 20],
+                    labels: ['Empresa', 'Mestre', 'Grátis'],
+                    type: 'pie',
+                    hole: 0.7,
+                    marker: { colors: ['#0016dc', '#6366f1', '#9ca3af'] },
+                    textinfo: 'none',
+                    hoverinfo: 'label+percent'
+                }];
+
+                const layoutDonut = {
+                    ...commonLayout,
+                    margin: { t: 10, r: 10, b: 10, l: 10 },
+                    annotations: [{
+                        font: { size: 24, family: '"Plus Jakarta Sans", sans-serif', weight: 800, color: '#1A1A24' },
+                        showarrow: false,
+                        text: '2,766<br><span style="font-size:12px; color:#6B7280; font-weight:500;">Total</span>',
+                        x: 0.5, y: 0.5
+                    }]
+                };
+
+                Plotly.newPlot('donut-chart', dataDonut, layoutDonut, commonConfig);
+
+            } catch (e) {
+                console.error('Error initializing charts:', e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

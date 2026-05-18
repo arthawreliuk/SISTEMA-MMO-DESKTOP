@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de detalhe do Grupo de Serviço - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textLight: '#6B7280',
+                        border: '#E5E7EB',
+                        card: '#FFFFFF',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'sm-ambient': '0 2px 10px -1px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="h-screen w-full flex font-sans bg-background text-textDark m-0 p-0">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-workspace" class="flex-1 mr-8 my-8 flex flex-col h-[calc(100vh-64px)] ">
+        
+        <!-- Header Area -->
+        <header id="header" class="mb-8 flex justify-between items-end flex-shrink-0">
+            <div>
+                <div class="flex items-center gap-3 mb-2 text-sm text-textLight font-medium">
+                    <span>Projetos</span>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-primary">Instalação e Automação</span>
+                </div>
+                <h1 class="text-3xl font-bold tracking-tight text-textDark mb-1">Projeto: Instalação e Automação</h1>
+                <p class="text-textLight text-base">Gerencie as diferentes frentes de trabalho deste local.</p>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button class="px-5 py-2.5 bg-white border border-border text-textDark font-medium rounded-full hover:bg-gray-50 transition-colors shadow-sm-ambient flex items-center gap-2">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    Compartilhar
+                </button>
+                <button class="px-6 py-2.5 bg-primary text-white font-medium rounded-full hover:bg-blue-700 transition-colors shadow-sm-ambient flex items-center gap-2">
+                    <i class="fa-solid fa-plus"></i>
+                    Nova Frente
+                </button>
+            </div>
+        </header>
+
+        <!-- Split Layout -->
+        <div class="flex flex-col lg:flex-row gap-6 flex-1 ">
+            
+            <!-- Left Column: Project Overview (40%) -->
+            <section id="project-overview" class="w-full lg:w-[40%] bg-card rounded-[24px] shadow-ambient p-6 flex flex-col overflow-y-auto hide-scroll">
+                
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-textDark">Visão Geral</h2>
+                    <span class="px-3 py-1 bg-green-50 text-success text-xs font-bold uppercase tracking-wider rounded-full border border-green-100">Em Andamento</span>
+                </div>
+
+                <!-- Description -->
+                <p class="text-textLight text-sm leading-relaxed mb-6">
+                    Modernização completa do sistema elétrico e automação residencial do condomínio. Inclui instalação de painéis solares, smart grid, e integração de segurança perimetral.
+                </p>
+
+                <!-- Address -->
+                <div class="flex items-start gap-3 mb-8 p-4 bg-gray-50 rounded-2xl">
+                    <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 text-primary">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-textDark">Local da Obra</h4>
+                        <p class="text-sm text-textLight mt-1">Av. Paulista, 1578 - Bela Vista<br>São Paulo, SP - 01310-200</p>
+                    </div>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-bold text-textDark uppercase tracking-wider">Fotos do Local</h3>
+                        <button class="text-primary text-sm font-medium hover:underline">Ver todas (12)</button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="h-32 rounded-2xl relative group">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2831&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Site photo">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
+                        </div>
+                        <div class="h-32 rounded-2xl relative group">
+                            <img src="https://images.unsplash.com/photo-1541888087425-ce81dfc46928?q=80&w=2874&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Site photo">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Budget Metrics -->
+                <div class="mt-auto bg-blue-50/50 rounded-[20px] p-5 border border-blue-100/50">
+                    <h3 class="text-sm font-medium text-textLight mb-2">Orçamento Estimado (Até o momento)</h3>
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-bold text-textDark">R$ 145.800</span>
+                        <span class="text-sm text-textLight">,00</span>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-textLight">Materiais</span>
+                            <span class="font-medium text-textDark">R$ 82.500</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-textLight">Mão de Obra</span>
+                            <span class="font-medium text-textDark">R$ 63.300</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-blue-100 flex justify-between items-center">
+                        <span class="text-xs text-textLight flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info text-primary"></i>
+                            Atualizado há 2h
+                        </span>
+                        <button class="text-sm font-bold text-primary hover:underline">Ver Detalhes</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Roles Manager (60%) -->
+            <section id="roles-manager" class="w-full lg:w-[60%] bg-card rounded-[24px] shadow-ambient p-6 flex flex-col ">
+                
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-textDark">Frentes de Trabalho</h2>
+                    
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-textLight text-sm"></i>
+                            <input type="text" placeholder="Buscar..." class=" pr-4 py-2 bg-gray-50 border border-border rounded-full text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all w-48">
+                        </div>
+                        <button class="w-9 h-9 flex items-center justify-center bg-gray-50 border border-border rounded-full text-textDark hover:bg-gray-100 transition-colors">
+                            <i class="fa-solid fa-filter text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- List Header -->
+                <div class="grid grid-cols-12 gap-4 px-4 py-3 border-b border-border text-xs font-bold text-textLight uppercase tracking-wider mb-2">
+                    <div class="col-span-4">Serviço / Papel</div>
+                    <div class="col-span-3">Status</div>
+                    <div class="col-span-3">Profissional</div>
+                    <div class="col-span-2 text-right">Ação</div>
+                </div>
+
+                <!-- Dynamic List -->
+                <div class="flex-1 overflow-y-auto hide-scroll space-y-3 pb-4">
+                    
+                    <!-- Item 1: Pending (Analisar Propostas) -->
+                    <div class="grid grid-cols-12 gap-4 px-4 py-4 bg-white border border-gray-100 rounded-[16px] hover:shadow-sm-ambient transition-all items-center group">
+                        <div class="col-span-4 flex flex-col">
+                            <span class="font-bold text-textDark text-sm">Eletricista Chefe</span>
+                            <span class="text-xs text-textLight mt-1 flex items-center gap-1">
+                                <i class="fa-regular fa-calendar"></i> Início: 15 Out
+                            </span>
+                        </div>
+                        <div class="col-span-3">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-primary text-xs font-bold border border-blue-100">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                3 Propostas
+                            </span>
+                        </div>
+                        <div class="col-span-3 flex items-center gap-2">
+                            <div class="flex -space-x-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-7 h-7 rounded-full border-2 border-white" alt="Avatar">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-7 h-7 rounded-full border-2 border-white" alt="Avatar">
+                                <div class="w-7 h-7 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[10px] font-bold text-textLight">+1</div>
+                            </div>
+                        </div>
+                        <div class="col-span-2 flex justify-end">
+                            <button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-blue-700 transition-colors shadow-sm">
+                                Analisar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Hired (Manage) -->
+                    <div class="grid grid-cols-12 gap-4 px-4 py-4 bg-white border border-gray-100 rounded-[16px] hover:shadow-sm-ambient transition-all items-center">
+                        <div class="col-span-4 flex flex-col">
+                            <span class="font-bold text-textDark text-sm">Engenheiro de Automação</span>
+                            <span class="text-xs text-textLight mt-1 flex items-center gap-1">
+                                <i class="fa-solid fa-check text-success"></i> Contratado
+                            </span>
+                        </div>
+                        <div class="col-span-3">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-green-50 text-success text-xs font-bold border border-green-100">
+                                Em atividade
+                            </span>
+                        </div>
+                        <div class="col-span-3 flex items-center gap-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-8 h-8 rounded-full object-cover" alt="Avatar">
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-textDark">Mariana S.</span>
+                                <span class="text-[10px] text-textLight">R$ 150/h</span>
+                            </div>
+                        </div>
+                        <div class="col-span-2 flex justify-end gap-2">
+                            <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-textDark hover:bg-gray-100 hover:text-primary transition-colors border border-border" title="Chat">
+                                <i class="fa-regular fa-message text-xs"></i>
+                            </button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-textDark hover:bg-gray-100 hover:text-primary transition-colors border border-border" title="Opções">
+                                <i class="fa-solid fa-ellipsis text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Pending (Analisar Propostas) -->
+                    <div class="grid grid-cols-12 gap-4 px-4 py-4 bg-white border border-gray-100 rounded-[16px] hover:shadow-sm-ambient transition-all items-center">
+                        <div class="col-span-4 flex flex-col">
+                            <span class="font-bold text-textDark text-sm">Auxiliar de Instalação (x2)</span>
+                            <span class="text-xs text-textLight mt-1 flex items-center gap-1">
+                                <i class="fa-regular fa-calendar"></i> Início: 20 Out
+                            </span>
+                        </div>
+                        <div class="col-span-3">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-orange-50 text-warning text-xs font-bold border border-orange-100">
+                                <span class="w-1.5 h-1.5 rounded-full bg-warning"></span>
+                                Aguardando
+                            </span>
+                        </div>
+                        <div class="col-span-3 flex items-center gap-2">
+                            <span class="text-xs text-textLight italic">Nenhuma proposta</span>
+                        </div>
+                        <div class="col-span-2 flex justify-end">
+                            <button class="px-4 py-2 bg-white border border-border text-textDark text-xs font-bold rounded-full hover:bg-gray-50 transition-colors">
+                                Impulsionar
+                            </button>
+                        </div>
+                    </div>
+
+                     <!-- Item 4: Hired (Manage) -->
+                     <div class="grid grid-cols-12 gap-4 px-4 py-4 bg-white border border-gray-100 rounded-[16px] hover:shadow-sm-ambient transition-all items-center">
+                        <div class="col-span-4 flex flex-col">
+                            <span class="font-bold text-textDark text-sm">Técnico de Segurança</span>
+                            <span class="text-xs text-textLight mt-1 flex items-center gap-1">
+                                <i class="fa-solid fa-check text-success"></i> Contratado
+                            </span>
+                        </div>
+                        <div class="col-span-3">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-50 text-textLight text-xs font-bold border border-gray-200">
+                                Concluído
+                            </span>
+                        </div>
+                        <div class="col-span-3 flex items-center gap-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-8 h-8 rounded-full object-cover grayscale" alt="Avatar">
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-textDark">Carlos M.</span>
+                                <span class="text-[10px] text-textLight">Pago</span>
+                            </div>
+                        </div>
+                        <div class="col-span-2 flex justify-end gap-2">
+                            <button class="px-3 py-1.5 text-xs font-bold text-primary hover:bg-blue-50 rounded-md transition-colors">
+                                Recibo
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

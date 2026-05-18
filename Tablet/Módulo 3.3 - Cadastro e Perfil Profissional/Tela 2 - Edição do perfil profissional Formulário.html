@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição do perfil profissional Formulário - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXq1/bT4B4NIhPEqZ8qR9fGZ1m0GWe1sZpB6w2Bv4vHqjBvHqjBvHqjBvHqjBvHqjBvHqjBvHqj" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            gray: '#6B7280',
+                            light: '#F3F4F6',
+                            border: '#E5E7EB'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 24px -4px rgba(0, 0, 0, 0.05), 0 12px 48px -12px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+        
+        /* Checkered background pattern from reference */
+        .bg-pattern {
+            background-image: linear-gradient(45deg, #f9fafb 25%, transparent 25%), 
+                              linear-gradient(-45deg, #f9fafb 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #f9fafb 75%), 
+                              linear-gradient(-45deg, transparent 75%, #f9fafb 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans flex flex-col">
+
+
+    <!-- Main Workspace -->
+    <main id="main-workspace" class="flex-1 flex justify-center py-12 px-4 sm:px-6 lg:px-8 bg-pattern">
+        
+        <!-- Centered Card Container (1000px layout, 800px card) -->
+        <div class="w-full max-w-[800px] bg-white rounded-[24px] shadow-ambient border border-brand-border/50">
+            
+            <!-- Header Section -->
+            <div id="card-header" class="px-8 py-6 border-b border-brand-border flex items-center justify-between bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+                <h1 class="text-[22px] font-semibold text-brand-navy tracking-tight">Editar Perfil</h1>
+                <button class="bg-brand-blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-check text-xs"></i>
+                    Salvar Alterações
+                </button>
+            </div>
+
+            <!-- Form Content -->
+            <div id="form-content" class="p-8 space-y-10">
+                
+                <!-- Avatar Upload Section -->
+                <section id="avatar-section" class="flex items-center gap-6">
+                    <div class="relative group cursor-pointer">
+                        <div class="w-24 h-24 rounded-full border-2 border-brand-border shadow-sm group-hover:border-brand-blue transition-colors">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Profile" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-camera text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-semibold text-brand-navy mb-1">Foto de Perfil</h3>
+                        <p class="text-sm text-brand-gray mb-3">JPG, GIF ou PNG. Máximo de 5MB.</p>
+                        <button class="px-4 py-2 rounded-full border border-brand-border text-brand-navy text-sm font-medium hover:bg-brand-light transition-colors">
+                            Alterar Foto
+                        </button>
+                    </div>
+                </section>
+
+                <hr class="border-brand-border">
+
+                <!-- Basic Info Fields -->
+                <section id="basic-info-section" class="space-y-6">
+                    <div>
+                        <label for="nome" class="block text-sm font-medium text-brand-navy mb-2">Nome Profissional</label>
+                        <input type="text" id="nome" value="Carlos Silva Engenharia" class="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all" placeholder="Ex: João Souza Eletricista">
+                    </div>
+
+                    <div>
+                        <label for="descricao" class="block text-sm font-medium text-brand-navy mb-2">Descrição Breve</label>
+                        <textarea id="descricao" rows="4" class="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all resize-none" placeholder="Conte um pouco sobre sua experiência e serviços...">Especialista em instalações elétricas residenciais e comerciais com mais de 10 anos de experiência. Foco em segurança, eficiência energética e painéis solares.</textarea>
+                        <p class="text-xs text-brand-gray mt-2 text-right">134 / 500 caracteres</p>
+                    </div>
+                </section>
+
+                <!-- Services & Location -->
+                <section id="services-location-section" class="space-y-6 bg-brand-light/50 p-6 rounded-2xl border border-brand-border/60">
+                    <h3 class="text-lg font-semibold text-brand-navy">Serviços e Atuação</h3>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-brand-navy mb-2">Especialidades</label>
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-brand-border text-sm text-brand-navy shadow-sm">
+                                Eletricista
+                                <button class="text-brand-gray hover:text-red-500 transition-colors"><i class="fa-solid fa-xmark text-xs"></i></button>
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-brand-border text-sm text-brand-navy shadow-sm">
+                                Painéis Solares
+                                <button class="text-brand-gray hover:text-red-500 transition-colors"><i class="fa-solid fa-xmark text-xs"></i></button>
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-brand-border text-sm text-brand-navy shadow-sm">
+                                Manutenção
+                                <button class="text-brand-gray hover:text-red-500 transition-colors"><i class="fa-solid fa-xmark text-xs"></i></button>
+                            </span>
+                        </div>
+                        <div class="relative">
+                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all" placeholder="Adicionar especialidade...">
+                            <i class="fa-solid fa-plus absolute left-4 top-1/2 -translate-y-1/2 text-brand-gray"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="regiao" class="block text-sm font-medium text-brand-navy mb-2">Região de Atendimento</label>
+                        <div class="relative">
+                            <input type="text" id="regiao" value="São Paulo, SP e Região Metropolitana" class="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all">
+                            <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-brand-gray"></i>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Availability Toggle -->
+                <section id="availability-section" class="flex items-center justify-between p-5 rounded-2xl border border-brand-border bg-white shadow-sm">
+                    <div>
+                        <h3 class="text-base font-semibold text-brand-navy">Disponível para novos pedidos</h3>
+                        <p class="text-sm text-brand-gray mt-1">Ative para aparecer nas buscas de clientes.</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer" checked>
+                        <div class="w-14 h-7 bg-brand-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-brand-blue"></div>
+                    </label>
+                </section>
+
+                <hr class="border-brand-border">
+
+                <!-- Portfolio Gallery -->
+                <section id="portfolio-section">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-brand-navy">Portfólio</h3>
+                        <span class="text-sm text-brand-gray">3 de 10 imagens</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        
+                        <!-- Dropzone -->
+                        <div class="aspect-square rounded-2xl border-2 border-dashed border-brand-border bg-brand-light/30 hover:bg-brand-light/60 hover:border-brand-blue/50 transition-all flex flex-col items-center justify-center cursor-pointer group">
+                            <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-cloud-arrow-up text-brand-blue"></i>
+                            </div>
+                            <span class="text-xs font-medium text-brand-navy">Adicionar Foto</span>
+                        </div>
+
+                        <!-- Uploaded Image 1 -->
+                        <div class="aspect-square rounded-2xl border border-brand-border relative group">
+                            <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Portfolio item" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button class="w-8 h-8 rounded-full bg-white/20 hover:bg-red-500 text-white backdrop-blur-sm flex items-center justify-center transition-colors">
+                                    <i class="fa-solid fa-trash-can text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Uploaded Image 2 -->
+                        <div class="aspect-square rounded-2xl border border-brand-border relative group">
+                            <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Portfolio item" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button class="w-8 h-8 rounded-full bg-white/20 hover:bg-red-500 text-white backdrop-blur-sm flex items-center justify-center transition-colors">
+                                    <i class="fa-solid fa-trash-can text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Uploaded Image 3 -->
+                        <div class="aspect-square rounded-2xl border border-brand-border relative group">
+                            <img src="https://images.unsplash.com/photo-1541888087425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Portfolio item" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button class="w-8 h-8 rounded-full bg-white/20 hover:bg-red-500 text-white backdrop-blur-sm flex items-center justify-center transition-colors">
+                                    <i class="fa-solid fa-trash-can text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro da empresa - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'off-white': '#F8F9FA',
+                        'trust-blue': '#0016dc',
+                        'deep-navy': '#1A1A24',
+                        'soft-grey': '#F3F4F6',
+                        'border-light': '#E5E7EB',
+                    },
+                    boxShadow: {
+                        'soft-ambient': '0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 10px 20px -10px rgba(0, 0, 0, 0.02)',
+                        'inner-glow': 'inset 0 2px 4px 0 rgba(255, 255, 255, 0.3)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        'pill': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1A1A24;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Checkbox Style */
+        .custom-checkbox input:checked + div {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        .custom-checkbox input:checked + div svg {
+            display: block;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-trust-blue selection:text-white flex flex-col min-h-screen justify-center items-center p-4 md:p-8 lg:p-12">
+
+    <!-- Top Navigation Bar -->
+    <header id="header" class="w-full max-w-[1200px] flex justify-between items-center mb-8 px-4 lg:px-0">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-trust-blue flex items-center justify-center shadow-lg shadow-trust-blue/20">
+                <i class="fa-solid fa-building-columns text-white text-xl"></i>
+            </div>
+            <span class="text-2xl font-bold tracking-tight text-deep-navy">MMO</span>
+        </div>
+        <a href="#" class="text-sm font-semibold text-deep-navy hover:text-trust-blue transition-colors duration-200">
+            Já tem conta? Entrar
+        </a>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main id="main-workspace" class="w-full max-w-[1200px] bg-white rounded-4xl shadow-soft-ambient flex flex-col lg:flex-row min-h-[700px]">
+        
+        <!-- Left Column: Value Proposition (40%) -->
+        <section id="value-proposition" class="w-full lg:w-[40%] bg-off-white p-10 lg:p-14 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border-light/50 relative ">
+            
+            <!-- Decorative Background Element -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-trust-blue/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-border-light shadow-sm mb-8">
+                    <span class="w-2 h-2 rounded-full bg-trust-blue animate-pulse"></span>
+                    <span class="text-xs font-semibold text-deep-navy/70 uppercase tracking-wider">Enterprise Plan</span>
+                </div>
+
+                <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight mb-6 text-deep-navy tracking-tight">
+                    Escale sua <br/> equipe.
+                </h1>
+                
+                <p class="text-lg text-deep-navy/70 mb-10 leading-relaxed max-w-sm">
+                    A plataforma definitiva para gestão financeira corporativa. Controle total, visibilidade absoluta.
+                </p>
+
+                <ul class="space-y-5">
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-trust-blue/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-check text-trust-blue text-xs"></i>
+                        </div>
+                        <span class="text-base font-medium text-deep-navy">Gestão de múltiplas subcontas</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-trust-blue/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-check text-trust-blue text-xs"></i>
+                        </div>
+                        <span class="text-base font-medium text-deep-navy">Faturamento centralizado</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-trust-blue/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-check text-trust-blue text-xs"></i>
+                        </div>
+                        <span class="text-base font-medium text-deep-navy">Dashboard de performance em tempo real</span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-trust-blue/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-check text-trust-blue text-xs"></i>
+                        </div>
+                        <span class="text-base font-medium text-deep-navy">APIs dedicadas para integração ERP</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-border-light relative z-10">
+                <div class="flex items-center gap-4">
+                    <div class="flex -space-x-3">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-10 h-10 rounded-full border-2 border-off-white object-cover">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User" class="w-10 h-10 rounded-full border-2 border-off-white object-cover">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-10 h-10 rounded-full border-2 border-off-white object-cover">
+                    </div>
+                    <div class="text-sm">
+                        <p class="font-bold text-deep-navy">Junte-se a +500 empresas</p>
+                        <p class="text-deep-navy/60">que já escalaram suas operações.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column: The Wizard Form (60%) -->
+        <section id="wizard-form" class="w-full lg:w-[60%] bg-white p-10 lg:p-16 flex flex-col relative">
+            
+            <!-- Progress Tracker -->
+            <div id="progress-tracker" class="mb-12">
+                <div class="flex items-center justify-between relative">
+                    <!-- Connecting Line -->
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-border-light z-0"></div>
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-[15%] h-[2px] bg-trust-blue z-0 transition-all duration-500"></div>
+
+                    <!-- Step 1: Active -->
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-trust-blue text-white flex items-center justify-center text-sm font-bold shadow-md shadow-trust-blue/30 ring-4 ring-white">
+                            1
+                        </div>
+                        <span class="text-xs font-bold text-trust-blue absolute -bottom-6 whitespace-nowrap">Dados da Empresa</span>
+                    </div>
+
+                    <!-- Step 2: Pending -->
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-white border-2 border-border-light text-deep-navy/40 flex items-center justify-center text-sm font-bold ring-4 ring-white">
+                            2
+                        </div>
+                        <span class="text-xs font-semibold text-deep-navy/40 absolute -bottom-6 whitespace-nowrap">Contato</span>
+                    </div>
+
+                    <!-- Step 3: Pending -->
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-white border-2 border-border-light text-deep-navy/40 flex items-center justify-center text-sm font-bold ring-4 ring-white">
+                            3
+                        </div>
+                        <span class="text-xs font-semibold text-deep-navy/40 absolute -bottom-6 whitespace-nowrap">Verificação</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Header -->
+            <div class="mb-8 mt-4">
+                <h2 class="text-3xl font-bold text-deep-navy mb-2">Informações Cadastrais</h2>
+                <p class="text-deep-navy/60">Insira os dados oficiais da sua empresa para iniciarmos o processo.</p>
+            </div>
+
+            <!-- Form Fields -->
+            <form id="registration-step-1" class="flex-grow flex flex-col space-y-5">
+                
+                <div class="space-y-1.5">
+                    <label for="cnpj" class="text-sm font-semibold text-deep-navy ml-2">CNPJ</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                            <i class="fa-regular fa-id-card text-deep-navy/40"></i>
+                        </div>
+                        <input type="text" id="cnpj" placeholder="00.000.000/0000-00" class="w-full pr-4 py-4 bg-white border border-border-light rounded-pill text-deep-navy placeholder-deep-navy/30 focus:outline-none focus:border-trust-blue focus:ring-1 focus:ring-trust-blue transition-all shadow-sm hover:border-deep-navy/20">
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label for="razao-social" class="text-sm font-semibold text-deep-navy ml-2">Razão Social</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                            <i class="fa-regular fa-building text-deep-navy/40"></i>
+                        </div>
+                        <input type="text" id="razao-social" placeholder="Nome oficial da empresa" class="w-full pr-4 py-4 bg-white border border-border-light rounded-pill text-deep-navy placeholder-deep-navy/30 focus:outline-none focus:border-trust-blue focus:ring-1 focus:ring-trust-blue transition-all shadow-sm hover:border-deep-navy/20">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-1.5">
+                        <label for="faturamento" class="text-sm font-semibold text-deep-navy ml-2">Faturamento Mensal</label>
+                        <div class="relative">
+                            <select id="faturamento" class="w-full pr-10 py-4 bg-white border border-border-light rounded-pill text-deep-navy appearance-none focus:outline-none focus:border-trust-blue focus:ring-1 focus:ring-trust-blue transition-all shadow-sm hover:border-deep-navy/20 cursor-pointer">
+                                <option value="" disabled selected>Selecione uma faixa</option>
+                                <option value="1">Até R$ 100k</option>
+                                <option value="2">R$ 100k - R$ 500k</option>
+                                <option value="3">Acima de R$ 500k</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                                <i class="fa-solid fa-chevron-down text-deep-navy/40 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-1.5">
+                        <label for="funcionarios" class="text-sm font-semibold text-deep-navy ml-2">Nº de Funcionários</label>
+                        <div class="relative">
+                            <select id="funcionarios" class="w-full pr-10 py-4 bg-white border border-border-light rounded-pill text-deep-navy appearance-none focus:outline-none focus:border-trust-blue focus:ring-1 focus:ring-trust-blue transition-all shadow-sm hover:border-deep-navy/20 cursor-pointer">
+                                <option value="" disabled selected>Tamanho da equipe</option>
+                                <option value="1">1 - 10</option>
+                                <option value="2">11 - 50</option>
+                                <option value="3">51+</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                                <i class="fa-solid fa-chevron-down text-deep-navy/40 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spacer to push button to bottom if needed, though flex handles it mostly -->
+                <div class="flex-grow"></div>
+
+                <!-- Bottom Action -->
+                <div class="pt-6 mt-4 border-t border-border-light/50 flex justify-between items-center">
+                    <button type="button" class="text-deep-navy/60 hover:text-deep-navy font-semibold text-sm px-4 py-2 transition-colors">
+                        Cancelar
+                    </button>
+                    <button type="button" class="bg-trust-blue hover:bg-trust-blue/90 text-white font-semibold py-4 px-8 rounded-pill shadow-lg shadow-trust-blue/25 hover:shadow-xl hover:shadow-trust-blue/30 transition-all duration-300 flex items-center gap-3 group">
+                        <span>Próxima Etapa</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

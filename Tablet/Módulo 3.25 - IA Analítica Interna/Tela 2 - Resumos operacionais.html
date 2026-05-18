@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumos operacionais - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        neonpurple: '#BF80FF',
+                        surface: '#FFFFFF',
+                        bordercolor: '#E9ECEF',
+                        muted: '#8A9EAD'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 24px -4px rgba(26, 26, 36, 0.06)',
+                        'glow': '0 0 15px rgba(191, 128, 255, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E9ECEF; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CED4DA; }
+        
+        .sparkle-icon {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.7; transform: scale(0.95); }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased h-screen flex ">
+
+
+    <!-- Main Workspace -->
+    <main id="main-workspace" class="flex-1 flex flex-col md:flex-row h-[calc(100vh-32px)] my-4 mx-4 bg-surface rounded-[24px] shadow-soft ">
+        
+        <!-- Left Column: Report Library (35%) -->
+        <aside id="report-library" class="w-full md:w-[35%] border-r border-bordercolor flex flex-col h-full bg-surface z-10">
+            <div class="p-6 lg:p-8 border-b border-bordercolor">
+                <h2 class="text-xl font-bold text-navy mb-2">Biblioteca de Relatórios</h2>
+                <p class="text-sm text-muted">Seus resumos operacionais gerados por IA.</p>
+                
+                <div class="mt-6 relative">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
+                    <input type="text" placeholder="Buscar relatórios..." class="w-full bg-gray-50 text-sm rounded-full py-3 pr-4 outline-none border border-transparent focus:border-trustblue/30 focus:bg-white transition-all text-navy placeholder-muted">
+                </div>
+            </div>
+            
+            <div class="flex-1 overflow-y-auto p-4 lg:p-6 space-y-3">
+                <div class="text-xs font-semibold text-muted uppercase tracking-wider mb-4 ">Esta Semana</div>
+                
+                <!-- Active Item -->
+                <div class="group relative bg-white border border-bordercolor/50 rounded-2xl p-4 cursor-pointer hover:shadow-md transition-all">
+                    <!-- Glowing Left Border for Active State -->
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-12 bg-neonpurple rounded-r-full shadow-glow"></div>
+                    
+                    <div class="">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-semibold text-navy text-base">Fechamento de Maio</h3>
+                            <span class="text-[10px] font-medium bg-neonpurple/10 text-neonpurple px-2 py-0.5 rounded-full">Novo</span>
+                        </div>
+                        <p class="text-sm text-muted line-clamp-1 mb-3">Síntese financeira e métricas de crescimento do mês.</p>
+                        
+                        <div class="flex items-center gap-3 text-xs font-medium text-muted">
+                            <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar"></i> 01 Jun 2024</span>
+                            <span class="w-1 h-1 rounded-full bg-bordercolor"></span>
+                            <span class="flex items-center gap-1.5 text-trustblue"><i class="fa-solid fa-robot"></i> IA Digest</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inactive Item -->
+                <div class="group relative bg-white border border-transparent hover:border-bordercolor rounded-2xl p-4 cursor-pointer hover:shadow-sm transition-all">
+                    <div class="">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-semibold text-navy text-base group-hover:text-trustblue transition-colors">Performance de Obras</h3>
+                        </div>
+                        <p class="text-sm text-muted line-clamp-1 mb-3">Análise de custos e cronograma do Q2.</p>
+                        
+                        <div class="flex items-center gap-3 text-xs font-medium text-muted">
+                            <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar"></i> 28 Mai 2024</span>
+                            <span class="w-1 h-1 rounded-full bg-bordercolor"></span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-lines"></i> Operacional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inactive Item -->
+                <div class="group relative bg-white border border-transparent hover:border-bordercolor rounded-2xl p-4 cursor-pointer hover:shadow-sm transition-all">
+                    <div class="">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-semibold text-navy text-base group-hover:text-trustblue transition-colors">Análise de Evasão</h3>
+                        </div>
+                        <p class="text-sm text-muted line-clamp-1 mb-3">Métricas de churn e retenção de clientes B2B.</p>
+                        
+                        <div class="flex items-center gap-3 text-xs font-medium text-muted">
+                            <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar"></i> 25 Mai 2024</span>
+                            <span class="w-1 h-1 rounded-full bg-bordercolor"></span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-chart-line"></i> Vendas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Column: The AI Canvas (65%) -->
+        <section id="ai-canvas" class="flex-1 flex flex-col h-full bg-[#FAFAFC] relative">
+            
+            <!-- Canvas Header -->
+            <header class="px-8 lg:px-12 py-8 flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold text-navy mb-2 tracking-tight">Fechamento de Maio</h1>
+                    <div class="flex items-center gap-2 text-sm text-muted font-medium">
+                        <span>Resumo Executivo</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        <span>Financeiro</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-2 bg-white border border-bordercolor px-4 py-2 rounded-full shadow-sm">
+                    <i class="fa-solid fa-sparkles text-neonpurple sparkle-icon"></i>
+                    <span class="text-xs font-semibold text-navy">Gerado por IA há 5 min</span>
+                </div>
+            </header>
+
+            <!-- Canvas Content -->
+            <div class="flex-1 overflow-y-auto px-8 lg:px-12 pb-32">
+                <div class="max-w-3xl">
+                    <!-- Hero Text -->
+                    <p class="text-lg lg:text-xl text-navy leading-relaxed mb-8 font-medium">
+                        O mês de maio encerrou com resultados excepcionais para a operação. Observamos uma redução de <span class="text-trustblue font-bold bg-trustblue/5 px-2 py-0.5 rounded-md">14% nos custos operacionais</span> diretos, impulsionada principalmente pela otimização logística na região Sul. Em contrapartida, a receita recorrente manteve uma trajetória ascendente consistente.
+                    </p>
+
+                    <!-- Embedded Data Visualization -->
+                    <div class="bg-white border border-bordercolor rounded-[20px] p-6 mb-8 shadow-sm">
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <h3 class="text-base font-semibold text-navy">Evolução da Receita (Maio)</h3>
+                                <p class="text-xs text-muted mt-1">Crescimento diário acumulado vs Meta</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-trustblue">R$ 2.4M</div>
+                                <div class="text-xs font-semibold text-emerald-500 bg-emerald-50 px-2 py-1 rounded-md inline-block mt-1">
+                                    <i class="fa-solid fa-arrow-trend-up mr-1"></i> +8.4%
+                                </div>
+                            </div>
+                        </div>
+                        <div id="revenue-sparkline" class="h-[180px] w-full"></div>
+                    </div>
+
+                    <p class="text-base text-navy/80 leading-relaxed mb-6">
+                        A análise preditiva indica que, mantendo-se o ritmo atual de conversão (atualmente em 22.4%), o trimestre fechará <strong class="text-navy">12% acima do guidance</strong> estabelecido pelo conselho. O principal ofensor do mês foi a linha de infraestrutura de TI, que sofreu um pico devido à migração de servidores na segunda quinzena.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-white p-5 rounded-[16px] border border-bordercolor flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 flex-shrink-0">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-navy mb-1">Meta de Vendas</h4>
+                                <p class="text-xs text-muted">Atingida no dia 24/05</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-5 rounded-[16px] border border-bordercolor flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-500 flex-shrink-0">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-navy mb-1">Custo de Infra</h4>
+                                <p class="text-xs text-muted">+15% vs orçado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actionable Footer -->
+            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#FAFAFC] via-[#FAFAFC] to-transparent pt-12 pb-8 px-8 lg:px-12">
+                <div class="max-w-3xl mx-auto">
+                    <div class="border-2 border-dashed border-bordercolor rounded-[24px] p-2 bg-white/80 backdrop-blur-sm transition-colors hover:border-neonpurple/50">
+                        <div class="relative flex items-center">
+                            <div class="absolute left-4 text-neonpurple">
+                                <i class="fa-solid fa-sparkles"></i>
+                            </div>
+                            <input type="text" placeholder="Peça para a IA detalhar algum ponto..." class="w-full bg-transparent text-sm py-4 pr-16 outline-none text-navy placeholder-muted font-medium">
+                            <button class="absolute right-2 w-10 h-10 bg-navy text-white rounded-full flex items-center justify-center hover:bg-trustblue transition-colors shadow-md">
+                                <i class="fa-solid fa-arrow-up text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-3 overflow-x-auto pb-2 scrollbar-hide">
+                        <button class="text-xs font-medium text-navy bg-white border border-bordercolor px-3 py-1.5 rounded-full whitespace-nowrap hover:bg-gray-50 transition-colors">
+                            Detalhar custos de TI
+                        </button>
+                        <button class="text-xs font-medium text-navy bg-white border border-bordercolor px-3 py-1.5 rounded-full whitespace-nowrap hover:bg-gray-50 transition-colors">
+                            Projetar Q3
+                        </button>
+                        <button class="text-xs font-medium text-navy bg-white border border-bordercolor px-3 py-1.5 rounded-full whitespace-nowrap hover:bg-gray-50 transition-colors">
+                            Comparar com Maio 2023
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            const revenueData = [{
+                x: ['01', '05', '10', '15', '20', '25', '31'],
+                y: [400, 750, 1100, 1300, 1800, 2100, 2400],
+                type: 'scatter',
+                mode: 'lines',
+                line: {
+                    color: '#0016dc',
+                    width: 3,
+                    shape: 'spline',
+                    smoothing: 1.3
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(0, 22, 220, 0.05)',
+                hoverinfo: 'y',
+                hovertemplate: 'R$ %{y}k<extra></extra>'
+            }];
+
+            const layout = {
+                margin: { t: 10, r: 10, b: 20, l: 30 },
+                plot_bgcolor: 'transparent',
+                paper_bgcolor: 'transparent',
+                xaxis: {
+                    showgrid: false,
+                    zeroline: false,
+                    showline: false,
+                    tickfont: { color: '#8A9EAD', size: 10, family: 'Plus Jakarta Sans' }
+                },
+                yaxis: {
+                    showgrid: true,
+                    gridcolor: '#E9ECEF',
+                    zeroline: false,
+                    showline: false,
+                    tickfont: { color: '#8A9EAD', size: 10, family: 'Plus Jakarta Sans' },
+                    tickformat: 'd'
+                },
+                showlegend: false,
+                hovermode: 'x unified'
+            };
+
+            const config = {
+                responsive: true,
+                displayModeBar: false,
+                displaylogo: false
+            };
+
+            try {
+                Plotly.newPlot('revenue-sparkline', revenueData, layout, config);
+            } catch(e) {
+                console.error("Chart initialization failed:", e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

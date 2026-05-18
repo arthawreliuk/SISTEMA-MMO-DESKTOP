@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de checkout da exposição do Balcão - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: '#1A1A24',
+                        muted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'premium': '0 20px 50px -15px rgba(0, 22, 220, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex ">
+
+
+    <!-- Main Workspace -->
+    <main class="w-full h-screen overflow-y-auto p-8 lg:p-12 xl:p-16">
+        <div class="max-w-[1200px] mx-auto h-full flex flex-col">
+            
+            <!-- Header Area -->
+            <header id="header" class="mb-12">
+                <h1 class="text-[40px] md:text-[48px] lg:text-[56px] font-extrabold tracking-tight leading-tight mb-4">
+                    Turbine seu Pedido
+                </h1>
+                <p class="text-lg md:text-xl text-muted font-medium max-w-2xl">
+                    Escolha como os Mestres da região verão sua solicitação. Destaque-se para receber orçamentos mais rápidos.
+                </p>
+            </header>
+
+            <!-- Split Layout -->
+            <div class="flex flex-col lg:flex-row gap-8 xl:gap-12 flex-1 pb-12">
+                
+                <!-- Left Column (Exposure Plans - 60%) -->
+                <div class="w-full lg:w-[60%] flex flex-col gap-6">
+                    
+                    <!-- Turbo Boost Card -->
+                    <label class="relative block cursor-pointer group">
+                        <input type="radio" name="plan" value="turbo" class="peer sr-only" checked>
+                        <div class="absolute -inset-[2px] bg-gradient-to-r from-primary to-blue-400 rounded-[26px] opacity-100 transition-opacity"></div>
+                        <div class="relative bg-white rounded-[24px] p-8 md:p-10 shadow-premium transition-all">
+                            
+                            <!-- Badge -->
+                            <div class="absolute -top-4 right-8 bg-primary text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-yellow-300"></i> Mais Recomendado
+                            </div>
+
+                            <div class="flex items-start justify-between mb-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+                                        <i class="fa-solid fa-bolt text-primary text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-text">Turbo Boost</h3>
+                                        <p class="text-primary font-semibold">Máxima Visibilidade</p>
+                                    </div>
+                                </div>
+                                <div class="w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
+                                    <div class="w-2.5 h-2.5 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-center gap-3 text-text font-medium">
+                                    <i class="fa-solid fa-check text-primary bg-primary/10 p-1 rounded-full text-xs"></i>
+                                    Seu pedido no topo da lista por 48 horas
+                                </li>
+                                <li class="flex items-center gap-3 text-text font-medium">
+                                    <i class="fa-solid fa-check text-primary bg-primary/10 p-1 rounded-full text-xs"></i>
+                                    Notificação push para os melhores profissionais
+                                </li>
+                                <li class="flex items-center gap-3 text-text font-medium">
+                                    <i class="fa-solid fa-check text-primary bg-primary/10 p-1 rounded-full text-xs"></i>
+                                    Selo de "Cliente Premium" no perfil
+                                </li>
+                            </ul>
+
+                            <div class="flex items-end gap-2">
+                                <span class="text-4xl font-extrabold text-text">R$ 19</span>
+                                <span class="text-muted font-medium mb-1">,90</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Free Standard Card -->
+                    <label class="relative block cursor-pointer group">
+                        <input type="radio" name="plan" value="free" class="peer sr-only">
+                        <div class="absolute -inset-[2px] bg-gray-200 rounded-[26px] opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                        <div class="relative bg-white rounded-[24px] p-8 md:p-10 shadow-soft border border-gray-100 transition-all hover:border-gray-200">
+                            
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center border border-gray-100">
+                                        <i class="fa-solid fa-paper-plane text-muted text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-text">Padrão Gratuito</h3>
+                                        <p class="text-muted text-sm font-medium">Visibilidade normal</p>
+                                    </div>
+                                </div>
+                                <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center peer-checked:border-primary peer-checked:bg-primary">
+                                </div>
+                            </div>
+
+                            <p class="text-muted font-medium mb-6">
+                                Seu pedido entrará na fila normal e será visto pelos profissionais conforme a ordem de chegada.
+                            </p>
+
+                            <div class="flex items-end gap-2">
+                                <span class="text-2xl font-bold text-text">Grátis</span>
+                            </div>
+                        </div>
+                    </label>
+
+                </div>
+
+                <!-- Right Column (Checkout Summary - 40%) -->
+                <div class="w-full lg:w-[40%]">
+                    <div class="sticky top-8 bg-white rounded-[24px] shadow-soft p-8 md:p-10 border border-gray-50">
+                        
+                        <h2 class="text-2xl font-bold mb-8">Resumo da Publicação</h2>
+
+                        <!-- Order Details -->
+                        <div class="bg-background rounded-[16px] p-6 mb-8">
+                            <div class="flex items-start gap-4 mb-4 pb-4 border-b border-gray-200">
+                                <div class="w-12 h-12 rounded-xl shrink-0">
+                                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/2fc114da81-98c3310db13d73947c77.png" alt="Close up of a leaky faucet being repaired by a plumber tools" />
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-text mb-1">Reparo de Encanamento</h4>
+                                    <p class="text-sm text-muted">Vazamento na pia da cozinha</p>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-muted font-medium">Plano Selecionado</span>
+                                <span class="font-bold text-text">Turbo Boost</span>
+                            </div>
+                            <div class="flex justify-between items-center text-lg mt-4 pt-4 border-t border-gray-200">
+                                <span class="font-bold text-text">Total</span>
+                                <span class="font-extrabold text-primary text-2xl">R$ 19,90</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method Toggle -->
+                        <div class="mb-8">
+                            <h3 class="text-sm font-bold text-muted uppercase tracking-wider mb-4">Método de Pagamento</h3>
+                            <div class="flex bg-background rounded-full p-1.5 relative">
+                                <div class="w-1/2 absolute inset-y-1.5 left-1.5 bg-white rounded-full shadow-sm transition-transform duration-300" id="toggle-bg"></div>
+                                
+                                <button class="flex-1 py-3 text-sm font-bold text-text relative z-10 flex items-center justify-center gap-2" onclick="document.getElementById('toggle-bg').style.transform = 'translateX(0)'">
+                                    <i class="fa-brands fa-pix text-teal-500"></i> Pix
+                                </button>
+                                <button class="flex-1 py-3 text-sm font-bold text-muted relative z-10 flex items-center justify-center gap-2 hover:text-text transition-colors" onclick="document.getElementById('toggle-bg').style.transform = 'translateX(100%)'">
+                                    <i class="fa-regular fa-credit-card"></i> Cartão
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Security Notice -->
+                        <div class="flex items-center justify-center gap-2 text-xs text-muted mb-6">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>Pagamento 100% seguro e criptografado</span>
+                        </div>
+
+                        <!-- CTA -->
+                        <button class="w-full bg-primary hover:bg-blue-700 text-white font-bold text-lg py-5 px-8 rounded-full shadow-premium transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 group">
+                            Confirmar Publicação
+                            <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

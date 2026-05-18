@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox do profissional - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        background: '#F8F9FA',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#64748B',
+                        },
+                        surface: '#FFFFFF',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 8px 30px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="h-screen w-full flex bg-background font-sans text-text-main">
+
+
+    <!-- Main Content Workspace -->
+    <main class="flex-1 flex flex-col md:flex-row h-full p-4 md:p-6 gap-6 ">
+        
+        <!-- Left Column: CRM Inbox (35%) -->
+        <section id="inbox-column" class="w-full md:w-[35%] bg-surface rounded-[24px] shadow-card flex flex-col ">
+            <!-- Header & Filters -->
+            <div class="p-6 border-b border-gray-100 shrink-0">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-bold tracking-tight">Mensagens</h1>
+                    <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-text-muted hover:bg-gray-100 transition-colors">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                
+                <div class="flex gap-3 overflow-x-auto pb-2">
+                    <button class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-medium whitespace-nowrap shadow-sm">
+                        Todos
+                    </button>
+                    <button class="px-5 py-2.5 rounded-full bg-gray-50 text-text-muted hover:bg-gray-100 text-sm font-medium whitespace-nowrap transition-colors border border-gray-100">
+                        Pendentes
+                    </button>
+                    <button class="px-5 py-2.5 rounded-full bg-gray-50 text-text-muted hover:bg-gray-100 text-sm font-medium whitespace-nowrap transition-colors border border-gray-100">
+                        Agendados
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat List -->
+            <div class="flex-1 overflow-y-auto p-3 space-y-1">
+                <!-- Chat Item 1 (Balcão) -->
+                <div class="p-3 rounded-[16px] hover:bg-gray-50 cursor-pointer transition-colors flex items-start gap-4 group">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-12 h-12 rounded-full object-cover">
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center border-2 border-white text-[10px] text-white">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-[15px] truncate pr-2">Mariana Silva</h3>
+                            <span class="text-xs text-text-muted shrink-0">10:42</span>
+                        </div>
+                        <p class="text-sm text-text-muted truncate mb-2">Gostaria de saber mais sobre o imóvel no centro.</p>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-full bg-blue-50 text-primary text-[11px] font-semibold tracking-wide">EM NEGOCIAÇÃO</span>
+                            <span class="px-2.5 py-1 rounded-full bg-gray-100 text-text-muted text-[11px] font-medium">Balcão</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item 2 -->
+                <div class="p-3 rounded-[16px] hover:bg-gray-50 cursor-pointer transition-colors flex items-start gap-4 group">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-12 h-12 rounded-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-[15px] truncate pr-2">Roberto Carlos</h3>
+                            <span class="text-xs text-text-muted shrink-0">Ontem</span>
+                        </div>
+                        <p class="text-sm text-text-muted truncate mb-2">Podemos agendar a visita para quinta-feira?</p>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-full bg-green-50 text-green-600 text-[11px] font-semibold tracking-wide">VISITA AGENDADA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item 3 (Balcão) -->
+                <div class="p-3 rounded-[16px] hover:bg-gray-50 cursor-pointer transition-colors flex items-start gap-4 group">
+                    <div class="relative">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-text-muted font-bold text-lg">
+                            AS
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center border-2 border-white text-[10px] text-white">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-[15px] truncate pr-2">Ana Souza</h3>
+                            <span class="text-xs text-text-muted shrink-0">Segunda</span>
+                        </div>
+                        <p class="text-sm text-text-muted truncate mb-2">Qual o valor do condomínio?</p>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-full bg-orange-50 text-orange-600 text-[11px] font-semibold tracking-wide">NOVO LEAD</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chat Item 4 -->
+                <div class="p-3 rounded-[16px] hover:bg-gray-50 cursor-pointer transition-colors flex items-start gap-4 group">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-12 h-12 rounded-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-[15px] truncate pr-2">Juliana Mendes</h3>
+                            <span class="text-xs text-text-muted shrink-0">12 Mar</span>
+                        </div>
+                        <p class="text-sm text-text-muted truncate mb-2">Obrigada pelo envio do contrato.</p>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-full bg-gray-100 text-text-muted text-[11px] font-semibold tracking-wide">FECHADO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column: Empty State (65%) -->
+        <section id="empty-state-column" class="hidden md:flex flex-1 bg-surface rounded-[24px] shadow-card items-center justify-center p-12 relative">
+            
+            <!-- Decorative background elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/4"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-gray-50 rounded-full blur-3xl opacity-50 translate-y-1/4 -translate-x-1/4"></div>
+
+            <div class="max-w-md text-center relative z-10 flex flex-col items-center">
+                <!-- Illustration -->
+                <div class="w-64 h-64 mb-8 relative">
+                    <img class="w-full h-full object-contain" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/2c12f28170-d9466979686ff099f56e.png" alt="Minimalist, modern flat vector illustration of a professional handshake representing a closed deal, using deep blue and soft gray tones, clean lines, no background" />
+                </div>
+                
+                <!-- Copy -->
+                <h2 class="text-[32px] leading-tight font-bold text-text-main mb-4 tracking-tight">
+                    Atenda seus clientes mais rápido.
+                </h2>
+                <p class="text-lg text-text-muted leading-relaxed mb-8">
+                    Selecione um contato na lista para enviar orçamentos, confirmar visitas e fechar negócios em Camboriú.
+                </p>
+                
+                <!-- CTA -->
+                <button class="px-8 py-4 bg-primary text-white rounded-full font-semibold shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 flex items-center gap-3">
+                    <i class="fa-solid fa-plus"></i>
+                    Novo Contato
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

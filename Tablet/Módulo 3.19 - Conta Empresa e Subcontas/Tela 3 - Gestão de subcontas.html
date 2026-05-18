@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de subcontas - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f2ff',
+                            100: '#e0e5ff',
+                            500: '#0016dc', // Deep Trust Blue
+                            600: '#0012b3',
+                        },
+                        navy: {
+                            900: '#1A1A24', // Deep Navy
+                            800: '#2A2A35',
+                            500: '#6B7280',
+                        },
+                        surface: {
+                            50: '#F8F9FA', // Soft Off-white
+                            100: '#F1F5F9',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'floating': '0 10px 40px -10px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CBD5E1; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="antialiased font-sans h-screen flex ">
+
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col h-full p-8 gap-8">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="flex justify-between items-end shrink-0">
+            <div>
+                <h1 class="text-[32px] font-bold text-navy-900 tracking-tight mb-2">Gestão da Equipe</h1>
+                <p class="text-navy-500 text-base">Controle as contas e permissões dos seus profissionais.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-navy-500 hover:text-navy-900 shadow-soft transition-all">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                </button>
+                <button class="h-12 px-6 bg-brand-500 text-white rounded-full font-semibold hover:bg-brand-600 shadow-floating transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Novo Membro</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Split Layout Workspace -->
+        <div class="flex-1 flex gap-6 ">
+            
+            <!-- Left Column: Employee List (35%) -->
+            <section id="employee-list" class="w-[35%] bg-white rounded-[24px] shadow-soft flex flex-col border border-surface-100/50">
+                <div class="p-6 border-b border-surface-100 shrink-0">
+                    <div class="relative">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-navy-500"></i>
+                        <input type="text" placeholder="Buscar por nome..." class="w-full h-12 pr-4 bg-surface-50 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition-all placeholder:text-navy-500/60 font-medium">
+                    </div>
+                </div>
+
+                <div class="flex-1 overflow-y-auto hide-scrollbar p-3 flex flex-col gap-2">
+                    <!-- Selected Member -->
+                    <button class="w-full p-4 rounded-2xl flex items-center gap-4 text-left border-2 border-brand-500 bg-brand-50/30 transition-all group relative">
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-brand-500 rounded-r-full"></div>
+                        <div class="relative shrink-0">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Sarah" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-navy-900 truncate">Sarah Mendes</h3>
+                            <p class="text-sm text-brand-500 font-medium truncate">Gerente de Contas</p>
+                        </div>
+                        <div class="shrink-0 text-navy-500">
+                            <i class="fa-solid fa-chevron-right text-sm group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </button>
+
+                    <!-- Other Members -->
+                    <button class="w-full p-4 rounded-2xl flex items-center gap-4 text-left border-2 border-transparent hover:bg-surface-50 transition-all group">
+                        <div class="relative shrink-0">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Carlos" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold text-navy-900 truncate">Carlos Silva</h3>
+                            <p class="text-sm text-navy-500 truncate">Analista Sênior</p>
+                        </div>
+                    </button>
+
+                    <button class="w-full p-4 rounded-2xl flex items-center gap-4 text-left border-2 border-transparent hover:bg-surface-50 transition-all group">
+                        <div class="relative shrink-0">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Amanda" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-amber-500 border-2 border-white rounded-full"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold text-navy-900 truncate">Amanda Costa</h3>
+                            <p class="text-sm text-navy-500 truncate">Especialista de Crédito</p>
+                        </div>
+                    </button>
+                    
+                    <button class="w-full p-4 rounded-2xl flex items-center gap-4 text-left border-2 border-transparent hover:bg-surface-50 transition-all group opacity-60">
+                        <div class="relative shrink-0">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Roberto" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm grayscale">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-gray-400 border-2 border-white rounded-full"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold text-navy-900 truncate">Roberto Alves</h3>
+                            <p class="text-sm text-navy-500 truncate">Inativo</p>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Right Column: Member Settings & Performance (65%) -->
+            <section id="member-detail" class="w-[65%] bg-white rounded-[24px] shadow-soft flex flex-col border border-surface-100/50">
+                <div class="p-8 flex-1 overflow-y-auto">
+                    
+                    <!-- Profile Header -->
+                    <div class="flex flex-col items-center text-center mb-10">
+                        <div class="relative mb-4">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Sarah Mendes" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg">
+                            <button class="absolute bottom-0 right-0 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center text-navy-500 hover:text-brand-500 transition-colors">
+                                <i class="fa-solid fa-camera text-sm"></i>
+                            </button>
+                        </div>
+                        <h2 class="text-2xl font-bold text-navy-900 mb-1">Sarah Mendes</h2>
+                        <p class="text-navy-500 mb-4">sarah.mendes@empresa.com.br</p>
+                        <span class="px-4 py-1.5 bg-green-50 text-green-600 rounded-full text-sm font-semibold border border-green-100">
+                            Conta Ativa
+                        </span>
+                    </div>
+
+                    <!-- Performance Pills -->
+                    <div class="grid grid-cols-2 gap-4 mb-10">
+                        <div class="bg-surface-50 rounded-[20px] p-6 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center text-brand-500">
+                                <i class="fa-solid fa-briefcase text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-navy-500 text-sm font-medium mb-1">Total de Leads</p>
+                                <h4 class="text-2xl font-bold text-navy-900">1,248</h4>
+                            </div>
+                        </div>
+                        <div class="bg-surface-50 rounded-[20px] p-6 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center text-amber-500">
+                                <i class="fa-solid fa-star text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-navy-500 text-sm font-medium mb-1">Avaliação Média</p>
+                                <div class="flex items-center gap-2">
+                                    <h4 class="text-2xl font-bold text-navy-900">4.9</h4>
+                                    <span class="text-xs text-navy-500 font-medium bg-white px-2 py-1 rounded-full shadow-sm">/ 5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Permissions Summary -->
+                    <div class="mb-10">
+                        <h3 class="text-lg font-bold text-navy-900 mb-4">Nível de Acesso</h3>
+                        <div class="bg-surface-50 rounded-[20px] p-6">
+                            <div class="flex items-center justify-between mb-4 pb-4 border-b border-surface-100">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-shield-halved text-brand-500"></i>
+                                    <span class="font-semibold text-navy-900">Gerente de Contas</span>
+                                </div>
+                                <span class="text-xs font-bold text-brand-500 bg-brand-50 px-3 py-1 rounded-full">Nível 2</span>
+                            </div>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-sm text-navy-800">
+                                    <i class="fa-solid fa-check text-green-500"></i> Visualizar carteira de clientes
+                                </li>
+                                <li class="flex items-center gap-3 text-sm text-navy-800">
+                                    <i class="fa-solid fa-check text-green-500"></i> Aprovar limites até R$ 50.000
+                                </li>
+                                <li class="flex items-center gap-3 text-sm text-navy-500">
+                                    <i class="fa-solid fa-xmark text-red-400"></i> Exportar dados sensíveis
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Quick Actions (Bottom) -->
+                <div class="p-6 border-t border-surface-100 bg-surface-50/50 shrink-0 flex flex-col gap-3">
+                    <button class="w-full h-14 bg-brand-500 text-white rounded-full font-bold hover:bg-brand-600 transition-all shadow-floating flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Editar Permissões
+                    </button>
+                    <button class="w-full h-14 bg-white text-red-500 rounded-full font-bold hover:bg-red-50 transition-all border border-red-100 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-link-slash"></i>
+                        Desvincular da Empresa
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

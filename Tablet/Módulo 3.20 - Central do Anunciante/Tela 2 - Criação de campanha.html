@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação de campanha - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        app: {
+                            bg: '#F8F9FA',
+                            navy: '#1A1A24',
+                            blue: '#0016dc',
+                            blueHover: '#0012b3',
+                            gray: '#8A8A93',
+                            border: '#E2E8F0'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 24px -4px rgba(26, 26, 36, 0.04), 0 12px 32px -4px rgba(26, 26, 36, 0.04)',
+                        'card': '0 2px 12px -2px rgba(26, 26, 36, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        /* Custom radio input styling */
+        .objective-radio:checked + div {
+            border-color: #0016dc;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 1px #0016dc;
+        }
+        .objective-radio:checked + div .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .check-icon {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 lg:p-12">
+
+    <!-- Main Tablet Container constraint -->
+    <div class="w-full max-w-[1024px] mx-auto flex flex-col h-full min-h-[800px]">
+        
+        <!-- Top Bar -->
+        <header id="header" class="flex items-center justify-between py-6 px-4 mb-6">
+            <a href="#" class="flex items-center gap-2 text-app-gray hover:text-app-navy transition-colors font-medium text-sm">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Voltar para o Painel</span>
+            </a>
+            <h1 class="text-lg font-semibold text-app-navy absolute left-1/2 -translate-x-1/2 hidden md:block">Configuração de Campanha</h1>
+            <div class="w-[120px]"></div> <!-- Spacer for flex balance -->
+        </header>
+
+        <!-- Main Workspace -->
+        <main id="main-workspace" class="flex-1 w-full bg-white rounded-[24px] shadow-soft flex flex-col md:flex-row border border-app-border/50">
+            
+            <!-- Left Column (Context & Tips - 35%) -->
+            <aside id="context-sidebar" class="w-full md:w-[35%] bg-[#F8F9FA] p-8 md:p-10 border-b md:border-b-0 md:border-r border-app-border/60 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center text-app-blue mb-6">
+                        <i class="fa-solid fa-lightbulb text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-app-navy mb-4 leading-tight">Começando sua<br>campanha</h2>
+                    <p class="text-app-gray leading-relaxed text-sm">
+                        <strong class="text-app-navy font-semibold">Dica:</strong> Escolher o objetivo correto ajuda nosso algoritmo a mostrar seu anúncio para as pessoas certas, otimizando seu orçamento.
+                    </p>
+                </div>
+                
+                <!-- Progress Indicator -->
+                <div class="mt-12 hidden md:block">
+                    <div class="flex items-center gap-3 text-sm font-medium text-app-navy mb-2">
+                        <span class="w-6 h-6 rounded-full bg-app-blue text-white flex items-center justify-center text-xs">1</span>
+                        <span>Definição Básica</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm font-medium text-app-gray opacity-50 border-l-2 border-app-border ml-3 py-4">
+                        <span>Público & Orçamento</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm font-medium text-app-gray opacity-50">
+                        <span class="w-6 h-6 rounded-full border-2 border-app-border flex items-center justify-center text-xs">3</span>
+                        <span>Criativos</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Column (Creation Form - 65%) -->
+            <section id="creation-form" class="w-full md:w-[65%] p-8 md:p-10 lg:p-12 flex flex-col bg-white">
+                <div class="flex-1">
+                    <div class="mb-10">
+                        <span class="text-xs font-bold tracking-wider text-app-blue uppercase mb-2 block">Passo 1</span>
+                        <h3 class="text-xl font-bold text-app-navy">Definição Básica</h3>
+                    </div>
+
+                    <!-- Input Row -->
+                    <div class="mb-10">
+                        <label for="campaign-name" class="block text-sm font-semibold text-app-navy mb-3">Nome da Campanha</label>
+                        <div class="relative">
+                            <input type="text" id="campaign-name" placeholder="Ex: Campanha de Black Friday 2024" 
+                                class="w-full bg-[#F8F9FA] border border-app-border text-app-navy text-sm rounded-full px-6 py-4 outline-none focus:border-app-blue focus:ring-1 focus:ring-app-blue transition-all placeholder:text-app-gray/60">
+                            <i class="fa-solid fa-pen absolute right-6 top-1/2 -translate-y-1/2 text-app-gray/50 text-sm"></i>
+                        </div>
+                    </div>
+
+                    <!-- Selection Grid -->
+                    <div class="mb-8">
+                        <label class="block text-sm font-semibold text-app-navy mb-4">Qual o objetivo principal?</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            
+                            <!-- Objective 1 -->
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" name="objective" class="objective-radio sr-only" checked>
+                                <div class="h-full bg-white border border-app-border rounded-[20px] p-6 transition-all duration-200 hover:border-app-blue/50 hover:shadow-card relative ">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 text-app-blue flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-bullhorn"></i>
+                                    </div>
+                                    <h4 class="font-bold text-app-navy mb-1">Branding</h4>
+                                    <p class="text-xs text-app-gray leading-relaxed">Aumente o reconhecimento da sua marca para um público amplo.</p>
+                                    
+                                    <!-- Checkmark -->
+                                    <div class="check-icon absolute top-6 right-6 w-6 h-6 bg-app-blue rounded-full flex items-center justify-center text-white shadow-sm">
+                                        <i class="fa-solid fa-check text-xs"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Objective 2 -->
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" name="objective" class="objective-radio sr-only">
+                                <div class="h-full bg-white border border-app-border rounded-[20px] p-6 transition-all duration-200 hover:border-app-blue/50 hover:shadow-card relative ">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 text-app-blue flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-arrow-pointer"></i>
+                                    </div>
+                                    <h4 class="font-bold text-app-navy mb-1">Tráfego</h4>
+                                    <p class="text-xs text-app-gray leading-relaxed">Direcione mais pessoas para o seu site ou aplicativo.</p>
+                                    
+                                    <!-- Checkmark -->
+                                    <div class="check-icon absolute top-6 right-6 w-6 h-6 bg-app-blue rounded-full flex items-center justify-center text-white shadow-sm">
+                                        <i class="fa-solid fa-check text-xs"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Objective 3 -->
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" name="objective" class="objective-radio sr-only">
+                                <div class="h-full bg-white border border-app-border rounded-[20px] p-6 transition-all duration-200 hover:border-app-blue/50 hover:shadow-card relative ">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 text-app-blue flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-user-plus"></i>
+                                    </div>
+                                    <h4 class="font-bold text-app-navy mb-1">Leads</h4>
+                                    <p class="text-xs text-app-gray leading-relaxed">Colete informações de contatos de clientes em potencial.</p>
+                                    
+                                    <!-- Checkmark -->
+                                    <div class="check-icon absolute top-6 right-6 w-6 h-6 bg-app-blue rounded-full flex items-center justify-center text-white shadow-sm">
+                                        <i class="fa-solid fa-check text-xs"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Objective 4 -->
+                            <label class="relative cursor-pointer group">
+                                <input type="radio" name="objective" class="objective-radio sr-only">
+                                <div class="h-full bg-white border border-app-border rounded-[20px] p-6 transition-all duration-200 hover:border-app-blue/50 hover:shadow-card relative ">
+                                    <div class="w-10 h-10 rounded-full bg-blue-50 text-app-blue flex items-center justify-center mb-4">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                    </div>
+                                    <h4 class="font-bold text-app-navy mb-1">Vendas</h4>
+                                    <p class="text-xs text-app-gray leading-relaxed">Encontre pessoas com maior probabilidade de comprar.</p>
+                                    
+                                    <!-- Checkmark -->
+                                    <div class="check-icon absolute top-6 right-6 w-6 h-6 bg-app-blue rounded-full flex items-center justify-center text-white shadow-sm">
+                                        <i class="fa-solid fa-check text-xs"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Action -->
+                <div id="action-footer" class="mt-auto pt-8 border-t border-app-border/40 flex justify-end">
+                    <button class="bg-app-blue hover:bg-app-blueHover text-white font-semibold py-4 px-8 rounded-full transition-colors flex items-center gap-3 shadow-sm group">
+                        Próxima Etapa
+                        <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

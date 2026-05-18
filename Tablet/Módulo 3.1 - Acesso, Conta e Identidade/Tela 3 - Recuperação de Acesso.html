@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperação de Acesso - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            light: '#e6e8fc',
+                        },
+                        navy: {
+                            DEFAULT: '#0F172A',
+                            muted: '#475569',
+                        },
+                        canvas: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -10px rgba(0, 0, 0, 0.05), 0 10px 20px -5px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-canvas min-h-screen flex items-center justify-center p-4 md:p-8 text-navy antialiased">
+
+    <!-- Focus Mode Wrapper -->
+    <main class="w-full max-w-[600px] mx-auto" id="recovery-main">
+        
+        <!-- Main Recovery Card -->
+        <div class="bg-white rounded-[24px] shadow-premium p-8 md:p-12 w-full flex flex-col items-center" id="recovery-card">
+            
+            <!-- Iconography -->
+            <div class="w-16 h-16 rounded-2xl bg-brand-light flex items-center justify-center mb-8 border border-white shadow-sm" id="shield-icon-container">
+                <i class="fa-solid fa-shield-halved text-2xl text-brand-blue"></i>
+            </div>
+
+            <!-- Header & Instructions -->
+            <div class="text-center mb-10 w-full" id="header-section">
+                <h1 class="text-2xl md:text-[28px] font-bold tracking-tight mb-3">Problemas para entrar?</h1>
+                <p class="text-navy-muted text-base leading-relaxed px-4">
+                    Insira o e-mail associado à sua conta MMO. Nós enviaremos as instruções para criar uma nova senha.
+                </p>
+            </div>
+
+            <!-- Form Area -->
+            <form class="w-full space-y-6" id="recovery-form" onsubmit="event.preventDefault();">
+                
+                <!-- Input Group -->
+                <div class="space-y-2 w-full" id="email-input-group">
+                    <label for="email" class="block text-sm font-semibold text-navy">
+                        Endereço de E-mail
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                            <i class="fa-regular fa-envelope text-navy-muted"></i>
+                        </div>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="block w-full pr-4 py-3.5 border border-gray-200 rounded-xl text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all duration-200 hover:border-gray-300" 
+                            placeholder="exemplo@email.com"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Action Area -->
+                <div class="w-full pt-4 space-y-4" id="action-area">
+                    <button 
+                        type="submit" 
+                        class="w-full bg-brand-blue hover:bg-blue-800 text-white font-semibold py-4 px-6 rounded-full transition-colors duration-200 shadow-sm flex items-center justify-center gap-2"
+                    >
+                        <span>Recuperar Senha</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </button>
+
+                    <button 
+                        type="button" 
+                        class="w-full bg-transparent hover:bg-brand-light text-brand-blue font-semibold py-4 px-6 border border-brand-blue rounded-full transition-colors duration-200 flex items-center justify-center"
+                    >
+                        Cancelar e Voltar
+                    </button>
+                </div>
+            </form>
+
+            <!-- Support Link -->
+            <div class="mt-8 text-center w-full" id="support-link">
+                <p class="text-sm text-navy-muted">
+                    Ainda precisa de ajuda? <a href="#" class="text-brand-blue font-semibold hover:underline">Fale com o suporte</a>
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

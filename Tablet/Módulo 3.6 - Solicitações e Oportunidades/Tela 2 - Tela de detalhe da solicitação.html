@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de detalhe da solicitação - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E5E7EB',
+                        statusBg: '#E0E7FF',
+                        statusText: '#0016dc'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '4px 0 24px -4px rgba(0, 0, 0, 0.04)'
+                    },
+                    borderRadius: {
+                        'card': '24px',
+                        'pill': '9999px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        
+        .pulse-ring {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.05); }
+        }
+        .spin-slow {
+            animation: spin 3s linear infinite;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased h-screen flex">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class="flex-1 h-full overflow-y-auto px-8 py-6">
+        <div class="max-w-[1200px] mx-auto w-full h-full flex flex-col">
+            
+            <!-- Header Area -->
+            <header id="page-header" class="flex items-center justify-between mb-8 flex-shrink-0">
+                <div class="flex items-center gap-4">
+                    <button class="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-textDark hover:bg-gray-50 transition-colors">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <div>
+                        <div class="flex items-center gap-3">
+                            <h1 class="text-2xl font-bold text-textDark">Pedido: Revisão Hidráulica</h1>
+                            <span class="px-3 py-1 bg-statusBg text-statusText text-sm font-semibold rounded-full flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+                                Recebendo Orçamentos
+                            </span>
+                        </div>
+                        <p class="text-sm text-textMuted mt-1">Criado em 24 Out 2023, 14:30 • ID: #REQ-8942</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-2 bg-white border border-borderLight rounded-full text-sm font-semibold text-textDark hover:bg-gray-50 transition-colors">
+                        Editar Pedido
+                    </button>
+                    <button class="px-4 py-2 bg-red-50 text-red-600 rounded-full text-sm font-semibold hover:bg-red-100 transition-colors">
+                        Cancelar
+                    </button>
+                </div>
+            </header>
+
+            <!-- Split Layout -->
+            <div class="flex flex-col lg:flex-row gap-6 flex-1 min-h-0">
+                
+                <!-- Left Column: Details -->
+                <section id="details-column" class="w-full lg:w-1/2 flex flex-col min-h-0">
+                    <div class="bg-cardBg rounded-card shadow-soft p-6 flex-1 overflow-y-auto">
+                        
+                        <!-- Urgency & Type -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1.5 bg-red-50 text-red-600 text-xs font-bold rounded-md flex items-center gap-1.5 uppercase tracking-wide">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Alta Urgência
+                            </span>
+                            <span class="px-3 py-1.5 bg-gray-100 text-textDark text-xs font-bold rounded-md flex items-center gap-1.5 uppercase tracking-wide">
+                                <i class="fa-solid fa-wrench"></i> Encanamento
+                            </span>
+                            <span class="px-3 py-1.5 bg-gray-100 text-textDark text-xs font-bold rounded-md flex items-center gap-1.5 uppercase tracking-wide">
+                                <i class="fa-solid fa-house"></i> Residencial
+                            </span>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-8">
+                            <h3 class="text-sm font-bold text-textMuted uppercase tracking-wider mb-3">Descrição do Problema</h3>
+                            <p class="text-textDark leading-relaxed text-[15px]">
+                                Vazamento intenso na tubulação principal que conecta a caixa d'água aos banheiros do segundo andar. A parede do corredor já apresenta infiltração severa e manchas escuras. O registro geral foi fechado temporariamente, mas precisamos de reparo urgente pois a casa está sem água. A tubulação é de PVC tigre, instalada há cerca de 10 anos.
+                            </p>
+                        </div>
+
+                        <!-- Photos Grid -->
+                        <div class="mb-8">
+                            <h3 class="text-sm font-bold text-textMuted uppercase tracking-wider mb-3">Fotos Anexadas (3)</h3>
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="aspect-square rounded-xl bg-gray-100 relative group cursor-pointer">
+                                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/dc78bf78f2-b3f41bd026bc09d46f78.png" alt="Close up of a wall with severe water damage, peeling paint and dark moisture stains, realistic lighting" />
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <i class="fa-solid fa-expand text-white text-xl"></i>
+                                    </div>
+                                </div>
+                                <div class="aspect-square rounded-xl bg-gray-100 relative group cursor-pointer">
+                                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8f235b0b74-1b9934cde55b15eacb79.png" alt="Under sink plumbing pipes showing a visible leak with water dripping, realistic home maintenance context" />
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <i class="fa-solid fa-expand text-white text-xl"></i>
+                                    </div>
+                                </div>
+                                <div class="aspect-square rounded-xl bg-gray-100 relative group cursor-pointer">
+                                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/236ec5f4b1-3fb40ddb5214104aa21d.png" alt="Water puddle on a tiled floor near a baseboard, showing the extent of a plumbing leak" />
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <i class="fa-solid fa-expand text-white text-xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="bg-gray-50 rounded-xl p-4 flex gap-4 items-start">
+                            <div class="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-primary flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-textDark mb-1">Local do Serviço</h4>
+                                <p class="text-sm text-textMuted">Rua das Acácias, 142 - Apto 302<br>Jardim Primavera, São Paulo - SP<br>CEP: 04512-001</p>
+                                <button class="text-primary text-sm font-semibold mt-2 hover:underline">Ver no mapa</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Right Column: Activity & Quotes -->
+                <section id="quotes-column" class="w-full lg:w-1/2 flex flex-col min-h-0">
+                    <div class="flex items-center justify-between mb-4 px-2">
+                        <h2 class="text-lg font-bold text-textDark">Mestres Interessados</h2>
+                        <span class="bg-primary text-white text-xs font-bold px-2.5 py-1 rounded-full">2 Novos</span>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto space-y-4 pr-2">
+                        
+                        <!-- Pro Card 1 -->
+                        <div class="bg-cardBg rounded-card shadow-soft p-5 border border-transparent hover:border-primary/20 transition-colors">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-3">
+                                    <div class="relative">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" alt="Pro Avatar">
+                                        <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-textDark flex items-center gap-2">
+                                            Roberto Alves
+                                            <i class="fa-solid fa-circle-check text-primary text-sm" title="Profissional Verificado"></i>
+                                        </h4>
+                                        <div class="flex items-center gap-2 text-sm">
+                                            <span class="flex items-center text-yellow-400 text-xs">
+                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                            </span>
+                                            <span class="font-semibold text-textDark">4.8</span>
+                                            <span class="text-textMuted">(142 serv.)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-textMuted mb-0.5">Visita Técnica</p>
+                                    <p class="text-lg font-bold text-textDark">R$ 50<span class="text-sm font-normal text-textMuted">,00</span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-blue-50/50 rounded-lg p-3 mb-4 text-sm text-textDark border border-blue-100">
+"Olá! Tenho experiência de 15 anos com tubulações Tigre. Posso ir hoje mesmo às 16h para avaliar e já levar material base se aprovar."
+                            </div>
+                            
+                            <div class="flex gap-3">
+                                <button class="flex-1 bg-primary text-white py-2.5 rounded-full text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors">
+                                    Analisar Perfil
+                                </button>
+                                <button class="w-11 h-11 bg-gray-50 border border-borderLight text-textDark rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
+                                    <i class="fa-regular fa-message"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Pro Card 2 -->
+                        <div class="bg-cardBg rounded-card shadow-soft p-5 border border-transparent hover:border-primary/20 transition-colors">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-3">
+                                    <div class="relative">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" alt="Pro Avatar">
+                                        <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-gray-400 border-2 border-white rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-textDark flex items-center gap-2">
+                                            Carlos Mendes
+                                        </h4>
+                                        <div class="flex items-center gap-2 text-sm">
+                                            <span class="flex items-center text-yellow-400 text-xs">
+                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                            </span>
+                                            <span class="font-semibold text-textDark">5.0</span>
+                                            <span class="text-textMuted">(38 serv.)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-textMuted mb-0.5">Visita Técnica</p>
+                                    <p class="text-lg font-bold text-textDark text-green-600">Grátis</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-lg p-3 mb-4 text-sm text-textDark border border-gray-100">
+"Boa tarde, estou próximo à sua região. Não cobro visita para orçamento em vazamentos desse tipo."
+                            </div>
+                            
+                            <div class="flex gap-3">
+                                <button class="flex-1 bg-primary text-white py-2.5 rounded-full text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors">
+                                    Analisar Perfil
+                                </button>
+                                <button class="w-11 h-11 bg-gray-50 border border-borderLight text-textDark rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
+                                    <i class="fa-regular fa-message"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Loading State Example (Hidden by default, shown for context) -->
+                        <div class="hidden bg-cardBg/50 rounded-card border border-dashed border-borderLight p-8 flex flex-col items-center justify-center text-center mt-4">
+                            <div class="relative w-16 h-16 mb-4">
+                                <div class="absolute inset-0 bg-primary/20 rounded-full pulse-ring"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i class="fa-solid fa-satellite-dish text-primary text-2xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="font-bold text-textDark mb-2">Procurando os melhores profissionais...</h4>
+                            <p class="text-sm text-textMuted max-w-xs">Notificamos encanadores na sua região. Novas propostas aparecerão aqui em breve.</p>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

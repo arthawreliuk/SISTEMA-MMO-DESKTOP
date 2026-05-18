@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção_Alternância de Contexto - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            dark: '#1A1A24',
+                            canvas: '#F8F9FA',
+                            card: '#FFFFFF',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -10px rgba(0, 22, 220, 0.08), 0 10px 20px -5px rgba(0, 0, 0, 0.04)',
+                        'premium-hover': '0 30px 60px -15px rgba(0, 22, 220, 0.12), 0 15px 30px -5px rgba(0, 0, 0, 0.06)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen bg-brand-canvas text-brand-dark flex flex-col m-0 p-0 selection:bg-brand-blue selection:text-white">
+
+    <!-- Top Header Focus Mode -->
+    <header id="top_header" class="w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50 h-[72px] flex items-center justify-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-xl tracking-tighter">
+                M
+            </div>
+            <span class="font-extrabold text-xl tracking-tight text-brand-dark">MMO<span class="text-brand-blue">.</span></span>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main_content" class="flex-1 flex flex-col items-center justify-center w-full max-w-[1024px] mx-auto px-6 py-12 md:py-20">
+        
+        <!-- Hero Section -->
+        <section id="hero_welcome" class="text-center mb-16 w-full max-w-3xl mx-auto">
+            <div class="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-blue-50 text-brand-blue text-sm font-semibold tracking-wide uppercase">
+                Acesso à Plataforma
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-brand-dark mb-6 leading-[1.1] tracking-tight">
+                Bem-vindo de volta, <span class="text-brand-blue">Arthur</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 font-medium max-w-2xl mx-auto leading-relaxed">
+                Como você deseja acessar a plataforma hoje? Escolha seu perfil para continuar.
+            </p>
+        </section>
+
+        <!-- Selection Grid -->
+        <section id="selection_grid" class="w-full max-w-[900px] grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            
+            <!-- Card 1: Cliente -->
+            <button id="card_cliente" class="group relative bg-brand-card rounded-[24px] p-8 md:p-10 text-left transition-all duration-300 hover:-translate-y-2 shadow-premium hover:shadow-premium-hover border border-gray-100 flex flex-col h-full focus:outline-none focus:ring-4 focus:ring-brand-blue/20">
+                <!-- Decorative Background Glow -->
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-50 rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div class="relative z-10 flex-1 flex flex-col">
+                    <div class="w-20 h-20 rounded-2xl bg-blue-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                        <!-- Minimalist 3D House/Magnifier Concept via SVG -->
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/-2000/svg">
+                            <path d="M10 20V14H14V20C14 20.55 14.45 21 15 21H18C18.55 21 19 20.55 19 20V12H20.7C21.16 12 21.38 11.43 21.03 11.13L12.67 3.59C12.29 3.25 11.71 3.25 11.33 3.59L2.97 11.13C2.62 11.43 2.84 12 3.3 12H5V20C5 20.55 5.45 21 6 21H9C9.55 21 10 20.55 10 20Z" fill="#0016dc" fill-opacity="0.2"/>
+                            <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="#0016dc"/>
+                        </svg>
+                    </div>
+                    
+                    <h2 class="text-2xl md:text-3xl font-bold text-brand-dark mb-4 tracking-tight">Sou Cliente</h2>
+                    <p class="text-gray-500 font-medium mb-10 leading-relaxed flex-1">
+                        Publicar demandas no Balcão e buscar mestres qualificados para seus projetos.
+                    </p>
+                    
+                    <div class="w-full bg-brand-blue text-white rounded-full py-4 px-6 text-center font-bold text-lg shadow-lg shadow-brand-blue/20 group-hover:bg-blue-700 transition-colors">
+                        Acessar como Cliente
+                    </div>
+                </div>
+            </button>
+
+            <!-- Card 2: Profissional -->
+            <button id="card_profissional" class="group relative bg-brand-card rounded-[24px] p-8 md:p-10 text-left transition-all duration-300 hover:-translate-y-2 shadow-premium hover:shadow-premium-hover border border-gray-100 flex flex-col h-full focus:outline-none focus:ring-4 focus:ring-brand-blue/20">
+                <!-- Decorative Background Glow -->
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-gray-50 rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div class="relative z-10 flex-1 flex flex-col">
+                    <div class="w-20 h-20 rounded-2xl bg-gray-50 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 border border-gray-100">
+                        <!-- Minimalist 3D Shield/Toolbox Concept via SVG -->
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/-2000/svg">
+                            <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 20.93C8.06 19.72 5 15.54 5 11.3V6.3L12 3.19L19 6.3V11.3C19 15.54 15.94 19.72 12 20.93Z" fill="#1A1A24" fill-opacity="0.2"/>
+                            <path d="M10.9999 15.9001L7.3999 12.3001L8.8199 10.8801L10.9999 13.0601L15.5999 8.46008L17.0199 9.88008L10.9999 15.9001Z" fill="#1A1A24"/>
+                        </svg>
+                    </div>
+                    
+                    <h2 class="text-2xl md:text-3xl font-bold text-brand-dark mb-4 tracking-tight">Sou Profissional</h2>
+                    <p class="text-gray-500 font-medium mb-10 leading-relaxed flex-1">
+                        Gerenciar pedidos e buscar oportunidades locais para expandir seus negócios.
+                    </p>
+                    
+                    <div class="w-full bg-white text-brand-blue border-2 border-brand-blue rounded-full py-3.5 px-6 text-center font-bold text-lg group-hover:bg-brand-blue/5 transition-colors">
+                        Acessar como Mestre
+                    </div>
+                </div>
+            </button>
+
+        </section>
+
+        <!-- Enterprise Action Footer -->
+        <section id="enterprise_footer" class="mt-4">
+            <button class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md text-brand-blue font-semibold transition-all hover:border-brand-blue/30 group">
+                Entrar como Conta Empresa
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/-2000/svg" class="group-hover:translate-x-1 transition-transform">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </section>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

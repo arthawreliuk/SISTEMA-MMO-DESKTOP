@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de avaliação pós-serviço - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        bgOffWhite: '#F8F9FA',
+                        primaryBlue: '#0016dc',
+                        textNavy: '#1A1A24',
+                        textMuted: '#6B7280',
+                        borderLight: '#E5E7EB',
+                        successGreen: '#10B981',
+                        successGreenBg: '#D1FAE5',
+                        starGold: '#FBBF24',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'ambient-lg': '0 20px 60px -15px rgba(0,0,0,0.08)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        'pill': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .star-rating input { display: none; }
+        .star-rating label { cursor: pointer; color: #E5E7EB; transition: color 0.2s; }
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label { color: #FBBF24; }
+        .tag-checkbox input { display: none; }
+        .tag-checkbox input:checked + div { background-color: #0016dc; color: white; border-color: #0016dc; }
+    </style>
+</head>
+<body class="min-h-screen flex antialiased selection:bg-primaryBlue selection:text-white">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class="flex-1 p-8 lg:p-12 xl:p-16 max-w-[1400px] mx-auto min-h-screen flex flex-col">
+        
+        <!-- Header Area -->
+        <header id="header" class="mb-12 max-w-3xl">
+            <h1 class="text-5xl lg:text-6xl font-extrabold text-textNavy tracking-tight mb-4 leading-tight">Sua opinião importa</h1>
+            <p class="text-xl text-textMuted font-medium">Ajude a manter a qualidade e segurança da plataforma.</p>
+        </header>
+
+        <!-- Split Layout -->
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 flex-1">
+            
+            <!-- Left Column (Service Context - 40%) -->
+            <aside class="w-full lg:w-[40%] xl:w-[35%] flex flex-col gap-6 relative">
+                <div class="sticky top-12 bg-white rounded-4xl p-8 shadow-ambient border border-borderLight/50">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="px-4 py-1.5 bg-successGreenBg text-successGreen text-sm font-bold rounded-pill tracking-wide uppercase">Finalizado</span>
+                        <div class="flex items-center gap-2 text-textMuted font-medium">
+                            <i class="fa-regular fa-calendar"></i>
+                            <span>28/04</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center mb-8">
+                        <div class="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-primaryBlue to-blue-300 mb-4 shadow-lg">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Professional" class="w-full h-full rounded-full object-cover border-4 border-white">
+                        </div>
+                        <h2 class="text-2xl font-bold text-textNavy mb-1">Carlos Eduardo</h2>
+                        <p class="text-textMuted font-medium">Eletricista Residencial</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center py-4 border-t border-borderLight/50">
+                            <span class="text-textMuted font-medium">Serviço</span>
+                            <span class="text-textNavy font-semibold">Instalação de Painel</span>
+                        </div>
+                        <div class="flex justify-between items-center py-4 border-t border-borderLight/50">
+                            <span class="text-textMuted font-medium">Local</span>
+                            <span class="text-textNavy font-semibold">Apto 402, Bloco B</span>
+                        </div>
+                        <div class="flex justify-between items-center py-4 border-t border-borderLight/50">
+                            <span class="text-textMuted font-medium">Valor Total</span>
+                            <span class="text-2xl font-bold text-primaryBlue">R$ 450</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Column (Interactive Form - 60%) -->
+            <section class="w-full lg:w-[60%] xl:w-[65%]">
+                <div class="bg-white rounded-4xl p-8 lg:p-10 shadow-ambient-lg border border-borderLight/50 h-full flex flex-col">
+                    
+                    <!-- Star Rating -->
+                    <div class="mb-12 text-center">
+                        <h3 class="text-xl font-bold text-textNavy mb-6">Como foi o serviço?</h3>
+                        <div class="star-rating flex flex-row-reverse justify-center gap-4 text-5xl">
+                            <input type="radio" id="star5" name="rating" value="5" />
+                            <label for="star5"><i class="fa-solid fa-star drop-shadow-sm"></i></label>
+                            
+                            <input type="radio" id="star4" name="rating" value="4" />
+                            <label for="star4"><i class="fa-solid fa-star drop-shadow-sm"></i></label>
+                            
+                            <input type="radio" id="star3" name="rating" value="3" />
+                            <label for="star3"><i class="fa-solid fa-star drop-shadow-sm"></i></label>
+                            
+                            <input type="radio" id="star2" name="rating" value="2" />
+                            <label for="star2"><i class="fa-solid fa-star drop-shadow-sm"></i></label>
+                            
+                            <input type="radio" id="star1" name="rating" value="1" />
+                            <label for="star1"><i class="fa-solid fa-star drop-shadow-sm"></i></label>
+                        </div>
+                    </div>
+
+                    <!-- Quick Tags -->
+                    <div class="mb-10">
+                        <h3 class="text-lg font-bold text-textNavy mb-4">O que se destacou?</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <label class="tag-checkbox cursor-pointer">
+                                <input type="checkbox" name="tags" value="pontualidade">
+                                <div class="px-5 py-2.5 rounded-pill border border-borderLight text-textNavy font-medium hover:bg-bgOffWhite transition-colors flex items-center gap-2">
+                                    <i class="fa-regular fa-clock"></i> Pontualidade
+                                </div>
+                            </label>
+                            <label class="tag-checkbox cursor-pointer">
+                                <input type="checkbox" name="tags" value="limpeza">
+                                <div class="px-5 py-2.5 rounded-pill border border-borderLight text-textNavy font-medium hover:bg-bgOffWhite transition-colors flex items-center gap-2">
+                                    <i class="fa-solid fa-broom"></i> Limpeza
+                                </div>
+                            </label>
+                            <label class="tag-checkbox cursor-pointer">
+                                <input type="checkbox" name="tags" value="qualidade">
+                                <div class="px-5 py-2.5 rounded-pill border border-borderLight text-textNavy font-medium hover:bg-bgOffWhite transition-colors flex items-center gap-2">
+                                    <i class="fa-solid fa-award"></i> Qualidade Técnica
+                                </div>
+                            </label>
+                            <label class="tag-checkbox cursor-pointer">
+                                <input type="checkbox" name="tags" value="comunicacao">
+                                <div class="px-5 py-2.5 rounded-pill border border-borderLight text-textNavy font-medium hover:bg-bgOffWhite transition-colors flex items-center gap-2">
+                                    <i class="fa-regular fa-comments"></i> Boa Comunicação
+                                </div>
+                            </label>
+                            <label class="tag-checkbox cursor-pointer">
+                                <input type="checkbox" name="tags" value="preco">
+                                <div class="px-5 py-2.5 rounded-pill border border-borderLight text-textNavy font-medium hover:bg-bgOffWhite transition-colors flex items-center gap-2">
+                                    <i class="fa-solid fa-tag"></i> Preço Justo
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Text Area & Submit -->
+                    <div class="mt-auto flex flex-col gap-6">
+                        <div class="relative">
+                            <textarea 
+                                class="w-full bg-bgOffWhite border-none rounded-4xl p-6 text-textNavy font-medium placeholder:text-textMuted focus:ring-2 focus:ring-primaryBlue focus:outline-none resize-none h-40 shadow-inner"
+                                placeholder="Conte mais detalhes sobre sua experiência (opcional)..."
+                            ></textarea>
+                            <div class="absolute bottom-4 right-6 flex gap-3 text-textMuted">
+                                <button class="hover:text-primaryBlue transition-colors"><i class="fa-solid fa-paperclip"></i></button>
+                                <button class="hover:text-primaryBlue transition-colors"><i class="fa-regular fa-image"></i></button>
+                            </div>
+                        </div>
+
+                        <button class="w-full bg-primaryBlue text-white font-bold text-lg py-5 rounded-pill shadow-lg shadow-primaryBlue/30 hover:bg-blue-700 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-3">
+                            <span>Enviar Feedback</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

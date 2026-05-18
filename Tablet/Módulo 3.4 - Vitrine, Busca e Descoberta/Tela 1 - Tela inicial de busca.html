@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela inicial de busca - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0, 0, 0, 0.08)',
+                        'ambient-sm': '0 4px 20px -5px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-textDark h-screen w-full flex ">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class="flex-1 h-full overflow-y-auto hide-scrollbar p-8 lg:p-12">
+        <div class="max-w-[1400px] mx-auto h-full flex flex-col gap-10">
+            
+            <!-- Header -->
+            <header id="header" class="flex justify-between items-start w-full">
+                <div class="max-w-2xl">
+                    <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-textDark">
+                        Tudo o que você precisa <br>em um só lugar
+                    </h1>
+                </div>
+                <div class="flex items-center gap-6 bg-white px-6 py-3 rounded-full shadow-ambient-sm">
+                    <div class="flex items-center gap-2 text-textDark/70 font-medium">
+                        <i class="fa-solid fa-location-dot text-primary"></i>
+                        <span>São Paulo, SP</span>
+                    </div>
+                    <div class="w-px h-6 bg-textDark/10"></div>
+                    <button class="w-10 h-10 rounded-full border-2 border-white shadow-sm">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-full h-full object-cover">
+                    </button>
+                </div>
+            </header>
+
+            <!-- Search Experience -->
+            <section id="search-section" class="w-full flex flex-col items-center gap-6 mt-4">
+                <div class="relative w-full max-w-4xl">
+                    <div class="absolute inset-y-0 left-8 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-xl text-textDark/40"></i>
+                    </div>
+                    <input type="text" placeholder="O que você está procurando hoje?" class="w-full bg-white text-lg font-medium text-textDark placeholder:text-textDark/30 rounded-full py-6 pr-8 shadow-ambient focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">
+                    <button class="absolute inset-y-3 right-3 bg-primary text-white rounded-full px-8 font-semibold hover:bg-primary/90 transition-colors">
+                        Buscar
+                    </button>
+                </div>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="text-sm font-semibold text-textDark/40 uppercase tracking-wider py-2 px-2">Recentes:</span>
+                    <button class="bg-white text-textDark/70 hover:text-primary px-5 py-2 rounded-full text-sm font-medium shadow-ambient-sm transition-all border border-transparent hover:border-primary/10">Design UI/UX</button>
+                    <button class="bg-white text-textDark/70 hover:text-primary px-5 py-2 rounded-full text-sm font-medium shadow-ambient-sm transition-all border border-transparent hover:border-primary/10">Desenvolvimento Web</button>
+                    <button class="bg-white text-textDark/70 hover:text-primary px-5 py-2 rounded-full text-sm font-medium shadow-ambient-sm transition-all border border-transparent hover:border-primary/10">Marketing Digital</button>
+                    <button class="bg-white text-textDark/70 hover:text-primary px-5 py-2 rounded-full text-sm font-medium shadow-ambient-sm transition-all border border-transparent hover:border-primary/10">Consultoria Jurídica</button>
+                </div>
+            </section>
+
+            <!-- Main Layout Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-4 flex-1">
+                
+                <!-- Left Side (Categories) -->
+                <section id="categories" class="lg:col-span-7 flex flex-col gap-6">
+                    <div class="flex justify-between items-end">
+                        <h2 class="text-2xl font-bold text-textDark">Categorias de Serviço</h2>
+                        <a href="#" class="text-primary font-semibold text-sm hover:underline">Ver todas</a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+                        <!-- Category Card 1 -->
+                        <a href="#" class="bg-white p-6 rounded-[24px] shadow-ambient-sm hover:shadow-ambient transition-all flex flex-col gap-4 group cursor-pointer border border-transparent hover:border-primary/10">
+                            <div class="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-pen-nib text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">Design & Criativo</h3>
+                                <p class="text-sm text-textDark/50 mt-1">1.2k Mestres</p>
+                            </div>
+                        </a>
+                        <!-- Category Card 2 -->
+                        <a href="#" class="bg-white p-6 rounded-[24px] shadow-ambient-sm hover:shadow-ambient transition-all flex flex-col gap-4 group cursor-pointer border border-transparent hover:border-primary/10">
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-500/5 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-code text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">Tecnologia</h3>
+                                <p class="text-sm text-textDark/50 mt-1">850 Mestres</p>
+                            </div>
+                        </a>
+                        <!-- Category Card 3 -->
+                        <a href="#" class="bg-white p-6 rounded-[24px] shadow-ambient-sm hover:shadow-ambient transition-all flex flex-col gap-4 group cursor-pointer border border-transparent hover:border-primary/10">
+                            <div class="w-14 h-14 rounded-2xl bg-amber-500/5 flex items-center justify-center text-amber-600 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-bullhorn text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">Marketing</h3>
+                                <p class="text-sm text-textDark/50 mt-1">640 Mestres</p>
+                            </div>
+                        </a>
+                        <!-- Category Card 4 -->
+                        <a href="#" class="bg-white p-6 rounded-[24px] shadow-ambient-sm hover:shadow-ambient transition-all flex flex-col gap-4 group cursor-pointer border border-transparent hover:border-primary/10">
+                            <div class="w-14 h-14 rounded-2xl bg-purple-500/5 flex items-center justify-center text-purple-600 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-scale-balanced text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">Jurídico</h3>
+                                <p class="text-sm text-textDark/50 mt-1">320 Mestres</p>
+                            </div>
+                        </a>
+                        <!-- Category Card 5 -->
+                        <a href="#" class="bg-white p-6 rounded-[24px] shadow-ambient-sm hover:shadow-ambient transition-all flex flex-col gap-4 group cursor-pointer border border-transparent hover:border-primary/10">
+                            <div class="w-14 h-14 rounded-2xl bg-rose-500/5 flex items-center justify-center text-rose-600 group-hover:bg-rose-500 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-camera text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">Audiovisual</h3>
+                                <p class="text-sm text-textDark/50 mt-1">415 Mestres</p>
+                            </div>
+                        </a>
+                        <!-- Category Card 6 -->
+                        <a href="#" class="bg-white p-6 rounded-[24px] shadow-ambient-sm hover:shadow-ambient transition-all flex flex-col gap-4 group cursor-pointer border border-transparent hover:border-primary/10">
+                            <div class="w-14 h-14 rounded-2xl bg-blue-500/5 flex items-center justify-center text-blue-600 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-chart-line text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">Negócios</h3>
+                                <p class="text-sm text-textDark/50 mt-1">590 Mestres</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Right Side (Featured Project) -->
+                <section id="featured-project" class="lg:col-span-5 flex flex-col gap-6">
+                    <h2 class="text-2xl font-bold text-textDark">Projeto da Semana</h2>
+                    <div class="bg-white rounded-[24px] shadow-ambient flex flex-col h-full">
+                        <div class="h-48 relative ">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Featured Project" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary flex items-center gap-1">
+                                <i class="fa-solid fa-star"></i> Destaque
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-xl font-bold text-textDark leading-tight">Redesign App Financeiro</h3>
+                                    <p class="text-sm text-textDark/60 mt-1">UX/UI Design • Fintech</p>
+                                </div>
+                                <div class="bg-background rounded-full p-2 text-textDark/50 hover:text-primary cursor-pointer transition-colors">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </div>
+                            </div>
+                            <p class="text-textDark/70 text-sm leading-relaxed mb-6 line-clamp-3">
+                                Estudo de caso completo sobre como aumentamos a conversão em 45% simplificando a jornada de onboarding e modernizando a interface do aplicativo principal.
+                            </p>
+                            <div class="mt-auto pt-4 border-t border-background flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Mestre" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <p class="text-sm font-bold text-textDark">Carlos Mendes</p>
+                                        <p class="text-xs text-textDark/50">Mestre Verificado</p>
+                                    </div>
+                                </div>
+                                <button class="text-primary font-bold text-sm flex items-center gap-2 hover:underline">
+                                    Ver Case <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom Row: Verified Mestres -->
+            <section id="verified-mestres" class="w-full flex flex-col gap-6 pb-12">
+                <div class="flex justify-between items-end">
+                    <div>
+                        <h2 class="text-2xl font-bold text-textDark">Mestres Verificados Próximos</h2>
+                        <p class="text-textDark/50 mt-1">Profissionais de elite disponíveis para o seu projeto</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="w-10 h-10 rounded-full bg-white shadow-ambient-sm flex items-center justify-center text-textDark/50 hover:text-primary hover:bg-primary/5 transition-all">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-full bg-white shadow-ambient-sm flex items-center justify-center text-textDark/50 hover:text-primary hover:bg-primary/5 transition-all">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6 overflow-x-auto hide-scrollbar pb-4 -mx-2 px-2">
+                    <!-- Mestre Card 1 -->
+                    <div class="min-w-[300px] bg-white rounded-[24px] p-5 shadow-ambient-sm border border-transparent hover:border-primary/10 transition-all flex flex-col gap-4">
+                        <div class="flex items-start justify-between">
+                            <div class="flex gap-3">
+                                <div class="relative">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Mestre" class="w-14 h-14 rounded-full object-cover">
+                                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5">
+                                        <div class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px]">
+                                            <i class="fa-solid fa-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-textDark">Mariana Silva</h4>
+                                    <p class="text-xs text-textDark/50">Especialista UX/UI</p>
+                                    <div class="flex items-center gap-1 mt-1">
+                                        <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                        <span class="text-xs font-bold text-textDark">5.0</span>
+                                        <span class="text-xs text-textDark/40">(42)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-background text-textDark/70 text-xs px-3 py-1 rounded-full font-medium">Figma</span>
+                            <span class="bg-background text-textDark/70 text-xs px-3 py-1 rounded-full font-medium">Prototipagem</span>
+                            <span class="bg-background text-textDark/70 text-xs px-3 py-1 rounded-full font-medium">Research</span>
+                        </div>
+                    </div>
+
+                    <!-- Mestre Card 2 -->
+                    <div class="min-w-[300px] bg-white rounded-[24px] p-5 shadow-ambient-sm border border-transparent hover:border-primary/10 transition-all flex flex-col gap-4">
+                        <div class="flex items-start justify-between">
+                            <div class="flex gap-3">
+                                <div class="relative">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Mestre" class="w-14 h-14 rounded-full object-cover">
+                                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5">
+                                        <div class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px]">
+                                            <i class="fa-solid fa-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-textDark">Rafael Costa</h4>
+                                    <p class="text-xs text-textDark/50">Desenvolvedor Full-Stack</p>
+                                    <div class="flex items-center gap-1 mt-1">
+                                        <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                        <span class="text-xs font-bold text-textDark">4.9</span>
+                                        <span class="text-xs text-textDark/40">(86)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-background text-textDark/70 text-xs px-3 py-1 rounded-full font-medium">React</span>
+                            <span class="bg-background text-textDark/70 text-xs px-3 py-1 rounded-full font-medium">Node.js</span>
+                            <span class="bg-background text-textDark/70 text-xs px-3 py-1 rounded-full font-medium">AWS</span>
+                        </div>
+                    </div>
+
+                    <!-- Mestre Card 3 -->
+                    <div class="min-w-[300px] bg-white rounded-[24px] p-5 shadow-ambient-sm border border-transparent hover:border-primary/10 transition-all flex flex-col gap-4">
+                        <div class="flex items-start justify-between">
+                            <div class="flex gap-3">
+                                <div class="relative">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Mestre" class="w-14 h-14 rounded-full object-cover">
+                                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5">
+                                        <div class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px]">
+                                            <i class="fa-solid fa-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-textDark">Camila Santos</h4>
+                                    <p class="text-xs text-textDark/50">Estrategista de Marketing</p>
+                                    <div class="flex items-center gap-1 mt-1">
+                                        <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                        <span class="text-xs font-bold text-textDark">5.0</span>
+                                        <span class="text-xs text-textDark/40">(124)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-background text-textDark/70 text-xs px-3 py-1 rounded-full font-medium">SEO</span>
+                            <span class="bg-background text-textDark/70 text-xs px-3 py-1 rounded-full font-medium">Growth</span>
+                            <span class="bg-background text-textDark/70 text-xs px-3 py-1 rounded-full font-medium">Ads</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

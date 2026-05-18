@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição do perfil profissional - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        'primary-light': 'rgba(0, 22, 220, 0.08)',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280',
+                        },
+                        border: '#E5E7EB',
+                        surface: '#FFFFFF',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'inner-card': '0 1px 3px rgba(0,0,0,0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+
+    <!-- Top Navigation -->
+    <header id="header" class="w-full bg-surface border-b border-border sticky top-0 z-50">
+        <div class="max-w-[1000px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
+                    <i class="fa-solid fa-cube text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-text-main tracking-tight">MMO</span>
+            </div>
+            
+            <!-- Right Actions -->
+            <div class="flex items-center gap-6">
+                <button class="text-text-muted hover:text-primary transition-colors relative">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+                <div class="flex items-center gap-3 border-l border-border cursor-pointer group">
+                    <div class="text-right hidden sm:block">
+                        <div class="text-sm font-semibold text-text-main group-hover:text-primary transition-colors">Arthur</div>
+                        <div class="text-xs text-text-muted">Professional</div>
+                    </div>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Arthur" class="w-10 h-10 rounded-full object-cover border-2 border-transparent group-hover:border-primary transition-colors">
+                    <i class="fa-solid fa-chevron-down text-xs text-text-muted ml-1"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="w-full max-w-[1000px] mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col md:flex-row gap-8">
+        
+        <!-- Left Sidebar (30%) -->
+        <aside id="sidebar-menu" class="w-full md:w-[30%] flex-shrink-0">
+            <div class="bg-surface rounded-[24px] shadow-soft p-6 sticky top-[104px]">
+                
+                <!-- Profile Summary -->
+                <div class="flex flex-col items-center text-center pb-6 border-b border-border mb-6">
+                    <div class="relative mb-4">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Arthur" class="w-20 h-20 rounded-full object-cover shadow-sm">
+                        <div class="absolute bottom-0 right-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm" title="Verified">
+                            <i class="fa-solid fa-check text-white text-[10px]"></i>
+                        </div>
+                    </div>
+                    <h2 class="text-lg font-bold text-text-main">Arthur</h2>
+                    <p class="text-sm text-text-muted mt-1">UX/UI Designer</p>
+                </div>
+
+                <!-- Menu Items -->
+                <nav class="space-y-1.5">
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-[12px] bg-primary-light text-primary font-semibold transition-all">
+                        <i class="fa-regular fa-user w-5 text-center"></i>
+                        <span>Geral & Bio</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-[12px] text-text-muted hover:bg-gray-50 hover:text-text-main font-medium transition-all">
+                        <i class="fa-solid fa-briefcase w-5 text-center"></i>
+                        <span>Serviços</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-[12px] text-text-muted hover:bg-gray-50 hover:text-text-main font-medium transition-all">
+                        <i class="fa-solid fa-location-dot w-5 text-center"></i>
+                        <span>Região</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-[12px] text-text-muted hover:bg-gray-50 hover:text-text-main font-medium transition-all">
+                        <i class="fa-regular fa-calendar-check w-5 text-center"></i>
+                        <span>Disponibilidade</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-[12px] text-text-muted hover:bg-gray-50 hover:text-text-main font-medium transition-all">
+                        <i class="fa-regular fa-folder-open w-5 text-center"></i>
+                        <span>Portfólio</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Right Content Area (70%) -->
+        <section id="main-content" class="w-full md:w-[70%]">
+            
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-text-main">Configurações de Perfil</h1>
+                <p class="text-text-muted mt-1">Gerencie suas informações pessoais e biografia profissional.</p>
+            </div>
+
+            <!-- Massive Pure White Card -->
+            <div class="bg-surface rounded-[24px] shadow-soft p-8">
+                
+                <h2 class="text-xl font-bold text-text-main mb-6 border-b border-border pb-4">Informações Pessoais</h2>
+
+                <!-- Photo Upload Zone -->
+                <div class="mb-8 flex items-start gap-6">
+                    <div class="relative group cursor-pointer">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Current Avatar" class="w-24 h-24 rounded-full object-cover border border-border">
+                        <div class="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-solid fa-camera text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center pt-2">
+                        <h3 class="text-sm font-semibold text-text-main mb-1">Foto de Perfil</h3>
+                        <p class="text-xs text-text-muted mb-3 max-w-[250px]">Recomendamos uma imagem quadrada de pelo menos 400x400px (JPG ou PNG).</p>
+                        <div class="flex gap-3">
+                            <button class="px-4 py-2 rounded-full border border-border text-sm font-medium text-text-main hover:bg-gray-50 transition-colors">Alterar foto</button>
+                            <button class="px-4 py-2 rounded-full text-sm font-medium text-red-500 hover:bg-red-50 transition-colors">Remover</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Fields -->
+                <form class="space-y-6">
+                    
+                    <!-- Inner Card for Fields -->
+                    <div class="bg-[#F9FAFB] rounded-[16px] p-6 border border-border/50 shadow-inner-card">
+                        <div class="space-y-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-text-main mb-2">Nome de Exibição</label>
+                                <input type="text" value="Arthur Designer" class="w-full px-4 py-3 rounded-full border border-border bg-surface text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm" placeholder="Seu nome público">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-semibold text-text-main mb-2">Email de Contato</label>
+                                    <input type="email" value="arthur@example.com" class="w-full px-4 py-3 rounded-full border border-border bg-surface text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-text-main mb-2">Telefone</label>
+                                    <input type="tel" value="+55 (11) 99999-9999" class="w-full px-4 py-3 rounded-full border border-border bg-surface text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#F9FAFB] rounded-[16px] p-6 border border-border/50 shadow-inner-card mt-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-text-main mb-2">Biografia Profissional</label>
+                            <p class="text-xs text-text-muted mb-3">Escreva um breve resumo sobre sua experiência e habilidades para seus clientes.</p>
+                            <textarea rows="5" class="w-full px-5 py-4 rounded-[20px] border border-border bg-surface text-text-main focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm resize-none" placeholder="Conte um pouco sobre sua trajetória profissional...">Especialista em UI/UX com mais de 8 anos de experiência criando produtos digitais focados no usuário. Ajudo empresas a transformarem ideias complexas em interfaces intuitivas e escaláveis.</textarea>
+                            <div class="flex justify-end mt-2">
+                                <span class="text-xs text-text-muted">178 / 500 caracteres</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Area -->
+                    <div class="pt-6 flex justify-end border-t border-border mt-8">
+                        <button type="button" class="px-8 py-3.5 bg-primary text-white rounded-full font-semibold hover:bg-blue-700 focus:ring-4 focus:ring-primary/30 transition-all shadow-md flex items-center gap-2">
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            Salvar Alterações
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

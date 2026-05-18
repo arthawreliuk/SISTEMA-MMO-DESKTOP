@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão administrativa de matching - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        offwhite: '#F8F9FA',
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        trustblue_light: 'rgba(0, 22, 220, 0.1)',
+                        border_color: '#E5E7EB',
+                        text_muted: '#6B7280',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'nav': '5px 0 30px -10px rgba(0,0,0,0.08)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; overflow-x: hidden; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Table Styles matching ref */
+        .admin-table th {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #6B7280;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .admin-table td {
+            padding: 1rem 0;
+            border-bottom: 1px solid #F3F4F6;
+            font-size: 0.875rem;
+        }
+        .admin-table tr:last-child td { border-bottom: none; }
+        
+        /* Layout constraint for tablet landscape */
+        .tablet-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-navy bg-offwhite m-0 p-0">
+
+<div class="tablet-container" id="app-root">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class="flex-1 p-8 lg:p-10 max-w-[1400px]">
+        
+        <!-- Header -->
+        <header id="header" class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+                <h1 class="text-[32px] font-bold leading-tight tracking-tight mb-2">Monitor de Inteligência de Matching</h1>
+                <p class="text-text_muted text-base font-medium">Análise em tempo real do algoritmo de conexões.</p>
+            </div>
+            
+            <!-- Header Actions -->
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-text_muted"></i>
+                    <input type="text" placeholder="Buscar conexões..." class=" pr-4 py-2.5 bg-white border border-border_color rounded-[14px] text-sm focus:outline-none focus:border-trustblue focus:ring-1 focus:ring-trustblue transition-all w-64 shadow-sm">
+                </div>
+                <button class="bg-white border border-border_color p-2.5 rounded-[14px] text-text_muted hover:text-navy shadow-sm transition-all">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- KPI Grid -->
+        <section id="kpi-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient relative group">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-sm font-semibold text-text_muted uppercase tracking-wider mb-1">Taxa de Sucesso</p>
+                        <h3 class="text-3xl font-bold">94.8%</h3>
+                    </div>
+                    <div class="w-12 h-12 rounded-[14px] bg-trustblue_light flex items-center justify-center text-trustblue">
+                        <i class="fa-solid fa-check-double text-xl"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-success flex items-center gap-1 font-semibold bg-success/10 px-2 py-0.5 rounded-md">
+                        <i class="fa-solid fa-arrow-trend-up text-xs"></i> +2.4%
+                    </span>
+                    <span class="text-text_muted">vs. último mês</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient relative ">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-sm font-semibold text-text_muted uppercase tracking-wider mb-1">Total de Matches</p>
+                        <h3 class="text-3xl font-bold">12,450</h3>
+                    </div>
+                    <div class="w-12 h-12 rounded-[14px] bg-trustblue_light flex items-center justify-center text-trustblue">
+                        <i class="fa-solid fa-handshake-angle text-xl"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-success flex items-center gap-1 font-semibold bg-success/10 px-2 py-0.5 rounded-md">
+                        <i class="fa-solid fa-arrow-trend-up text-xs"></i> +840
+                    </span>
+                    <span class="text-text_muted">hoje</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient relative ">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-sm font-semibold text-text_muted uppercase tracking-wider mb-1">ROI de Conexão</p>
+                        <h3 class="text-3xl font-bold">4.2x</h3>
+                    </div>
+                    <div class="w-12 h-12 rounded-[14px] bg-trustblue_light flex items-center justify-center text-trustblue">
+                        <i class="fa-solid fa-chart-line text-xl"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <span class="text-text_muted flex items-center gap-1 font-semibold bg-gray-100 px-2 py-0.5 rounded-md">
+                        Estável
+                    </span>
+                    <span class="text-text_muted">média da plataforma</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Split View -->
+        <section id="analytics-split" class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            
+            <!-- Heatmap (Left - 2 cols) -->
+            <div class="lg:col-span-2 bg-white rounded-[24px] p-6 shadow-ambient border border-border_color/50">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-bold">Zonas de Calor - Requisições</h3>
+                    <div class="flex gap-2">
+                        <button class="px-3 py-1 text-xs font-semibold bg-trustblue text-white rounded-lg shadow-sm">Hoje</button>
+                        <button class="px-3 py-1 text-xs font-semibold text-text_muted hover:bg-gray-50 rounded-lg transition-colors">Semana</button>
+                    </div>
+                </div>
+                <div id="heatmap-chart" class="w-full h-[320px]"></div>
+            </div>
+
+            <!-- Doughnut Chart (Right - 1 col) -->
+            <div class="bg-white rounded-[24px] p-6 shadow-ambient border border-border_color/50 flex flex-col">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-lg font-bold">Categorias Solicitadas</h3>
+                    <button class="text-text_muted hover:text-navy"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div id="doughnut-chart" class="w-full flex-1 min-h-[280px]"></div>
+                
+                <!-- Custom Legend -->
+                <div class="mt-4 space-y-3">
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-[#0016dc]"></div>
+                            <span class="font-medium">Consultoria Tech</span>
+                        </div>
+                        <span class="font-bold">45%</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-[#60A5FA]"></div>
+                            <span class="font-medium">Design & UX</span>
+                        </div>
+                        <span class="font-bold">30%</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-[#CBD5E1]"></div>
+                            <span class="font-medium">Marketing B2B</span>
+                        </div>
+                        <span class="font-bold">25%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Log Table -->
+        <section id="recent-matches" class="bg-white rounded-[24px] p-6 shadow-ambient border border-border_color/50 mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h3 class="text-lg font-bold">Log de Matches Recentes</h3>
+                    <p class="text-sm text-text_muted mt-1">Últimas conexões estabelecidas pelo algoritmo.</p>
+                </div>
+                <button class="flex items-center gap-2 text-sm font-semibold text-trustblue bg-trustblue_light px-4 py-2 rounded-xl hover:bg-trustblue hover:text-white transition-all">
+                    Ver Todos <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left admin-table">
+                    <thead>
+                        <tr>
+                            <th class="w-16 text-center">ID</th>
+                            <th>Solicitante</th>
+                            <th>Fornecedor Match</th>
+                            <th>Categoria</th>
+                            <th>Score de Afinidade</th>
+                            <th class="text-right">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors">
+                            <td class="text-center font-mono text-xs text-text_muted">#892</td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-8 h-8 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-bold text-navy">TechNova Solutions</p>
+                                        <p class="text-xs text-text_muted">São Paulo, SP</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-8 h-8 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-bold text-navy">CloudOps Inc.</p>
+                                        <p class="text-xs text-text_muted">Remoto</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="bg-gray-100 text-navy px-2.5 py-1 rounded-md text-xs font-semibold">Infraestrutura</span>
+                            </td>
+                            <td>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 max-w-[80px]">
+                                        <div class="bg-success h-1.5 rounded-full" style="width: 98%"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-success">98%</span>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <span class="inline-flex items-center gap-1.5 bg-success/10 text-success px-3 py-1 rounded-full text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-success"></span> Aceito
+                                </span>
+                            </td>
+                        </tr>
+                        
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors">
+                            <td class="text-center font-mono text-xs text-text_muted">#891</td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-bold text-navy">Studio Cria</p>
+                                        <p class="text-xs text-text_muted">Rio de Janeiro, RJ</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-8 h-8 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-bold text-navy">Agência Vértice</p>
+                                        <p class="text-xs text-text_muted">Curitiba, PR</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="bg-gray-100 text-navy px-2.5 py-1 rounded-md text-xs font-semibold">Marketing B2B</span>
+                            </td>
+                            <td>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 max-w-[80px]">
+                                        <div class="bg-trustblue h-1.5 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-trustblue">85%</span>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <span class="inline-flex items-center gap-1.5 bg-warning/10 text-warning px-3 py-1 rounded-full text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-warning"></span> Pendente
+                                </span>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-gray-50/50 transition-colors">
+                            <td class="text-center font-mono text-xs text-text_muted">#890</td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-bold text-navy">Fintech X</p>
+                                        <p class="text-xs text-text_muted">Belo Horizonte, MG</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" class="w-8 h-8 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-bold text-navy">LegalTech Associados</p>
+                                        <p class="text-xs text-text_muted">São Paulo, SP</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="bg-gray-100 text-navy px-2.5 py-1 rounded-md text-xs font-semibold">Compliance</span>
+                            </td>
+                            <td>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 max-w-[80px]">
+                                        <div class="bg-trustblue h-1.5 rounded-full" style="width: 92%"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-trustblue">92%</span>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <span class="inline-flex items-center gap-1.5 bg-success/10 text-success px-3 py-1 rounded-full text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-success"></span> Aceito
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+    function initializeCharts() {
+        // Shared config
+        const config = { responsive: true, displayModeBar: false, displaylogo: false };
+        const fontFam = '"Plus Jakarta Sans", sans-serif';
+
+        // 1. Heatmap (Simulated Activity Map)
+        const heatmapData = [{
+            z: [
+                [1, 20, 30, 50, 1],
+                [20, 1, 60, 80, 30],
+                [30, 60, 1, -10, 20],
+                [50, 80, -10, 1, 40],
+                [1, 30, 20, 40, 1]
+            ],
+            x: ['SP', 'RJ', 'MG', 'PR', 'SC'],
+            y: ['Manhã', 'Tarde', 'Noite', 'Madrugada', 'Fim de Semana'],
+            type: 'heatmap',
+            colorscale: [
+                [0, '#F8F9FA'],
+                [0.5, '#60A5FA'],
+                [1, '#0016dc']
+            ],
+            showscale: false,
+            hoverinfo: 'z'
+        }];
+
+        const heatmapLayout = {
+            margin: { t: 20, r: 20, b: 40, l: 80 },
+            plot_bgcolor: 'transparent',
+            paper_bgcolor: 'transparent',
+            font: { family: fontFam, color: '#6B7280', size: 12 },
+            xaxis: { showgrid: false, zeroline: false },
+            yaxis: { showgrid: false, zeroline: false }
+        };
+
+        try {
+            Plotly.newPlot('heatmap-chart', heatmapData, heatmapLayout, config);
+        } catch(e) { console.error('Heatmap error:', e); }
+
+        // 2. Doughnut Chart
+        const doughnutData = [{
+            values: [45, 30, 25],
+            labels: ['Consultoria Tech', 'Design & UX', 'Marketing B2B'],
+            type: 'pie',
+            hole: 0.75,
+            marker: {
+                colors: ['#0016dc', '#60A5FA', '#CBD5E1'],
+                line: { color: '#ffffff', width: 2 }
+            },
+            textinfo: 'none',
+            hoverinfo: 'label+percent'
+        }];
+
+        const doughnutLayout = {
+            margin: { t: 10, r: 10, b: 10, l: 10 },
+            showlegend: false,
+            plot_bgcolor: 'transparent',
+            paper_bgcolor: 'transparent',
+            font: { family: fontFam }
+        };
+
+        try {
+            Plotly.newPlot('doughnut-chart', doughnutData, doughnutLayout, config);
+        } catch(e) { console.error('Doughnut error:', e); }
+    }
+
+    window.addEventListener('load', initializeCharts);
+    setTimeout(initializeCharts, 1200);
+</script>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de detalhe_gestão da publicação do Balcão - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280',
+                            light: '#9CA3AF'
+                        },
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 30px -5px rgba(0, 22, 220, 0.15)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+        .nav-pill-active { position: relative; }
+        .nav-pill-active::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background-color: #0016dc; border-radius: 50%; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex selection:bg-primary/20 selection:text-primary">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class=" flex-1 h-screen overflow-y-auto px-8 lg:px-12 py-10 flex flex-col">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 shrink-0">
+            <div>
+                <div class="flex items-center gap-3 text-sm font-medium text-text-muted mb-3">
+                    <span class="hover:text-primary cursor-pointer transition-colors">Ordens</span>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-text-main">REQ-84920</span>
+                </div>
+                <h1 class="text-4xl font-extrabold text-text-main tracking-tight mb-2">Gerenciamento do Serviço</h1>
+                <p class="text-text-muted text-lg font-medium">Analise e compare os Mestres interessados na sua solicitação.</p>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="flex items-center bg-surface px-4 py-2.5 rounded-full shadow-sm border border-border/50">
+                    <span class="w-2 h-2 rounded-full bg-success mr-2"></span>
+                    <span class="text-sm font-semibold text-text-main">Status: Aberto</span>
+                </div>
+                <button class="w-12 h-12 bg-surface rounded-full shadow-sm border border-border/50 flex items-center justify-center text-text-main hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Split Layout (2 Columns) -->
+        <div class="flex flex-col lg:flex-row gap-8 flex-1 pb-10">
+            
+            <!-- Left Column (Request Details - 35%) -->
+            <aside id="request-details" class="w-full lg:w-[35%] flex flex-col gap-6">
+                <div class="bg-surface rounded-4xl p-8 shadow-soft border border-border/30 sticky top-10">
+                    
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-text-main">Detalhes do Pedido</h2>
+                        <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-text-muted rounded-full uppercase tracking-wider">Elétrica</span>
+                    </div>
+
+                    <!-- Problem Description -->
+                    <div class="mb-8">
+                        <h3 class="text-sm font-semibold text-text-muted mb-3 uppercase tracking-wider">Descrição do Problema</h3>
+                        <p class="text-text-main leading-relaxed text-[15px]">
+                            Curto-circuito no quadro geral da residência. Metade da casa está sem energia desde ontem à noite. O disjuntor principal cai assim que é religado. Necessito de um eletricista urgente para diagnóstico e reparo seguro.
+                        </p>
+                    </div>
+
+                    <!-- Details Grid -->
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-background rounded-2xl p-4 border border-border/50">
+                            <span class="block text-xs text-text-muted font-medium mb-1">Localização</span>
+                            <span class="block text-sm font-bold text-text-main truncate" title="Rua das Flores, 123 - Centro">Rua das Flores, 123</span>
+                        </div>
+                        <div class="bg-background rounded-2xl p-4 border border-border/50">
+                            <span class="block text-xs text-text-muted font-medium mb-1">Urgência</span>
+                            <span class="block text-sm font-bold text-danger flex items-center gap-1">
+                                <i class="fa-solid fa-fire text-[10px]"></i> Alta
+                            </span>
+                        </div>
+                        <div class="bg-background rounded-2xl p-4 border border-border/50">
+                            <span class="block text-xs text-text-muted font-medium mb-1">Data Criada</span>
+                            <span class="block text-sm font-bold text-text-main">Hoje, 08:30</span>
+                        </div>
+                        <div class="bg-background rounded-2xl p-4 border border-border/50">
+                            <span class="block text-xs text-text-muted font-medium mb-1">Visitas</span>
+                            <span class="block text-sm font-bold text-text-main">42 visualizações</span>
+                        </div>
+                    </div>
+
+                    <!-- Image Gallery -->
+                    <div class="mb-8">
+                        <h3 class="text-sm font-semibold text-text-muted mb-3 uppercase tracking-wider">Fotos Anexadas</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="h-28 rounded-2xl border border-border/50 relative group cursor-pointer">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/87a610ea79-1fcaf0e06b84abd90af2.png" alt="Electrical breaker box with some burnt wires, realistic, close up, well lit" />
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <i class="fa-solid fa-magnifying-glass-plus text-white"></i>
+                                </div>
+                            </div>
+                            <div class="h-28 rounded-2xl border border-border/50 relative group cursor-pointer">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/843eb72041-577125bbe31126a7bce3.png" alt="Darkened hallway of a house, power outage context, realistic lighting" />
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <i class="fa-solid fa-magnifying-glass-plus text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Boost Button -->
+                    <button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold text-[15px] flex items-center justify-center gap-2 hover:bg-primary/5 transition-colors group">
+                        <i class="fa-solid fa-bolt text-warning group-hover:scale-110 transition-transform"></i>
+                        Turbinar Visibilidade
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Right Column (Proposals Feed - 65%) -->
+            <section id="proposals-feed" class="w-full lg:w-[65%] flex flex-col gap-6">
+                
+                <!-- Feed Filters/Header -->
+                <div class="flex items-center justify-between bg-surface rounded-full px-6 py-3 shadow-sm border border-border/30">
+                    <div class="flex items-center gap-6">
+                        <span class="text-sm font-bold text-text-main">3 Propostas Recebidas</span>
+                        <div class="h-4 w-px bg-border"></div>
+                        <div class="flex gap-4">
+                            <button class="text-sm font-semibold text-primary">Recomendados</button>
+                            <button class="text-sm font-medium text-text-muted hover:text-text-main transition-colors">Menor Preço</button>
+                            <button class="text-sm font-medium text-text-muted hover:text-text-main transition-colors">Mais Próximos</button>
+                        </div>
+                    </div>
+                    <button class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-text-muted hover:bg-gray-100 transition-colors">
+                        <i class="fa-solid fa-arrow-down-wide-short text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Bid Card 1 (Premium/Recommended) -->
+                <article class="bg-surface rounded-4xl p-6 shadow-soft border border-primary/20 relative group hover:shadow-float transition-shadow duration-300">
+                    <!-- Premium Badge -->
+                    <div class="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-bl-xl z-10">
+                        <i class="fa-solid fa-star text-warning mr-1"></i> Mestre Recomendado
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <!-- Avatar & Info -->
+                        <div class="flex items-center gap-5 flex-1">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Roberto Alves" class="w-20 h-20 rounded-2xl object-cover border-2 border-surface shadow-sm">
+                                <div class="absolute -bottom-2 -right-2 w-7 h-7 bg-success rounded-full border-2 border-surface flex items-center justify-center text-white" title="Verificado">
+                                    <i class="fa-solid fa-check text-[10px]"></i>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-bold text-text-main mb-1 flex items-center gap-2">
+                                    Roberto Alves
+                                    <span class="bg-gray-100 text-text-muted text-[10px] font-bold px-2 py-0.5 rounded-md uppercase">Eletricista</span>
+                                </h3>
+                                
+                                <div class="flex items-center gap-4 text-sm text-text-muted mb-2">
+                                    <div class="flex items-center gap-1">
+                                        <i class="fa-solid fa-star text-warning text-xs"></i>
+                                        <span class="font-bold text-text-main">4.9</span>
+                                        <span>(128)</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <i class="fa-solid fa-location-dot text-xs"></i>
+                                        <span>A 2km de você em Camboriú</span>
+                                    </div>
+                                </div>
+                                
+                                <p class="text-sm text-text-main line-clamp-1">"Posso estar aí em 30 min. Levo equipamento para teste de fuga de corrente."</p>
+                            </div>
+                        </div>
+
+                        <!-- Price & CTA -->
+                        <div class="flex flex-col items-end gap-4 w-full sm:w-auto mt-4 sm:mt-0 border-t sm:border-t-0 sm:border-l border-border/50 pt-4 sm:pt-0 sm:">
+                            <div class="text-right w-full">
+                                <span class="block text-xs text-text-muted font-medium uppercase tracking-wider mb-1">Orçamento Estimado</span>
+                                <div class="text-2xl font-extrabold text-text-main">R$ 150 <span class="text-sm font-medium text-text-muted">/visita</span></div>
+                            </div>
+                            <button class="w-full sm:w-auto px-8 py-3.5 bg-primary text-white rounded-full font-bold text-sm hover:bg-primary/90 transition-colors shadow-sm flex items-center justify-center gap-2">
+                                Avaliar Proposta Completa
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Bid Card 2 -->
+                <article class="bg-surface rounded-4xl p-6 shadow-soft border border-border/30 hover:border-border/60 transition-colors">
+                    <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <!-- Avatar & Info -->
+                        <div class="flex items-center gap-5 flex-1">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Carlos Mendes" class="w-20 h-20 rounded-2xl object-cover border-2 border-surface shadow-sm">
+                                <div class="absolute -bottom-2 -right-2 w-7 h-7 bg-success rounded-full border-2 border-surface flex items-center justify-center text-white" title="Verificado">
+                                    <i class="fa-solid fa-check text-[10px]"></i>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-bold text-text-main mb-1 flex items-center gap-2">
+                                    Carlos Mendes
+                                    <span class="bg-gray-100 text-text-muted text-[10px] font-bold px-2 py-0.5 rounded-md uppercase">Eletricista</span>
+                                </h3>
+                                
+                                <div class="flex items-center gap-4 text-sm text-text-muted mb-2">
+                                    <div class="flex items-center gap-1">
+                                        <i class="fa-solid fa-star text-warning text-xs"></i>
+                                        <span class="font-bold text-text-main">4.7</span>
+                                        <span>(84)</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <i class="fa-solid fa-location-dot text-xs"></i>
+                                        <span>A 5km de você em Itajaí</span>
+                                    </div>
+                                </div>
+                                
+                                <p class="text-sm text-text-main line-clamp-1">"Experiência de 10 anos com quadros residenciais. Disponível após almoço."</p>
+                            </div>
+                        </div>
+
+                        <!-- Price & CTA -->
+                        <div class="flex flex-col items-end gap-4 w-full sm:w-auto mt-4 sm:mt-0 border-t sm:border-t-0 sm:border-l border-border/50 pt-4 sm:pt-0 sm:">
+                            <div class="text-right w-full">
+                                <span class="block text-xs text-text-muted font-medium uppercase tracking-wider mb-1">Orçamento Estimado</span>
+                                <div class="text-2xl font-extrabold text-text-main">R$ 120 <span class="text-sm font-medium text-text-muted">/visita</span></div>
+                            </div>
+                            <button class="w-full sm:w-auto px-8 py-3.5 bg-primary text-white rounded-full font-bold text-sm hover:bg-primary/90 transition-colors shadow-sm flex items-center justify-center gap-2">
+                                Avaliar Proposta Completa
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Bid Card 3 -->
+                <article class="bg-surface rounded-4xl p-6 shadow-soft border border-border/30 hover:border-border/60 transition-colors opacity-80">
+                    <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <!-- Avatar & Info -->
+                        <div class="flex items-center gap-5 flex-1">
+                            <div class="relative">
+                                <div class="w-20 h-20 rounded-2xl bg-gray-100 flex items-center justify-center text-text-muted text-2xl font-bold border-2 border-surface shadow-sm">
+                                    MS
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-bold text-text-main mb-1 flex items-center gap-2">
+                                    Marcos Silva
+                                    <span class="bg-gray-100 text-text-muted text-[10px] font-bold px-2 py-0.5 rounded-md uppercase">Eletricista</span>
+                                </h3>
+                                
+                                <div class="flex items-center gap-4 text-sm text-text-muted mb-2">
+                                    <div class="flex items-center gap-1">
+                                        <i class="fa-solid fa-star text-warning text-xs"></i>
+                                        <span class="font-bold text-text-main">Novo</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <i class="fa-solid fa-location-dot text-xs"></i>
+                                        <span>A 8km de você em Balneário</span>
+                                    </div>
+                                </div>
+                                
+                                <p class="text-sm text-text-main line-clamp-1">"Posso avaliar amanhã de manhã. Valor a combinar no local."</p>
+                            </div>
+                        </div>
+
+                        <!-- Price & CTA -->
+                        <div class="flex flex-col items-end gap-4 w-full sm:w-auto mt-4 sm:mt-0 border-t sm:border-t-0 sm:border-l border-border/50 pt-4 sm:pt-0 sm:">
+                            <div class="text-right w-full">
+                                <span class="block text-xs text-text-muted font-medium uppercase tracking-wider mb-1">Orçamento Estimado</span>
+                                <div class="text-2xl font-extrabold text-text-main text-text-muted text-lg">A Combinar</div>
+                            </div>
+                            <button class="w-full sm:w-auto px-8 py-3.5 bg-primary text-white rounded-full font-bold text-sm hover:bg-primary/90 transition-colors shadow-sm flex items-center justify-center gap-2">
+                                Avaliar Proposta Completa
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

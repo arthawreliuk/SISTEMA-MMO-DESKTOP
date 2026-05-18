@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status da campanha - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        trustBlue: '#0016dc',
+                        deepNavy: '#1A1A24',
+                        offWhite: '#F8F9FA',
+                        softGreen: '#E8F5E9',
+                        softGreenText: '#4CAF50',
+                        softOrange: '#FFF3E0',
+                        softOrangeText: '#FF9800',
+                        softRed: '#FFEBEE',
+                        softRedText: '#F44336',
+                        uiGray: '#F5F5F5'
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            transition: background-color 0.3s ease-in-out;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 28px;
+            height: 28px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex text-deepNavy bg-offWhite antialiased selection:bg-trustBlue selection:text-white">
+
+
+    <!-- Main Workspace -->
+    <main class="flex-1 p-8 lg:p-10 max-w-[1400px] mx-auto min-h-screen flex flex-col">
+        
+        <!-- Header Area -->
+        <header id="main-header" class="mb-10">
+            <div class="flex justify-between items-end">
+                <div>
+                    <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">Painel de Campanhas</h1>
+                    <p class="text-gray-500 text-lg font-medium">Gerencie o status e o orçamento dos seus anúncios em tempo real.</p>
+                </div>
+                <div class="flex gap-4">
+                    <button class="h-12 px-6 bg-white rounded-[16px] shadow-sm text-deepNavy font-semibold flex items-center gap-2 hover:bg-gray-50 transition-colors border border-gray-100">
+                        <i class="fa-solid fa-download text-sm"></i> Relatório
+                    </button>
+                    <button class="h-12 px-6 bg-trustBlue rounded-[16px] shadow-lg shadow-trustBlue/20 text-white font-semibold flex items-center gap-2 hover:bg-blue-700 transition-colors">
+                        <i class="fa-solid fa-plus text-sm"></i> Nova Campanha
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Split Layout -->
+        <div class="flex-1 flex flex-col lg:flex-row gap-8">
+            
+            <!-- Left Column: Campaign List (40%) -->
+            <section id="campaign-list-col" class="w-full lg:w-[40%] flex flex-col">
+                <div class="bg-white rounded-[24px] shadow-soft p-6 flex-1 flex flex-col h-[calc(100vh-200px)] sticky top-6">
+                    
+                    <!-- Search -->
+                    <div class="relative mb-6">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Buscar campanha..." class="w-full h-14 bg-uiGray rounded-[16px] pr-4 text-deepNavy font-medium placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-trustBlue/20 border border-transparent focus:border-trustBlue/30 transition-all">
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
+                        <button class="px-5 py-2.5 bg-deepNavy text-white rounded-full text-sm font-semibold whitespace-nowrap">Todas (12)</button>
+                        <button class="px-5 py-2.5 bg-uiGray text-gray-600 hover:bg-gray-200 rounded-full text-sm font-semibold whitespace-nowrap transition-colors">Ativas (8)</button>
+                        <button class="px-5 py-2.5 bg-uiGray text-gray-600 hover:bg-gray-200 rounded-full text-sm font-semibold whitespace-nowrap transition-colors">Pausadas (3)</button>
+                    </div>
+
+                    <!-- List -->
+                    <div class="flex-1 overflow-y-auto pr-2 space-y-3">
+                        
+                        <!-- Active Item -->
+                        <div class="p-4 rounded-[16px] border-2 border-trustBlue bg-trustBlue/5 cursor-pointer flex items-center justify-between group transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-[12px] bg-white shadow-sm flex items-center justify-center text-trustBlue">
+                                    <i class="fa-brands fa-instagram text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Black Friday 2024 - IG</h3>
+                                    <p class="text-sm text-gray-500 font-medium">R$ 500/dia • Fim em 12 dias</p>
+                                </div>
+                            </div>
+                            <div class="w-3 h-3 rounded-full bg-softGreenText shadow-[0_0_8px_rgba(76,175,80,0.5)]"></div>
+                        </div>
+
+                        <!-- Paused Item -->
+                        <div class="p-4 rounded-[16px] border border-gray-100 bg-white hover:border-gray-200 hover:bg-gray-50 cursor-pointer flex items-center justify-between group transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-[12px] bg-uiGray flex items-center justify-center text-gray-500 group-hover:text-gray-700 transition-colors">
+                                    <i class="fa-brands fa-google text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1 text-gray-700 group-hover:text-deepNavy transition-colors">Search - Marca Institucional</h3>
+                                    <p class="text-sm text-gray-400 font-medium">R$ 150/dia • Contínuo</p>
+                                </div>
+                            </div>
+                            <div class="w-3 h-3 rounded-full bg-softOrangeText"></div>
+                        </div>
+
+                        <!-- Error Item -->
+                        <div class="p-4 rounded-[16px] border border-gray-100 bg-white hover:border-gray-200 hover:bg-gray-50 cursor-pointer flex items-center justify-between group transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-[12px] bg-uiGray flex items-center justify-center text-gray-500 group-hover:text-gray-700 transition-colors">
+                                    <i class="fa-brands fa-facebook-f text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1 text-gray-700 group-hover:text-deepNavy transition-colors">Retargeting Carrinho FB</h3>
+                                    <p class="text-sm text-gray-400 font-medium">R$ 300/dia • Falha no Pagamento</p>
+                                </div>
+                            </div>
+                            <div class="w-3 h-3 rounded-full bg-softRedText shadow-[0_0_8px_rgba(244,67,54,0.4)]"></div>
+                        </div>
+                        
+                        <!-- Active Item 2 -->
+                        <div class="p-4 rounded-[16px] border border-gray-100 bg-white hover:border-gray-200 hover:bg-gray-50 cursor-pointer flex items-center justify-between group transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-[12px] bg-uiGray flex items-center justify-center text-gray-500 group-hover:text-gray-700 transition-colors">
+                                    <i class="fa-brands fa-tiktok text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1 text-gray-700 group-hover:text-deepNavy transition-colors">TikTok Creators - Q4</h3>
+                                    <p class="text-sm text-gray-400 font-medium">R$ 800/dia • Fim em 5 dias</p>
+                                </div>
+                            </div>
+                            <div class="w-3 h-3 rounded-full bg-softGreenText"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Details & Controls (60%) -->
+            <section id="campaign-details-col" class="w-full lg:w-[60%] flex flex-col">
+                <div class="bg-white rounded-[24px] shadow-soft p-8 lg:p-10 flex-1 flex flex-col relative ">
+                    
+                    <!-- Decorative Background Element -->
+                    <div class="absolute -top-24 -right-24 w-64 h-64 bg-trustBlue/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- Top: Title & Status Badge -->
+                    <div class="flex justify-between items-start mb-12 relative z-10">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-full bg-trustBlue/10 flex items-center justify-center text-trustBlue">
+                                    <i class="fa-brands fa-instagram text-sm"></i>
+                                </div>
+                                <span class="text-gray-500 font-semibold tracking-wide uppercase text-sm">Instagram Ads</span>
+                            </div>
+                            <h2 class="text-4xl font-extrabold tracking-tight text-deepNavy mb-4">Black Friday 2024 - IG</h2>
+                            <div class="flex items-center gap-3">
+                                <span class="px-4 py-1.5 bg-softGreen text-softGreenText text-sm font-bold rounded-full uppercase tracking-wider flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-softGreenText animate-pulse"></span>
+                                    Ativo
+                                </span>
+                                <span class="text-gray-400 text-sm font-medium">ID: CMP-8472-BX</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Mini Chart Tile -->
+                        <div class="bg-uiGray p-4 rounded-[16px] min-w-[140px]">
+                            <p class="text-xs text-gray-500 font-semibold uppercase mb-1">ROAS Atual</p>
+                            <div class="flex items-end gap-2">
+                                <span class="text-2xl font-bold text-deepNavy">4.2x</span>
+                                <span class="text-xs font-bold text-softGreenText mb-1 flex items-center"><i class="fa-solid fa-arrow-trend-up mr-1"></i> 12%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Middle: Master Toggle Control -->
+                    <div class="bg-offWhite rounded-[24px] p-8 mb-12 border border-gray-100 flex flex-col items-center justify-center py-16 relative z-10">
+                        <p class="text-gray-500 font-semibold uppercase tracking-widest text-sm mb-6">Controle Principal</p>
+                        
+                        <!-- Big Custom Toggle -->
+                        <div class="relative inline-block w-[120px] align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-8 h-8 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 top-2 left-2 transition-all duration-300" checked/>
+                            <label for="toggle" class="toggle-label block h-12 rounded-full bg-gray-300 cursor-pointer shadow-inner-soft relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-white font-bold text-sm tracking-wider z-0 pointer-events-none">ON</span>
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-sm tracking-wider z-0 pointer-events-none">OFF</span>
+                            </label>
+                        </div>
+                        <p class="mt-6 text-xl font-bold text-deepNavy">Campanha em Veiculação</p>
+                        <p class="text-gray-400 text-sm mt-1">Pausar interrompe os gastos imediatamente.</p>
+                    </div>
+
+                    <!-- Bottom: Info Rows -->
+                    <div class="mt-auto grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10 mb-8 border-t border-gray-100 pt-8">
+                        <div>
+                            <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-2">Orçamento Diário</p>
+                            <p class="text-2xl font-bold text-deepNavy">R$ 500,00</p>
+                            <p class="text-xs text-gray-500 mt-1">Gasto hoje: R$ 142,30</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-2">Período</p>
+                            <p class="text-xl font-bold text-deepNavy">01 Nov - 30 Nov</p>
+                            <p class="text-xs text-gray-500 mt-1">12 dias restantes</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-2">Público Alvo</p>
+                            <p class="text-xl font-bold text-deepNavy">Retargeting 30d</p>
+                            <p class="text-xs text-gray-500 mt-1">Aprox. 45k pessoas</p>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="flex justify-end relative z-10">
+                        <button class="px-8 py-3.5 bg-white border-2 border-trustBlue text-trustBlue rounded-full font-bold hover:bg-trustBlue hover:text-white transition-all duration-300 shadow-sm flex items-center gap-2">
+                            <i class="fa-solid fa-pen-to-square"></i> Editar Campanha
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

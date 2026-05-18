@@ -1,0 +1,224 @@
+<html lang="pt-BR">
+
+  <head>
+    <script>
+      window.FontAwesomeConfig = {
+        autoReplaceSvg: 'nest'
+      };
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão da região de atendimento - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script>
+      tailwind.config = {
+        theme:
+        {
+          extend:
+          {
+            fontFamily:
+            {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+            colors:
+            {
+              primary: '#0016dc',
+              navy: '#1A1A24',
+              offwhite: '#F8F9FA',
+              surface: '#FFFFFF',
+              border: '#E5E7EB',
+              muted: '#6B7280'
+            },
+            boxShadow:
+            {
+              'soft': '0 20px 40px -10px rgba(0, 0, 0, 0.05)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body
+      {
+        margin: 0;
+        padding: 0;
+        background-color: #F8F9FA;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      /* Range slider styling */
+      input[type=range]
+      {
+        -webkit-appearance: none;
+        width: 100%;
+        background: transparent;
+      }
+
+      input[type=range]::-webkit-slider-thumb
+      {
+        -webkit-appearance: none;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: #0016dc;
+        cursor: pointer;
+        margin-top: -8px;
+        box-shadow: 0 0 0 4px rgba(0, 22, 220, 0.2);
+      }
+
+      input[type=range]::-webkit-slider-runnable-track
+      {
+        width: 100%;
+        height: 4px;
+        cursor: pointer;
+        background: #E5E7EB;
+        border-radius: 2px;
+      }
+    </style>
+    <style data-grapesjs-styles="true">
+      #is9fb
+      {
+        width: 20%;
+      }
+    </style>
+  </head>
+
+  <body class="font-sans text-navy antialiased">
+    <!-- Top Navigation -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão da região de atendimento - MMO Tablet</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+    <nav id="top-nav"
+      class="w-full bg-surface py-4 px-8 border-b border-border flex items-center justify-between sticky top-0 z-50">
+      <div class="flex items-center gap-2">
+        <div
+          class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-lg">
+          M
+        </div><span class="font-bold text-xl tracking-tight">MMO</span>
+      </div>
+      <div class="w-20"></div> <!-- Spacer for centering -->
+    </nav><!-- Main Content Area -->
+    <main id="main-content" class="flex-1 flex items-center justify-center p-8">
+      <!-- Workspace Card -->
+      <div id="workspace-card"
+        class="w-full max-w-[1000px] h-[700px] bg-surface rounded-[24px] shadow-soft flex ">
+        <!-- Left Side: Map Visualization -->
+        <div id="map-section"
+          class="w-1/2 relative bg-gray-100 hidden md:block">
+          <!-- AI Generated Map Background --><img
+            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+            alt="Map View"
+            class="w-full h-full object-cover grayscale opacity-60">
+          <!-- Map Overlay Elements -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <!-- Radius Circle -->
+            <div
+              class="w-[300px] h-[300px] rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center relative">
+              <!-- Center Pin -->
+              <div
+                class="w-4 h-4 rounded-full bg-primary shadow-[0_0_0_8px_rgba(0,22,220,0.2)]">
+              </div><!-- Floating Data Card -->
+              <div
+                class="absolute top-1/4 -right-12 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-white/20 flex items-center gap-3">
+                <i class="fa-solid fa-users text-primary"></i>
+                <div>
+                  <p class="text-xs text-muted font-medium">Alcance Estimado</p>
+                  <p class="text-sm font-bold text-navy">~45.000 clientes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- Right Side: Controls & Form -->
+        <div id="form-section"
+          class="w-full md:w-1/2 p-12 flex flex-col h-full bg-white relative">
+          <div class="mb-10"><button
+              class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-muted hover:bg-gray-100 transition-colors mb-6"><i
+                class="fa-solid fa-arrow-left"></i></button>
+            <h1 class="text-[32px] font-bold leading-tight mb-3 text-navy">Onde
+              você atende?</h1>
+            <p class="text-muted text-[15px] leading-relaxed">Defina sua região
+              de atuação ou raio de distância para receber os melhores pedidos
+              locais.</p>
+          </div>
+          <div class="flex-1 flex flex-col gap-8 overflow-y-auto pr-2 pb-24">
+            <!-- Search Input -->
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                <i class="fa-solid fa-location-dot text-muted"></i></div><input
+                type="text" placeholder="Digite uma cidade, bairro ou CEP..."
+                class="w-full pr-4 py-4 rounded-full bg-gray-50 border border-transparent focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10 outline-none transition-all text-[15px] font-medium text-navy placeholder:text-muted">
+            </div><!-- Selected Tags -->
+            <div class="flex flex-wrap gap-2">
+              <div
+                class="px-4 py-2 rounded-full bg-primary text-white text-sm font-medium flex items-center gap-2 shadow-sm">
+                Balneário Camboriú, SC
+                <button class="hover:text-white/80"><i
+                    class="fa-solid fa-xmark text-xs"></i></button>
+              </div>
+              <div
+                class="px-4 py-2 rounded-full bg-primary text-white text-sm font-medium flex items-center gap-2 shadow-sm">
+                Itajaí, SC
+                <button class="hover:text-white/80"><i
+                    class="fa-solid fa-xmark text-xs"></i></button>
+              </div>
+            </div><!-- Radius Slider -->
+            <div
+              class="mt-4 p-6 rounded-[20px] border border-border bg-gray-50/50">
+              <div class="flex justify-between items-end mb-6">
+                <div>
+                  <h3 class="font-semibold text-navy mb-1">Raio de Atuação</h3>
+                  <p class="text-xs text-muted">Distância máxima a partir do
+                    centro</p>
+                </div>
+                <div
+                  class="px-3 py-1 bg-white rounded-lg border border-border font-bold text-primary text-sm shadow-sm">
+                  20 km
+                </div>
+              </div>
+              <div class="relative w-full"><input type="range" min="1" max="100"
+                  value="20" class="w-full">
+                <div
+                  class="absolute top-0 left-0 h-1 bg-primary rounded-l-full pointer-events-none"
+                  id="is9fb"></div>
+                <div class="flex justify-between mt-2 px-1"><span
+                    class="text-xs text-muted font-medium">1km</span><span
+                    class="text-xs text-muted font-medium">100km</span></div>
+              </div>
+            </div>
+          </div><!-- Bottom Action -->
+          <div
+            class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-white via-white to-transparent">
+            <button
+              class="w-full py-4 rounded-full bg-primary text-white font-bold text-[15px] hover:bg-primary/90 transition-all shadow-[0_8px_20px_-6px_rgba(0,22,220,0.4)] flex items-center justify-center gap-2">
+              Salvar Região e Continuar
+              <i class="fa-solid fa-arrow-right"></i></button></div>
+        </div>
+      </div>
+    </main>
+      <script src="../../_tablet-nav.js"></script>
+</body>
+
+</html>

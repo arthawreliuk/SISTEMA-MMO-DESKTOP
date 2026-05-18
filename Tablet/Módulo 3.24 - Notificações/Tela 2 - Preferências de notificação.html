@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferências de notificação - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        app: {
+                            bg: '#F8F9FA',
+                            nav: '#FBFBFC',
+                            navy: '#1A1A24',
+                            blue: '#0016dc',
+                            blueLight: 'rgba(0, 22, 220, 0.08)',
+                            border: '#E2E8F0',
+                            textMuted: '#64748B'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'toggle': '0 2px 4px rgba(0, 22, 220, 0.2)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Custom Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+            box-shadow: 0 2px 8px rgba(0, 22, 220, 0.3);
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            width: 44px;
+            height: 24px;
+            background-color: #E2E8F0;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Matrix Row Hover */
+        .matrix-row:hover {
+            background-color: #F8FAFC;
+        }
+    </style>
+</head>
+<body class="h-screen w-full flex font-sans text-app-navy">
+
+
+    <!-- Main Workspace (70%) -->
+    <main id="main-workspace" class="w-[70%] h-full p-8 lg:p-12 overflow-y-auto bg-app-bg flex flex-col">
+        
+        <!-- Header Section -->
+        <header id="page-header" class="mb-10">
+            <h1 class="text-3xl lg:text-4xl font-bold tracking-tight mb-3">Como você deseja ser avisado?</h1>
+            <p class="text-app-textMuted text-lg font-medium">Escolha os canais para cada tipo de evento.</p>
+        </header>
+
+        <!-- Main Content Container -->
+        <div id="preferences-container" class="bg-white rounded-[24px] shadow-ambient border border-app-border/40 flex-1 flex flex-col ">
+            
+            <!-- Table Header -->
+            <div class="grid grid-cols-12 gap-4 px-8 py-5 border-b border-app-border/60 bg-gray-50/50">
+                <div class="col-span-6 flex items-center">
+                    <span class="text-sm font-bold text-app-textMuted uppercase tracking-wider">Eventos</span>
+                </div>
+                <div class="col-span-3 flex items-center justify-center">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-mobile-screen-button text-app-textMuted"></i>
+                        <span class="text-sm font-bold text-app-textMuted uppercase tracking-wider">App Push</span>
+                    </div>
+                </div>
+                <div class="col-span-3 flex items-center justify-center">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-regular fa-envelope text-app-textMuted"></i>
+                        <span class="text-sm font-bold text-app-textMuted uppercase tracking-wider">E-mail</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matrix Rows -->
+            <div class="flex-1 overflow-y-auto">
+                <!-- Row 1 -->
+                <div class="grid grid-cols-12 gap-4 px-8 py-6 border-b border-app-border/40 matrix-row transition-colors">
+                    <div class="col-span-6 flex flex-col justify-center">
+                        <h4 class="font-semibold text-[15px] mb-1">Novo Orçamento Recebido</h4>
+                        <p class="text-sm text-app-textMuted">Quando um cliente envia um pedido de orçamento.</p>
+                    </div>
+                    <div class="col-span-3 flex items-center justify-center">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="push_orcamento" id="push_orcamento" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                            <label for="push_orcamento" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                    <div class="col-span-3 flex items-center justify-center">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="email_orcamento" id="email_orcamento" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                            <label for="email_orcamento" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="grid grid-cols-12 gap-4 px-8 py-6 border-b border-app-border/40 matrix-row transition-colors">
+                    <div class="col-span-6 flex flex-col justify-center">
+                        <h4 class="font-semibold text-[15px] mb-1">Mensagem de Cliente</h4>
+                        <p class="text-sm text-app-textMuted">Novas mensagens no chat interno da plataforma.</p>
+                    </div>
+                    <div class="col-span-3 flex items-center justify-center">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="push_msg" id="push_msg" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                            <label for="push_msg" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                    <div class="col-span-3 flex items-center justify-center">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="email_msg" id="email_msg" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                            <label for="email_msg" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="grid grid-cols-12 gap-4 px-8 py-6 border-b border-app-border/40 matrix-row transition-colors">
+                    <div class="col-span-6 flex flex-col justify-center">
+                        <h4 class="font-semibold text-[15px] mb-1">Fatura Paga</h4>
+                        <p class="text-sm text-app-textMuted">Confirmação de pagamento de faturas emitidas.</p>
+                    </div>
+                    <div class="col-span-3 flex items-center justify-center">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="push_fatura" id="push_fatura" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                            <label for="push_fatura" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                    <div class="col-span-3 flex items-center justify-center">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="email_fatura" id="email_fatura" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                            <label for="email_fatura" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="grid grid-cols-12 gap-4 px-8 py-6 matrix-row transition-colors">
+                    <div class="col-span-6 flex flex-col justify-center">
+                        <h4 class="font-semibold text-[15px] mb-1">Dicas da Academy</h4>
+                        <p class="text-sm text-app-textMuted">Novos cursos, tutoriais e melhores práticas.</p>
+                    </div>
+                    <div class="col-span-3 flex items-center justify-center">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="push_dicas" id="push_dicas" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                            <label for="push_dicas" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                    <div class="col-span-3 flex items-center justify-center">
+                        <div class="relative inline-block w-11 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="email_dicas" id="email_dicas" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                            <label for="email_dicas" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Footer -->
+            <div id="action-footer" class="p-6 border-t border-app-border/60 bg-gray-50/30 flex justify-end gap-4 mt-auto">
+                <button class="px-6 py-2.5 rounded-xl font-semibold text-app-navy hover:bg-gray-100 transition-colors border border-transparent hover:border-gray-200">
+                    Cancelar
+                </button>
+                <button class="px-8 py-2.5 rounded-xl font-semibold text-white bg-app-blue hover:bg-blue-700 transition-colors shadow-toggle flex items-center gap-2">
+                    Salvar Alterações
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

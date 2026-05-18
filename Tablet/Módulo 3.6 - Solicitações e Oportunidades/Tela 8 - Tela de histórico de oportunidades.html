@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de histórico de oportunidades - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        navy: '#1A1A24',
+                        primary: '#0016dc',
+                        surface: '#FFFFFF',
+                        muted: '#6B7280',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 15px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-background min-h-screen text-navy flex">
+
+    <!-- Floating Side Navigation Rail -->
+    <div class="fixed left-6 top-1/2 -translate-y-1/2 h-[400px] w-20 bg-surface rounded-[40px] shadow-soft flex flex-col items-center py-8 z-50">
+        <div class="w-10 h-10 rounded-full bg-background flex items-center justify-center mb-8">
+            <i class="fa-solid fa-layer-group text-primary text-lg"></i>
+        </div>
+        
+        <nav class="flex-1 flex flex-col items-center gap-8 w-full">
+            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-background transition-colors relative group">
+                <i class="fa-solid fa-house text-xl"></i>
+            </a>
+            
+            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center text-primary bg-[#F0F2FF] transition-colors relative group">
+                <i class="fa-solid fa-briefcase text-xl"></i>
+                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+            </a>
+            
+            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-background transition-colors relative group">
+                <i class="fa-solid fa-message text-xl"></i>
+                <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-danger"></span>
+            </a>
+            
+            <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-background transition-colors relative group mt-auto">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover border-2 border-transparent group-hover:border-primary transition-all">
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content Workspace -->
+    <main class=" flex-1 p-8 lg:p-12 max-w-[1400px] mx-auto w-full">
+        
+        <!-- Header Area -->
+        <header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+                <h1 class="text-4xl font-extrabold tracking-tight mb-2">Desempenho de Orçamentos</h1>
+                <p class="text-muted text-lg font-medium">Acompanhe suas propostas enviadas e taxa de fechamento.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="bg-surface px-4 py-2.5 rounded-full shadow-soft flex items-center gap-3">
+                    <i class="fa-regular fa-calendar text-muted"></i>
+                    <span class="text-sm font-semibold">Este Mês</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-muted ml-2"></i>
+                </div>
+                <button class="bg-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-[0_4px_14px_rgba(0,22,220,0.3)]">
+                    Novo Orçamento
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Dashboard -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-10">
+            <!-- Stats Cards -->
+            <div class="col-span-1 lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-surface p-6 rounded-[24px] shadow-soft flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#F0F2FF] flex items-center justify-center text-primary">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </div>
+                        <span class="text-xs font-bold text-success bg-green-50 px-2 py-1 rounded-full">+12%</span>
+                    </div>
+                    <div>
+                        <p class="text-muted text-sm font-semibold mb-1">Orçamentos Enviados</p>
+                        <h3 class="text-3xl font-bold">142</h3>
+                    </div>
+                </div>
+                
+                <div class="bg-surface p-6 rounded-[24px] shadow-soft flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-success">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <span class="text-xs font-bold text-success bg-green-50 px-2 py-1 rounded-full">+8%</span>
+                    </div>
+                    <div>
+                        <p class="text-muted text-sm font-semibold mb-1">Orçamentos Ganhos</p>
+                        <h3 class="text-3xl font-bold">48</h3>
+                    </div>
+                </div>
+
+                <div class="bg-surface p-6 rounded-[24px] shadow-soft flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-warning">
+                            <i class="fa-solid fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-muted text-sm font-semibold mb-1">Ticket Médio</p>
+                        <h3 class="text-3xl font-bold">R$ 8.450</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversion Chart Card -->
+            <div class="col-span-1 bg-surface p-6 rounded-[24px] shadow-soft flex flex-col">
+                <div class="flex items-center justify-between mb-2">
+                    <p class="text-muted text-sm font-semibold">Taxa de Conversão</p>
+                    <i class="fa-solid fa-ellipsis text-muted"></i>
+                </div>
+                <h3 class="text-3xl font-bold mb-4">33.8%</h3>
+                <div id="conversionChart" class="h-[100px] w-full mt-auto"></div>
+            </div>
+        </div>
+
+        <!-- Main Grid: Opportunities History -->
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold">Histórico Recente</h2>
+            <div class="flex gap-2">
+                <button class="px-4 py-2 rounded-full bg-surface shadow-soft text-sm font-semibold text-navy">Todos</button>
+                <button class="px-4 py-2 rounded-full text-muted text-sm font-semibold hover:bg-surface transition-colors">Ganhos</button>
+                <button class="px-4 py-2 rounded-full text-muted text-sm font-semibold hover:bg-surface transition-colors">Pendentes</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 (Won - Glow) -->
+            <div class="bg-surface p-6 rounded-[24px] shadow-glow border border-primary/20 relative group hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-[100px] -z-10"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 ">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg leading-tight">TechCorp Inc.</h4>
+                            <p class="text-xs text-muted font-medium">Design System</p>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-green-50 text-success text-xs font-bold flex items-center gap-1">
+                        <div class="w-1.5 h-1.5 rounded-full bg-success"></div> Ganhada
+                    </span>
+                </div>
+                <div class="space-y-3 mb-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-muted font-medium">Data de Envio</span>
+                        <span class="font-semibold text-navy">12 Out 2023</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-muted font-medium">Previsão Fechamento</span>
+                        <span class="font-semibold text-navy">20 Out 2023</span>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-gray-100 flex items-end justify-between">
+                    <div>
+                        <p class="text-xs text-muted font-medium mb-1">Valor Proposto</p>
+                        <p class="text-xl font-extrabold text-primary">R$ 15.000</p>
+                    </div>
+                    <button class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-navy group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-arrow-right -rotate-45 text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2 (Pending) -->
+            <div class="bg-surface p-6 rounded-[24px] shadow-soft border border-transparent relative group hover:-translate-y-1 transition-transform cursor-pointer">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 ">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg leading-tight">StartupX</h4>
+                            <p class="text-xs text-muted font-medium">App Mobile MVP</p>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-orange-50 text-warning text-xs font-bold flex items-center gap-1">
+                        <div class="w-1.5 h-1.5 rounded-full bg-warning"></div> Em Análise
+                    </span>
+                </div>
+                <div class="space-y-3 mb-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-muted font-medium">Data de Envio</span>
+                        <span class="font-semibold text-navy">15 Out 2023</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-muted font-medium">Follow-up</span>
+                        <span class="font-semibold text-warning">Hoje</span>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-gray-100 flex items-end justify-between">
+                    <div>
+                        <p class="text-xs text-muted font-medium mb-1">Valor Proposto</p>
+                        <p class="text-xl font-extrabold text-navy">R$ 28.500</p>
+                    </div>
+                    <button class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-navy group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-arrow-right -rotate-45 text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 3 (Lost) -->
+            <div class="bg-surface p-6 rounded-[24px] shadow-soft border border-transparent relative group hover:-translate-y-1 transition-transform cursor-pointer opacity-80 hover:opacity-100">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-muted">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg leading-tight">Global Retail</h4>
+                            <p class="text-xs text-muted font-medium">E-commerce Redesign</p>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-red-50 text-danger text-xs font-bold flex items-center gap-1">
+                        <div class="w-1.5 h-1.5 rounded-full bg-danger"></div> Perdida
+                    </span>
+                </div>
+                <div class="space-y-3 mb-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-muted font-medium">Data de Envio</span>
+                        <span class="font-semibold text-navy">05 Out 2023</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-muted font-medium">Motivo</span>
+                        <span class="font-semibold text-navy truncate max-w-[100px]">Preço</span>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-gray-100 flex items-end justify-between">
+                    <div>
+                        <p class="text-xs text-muted font-medium mb-1">Valor Proposto</p>
+                        <p class="text-xl font-extrabold text-muted line-through">R$ 45.000</p>
+                    </div>
+                    <button class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-navy group-hover:bg-gray-200 transition-colors">
+                        <i class="fa-solid fa-arrow-right -rotate-45 text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const trace1 = {
+                    x: ['Jul', 'Ago', 'Set', 'Out'],
+                    y: [20, 25, 28, 33.8],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: {
+                        shape: 'spline',
+                        smoothing: 1.3,
+                        color: '#0016dc',
+                        width: 3
+                    },
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(0, 22, 220, 0.1)',
+                    hoverinfo: 'none'
+                };
+
+                const layout = {
+                    margin: { t: 5, r: 5, b: 5, l: 5 },
+                    xaxis: { showgrid: false, zeroline: false, showticklabels: false },
+                    yaxis: { showgrid: false, zeroline: false, showticklabels: false },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    showlegend: false,
+                    height: 100
+                };
+
+                Plotly.newPlot('conversionChart', [trace1], layout, {displayModeBar: false, responsive: true});
+            } catch(e) {
+                console.error("Chart init failed", e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

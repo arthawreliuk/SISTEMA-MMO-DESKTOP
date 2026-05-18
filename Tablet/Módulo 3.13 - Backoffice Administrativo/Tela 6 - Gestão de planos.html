@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de planos - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'off-white': '#F8F9FA',
+                        'trust-blue': '#0016dc',
+                        'dark-navy': '#1A1A24',
+                        'soft-gray': '#F3F4F6',
+                        'border-gray': '#E5E7EB',
+                        'text-muted': '#6B7280'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'floating': '0 10px 40px -10px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex w-full ">
+
+
+    <!-- Main Content Workspace -->
+    <main class=" flex-1 h-screen overflow-y-auto p-8 lg:p-12 pb-24">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="mb-10 max-w-6xl mx-auto">
+            <h1 class="text-4xl font-extrabold tracking-tight text-dark-navy mb-2">Gestão de Assinaturas</h1>
+            <p class="text-lg text-text-muted font-medium">Configure preços, periodicidade e limites de cada plano.</p>
+        </header>
+
+        <!-- Split Layout -->
+        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 items-start">
+            
+            <!-- Left Column: Plan Roster (35%) -->
+            <section id="plan-roster" class="w-full lg:w-[35%] bg-white rounded-[24px] shadow-soft p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-dark-navy">Planos Ativos</h2>
+                    <button class="w-8 h-8 rounded-full bg-soft-gray flex items-center justify-center text-dark-navy hover:bg-trust-blue hover:text-white transition-colors">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Plan Item 1 -->
+                    <div class="group p-4 rounded-[16px] border border-border-gray hover:border-trust-blue/30 hover:bg-trust-blue/[0.02] transition-all cursor-pointer flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold text-dark-navy text-base">Grátis</h3>
+                            <p class="text-sm text-text-muted mt-0.5">R$ 0,00 / mês</p>
+                        </div>
+                        <span class="px-3 py-1 bg-soft-gray text-text-muted text-xs font-semibold rounded-full">Básico</span>
+                    </div>
+
+                    <!-- Plan Item 2 (Active/Highlighted) -->
+                    <div class="group p-4 rounded-[16px] border-2 border-trust-blue bg-trust-blue/[0.03] shadow-[0_4px_12px_rgba(0,22,220,0.08)] transition-all cursor-pointer relative ">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-trust-blue/10 rounded-bl-[100px] -mr-4 -mt-4"></div>
+                        <div class="flex items-center justify-between relative z-10">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h3 class="font-bold text-trust-blue text-base">Mestre</h3>
+                                    <i class="fa-solid fa-crown text-trust-blue text-xs"></i>
+                                </div>
+                                <p class="text-sm text-dark-navy font-medium mt-0.5">R$ 49,90 / mês</p>
+                            </div>
+                            <span class="px-3 py-1 bg-trust-blue text-white text-xs font-bold rounded-full shadow-sm">Ativo</span>
+                        </div>
+                    </div>
+
+                    <!-- Plan Item 3 -->
+                    <div class="group p-4 rounded-[16px] border border-border-gray hover:border-trust-blue/30 hover:bg-trust-blue/[0.02] transition-all cursor-pointer flex items-center justify-between">
+                        <div>
+                            <h3 class="font-bold text-dark-navy text-base">Corporativo</h3>
+                            <p class="text-sm text-text-muted mt-0.5">R$ 199,90 / mês</p>
+                        </div>
+                        <span class="px-3 py-1 bg-soft-gray text-text-muted text-xs font-semibold rounded-full">Premium</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Plan Editor (65%) -->
+            <section id="plan-editor" class="w-full lg:w-[65%] bg-white rounded-[24px] shadow-soft p-8 relative ">
+                <!-- Top Decorative Blur -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-trust-blue/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between border-b border-border-gray pb-6 mb-8">
+                        <h2 class="text-2xl font-bold text-dark-navy">Editar Plano: Mestre</h2>
+                        <span class="flex items-center gap-2 text-sm font-medium text-text-muted bg-soft-gray px-3 py-1.5 rounded-full">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span> Publicado
+                        </span>
+                    </div>
+
+                    <form class="space-y-8">
+                        <!-- Top Inputs -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-dark-navy ml-1">Nome do Plano</label>
+                                <input type="text" value="Mestre" class="w-full h-12 px-4 rounded-full border border-border-gray bg-white text-dark-navy font-medium focus:outline-none focus:border-trust-blue focus:ring-2 focus:ring-trust-blue/20 transition-all shadow-sm">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-dark-navy ml-1">Preço Mensal (R$)</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted font-medium">R$</span>
+                                    <input type="text" value="49,90" class="w-full h-12 pr-4 rounded-full border border-border-gray bg-white text-dark-navy font-medium focus:outline-none focus:border-trust-blue focus:ring-2 focus:ring-trust-blue/20 transition-all shadow-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-dark-navy ml-1">Descrição Curta</label>
+                            <input type="text" value="Ideal para profissionais que buscam mais visibilidade e recursos exclusivos." class="w-full h-12 px-4 rounded-full border border-border-gray bg-white text-dark-navy text-sm focus:outline-none focus:border-trust-blue focus:ring-2 focus:ring-trust-blue/20 transition-all shadow-sm">
+                        </div>
+
+                        <!-- Middle: Features Checklist -->
+                        <div class="pt-6 border-t border-border-gray">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-bold text-dark-navy">Recursos do Plano</h3>
+                                <button type="button" class="text-sm font-bold text-trust-blue hover:text-trust-blue/80 transition-colors">Adicionar Recurso</button>
+                            </div>
+
+                            <div class="space-y-4">
+                                <!-- Feature 1 -->
+                                <div class="flex items-center justify-between p-4 rounded-[16px] border border-border-gray bg-off-white/50 hover:bg-white transition-colors">
+                                    <div class="flex items-center gap-4">
+                                        <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                            <input type="checkbox" name="toggle" id="feat-1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 checked:right-0 checked:border-trust-blue transition-all duration-300" checked/>
+                                            <label for="feat-1" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300"></label>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-dark-navy text-sm">Acesso ao Balcão</p>
+                                            <p class="text-xs text-text-muted mt-0.5">Permite visualizar pedidos no balcão</p>
+                                        </div>
+                                    </div>
+                                    <div class="w-32">
+                                        <select class="w-full h-10 px-3 rounded-full border border-border-gray bg-white text-dark-navy text-sm focus:outline-none focus:border-trust-blue transition-all">
+                                            <option>Ilimitado</option>
+                                            <option>Limitado</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Feature 2 -->
+                                <div class="flex items-center justify-between p-4 rounded-[16px] border border-border-gray bg-off-white/50 hover:bg-white transition-colors">
+                                    <div class="flex items-center gap-4">
+                                        <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                            <input type="checkbox" name="toggle" id="feat-2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 checked:right-0 checked:border-trust-blue transition-all duration-300" checked/>
+                                            <label for="feat-2" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300"></label>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-dark-navy text-sm">Selo Verificado</p>
+                                            <p class="text-xs text-text-muted mt-0.5">Exibe badge de destaque no perfil</p>
+                                        </div>
+                                    </div>
+                                    <div class="w-32">
+                                        <span class="block text-right text-sm font-medium text-text-muted pr-2">Padrão</span>
+                                    </div>
+                                </div>
+
+                                <!-- Feature 3 -->
+                                <div class="flex items-center justify-between p-4 rounded-[16px] border border-border-gray bg-off-white/50 hover:bg-white transition-colors">
+                                    <div class="flex items-center gap-4">
+                                        <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                                            <input type="checkbox" name="toggle" id="feat-3" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 checked:right-0 checked:border-trust-blue transition-all duration-300" checked/>
+                                            <label for="feat-3" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300"></label>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-dark-navy text-sm">Limite de Fotos</p>
+                                            <p class="text-xs text-text-muted mt-0.5">Quantidade de mídias na galeria</p>
+                                        </div>
+                                    </div>
+                                    <div class="w-32 flex items-center gap-2">
+                                        <input type="number" value="15" class="w-full h-10 px-3 rounded-full border border-border-gray bg-white text-dark-navy text-sm text-center focus:outline-none focus:border-trust-blue transition-all">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Actions -->
+                        <div class="pt-8 flex items-center justify-end gap-4 border-t border-border-gray mt-8">
+                            <button type="button" class="px-6 py-3 rounded-full border-2 border-border-gray text-dark-navy font-bold hover:border-red-500 hover:text-red-500 transition-colors">
+                                Desativar Plano
+                            </button>
+                            <button type="button" class="px-8 py-3 rounded-full bg-trust-blue text-white font-bold shadow-[0_8px_20px_rgba(0,22,220,0.25)] hover:bg-trust-blue/90 hover:-translate-y-0.5 transition-all">
+                                Salvar Alterações
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

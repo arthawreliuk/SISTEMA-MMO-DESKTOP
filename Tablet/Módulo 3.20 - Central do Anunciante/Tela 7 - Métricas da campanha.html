@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métricas da campanha - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E5E7EB',
+                        success: '#10B981',
+                        danger: '#EF4444',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    },
+                    borderRadius: {
+                        'pill': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="flex min-h-screen w-full bg-background antialiased text-textMain">
+
+
+    <!-- Main Workspace -->
+    <main id="main_workspace" class="flex-1 p-8 max-w-[1600px] mx-auto w-full flex flex-col gap-8 min-h-screen">
+        
+        <!-- Header Area -->
+        <header id="header_area" class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+            <div>
+                <h1 class="text-4xl font-extrabold text-textMain tracking-tight mb-2">Performance de Anúncios</h1>
+                <p class="text-textMuted text-base font-medium">Analise o retorno sobre o investimento e o alcance da sua marca.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="bg-cardBg px-4 py-2.5 rounded-full shadow-sm border border-borderLight flex items-center gap-2 text-sm font-semibold cursor-pointer hover:bg-gray-50 transition-colors">
+                    <i class="fa-regular fa-calendar text-textMuted"></i>
+                    <span>Últimos 30 Dias</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-textMuted ml-2"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Top KPI Row -->
+        <section id="top_kpi_row" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- KPI 1 -->
+            <div class="bg-cardBg rounded-pill p-6 shadow-soft border border-borderLight/50 flex flex-col justify-between relative group hover:border-primary/20 transition-all">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-[100px] -z-10 group-hover:bg-primary/10 transition-colors"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-textMuted font-semibold text-sm uppercase tracking-wider">CTR Médio</span>
+                    <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+                        <i class="fa-solid fa-mouse-pointer text-xs"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-textMain mb-1">4.82%</div>
+                    <div class="flex items-center text-sm">
+                        <span class="text-success font-semibold flex items-center gap-1"><i class="fa-solid fa-arrow-trend-up text-xs"></i> +1.2%</span>
+                        <span class="text-textMuted ml-2">vs mês anterior</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 2 -->
+            <div class="bg-cardBg rounded-pill p-6 shadow-soft border border-borderLight/50 flex flex-col justify-between relative group hover:border-primary/20 transition-all">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-bl-[100px] -z-10 group-hover:bg-purple-500/10 transition-colors"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-textMuted font-semibold text-sm uppercase tracking-wider">CPM</span>
+                    <div class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center text-purple-500">
+                        <i class="fa-solid fa-eye text-xs"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-textMain mb-1">R$ 12,40</div>
+                    <div class="flex items-center text-sm">
+                        <span class="text-success font-semibold flex items-center gap-1"><i class="fa-solid fa-arrow-trend-down text-xs"></i> -0.8%</span>
+                        <span class="text-textMuted ml-2">vs mês anterior</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 3 -->
+            <div class="bg-cardBg rounded-pill p-6 shadow-soft border border-borderLight/50 flex flex-col justify-between relative group hover:border-primary/20 transition-all">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 rounded-bl-[100px] -z-10 group-hover:bg-orange-500/10 transition-colors"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-textMuted font-semibold text-sm uppercase tracking-wider">Frequência</span>
+                    <div class="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
+                        <i class="fa-solid fa-rotate text-xs"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-textMain mb-1">2.4x</div>
+                    <div class="flex items-center text-sm">
+                        <span class="text-textMuted font-semibold flex items-center gap-1"><i class="fa-solid fa-minus text-xs"></i> 0.0%</span>
+                        <span class="text-textMuted ml-2">vs mês anterior</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 4 -->
+            <div class="bg-cardBg rounded-pill p-6 shadow-soft border border-borderLight/50 flex flex-col justify-between relative group hover:border-primary/20 transition-all">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-bl-[100px] -z-10 group-hover:bg-emerald-500/10 transition-colors"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-textMuted font-semibold text-sm uppercase tracking-wider">Cliques Totais</span>
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
+                        <i class="fa-solid fa-hand-pointer text-xs"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-textMain mb-1">124.5K</div>
+                    <div class="flex items-center text-sm">
+                        <span class="text-success font-semibold flex items-center gap-1"><i class="fa-solid fa-arrow-trend-up text-xs"></i> +14.5%</span>
+                        <span class="text-textMuted ml-2">vs mês anterior</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Split Layout Area -->
+        <section id="split_layout_engine" class="flex flex-col lg:flex-row gap-6 flex-grow">
+            
+            <!-- Left Column: Funnel (35%) -->
+            <div id="conversion_funnel" class="w-full lg:w-[35%] bg-cardBg rounded-pill p-8 shadow-soft border border-borderLight/50 flex flex-col">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-bold text-textMain">Funil de Conversão</h2>
+                    <button class="text-textMuted hover:text-primary transition-colors"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+
+                <div class="flex-grow flex flex-col justify-center gap-6 relative">
+                    <!-- Connecting Line -->
+                    <div class="absolute left-8 top-10 bottom-10 w-0.5 bg-gray-100 z-0"></div>
+
+                    <!-- Step 1: Impressões -->
+                    <div class="relative z-10 flex items-center gap-6 group cursor-pointer">
+                        <div class="w-16 h-16 rounded-full bg-blue-50 border-4 border-white shadow-sm flex items-center justify-center text-blue-500 group-hover:scale-105 transition-transform">
+                            <i class="fa-solid fa-eye text-xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm font-semibold text-textMuted uppercase tracking-wider">Impressões</span>
+                                <span class="text-xl font-bold text-textMain">2.5M</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full ">
+                                <div class="h-full bg-blue-500 w-full rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Cliques -->
+                    <div class="relative z-10 flex items-center gap-6 group cursor-pointer">
+                        <div class="w-16 h-16 rounded-full bg-primary/10 border-4 border-white shadow-sm flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+                            <i class="fa-solid fa-hand-pointer text-xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm font-semibold text-textMuted uppercase tracking-wider">Cliques</span>
+                                <span class="text-xl font-bold text-textMain">124.5K</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full ">
+                                <div class="h-full bg-primary w-[35%] rounded-full"></div>
+                            </div>
+                            <div class="text-xs text-textMuted mt-1 text-right">4.98% de conversão</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Ações -->
+                    <div class="relative z-10 flex items-center gap-6 group cursor-pointer">
+                        <div class="w-16 h-16 rounded-full bg-emerald-50 border-4 border-white shadow-sm flex items-center justify-center text-emerald-500 group-hover:scale-105 transition-transform">
+                            <i class="fa-solid fa-check-circle text-xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="text-sm font-semibold text-textMuted uppercase tracking-wider">Ações (Leads)</span>
+                                <span class="text-xl font-bold text-textMain">12.8K</span>
+                            </div>
+                            <div class="w-full h-2 bg-gray-100 rounded-full ">
+                                <div class="h-full bg-emerald-500 w-[15%] rounded-full"></div>
+                            </div>
+                            <div class="text-xs text-textMuted mt-1 text-right">10.2% de conversão</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-borderLight/50 flex justify-between items-center bg-gray-50/50 rounded-xl p-4">
+                    <span class="text-sm font-semibold text-textMuted">Custo por Ação (CPA)</span>
+                    <span class="text-lg font-bold text-textMain">R$ 45,20</span>
+                </div>
+            </div>
+
+            <!-- Right Column: Main Data Engine (65%) -->
+            <div id="main_data_engine" class="w-full lg:w-[65%] bg-cardBg rounded-pill p-8 shadow-soft border border-borderLight/50 flex flex-col">
+                
+                <!-- Chart Header & Controls -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                    <div>
+                        <h2 class="text-xl font-bold text-textMain">Engajamento Diário</h2>
+                        <p class="text-sm text-textMuted mt-1">Volume de interações ao longo do tempo</p>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <!-- Custom Pill Toggle -->
+                        <div class="bg-gray-100 p-1 rounded-full flex items-center relative">
+                            <div class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-sm transition-transform duration-300" id="toggle_slider"></div>
+                            <button class="relative z-10 px-4 py-1.5 text-sm font-semibold text-textMain w-28 text-center transition-colors" onclick="document.getElementById('toggle_slider').style.transform = 'translateX(0)'">Impressões</button>
+                            <button class="relative z-10 px-4 py-1.5 text-sm font-semibold text-textMuted w-28 text-center transition-colors" onclick="document.getElementById('toggle_slider').style.transform = 'translateX(100%)'">Cliques</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plotly Chart Container -->
+                <div class="flex-grow w-full min-h-[350px] relative">
+                    <div id="engagement_chart" class="w-full h-full absolute inset-0"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Bottom Action -->
+        <footer id="data_export_footer" class="flex justify-end mt-2 mb-8">
+            <button class="px-6 py-3 rounded-full border-2 border-primary/20 text-primary font-semibold hover:bg-primary/5 hover:border-primary transition-all flex items-center gap-2 group">
+                <i class="fa-solid fa-file-csv group-hover:scale-110 transition-transform"></i>
+                Exportar Dados (CSV)
+            </button>
+        </footer>
+
+    </main>
+
+    <script>
+        // Initialize Plotly Chart
+        function initializeCharts() {
+            const chartDiv = document.getElementById('engagement_chart');
+            if(!chartDiv) return;
+
+            // Mock Data for Area Chart
+            const dates = ['01 Oct', '03 Oct', '05 Oct', '07 Oct', '09 Oct', '11 Oct', '13 Oct', '15 Oct', '17 Oct', '19 Oct', '21 Oct', '23 Oct', '25 Oct', '27 Oct', '29 Oct', '31 Oct'];
+            const impressionsData = [120, 150, 140, 180, 220, 210, 250, 280, 260, 310, 340, 320, 380, 410, 390, 450];
+            const clicksData = [12, 15, 13, 18, 25, 22, 28, 35, 30, 40, 45, 42, 50, 55, 52, 60];
+
+            const trace1 = {
+                x: dates,
+                y: impressionsData,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Impressões',
+                line: {
+                    color: '#0016dc', // Primary color
+                    width: 3,
+                    shape: 'spline',
+                    smoothing: 1.3
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(0, 22, 220, 0.1)', // Soft gradient feel
+                hoverinfo: 'y+name',
+            };
+
+            const trace2 = {
+                x: dates,
+                y: clicksData,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Cliques',
+                line: {
+                    color: '#10B981', // Success color
+                    width: 3,
+                    shape: 'spline',
+                    smoothing: 1.3
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(16, 185, 129, 0.1)',
+                hoverinfo: 'y+name',
+            };
+
+            const layout = {
+                autosize: true,
+                margin: { t: 10, r: 10, b: 40, l: 40 },
+                plot_bgcolor: 'transparent',
+                paper_bgcolor: 'transparent',
+                showlegend: false,
+                xaxis: {
+                    showgrid: false,
+                    zeroline: false,
+                    showline: false,
+                    tickfont: { color: '#6B7280', family: 'Plus Jakarta Sans', size: 12 },
+                    tickangle: 0,
+                    nticks: 8
+                },
+                yaxis: {
+                    showgrid: true,
+                    gridcolor: 'rgba(229, 231, 235, 0.5)', // Light border color
+                    gridwidth: 1,
+                    zeroline: false,
+                    showline: false,
+                    tickfont: { color: '#6B7280', family: 'Plus Jakarta Sans', size: 12 },
+                },
+                hovermode: 'x unified',
+                hoverlabel: {
+                    bgcolor: '#FFFFFF',
+                    font: { family: 'Plus Jakarta Sans', color: '#1A1A24' },
+                    bordercolor: '#E5E7EB'
+                }
+            };
+
+            const config = {
+                responsive: true,
+                displayModeBar: false,
+                displaylogo: false
+            };
+
+            Plotly.newPlot(chartDiv, [trace1, trace2], layout, config);
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prévia de oportunidade - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            gray: '#8C92A4',
+                            lightgray: '#E2E8F0'
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 20px 40px -10px rgba(0, 22, 220, 0.08), 0 10px 20px -5px rgba(0, 0, 0, 0.04)',
+                        'nav': '4px 0 24px rgba(0,0,0,0.04)',
+                        'lock': '0 8px 16px -4px rgba(0, 22, 220, 0.2)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; overflow-x: hidden; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-overlay {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="min-h-[100dvh] w-full flex bg-brand-offwhite font-sans antialiased">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-workspace" class="flex-1 flex items-center justify-center pr-8 py-12 min-h-screen">
+        
+        <!-- Center Focus Container -->
+        <div class="w-full max-w-[750px] mx-auto flex flex-col relative z-10">
+            
+            <!-- Main Card -->
+            <div id="onboarding-card" class="bg-white rounded-[24px] shadow-card w-full flex flex-col relative border border-gray-100/50">
+                
+                <!-- Decorative Top Gradient (Subtle) -->
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-blue/20 via-brand-blue to-brand-blue/20"></div>
+
+                <!-- Header Area -->
+                <div class="px-10 pt-12 pb-8 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-blue/5 text-brand-blue flex items-center justify-center mb-6 shadow-sm border border-brand-blue/10">
+                        <i class="fa-solid fa-sparkles text-2xl"></i>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4 leading-tight">
+                        Arthur, veja o que <br class="hidden sm:block" />aguarda por você
+                    </h1>
+                    <p class="text-brand-gray font-medium text-base md:text-lg max-w-lg mx-auto leading-relaxed">
+                        Essas são demandas reais criadas no Balcão de Serviços nas últimas 24h.
+                    </p>
+                </div>
+
+                <!-- Preview Grid Area -->
+                <div class="px-8 pb-10 w-full relative">
+                    <!-- Subtle background pattern behind cards -->
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNFMkU4RjAiLz48L3N2Zz4=')] opacity-50 z-0 rounded-b-[24px]"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 relative z-10">
+                        
+                        <!-- Opportunity Card 1 -->
+                        <div class="bg-white border border-brand-lightgray/60 rounded-2xl p-5 relative group shadow-sm hover:shadow-md transition-shadow">
+                            
+                            <!-- Visible Header / Meta -->
+                            <div class="flex justify-between items-start mb-4 relative z-20">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-brand-blue text-xs font-bold uppercase tracking-wider">
+                                    <i class="fa-solid fa-wrench text-[10px]"></i> Manutenção
+                                </span>
+                                <span class="text-brand-gray text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-location-dot"></i> 2.4 km
+                                </span>
+                            </div>
+
+                            <div class="mb-5 relative z-20">
+                                <h3 class="text-lg font-bold text-brand-navy mb-1 line-clamp-1">Reparo de Ar Condicionado Split</h3>
+                                <div class="text-2xl font-extrabold text-brand-navy flex items-baseline gap-1">
+                                    <span class="text-sm font-medium text-brand-gray">R$</span> 350<span class="text-sm font-medium text-brand-gray">,00</span>
+                                    <span class="text-xs font-medium text-green-600 ml-2 bg-green-50 px-2 py-0.5 rounded-md">Estimado</span>
+                                </div>
+                            </div>
+
+                            <!-- Blurred Client Details Area -->
+                            <div class="relative mt-2 rounded-xl border border-gray-100">
+                                <!-- Dummy Content to blur -->
+                                <div class="p-4 bg-gray-50 flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-gray-200"></div>
+                                    <div class="flex-1">
+                                        <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                                        <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Frosted Glass Overlay with Lock -->
+                                <div class="absolute inset-0 glass-overlay flex flex-col items-center justify-center z-30">
+                                    <div class="w-12 h-12 rounded-full bg-white shadow-lock flex items-center justify-center text-brand-blue mb-2 transform group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fa-solid fa-lock text-lg"></i>
+                                    </div>
+                                    <span class="text-xs font-bold text-brand-navy uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full">Cliente Oculto</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Opportunity Card 2 -->
+                        <div class="bg-white border border-brand-lightgray/60 rounded-2xl p-5 relative group shadow-sm hover:shadow-md transition-shadow">
+                            
+                            <!-- Visible Header / Meta -->
+                            <div class="flex justify-between items-start mb-4 relative z-20">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold uppercase tracking-wider">
+                                    <i class="fa-solid fa-paint-roller text-[10px]"></i> Pintura
+                                </span>
+                                <span class="text-brand-gray text-xs font-semibold flex items-center gap-1">
+                                    <i class="fa-solid fa-location-dot"></i> 5.1 km
+                                </span>
+                            </div>
+
+                            <div class="mb-5 relative z-20">
+                                <h3 class="text-lg font-bold text-brand-navy mb-1 line-clamp-1">Pintura Externa Residencial</h3>
+                                <div class="text-2xl font-extrabold text-brand-navy flex items-baseline gap-1">
+                                    <span class="text-sm font-medium text-brand-gray">R$</span> 1.200<span class="text-sm font-medium text-brand-gray">,00</span>
+                                    <span class="text-xs font-medium text-green-600 ml-2 bg-green-50 px-2 py-0.5 rounded-md">Estimado</span>
+                                </div>
+                            </div>
+
+                            <!-- Blurred Client Details Area -->
+                            <div class="relative mt-2 rounded-xl border border-gray-100">
+                                <!-- Dummy Content to blur -->
+                                <div class="p-4 bg-gray-50 flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-gray-200"></div>
+                                    <div class="flex-1">
+                                        <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                                        <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Frosted Glass Overlay with Lock -->
+                                <div class="absolute inset-0 glass-overlay flex flex-col items-center justify-center z-30">
+                                    <div class="w-12 h-12 rounded-full bg-white shadow-lock flex items-center justify-center text-brand-blue mb-2 transform group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fa-solid fa-lock text-lg"></i>
+                                    </div>
+                                    <span class="text-xs font-bold text-brand-navy uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full">Cliente Oculto</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Call to Action Area -->
+                <div class="bg-gray-50 border-t border-gray-100 px-8 py-8 flex flex-col items-center justify-center relative ">
+                    <!-- CTA Button -->
+                    <button class="relative z-10 bg-brand-blue hover:bg-blue-700 text-white font-bold text-base md:text-lg py-4 px-8 rounded-full shadow-[0_10px_25px_-5px_rgba(0,22,220,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(0,22,220,0.5)] transform hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-3 w-full sm:w-auto justify-center group">
+                        <span>Enviar Documentos e Liberar Acesso</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                    
+                    <p class="mt-4 text-xs font-medium text-brand-gray text-center relative z-10 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-brand-lightgray"></i>
+                        Seus dados são criptografados e mantidos em segurança.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom decorative dots (matching reference subtle elements) -->
+            <div class="flex justify-center gap-2 mt-8">
+                <div class="w-2 h-2 rounded-full bg-brand-blue"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-lightgray"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-lightgray"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de resumo da assinatura - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            green: '#10B981',
+                            greenBg: 'rgba(16, 185, 129, 0.1)'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 8px 32px -4px rgba(26, 26, 36, 0.04), 0 4px 16px -4px rgba(26, 26, 36, 0.02)',
+                        'nav': '4px 0 24px -4px rgba(26, 26, 36, 0.03)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-card { background: #FFFFFF; box-shadow: 0 8px 32px -4px rgba(26, 26, 36, 0.04), 0 4px 16px -4px rgba(26, 26, 36, 0.02); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex w-full overflow-x-hidden">
+
+
+    <!-- Mobile Header (Visible only on small screens) -->
+    <div class="md:flex hidden bg-white w-full h-20 fixed top-0 left-0 z-40 shadow-sm items-center justify-between px-6">
+        <div class="w-10 h-10 bg-brand-navy rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-shapes text-white"></i>
+        </div>
+        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover">
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="flex-1 md:ml-0 md:pt-28 p-8 xl:p-12 max-w-[1440px] mx-auto w-full">
+        
+        <!-- Header -->
+        <header id="page-header" class="mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+            <div>
+                <h1 class="text-[40px] leading-[1.1] font-extrabold tracking-tight text-brand-navy mb-2">Gestão de Assinatura</h1>
+                <p class="text-brand-navy/60 text-lg font-medium">Gerencie seu plano, métodos de pagamento e faturas.</p>
+            </div>
+            <button class="h-12 px-6 rounded-full border border-brand-navy/10 text-brand-navy font-semibold hover:bg-brand-navy/5 transition-colors flex items-center gap-2 w-fit">
+                <i class="fa-solid fa-headset"></i> Suporte
+            </button>
+        </header>
+
+        <!-- 40/60 Split Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column: Current Plan (40%) -->
+            <div id="current-plan-col" class="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-8">
+                
+                <div class="glass-card rounded-[32px] p-8 relative group">
+                    <!-- Decorative background blur -->
+                    <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl group-hover:bg-brand-blue/10 transition-colors duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
+                                <i class="fa-solid fa-crown text-2xl"></i>
+                            </div>
+                            <span class="px-4 py-1.5 rounded-full bg-brand-greenBg text-brand-green text-sm font-bold flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+                                Ativo
+                            </span>
+                        </div>
+
+                        <h2 class="text-3xl font-bold mb-2">Plano Mestre</h2>
+                        <div class="flex items-baseline gap-1 mb-6">
+                            <span class="text-4xl font-extrabold">R$ 49,90</span>
+                            <span class="text-brand-navy/50 font-medium">/mês</span>
+                        </div>
+
+                        <div class="space-y-4 mb-10">
+                            <div class="flex items-center justify-between py-3 border-b border-brand-navy/5">
+                                <span class="text-brand-navy/60 font-medium">Ciclo de faturamento</span>
+                                <span class="font-semibold text-right">Mensal</span>
+                            </div>
+                            <div class="flex items-center justify-between py-3 border-b border-brand-navy/5">
+                                <span class="text-brand-navy/60 font-medium">Próxima cobrança</span>
+                                <span class="font-semibold text-right">15 de Maio, 2026</span>
+                            </div>
+                            <div class="flex items-center justify-between py-3">
+                                <span class="text-brand-navy/60 font-medium">Membros</span>
+                                <span class="font-semibold text-right">3 de 5 usados</span>
+                            </div>
+                        </div>
+
+                        <button class="w-full h-14 rounded-full bg-brand-blue text-white font-bold text-lg hover:shadow-lg hover:shadow-brand-blue/25 transition-all flex items-center justify-center gap-3">
+                            Fazer Upgrade para Anual
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                        <p class="text-center text-sm font-medium text-brand-navy/40 mt-4">Economize 20% no plano anual</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Billing Details (60%) -->
+            <div id="billing-details-col" class="lg:col-span-7 flex flex-col gap-8">
+                
+                <!-- Payment Method -->
+                <div class="glass-card rounded-[32px] p-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="text-2xl font-bold">Forma de Pagamento</h3>
+                        <button class="h-10 px-5 rounded-full bg-brand-navy/5 text-brand-navy font-semibold hover:bg-brand-navy/10 transition-colors text-sm">
+                            Editar
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-[24px] border border-brand-navy/5 bg-[#FAFAFC]">
+                        <div class="w-16 h-12 rounded-xl bg-brand-navy flex items-center justify-center shadow-md shrink-0">
+                            <i class="fa-brands fa-cc-mastercard text-white text-3xl"></i>
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <p class="font-bold text-lg mb-1">Mastercard final 4242</p>
+                            <p class="text-brand-navy/50 font-medium text-sm">Expira em 12/28 • Nome no cartão: ALEXANDRE SILVA</p>
+                        </div>
+                        <div class="shrink-0">
+                            <span class="px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-bold uppercase tracking-wider">Padrão</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing History -->
+                <div class="glass-card rounded-[32px] p-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="text-2xl font-bold">Últimas Faturas</h3>
+                        <button class="text-brand-blue font-bold hover:underline text-sm">Ver todas</button>
+                    </div>
+
+                    <div class="flex flex-col gap-4">
+                        <!-- Invoice Item 1 -->
+                        <div class="flex items-center justify-between p-5 rounded-[24px] hover:bg-[#FAFAFC] transition-colors border border-transparent hover:border-brand-navy/5 group cursor-pointer">
+                            <div class="flex items-center gap-5">
+                                <div class="w-12 h-12 rounded-full bg-brand-navy/5 flex items-center justify-center text-brand-navy/60 group-hover:bg-white group-hover:shadow-sm transition-all">
+                                    <i class="fa-solid fa-file-invoice"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg mb-0.5">R$ 49,90</p>
+                                    <p class="text-brand-navy/50 text-sm font-medium">15 de Abril, 2026</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="hidden sm:inline-block px-3 py-1 rounded-full bg-brand-greenBg text-brand-green text-xs font-bold">Pago</span>
+                                <button class="w-10 h-10 rounded-full flex items-center justify-center text-brand-navy/40 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors">
+                                    <i class="fa-solid fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Invoice Item 2 -->
+                        <div class="flex items-center justify-between p-5 rounded-[24px] hover:bg-[#FAFAFC] transition-colors border border-transparent hover:border-brand-navy/5 group cursor-pointer">
+                            <div class="flex items-center gap-5">
+                                <div class="w-12 h-12 rounded-full bg-brand-navy/5 flex items-center justify-center text-brand-navy/60 group-hover:bg-white group-hover:shadow-sm transition-all">
+                                    <i class="fa-solid fa-file-invoice"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg mb-0.5">R$ 49,90</p>
+                                    <p class="text-brand-navy/50 text-sm font-medium">15 de Março, 2026</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="hidden sm:inline-block px-3 py-1 rounded-full bg-brand-greenBg text-brand-green text-xs font-bold">Pago</span>
+                                <button class="w-10 h-10 rounded-full flex items-center justify-center text-brand-navy/40 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors">
+                                    <i class="fa-solid fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Invoice Item 3 -->
+                        <div class="flex items-center justify-between p-5 rounded-[24px] hover:bg-[#FAFAFC] transition-colors border border-transparent hover:border-brand-navy/5 group cursor-pointer">
+                            <div class="flex items-center gap-5">
+                                <div class="w-12 h-12 rounded-full bg-brand-navy/5 flex items-center justify-center text-brand-navy/60 group-hover:bg-white group-hover:shadow-sm transition-all">
+                                    <i class="fa-solid fa-file-invoice"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg mb-0.5">R$ 49,90</p>
+                                    <p class="text-brand-navy/50 text-sm font-medium">15 de Fevereiro, 2026</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="hidden sm:inline-block px-3 py-1 rounded-full bg-brand-greenBg text-brand-green text-xs font-bold">Pago</span>
+                                <button class="w-10 h-10 rounded-full flex items-center justify-center text-brand-navy/40 hover:bg-brand-navy/5 hover:text-brand-navy transition-colors">
+                                    <i class="fa-solid fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

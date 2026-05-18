@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de detalhe da oportunidade do Balcão - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trust: '#0016dc',
+                        offwhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'floating': '0 20px 50px -15px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-navy bg-offwhite min-h-[100dvh] flex">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class="flex-1 p-8 lg:p-12 min-h-screen">
+        <div class="max-w-[1400px] mx-auto h-full flex flex-col">
+            
+            <!-- Header Area -->
+            <header id="page-header" class="mb-10">
+                <div class="flex items-center gap-4 text-sm font-medium text-gray-500 mb-4">
+                    <a href="#" class="hover:text-navy transition-colors">Oportunidades</a>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-trust">REF-84920</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">Analisar e Propor</h1>
+                <p class="text-lg text-gray-500 font-medium max-w-2xl">Avalie o problema do cliente e envie sua melhor oferta.</p>
+            </header>
+
+            <!-- Split Layout -->
+            <div class="flex flex-col xl:flex-row gap-8 items-start flex-1">
+                
+                <!-- Left Column: Client Request (55%) -->
+                <div id="client-request" class="w-full xl:w-[55%] flex flex-col gap-6">
+                    
+                    <!-- Main Detail Card -->
+                    <div class="bg-white rounded-[24px] p-8 shadow-ambient border border-gray-100/50">
+                        
+                        <!-- Header / Scarcity -->
+                        <div class="flex justify-between items-start mb-8">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="px-3 py-1 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-wider rounded-full">Urgente</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold uppercase tracking-wider rounded-full">Reforma Residencial</span>
+                                </div>
+                                <h2 class="text-2xl font-bold">Renovação Completa de Apartamento 120m²</h2>
+                            </div>
+                            
+                            <!-- Scarcity Progress -->
+                            <div class="bg-gray-50 px-4 py-3 rounded-2xl border border-gray-100 text-right">
+                                <div class="text-sm font-semibold text-gray-500 mb-1">Vagas de Orçamento</div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-24 h-2 bg-gray-200 rounded-full ">
+                                        <div class="w-[60%] h-full bg-trust rounded-full"></div>
+                                    </div>
+                                    <span class="font-bold text-navy">3/5 preenchidas</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="prose prose-gray max-w-none mb-8">
+                            <p class="text-gray-600 leading-relaxed text-base">
+                                Preciso de uma reforma completa no meu apartamento recém-adquirido em Balneário Camboriú. O escopo inclui demolição parcial de paredes para integrar sala e cozinha, troca de todo o piso (atualmente cerâmica antiga, quero porcelanato), renovação completa de 2 banheiros (hidráulica, revestimentos e louças), e novo projeto de gesso e iluminação.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed text-base mt-4">
+                                Tenho o projeto arquitetônico pronto. O condomínio permite obras de segunda a sexta, das 8h às 17h. Preciso de uma equipe que gerencie tudo e entregue pronto para morar.
+                            </p>
+                        </div>
+
+                        <!-- Grid of Photos -->
+                        <div class="mb-8">
+                            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Fotos do Local</h3>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-32 rounded-2xl bg-gray-100 relative group cursor-pointer">
+                                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Room state" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                                </div>
+                                <div class="h-32 rounded-2xl bg-gray-100 relative group cursor-pointer">
+                                    <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kitchen state" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                </div>
+                                <div class="h-32 rounded-2xl bg-gray-100 relative group cursor-pointer">
+                                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bathroom state" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors group-hover:bg-black/50">
+                                        <span class="text-white font-bold text-sm">+4 fotos</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location & Map Component -->
+                        <div>
+                            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Localização Aproximada</h3>
+                            <div class="bg-gray-50 rounded-2xl border border-gray-100 flex flex-col sm:flex-row">
+                                <div class="p-6 flex-1 flex flex-col justify-center">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="w-10 h-10 rounded-full bg-blue-50 text-trust flex items-center justify-center">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-navy">Centro, Balneário Camboriú</h4>
+                                            <p class="text-sm text-gray-500">Santa Catarina, Brasil</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-4 flex items-center gap-1">
+                                        <i class="fa-solid fa-circle-info"></i> Endereço exato liberado após aceite.
+                                    </p>
+                                </div>
+                                <!-- Stylized Map Area (simulated map view from reference) -->
+                                <div class="h-48 sm:h-auto sm:w-[40%] bg-gray-200 relative " style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">
+                                    <div class="absolute inset-0 bg-trust/10 backdrop-blur-[2px]"></div>
+                                    <!-- Map Pin -->
+                                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                        <div class="relative">
+                                            <div class="w-12 h-12 bg-trust/20 rounded-full animate-ping absolute -inset-2"></div>
+                                            <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg relative z-10">
+                                                <div class="w-3 h-3 bg-trust rounded-full"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Column: Bid Form (45%) -->
+                <div id="bid-form-container" class="w-full xl:w-[45%] xl:sticky xl:top-8">
+                    <div class="bg-white rounded-[24px] p-8 shadow-ambient border border-gray-100/50">
+                        
+                        <div class="mb-8">
+                            <h2 class="text-2xl font-bold mb-2">Elaborar Orçamento</h2>
+                            <p class="text-gray-500 text-sm">Destaque sua experiência e ofereça um preço justo.</p>
+                        </div>
+
+                        <form class="flex flex-col gap-6">
+                            
+                            <!-- Pitch Input -->
+                            <div class="flex flex-col gap-2">
+                                <label class="text-sm font-bold text-navy flex justify-between">
+                                    <span>Sua Proposta (Pitch)</span>
+                                    <span class="text-gray-400 font-normal">Min. 100 caracteres</span>
+                                </label>
+                                <textarea rows="5" class="w-full bg-gray-50 border border-gray-200 rounded-[16px] p-4 text-base focus:outline-none focus:ring-2 focus:ring-trust/20 focus:border-trust transition-all resize-none placeholder-gray-400" placeholder="Olá! Tenho vasta experiência em reformas de alto padrão no Centro de BC. Nossa equipe conta com arquitetos e engenheiros para garantir a qualidade..."></textarea>
+                            </div>
+
+                            <!-- Grid Inputs -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <!-- Time Input -->
+                                <div class="flex flex-col gap-2">
+                                    <label class="text-sm font-bold text-navy">Prazo Estimado</label>
+                                    <div class="relative">
+                                        <input type="number" class="w-full bg-gray-50 border border-gray-200 rounded-[16px] p-4 pr-12 text-base font-semibold focus:outline-none focus:ring-2 focus:ring-trust/20 focus:border-trust transition-all" placeholder="45">
+                                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-medium text-sm">Dias</span>
+                                    </div>
+                                </div>
+
+                                <!-- Price Input -->
+                                <div class="flex flex-col gap-2">
+                                    <label class="text-sm font-bold text-navy">Valor Total (Mão de Obra)</label>
+                                    <div class="relative">
+                                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold">R$</span>
+                                        <input type="text" class="w-full bg-gray-50 border border-gray-200 rounded-[16px] p-4 text-base font-bold text-navy focus:outline-none focus:ring-2 focus:ring-trust/20 focus:border-trust transition-all" placeholder="0,00">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Attachments -->
+                            <div class="flex flex-col gap-2">
+                                <label class="text-sm font-bold text-navy">Anexos Opcionais</label>
+                                <div class="border-2 border-dashed border-gray-200 rounded-[16px] p-6 flex flex-col items-center justify-center bg-gray-50/50 hover:bg-gray-50 transition-colors cursor-pointer group">
+                                    <div class="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center text-gray-400 group-hover:text-trust transition-colors mb-3">
+                                        <i class="fa-solid fa-cloud-arrow-up text-lg"></i>
+                                    </div>
+                                    <p class="text-sm font-medium text-navy mb-1">Clique para fazer upload</p>
+                                    <p class="text-xs text-gray-500">PDF, JPG ou PNG (Máx 10MB)</p>
+                                </div>
+                            </div>
+
+                            <!-- Divider -->
+                            <hr class="border-gray-100 my-2">
+
+                            <!-- Summary -->
+                            <div class="flex justify-between items-center bg-blue-50/30 p-4 rounded-2xl">
+                                <div class="text-sm text-gray-600">Taxa da plataforma (10%)</div>
+                                <div class="font-semibold text-navy">- R$ 0,00</div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="button" class="w-full bg-trust hover:bg-blue-800 text-white font-bold text-lg py-5 px-6 rounded-full shadow-lg shadow-trust/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex justify-center items-center gap-3 mt-2">
+                                <span>Enviar Oferta Competitiva</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                            
+                            <p class="text-center text-xs text-gray-400 font-medium">Ao enviar, você concorda com nossos Termos de Serviço.</p>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

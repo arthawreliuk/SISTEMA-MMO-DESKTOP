@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definição de região de atendimento - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        muted: '#F5F5F5',
+                        primaryLight: '#E6E8FB'
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'nav': '0 4px 20px -2px rgba(0,0,0,0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        /* Custom range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #0016dc;
+            cursor: pointer;
+            margin-top: -10px;
+            box-shadow: 0 4px 10px rgba(0, 22, 220, 0.3);
+            border: 4px solid #FFFFFF;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #E6E8FB;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-background text-navy flex antialiased selection:bg-primaryLight selection:text-primary">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class="ml-[110px] flex-1 h-screen p-8 flex flex-col max-w-[1400px] mx-auto w-full">
+        
+        <!-- Header Area -->
+        <header id="header" class="flex items-center justify-between mb-8 px-2">
+            <div class="flex items-center gap-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Arthur" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                <div>
+                    <h1 class="text-xl font-bold text-navy">Olá, Arthur</h1>
+                    <p class="text-sm text-navy/60 font-medium">Configuração de Perfil</p>
+                </div>
+            </div>
+
+            <!-- Stepper -->
+            <div class="flex flex-col items-center">
+                <span class="text-sm font-semibold text-navy mb-2">Passo 3 de 4</span>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-1.5 rounded-full bg-primary/20"></div>
+                    <div class="w-8 h-1.5 rounded-full bg-primary/20"></div>
+                    <div class="w-8 h-1.5 rounded-full bg-primary"></div>
+                    <div class="w-8 h-1.5 rounded-full bg-muted"></div>
+                </div>
+            </div>
+
+            <div class="w-[150px]"></div> <!-- Spacer for balance -->
+        </header>
+
+        <!-- Main Location Card -->
+        <div id="location-card" class="bg-surface rounded-[24px] shadow-soft flex-1 flex border border-navy/5">
+            
+            <!-- Left: Visual Map Area -->
+            <div id="map-view" class="w-[55%] relative bg-[#F0F2F5] flex items-center justify-center border-r border-navy/5">
+                <!-- Abstract Map Background -->
+                <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 24px 24px;"></div>
+                
+                <!-- AI Image for Stylized Map -->
+                <img class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/eea2f0c148-e48ceafe38e96a8c32f7.png" alt="ultra clean minimal abstract street map design, light grey and white, high end tech UI style, top down view" />
+
+                <!-- Radius Overlay -->
+                <div class="relative z-10 w-[400px] h-[400px] rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite]">
+                    <div class="w-[200px] h-[200px] rounded-full bg-primary/20 flex items-center justify-center">
+                        <div class="w-12 h-12 rounded-full bg-primary shadow-lg shadow-primary/40 flex items-center justify-center text-white relative">
+                            <i class="fa-solid fa-location-dot text-xl"></i>
+                            <!-- Ripple effect -->
+                            <span class="absolute inset-0 rounded-full border-2 border-primary animate-ping opacity-75"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Map Controls -->
+                <div class="absolute bottom-6 left-6 flex flex-col gap-2">
+                    <button class="w-10 h-10 bg-white rounded-full shadow-md text-navy hover:text-primary transition flex items-center justify-center">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <button class="w-10 h-10 bg-white rounded-full shadow-md text-navy hover:text-primary transition flex items-center justify-center">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: Controls Panel -->
+            <div id="controls-panel" class="w-[45%] p-10 flex flex-col h-full bg-surface relative">
+                
+                <div class="flex-1">
+                    <div class="mb-8">
+                        <div class="w-12 h-12 rounded-2xl bg-primaryLight text-primary flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-crosshairs text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-navy mb-3 tracking-tight">Sua região de atuação</h2>
+                        <p class="text-navy/60 text-base leading-relaxed max-w-md">Escolha cidades específicas ou defina um raio a partir da sua base para receber pedidos.</p>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative mb-8">
+                        <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-magnifying-glass text-navy/40"></i>
+                        </div>
+                        <input type="text" placeholder="Buscar cidades ou bairros..." class="w-full pr-4 py-4 bg-muted border-none rounded-full text-navy placeholder-navy/40 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[15px] font-medium">
+                    </div>
+
+                    <!-- Selected Tags -->
+                    <div class="mb-10">
+                        <h3 class="text-sm font-bold text-navy uppercase tracking-wider mb-4 opacity-70">Locais Selecionados</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="px-4 py-2 bg-primaryLight rounded-full flex items-center gap-2 group cursor-pointer hover:bg-primary/20 transition-colors">
+                                <span class="text-primary font-semibold text-sm">São Paulo - Centro</span>
+                                <i class="fa-solid fa-xmark text-primary/60 group-hover:text-primary text-xs"></i>
+                            </div>
+                            <div class="px-4 py-2 bg-primaryLight rounded-full flex items-center gap-2 group cursor-pointer hover:bg-primary/20 transition-colors">
+                                <span class="text-primary font-semibold text-sm">Pinheiros</span>
+                                <i class="fa-solid fa-xmark text-primary/60 group-hover:text-primary text-xs"></i>
+                            </div>
+                            <div class="px-4 py-2 bg-primaryLight rounded-full flex items-center gap-2 group cursor-pointer hover:bg-primary/20 transition-colors">
+                                <span class="text-primary font-semibold text-sm">Vila Madalena</span>
+                                <i class="fa-solid fa-xmark text-primary/60 group-hover:text-primary text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Distance Slider -->
+                    <div class="bg-muted/50 p-6 rounded-3xl border border-navy/5">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="font-bold text-navy text-lg">Raio de atendimento</h3>
+                                <p class="text-sm text-navy/50 mt-1">Distância máxima da base</p>
+                            </div>
+                            <div class="px-4 py-2 bg-white rounded-full shadow-sm">
+                                <span class="font-bold text-primary text-lg" id="distance-value">20km</span>
+                            </div>
+                        </div>
+                        
+                        <div class="relative pt-2 pb-4">
+                            <input type="range" min="1" max="50" value="20" class="w-full" id="distance-slider" oninput="document.getElementById('distance-value').innerText = this.value + 'km'">
+                            <div class="flex justify-between text-xs text-navy/40 font-semibold mt-3 px-1">
+                                <span>1km</span>
+                                <span>25km</span>
+                                <span>50km</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Action -->
+                <div class="pt-8 border-t border-navy/5 mt-auto flex justify-end">
+                    <button class="bg-primary text-white px-8 py-4 rounded-full font-bold text-[15px] flex items-center gap-3 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-0.5">
+                        Confirmar Região
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

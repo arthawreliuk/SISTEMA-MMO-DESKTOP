@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aceite contratual - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        offwhite: '#F8F9FA',
+                        docbg: '#F1F3F5'
+                    },
+                    boxShadow: {
+                        'ambient': '0 20px 40px -10px rgba(0,0,0,0.05), 0 10px 20px -5px rgba(0,0,0,0.02)',
+                        'nav': '0 10px 30px -5px rgba(0,0,0,0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1A1A24;
+        }
+        
+        /* Custom Checkbox Styling */
+        .custom-checkbox input:checked + div {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        .custom-checkbox input:checked + div svg {
+            display: block;
+        }
+        
+        /* Document Scrollbar */
+        .doc-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .doc-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .doc-scroll::-webkit-scrollbar-thumb {
+            background-color: rgba(26, 26, 36, 0.15);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="h-screen w-full flex bg-offwhite">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-workspace" class="flex-1 h-full flex items-center justify-center pl-[120px] pr-8 py-10 overflow-y-auto">
+        
+        <!-- Centered Agreement Card -->
+        <div id="agreement-card" class="w-full max-w-[700px] bg-white rounded-[24px] shadow-ambient p-10 flex flex-col relative mx-auto my-auto">
+            
+            <!-- Header Section -->
+            <header id="agreement-header" class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-6">
+                    <i class="fa-solid fa-file-signature text-2xl"></i>
+                </div>
+                <h1 class="text-[32px] font-bold text-navy leading-tight mb-3 tracking-tight">Acordo de Parceria MMO</h1>
+                <p class="text-[16px] text-navy/60 font-medium max-w-[480px] mx-auto leading-relaxed">
+                    Leia com atenção nossos termos de uso e regras de conduta para finalizar seu cadastro.
+                </p>
+            </header>
+
+            <!-- Document Viewer -->
+            <section id="contract-document" class="bg-docbg rounded-[16px] p-6 mb-8 border border-navy/5 relative h-[280px] flex flex-col">
+                <div class="flex items-center justify-between mb-4 pb-4 border-b border-navy/10">
+                    <h3 class="font-semibold text-navy text-sm uppercase tracking-wider">Termos do Contrato</h3>
+                    <div class="flex gap-2">
+                        <button class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-navy/50 hover:text-primary shadow-sm transition-colors">
+                            <i class="fa-solid fa-print text-sm"></i>
+                        </button>
+                        <button class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-navy/50 hover:text-primary shadow-sm transition-colors">
+                            <i class="fa-solid fa-download text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="doc-scroll flex-1 overflow-y-auto pr-4 text-sm text-navy/70 leading-relaxed space-y-5">
+                    <div>
+                        <h4 class="font-bold text-navy mb-2">1. Objeto do Contrato</h4>
+                        <p>O presente instrumento tem por objeto estabelecer as condições gerais para a prestação de serviços e utilização da plataforma MMO. O Usuário concorda em utilizar a plataforma de acordo com as leis vigentes e os termos aqui descritos.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-navy mb-2">2. Obrigações do Usuário</h4>
+                        <p>É de responsabilidade exclusiva do usuário manter a confidencialidade de suas credenciais de acesso, bem como garantir a veracidade de todas as informações fornecidas durante o cadastro e uso contínuo da plataforma.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-navy mb-2">3. Padrões de Qualidade (SLA)</h4>
+                        <p>A plataforma compromete-se a manter um nível de serviço (SLA) de 99.9% de disponibilidade mensal. Interrupções programadas para manutenção serão comunicadas com no mínimo 48 horas de antecedência.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-navy mb-2">4. Propriedade Intelectual</h4>
+                        <p>Todos os direitos de propriedade intelectual relativos à plataforma, incluindo software, design, marcas e conteúdo, são de propriedade exclusiva da MMO ou de seus licenciadores.</p>
+                    </div>
+                </div>
+                
+                <!-- Fade out effect at bottom of document -->
+                <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-docbg to-transparent rounded-b-[16px] pointer-events-none"></div>
+            </section>
+
+            <!-- Acceptance Checklist -->
+            <section id="acceptance-checklist" class="space-y-4 mb-10">
+                <label class="custom-checkbox flex items-start gap-4 cursor-pointer group p-4 rounded-xl hover:bg-navy/5 transition-colors border border-transparent hover:border-navy/5">
+                    <input type="checkbox" class="hidden" id="check-terms">
+                    <div class="w-6 h-6 rounded-full border-2 border-navy/20 flex items-center justify-center mt-0.5 transition-colors bg-white flex-shrink-0">
+                        <svg class="w-3.5 h-3.5 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="text-[15px] text-navy font-medium leading-snug pt-0.5 select-none group-hover:text-primary transition-colors">
+                        Li e concordo com os Termos de Uso e Política de Privacidade.
+                    </span>
+                </label>
+                
+                <label class="custom-checkbox flex items-start gap-4 cursor-pointer group p-4 rounded-xl hover:bg-navy/5 transition-colors border border-transparent hover:border-navy/5">
+                    <input type="checkbox" class="hidden" id="check-sla">
+                    <div class="w-6 h-6 rounded-full border-2 border-navy/20 flex items-center justify-center mt-0.5 transition-colors bg-white flex-shrink-0">
+                        <svg class="w-3.5 h-3.5 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="text-[15px] text-navy font-medium leading-snug pt-0.5 select-none group-hover:text-primary transition-colors">
+                        Concordo com os padrões de qualidade e regras de conduta (SLA).
+                    </span>
+                </label>
+            </section>
+
+            <!-- Action Footer -->
+            <footer id="action-footer" class="mt-auto">
+                <button class="w-full bg-primary hover:bg-primary/90 text-white font-semibold text-[16px] py-5 rounded-full transition-all shadow-lg shadow-primary/25 flex items-center justify-center gap-3 group">
+                    <span>Concordar e Assinar Eletronicamente</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </button>
+                <div class="text-center mt-4 text-xs text-navy/40 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Assinatura digital com validade jurídica</span>
+                </div>
+            </footer>
+            
+        </div>
+    </main>
+
+    <script>
+        // Simple script to toggle button state based on checkboxes
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkTerms = document.getElementById('check-terms');
+            const checkSla = document.getElementById('check-sla');
+            const submitBtn = document.querySelector('#action-footer button');
+            
+            // Initially dim the button
+            submitBtn.style.opacity = '0.5';
+            submitBtn.style.pointerEvents = 'none';
+            
+            function updateButtonState() {
+                if (checkTerms.checked && checkSla.checked) {
+                    submitBtn.style.opacity = '1';
+                    submitBtn.style.pointerEvents = 'auto';
+                } else {
+                    submitBtn.style.opacity = '0.5';
+                    submitBtn.style.pointerEvents = 'none';
+                }
+            }
+            
+            checkTerms.addEventListener('change', updateButtonState);
+            checkSla.addEventListener('change', updateButtonState);
+        });
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

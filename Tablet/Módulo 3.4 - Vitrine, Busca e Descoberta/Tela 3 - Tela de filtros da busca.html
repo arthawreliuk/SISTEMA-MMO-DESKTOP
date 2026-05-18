@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de filtros da busca - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#1A1A24',
+                            800: '#2A2A35',
+                            100: '#F5F5F7',
+                        },
+                        trust: {
+                            blue: '#0016dc',
+                            light: '#E6E8FB',
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 40px rgba(0, 0, 0, 0.08)',
+                        'drawer': '-10px 0 40px rgba(0, 0, 0, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #0016dc;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 2px 6px rgba(0, 22, 220, 0.3);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #E6E8FB;
+            border-radius: 2px;
+        }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 w-full h-screen relative flex justify-end items-stretch">
+
+    <!-- Blurred Background Context (Search Results Mockup) -->
+    <div id="background-context" class="absolute inset-0 z-0 ">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md z-10"></div>
+        <div class="w-full h-full p-8 grid grid-cols-3 gap-6 opacity-40 pointer-events-none">
+            <!-- Mock Cards -->
+            <div class="bg-white rounded-2xl h-64"></div>
+            <div class="bg-white rounded-2xl h-64"></div>
+            <div class="bg-white rounded-2xl h-64"></div>
+            <div class="bg-white rounded-2xl h-64"></div>
+            <div class="bg-white rounded-2xl h-64"></div>
+            <div class="bg-white rounded-2xl h-64"></div>
+        </div>
+    </div>
+
+    <!-- Right Drawer Panel -->
+    <aside id="filters-drawer" class="w-[450px] bg-white h-full z-20 shadow-drawer relative flex flex-col rounded-l-[32px] transform transition-transform duration-300 translate-x-0">
+        
+        <!-- Header -->
+        <header id="drawer-header" class="px-8 py-6 flex justify-between items-center border-b border-gray-100 shrink-0">
+            <h2 class="text-navy-900 text-xl font-bold tracking-tight">Filtros Avançados</h2>
+            <button class="w-10 h-10 rounded-full bg-navy-100 text-navy-900 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div id="drawer-content" class="flex-1 overflow-y-auto px-8 py-8 space-y-10">
+            
+            <!-- Section: Localização -->
+            <section id="section-location" class="space-y-5">
+                <h3 class="text-navy-900 font-semibold text-base">Localização</h3>
+                
+                <div class="relative">
+                    <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" placeholder="Digitar bairro ou CEP" class="w-full bg-navy-100 text-navy-900 placeholder-gray-500 rounded-full py-3.5 pr-4 focus:outline-none focus:ring-2 focus:ring-trust-blue/20 transition-all text-sm font-medium">
+                </div>
+
+                <div class="pt-4 space-y-4">
+                    <div class="flex justify-between items-center text-sm font-medium text-navy-900">
+                        <span>Distância Máxima</span>
+                        <span class="text-trust-blue font-bold">15 km</span>
+                    </div>
+                    <div class="relative w-full">
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-trust-blue rounded-l-full w-[30%] pointer-events-none"></div>
+                        <input type="range" min="1" max="50" value="15" class="w-full z-10 relative">
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 font-medium">
+                        <span>1 km</span>
+                        <span>50 km</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Especialidades -->
+            <section id="section-specialties" class="space-y-5">
+                <h3 class="text-navy-900 font-semibold text-base">Especialidades Específicas</h3>
+                
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" placeholder="Buscar habilidade (ex: Pintura)" class="w-full bg-navy-100 text-navy-900 placeholder-gray-500 rounded-full py-3.5 pr-4 focus:outline-none focus:ring-2 focus:ring-trust-blue/20 transition-all text-sm font-medium">
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <button class="px-4 py-2 rounded-full bg-trust-blue text-white text-sm font-medium shadow-sm flex items-center gap-2">
+                        Instalação de LED
+                        <i class="fa-solid fa-xmark text-xs opacity-70"></i>
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-trust-blue text-white text-sm font-medium shadow-sm flex items-center gap-2">
+                        Quadro de Força
+                        <i class="fa-solid fa-xmark text-xs opacity-70"></i>
+                    </button>
+                    <button class="px-4 py-2 rounded-full border border-gray-200 text-navy-900 hover:bg-navy-100 text-sm font-medium transition-colors">
+                        Fiação Elétrica
+                    </button>
+                    <button class="px-4 py-2 rounded-full border border-gray-200 text-navy-900 hover:bg-navy-100 text-sm font-medium transition-colors">
+                        Tomadas
+                    </button>
+                    <button class="px-4 py-2 rounded-full border border-gray-200 text-navy-900 hover:bg-navy-100 text-sm font-medium transition-colors">
+                        Iluminação
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section: Avaliação Mínima -->
+            <section id="section-rating" class="space-y-5">
+                <h3 class="text-navy-900 font-semibold text-base">Avaliação Mínima</h3>
+                
+                <div class="flex gap-3">
+                    <button class="flex-1 py-3 rounded-full border-2 border-trust-blue bg-trust-light text-trust-blue font-bold text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-star"></i> 5.0
+                    </button>
+                    <button class="flex-1 py-3 rounded-full border border-gray-200 text-navy-900 hover:bg-navy-100 font-medium text-sm flex items-center justify-center gap-2 transition-colors">
+                        <i class="fa-solid fa-star text-gray-400"></i> 4.5+
+                    </button>
+                    <button class="flex-1 py-3 rounded-full border border-gray-200 text-navy-900 hover:bg-navy-100 font-medium text-sm flex items-center justify-center gap-2 transition-colors">
+                        <i class="fa-solid fa-star text-gray-400"></i> 4.0+
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section: Filtros de Confiança -->
+            <section id="section-trust" class="space-y-5">
+                <h3 class="text-navy-900 font-semibold text-base">Filtros de Confiança</h3>
+                
+                <div class="space-y-4">
+                    <!-- Toggle 1 -->
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-500">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <span class="block text-sm font-semibold text-navy-900 group-hover:text-trust-blue transition-colors">Apenas Mestres Verificados</span>
+                                <span class="block text-xs text-gray-500 mt-0.5">Profissionais com identidade confirmada</span>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <input type="checkbox" class="sr-only toggle-checkbox" checked>
+                            <div class="block bg-trust-blue w-12 h-7 rounded-full toggle-label transition-colors"></div>
+                            <div class="dot absolute right-1 top-1 bg-white w-5 h-5 rounded-full transition-transform"></div>
+                        </div>
+                    </label>
+
+                    <!-- Toggle 2 -->
+                    <label class="flex items-center justify-between cursor-pointer group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+                            <div>
+                                <span class="block text-sm font-semibold text-navy-900 group-hover:text-trust-blue transition-colors">Com Portfólio de Fotos</span>
+                                <span class="block text-xs text-gray-500 mt-0.5">Trabalhos anteriores documentados</span>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <input type="checkbox" class="sr-only toggle-checkbox">
+                            <div class="block bg-gray-200 w-12 h-7 rounded-full toggle-label transition-colors"></div>
+                            <div class="dot absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition-transform"></div>
+                        </div>
+                    </label>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer Fixed Action -->
+        <footer id="drawer-footer" class="px-8 py-6 border-t border-gray-100 bg-white shrink-0">
+            <button class="w-full bg-trust-blue hover:bg-blue-800 text-white font-bold py-4 rounded-full shadow-ambient transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                Aplicar Filtros
+                <span class="bg-white/20 px-2 py-0.5 rounded-full text-xs ml-1">124 resultados</span>
+            </button>
+        </footer>
+
+    </aside>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

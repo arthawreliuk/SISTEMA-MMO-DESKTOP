@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado vazio de favoritos - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: '#1A1A24',
+                        muted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 40px rgba(0, 0, 0, 0.03)',
+                        'nav': '0 8px 32px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-text antialiased flex">
+
+
+
+    <!-- Main Workspace -->
+    <main class="flex-1 p-6 pt-24 md:pt-6 h-screen flex flex-col max-w-[1440px] mx-auto w-full">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4 shrink-0">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-text mb-2">Mestres Favoritos</h1>
+                <p class="text-lg text-muted font-medium">Sua equipe de profissionais de confiança.</p>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="relative hidden sm:block">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" placeholder="Buscar na lista..." class="w-64 pr-4 py-3 rounded-full bg-white shadow-sm border-none focus:ring-2 focus:ring-primary/20 outline-none text-sm font-medium transition-shadow placeholder:text-gray-400">
+                </div>
+                <button class="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center text-text hover:bg-gray-50 transition-colors sm:hidden">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+                <button class="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center text-text hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- The Empty State Container -->
+        <section id="empty-state" class="flex-1 bg-white rounded-[32px] shadow-soft flex flex-col items-center justify-center p-8 md:p-16 relative min-h-[500px]">
+            
+            <!-- Decorative Background Elements -->
+            <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-blue-50/50 to-transparent pointer-events-none"></div>
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Centered Content -->
+            <div class="relative z-10 flex flex-col items-center text-center max-w-lg mx-auto">
+                
+                <!-- Glowing Heart Illustration -->
+                <div class="relative mb-10 group">
+                    <div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl group-hover:bg-primary/30 transition-all duration-500"></div>
+                    <div class="w-40 h-40 bg-gradient-to-br from-white to-blue-50 rounded-[40px] shadow-xl flex items-center justify-center relative z-10 border border-white rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                        <div class="absolute inset-2 border border-dashed border-primary/20 rounded-[32px]"></div>
+                        <i class="fa-regular fa-heart text-6xl text-primary drop-shadow-md"></i>
+                        
+                        <!-- Floating particles -->
+                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center animate-bounce" style="animation-delay: 0.2s">
+                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                        </div>
+                        <div class="absolute -bottom-2 -left-6 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center animate-bounce" style="animation-delay: 0.5s">
+                            <i class="fa-solid fa-wrench text-gray-400 text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <h2 class="text-3xl font-bold text-text mb-4">Sua lista está vazia</h2>
+                <p class="text-muted text-lg mb-10 leading-relaxed">
+                    Navegue pelas categorias de manutenção, reformas e serviços para começar a montar sua equipe.
+                </p>
+
+                <!-- Action Button -->
+                <button class="bg-primary hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg shadow-primary/30 transition-all transform hover:-translate-y-1 flex items-center gap-3">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Buscar Profissionais
+                </button>
+
+            </div>
+
+            <!-- Suggested Categories Grid (Bottom Hint) -->
+            <div class="absolute bottom-8 w-full px-8 md:px-16 hidden md:block">
+                <div class="flex items-center justify-between text-sm text-gray-400 font-medium mb-4 uppercase tracking-wider">
+                    <span>Categorias Populares</span>
+                </div>
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="bg-gray-50 rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:bg-blue-50 transition-colors border border-transparent hover:border-blue-100">
+                        <div class="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-blue-500">
+                            <i class="fa-solid fa-plug"></i>
+                        </div>
+                        <span class="font-semibold text-text">Eletricistas</span>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:bg-blue-50 transition-colors border border-transparent hover:border-blue-100">
+                        <div class="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-orange-500">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <span class="font-semibold text-text">Encanadores</span>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:bg-blue-50 transition-colors border border-transparent hover:border-blue-100">
+                        <div class="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-green-500">
+                            <i class="fa-solid fa-paint-roller"></i>
+                        </div>
+                        <span class="font-semibold text-text">Pintores</span>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:bg-blue-50 transition-colors border border-transparent hover:border-blue-100">
+                        <div class="w-10 h-10 bg-white rounded-full shadow-sm flex items-center justify-center text-purple-500">
+                            <i class="fa-solid fa-hammer"></i>
+                        </div>
+                        <span class="font-semibold text-text">Marceneiros</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

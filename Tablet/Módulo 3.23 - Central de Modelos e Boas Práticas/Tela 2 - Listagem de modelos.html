@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de modelos - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        blue: {
+                            600: '#0016dc',
+                            700: '#0011a8',
+                        },
+                        gray: {
+                            50: '#F8F9FA',
+                            100: '#F3F4F6',
+                            200: '#E5E7EB',
+                            300: '#D1D5DB',
+                            400: '#9CA3AF',
+                            500: '#6B7280',
+                            800: '#1F2937',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'sm-soft': '0 2px 10px -1px rgba(0, 0, 0, 0.03)',
+                    },
+                    borderRadius: {
+                        '3xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .custom-checkbox {
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.15em;
+            height: 1.15em;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.25em;
+            display: grid;
+            place-content: center;
+        }
+        .custom-checkbox::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em white;
+            background-color: white;
+            transform-origin: center;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+        .custom-checkbox:checked {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        .custom-checkbox:checked::before {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex text-navy bg-gray-50">
+
+    <!-- Sidebar Filter Engine (30%) -->
+    <aside id="sidebar-filters" class="w-[30%] hidden md:flex flex-col bg-white border-r border-gray-200 sticky top-0 h-screen overflow-y-auto">
+        <div class="p-8 border-b border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-sm-soft">
+                    <i class="fa-solid fa-layer-group text-lg"></i>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight">Resource Center</h1>
+            </div>
+        </div>
+
+        <div class="p-8 flex-1">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-lg font-semibold">Filtros Avançados</h2>
+                <button class="text-sm text-blue-600 font-medium hover:text-blue-700 transition-colors">Limpar</button>
+            </div>
+
+            <!-- Accordion: Formato -->
+            <div class="mb-6 border border-gray-100 rounded-[16px] shadow-sm-soft">
+                <button class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors group">
+                    <span class="font-semibold text-sm">Formato</span>
+                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs group-hover:text-gray-600 transition-colors"></i>
+                </button>
+                <div class="px-5 pb-5 pt-1 space-y-3 bg-white">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox" checked>
+                        <span class="text-sm text-gray-600 group-hover:text-navy transition-colors">PDF Document (.pdf)</span>
+                        <span class="ml-auto text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">124</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox">
+                        <span class="text-sm text-gray-600 group-hover:text-navy transition-colors">Word Document (.docx)</span>
+                        <span class="ml-auto text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">85</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox">
+                        <span class="text-sm text-gray-600 group-hover:text-navy transition-colors">Excel Spreadsheet (.xlsx)</span>
+                        <span class="ml-auto text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">42</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Accordion: Complexidade -->
+            <div class="mb-6 border border-gray-100 rounded-[16px] shadow-sm-soft">
+                <button class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors group">
+                    <span class="font-semibold text-sm">Complexidade</span>
+                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs group-hover:text-gray-600 transition-colors"></i>
+                </button>
+                <div class="px-5 pb-5 pt-1 space-y-3 bg-white">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox">
+                        <span class="text-sm text-gray-600 group-hover:text-navy transition-colors">Básico</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox" checked>
+                        <span class="text-sm text-gray-600 group-hover:text-navy transition-colors">Intermediário</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox">
+                        <span class="text-sm text-gray-600 group-hover:text-navy transition-colors">Avançado</span>
+                    </label>
+                </div>
+            </div>
+
+             <!-- Accordion: Categoria -->
+             <div class="mb-6 border border-gray-100 rounded-[16px] shadow-sm-soft">
+                <button class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors group">
+                    <span class="font-semibold text-sm">Categoria</span>
+                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs group-hover:text-gray-600 transition-colors"></i>
+                </button>
+                <div class="px-5 pb-5 pt-1 space-y-3 bg-white">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox" checked>
+                        <span class="text-sm text-gray-600 group-hover:text-navy transition-colors">Contratos Legais</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox">
+                        <span class="text-sm text-gray-600 group-hover:text-navy transition-colors">Políticas de Privacidade</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" class="custom-checkbox">
+                        <span class="text-sm text-gray-600 group-hover:text-navy transition-colors">Termos de Serviço</span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="p-8 border-t border-gray-100 bg-gray-50/50 mt-auto">
+            <div class="bg-white rounded-[16px] p-5 shadow-sm-soft border border-gray-100 flex items-center gap-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Profile" class="w-10 h-10 rounded-full object-cover">
+                <div>
+                    <p class="text-sm font-bold text-navy">Admin User</p>
+                    <p class="text-xs text-gray-500">Legal Compliance Team</p>
+                </div>
+                <button class="ml-auto text-gray-400 hover:text-navy transition-colors">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Workspace (70%) -->
+    <main id="main-workspace" class="w-full md:w-[70%] flex flex-col min-h-screen">
+        
+        <!-- Header Controls -->
+        <header id="workspace-header" class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-10 px-8 py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Categoria Selecionada</div>
+                <h2 class="text-2xl font-bold text-navy">Explorando: Documentos Legais</h2>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" placeholder="Buscar templates..." class=" pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all w-64 placeholder-gray-400">
+                </div>
+                <button class="flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-semibold text-navy hover:bg-gray-50 shadow-sm-soft transition-all">
+                    <i class="fa-solid fa-arrow-down-short-wide text-gray-400"></i>
+                    Ordenar por: Mais Baixados
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-400 ml-1"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="flex-1 p-8 overflow-y-auto">
+            
+            <!-- Featured Highlight (Optional but good for premium feel) -->
+            <section id="featured-resource" class="mb-8">
+                <div class="bg-white rounded-3xl p-8 shadow-soft border border-gray-100 flex flex-col lg:flex-row items-center gap-8 relative ">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+                    
+                    <div class="w-full lg:w-1/3 flex justify-center">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-blue-600/10 blur-xl rounded-2xl transform translate-y-4"></div>
+                            <div class="w-40 h-48 bg-white border border-gray-200 rounded-2xl shadow-lg relative z-10 flex flex-col items-center justify-center group">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-blue-600"></div>
+                                <div class="absolute top-0 right-0 w-12 h-12 bg-gray-50 border-b border-l border-gray-200 rounded-bl-xl"></div>
+                                <i class="fa-solid fa-file-contract text-5xl text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300"></i>
+                                <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-md">DOCX</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full lg:w-2/3 flex flex-col items-start relative z-10">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wide rounded-full">Destaque</span>
+                            <span class="text-xs text-gray-500 font-medium"><i class="fa-regular fa-clock mr-1"></i> Atualizado há 2 dias</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Master Service Agreement (MSA) v2.4</h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed max-w-xl">O template definitivo e mais recente para contratos de prestação de serviços B2B. Inclui cláusulas atualizadas de LGPD e proteção de dados internacionais.</p>
+                        
+                        <div class="flex items-center gap-4 w-full sm:w-auto">
+                            <button class="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-[0_8px_20px_-6px_rgba(0,22,220,0.4)] transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> Baixar Template
+                            </button>
+                            <button class="w-12 h-12 flex items-center justify-center bg-white border border-gray-200 rounded-full text-gray-400 hover:text-navy hover:bg-gray-50 transition-colors shadow-sm-soft">
+                                <i class="fa-regular fa-bookmark text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grid Layout (2 Columns) -->
+            <section id="template-grid" class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                
+                <!-- Card 1 -->
+                <article class="bg-white rounded-[24px] p-6 shadow-soft border border-gray-100 flex flex-col hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-24 h-28 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 relative group-hover:bg-blue-50/50 transition-colors">
+                            <div class="absolute top-0 right-0 w-6 h-6 bg-white border-b border-l border-gray-100 rounded-bl-lg"></div>
+                            <i class="fa-solid fa-file-pdf text-3xl text-red-500 drop-shadow-sm group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-md tracking-wide">[PDF]</span>
+                            <span class="text-xs font-medium text-gray-400"><i class="fa-solid fa-eye mr-1"></i> 1.2k views</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6 flex-1">
+                        <h3 class="text-lg font-bold text-navy mb-2 leading-snug group-hover:text-blue-600 transition-colors">Termos de Uso Padrão para Plataformas SaaS</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2">Documento base para regulamentar o uso da sua plataforma por usuários finais, cobrindo responsabilidades e limitações.</p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-5 mt-auto">
+                        <div class="flex -space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-8 h-8 rounded-full border-2 border-white object-cover" alt="Author">
+                            <div class="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-500">+3</div>
+                        </div>
+                        <button class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full shadow-md transition-all flex items-center gap-2">
+                            Baixar <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="bg-white rounded-[24px] p-6 shadow-soft border border-gray-100 flex flex-col hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-24 h-28 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 relative group-hover:bg-blue-50/50 transition-colors">
+                            <div class="absolute top-0 right-0 w-6 h-6 bg-white border-b border-l border-gray-100 rounded-bl-lg"></div>
+                            <i class="fa-solid fa-file-word text-3xl text-blue-500 drop-shadow-sm group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-md tracking-wide">[DOCX]</span>
+                            <span class="text-xs font-medium text-gray-400"><i class="fa-solid fa-eye mr-1"></i> 856 views</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6 flex-1">
+                        <h3 class="text-lg font-bold text-navy mb-2 leading-snug group-hover:text-blue-600 transition-colors">Acordo de Confidencialidade (NDA) Bilateral</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2">Template editável para proteção de informações sigilosas em negociações entre duas empresas B2B.</p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-5 mt-auto">
+                        <div class="flex -space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-8 h-8 rounded-full border-2 border-white object-cover" alt="Author">
+                        </div>
+                        <button class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full shadow-md transition-all flex items-center gap-2">
+                            Baixar <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="bg-white rounded-[24px] p-6 shadow-soft border border-gray-100 flex flex-col hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-24 h-28 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 relative group-hover:bg-blue-50/50 transition-colors">
+                            <div class="absolute top-0 right-0 w-6 h-6 bg-white border-b border-l border-gray-100 rounded-bl-lg"></div>
+                            <i class="fa-solid fa-file-excel text-3xl text-emerald-500 drop-shadow-sm group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-md tracking-wide">[XLSX]</span>
+                            <span class="text-xs font-medium text-gray-400"><i class="fa-solid fa-eye mr-1"></i> 2.4k views</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6 flex-1">
+                        <h3 class="text-lg font-bold text-navy mb-2 leading-snug group-hover:text-blue-600 transition-colors">Calculadora de Multa Rescisória Proporcional</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2">Planilha automatizada para cálculo exato de multas em quebras de contrato de prestação de serviço recorrente.</p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-5 mt-auto">
+                        <div class="flex -space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full border-2 border-white object-cover" alt="Author">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" class="w-8 h-8 rounded-full border-2 border-white object-cover" alt="Author">
+                        </div>
+                        <button class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full shadow-md transition-all flex items-center gap-2">
+                            Baixar <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </button>
+                    </div>
+                </article>
+                
+                 <!-- Card 4 -->
+                 <article class="bg-white rounded-[24px] p-6 shadow-soft border border-gray-100 flex flex-col hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-24 h-28 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 relative group-hover:bg-blue-50/50 transition-colors">
+                            <div class="absolute top-0 right-0 w-6 h-6 bg-white border-b border-l border-gray-100 rounded-bl-lg"></div>
+                            <i class="fa-solid fa-file-pdf text-3xl text-red-500 drop-shadow-sm group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-md tracking-wide">[PDF]</span>
+                            <span class="text-xs font-medium text-gray-400"><i class="fa-solid fa-eye mr-1"></i> 512 views</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6 flex-1">
+                        <h3 class="text-lg font-bold text-navy mb-2 leading-snug group-hover:text-blue-600 transition-colors">Política de Privacidade (Compatível com LGPD/GDPR)</h3>
+                        <p class="text-sm text-gray-500 line-clamp-2">Modelo exaustivo detalhando coleta, processamento e retenção de dados de usuários conforme legislações vigentes.</p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-5 mt-auto">
+                        <div class="flex -space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-8 h-8 rounded-full border-2 border-white object-cover" alt="Author">
+                        </div>
+                        <button class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full shadow-md transition-all flex items-center gap-2">
+                            Baixar <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </button>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- Pagination Footer -->
+            <footer id="pagination-footer" class="mt-10 flex items-center justify-between border-t border-gray-200 pt-6 pb-4">
+                <span class="text-sm text-gray-500 font-medium">Mostrando <span class="font-bold text-navy">1-4</span> de <span class="font-bold text-navy">24</span> templates</span>
+                
+                <div class="flex items-center gap-2">
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:text-navy hover:bg-white bg-transparent transition-colors disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold shadow-md">1</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-navy hover:bg-white bg-transparent transition-colors font-medium">2</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-navy hover:bg-white bg-transparent transition-colors font-medium">3</button>
+                    <span class="text-gray-400 px-1">...</span>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-navy hover:bg-white bg-transparent transition-colors font-medium">6</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 hover:text-navy hover:bg-white bg-transparent transition-colors">
+                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    </button>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

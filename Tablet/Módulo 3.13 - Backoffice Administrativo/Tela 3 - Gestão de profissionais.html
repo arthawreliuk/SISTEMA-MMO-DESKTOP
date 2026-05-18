@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de profissionais - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            white: '#FFFFFF',
+                            gray: '#F3F4F6',
+                            textmuted: '#6B7280'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'ambient-lg': '0 10px 30px -5px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="h-screen w-full flex font-sans bg-brand-offwhite text-brand-navy">
+
+
+    <!-- Main Content Workspace -->
+    <main class="flex-1 h-full flex flex-col pt-8 pr-8 pb-8 ">
+        
+        <!-- Header Area -->
+        <header id="workspace_header" class="mb-8 flex justify-between items-end">
+            <div>
+                <h1 class="text-4xl font-bold tracking-tight text-brand-navy mb-2">Base de Profissionais</h1>
+                <p class="text-brand-textmuted text-lg">Gerencie assinaturas, verifique identidades e modere avaliações.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="px-6 py-3 bg-white rounded-full shadow-sm text-sm font-semibold flex items-center gap-2 border border-gray-200 hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-download"></i> Exportar Dados
+                </button>
+                <button class="px-6 py-3 bg-brand-blue text-white rounded-full shadow-ambient text-sm font-semibold flex items-center gap-2 hover:bg-blue-700 transition-colors">
+                    <i class="fa-solid fa-plus"></i> Novo Profissional
+                </button>
+            </div>
+        </header>
+
+        <!-- Split Layout -->
+        <div class="flex-1 flex gap-6 ">
+            
+            <!-- Left Column (List & Search - 40%) -->
+            <div id="professional_search_list" class="w-[40%] bg-brand-white rounded-[24px] shadow-ambient border border-gray-100 flex flex-col ">
+                
+                <!-- Search & Filters -->
+                <div class="p-6 border-b border-gray-100">
+                    <div class="relative mb-4">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Buscar por nome, email ou especialidade..." class="w-full bg-brand-gray rounded-full py-3 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all">
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-4 py-1.5 bg-blue-50 text-brand-blue rounded-full text-xs font-semibold cursor-pointer border border-blue-100">Todos (1.204)</span>
+                        <span class="px-4 py-1.5 bg-white text-gray-500 rounded-full text-xs font-medium cursor-pointer border border-gray-200 hover:bg-gray-50">Premium (450)</span>
+                        <span class="px-4 py-1.5 bg-white text-gray-500 rounded-full text-xs font-medium cursor-pointer border border-gray-200 hover:bg-gray-50">Pendente (28)</span>
+                    </div>
+                </div>
+
+                <!-- Scrollable List -->
+                <div class="flex-1 overflow-y-auto hide-scrollbar p-3">
+                    
+                    <!-- Group: Premium -->
+                    <div class="mb-4">
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider px-3 mb-2">Plano Premium</h3>
+                        <div class="flex flex-col gap-2">
+                            <!-- Active Item -->
+                            <div class="bg-blue-50/50 border-l-4 border-brand-blue rounded-r-xl p-4 cursor-pointer flex items-center gap-4 transition-all">
+                                <div class="relative">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
+                                        <i class="fa-solid fa-circle-check text-blue-500 text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <h4 class="font-bold text-brand-navy text-sm">Dra. Mariana Costa</h4>
+                                        <span class="text-[10px] font-bold bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">4.9 <i class="fa-solid fa-star text-[8px]"></i></span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-0.5">Cardiologista • CRM 45892</p>
+                                </div>
+                            </div>
+
+                            <!-- Inactive Item -->
+                            <div class="hover:bg-gray-50 border-l-4 border-transparent rounded-r-xl p-4 cursor-pointer flex items-center gap-4 transition-all">
+                                <div class="relative">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover">
+                                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
+                                        <i class="fa-solid fa-circle-check text-blue-500 text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <h4 class="font-semibold text-brand-navy text-sm">Dr. Roberto Almeida</h4>
+                                        <span class="text-[10px] font-bold bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">4.7 <i class="fa-solid fa-star text-[8px]"></i></span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-0.5">Ortopedista • CRM 33104</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group: Free -->
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider px-3 mb-2">Plano Free</h3>
+                        <div class="flex flex-col gap-2">
+                             <!-- Inactive Item -->
+                             <div class="hover:bg-gray-50 border-l-4 border-transparent rounded-r-xl p-4 cursor-pointer flex items-center gap-4 transition-all opacity-80">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover">
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <h4 class="font-semibold text-brand-navy text-sm">Carlos Mendes</h4>
+                                        <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">Novo</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-0.5">Fisioterapeuta • CREFITO 1290</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Right Column (Admin Profile View - 60%) -->
+            <div id="admin_profile_details" class="w-[60%] bg-brand-white rounded-[24px] shadow-ambient border border-gray-100 flex flex-col relative">
+                
+                <!-- Profile Header -->
+                <div class="p-8 pb-6 border-b border-gray-100">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-6">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Dra. Mariana Costa" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md">
+                                <div class="absolute bottom-0 right-0 bg-brand-blue text-white rounded-full p-1.5 shadow-sm border-2 border-white">
+                                    <i class="fa-solid fa-check text-xs"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3 mb-1">
+                                    <h2 class="text-2xl font-bold text-brand-navy">Dra. Mariana Costa</h2>
+                                    <span class="px-2.5 py-1 bg-green-50 text-green-600 text-xs font-bold rounded-full border border-green-100 flex items-center gap-1">
+                                        <i class="fa-solid fa-shield-check"></i> Selo Verificado
+                                    </span>
+                                </div>
+                                <p class="text-gray-500 font-medium">Cardiologista Especialista • CRM/SP 45892</p>
+                                <div class="flex gap-4 mt-3 text-sm text-gray-500">
+                                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-envelope"></i> mariana.costa@exemplo.com</span>
+                                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone"></i> (11) 98765-4321</span>
+                                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot"></i> São Paulo, SP</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-50 transition-colors">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scrollable Content -->
+                <div class="flex-1 overflow-y-auto hide-scrollbar p-8">
+                    
+                    <!-- Metric Pills -->
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <div class="bg-brand-offwhite rounded-2xl p-5 border border-gray-100 flex flex-col gap-2">
+                            <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-1">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <p class="text-sm font-medium text-gray-500">Total Ganhos (Mês)</p>
+                            <h3 class="text-2xl font-bold text-brand-navy">R$ 14.250</h3>
+                            <p class="text-xs text-green-600 font-semibold flex items-center gap-1 mt-1">
+                                <i class="fa-solid fa-arrow-trend-up"></i> +12.5% vs último mês
+                            </p>
+                        </div>
+                        
+                        <div class="bg-brand-offwhite rounded-2xl p-5 border border-gray-100 flex flex-col gap-2">
+                            <div class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center mb-1">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-sm font-medium text-gray-500">Avaliação Média</p>
+                            <h3 class="text-2xl font-bold text-brand-navy">4.9 <span class="text-sm text-gray-400 font-normal">/ 5.0</span></h3>
+                            <p class="text-xs text-gray-500 mt-1">Baseado em 128 consultas</p>
+                        </div>
+
+                        <div class="bg-brand-offwhite rounded-2xl p-5 border border-gray-100 flex flex-col gap-2">
+                            <div class="w-8 h-8 rounded-full bg-red-50 text-red-500 flex items-center justify-center mb-1">
+                                <i class="fa-solid fa-flag"></i>
+                            </div>
+                            <p class="text-sm font-medium text-gray-500">Denúncias Ativas</p>
+                            <h3 class="text-2xl font-bold text-brand-navy">0</h3>
+                            <p class="text-xs text-green-600 font-semibold mt-1">Conta em excelente estado</p>
+                        </div>
+                    </div>
+
+                    <!-- Details Sections -->
+                    <div class="grid grid-cols-2 gap-8">
+                        <!-- Documents -->
+                        <div>
+                            <h4 class="font-bold text-brand-navy mb-4 flex items-center gap-2">
+                                <i class="fa-regular fa-file-lines text-brand-blue"></i> Documentação Anexada
+                            </h4>
+                            <div class="flex flex-col gap-3">
+                                <div class="bg-white border border-gray-200 rounded-xl p-3 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-red-500">
+                                            <i class="fa-solid fa-file-pdf"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-bold text-brand-navy">CRM_FrenteVerso.pdf</p>
+                                            <p class="text-xs text-gray-500">Atualizado há 2 dias</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-bold text-yellow-600 bg-yellow-50 px-2 py-1 rounded-md">Em Análise</span>
+                                </div>
+                                <div class="bg-white border border-gray-200 rounded-xl p-3 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-500">
+                                            <i class="fa-solid fa-image"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-bold text-brand-navy">Selfie_Documento.jpg</p>
+                                            <p class="text-xs text-gray-500">Aprovado em 10/04/2023</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-md">Aprovado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subscription Info -->
+                        <div>
+                             <h4 class="font-bold text-brand-navy mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-crown text-brand-blue"></i> Detalhes da Assinatura
+                            </h4>
+                            <div class="bg-brand-offwhite rounded-xl p-5 border border-gray-100">
+                                <div class="flex justify-between items-center mb-4 pb-4 border-b border-gray-200">
+                                    <div>
+                                        <p class="text-xs text-gray-500 font-medium mb-1">Plano Atual</p>
+                                        <p class="text-lg font-bold text-brand-navy">Premium Anual</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-xs text-gray-500 font-medium mb-1">Valor</p>
+                                        <p class="text-lg font-bold text-brand-navy">R$ 199<span class="text-sm font-normal text-gray-400">/mês</span></p>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-gray-500">Próxima cobrança</span>
+                                    <span class="font-semibold text-brand-navy">15 de Novembro, 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Action Footer Pills -->
+                <div id="action_footer_pills" class="p-6 bg-white border-t border-gray-100 flex items-center justify-between mt-auto">
+                    <div class="flex gap-3">
+                        <button class="px-5 py-2.5 rounded-full text-sm font-semibold text-gray-600 bg-white border border-gray-200 hover:bg-gray-50 transition-colors">
+                            Alterar Plano
+                        </button>
+                        <button class="px-5 py-2.5 rounded-full text-sm font-semibold text-red-600 bg-white border border-red-100 hover:bg-red-50 transition-colors">
+                            Suspender Conta
+                        </button>
+                    </div>
+                    <button class="px-8 py-3 rounded-full text-sm font-bold text-white bg-brand-blue shadow-ambient hover:bg-blue-700 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-check-double"></i> Aprovar Documentação
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

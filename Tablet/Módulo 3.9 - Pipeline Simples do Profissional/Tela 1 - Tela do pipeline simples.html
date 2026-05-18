@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela do pipeline simples - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#64748B',
+                        cardBg: '#FFFFFF',
+                        columnBg: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '4px 0 24px -4px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CBD5E1; }
+        
+        .drag-handle { cursor: grab; }
+        .drag-handle:active { cursor: grabbing; }
+        
+        /* Smooth dragging effect */
+        .card-item { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .card-item:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08); }
+    </style>
+</head>
+<body class="h-screen w-full flex bg-background text-textDark">
+
+
+    <!-- Main Content Workspace -->
+    <main class="flex-1 h-full flex flex-col min-w-0 relative">
+        
+        <!-- Header Area -->
+        <header id="header" class="px-8 py-10 flex-shrink-0 flex flex-col md:flex-row md:items-end justify-between gap-6 bg-background z-10">
+            <div>
+                <h1 class="text-[32px] md:text-[40px] font-extrabold text-textDark tracking-tight leading-tight mb-2">Painel de Negócios</h1>
+                <p class="text-textMuted text-base font-medium flex items-center gap-2">
+                    <i class="fa-solid fa-arrows-up-down-left-right text-sm"></i>
+                    Arraste os serviços para a próxima etapa.
+                </p>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <!-- Value Indicator -->
+                <div class="bg-cardBg px-6 py-4 rounded-[20px] shadow-soft border border-gray-100 flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-textMuted font-semibold uppercase tracking-wider mb-0.5">Valor Previsto</p>
+                        <p class="text-xl font-bold text-textDark">R$ 12.500<span class="text-sm text-textMuted font-medium ml-1">,00</span></p>
+                    </div>
+                </div>
+                
+                <button class="bg-primary hover:bg-blue-700 text-white h-[74px] px-8 rounded-[20px] font-semibold flex items-center gap-2 shadow-soft transition-colors">
+                    <i class="fa-solid fa-plus"></i>
+                    Novo Negócio
+                </button>
+            </div>
+        </header>
+
+        <!-- Kanban Board Container -->
+        <div class="flex-1 overflow-x-auto overflow-y-hidden px-8 pb-8 pt-2">
+            <div class="flex gap-6 h-full min-w-max">
+                
+                <!-- Column 1: Contatos -->
+                <div id="col-contatos" class="w-[360px] h-full flex flex-col flex-shrink-0">
+                    <!-- Column Header -->
+                    <div class="bg-cardBg rounded-[24px] px-5 py-4 mb-4 shadow-soft flex items-center justify-between border border-gray-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-primary font-bold text-sm">1</div>
+                            <h2 class="font-bold text-lg text-textDark">Contatos</h2>
+                        </div>
+                        <div class="bg-gray-100 text-textMuted text-xs font-bold px-2.5 py-1 rounded-full">3</div>
+                    </div>
+                    
+                    <!-- Column Body / Dropzone -->
+                    <div class="flex-1 overflow-y-auto bg-columnBg rounded-[24px] p-2 flex flex-col gap-4 border border-dashed border-gray-200">
+                        
+                        <!-- Card 1 -->
+                        <div id="card-1" class="card-item bg-cardBg rounded-[24px] p-5 shadow-soft border border-gray-100 relative group cursor-pointer">
+                            <div class="absolute top-5 right-5 text-gray-300 hover:text-gray-500 drag-handle p-1">
+                                <i class="fa-solid fa-grip-vertical"></i>
+                            </div>
+                            
+                            <div class="flex items-start gap-3 mb-4 pr-6">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <h3 class="font-bold text-textDark leading-tight">Maria Silva</h3>
+                                    <p class="text-xs text-textMuted flex items-center gap-1 mt-1">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i> Camboriú, SC
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm text-textDark mb-4 line-clamp-2">Projeto de interiores para apartamento de 80m² no centro.</p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-50 text-primary">Residencial</span>
+                                <span class="font-bold text-textDark">R$ 4.500</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div id="card-2" class="card-item bg-cardBg rounded-[24px] p-5 shadow-soft border border-gray-100 relative group cursor-pointer">
+                            <div class="absolute top-5 right-5 text-gray-300 hover:text-gray-500 drag-handle p-1">
+                                <i class="fa-solid fa-grip-vertical"></i>
+                            </div>
+                            
+                            <div class="flex items-start gap-3 mb-4 pr-6">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <h3 class="font-bold text-textDark leading-tight">João Pereira</h3>
+                                    <p class="text-xs text-textMuted flex items-center gap-1 mt-1">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i> Itajaí, SC
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm text-textDark mb-4 line-clamp-2">Reforma comercial para nova clínica odontológica.</p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-50 text-purple-600">Comercial</span>
+                                <span class="font-bold text-textDark">R$ 8.200</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div id="card-3" class="card-item bg-cardBg rounded-[24px] p-5 shadow-soft border border-gray-100 relative group cursor-pointer">
+                            <div class="absolute top-5 right-5 text-gray-300 hover:text-gray-500 drag-handle p-1">
+                                <i class="fa-solid fa-grip-vertical"></i>
+                            </div>
+                            
+                            <div class="flex items-start gap-3 mb-4 pr-6">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <h3 class="font-bold text-textDark leading-tight">Ana Costa</h3>
+                                    <p class="text-xs text-textMuted flex items-center gap-1 mt-1">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i> Balneário, SC
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm text-textDark mb-4 line-clamp-2">Consultoria para iluminação externa.</p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-orange-50 text-orange-600">Consultoria</span>
+                                <span class="font-bold text-textDark">R$ 1.200</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Add New Button in Column -->
+                        <button class="w-full py-4 rounded-[20px] border-2 border-dashed border-gray-300 text-textMuted font-semibold hover:border-primary hover:text-primary transition-colors flex items-center justify-center gap-2 mt-2">
+                            <i class="fa-solid fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Column 2: Em Orçamento -->
+                <div id="col-orcamento" class="w-[360px] h-full flex flex-col flex-shrink-0">
+                    <!-- Column Header -->
+                    <div class="bg-cardBg rounded-[24px] px-5 py-4 mb-4 shadow-soft flex items-center justify-between border border-gray-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 font-bold text-sm">2</div>
+                            <h2 class="font-bold text-lg text-textDark">Em Orçamento</h2>
+                        </div>
+                        <div class="bg-gray-100 text-textMuted text-xs font-bold px-2.5 py-1 rounded-full">2</div>
+                    </div>
+                    
+                    <!-- Column Body / Dropzone -->
+                    <div class="flex-1 overflow-y-auto bg-columnBg rounded-[24px] p-2 flex flex-col gap-4 border border-dashed border-gray-200">
+                        
+                        <!-- Card 4 -->
+                        <div id="card-4" class="card-item bg-cardBg rounded-[24px] p-5 shadow-soft border border-gray-100 relative group cursor-pointer">
+                            <div class="absolute top-5 right-5 text-gray-300 hover:text-gray-500 drag-handle p-1">
+                                <i class="fa-solid fa-grip-vertical"></i>
+                            </div>
+                            
+                            <div class="flex items-start gap-3 mb-4 pr-6">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <h3 class="font-bold text-textDark leading-tight">Carlos Mendes</h3>
+                                    <p class="text-xs text-textMuted flex items-center gap-1 mt-1">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i> Navegantes, SC
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm text-textDark mb-4 line-clamp-2">Projeto arquitetônico completo para casa de praia.</p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-50 text-primary">Residencial</span>
+                                <span class="font-bold text-textDark">R$ 15.000</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div id="card-5" class="card-item bg-cardBg rounded-[24px] p-5 shadow-soft border border-gray-100 relative group cursor-pointer">
+                            <div class="absolute top-5 right-5 text-gray-300 hover:text-gray-500 drag-handle p-1">
+                                <i class="fa-solid fa-grip-vertical"></i>
+                            </div>
+                            
+                            <div class="flex items-start gap-3 mb-4 pr-6">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <h3 class="font-bold text-textDark leading-tight">Empresa XYZ</h3>
+                                    <p class="text-xs text-textMuted flex items-center gap-1 mt-1">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i> Blumenau, SC
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm text-textDark mb-4 line-clamp-2">Layout corporativo para novo escritório de 200m².</p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-50 text-purple-600">Corporativo</span>
+                                <span class="font-bold text-textDark">R$ 12.800</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Column 3: Execução -->
+                <div id="col-execucao" class="w-[360px] h-full flex flex-col flex-shrink-0">
+                    <!-- Column Header -->
+                    <div class="bg-cardBg rounded-[24px] px-5 py-4 mb-4 shadow-soft flex items-center justify-between border border-gray-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600 font-bold text-sm">3</div>
+                            <h2 class="font-bold text-lg text-textDark">Execução</h2>
+                        </div>
+                        <div class="bg-gray-100 text-textMuted text-xs font-bold px-2.5 py-1 rounded-full">1</div>
+                    </div>
+                    
+                    <!-- Column Body / Dropzone -->
+                    <div class="flex-1 overflow-y-auto bg-columnBg rounded-[24px] p-2 flex flex-col gap-4 border border-dashed border-gray-200">
+                        
+                        <!-- Card 6 -->
+                        <div id="card-6" class="card-item bg-cardBg rounded-[24px] p-5 shadow-soft border border-gray-100 relative group cursor-pointer border-l-4 border-l-green-500">
+                            <div class="absolute top-5 right-5 text-gray-300 hover:text-gray-500 drag-handle p-1">
+                                <i class="fa-solid fa-grip-vertical"></i>
+                            </div>
+                            
+                            <div class="flex items-start gap-3 mb-4 pr-6">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <h3 class="font-bold text-textDark leading-tight">Fernanda Lima</h3>
+                                    <p class="text-xs text-textMuted flex items-center gap-1 mt-1">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i> Florianópolis, SC
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm text-textDark mb-4 line-clamp-2">Acompanhamento de obra - Fase 2 (Acabamentos).</p>
+                            
+                            <!-- Progress Bar -->
+                            <div class="mb-4">
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-textMuted font-medium">Progresso</span>
+                                    <span class="text-green-600 font-bold">65%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-1.5">
+                                    <div class="bg-green-500 h-1.5 rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-green-50 text-green-700">Acompanhamento</span>
+                                <span class="font-bold text-textDark">R$ 5.000</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

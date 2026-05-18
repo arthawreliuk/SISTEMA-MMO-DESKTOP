@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de definição de permissões da subconta - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.04), 0 4px 12px -4px rgba(0,0,0,0.02)',
+                        'floating': '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Toggle Switch Styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        
+        .toggle-label {
+            width: 44px;
+            height: 24px;
+            background-color: #E2E8F0;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex text-brand-navy">
+
+
+    <!-- Main Workspace -->
+    <main class="flex-1 p-10 max-w-[1200px] mx-auto w-full flex flex-col min-h-screen">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="mb-10">
+            <div class="flex items-center gap-3 text-sm font-medium text-slate-500 mb-3">
+                <span>Gestão de Equipe</span>
+                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                <span class="text-brand-blue">Permissões</span>
+            </div>
+            <h1 class="text-5xl font-extrabold tracking-tight mb-2">Acessos da Subconta</h1>
+            <p class="text-lg text-slate-500 font-medium flex items-center gap-2">
+                Editando permissões para: <span class="text-brand-navy font-semibold px-3 py-1 bg-white rounded-full shadow-sm border border-slate-100 flex items-center gap-2"><img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-5 h-5 rounded-full" alt="avatar"> Lucas Ferreira</span>
+            </p>
+        </header>
+
+        <!-- Split Layout (Asymmetrical 2-Columns) -->
+        <div class="flex flex-col lg:flex-row gap-8 flex-1 pb-24">
+            
+            <!-- Left Column (Permission Categories - 35% width) -->
+            <aside id="categories-column" class="w-full lg:w-[35%] flex-shrink-0">
+                <div class="bg-white rounded-[24px] shadow-ambient p-3 sticky top-10">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 px-4 py-3 mb-1">Categorias de Acesso</h3>
+                    
+                    <nav class="flex flex-col gap-1">
+                        <!-- Active Category -->
+                        <a href="#" class="flex items-center justify-between px-4 py-4 rounded-[16px] bg-brand-blue/5 border border-brand-blue text-brand-blue font-semibold transition-all group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-blue">
+                                    <i class="fa-solid fa-wallet"></i>
+                                </div>
+                                Financeiro
+                            </div>
+                            <span class="text-xs font-bold bg-brand-blue text-white px-2 py-0.5 rounded-full">6 ativas</span>
+                        </a>
+
+                        <!-- Inactive Categories -->
+                        <a href="#" class="flex items-center justify-between px-4 py-4 rounded-[16px] hover:bg-slate-50 text-slate-600 font-medium transition-all border border-transparent hover:border-slate-100 group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center text-slate-500 transition-all">
+                                    <i class="fa-solid fa-headset"></i>
+                                </div>
+                                Balcão de Serviços
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-300 text-sm group-hover:text-slate-400"></i>
+                        </a>
+
+                        <a href="#" class="flex items-center justify-between px-4 py-4 rounded-[16px] hover:bg-slate-50 text-slate-600 font-medium transition-all border border-transparent hover:border-slate-100 group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center text-slate-500 transition-all">
+                                    <i class="fa-solid fa-id-card"></i>
+                                </div>
+                                Gestão de Perfil
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-300 text-sm group-hover:text-slate-400"></i>
+                        </a>
+                        
+                        <a href="#" class="flex items-center justify-between px-4 py-4 rounded-[16px] hover:bg-slate-50 text-slate-600 font-medium transition-all border border-transparent hover:border-slate-100 group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center text-slate-500 transition-all">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                </div>
+                                Faturamento
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-300 text-sm group-hover:text-slate-400"></i>
+                        </a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Right Column (Detailed Toggles - 65% width) -->
+            <section id="settings-column" class="w-full lg:w-[65%]">
+                <div class="bg-white rounded-[24px] shadow-ambient ">
+                    
+                    <div class="p-8 border-b border-slate-100 bg-gradient-to-b from-slate-50/50 to-white">
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue text-xl">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-2xl font-bold">Permissões Financeiras</h2>
+                                <p class="text-slate-500 text-sm">Controle acesso a saldos, transferências e pagamentos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 flex flex-col gap-2">
+                        <!-- Toggle Row 1 (Active) -->
+                        <div class="flex items-center justify-between p-4 hover:bg-slate-50 rounded-[16px] transition-colors group">
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 text-slate-400 group-hover:text-brand-blue transition-colors">
+                                    <i class="fa-solid fa-money-bill-transfer"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-semibold text-brand-navy">Visualizar saldo global</h4>
+                                        <button class="text-slate-300 hover:text-brand-blue transition-colors" title="Permite ver o saldo total de todas as contas associadas.">
+                                            <i class="fa-solid fa-circle-info text-xs"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-slate-500 mt-0.5">Acesso de leitura ao saldo consolidado.</p>
+                                </div>
+                            </div>
+                            <div class="relative inline-block w-[44px] mr-2 align-middle select-none">
+                                <input type="checkbox" name="toggle1" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                                <label for="toggle1" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </div>
+
+                        <!-- Toggle Row 2 (Active) -->
+                        <div class="flex items-center justify-between p-4 hover:bg-slate-50 rounded-[16px] transition-colors group">
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 text-slate-400 group-hover:text-brand-blue transition-colors">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-semibold text-brand-navy">Permitir compras com saldo global</h4>
+                                        <button class="text-slate-300 hover:text-brand-blue transition-colors" title="Autoriza transações usando o saldo da conta principal.">
+                                            <i class="fa-solid fa-circle-info text-xs"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-slate-500 mt-0.5">Pode realizar pagamentos e assinaturas.</p>
+                                </div>
+                            </div>
+                            <div class="relative inline-block w-[44px] mr-2 align-middle select-none">
+                                <input type="checkbox" name="toggle2" id="toggle2" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" checked/>
+                                <label for="toggle2" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </div>
+
+                        <!-- Toggle Row 3 (Inactive) -->
+                        <div class="flex items-center justify-between p-4 hover:bg-slate-50 rounded-[16px] transition-colors group">
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 text-slate-400 group-hover:text-brand-blue transition-colors">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-semibold text-brand-navy">Autorizar transferências bancárias</h4>
+                                        <span class="px-2 py-0.5 bg-rose-100 text-rose-600 text-[10px] font-bold rounded-full uppercase tracking-wide">Alto Risco</span>
+                                    </div>
+                                    <p class="text-sm text-slate-500 mt-0.5">Permite enviar DOC/TED e PIX para terceiros.</p>
+                                </div>
+                            </div>
+                            <div class="relative inline-block w-[44px] mr-2 align-middle select-none">
+                                <input type="checkbox" name="toggle3" id="toggle3" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                                <label for="toggle3" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </div>
+                        
+                        <!-- Toggle Row 4 (Inactive) -->
+                        <div class="flex items-center justify-between p-4 hover:bg-slate-50 rounded-[16px] transition-colors group">
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 text-slate-400 group-hover:text-brand-blue transition-colors">
+                                    <i class="fa-solid fa-credit-card"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-semibold text-brand-navy">Emitir novos cartões virtuais</h4>
+                                        <button class="text-slate-300 hover:text-brand-blue transition-colors">
+                                            <i class="fa-solid fa-circle-info text-xs"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-slate-500 mt-0.5">Criação de cartões para compras online.</p>
+                                </div>
+                            </div>
+                            <div class="relative inline-block w-[44px] mr-2 align-middle select-none">
+                                <input type="checkbox" name="toggle4" id="toggle4" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0"/>
+                                <label for="toggle4" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </div>
+                        
+                        <!-- Limit Configuration (Sub-setting example) -->
+                        <div class="ml-14 p-4 bg-slate-50 rounded-[16px] border border-slate-100 mt-2 mb-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h5 class="text-sm font-semibold text-brand-navy">Limite diário de transação</h5>
+                                    <p class="text-xs text-slate-500">Valor máximo permitido por dia (BRL).</p>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">R$</span>
+                                    <input type="text" value="5.000,00" class=" pr-4 py-2 bg-white border border-slate-200 rounded-full text-sm font-semibold text-brand-navy focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue w-32 text-right shadow-sm" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Bottom Action Bar (Sticky) -->
+    <div id="bottom-action-bar" class="fixed bottom-8 right-10 z-40 bg-white/80 backdrop-blur-md px-6 py-4 rounded-full shadow-floating border border-white flex items-center gap-6">
+        <span class="text-sm font-medium text-slate-500">2 alterações pendentes</span>
+        <button class="bg-brand-blue hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-full shadow-[0_8px_16px_-4px_rgba(0,22,220,0.4)] transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+            Atualizar Acessos
+            <i class="fa-solid fa-check text-sm"></i>
+        </button>
+    </div>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

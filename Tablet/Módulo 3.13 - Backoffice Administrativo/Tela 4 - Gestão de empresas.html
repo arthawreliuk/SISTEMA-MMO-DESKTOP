@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de empresas - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'page-bg': '#F8F9FA',
+                        'trust-blue': '#0016dc',
+                        'trust-blue-hover': '#0010a3',
+                        'trust-blue-light': 'rgba(0, 22, 220, 0.08)',
+                        'dark-navy': '#1A1A24',
+                        'navy-muted': '#5A5A66',
+                        'navy-light': '#8A8A99',
+                        'border-soft': '#E5E7EB',
+                        'success-green': '#10B981',
+                        'success-bg': 'rgba(16, 185, 129, 0.1)',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 40px -2px rgba(0, 0, 0, 0.04), 0 10px 15px -3px rgba(0, 0, 0, 0.02)',
+                        'ambient-sm': '0 2px 20px -2px rgba(0, 0, 0, 0.03)',
+                        'card': '0 8px 30px rgba(0,0,0,0.04)',
+                    },
+                    borderRadius: {
+                        '24': '24px',
+                        'pill': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+        
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-page-bg text-dark-navy h-screen flex ">
+
+
+    <!-- MAIN CONTENT WORKSPACE -->
+    <main id="main-workspace" class=" w-[calc(100%-8rem)] h-full flex flex-col p-8 lg:p-10">
+        
+        <!-- HEADER AREA -->
+        <header id="page-header" class="mb-8 flex-shrink-0">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl lg:text-5xl font-extrabold text-dark-navy tracking-tight mb-3">Contas Corporativas (B2B)</h1>
+                    <p class="text-navy-muted text-base lg:text-lg font-medium max-w-2xl">Gerencie empresas, valide CNPJs e controle o limite de contas filhas na plataforma.</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="w-12 h-12 rounded-full bg-white shadow-ambient-sm flex items-center justify-center text-navy-muted hover:text-trust-blue transition-colors">
+                        <i class="fa-regular fa-bell text-lg"></i>
+                    </button>
+                    <button class="bg-trust-blue text-white px-6 py-3.5 rounded-pill font-semibold text-sm hover:bg-trust-blue-hover transition-colors shadow-[0_4px_14px_rgba(0,22,220,0.2)] flex items-center gap-2">
+                        <i class="fa-solid fa-plus"></i> Nova Empresa
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- SPLIT LAYOUT WORKSPACE -->
+        <div class="flex gap-8 flex-1 min-h-0 h-full">
+            
+            <!-- LEFT COLUMN: COMPANY ROSTER (40%) -->
+            <section id="company-roster" class="w-[40%] flex flex-col bg-white rounded-24 shadow-ambient flex-shrink-0">
+                <!-- Search & Filters -->
+                <div class="p-6 border-b border-border-soft bg-white z-10">
+                    <div class="relative mb-4">
+                        <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-magnifying-glass text-navy-light"></i>
+                        </div>
+                        <input type="text" class="block w-full pr-4 py-3.5 bg-page-bg border-transparent rounded-pill text-sm focus:border-trust-blue focus:bg-white focus:ring-2 focus:ring-trust-blue-light transition-all placeholder-navy-light font-medium text-dark-navy outline-none" placeholder="Buscar por Nome ou CNPJ...">
+                    </div>
+                    <div class="flex gap-2 overflow-x-auto hide-scroll pb-1">
+                        <button class="px-4 py-2 bg-dark-navy text-white text-xs font-semibold rounded-pill whitespace-nowrap">Todas</button>
+                        <button class="px-4 py-2 bg-page-bg text-navy-muted hover:bg-gray-100 text-xs font-semibold rounded-pill whitespace-nowrap transition-colors">Ativas</button>
+                        <button class="px-4 py-2 bg-page-bg text-navy-muted hover:bg-gray-100 text-xs font-semibold rounded-pill whitespace-nowrap transition-colors">Pendentes</button>
+                        <button class="px-4 py-2 bg-page-bg text-navy-muted hover:bg-gray-100 text-xs font-semibold rounded-pill whitespace-nowrap transition-colors">Inativas</button>
+                    </div>
+                </div>
+
+                <!-- Roster List -->
+                <div class="flex-1 overflow-y-auto p-3 space-y-2">
+                    <!-- Selected Item -->
+                    <div class="group p-4 rounded-2xl bg-trust-blue-light border border-trust-blue/20 cursor-pointer transition-all flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center border border-border-soft ">
+                                <img class="w-8 h-8 object-contain" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/cada92cbb6-17d56987f4009c92ea80.png" alt="modern tech company logo abstract blue geometric shape" />
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-dark-navy text-sm mb-0.5">Nexus Game Studios</h3>
+                                <p class="text-xs text-navy-muted font-medium">CNPJ: 12.345.678/0001-90</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="px-2.5 py-1 bg-success-bg text-success-green text-[10px] font-bold rounded-pill uppercase tracking-wider">Ativo</span>
+                            <span class="text-xs text-navy-muted font-semibold"><i class="fa-solid fa-users mr-1 text-navy-light"></i> 45/50</span>
+                        </div>
+                    </div>
+
+                    <!-- Unselected Items -->
+                    <div class="group p-4 rounded-2xl bg-white hover:bg-page-bg border border-transparent hover:border-border-soft cursor-pointer transition-all flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-page-bg flex items-center justify-center border border-border-soft ">
+                                <img class="w-8 h-8 object-contain" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b2373edc97-0a160668d522cb285a91.png" alt="creative agency logo minimalist red and black typography" />
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-dark-navy text-sm mb-0.5">Redline Creative Arts</h3>
+                                <p class="text-xs text-navy-muted font-medium">CNPJ: 98.765.432/0001-10</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="px-2.5 py-1 bg-success-bg text-success-green text-[10px] font-bold rounded-pill uppercase tracking-wider">Ativo</span>
+                            <span class="text-xs text-navy-muted font-semibold"><i class="fa-solid fa-users mr-1 text-navy-light"></i> 12/20</span>
+                        </div>
+                    </div>
+
+                    <div class="group p-4 rounded-2xl bg-white hover:bg-page-bg border border-transparent hover:border-border-soft cursor-pointer transition-all flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-page-bg flex items-center justify-center border border-border-soft ">
+                                <img class="w-8 h-8 object-contain" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/9e0ddad48a-6710734b44f20da2ffd2.png" alt="esports team logo shield and sword silver" />
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-dark-navy text-sm mb-0.5">Vanguard E-Sports</h3>
+                                <p class="text-xs text-navy-muted font-medium">CNPJ: 45.678.901/0001-23</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="px-2.5 py-1 bg-yellow-100 text-yellow-700 text-[10px] font-bold rounded-pill uppercase tracking-wider">Pendente</span>
+                            <span class="text-xs text-navy-muted font-semibold"><i class="fa-solid fa-users mr-1 text-navy-light"></i> 0/100</span>
+                        </div>
+                    </div>
+
+                    <div class="group p-4 rounded-2xl bg-white hover:bg-page-bg border border-transparent hover:border-border-soft cursor-pointer transition-all flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-page-bg flex items-center justify-center border border-border-soft text-lg font-bold text-navy-muted">
+                                OQ
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-dark-navy text-sm mb-0.5">Oasis Quest Entertainment</h3>
+                                <p class="text-xs text-navy-muted font-medium">CNPJ: 33.444.555/0001-88</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="px-2.5 py-1 bg-success-bg text-success-green text-[10px] font-bold rounded-pill uppercase tracking-wider">Ativo</span>
+                            <span class="text-xs text-navy-muted font-semibold"><i class="fa-solid fa-users mr-1 text-navy-light"></i> 89/100</span>
+                        </div>
+                    </div>
+                     <div class="group p-4 rounded-2xl bg-white hover:bg-page-bg border border-transparent hover:border-border-soft cursor-pointer transition-all flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-page-bg flex items-center justify-center border border-border-soft text-lg font-bold text-navy-muted">
+                                ML
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-dark-navy text-sm mb-0.5">MetaLabs Corp</h3>
+                                <p class="text-xs text-navy-muted font-medium">CNPJ: 11.222.333/0001-44</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="px-2.5 py-1 bg-red-50 text-red-600 text-[10px] font-bold rounded-pill uppercase tracking-wider">Inativo</span>
+                            <span class="text-xs text-navy-muted font-semibold"><i class="fa-solid fa-users mr-1 text-navy-light"></i> 0/50</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN: CORPORATE PROFILE DETAIL (60%) -->
+            <section id="corporate-profile" class="w-[60%] bg-white rounded-24 shadow-ambient flex flex-col relative">
+                
+                <!-- Profile Header -->
+                <div class="p-8 pb-6 border-b border-border-soft relative bg-gradient-to-b from-page-bg/50 to-white">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center gap-6">
+                            <div class="w-24 h-24 rounded-full bg-white shadow-card flex items-center justify-center border-4 border-white relative">
+                                <img class="w-16 h-16 object-contain" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/84b84f69fc-f07702155ca072171f54.png" alt="modern tech company logo abstract blue geometric shape" />
+                                <div class="absolute inset-0 rounded-full ring-1 ring-inset ring-border-soft"></div>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h2 class="text-2xl font-extrabold text-dark-navy">Nexus Game Studios</h2>
+                                    <span class="px-3 py-1 bg-success-bg text-success-green text-xs font-bold rounded-pill border border-success-green/20 flex items-center gap-1.5 shadow-sm">
+                                        <i class="fa-solid fa-circle-check"></i> CNPJ Validado
+                                    </span>
+                                </div>
+                                <p class="text-navy-muted font-medium text-sm flex items-center gap-4">
+                                    <span><i class="fa-regular fa-building mr-1.5 text-navy-light"></i> Razão Social: Nexus Desenvolvimento de Software Ltda</span>
+                                    <span><i class="fa-regular fa-calendar mr-1.5 text-navy-light"></i> Cliente desde: Jan 2023</span>
+                                </p>
+                            </div>
+                        </div>
+                        <button class="w-10 h-10 rounded-full border border-border-soft text-navy-muted hover:bg-page-bg hover:text-dark-navy transition-colors flex items-center justify-center shadow-sm">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Profile Content (Split Data) -->
+                <div class="flex-1 overflow-y-auto p-8">
+                    <div class="grid grid-cols-2 gap-10">
+                        
+                        <!-- Left Side: Admin & Billing Info -->
+                        <div class="space-y-8">
+                            <!-- Admin Info Block -->
+                            <div>
+                                <h3 class="text-sm font-bold text-dark-navy uppercase tracking-wider mb-4 flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-info text-trust-blue"></i> Informações Administrativas
+                                </h3>
+                                <div class="bg-page-bg rounded-2xl p-5 border border-border-soft/50 space-y-4">
+                                    <div class="flex justify-between items-center pb-3 border-b border-border-soft/60">
+                                        <span class="text-sm text-navy-muted font-medium">CNPJ</span>
+                                        <span class="text-sm font-bold text-dark-navy">12.345.678/0001-90</span>
+                                    </div>
+                                    <div class="flex justify-between items-center pb-3 border-b border-border-soft/60">
+                                        <span class="text-sm text-navy-muted font-medium">Endereço</span>
+                                        <span class="text-sm font-bold text-dark-navy text-right">Av. Paulista, 1000<br><span class="text-xs text-navy-muted font-medium">São Paulo, SP</span></span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-navy-muted font-medium">Contato Principal</span>
+                                        <div class="text-right">
+                                            <span class="text-sm font-bold text-dark-navy block">Carlos Mendes</span>
+                                            <span class="text-xs text-trust-blue font-medium hover:underline cursor-pointer">carlos@nexusgames.com</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Billing Info Block -->
+                            <div>
+                                <h3 class="text-sm font-bold text-dark-navy uppercase tracking-wider mb-4 flex items-center gap-2">
+                                    <i class="fa-solid fa-file-invoice-dollar text-trust-blue"></i> Faturamento & Limites
+                                </h3>
+                                <div class="bg-white rounded-2xl p-5 border border-border-soft shadow-sm space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-navy-muted font-medium">Plano Atual</span>
+                                        <span class="px-3 py-1 bg-dark-navy text-white text-xs font-bold rounded-lg">Enterprise Pro</span>
+                                    </div>
+                                    <div class="pt-3 border-t border-border-soft/60">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-sm text-navy-muted font-medium">Uso de Contas Filhas</span>
+                                            <span class="text-sm font-bold text-dark-navy">45 / 50 <span class="text-xs text-navy-light font-medium">(90%)</span></span>
+                                        </div>
+                                        <div class="w-full h-2 bg-page-bg rounded-full ">
+                                            <div class="h-full bg-trust-blue rounded-full" style="width: 90%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="pt-3 border-t border-border-soft/60 flex justify-between items-center">
+                                        <span class="text-sm text-navy-muted font-medium">Ciclo de Cobrança</span>
+                                        <span class="text-sm font-bold text-dark-navy">Mensal (Dia 05)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Side: Linked Accounts -->
+                        <div class="flex flex-col h-full">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-sm font-bold text-dark-navy uppercase tracking-wider flex items-center gap-2">
+                                    <i class="fa-solid fa-network-wired text-trust-blue"></i> Contas Vinculadas
+                                </h3>
+                                <button class="text-xs font-bold text-trust-blue hover:text-trust-blue-hover transition-colors">Ver todas (45)</button>
+                            </div>
+                            
+                            <div class="bg-page-bg rounded-2xl border border-border-soft/50 flex-1 flex flex-col">
+                                <div class="p-3 border-b border-border-soft/60 bg-white">
+                                    <div class="relative">
+                                        <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-navy-light text-xs"></i>
+                                        <input type="text" placeholder="Filtrar profissionais..." class="w-full pr-3 py-2 bg-page-bg border-none rounded-lg text-xs focus:ring-1 focus:ring-trust-blue outline-none text-dark-navy">
+                                    </div>
+                                </div>
+                                <div class="overflow-y-auto flex-1 p-2 space-y-1">
+                                    <!-- User Item -->
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-white transition-colors cursor-pointer group">
+                                        <div class="flex items-center gap-3">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-8 h-8 rounded-full object-cover border border-border-soft" alt="User">
+                                            <div>
+                                                <p class="text-sm font-bold text-dark-navy leading-tight">Ana Silva</p>
+                                                <p class="text-[10px] text-navy-muted font-medium">Admin / Developer</p>
+                                            </div>
+                                        </div>
+                                        <span class="w-2 h-2 rounded-full bg-success-green"></span>
+                                    </div>
+                                    <!-- User Item -->
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-white transition-colors cursor-pointer group">
+                                        <div class="flex items-center gap-3">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-8 h-8 rounded-full object-cover border border-border-soft" alt="User">
+                                            <div>
+                                                <p class="text-sm font-bold text-dark-navy leading-tight">Roberto Costa</p>
+                                                <p class="text-[10px] text-navy-muted font-medium">Game Designer</p>
+                                            </div>
+                                        </div>
+                                        <span class="w-2 h-2 rounded-full bg-success-green"></span>
+                                    </div>
+                                    <!-- User Item -->
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-white transition-colors cursor-pointer group">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-navy-muted text-white flex items-center justify-center text-xs font-bold border border-border-soft">
+                                                JL
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-bold text-dark-navy leading-tight">Julia Lima</p>
+                                                <p class="text-[10px] text-navy-muted font-medium">QA Tester</p>
+                                            </div>
+                                        </div>
+                                        <span class="w-2 h-2 rounded-full bg-navy-light"></span>
+                                    </div>
+                                     <!-- User Item -->
+                                    <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-white transition-colors cursor-pointer group">
+                                        <div class="flex items-center gap-3">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-8 h-8 rounded-full object-cover border border-border-soft" alt="User">
+                                            <div>
+                                                <p class="text-sm font-bold text-dark-navy leading-tight">Marcos Pontes</p>
+                                                <p class="text-[10px] text-navy-muted font-medium">Backend Engineer</p>
+                                            </div>
+                                        </div>
+                                        <span class="w-2 h-2 rounded-full bg-success-green"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Bottom Actions -->
+                <div class="p-6 border-t border-border-soft bg-page-bg/30 flex justify-end gap-4 mt-auto">
+                    <button class="px-6 py-3.5 rounded-pill border-2 border-border-soft bg-white text-dark-navy font-bold text-sm hover:border-navy-light hover:bg-gray-50 transition-all shadow-sm">
+                        Ver Faturas da Empresa
+                    </button>
+                    <button class="px-6 py-3.5 rounded-pill bg-trust-blue text-white font-bold text-sm hover:bg-trust-blue-hover transition-all shadow-[0_4px_14px_rgba(0,22,220,0.2)] flex items-center gap-2">
+                        <i class="fa-solid fa-sliders"></i> Ajustar Limite de Usuários
+                    </button>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloco_resumo de reputação no perfil público - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        bgOffWhite: '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 20px 40px -10px rgba(0, 22, 220, 0.08), 0 10px 20px -5px rgba(26, 26, 36, 0.04)',
+                        'innerCard': '0 4px 12px rgba(0,0,0,0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-8">
+
+    <!-- Main Container - Tablet Landscape Target (1024x1366 constraint adapted for component focus) -->
+    <main id="reputation-summary-block" class="w-full max-w-[900px] relative mt-12 mx-auto">
+        
+        <!-- Trust Badge Floating -->
+        <div class="absolute -top-6 left-8 z-10 bg-white rounded-full px-6 py-3 shadow-md border border-gray-100 flex items-center gap-2 transform transition-transform hover:-translate-y-1">
+            <span class="text-xl">🏆</span>
+            <span class="font-bold text-textDark tracking-tight">Top Mestre Camboriú</span>
+        </div>
+
+        <!-- Hero Card -->
+        <div id="hero-card" class="bg-white rounded-[24px] shadow-ambient p-8 pt-12 relative ">
+            
+            <!-- Subtle Background Accent -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary opacity-5 rounded-bl-full pointer-events-none"></div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-stretch relative z-10">
+                
+                <!-- Left Side (Score & Tags) -->
+                <div class="flex-1 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-100 pb-8 md:pb-0 md:pr-8">
+                    
+                    <div class="flex items-center gap-4 mb-2">
+                        <h1 class="text-6xl font-extrabold text-textDark tracking-tighter">4.9</h1>
+                        <div class="flex flex-col">
+                            <div class="flex text-primary text-xl mb-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="text-lg font-bold text-textDark uppercase tracking-wide">Excepcional</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-500 font-medium mb-6">128 Avaliações Verificadas</p>
+
+                    <!-- Tags Grid -->
+                    <div class="flex flex-wrap gap-3">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-primary rounded-full font-semibold text-sm border border-blue-100">
+                            <span>✨</span> Impecável na Limpeza
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-full font-semibold text-sm border border-green-100">
+                            <span>⏱️</span> Super Pontual
+                        </span>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 text-yellow-700 rounded-full font-semibold text-sm border border-yellow-100">
+                            <span>💰</span> Preço Justo
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right Side (Featured Proof) -->
+                <div class="flex-1 flex flex-col justify-center md:">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Avaliação em Destaque</h3>
+                    
+                    <div class="bg-bgOffWhite rounded-[16px] p-6 shadow-innerCard border border-gray-50 relative">
+                        <!-- Quote Icon -->
+                        <div class="absolute top-4 right-4 text-gray-200 text-4xl opacity-50">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Client Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                            <div>
+                                <h4 class="font-bold text-textDark">Carlos M.</h4>
+                                <div class="flex text-primary text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-textDark font-medium text-lg leading-relaxed italic">
+"Arthur salvou minha obra no domingo. Recomendo de olhos fechados!"
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Action -->
+            <div class="mt-10 pt-6 border-t border-gray-100">
+                <button class="w-full group flex items-center justify-center gap-3 py-4 rounded-full text-primary font-bold text-lg hover:bg-blue-50 transition-colors duration-300">
+                    Ler todas as 128 avaliações
+                    <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

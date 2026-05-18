@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão agrupada da Solicitação Composta no cliente - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        bgOffWhite: '#F8F9FA',
+                        primaryBlue: '#0016dc',
+                        darkNavy: '#1A1A24',
+                        lightGrey: '#F1F3F5',
+                        borderGrey: '#E9ECEF',
+                        textMuted: '#6C757D'
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 24px -2px rgba(0, 0, 0, 0.04), 0 0 4px rgba(0, 0, 0, 0.02)',
+                        'ambient-lg': '0 12px 32px -4px rgba(0, 0, 0, 0.06), 0 0 8px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E9ECEF; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CED4DA; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="h-screen w-full flex bg-bgOffWhite text-darkNavy antialiased">
+
+
+    <!-- Main Workspace -->
+    <main class="w-[calc(100%-128px)] h-full p-6 flex gap-6 max-w-[1400px] mx-auto">
+        
+        <!-- Left Column: Project Folder (35%) -->
+        <section id="project-folder" class="w-[35%] h-full flex flex-col">
+            <!-- Header Area -->
+            <div class="mb-6 ">
+                <a href="#" class="inline-flex items-center text-sm font-medium text-textMuted hover:text-darkNavy transition-colors mb-3">
+                    <i class="fa-solid fa-arrow-left mr-2 text-xs"></i> Voltar
+                </a>
+                <h1 class="text-3xl font-bold tracking-tight">Projeto: Reforma</h1>
+                <p class="text-sm text-textMuted mt-1">Av. Paulista, 1578 - São Paulo</p>
+            </div>
+
+            <!-- Chat List Card -->
+            <div class="bg-white rounded-[24px] shadow-ambient flex-1 flex flex-col border border-borderGrey/50">
+                
+                <div class="p-5 border-b border-borderGrey/50 flex items-center justify-between bg-white z-10 relative">
+                    <h2 class="font-semibold text-lg">Profissionais</h2>
+                    <span class="bg-lightGrey text-xs font-semibold px-2.5 py-1 rounded-full text-textMuted">4 Ativos</span>
+                </div>
+
+                <!-- List Items -->
+                <div class="flex-1 overflow-y-auto hide-scrollbar p-2">
+                    
+                    <!-- Chat Item (Active) -->
+                    <div class="p-3 mb-1 rounded-2xl bg-lightGrey cursor-pointer border border-transparent transition-all flex items-center gap-4 relative group">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Carlos Silva" class="w-12 h-12 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex justify-between items-baseline mb-0.5">
+                                <h3 class="font-semibold text-sm truncate pr-2">Carlos Silva</h3>
+                                <span class="text-[11px] text-textMuted whitespace-nowrap">09:41</span>
+                            </div>
+                            <p class="text-xs text-textMuted truncate">Eletricista • Fiação principal concluída</p>
+                        </div>
+                    </div>
+
+                    <!-- Chat Item (Unread) -->
+                    <div class="p-3 mb-1 rounded-2xl hover:bg-lightGrey/50 cursor-pointer border border-transparent transition-all flex items-center gap-4 group">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Roberto Alves" class="w-12 h-12 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-yellow-500 border-2 border-white rounded-full"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex justify-between items-baseline mb-0.5">
+                                <h3 class="font-semibold text-sm truncate pr-2">Roberto Alves</h3>
+                                <span class="text-[11px] text-primaryBlue font-medium whitespace-nowrap">Ontem</span>
+                            </div>
+                            <p class="text-xs text-darkNavy font-medium truncate">Encanador • Orçamento dos tubos de PVC</p>
+                        </div>
+                        <div class="w-2 h-2 rounded-full bg-primaryBlue shrink-0"></div>
+                    </div>
+
+                    <!-- Chat Item -->
+                    <div class="p-3 mb-1 rounded-2xl hover:bg-lightGrey/50 cursor-pointer border border-transparent transition-all flex items-center gap-4 group">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Mariana Costa" class="w-12 h-12 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-gray-300 border-2 border-white rounded-full"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex justify-between items-baseline mb-0.5">
+                                <h3 class="font-semibold text-sm truncate pr-2">Mariana Costa</h3>
+                                <span class="text-[11px] text-textMuted whitespace-nowrap">Terça</span>
+                            </div>
+                            <p class="text-xs text-textMuted truncate">Arquiteta • Plantas aprovadas na prefeitura</p>
+                        </div>
+                    </div>
+
+                    <!-- Chat Item -->
+                    <div class="p-3 mb-1 rounded-2xl hover:bg-lightGrey/50 cursor-pointer border border-transparent transition-all flex items-center gap-4 group">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="João Mendes" class="w-12 h-12 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex justify-between items-baseline mb-0.5">
+                                <h3 class="font-semibold text-sm truncate pr-2">João Mendes</h3>
+                                <span class="text-[11px] text-textMuted whitespace-nowrap">Segunda</span>
+                            </div>
+                            <p class="text-xs text-textMuted truncate">Pintor • Tintas entregues no local</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column: Active Chat View (65%) -->
+        <section id="active-chat" class="w-[65%] h-full flex flex-col pt-12">
+            
+            <div class="bg-white rounded-[24px] shadow-ambient-lg flex-1 flex flex-col border border-borderGrey/50 h-full relative">
+                
+                <!-- Chat Header -->
+                <div class="px-6 py-4 border-b border-borderGrey/50 flex items-center justify-between bg-white/95 backdrop-blur-sm z-10">
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Carlos Silva" class="w-12 h-12 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-lg leading-tight">Carlos Silva</h2>
+                            <p class="text-xs text-textMuted font-medium flex items-center gap-1.5 mt-0.5">
+                                <i class="fa-solid fa-bolt text-[10px]"></i> Eletricista
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <button class="w-10 h-10 rounded-full hover:bg-lightGrey flex items-center justify-center text-textMuted transition-colors">
+                            <i class="fa-solid fa-phone"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-full hover:bg-lightGrey flex items-center justify-center text-textMuted transition-colors">
+                            <i class="fa-solid fa-video"></i>
+                        </button>
+                        <div class="w-px h-6 bg-borderGrey mx-1"></div>
+                        <button class="w-10 h-10 rounded-full hover:bg-lightGrey flex items-center justify-center text-textMuted transition-colors">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat Messages Area -->
+                <div class="flex-1 overflow-y-auto p-6 space-y-6 bg-[#FAFBFC]">
+                    
+                    <!-- Date Divider -->
+                    <div class="flex justify-center my-4">
+                        <span class="text-[11px] font-medium text-textMuted bg-white border border-borderGrey px-3 py-1 rounded-full shadow-sm">Hoje, 12 de Outubro</span>
+                    </div>
+
+                    <!-- Pro Message -->
+                    <div class="flex items-end gap-3 max-w-[80%]">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Pro" class="w-8 h-8 rounded-full object-cover shrink-0">
+                        <div class="flex flex-col gap-1">
+                            <div class="bg-white border border-borderGrey text-darkNavy p-3.5 rounded-2xl rounded-bl-sm shadow-sm text-sm">
+                                Bom dia! Já finalizei a passagem dos cabos no andar superior.
+                            </div>
+                            <span class="text-[10px] text-textMuted ml-1">09:30 AM</span>
+                        </div>
+                    </div>
+
+                    <!-- Pro Message (Consecutive) -->
+                    <div class="flex items-end gap-3 max-w-[80%]">
+                        <div class="w-8 shrink-0"></div> <!-- Spacer for avatar -->
+                        <div class="flex flex-col gap-1">
+                            <div class="bg-white border border-borderGrey text-darkNavy p-3.5 rounded-2xl rounded-bl-sm shadow-sm text-sm">
+                                Preciso que confirme se vamos manter as tomadas 220v na cozinha conforme o projeto original, ou se teve alguma alteração.
+                            </div>
+                            <span class="text-[10px] text-textMuted ml-1">09:31 AM</span>
+                        </div>
+                    </div>
+
+                    <!-- Client Message (User) -->
+                    <div class="flex items-end justify-end gap-3 max-w-[80%] ml-auto">
+                        <div class="flex flex-col items-end gap-1">
+                            <div class="bg-primaryBlue text-white p-3.5 rounded-2xl rounded-br-sm shadow-sm text-sm">
+                                Olá Carlos, bom dia! Pode manter como está no projeto sim.
+                            </div>
+                            <div class="flex items-center gap-1 mr-1">
+                                <span class="text-[10px] text-textMuted">09:41 AM</span>
+                                <i class="fa-solid fa-check-double text-[10px] text-primaryBlue"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Client Message (User) -->
+                     <div class="flex items-end justify-end gap-3 max-w-[80%] ml-auto">
+                        <div class="flex flex-col items-end gap-1">
+                            <div class="bg-primaryBlue text-white p-3.5 rounded-2xl rounded-br-sm shadow-sm text-sm">
+                                Tem previsão de quando começa o quadro de luz?
+                            </div>
+                            <div class="flex items-center gap-1 mr-1">
+                                <span class="text-[10px] text-textMuted">09:41 AM</span>
+                                <i class="fa-solid fa-check-double text-[10px] text-primaryBlue"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Input Area -->
+                <div class="p-4 bg-white border-t border-borderGrey/50 z-10">
+                    <div class="flex items-center gap-3 bg-lightGrey rounded-full p-2 pr-3 border border-transparent focus-within:border-borderGrey focus-within:bg-white transition-all shadow-sm">
+                        
+                        <button class="w-10 h-10 shrink-0 rounded-full hover:bg-white flex items-center justify-center text-textMuted transition-colors">
+                            <i class="fa-solid fa-plus text-lg"></i>
+                        </button>
+                        
+                        <input type="text" placeholder="Escreva uma mensagem..." class="flex-1 bg-transparent border-none focus:ring-0 text-sm text-darkNavy placeholder:text-textMuted outline-none py-2 px-1">
+                        
+                        <button class="w-10 h-10 shrink-0 rounded-full hover:bg-white flex items-center justify-center text-textMuted transition-colors">
+                            <i class="fa-solid fa-microphone text-lg"></i>
+                        </button>
+                        
+                        <button class="w-10 h-10 shrink-0 rounded-full bg-primaryBlue flex items-center justify-center text-white shadow-md hover:bg-blue-800 transition-colors ml-1">
+                            <i class="fa-solid fa-paper-plane text-sm ml-[-2px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

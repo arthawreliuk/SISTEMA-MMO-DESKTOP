@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil público do profissional - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 24px rgba(0, 0, 0, 0.04)',
+                        'button': '0 8px 16px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-brand-bg m-0 p-0 antialiased selection:bg-brand-blue selection:text-white pb-24">
+
+    <!-- Top Navigation -->
+    <header id="header" class="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+        <div class="max-w-[1000px] mx-auto px-6 h-[72px] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                    M
+                </div>
+                <span class="font-bold text-xl tracking-tight text-brand-navy">MMO</span>
+            </div>
+            
+            <nav class="flex items-center gap-8">
+                <a href="#" class="text-gray-400 hover:text-brand-navy transition-colors flex flex-col items-center gap-1 group">
+                    <i class="fa-solid fa-house text-lg group-hover:-translate-y-0.5 transition-transform"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-brand-navy transition-colors flex flex-col items-center gap-1 group">
+                    <i class="fa-solid fa-box text-lg group-hover:-translate-y-0.5 transition-transform"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-brand-navy transition-colors flex flex-col items-center gap-1 group">
+                    <i class="fa-solid fa-message text-lg group-hover:-translate-y-0.5 transition-transform"></i>
+                </a>
+                <a href="#" class="text-brand-blue flex flex-col items-center gap-1 relative">
+                    <i class="fa-solid fa-user text-lg"></i>
+                    <div class="w-1.5 h-1.5 bg-brand-blue rounded-full absolute -bottom-3"></div>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="max-w-[1000px] mx-auto px-6 pt-10 flex flex-col md:flex-row gap-8 items-start">
+        
+        <!-- Left Column: Sticky Profile Card (35%) -->
+        <aside id="profile-sidebar" class="w-full md:w-[35%] md:sticky md:top-[112px]">
+            <div class="bg-white rounded-[24px] shadow-card p-8 flex flex-col items-center text-center">
+                
+                <div class="relative mb-6">
+                    <div class="w-32 h-32 rounded-full border-4 border-white shadow-md bg-gray-100">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Arthur" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute bottom-1 right-1 w-8 h-8 bg-brand-blue rounded-full border-2 border-white flex items-center justify-center text-white text-sm shadow-sm" title="Verified">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+                </div>
+                
+                <h1 class="text-2xl font-bold text-brand-navy mb-1">Arthur</h1>
+                <p class="text-brand-blue font-medium text-sm mb-4">Mestre Oficial MMO</p>
+                
+                <div class="flex items-center gap-4 mb-8 text-sm text-gray-600">
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span class="font-semibold text-brand-navy">4.9</span>
+                        <span>(128)</span>
+                    </div>
+                    <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-location-dot text-gray-400"></i>
+                        <span>Camboriú, SC</span>
+                    </div>
+                </div>
+                
+                <button class="w-full py-4 px-6 bg-brand-blue hover:bg-blue-700 text-white rounded-full font-semibold transition-all shadow-button hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    Solicitar Orçamento
+                </button>
+            </div>
+        </aside>
+
+        <!-- Right Column: Main Content (65%) -->
+        <div id="main-content" class="w-full md:w-[65%] flex flex-col gap-8">
+            
+            <!-- Card 1: Sobre -->
+            <section id="about-section" class="bg-white rounded-[24px] shadow-card p-8">
+                <h2 class="text-xl font-bold text-brand-navy mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-address-card text-brand-blue"></i> Sobre
+                </h2>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    Especialista em reformas de alto padrão com mais de 10 anos de experiência. Foco absoluto em acabamento impecável, cumprimento rigoroso de prazos e comunicação transparente com o cliente. Transformar espaços é minha paixão, garantindo que cada detalhe reflita a excelência que sua casa merece.
+                </p>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-brand-navy mb-3 uppercase tracking-wider text-gray-400">Especialidades</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-blue-50 text-brand-blue rounded-full text-sm font-medium border border-blue-100">Porcelanato</span>
+                        <span class="px-4 py-2 bg-blue-50 text-brand-blue rounded-full text-sm font-medium border border-blue-100">Gesso Acartonado</span>
+                        <span class="px-4 py-2 bg-blue-50 text-brand-blue rounded-full text-sm font-medium border border-blue-100">Pintura Fina</span>
+                        <span class="px-4 py-2 bg-blue-50 text-brand-blue rounded-full text-sm font-medium border border-blue-100">Hidráulica</span>
+                        <span class="px-4 py-2 bg-gray-50 text-gray-600 rounded-full text-sm font-medium border border-gray-200">Elétrica Básica</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Card 2: Portfólio -->
+            <section id="portfolio-section" class="bg-white rounded-[24px] shadow-card p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-brand-navy flex items-center gap-2">
+                        <i class="fa-solid fa-images text-brand-blue"></i> Portfólio
+                    </h2>
+                    <a href="#" class="text-sm font-medium text-brand-blue hover:underline">Ver todos</a>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="aspect-square rounded-2xl group cursor-pointer relative">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projeto 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="fa-solid fa-expand text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="aspect-square rounded-2xl group cursor-pointer relative">
+                        <img src="https://images.unsplash.com/photo-1600607687931-cebf66cc150f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projeto 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="fa-solid fa-expand text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="aspect-square rounded-2xl group cursor-pointer relative hidden sm:block">
+                        <img src="https://images.unsplash.com/photo-1600566753086-00f18efc2291?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projeto 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="fa-solid fa-expand text-white text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Card 3: Avaliações -->
+            <section id="reviews-section" class="bg-white rounded-[24px] shadow-card p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-brand-navy flex items-center gap-2">
+                        <i class="fa-solid fa-star text-brand-blue"></i> Avaliações
+                    </h2>
+                    <div class="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-full">
+                        <i class="fa-solid fa-star text-amber-400 text-sm"></i>
+                        <span class="font-bold text-brand-navy text-sm">4.9</span>
+                        <span class="text-gray-400 text-sm">(128)</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-6">
+                    <!-- Review Item 1 -->
+                    <div class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
+                        <div class="flex items-start gap-4">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="font-bold text-brand-navy">Mariana Silva</h4>
+                                    <span class="text-xs text-gray-400">Há 2 semanas</span>
+                                </div>
+                                <div class="flex gap-1 mb-2">
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                </div>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Trabalho impecável! O Arthur foi super profissional, cumpriu o prazo certinho e deixou o banheiro parecendo de revista. Recomendo de olhos fechados.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review Item 2 -->
+                    <div class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
+                        <div class="flex items-start gap-4">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="font-bold text-brand-navy">Carlos Eduardo</h4>
+                                    <span class="text-xs text-gray-400">Há 1 mês</span>
+                                </div>
+                                <div class="flex gap-1 mb-2">
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                </div>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Excelente acabamento no gesso da sala. Equipe limpa e organizada. Com certeza contratarei novamente para os próximos projetos da casa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="w-full mt-6 py-3 border border-gray-200 text-brand-navy font-semibold rounded-full hover:bg-gray-50 transition-colors text-sm">
+                    Carregar mais avaliações
+                </button>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="mt-16 py-8 border-t border-gray-200">
+        <div class="max-w-[1000px] mx-auto px-6 text-center">
+            <p class="text-sm font-medium text-brand-navy/60">
+                © 2026 MMO. Visualizando seu perfil como um cliente.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

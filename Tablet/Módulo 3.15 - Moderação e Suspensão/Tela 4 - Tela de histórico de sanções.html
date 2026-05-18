@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de histórico de sanções - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        trustBlue: '#0016dc',
+                        softRed: '#E11D48',
+                        deepNavy: '#1A1A24',
+                        offWhite: '#F8F9FA',
+                        pureWhite: '#FFFFFF',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glowRed': '0 0 20px rgba(225, 29, 72, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="flex h-screen text-deepNavy bg-offWhite antialiased font-sans">
+
+
+    <!-- Main Workspace -->
+    <main id="main-content" class="flex-1 flex flex-col h-full p-6">
+        
+        <!-- Header Area -->
+        <header id="header" class="mb-8 pt-4">
+            <div class="flex justify-between items-end">
+                <div>
+                    <h1 class="text-4xl font-extrabold tracking-tight mb-2">Prontuário de Compliance</h1>
+                    <p class="text-gray-500 text-lg font-medium">Histórico consolidado de infrações e penalidades aplicadas.</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="px-5 py-2.5 bg-white text-gray-600 rounded-full border border-gray-200 font-semibold text-sm hover:bg-gray-50 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-download"></i> Exportar Relatório
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Split Layout -->
+        <div class="flex gap-6 flex-1 min-h-0">
+            
+            <!-- Left Column: User Health Profile (35%) -->
+            <section id="user-profile" class="w-[35%] bg-pureWhite rounded-[24px] shadow-soft p-8 flex flex-col h-full overflow-y-auto">
+                
+                <!-- Avatar & Info -->
+                <div class="flex flex-col items-center text-center mb-10">
+                    <div class="relative mb-4">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Professional Avatar" class="w-28 h-28 rounded-full border-4 border-offWhite object-cover shadow-sm">
+                        <div class="absolute bottom-1 right-1 w-6 h-6 bg-softRed rounded-full border-2 border-white flex items-center justify-center">
+                            <i class="fa-solid fa-exclamation text-white text-[10px]"></i>
+                        </div>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-1">Carlos Eduardo Silva</h2>
+                    <p class="text-gray-500 font-medium">ID: #88492-BR</p>
+                    <div class="mt-3 inline-flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full text-xs font-semibold text-gray-600">
+                        <i class="fa-regular fa-calendar"></i> Membro desde Mar 2021
+                    </div>
+                </div>
+
+                <!-- Account Status Block -->
+                <div class="bg-offWhite rounded-[20px] p-6 mb-8 border border-red-100 relative ">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-softRed shadow-glowRed"></div>
+                    
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-bold text-lg">Status da Conta</h3>
+                        <span class="px-3 py-1 bg-red-100 text-softRed rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1 shadow-glowRed">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Conta em Risco
+                        </span>
+                    </div>
+
+                    <!-- Strike Counter -->
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm font-semibold mb-2">
+                            <span class="text-gray-600">Nível de Infração</span>
+                            <span class="text-softRed">2/3 Strikes</span>
+                        </div>
+                        <div class="flex gap-2 h-3">
+                            <div class="flex-1 bg-softRed rounded-full"></div>
+                            <div class="flex-1 bg-softRed rounded-full"></div>
+                            <div class="flex-1 bg-gray-200 rounded-full"></div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                        A próxima infração resultará no banimento automático e permanente da plataforma, conforme os termos de uso.
+                    </p>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-2 gap-4 mb-auto">
+                    <div class="bg-offWhite rounded-[16px] p-4 text-center">
+                        <div class="text-2xl font-bold text-deepNavy mb-1">14</div>
+                        <div class="text-xs text-gray-500 font-semibold uppercase tracking-wide">Reportes</div>
+                    </div>
+                    <div class="bg-offWhite rounded-[16px] p-4 text-center">
+                        <div class="text-2xl font-bold text-deepNavy mb-1">4.2</div>
+                        <div class="text-xs text-gray-500 font-semibold uppercase tracking-wide">Avaliação Média</div>
+                    </div>
+                </div>
+
+                <!-- Action Footer -->
+                <div class="mt-8 pt-6 border-t border-gray-100">
+                    <button class="w-full py-4 bg-softRed text-white rounded-full font-bold text-sm hover:bg-red-700 transition-colors shadow-lg shadow-red-200 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-ban"></i> Banir Definitivamente
+                    </button>
+                    <button class="w-full py-3 mt-3 bg-white text-gray-600 rounded-full font-semibold text-sm hover:bg-gray-50 transition-colors">
+                        Suspender Temporariamente
+                    </button>
+                </div>
+            </section>
+
+            <!-- Right Column: Sanction Ledger (65%) -->
+            <section id="sanction-ledger" class="w-[65%] bg-pureWhite rounded-[24px] shadow-soft flex flex-col h-full ">
+                
+                <!-- Ledger Header -->
+                <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-white z-10">
+                    <h3 class="font-bold text-xl">Histórico de Sanções</h3>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 bg-offWhite text-gray-600 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-gray-200 transition-colors">
+                            <i class="fa-solid fa-filter"></i> Filtrar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scrollable List -->
+                <div class="flex-1 overflow-y-auto p-4 space-y-2">
+                    
+                    <!-- Row 1 (Strike 2) -->
+                    <div class="flex items-center justify-between p-4 bg-white rounded-[16px] border border-gray-50 hover:shadow-md transition-shadow group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-softRed">
+                                <i class="fa-solid fa-gavel text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-deepNavy">Strike Nível 2 Aplicado</h4>
+                                <div class="flex items-center gap-3 text-sm text-gray-500 mt-1">
+                                    <span class="flex items-center gap-1"><i class="fa-regular fa-calendar"></i> 12 Out 2023</span>
+                                    <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                                    <span>Violação de Conduta (Grave)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="text-right hidden xl:block">
+                                <div class="text-sm font-semibold text-deepNavy">Mod: Ana Costa</div>
+                                <div class="text-xs text-gray-400">Equipe de Trust & Safety</div>
+                            </div>
+                            <button class="px-4 py-2 bg-transparent text-trustBlue border border-trustBlue/30 rounded-full text-sm font-bold hover:bg-trustBlue hover:text-white transition-colors opacity-0 group-hover:opacity-100">
+                                Ler Dossiê
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 (Strike 1) -->
+                    <div class="flex items-center justify-between p-4 bg-offWhite rounded-[16px] hover:shadow-md transition-shadow group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
+                                <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-deepNavy">Strike Nível 1 Aplicado</h4>
+                                <div class="flex items-center gap-3 text-sm text-gray-500 mt-1">
+                                    <span class="flex items-center gap-1"><i class="fa-regular fa-calendar"></i> 05 Ago 2023</span>
+                                    <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                                    <span>Linguagem Inapropriada</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="text-right hidden xl:block">
+                                <div class="text-sm font-semibold text-deepNavy">Mod: Roberto Lima</div>
+                                <div class="text-xs text-gray-400">Equipe de Suporte</div>
+                            </div>
+                            <button class="px-4 py-2 bg-transparent text-trustBlue border border-trustBlue/30 rounded-full text-sm font-bold hover:bg-trustBlue hover:text-white transition-colors opacity-0 group-hover:opacity-100">
+                                Ler Dossiê
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 (Warning) -->
+                    <div class="flex items-center justify-between p-4 bg-white rounded-[16px] border border-gray-50 hover:shadow-md transition-shadow group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600">
+                                <i class="fa-solid fa-envelope-open-text text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-deepNavy">Aviso Formal de Comportamento</h4>
+                                <div class="flex items-center gap-3 text-sm text-gray-500 mt-1">
+                                    <span class="flex items-center gap-1"><i class="fa-regular fa-calendar"></i> 22 Jul 2023</span>
+                                    <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                                    <span>Atraso Recorrente (Leve)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="text-right hidden xl:block">
+                                <div class="text-sm font-semibold text-deepNavy">Sistema Automático</div>
+                                <div class="text-xs text-gray-400">Algoritmo de Qualidade</div>
+                            </div>
+                            <button class="px-4 py-2 bg-transparent text-trustBlue border border-trustBlue/30 rounded-full text-sm font-bold hover:bg-trustBlue hover:text-white transition-colors opacity-0 group-hover:opacity-100">
+                                Ler Dossiê
+                            </button>
+                        </div>
+                    </div>
+
+                     <!-- Row 4 (Suspension) -->
+                    <div class="flex items-center justify-between p-4 bg-offWhite rounded-[16px] hover:shadow-md transition-shadow group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+                                <i class="fa-solid fa-clock text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-deepNavy">Suspensão Preventiva (48h)</h4>
+                                <div class="flex items-center gap-3 text-sm text-gray-500 mt-1">
+                                    <span class="flex items-center gap-1"><i class="fa-regular fa-calendar"></i> 10 Fev 2022</span>
+                                    <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                                    <span>Investigação de Fraude (Resolvido)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="text-right hidden xl:block">
+                                <div class="text-sm font-semibold text-deepNavy">Mod: Diretor T&S</div>
+                                <div class="text-xs text-gray-400">Escalação Nível 3</div>
+                            </div>
+                            <button class="px-4 py-2 bg-transparent text-trustBlue border border-trustBlue/30 rounded-full text-sm font-bold hover:bg-trustBlue hover:text-white transition-colors opacity-0 group-hover:opacity-100">
+                                Ler Dossiê
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

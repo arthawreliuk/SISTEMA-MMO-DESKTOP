@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de E-mail_Telefone - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            blueHover: '#0013be',
+                            blueLight: '#e6e8fb'
+                        },
+                        navy: {
+                            900: '#0a102c',
+                            800: '#151e40',
+                            600: '#3a466c',
+                            400: '#7380a6'
+                        },
+                        surface: {
+                            DEFAULT: '#FFFFFF',
+                            bg: '#F8F9FA',
+                            border: '#E2E8F0'
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0px 8px 32px -4px rgba(10, 16, 44, 0.08), 0px 4px 12px -2px rgba(10, 16, 44, 0.04)',
+                        'input': '0px 2px 4px -1px rgba(10, 16, 44, 0.06)',
+                        'input-focus': '0px 0px 0px 3px #e6e8fb'
+                    }
+                }
+            }
+        }
+    </script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; }
+        .hide-arrows::-webkit-outer-spin-button,
+        .hide-arrows::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .hide-arrows {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-surface-bg font-sans text-navy-900 m-0 p-0">
+
+    <!-- Main Focus Container -->
+    <main id="focus-container" class="w-full max-w-[600px] px-6 py-12 md:px-0">
+        
+        <!-- Validation Card -->
+        <div id="validation-card" class="bg-surface rounded-[24px] shadow-card p-10 md:p-14 flex flex-col items-center text-center border border-surface-border/50 relative ">
+            
+            <!-- Decorative Top Gradient (Subtle) -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-blue/20 via-brand-blue to-brand-blue/20"></div>
+
+            <!-- Iconography -->
+            <div id="icon-container" class="mb-8 relative group">
+                <div class="w-20 h-20 rounded-2xl bg-brand-blueLight flex items-center justify-center transform transition-transform duration-300 group-hover:scale-105 shadow-inner">
+                    <i class="fa-solid fa-shield-halved text-3xl text-brand-blue drop-shadow-sm"></i>
+                </div>
+                <!-- Sparkle accents -->
+                <i class="fa-solid fa-sparkles absolute -top-2 -right-2 text-brand-blue/60 text-sm"></i>
+                <i class="fa-solid fa-circle absolute bottom-1 -left-1 text-brand-blue/40 text-[8px]"></i>
+            </div>
+
+            <!-- Header Section -->
+            <header id="card-header" class="mb-10 w-full max-w-[420px]">
+                <h1 class="text-3xl font-bold text-navy-900 tracking-tight mb-3">Quase lá, Arthur</h1>
+                <p class="text-navy-600 text-[15px] leading-relaxed font-medium">
+                    Informe o código de segurança para validar seu acesso ao ecossistema MMO.
+                </p>
+            </header>
+
+            <!-- OTP Input Grid -->
+            <div id="otp-input-area" class="w-full mb-10">
+                <div class="flex justify-center gap-3 md:gap-4">
+                    <input type="text" maxlength="1" class="w-12 h-16 md:w-14 md:h-16 text-center text-2xl font-bold text-navy-900 bg-surface rounded-xl border-2 border-surface-border shadow-input focus:border-brand-blue focus:shadow-input-focus focus:outline-none transition-all duration-200 hide-arrows" value="4">
+                    <input type="text" maxlength="1" class="w-12 h-16 md:w-14 md:h-16 text-center text-2xl font-bold text-navy-900 bg-surface rounded-xl border-2 border-surface-border shadow-input focus:border-brand-blue focus:shadow-input-focus focus:outline-none transition-all duration-200 hide-arrows" value="8">
+                    <input type="text" maxlength="1" class="w-12 h-16 md:w-14 md:h-16 text-center text-2xl font-bold text-navy-900 bg-surface rounded-xl border-2 border-surface-border shadow-input focus:border-brand-blue focus:shadow-input-focus focus:outline-none transition-all duration-200 hide-arrows" value="2">
+                    <input type="text" maxlength="1" class="w-12 h-16 md:w-14 md:h-16 text-center text-2xl font-bold text-navy-900 bg-surface rounded-xl border-2 border-surface-border shadow-input focus:border-brand-blue focus:shadow-input-focus focus:outline-none transition-all duration-200 hide-arrows" value="">
+                    <input type="text" maxlength="1" class="w-12 h-16 md:w-14 md:h-16 text-center text-2xl font-bold text-navy-900 bg-surface rounded-xl border-2 border-surface-border shadow-input focus:border-brand-blue focus:shadow-input-focus focus:outline-none transition-all duration-200 hide-arrows" value="">
+                    <input type="text" maxlength="1" class="w-12 h-16 md:w-14 md:h-16 text-center text-2xl font-bold text-navy-900 bg-surface rounded-xl border-2 border-surface-border shadow-input focus:border-brand-blue focus:shadow-input-focus focus:outline-none transition-all duration-200 hide-arrows" value="">
+                </div>
+                
+                <div class="mt-6 flex items-center justify-center gap-2 text-sm">
+                    <span class="text-navy-400 font-medium">Não recebeu o código?</span>
+                    <button class="text-brand-blue font-semibold hover:text-brand-blueHover transition-colors">Reenviar em 00:45</button>
+                </div>
+            </div>
+
+            <!-- Primary Action -->
+            <div id="action-area" class="w-full mb-8">
+                <button class="w-full py-4 px-6 bg-brand-blue hover:bg-brand-blueHover text-white rounded-full font-bold text-[15px] tracking-wide shadow-[0_8px_20px_-6px_rgba(0,22,220,0.4)] transition-all duration-200 transform hover:-translate-y-[1px] active:translate-y-[1px] flex items-center justify-center gap-3">
+                    Validar e Entrar
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Security Footer Badge -->
+            <footer id="security-badge" class="mt-auto pt-6 border-t border-surface-border/60 w-full">
+                <div class="flex items-center justify-center gap-2 text-navy-400">
+                    <i class="fa-solid fa-lock text-xs text-brand-blue/80"></i>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-navy-600">Proteção MMO Security Ativa</span>
+                </div>
+            </footer>
+
+        </div>
+        
+        <!-- Contextual Help (Outside Card) -->
+        <div class="mt-8 text-center">
+            <a href="#" class="text-sm font-medium text-navy-400 hover:text-navy-600 transition-colors flex items-center justify-center gap-2">
+                <i class="fa-regular fa-circle-question"></i>
+                Precisa de ajuda com o acesso?
+            </a>
+        </div>
+
+    </main>
+
+    <script>
+        // Simple auto-focus logic for inputs
+        const inputs = document.querySelectorAll('#otp-input-area input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if(e.target.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if(e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+        // Focus empty input
+        const firstEmpty = Array.from(inputs).find(input => input.value === '');
+        if(firstEmpty) firstEmpty.focus();
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

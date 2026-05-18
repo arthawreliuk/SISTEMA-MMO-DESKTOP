@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de criação de solicitação - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        bordercolor: '#E2E8F0',
+                        textmuted: '#64748B'
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        /* Custom file input styling */
+        input[type="file"]::file-selector-button {
+            display: none;
+        }
+    </style>
+</head>
+<body class="flex h-screen bg-offwhite text-navy m-0 p-0">
+
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-1 flex items-center justify-center p-6 relative overflow-y-auto">
+        
+        <!-- Wizard Card -->
+        <div id="wizard-card" class="bg-white rounded-[24px] shadow-soft w-full max-w-[700px] flex flex-col relative z-20">
+            
+            <!-- Header Area with Stepper -->
+            <div class="p-8 pb-6 border-b border-gray-50 flex flex-col items-center text-center">
+                
+                <!-- Stepper -->
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-2 h-2 rounded-full bg-gray-200"></div>
+                    <div class="w-6 h-2 rounded-full bg-trustblue"></div>
+                    <div class="w-2 h-2 rounded-full bg-gray-200"></div>
+                    <div class="w-2 h-2 rounded-full bg-gray-200"></div>
+                </div>
+
+                <h1 class="text-2xl font-bold text-navy mb-2 tracking-tight">O que precisa ser feito?</h1>
+                <p class="text-textmuted text-sm font-medium">Quanto mais detalhes, melhor o orçamento.</p>
+            </div>
+
+            <!-- Form Content -->
+            <div class="p-8 flex flex-col gap-6">
+                
+                <!-- Text Area Field -->
+                <div class="flex flex-col gap-2">
+                    <label for="description" class="text-sm font-semibold text-navy">Descrição do Serviço</label>
+                    <textarea 
+                        id="description" 
+                        rows="5" 
+                        placeholder="Descreva o problema ou serviço necessário com o máximo de detalhes possível..."
+                        class="w-full border border-gray-200 rounded-2xl p-4 text-sm text-navy placeholder-gray-400 focus:outline-none focus:border-trustblue focus:ring-1 focus:ring-trustblue transition-all resize-none bg-gray-50/30"
+                    ></textarea>
+                </div>
+
+                <!-- Drag and Drop Zone -->
+                <div class="flex flex-col gap-2 mt-2">
+                    <label class="text-sm font-semibold text-navy">Fotos do Local / Problema</label>
+                    <div class="border-2 border-dashed border-trustblue/40 bg-blue-50/20 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-blue-50/40 transition-colors group">
+                        <div class="w-12 h-12 rounded-full bg-trustblue/10 flex items-center justify-center text-trustblue mb-3 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
+                        </div>
+                        <p class="text-sm font-semibold text-trustblue mb-1">Clique para fazer upload ou arraste</p>
+                        <p class="text-xs text-textmuted">JPG, PNG ou MP4 (Máx. 10MB)</p>
+                        <input type="file" class="hidden" multiple accept="image/*,video/*">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Action Footer -->
+            <div class="p-8 pt-6 flex items-center justify-between mt-auto border-t border-gray-50 bg-gray-50/30">
+                <button class="px-6 py-3 rounded-full text-navy font-semibold text-sm hover:bg-gray-100 transition-colors border border-gray-200 bg-white">
+                    Voltar
+                </button>
+                <button class="px-8 py-3 rounded-full bg-trustblue text-white font-semibold text-sm hover:bg-blue-700 transition-colors shadow-lg shadow-trustblue/20">
+                    Próxima Etapa
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

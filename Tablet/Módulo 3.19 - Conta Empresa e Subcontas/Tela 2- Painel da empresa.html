@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B Enterprise Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            white: '#FFFFFF',
+                            gray: '#E2E8F0',
+                            text: '#4A5568'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03)',
+                        'card': '0 2px 10px rgba(0, 0, 0, 0.02), 0 10px 40px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="font-sans antialiased text-brand-navy bg-brand-offwhite h-screen flex ">
+
+
+    <!-- Main Workspace -->
+    <main class="flex-1 h-full overflow-y-auto p-6 ">
+        <div class="max-w-[1200px] mx-auto h-full flex flex-col gap-6">
+            
+            <!-- Header Area -->
+            <header id="dashboard-header" class="flex justify-between items-end mb-2">
+                <div>
+                    <h1 class="text-4xl font-extrabold tracking-tight mb-2">Visão Geral da Empresa</h1>
+                    <p class="text-brand-text text-lg font-medium">Acompanhe o saldo global e o desempenho da sua equipe.</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="px-6 py-3 bg-white rounded-full font-semibold text-brand-navy shadow-sm border border-brand-gray/50 hover:bg-brand-gray/10 transition-colors">
+                        <i class="fa-solid fa-download mr-2"></i> Relatório
+                    </button>
+                    <button class="px-6 py-3 bg-brand-blue text-white rounded-full font-semibold shadow-[0_8px_16px_rgba(0,22,220,0.2)] hover:bg-blue-700 transition-colors">
+                        <i class="fa-solid fa-plus mr-2"></i> Nova Ação
+                    </button>
+                </div>
+            </header>
+
+            <!-- Top KPI Row -->
+            <section id="kpi-stat-row" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- KPI 1 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-card border border-brand-gray/20 flex items-center justify-between group cursor-pointer hover:border-brand-blue/30 transition-all">
+                    <div>
+                        <p class="text-sm font-semibold text-brand-text uppercase tracking-wider mb-1">Saldo Total</p>
+                        <h2 class="text-3xl font-bold text-brand-navy">R$ 4.5k</h2>
+                    </div>
+                    <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center text-green-600 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-arrow-trend-up text-xl"></i>
+                    </div>
+                </div>
+                
+                <!-- KPI 2 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-card border border-brand-gray/20 flex items-center justify-between group cursor-pointer hover:border-brand-blue/30 transition-all">
+                    <div>
+                        <p class="text-sm font-semibold text-brand-text uppercase tracking-wider mb-1">Leads Comprados</p>
+                        <h2 class="text-3xl font-bold text-brand-navy">124</h2>
+                    </div>
+                    <div class="w-14 h-14 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bullseye text-xl"></i>
+                    </div>
+                </div>
+
+                <!-- KPI 3 -->
+                <div class="bg-white rounded-[24px] p-6 shadow-card border border-brand-gray/20 flex items-center justify-between group cursor-pointer hover:border-brand-blue/30 transition-all">
+                    <div>
+                        <p class="text-sm font-semibold text-brand-text uppercase tracking-wider mb-1">Avaliação Média</p>
+                        <h2 class="text-3xl font-bold text-brand-navy">4.8</h2>
+                    </div>
+                    <div class="w-14 h-14 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-500 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-star text-xl"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Split Layout -->
+            <div class="flex flex-col lg:flex-row gap-6 h-full pb-6">
+                
+                <!-- Left Column (Chart - 60%) -->
+                <section id="team-performance-analytics" class="w-full lg:w-[60%] bg-white rounded-[24px] shadow-card border border-brand-gray/20 flex flex-col relative ">
+                    <div class="p-8 pb-0 flex justify-between items-center z-10">
+                        <div>
+                            <h3 class="text-xl font-bold">Receita por Subconta</h3>
+                            <p class="text-sm text-brand-text mt-1">Desempenho da equipe nesta semana</p>
+                        </div>
+                        <select class="bg-brand-offwhite border border-brand-gray/50 text-brand-navy text-sm rounded-full focus:ring-brand-blue focus:border-brand-blue block p-2.5 px-4 outline-none font-medium">
+                            <option>Esta Semana</option>
+                            <option>Mês Passado</option>
+                            <option>Este Ano</option>
+                        </select>
+                    </div>
+                    <div id="revenueChart" class="flex-1 w-full h-full min-h-[300px] mt-4 z-0"></div>
+                </section>
+
+                <!-- Right Column (Feed - 40%) -->
+                <section id="real-time-operations-feed" class="w-full lg:w-[40%] bg-white rounded-[24px] shadow-card border border-brand-gray/20 flex flex-col ">
+                    <div class="p-6 border-b border-brand-gray/20 flex justify-between items-center bg-white/80 backdrop-blur-md z-10">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            Feed de Operações
+                        </h3>
+                        <button class="text-brand-text hover:text-brand-blue transition-colors text-sm font-semibold">Ver tudo</button>
+                    </div>
+                    
+                    <div class="flex-1 overflow-y-auto p-6 space-y-6">
+                        <!-- Feed Item 1 -->
+                        <div class="flex gap-4 items-start group">
+                            <div class="w-10 h-10 rounded-full bg-brand-blue/10 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-brand-blue"></i>
+                            </div>
+                            <div>
+                                <p class="text-[15px] font-medium text-brand-navy">Lucas aceitou Serviço #492</p>
+                                <p class="text-sm text-brand-text mt-0.5">Instalação Elétrica - Zona Sul</p>
+                                <span class="text-xs font-semibold text-brand-gray mt-2 block">Agora mesmo</span>
+                            </div>
+                        </div>
+
+                        <!-- Feed Item 2 -->
+                        <div class="flex gap-4 items-start group">
+                            <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-flag-checkered text-green-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-[15px] font-medium text-brand-navy">Marcos finalizou obra</p>
+                                <p class="text-sm text-brand-text mt-0.5">Projeto Residencial #102</p>
+                                <span class="text-xs font-semibold text-brand-gray mt-2 block">Há 15 min</span>
+                            </div>
+                        </div>
+
+                        <!-- Feed Item 3 -->
+                        <div class="flex gap-4 items-start group">
+                            <div class="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-star text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-[15px] font-medium text-brand-navy">Nova avaliação 5 estrelas</p>
+                                <p class="text-sm text-brand-text mt-0.5">Cliente: João Silva</p>
+                                <span class="text-xs font-semibold text-brand-gray mt-2 block">Há 45 min</span>
+                            </div>
+                        </div>
+                        
+                         <!-- Feed Item 4 -->
+                        <div class="flex gap-4 items-start group">
+                            <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-file-invoice text-purple-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-[15px] font-medium text-brand-navy">Fatura #882 paga</p>
+                                <p class="text-sm text-brand-text mt-0.5">Valor: R$ 1.200,00</p>
+                                <span class="text-xs font-semibold text-brand-gray mt-2 block">Há 2 horas</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const chartData = [{
+                    type: 'bar',
+                    x: ['Equipe A', 'Equipe B', 'Equipe C', 'Equipe D', 'Equipe E'],
+                    y: [12000, 19000, 15000, 8000, 22000],
+                    marker: {
+                        color: '#0016dc',
+                        corner_radius: 8, // Plotly doesn't natively support bar radius easily without complex shapes, but simulating modern look
+                        opacity: 0.9
+                    },
+                    width: 0.4
+                }];
+
+                const layout = {
+                    margin: { t: 40, r: 20, b: 40, l: 60 },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent',
+                    xaxis: {
+                        showgrid: false,
+                        tickfont: { family: 'Plus Jakarta Sans', color: '#4A5568', size: 12 },
+                        linecolor: '#E2E8F0'
+                    },
+                    yaxis: {
+                        showgrid: true,
+                        gridcolor: 'rgba(226, 232, 240, 0.5)',
+                        gridwidth: 1,
+                        tickfont: { family: 'Plus Jakarta Sans', color: '#4A5568', size: 12 },
+                        zeroline: false
+                    },
+                    hovermode: 'closest',
+                    hoverlabel: {
+                        bgcolor: '#1A1A24',
+                        font: { family: 'Plus Jakarta Sans', color: '#FFFFFF' }
+                    }
+                };
+
+                const config = {
+                    responsive: true,
+                    displayModeBar: false,
+                    displaylogo: false
+                };
+
+                Plotly.newPlot('revenueChart', chartData, layout, config);
+            } catch (e) {
+                console.error('Chart initialization failed:', e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

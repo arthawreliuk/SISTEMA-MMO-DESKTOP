@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de conversas arquivadas - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '4px 0 24px -4px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; overflow-x: hidden; }
+    </style>
+</head>
+<body class="min-h-screen flex text-navy bg-offwhite selection:bg-trustblue selection:text-white">
+
+
+    <!-- Main Content Workspace -->
+    <main class="p-8 flex-1 h-screen flex flex-col gap-6 max-w-[1400px] mx-auto">
+        
+        <!-- Header Area -->
+        <header id="header" class="flex-shrink-0">
+            <h1 class="text-[32px] font-bold text-navy tracking-tight">Arquivo de Conversas</h1>
+            <p class="text-muted mt-1 text-[15px]">Histórico de serviços passados e orçamentos encerrados.</p>
+        </header>
+
+        <!-- Split Layout -->
+        <div class="flex-1 flex gap-6 min-h-0 pb-8">
+            
+            <!-- Left Column: Archive List (35%) -->
+            <section id="archive-list" class="w-[35%] bg-surface rounded-[24px] shadow-soft flex flex-col border border-border/40">
+                <!-- Search Bar -->
+                <div class="p-5 border-b border-border/50 bg-surface z-10">
+                    <div class="relative">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
+                        <input type="text" placeholder="Buscar no arquivo..." class="w-full bg-offwhite border-none rounded-full py-3 pr-4 text-[14px] text-navy focus:ring-2 focus:ring-trustblue/20 focus:outline-none placeholder:text-muted/70 transition-all">
+                    </div>
+                    
+                    <div class="flex gap-2 mt-4 overflow-x-auto pb-1">
+                        <button class="px-4 py-1.5 rounded-full bg-navy text-white text-[13px] font-medium whitespace-nowrap">Todos</button>
+                        <button class="px-4 py-1.5 rounded-full bg-offwhite text-muted hover:text-navy text-[13px] font-medium whitespace-nowrap transition-colors">Orçamentos</button>
+                        <button class="px-4 py-1.5 rounded-full bg-offwhite text-muted hover:text-navy text-[13px] font-medium whitespace-nowrap transition-colors">Suporte</button>
+                    </div>
+                </div>
+
+                <!-- Chat List -->
+                <div class="flex-1 overflow-y-auto p-2">
+                    <!-- Active Item -->
+                    <div class="p-3 rounded-[16px] bg-offwhite cursor-pointer mb-1 border border-border/50 relative">
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-trustblue rounded-r-full"></div>
+                        <div class="flex items-start gap-3 ">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover">
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-surface rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-box text-[10px] text-muted"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex justify-between items-center mb-0.5">
+                                    <h3 class="font-semibold text-[15px] text-navy truncate">Logística Express Ltda</h3>
+                                    <span class="text-[12px] text-muted whitespace-nowrap">24 Out</span>
+                                </div>
+                                <p class="text-[13px] text-navy font-medium truncate">Orçamento #4892 aprovado</p>
+                                <p class="text-[13px] text-muted truncate mt-0.5">Obrigado pela confirmação. Segue o...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inactive Items -->
+                    <div class="p-3 rounded-[16px] hover:bg-offwhite/50 cursor-pointer mb-1 transition-colors group">
+                        <div class="flex items-start gap-3 ">
+                            <div class="relative">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover">
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-surface rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-truck text-[10px] text-muted"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex justify-between items-center mb-0.5">
+                                    <h3 class="font-semibold text-[15px] text-navy group-hover:text-trustblue transition-colors truncate">Transportes Silva</h3>
+                                    <span class="text-[12px] text-muted whitespace-nowrap">15 Out</span>
+                                </div>
+                                <p class="text-[13px] text-muted truncate mt-0.5">Entrega concluída com sucesso no...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-[16px] hover:bg-offwhite/50 cursor-pointer mb-1 transition-colors group">
+                        <div class="flex items-start gap-3 ">
+                            <div class="relative">
+                                <div class="w-12 h-12 rounded-full bg-trustblue/10 flex items-center justify-center text-trustblue font-bold text-lg">
+                                    M
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-surface rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-headset text-[10px] text-muted"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex justify-between items-center mb-0.5">
+                                    <h3 class="font-semibold text-[15px] text-navy group-hover:text-trustblue transition-colors truncate">Marcos Almeida (Suporte)</h3>
+                                    <span class="text-[12px] text-muted whitespace-nowrap">02 Out</span>
+                                </div>
+                                <p class="text-[13px] text-muted truncate mt-0.5">Problema com a fatura resolvido.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Read-Only Chat View (65%) -->
+            <section id="chat-view" class="w-[65%] bg-surface rounded-[24px] shadow-soft flex flex-col border border-border/40 relative">
+                
+                <!-- Chat Header -->
+                <div class="px-8 py-5 border-b border-border/50 flex justify-between items-center bg-surface/80 backdrop-blur-sm z-10">
+                    <div class="flex items-center gap-4">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover ring-2 ring-offwhite">
+                        <div>
+                            <h2 class="font-bold text-[18px] text-navy">Logística Express Ltda</h2>
+                            <div class="flex items-center gap-2 mt-0.5">
+                                <span class="px-2 py-0.5 rounded-md bg-offwhite text-[11px] font-medium text-muted uppercase tracking-wider">Orçamento #4892</span>
+                                <span class="text-[13px] text-muted">Encerrado em 24 Out, 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="w-10 h-10 rounded-full bg-offwhite flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 transition-colors">
+                            <i class="fa-solid fa-print"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-full bg-offwhite flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 transition-colors">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat History -->
+                <div class="flex-1 overflow-y-auto p-8 flex flex-col gap-6 bg-[#FAFAFC]">
+                    
+                    <div class="flex justify-center mb-2">
+                        <span class="px-3 py-1 bg-surface border border-border/50 rounded-full text-[12px] text-muted font-medium shadow-sm">23 Outubro, 2023</span>
+                    </div>
+
+                    <!-- Received Message -->
+                    <div class="flex gap-4 max-w-[80%]">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-1">
+                        <div>
+                            <div class="bg-surface border border-border/40 rounded-[20px] rounded-tl-sm p-4 shadow-sm">
+                                <p class="text-[15px] leading-relaxed text-navy">Olá! Gostaria de solicitar um orçamento para o transporte de 3 pallets (aprox. 1200kg) de São Paulo para Curitiba. A carga é frágil.</p>
+                            </div>
+                            <span class="text-[11px] text-muted mt-1.5 ml-1 block">09:14</span>
+                        </div>
+                    </div>
+
+                    <!-- Sent Message -->
+                    <div class="flex gap-4 max-w-[80%] ml-auto justify-end">
+                        <div class="flex flex-col items-end">
+                            <div class="bg-navy text-white rounded-[20px] rounded-tr-sm p-4 shadow-sm">
+                                <p class="text-[15px] leading-relaxed">Bom dia! Claro, podemos atender essa demanda. Para carga frágil nessa rota, o valor estimado é de R$ 1.450,00 com seguro incluso. Prazo de 2 dias úteis.</p>
+                            </div>
+                            <span class="text-[11px] text-muted mt-1.5 mr-1 block">09:28 <i class="fa-solid fa-check-double text-trustblue ml-1"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- File Attachment Sent -->
+                    <div class="flex gap-4 max-w-[80%] ml-auto justify-end">
+                        <div class="flex flex-col items-end">
+                            <div class="bg-navy text-white rounded-[20px] rounded-tr-sm p-4 shadow-sm flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-file-pdf text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[14px] font-medium">Proposta_Comercial_4892.pdf</p>
+                                    <p class="text-[12px] text-white/70 mt-0.5">2.4 MB • PDF</p>
+                                </div>
+                                <button class="ml-2 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                                    <i class="fa-solid fa-download text-[13px]"></i>
+                                </button>
+                            </div>
+                            <span class="text-[11px] text-muted mt-1.5 mr-1 block">09:35 <i class="fa-solid fa-check-double text-trustblue ml-1"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center my-4 mb-2">
+                        <span class="px-3 py-1 bg-surface border border-border/50 rounded-full text-[12px] text-muted font-medium shadow-sm">24 Outubro, 2023</span>
+                    </div>
+
+                    <!-- Received Message -->
+                    <div class="flex gap-4 max-w-[80%]">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-1">
+                        <div>
+                            <div class="bg-surface border border-border/40 rounded-[20px] rounded-tl-sm p-4 shadow-sm">
+                                <p class="text-[15px] leading-relaxed text-navy">Orçamento #4892 aprovado. Pode seguir com a emissão do contrato.</p>
+                            </div>
+                            <span class="text-[11px] text-muted mt-1.5 ml-1 block">14:22</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Sent Message -->
+                    <div class="flex gap-4 max-w-[80%] ml-auto justify-end">
+                        <div class="flex flex-col items-end">
+                            <div class="bg-navy text-white rounded-[20px] rounded-tr-sm p-4 shadow-sm">
+                                <p class="text-[15px] leading-relaxed">Obrigado pela confirmação. Segue o contrato para assinatura digital.</p>
+                            </div>
+                            <span class="text-[11px] text-muted mt-1.5 mr-1 block">14:45 <i class="fa-solid fa-check-double text-trustblue ml-1"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Read-Only Archive Banner -->
+                <div class="bg-offwhite border-t border-border/50 p-4 px-6 flex justify-between items-center w-full mt-auto">
+                    <div class="flex items-center gap-3 text-muted">
+                        <i class="fa-solid fa-lock text-[15px]"></i>
+                        <span class="text-[14px] font-medium">Esta conversa está arquivada (Somente Leitura).</span>
+                    </div>
+                    <button class="px-5 py-2.5 rounded-full border-2 border-border/80 text-navy font-semibold text-[14px] hover:border-trustblue hover:text-trustblue transition-colors bg-surface shadow-sm">
+                        Desarquivar Conversa
+                    </button>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

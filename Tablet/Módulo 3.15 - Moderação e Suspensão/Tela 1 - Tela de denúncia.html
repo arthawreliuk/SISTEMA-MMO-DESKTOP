@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de denúncia - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustBlue: '#0016dc',
+                        offWhite: '#F8F9FA',
+                        crimson: '#DC2626',
+                        borderGray: '#E2E8F0',
+                        textGray: '#64748B'
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -10px rgba(0, 22, 220, 0.08), 0 10px 20px -5px rgba(0, 0, 0, 0.04)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Custom styles for file upload dash */
+        .upload-dash {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23E2E8F0' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+            border-radius: 24px;
+        }
+
+        /* Hide default file input */
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 lg:p-8 xl:p-12 overflow-x-hidden">
+
+    <!-- Header Area -->
+    <header id="header" class="w-full max-w-[1200px] flex justify-between items-center mb-8 px-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-trustBlue rounded-xl flex items-center justify-center text-white shadow-lg shadow-trustBlue/20">
+                <i class="fa-solid fa-shield-halved text-lg"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight text-navy">MMO</span>
+        </div>
+        <a href="#" class="flex items-center gap-2 text-textGray hover:text-navy transition-colors font-medium text-sm bg-white px-5 py-2.5 rounded-full shadow-sm border border-borderGray/50">
+            <i class="fa-solid fa-arrow-left text-xs"></i>
+            Voltar em segurança
+        </a>
+    </header>
+
+    <!-- Main Workspace -->
+    <main id="dispute-workspace" class="w-full max-w-[1200px] bg-white rounded-[32px] shadow-premium flex flex-col lg:flex-row min-h-[700px] border border-white">
+        
+        <!-- Left Column: Context & Reassurance (40%) -->
+        <section id="context-section" class="w-full lg:w-[40%] bg-offWhite p-10 lg:p-12 flex flex-col justify-between border-r border-borderGray/30 relative ">
+            
+            <!-- Decorative background element -->
+            <div class="absolute -top-24 -left-24 w-64 h-64 bg-trustBlue/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-trustBlue/10 text-trustBlue text-xs font-bold tracking-wide uppercase mb-8">
+                    <i class="fa-solid fa-lock text-[10px]"></i> Central de Resolução
+                </div>
+
+                <h1 class="text-3xl lg:text-4xl font-bold text-navy leading-tight mb-4">
+                    Nós levamos sua<br>segurança a sério.
+                </h1>
+                
+                <p class="text-textGray mb-10 text-base leading-relaxed max-w-sm">
+                    Você está reportando um problema com o serviço <strong class="text-navy font-semibold">"Troca de Fiação"</strong>. Nossa equipe analisará cuidadosamente.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-trustBlue shrink-0 border border-borderGray/40">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-navy text-sm mb-1">Análise em até 24h</h3>
+                            <p class="text-textGray text-xs leading-relaxed">Nossa equipe de moderação revisará este caso prioritariamente.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-trustBlue shrink-0 border border-borderGray/40">
+                            <i class="fa-solid fa-user-secret"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-navy text-sm mb-1">Sigilo absoluto</h3>
+                            <p class="text-textGray text-xs leading-relaxed">O prestador não saberá que você abriu esta denúncia diretamente.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-trustBlue shrink-0 border border-borderGray/40">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-navy text-sm mb-1">Suporte jurídico</h3>
+                            <p class="text-textGray text-xs leading-relaxed">Orientação legal e suporte se necessário para casos graves.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-borderGray/50 flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-xs text-textGray font-medium">Conexão segura criptografada (SSL)</span>
+            </div>
+        </section>
+
+        <!-- Right Column: The Form (60%) -->
+        <section id="form-section" class="w-full lg:w-[60%] p-10 lg:p-12 bg-white flex flex-col">
+            
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-navy mb-2">Detalhes da Denúncia</h2>
+                <p class="text-textGray text-sm">Selecione o motivo principal e descreva o que aconteceu.</p>
+            </div>
+
+            <form class="flex-1 flex flex-col">
+                <!-- Category Selection -->
+                <div class="mb-8">
+                    <label class="block text-xs font-bold text-navy uppercase tracking-wider mb-4">Categoria da Infração</label>
+                    <div class="flex flex-wrap gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="category" class="peer sr-only">
+                            <div class="px-5 py-2.5 rounded-full border border-borderGray text-sm font-medium text-textGray peer-checked:bg-navy peer-checked:text-white peer-checked:border-navy transition-all hover:bg-offWhite">
+                                Assédio ou Ameaça
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="category" class="peer sr-only" checked>
+                            <div class="px-5 py-2.5 rounded-full border border-borderGray text-sm font-medium text-textGray peer-checked:bg-navy peer-checked:text-white peer-checked:border-navy transition-all hover:bg-offWhite">
+                                Serviço não realizado
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="category" class="peer sr-only">
+                            <div class="px-5 py-2.5 rounded-full border border-borderGray text-sm font-medium text-textGray peer-checked:bg-navy peer-checked:text-white peer-checked:border-navy transition-all hover:bg-offWhite">
+                                Cobrança Indevida
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="category" class="peer sr-only">
+                            <div class="px-5 py-2.5 rounded-full border border-borderGray text-sm font-medium text-textGray peer-checked:bg-navy peer-checked:text-white peer-checked:border-navy transition-all hover:bg-offWhite">
+                                Perfil Falso
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="category" class="peer sr-only">
+                            <div class="px-5 py-2.5 rounded-full border border-borderGray text-sm font-medium text-textGray peer-checked:bg-navy peer-checked:text-white peer-checked:border-navy transition-all hover:bg-offWhite">
+                                Outros
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Narrative Input -->
+                <div class="mb-8">
+                    <label class="block text-xs font-bold text-navy uppercase tracking-wider mb-4">Relato do Ocorrido</label>
+                    <div class="relative">
+                        <textarea 
+                            class="w-full h-40 bg-offWhite border border-borderGray/50 rounded-[24px] p-6 text-sm text-navy placeholder:text-textGray focus:outline-none focus:ring-2 focus:ring-trustBlue/20 focus:border-trustBlue transition-all shadow-inner-soft resize-none"
+                            placeholder="Descreva com o máximo de detalhes possível o que aconteceu durante ou após o serviço..."
+                        ></textarea>
+                        <div class="absolute bottom-4 right-6 text-xs text-textGray">0/500</div>
+                    </div>
+                </div>
+
+                <!-- Evidence Upload -->
+                <div class="mb-10 flex-1">
+                    <label class="block text-xs font-bold text-navy uppercase tracking-wider mb-4">Anexar Evidências (Opcional)</label>
+                    <label class="upload-dash w-full h-32 bg-offWhite/50 flex flex-col items-center justify-center cursor-pointer hover:bg-offWhite transition-colors group">
+                        <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-trustBlue mb-2 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <span class="text-sm font-medium text-navy">Clique para fazer upload</span>
+                        <span class="text-xs text-textGray mt-1">PNG, JPG, PDF até 10MB</span>
+                        <input type="file" multiple accept="image/png, image/jpeg, application/pdf">
+                    </label>
+                </div>
+
+                <!-- Submit Action -->
+                <div class="mt-auto pt-6 border-t border-borderGray/30 flex items-center justify-between">
+                    <button type="button" class="text-sm font-medium text-textGray hover:text-navy px-4 py-2 transition-colors">
+                        Cancelar
+                    </button>
+                    <button type="button" class="bg-crimson hover:bg-red-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-crimson/20 transition-all hover:-translate-y-0.5 flex items-center gap-3">
+                        <i class="fa-solid fa-triangle-exclamation text-sm"></i>
+                        Abrir Chamado de Moderação
+                    </button>
+                </div>
+            </form>
+
+        </section>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

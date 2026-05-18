@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de campanhas de anunciantes - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        'primary-hover': '#0012b3',
+                        navy: '#1A1A24',
+                        'navy-light': '#3A3A4A',
+                        'navy-lighter': '#6B7280',
+                        'card-bg': '#FFFFFF',
+                        border: '#E5E7EB',
+                        pending: '#F97316',
+                        'pending-bg': '#FFF7ED',
+                        success: '#10B981',
+                        danger: '#EF4444',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'floating': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-[100dvh] flex font-sans">
+
+
+    <!-- Main Workspace -->
+    <main class=" flex-1 p-6 lg:p-8 flex flex-col h-[100dvh] ">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="mb-8 flex-shrink-0 flex justify-between items-end">
+            <div>
+                <div class="flex items-center gap-3 text-sm font-medium text-navy-lighter mb-3">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-primary"></i> Backoffice</span>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-navy">Gestão de Mídia</span>
+                </div>
+                <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-navy mb-2">Gestão de Mídia e Anunciantes</h1>
+                <p class="text-navy-lighter text-base">Aprove criativos, monitore orçamentos e acompanhe o CTR.</p>
+            </div>
+            
+            <div class="flex gap-3">
+                <button class="px-5 py-2.5 bg-white border border-border rounded-full text-sm font-semibold text-navy hover:bg-gray-50 transition-colors flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-download"></i> Relatório
+                </button>
+                <button class="px-5 py-2.5 bg-primary text-white rounded-full text-sm font-semibold hover:bg-primary-hover transition-colors flex items-center gap-2 shadow-lg shadow-primary/20">
+                    <i class="fa-solid fa-plus"></i> Nova Campanha
+                </button>
+            </div>
+        </header>
+
+        <!-- Asymmetrical 2-Column Layout -->
+        <div class="flex-1 flex gap-6 min-h-0">
+            
+            <!-- Left Column: Campaign List (35%) -->
+            <section id="campaign-list-sidebar" class="w-[35%] bg-white rounded-4xl shadow-ambient flex flex-col border border-border/50">
+                
+                <!-- List Header & Search -->
+                <div class="p-6 border-b border-border/60 bg-white z-10 flex-shrink-0">
+                    <div class="flex justify-between items-center mb-5">
+                        <h2 class="text-lg font-bold text-navy">Campanhas</h2>
+                        <span class="bg-gray-100 text-navy-lighter text-xs font-bold px-2.5 py-1 rounded-full">24 Total</span>
+                    </div>
+                    
+                    <div class="relative">
+                        <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Buscar anunciante ou campanha..." class="w-full bg-gray-50 border border-gray-200 text-sm rounded-full pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-navy placeholder-gray-400">
+                    </div>
+                    
+                    <!-- Filters -->
+                    <div class="flex gap-2 mt-4 overflow-x-auto hide-scrollbar pb-1">
+                        <button class="px-4 py-1.5 bg-navy text-white text-xs font-semibold rounded-full whitespace-nowrap">Todas</button>
+                        <button class="px-4 py-1.5 bg-gray-50 text-navy-lighter border border-gray-200 text-xs font-semibold rounded-full whitespace-nowrap hover:bg-gray-100">Pendentes (3)</button>
+                        <button class="px-4 py-1.5 bg-gray-50 text-navy-lighter border border-gray-200 text-xs font-semibold rounded-full whitespace-nowrap hover:bg-gray-100">Ativas</button>
+                    </div>
+                </div>
+
+                <!-- Scrollable List -->
+                <div class="flex-1 overflow-y-auto p-3 space-y-2">
+                    
+                    <!-- Active Item (Selected) -->
+                    <div class="p-4 rounded-2xl bg-blue-50/50 border border-primary/20 cursor-pointer relative group transition-all">
+                        <div class="absolute left-0 top-3 bottom-3 w-1 bg-primary rounded-r-full"></div>
+                        <div class="flex justify-between items-start mb-2 ">
+                            <div>
+                                <h3 class="text-sm font-bold text-navy">Estética Automotiva Promo</h3>
+                                <p class="text-xs text-navy-lighter mt-0.5">AutoBrilho Detailer</p>
+                            </div>
+                            <span class="bg-pending-bg text-pending text-[10px] font-bold px-2 py-0.5 rounded-full border border-pending/20">Revisão</span>
+                        </div>
+                        <div class="flex items-center gap-4 mt-3 text-xs text-navy-lighter">
+                            <span class="flex items-center gap-1"><i class="fa-regular fa-clock"></i> Hoje, 14:30</span>
+                            <span class="flex items-center gap-1 font-medium text-navy">R$ 5.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Pending Item -->
+                    <div class="p-4 rounded-2xl bg-white border border-border hover:border-gray-300 cursor-pointer relative group transition-all">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-pending rounded-l-2xl opacity-80"></div>
+                        <div class="flex justify-between items-start mb-2 ">
+                            <div>
+                                <h3 class="text-sm font-bold text-navy">Fornecedor de Tintas Verão</h3>
+                                <p class="text-xs text-navy-lighter mt-0.5">Tintas MC</p>
+                            </div>
+                            <span class="bg-pending-bg text-pending text-[10px] font-bold px-2 py-0.5 rounded-full border border-pending/20">Revisão</span>
+                        </div>
+                        <div class="flex items-center gap-4 mt-3 text-xs text-navy-lighter">
+                            <span class="flex items-center gap-1"><i class="fa-regular fa-clock"></i> Ontem, 09:15</span>
+                            <span class="flex items-center gap-1 font-medium text-navy">R$ 12.500</span>
+                        </div>
+                    </div>
+
+                    <!-- Active Campaign Item -->
+                    <div class="p-4 rounded-2xl bg-white border border-border hover:border-gray-300 cursor-pointer transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-sm font-bold text-navy">Lançamento Residencial</h3>
+                                <p class="text-xs text-navy-lighter mt-0.5">Construtora Apex</p>
+                            </div>
+                            <span class="bg-green-50 text-success text-[10px] font-bold px-2 py-0.5 rounded-full border border-success/20">Ativa</span>
+                        </div>
+                        <div class="flex items-center gap-4 mt-3 text-xs text-navy-lighter">
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-chart-line text-success"></i> 4.2k Clicks</span>
+                            <span class="flex items-center gap-1 font-medium text-navy">R$ 8.200 / R$ 20k</span>
+                        </div>
+                        <!-- Mini progress bar -->
+                        <div class="w-full h-1.5 bg-gray-100 rounded-full mt-2 ">
+                            <div class="h-full bg-success rounded-full" style="width: 41%"></div>
+                        </div>
+                    </div>
+
+                     <!-- Active Campaign Item -->
+                     <div class="p-4 rounded-2xl bg-white border border-border hover:border-gray-300 cursor-pointer transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-sm font-bold text-navy">Semana do Consumidor</h3>
+                                <p class="text-xs text-navy-lighter mt-0.5">EletroMais</p>
+                            </div>
+                            <span class="bg-green-50 text-success text-[10px] font-bold px-2 py-0.5 rounded-full border border-success/20">Ativa</span>
+                        </div>
+                        <div class="flex items-center gap-4 mt-3 text-xs text-navy-lighter">
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-chart-line text-success"></i> 12.8k Clicks</span>
+                            <span class="flex items-center gap-1 font-medium text-navy">R$ 15.000 / R$ 15k</span>
+                        </div>
+                        <!-- Mini progress bar -->
+                        <div class="w-full h-1.5 bg-gray-100 rounded-full mt-2 ">
+                            <div class="h-full bg-success rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Right Column: Campaign Inspector (65%) -->
+            <section id="campaign-inspector" class="w-[65%] bg-white rounded-4xl shadow-ambient flex flex-col border border-border/50">
+                
+                <!-- Inspector Header -->
+                <div class="p-8 border-b border-border/60 flex justify-between items-start flex-shrink-0 bg-white z-10">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="bg-pending-bg text-pending text-xs font-bold px-3 py-1 rounded-full border border-pending/20 uppercase tracking-wider">Aguardando Revisão</span>
+                            <span class="text-sm text-navy-lighter font-medium">ID: #CMP-88291</span>
+                        </div>
+                        <h2 class="text-2xl font-extrabold text-navy">Estética Automotiva Promo</h2>
+                        <div class="flex items-center gap-2 mt-2 text-sm text-navy-lighter">
+                            <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center">
+                                <i class="fa-solid fa-building text-gray-400 text-xs"></i>
+                            </div>
+                            <span class="font-semibold text-navy">AutoBrilho Detailer</span>
+                            <span class="mx-2 text-gray-300">•</span>
+                            <span>Criado por João Silva em 24 Out, 2023</span>
+                        </div>
+                    </div>
+                    <button class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-navy-lighter hover:bg-gray-50 transition-colors">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                </div>
+
+                <!-- Inspector Scrollable Content -->
+                <div class="flex-1 overflow-y-auto p-8">
+                    
+                    <div class="grid grid-cols-2 gap-8">
+                        <!-- Left: Creative Preview -->
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-bold text-navy uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-image text-primary"></i> Revisão de Criativo
+                            </h3>
+                            
+                            <div class="bg-gray-50 rounded-2xl border border-border p-2">
+                                <!-- Ad Preview Container -->
+                                <div class="relative w-full aspect-square rounded-xl bg-gray-200 group">
+                                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/1c45c271a1-595fcb0ba9d5c1a95e76.png" alt="High quality professional car detailing advertisement banner, showing a shiny sports car getting polished, modern typography overlay saying" />
+                                    
+                                    <!-- Overlay controls -->
+                                    <div class="absolute inset-0 bg-navy/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                                        <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-navy shadow-lg hover:scale-105 transition-transform">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </button>
+                                        <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-navy shadow-lg hover:scale-105 transition-transform">
+                                            <i class="fa-solid fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center mt-3 px-2 pb-1">
+                                    <div class="text-xs font-medium text-navy-lighter">Formato: 1080x1080px (Feed)</div>
+                                    <div class="text-xs font-medium text-navy-lighter">Tamanho: 1.2MB</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-4 text-sm text-navy">
+                                <span class="font-bold block mb-1">Copy da Legenda:</span>
+"Deixe seu carro com cara de zero! 🚗✨ Aproveite nossa promoção de Polimento Cristalizado + Higienização Interna com 20% OFF esta semana. Clique no link e agende!"
+                            </div>
+                        </div>
+
+                        <!-- Right: Metadata & Targeting -->
+                        <div class="space-y-6">
+                            <h3 class="text-sm font-bold text-navy uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-bullseye text-primary"></i> Configurações da Campanha
+                            </h3>
+
+                            <!-- Details Cards Grid -->
+                            <div class="grid grid-cols-1 gap-4">
+                                
+                                <!-- Targeting -->
+                                <div class="bg-white border border-border rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
+                                    <div class="text-xs text-navy-lighter mb-1">Segmentação Geográfica</div>
+                                    <div class="font-bold text-navy flex items-center gap-2">
+                                        <i class="fa-solid fa-location-dot text-primary"></i> Camboriú e Região (+15km)
+                                    </div>
+                                </div>
+
+                                <!-- Audience -->
+                                <div class="bg-white border border-border rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
+                                    <div class="text-xs text-navy-lighter mb-1">Público Alvo</div>
+                                    <div class="font-bold text-navy flex items-center gap-2 mb-2">
+                                        <i class="fa-solid fa-users text-primary"></i> Homens, 25-55 anos
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 mt-2">
+                                        <span class="bg-gray-100 text-navy-lighter text-[10px] px-2 py-1 rounded-md font-medium">Automóveis de Luxo</span>
+                                        <span class="bg-gray-100 text-navy-lighter text-[10px] px-2 py-1 rounded-md font-medium">Estética Automotiva</span>
+                                        <span class="bg-gray-100 text-navy-lighter text-[10px] px-2 py-1 rounded-md font-medium">Pintores e Gesseiros</span>
+                                    </div>
+                                </div>
+
+                                <!-- Budget -->
+                                <div class="bg-white border border-border rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex justify-between items-center">
+                                    <div>
+                                        <div class="text-xs text-navy-lighter mb-1">Orçamento Total</div>
+                                        <div class="text-xl font-extrabold text-navy">R$ 5.000,00</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-xs text-navy-lighter mb-1">Duração</div>
+                                        <div class="font-bold text-navy text-sm">15 Dias</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Objective -->
+                                <div class="bg-white border border-border rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
+                                     <div class="text-xs text-navy-lighter mb-1">Objetivo de Otimização</div>
+                                    <div class="font-bold text-navy flex items-center gap-2">
+                                        <i class="fa-solid fa-hand-pointer text-primary"></i> Tráfego para WhatsApp (Cliques)
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Action Area (Sticky) -->
+                <div class="p-6 border-t border-border/60 bg-gray-50/80 backdrop-blur-sm z-10 flex gap-4">
+                    <button class="flex-1 py-4 px-6 bg-white border-2 border-danger text-danger rounded-full font-bold text-base hover:bg-red-50 transition-colors shadow-sm">
+                        Rejeitar Arte
+                    </button>
+                    <button class="flex-[2] py-4 px-6 bg-primary text-white rounded-full font-bold text-base hover:bg-primary-hover transition-colors shadow-lg shadow-primary/25 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check-circle"></i> Aprovar e Veicular
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Optional: Chart initialization logic if needed for active states
+        // Not strictly required for the pending state shown, but good to have ready
+        function initializeCharts() {
+            // Plotly chart logic would go here if an active campaign was selected
+        }
+        window.addEventListener('load', initializeCharts);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

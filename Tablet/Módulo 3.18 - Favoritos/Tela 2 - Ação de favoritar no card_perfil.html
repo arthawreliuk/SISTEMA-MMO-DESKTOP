@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ação de favoritar no card_perfil - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            border: '#EAECF5',
+                            text: '#475467',
+                            muted: '#98A2B3'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0px 4px 20px rgba(0, 0, 0, 0.03)',
+                        'card': '0px 12px 24px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="font-sans text-brand-navy antialiased min-h-screen flex w-full">
+
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col min-h-screen relative w-full lg:w-[calc(100%-296px)]">
+        
+        <!-- Header -->
+        <header id="top-header" class="sticky top-0 z-10 bg-brand-bg/80 backdrop-blur-md border-b border-brand-border/30 px-6 lg:px-12 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <button class="lg:hidden text-brand-navy hover:text-brand-blue transition-colors">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+                <div>
+                    <h1 class="text-2xl font-bold text-brand-navy tracking-tight">Perfil do Profissional</h1>
+                    <div class="flex items-center gap-2 text-sm text-brand-muted mt-1 font-medium">
+                        <i class="fa-solid fa-house text-xs"></i>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        <span>Buscar Profissionais</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        <span class="text-brand-navy">Carlos Eduardo Mestre</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative hidden md:block">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-brand-muted"></i>
+                    <input type="text" placeholder="Buscar..." class="bg-white border border-brand-border rounded-full py-2.5 pr-4 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all shadow-sm">
+                </div>
+                <button class="w-11 h-11 bg-white rounded-full border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-blue hover:border-brand-blue transition-colors shadow-sm relative">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <div class="p-6 lg:p-12 space-y-8 flex-1 max-w-7xl mx-auto w-full">
+            
+            <!-- Profile Hero Container -->
+            <section id="profile-hero" class="bg-white rounded-[24px] shadow-card border border-brand-border/40 p-8 lg:p-10 flex flex-col md:flex-row items-center md:items-start gap-10 relative ">
+                <!-- Decorative background elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                
+                <!-- Left Side: Professional Info -->
+                <div class="flex-1 flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-left z-10">
+                    <div class="relative group">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Carlos Eduardo" class="w-32 h-32 md:w-40 md:h-40 rounded-[24px] object-cover border-4 border-white shadow-soft">
+                        <div class="absolute -bottom-3 -right-3 bg-white p-1.5 rounded-full shadow-sm border border-brand-border">
+                            <div class="bg-green-500 w-4 h-4 rounded-full border-2 border-white"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+                                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">Carlos Eduardo</h2>
+                                <i class="fa-solid fa-circle-check text-brand-blue text-xl" title="Verificado"></i>
+                            </div>
+                            <p class="text-lg text-brand-text font-medium">Especialista em Direito Tributário & Societário</p>
+                        </div>
+                        
+                        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                            <div class="flex items-center gap-1.5 bg-yellow-50 text-yellow-700 px-3 py-1.5 rounded-full text-sm font-bold border border-yellow-200">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4.9</span>
+                                <span class="text-yellow-600/70 font-medium ml-1">(128 avaliações)</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-brand-text text-sm font-medium">
+                                <i class="fa-solid fa-location-dot text-brand-muted"></i>
+                                São Paulo, SP
+                            </div>
+                            <div class="flex items-center gap-2 text-brand-text text-sm font-medium">
+                                <i class="fa-solid fa-briefcase text-brand-muted"></i>
+                                12 anos exp.
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-2">
+                            <span class="px-3 py-1 bg-brand-bg text-brand-navy text-xs font-semibold rounded-lg border border-brand-border">Consultoria</span>
+                            <span class="px-3 py-1 bg-brand-bg text-brand-navy text-xs font-semibold rounded-lg border border-brand-border">Planejamento</span>
+                            <span class="px-3 py-1 bg-brand-bg text-brand-navy text-xs font-semibold rounded-lg border border-brand-border">Auditoria</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Primary Actions -->
+                <div class="w-full md:w-auto flex flex-col gap-4 min-w-[280px] z-10 pt-4 md:pt-0 border-t md:border-t-0 md:border-l border-brand-border/50 md:">
+                    <button class="w-full bg-brand-blue hover:bg-blue-800 text-white font-bold text-lg py-4 px-6 rounded-full shadow-lg shadow-brand-blue/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-heart text-white"></i>
+                        ✓ Salvo nos Favoritos
+                    </button>
+                    
+                    <button class="w-full bg-transparent hover:bg-brand-blue/5 text-brand-blue border-2 border-brand-blue font-bold text-lg py-3.5 px-6 rounded-full transition-all flex items-center justify-center gap-3">
+                        <i class="fa-regular fa-paper-plane"></i>
+                        Enviar Mensagem
+                    </button>
+                    
+                    <p class="text-center text-xs text-brand-muted font-medium mt-2">
+                        <i class="fa-solid fa-bolt text-yellow-500 mr-1"></i> Responde em até 2 horas
+                    </p>
+                </div>
+            </section>
+
+            <!-- Grid Layout for Stats and Activity -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Professional Statistics Overview -->
+                <section id="stats-overview" class="lg:col-span-2 space-y-6">
+                    <h3 class="text-xl font-bold text-brand-navy">Visão Geral do Profissional</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white p-6 rounded-[20px] shadow-soft border border-brand-border/40 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-brand-muted mb-1">Projetos Concluídos</p>
+                                <p class="text-2xl font-bold text-brand-navy">342</p>
+                                <p class="text-xs text-green-600 font-medium mt-2 flex items-center gap-1">
+                                    <i class="fa-solid fa-arrow-trend-up"></i> +12% este mês
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-[20px] shadow-soft border border-brand-border/40 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-brand-muted mb-1">Clientes Atendidos</p>
+                                <p class="text-2xl font-bold text-brand-navy">156</p>
+                                <p class="text-xs text-brand-text font-medium mt-2">98% de retenção</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 md:p-8 rounded-[24px] shadow-soft border border-brand-border/40">
+                         <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-lg font-bold text-brand-navy">Evolução de Avaliações</h4>
+                            <select class="bg-brand-bg border border-brand-border text-brand-navy text-sm rounded-lg focus:ring-brand-blue focus:border-brand-blue block p-2 font-medium">
+                                <option>Últimos 6 meses</option>
+                                <option>Este ano</option>
+                            </select>
+                        </div>
+                        <div class="h-64 w-full relative">
+                            <!-- Placeholder for actual chart, using styling to mimic one -->
+                            <div class="absolute inset-0 flex items-end justify-between px-4 pb-8 pt-4">
+                                <!-- Grid lines -->
+                                <div class="absolute inset-0 flex flex-col justify-between pb-8 z-0">
+                                    <div class="border-t border-brand-border/30 w-full"></div>
+                                    <div class="border-t border-brand-border/30 w-full"></div>
+                                    <div class="border-t border-brand-border/30 w-full"></div>
+                                    <div class="border-t border-brand-border/30 w-full"></div>
+                                </div>
+                                <!-- Bars -->
+                                <div class="w-8 md:w-12 bg-brand-blue/20 rounded-t-lg h-[40%] relative z-10 group hover:bg-brand-blue transition-colors"></div>
+                                <div class="w-8 md:w-12 bg-brand-blue/40 rounded-t-lg h-[60%] relative z-10 group hover:bg-brand-blue transition-colors"></div>
+                                <div class="w-8 md:w-12 bg-brand-blue/60 rounded-t-lg h-[80%] relative z-10 group hover:bg-brand-blue transition-colors"></div>
+                                <div class="w-8 md:w-12 bg-brand-blue/80 rounded-t-lg h-[70%] relative z-10 group hover:bg-brand-blue transition-colors"></div>
+                                <div class="w-8 md:w-12 bg-brand-blue rounded-t-lg h-[90%] relative z-10 shadow-md"></div>
+                                <div class="w-8 md:w-12 bg-brand-blue rounded-t-lg h-[100%] relative z-10 shadow-md"></div>
+                            </div>
+                            <div class="absolute bottom-0 inset-x-0 flex justify-between px-4 text-xs font-semibold text-brand-muted z-10">
+                                <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Activity Feed -->
+                <section id="recent-activity" class="space-y-6">
+                    <h3 class="text-xl font-bold text-brand-navy">Atividade Recente</h3>
+                    <div class="bg-white rounded-[24px] shadow-soft border border-brand-border/40 p-6">
+                        <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-brand-border/50">
+                            
+                            <!-- Activity Item 1 -->
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-green-100 text-green-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    <i class="fa-solid fa-check text-sm"></i>
+                                </div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl bg-brand-bg border border-brand-border/50 ml-4 md:ml-0">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <p class="font-bold text-brand-navy text-sm">Projeto Entregue</p>
+                                        <span class="text-[10px] font-semibold text-brand-muted">Hoje, 10:30</span>
+                                    </div>
+                                    <p class="text-xs text-brand-text">Consultoria tributária para TechCorp finalizada com sucesso.</p>
+                                </div>
+                            </div>
+
+                            <!-- Activity Item 2 -->
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-yellow-100 text-yellow-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    <i class="fa-solid fa-star text-sm"></i>
+                                </div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl bg-white border border-brand-border/50 ml-4 md:ml-0 shadow-sm">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <p class="font-bold text-brand-navy text-sm">Nova Avaliação</p>
+                                        <span class="text-[10px] font-semibold text-brand-muted">Ontem</span>
+                                    </div>
+                                    <p class="text-xs text-brand-text">Recebeu 5 estrelas de <span class="font-semibold text-brand-navy">Maria S.</span></p>
+                                </div>
+                            </div>
+
+                             <!-- Activity Item 3 -->
+                             <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-100 text-brand-blue shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    <i class="fa-solid fa-file-contract text-sm"></i>
+                                </div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl bg-white border border-brand-border/50 ml-4 md:ml-0 shadow-sm">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <p class="font-bold text-brand-navy text-sm">Novo Contrato</p>
+                                        <span class="text-[10px] font-semibold text-brand-muted">3 dias atrás</span>
+                                    </div>
+                                    <p class="text-xs text-brand-text">Iniciou planejamento societário com StartupX.</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <button class="w-full mt-6 py-2.5 text-sm font-bold text-brand-blue bg-brand-blue/5 hover:bg-brand-blue/10 rounded-xl transition-colors">
+                            Ver todo o histórico
+                        </button>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home do blog - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        'pill': '9999px',
+                    },
+                    boxShadow: {
+                        'ambient': '0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'ambient-hover': '0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 0 5px rgba(0,0,0,0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F9FA; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB; 
+        }
+        /* Masonry fallback for older browsers, though we use grid */
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+    </style>
+</head>
+<body class="font-sans bg-background text-navy min-h-screen flex flex-col">
+
+    <!-- Top Bar -->
+    <header id="header" class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-border/50">
+        <div class="max-w-[1024px] mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-xl">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight text-navy">MMO Blog</span>
+            </div>
+
+
+            <!-- CTA -->
+            <div class="flex items-center">
+                <button class="bg-primary hover:bg-primary/90 text-white text-sm font-semibold py-3 px-6 rounded-pill transition-all shadow-md shadow-primary/20">
+                    Assinar Newsletter
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main id="main-content" class="flex-grow w-full max-w-[1024px] mx-auto px-6 py-12 flex flex-col gap-12">
+
+        <!-- Hero Split Section -->
+        <section id="hero-split-article" class="bg-surface rounded-4xl shadow-ambient ">
+            <div class="flex flex-col lg:flex-row">
+                <!-- Image Side -->
+                <div class="w-full lg:w-1/2 relative h-[300px] lg:h-auto">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="B2B Maintenance" class="w-full h-full object-cover absolute inset-0" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent"></div>
+                </div>
+                
+                <!-- Content Side -->
+                <div class="w-full lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider py-1.5 px-3 rounded-pill">Tendências</span>
+                        <span class="text-sm text-muted font-medium">5 min read</span>
+                    </div>
+                    
+                    <h1 class="text-4xl lg:text-5xl font-extrabold text-navy leading-[1.1] mb-6 tracking-tight">
+                        O Futuro da Manutenção B2B
+                    </h1>
+                    
+                    <p class="text-lg text-muted leading-relaxed mb-8 font-medium">
+                        Como a inteligência artificial e a IoT estão transformando a gestão de ativos industriais, reduzindo custos e prevendo falhas antes que aconteçam.
+                    </p>
+                    
+                    <div class="flex items-center gap-4 mt-auto">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Author" class="w-12 h-12 rounded-full object-cover border-2 border-surface shadow-sm" />
+                        <div>
+                            <p class="text-sm font-bold text-navy">Carlos Mendes</p>
+                            <p class="text-xs text-muted font-medium">Especialista em Operações</p>
+                        </div>
+                        <button class="ml-auto border-2 border-border text-navy hover:border-primary hover:text-primary text-sm font-bold py-2.5 px-6 rounded-pill transition-colors">
+                            Ler Artigo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Topics Strip -->
+        <section id="trending-topics-strip" class="w-full py-2">
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="text-sm font-bold text-muted uppercase tracking-wider mr-2">Trending:</span>
+                <a href="#" class="bg-surface border border-border hover:border-primary/30 hover:shadow-sm text-navy text-sm font-semibold py-2 px-5 rounded-pill transition-all">#Reformas</a>
+                <a href="#" class="bg-surface border border-border hover:border-primary/30 hover:shadow-sm text-navy text-sm font-semibold py-2 px-5 rounded-pill transition-all">#GestãoDeTempo</a>
+                <a href="#" class="bg-surface border border-border hover:border-primary/30 hover:shadow-sm text-navy text-sm font-semibold py-2 px-5 rounded-pill transition-all">#Impostos</a>
+                <a href="#" class="bg-surface border border-border hover:border-primary/30 hover:shadow-sm text-navy text-sm font-semibold py-2 px-5 rounded-pill transition-all">#Sustentabilidade</a>
+                <a href="#" class="bg-surface border border-border hover:border-primary/30 hover:shadow-sm text-navy text-sm font-semibold py-2 px-5 rounded-pill transition-all">#Automação</a>
+            </div>
+        </section>
+
+        <!-- Article Masonry Grid -->
+        <section id="article-masonry-grid" class="w-full">
+            <div class="masonry-grid">
+                
+                <!-- Card 1 -->
+                <article class="bg-surface rounded-4xl shadow-ambient hover:shadow-ambient-hover transition-shadow duration-300 flex flex-col">
+                    <div class="h-56 relative ">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gestão Financeira" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/90 backdrop-blur text-navy text-xs font-bold uppercase tracking-wider py-1.5 px-3 rounded-pill shadow-sm">Gestão</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-navy leading-tight mb-4">Estratégias de Redução de Custos em Contratos de Manutenção</h3>
+                        <p class="text-muted text-sm leading-relaxed mb-6 font-medium line-clamp-3">
+                            Análise detalhada sobre como renegociar SLAs e otimizar a alocação de recursos sem comprometer a qualidade da entrega final.
+                        </p>
+                        <div class="flex items-center gap-3 mt-auto pt-4 border-t border-border/50">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Author" class="w-8 h-8 rounded-full object-cover" />
+                            <span class="text-sm font-bold text-navy">Marina Silva</span>
+                            <span class="text-xs text-muted ml-auto font-medium">12 Out 2023</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="bg-surface rounded-4xl shadow-ambient hover:shadow-ambient-hover transition-shadow duration-300 flex flex-col">
+                    <div class="h-64 relative ">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tecnologia" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/90 backdrop-blur text-navy text-xs font-bold uppercase tracking-wider py-1.5 px-3 rounded-pill shadow-sm">Tecnologia</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-navy leading-tight mb-4">Implementando ERPs Focados em Facilities</h3>
+                        <p class="text-muted text-sm leading-relaxed mb-6 font-medium line-clamp-3">
+                            O guia definitivo para escolher e integrar sistemas de gestão empresarial que conversem diretamente com as necessidades do chão de fábrica.
+                        </p>
+                        <div class="flex items-center gap-3 mt-auto pt-4 border-t border-border/50">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Author" class="w-8 h-8 rounded-full object-cover" />
+                            <span class="text-sm font-bold text-navy">Roberto Alves</span>
+                            <span class="text-xs text-muted ml-auto font-medium">10 Out 2023</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="bg-surface rounded-4xl shadow-ambient hover:shadow-ambient-hover transition-shadow duration-300 flex flex-col">
+                    <div class="h-48 relative ">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cases" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/90 backdrop-blur text-navy text-xs font-bold uppercase tracking-wider py-1.5 px-3 rounded-pill shadow-sm">Cases</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-navy leading-tight mb-4">Como a TechCorp Aumentou o Uptime em 40%</h3>
+                        <p class="text-muted text-sm leading-relaxed mb-6 font-medium line-clamp-3">
+                            Um estudo de caso sobre a transição de manutenção reativa para preditiva utilizando sensores IoT de baixo custo.
+                        </p>
+                        <div class="flex items-center gap-3 mt-auto pt-4 border-t border-border/50">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Author" class="w-8 h-8 rounded-full object-cover" />
+                            <span class="text-sm font-bold text-navy">Ana Costa</span>
+                            <span class="text-xs text-muted ml-auto font-medium">05 Out 2023</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="bg-surface rounded-4xl shadow-ambient hover:shadow-ambient-hover transition-shadow duration-300 flex flex-col">
+                    <div class="p-8 flex flex-col flex-grow bg-primary text-white">
+                        <div class="mb-6">
+                            <span class="bg-white/20 text-white text-xs font-bold uppercase tracking-wider py-1.5 px-3 rounded-pill">Destaque</span>
+                        </div>
+                        <h3 class="text-3xl font-extrabold leading-tight mb-4">O Guia Completo de Compliance na Terceirização</h3>
+                        <p class="text-white/80 text-sm leading-relaxed mb-8 font-medium">
+                            Tudo o que você precisa saber sobre responsabilidade solidária, encargos trabalhistas e segurança jurídica ao contratar serviços terceirizados para sua operação.
+                        </p>
+                        <button class="mt-auto bg-white text-primary hover:bg-gray-50 text-sm font-bold py-3 px-6 rounded-pill transition-colors self-start shadow-md">
+                            Baixar E-book Gratuito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Newsletter Footer CTA -->
+    <footer id="footer" class="bg-navy mt-12 py-20 px-6">
+        <div class="max-w-[1024px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div class="w-full lg:w-1/2">
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-white mb-4 tracking-tight">Fique à frente do mercado.</h2>
+                <p class="text-lg text-white/70 font-medium">
+                    Receba semanalmente insights profundos sobre gestão de facilities, tecnologia B2B e tendências de manutenção diretamente na sua caixa de entrada.
+                </p>
+            </div>
+            <div class="w-full lg:w-1/2">
+                <form class="flex flex-col sm:flex-row gap-3">
+                    <input type="email" placeholder="Seu melhor e-mail profissional" class="flex-grow bg-white/10 border border-white/20 text-white placeholder-white/50 rounded-pill px-6 py-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-medium">
+                    <button type="submit" class="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-pill transition-all whitespace-nowrap shadow-lg shadow-primary/20">
+                        Inscrever-se
+                    </button>
+                </form>
+                <p class="text-xs text-white/40 mt-4 text-center lg:text-left">
+                    Ao assinar, você concorda com nossos <a href="#" class="underline hover:text-white transition-colors">Termos de Uso</a> e <a href="#" class="underline hover:text-white transition-colors">Política de Privacidade</a>.
+                </p>
+            </div>
+        </div>
+        <div class="max-w-[1024px] mx-auto mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-primary flex items-center justify-center text-white font-bold text-xs">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <span class="font-bold text-sm tracking-tight text-white">MMO Blog</span>
+            </div>
+            <p class="text-sm text-white/50 font-medium">&copy; 2023 MMO Blog. Todos os direitos reservados.</p>
+            <div class="flex gap-4 text-white/50">
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

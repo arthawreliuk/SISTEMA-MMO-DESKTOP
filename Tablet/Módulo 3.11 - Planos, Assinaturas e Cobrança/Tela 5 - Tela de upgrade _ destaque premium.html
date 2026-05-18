@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de upgrade _ destaque premium - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            light: '#e6e8fb',
+                        },
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280',
+                        },
+                        bg: {
+                            main: '#F8F9FA',
+                            card: '#FFFFFF',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(0, 22, 220, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="h-screen w-full flex bg-bg-main font-sans">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class="flex-1 h-full overflow-y-auto p-6 lg:p-10 flex flex-col gap-8">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="w-full max-w-6xl mx-auto pt-4 pb-2">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-light text-brand-blue font-semibold text-sm mb-4">
+                <i class="fa-solid fa-star"></i>
+                <span>Upgrade Profile</span>
+            </div>
+            <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-text-main leading-tight max-w-2xl">
+                Desbloqueie seu Potencial Máximo
+            </h1>
+            <p class="text-text-muted mt-3 text-lg font-medium max-w-xl">
+                Destaque-se na multidão e atraia as melhores oportunidades com um perfil premium otimizado.
+            </p>
+        </header>
+
+        <!-- Split Layout (Asymmetrical 2-Columns) -->
+        <section id="upgrade-workspace" class="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1 pb-10">
+            
+            <!-- Left Column (Visual Proof - 40%) -->
+            <div id="visual-proof" class="lg:col-span-5 flex flex-col gap-6">
+                <div class="bg-white rounded-[32px] p-8 shadow-soft h-full flex flex-col relative border border-gray-100">
+                    
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-bold text-xl text-text-main">Como você é visto</h3>
+                        <div class="text-sm font-medium text-text-muted bg-gray-50 px-3 py-1 rounded-full">Preview</div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 relative z-10">
+                        
+                        <!-- Premium Highlighted Profile -->
+                        <div class="relative bg-white rounded-[24px] p-5 border-2 border-brand-blue shadow-glow transform -translate-y-2 transition-all">
+                            <!-- Gold Star Badge -->
+                            <div class="absolute -top-3 -right-3 bg-[#FFB800] text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-2 border-white z-20">
+                                <i class="fa-solid fa-star text-xs"></i>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 rounded-full border-2 border-brand-blue p-0.5">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Your Profile" class="w-full h-full rounded-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-bold text-lg text-text-main leading-none">Seu Perfil</h4>
+                                        <span class="bg-brand-light text-brand-blue text-[10px] uppercase font-bold px-2 py-0.5 rounded-sm tracking-wider">Premium</span>
+                                    </div>
+                                    <p class="text-sm text-text-muted mt-1 font-medium">UX/UI Designer Sênior</p>
+                                    
+                                    <div class="mt-3 flex gap-2">
+                                        <span class="text-xs bg-gray-50 text-text-muted px-2 py-1 rounded-md font-medium border border-gray-100">Portfólio em Destaque</span>
+                                        <span class="text-xs bg-brand-blue text-white px-2 py-1 rounded-md font-medium"><i class="fa-solid fa-bolt mr-1"></i> Top 1%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Standard Profiles (Greyed out) -->
+                        <div class="bg-gray-50/80 rounded-[24px] p-5 border border-gray-100 opacity-60 grayscale-[30%]">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gray-200">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Other Profile" class="w-full h-full rounded-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-main">Ana Silva</h4>
+                                    <p class="text-xs text-text-muted mt-0.5">Designer Gráfico</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50/80 rounded-[24px] p-5 border border-gray-100 opacity-40 grayscale-[50%]">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gray-200">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Other Profile" class="w-full h-full rounded-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-main">Carlos Mendes</h4>
+                                    <p class="text-xs text-text-muted mt-0.5">Web Designer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fade out effect at bottom -->
+                        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none rounded-b-[32px]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column (The Pitch - 60%) -->
+            <div id="the-pitch" class="lg:col-span-7 flex flex-col">
+                <div class="bg-white rounded-[32px] p-8 lg:p-10 shadow-soft h-full flex flex-col border border-gray-100">
+                    
+                    <h2 class="text-3xl font-bold text-text-main mb-8 leading-tight">
+                        Não deixe seu próximo cliente escapar.
+                    </h2>
+
+                    <!-- Benefits List -->
+                    <div class="flex flex-col gap-5 mb-10">
+                        <div class="flex items-start gap-4 p-4 rounded-[20px] hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
+                            <div class="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-brand-blue text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main text-lg">Destaque Absoluto nas Buscas</h4>
+                                <p class="text-text-muted text-sm mt-1 leading-relaxed">Seu perfil aparecerá no topo das pesquisas de recrutadores e clientes em potencial.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-[20px] hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
+                            <div class="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-brand-blue text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main text-lg">Selo de Verificação Premium</h4>
+                                <p class="text-text-muted text-sm mt-1 leading-relaxed">Transmita mais confiança e autoridade instantaneamente com o selo exclusivo.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-[20px] hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
+                            <div class="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check text-brand-blue text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main text-lg">Métricas Avançadas de Perfil</h4>
+                                <p class="text-text-muted text-sm mt-1 leading-relaxed">Saiba exatamente quem visitou seu perfil e otimize sua estratégia de atração.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto">
+                        <!-- Pricing Block -->
+                        <div class="bg-bg-main rounded-[24px] p-6 mb-6 flex items-center justify-between border border-gray-100">
+                            <div>
+                                <p class="text-sm font-bold text-text-muted uppercase tracking-wider mb-1">Investimento</p>
+                                <div class="flex items-baseline gap-2">
+                                    <h3 class="text-2xl font-extrabold text-text-main">Plano Mestre</h3>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl font-extrabold text-brand-blue">R$ 49,90<span class="text-lg text-text-muted font-medium">/mês</span></div>
+                                <p class="text-xs text-text-muted font-medium mt-1">Cancele quando quiser</p>
+                            </div>
+                        </div>
+
+                        <!-- Massive CTA -->
+                        <button class="w-full py-5 px-8 bg-brand-blue hover:bg-blue-700 text-white rounded-full text-xl font-bold transition-all shadow-glow flex items-center justify-center gap-3 transform hover:-translate-y-1">
+                            Desbloquear Recursos Premium
+                            <i class="fa-solid fa-arrow-right text-base"></i>
+                        </button>
+                        <p class="text-center text-xs text-text-muted mt-4 font-medium">
+                            Garantia de 7 dias ou seu dinheiro de volta.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

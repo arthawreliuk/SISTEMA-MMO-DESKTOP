@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de filtros_pastas do inbox - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#667085',
+                        borderLight: '#EAECF0',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 24px -4px rgba(0, 0, 0, 0.04), 0 2px 12px -2px rgba(0, 0, 0, 0.02)',
+                        'nav': '0 8px 32px -4px rgba(0, 0, 0, 0.06)',
+                    },
+                    borderRadius: {
+                        'card': '24px',
+                        'pill': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 1.5px solid #D0D5DD;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox:checked {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        .custom-checkbox:checked::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            font-size: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #E4E7EC;
+            transition: .3s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input:checked + .slider {
+            background-color: #0016dc;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center relative ">
+
+
+    <!-- Main Content Workspace -->
+    <main class="w-full h-full min-h-screen md: pr-6 md:pr-12 py-10 md:py-16 max-w-[1440px] mx-auto flex flex-col">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="mb-10">
+            <h1 class="text-4xl md:text-[42px] font-bold text-textDark tracking-tight mb-3">Filtros e Organização</h1>
+            <p class="text-lg text-textMuted font-medium max-w-2xl">Personalize como você visualiza e gerencia seus clientes e projetos.</p>
+        </header>
+
+        <!-- Split Layout -->
+        <div class="flex flex-col lg:flex-row gap-8 items-start flex-1 w-full">
+            
+            <!-- Left Column: System Filters (50%) -->
+            <section id="system-filters" class="w-full lg:w-1/2 bg-white rounded-card shadow-soft p-8 border border-gray-100">
+                <div class="flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
+                    <h2 class="text-2xl font-bold text-textDark">Filtros de Sistema</h2>
+                    <button class="text-sm font-semibold text-textMuted hover:text-textDark transition-colors">Limpar Todos</button>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Filter Group 1 -->
+                    <div>
+                        <h3 class="text-sm font-bold text-textMuted uppercase tracking-wider mb-5">Status da Negociação</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center gap-4 cursor-pointer group">
+                                <input type="checkbox" class="custom-checkbox" checked>
+                                <span class="text-[15px] font-semibold text-textDark group-hover:text-primary transition-colors">Contratado</span>
+                                <span class="ml-auto text-xs font-semibold bg-gray-100 text-textMuted px-2 py-1 rounded-md">24</span>
+                            </label>
+                            <label class="flex items-center gap-4 cursor-pointer group">
+                                <input type="checkbox" class="custom-checkbox" checked>
+                                <span class="text-[15px] font-semibold text-textDark group-hover:text-primary transition-colors">Orçando</span>
+                                <span class="ml-auto text-xs font-semibold bg-gray-100 text-textMuted px-2 py-1 rounded-md">12</span>
+                            </label>
+                            <label class="flex items-center gap-4 cursor-pointer group">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="text-[15px] font-semibold text-textDark group-hover:text-primary transition-colors">Em Contato</span>
+                                <span class="ml-auto text-xs font-semibold bg-gray-100 text-textMuted px-2 py-1 rounded-md">8</span>
+                            </label>
+                            <label class="flex items-center gap-4 cursor-pointer group">
+                                <input type="checkbox" class="custom-checkbox">
+                                <span class="text-[15px] font-semibold text-textDark group-hover:text-primary transition-colors">Perdido</span>
+                                <span class="ml-auto text-xs font-semibold bg-gray-100 text-textMuted px-2 py-1 rounded-md">3</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Filter Group 2 -->
+                    <div>
+                        <h3 class="text-sm font-bold text-textMuted uppercase tracking-wider mb-5">Origem do Lead</h3>
+                        <div class="space-y-5">
+                            <div class="flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-[15px] font-semibold text-textDark">Balcão (Inbound)</span>
+                                    <span class="text-xs text-textMuted mt-0.5">Leads que entraram em contato</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-[15px] font-semibold text-textDark">Busca Direta (Outbound)</span>
+                                    <span class="text-xs text-textMuted mt-0.5">Prospecção ativa da equipe</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-[15px] font-semibold text-textDark">Indicação</span>
+                                    <span class="text-xs text-textMuted mt-0.5">Recomendados por parceiros</span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Folder Management (50%) -->
+            <section id="folder-management" class="w-full lg:w-1/2 bg-white rounded-card shadow-soft p-8 border border-gray-100 lg:sticky lg:top-10">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-6 border-b border-gray-100 gap-4">
+                    <h2 class="text-2xl font-bold text-textDark">Gestão de Pastas</h2>
+                    <button class="bg-primary hover:bg-blue-700 text-white font-semibold text-sm px-6 py-3 rounded-pill shadow-sm transition-all flex items-center gap-2 whitespace-nowrap">
+                        <i class="fa-solid fa-plus"></i>
+                        Nova Pasta
+                    </button>
+                </div>
+
+                <!-- Folder List -->
+                <div class="space-y-3">
+                    <!-- Folder Item -->
+                    <div class="group flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-blue-50/30 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-primary">
+                                <i class="fa-solid fa-folder"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-textDark text-[15px]">Clientes VIP</span>
+                                <span class="text-xs text-textMuted font-medium">12 projetos ativos</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-8 h-8 rounded-full flex items-center justify-center text-textMuted hover:bg-gray-100 hover:text-textDark transition-colors" title="Editar">
+                                <i class="fa-solid fa-pen text-sm"></i>
+                            </button>
+                            <button class="w-8 h-8 rounded-full flex items-center justify-center text-textMuted hover:bg-red-50 hover:text-red-500 transition-colors" title="Excluir">
+                                <i class="fa-solid fa-trash text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Folder Item -->
+                    <div class="group flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-blue-50/30 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center text-purple-600">
+                                <i class="fa-solid fa-folder"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-textDark text-[15px]">Projetos 2024</span>
+                                <span class="text-xs text-textMuted font-medium">45 itens</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-8 h-8 rounded-full flex items-center justify-center text-textMuted hover:bg-gray-100 hover:text-textDark transition-colors" title="Editar">
+                                <i class="fa-solid fa-pen text-sm"></i>
+                            </button>
+                            <button class="w-8 h-8 rounded-full flex items-center justify-center text-textMuted hover:bg-red-50 hover:text-red-500 transition-colors" title="Excluir">
+                                <i class="fa-solid fa-trash text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Folder Item -->
+                    <div class="group flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-blue-50/30 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500">
+                                <i class="fa-solid fa-folder"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-textDark text-[15px]">Aguardando Feedback</span>
+                                <span class="text-xs text-textMuted font-medium">8 itens</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-8 h-8 rounded-full flex items-center justify-center text-textMuted hover:bg-gray-100 hover:text-textDark transition-colors" title="Editar">
+                                <i class="fa-solid fa-pen text-sm"></i>
+                            </button>
+                            <button class="w-8 h-8 rounded-full flex items-center justify-center text-textMuted hover:bg-red-50 hover:text-red-500 transition-colors" title="Excluir">
+                                <i class="fa-solid fa-trash text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Folder Item -->
+                    <div class="group flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-blue-50/30 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center text-green-600">
+                                <i class="fa-solid fa-folder"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-textDark text-[15px]">Concluídos</span>
+                                <span class="text-xs text-textMuted font-medium">124 itens arquivados</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button class="w-8 h-8 rounded-full flex items-center justify-center text-textMuted hover:bg-gray-100 hover:text-textDark transition-colors" title="Editar">
+                                <i class="fa-solid fa-pen text-sm"></i>
+                            </button>
+                            <button class="w-8 h-8 rounded-full flex items-center justify-center text-textMuted hover:bg-red-50 hover:text-red-500 transition-colors" title="Excluir">
+                                <i class="fa-solid fa-trash text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

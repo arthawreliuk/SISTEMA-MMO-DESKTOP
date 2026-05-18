@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhe do modelo - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280'
+                        },
+                        surface: {
+                            white: '#FFFFFF',
+                            tint: '#FBFBFC'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 0 0 2px rgba(0, 22, 220, 0.2)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans text-text-main bg-background m-0 p-0">
+
+    <!-- Minimalist Top Bar -->
+    <header id="header" class="w-full bg-surface-white border-b border-gray-100 h-20 flex items-center justify-between px-8 lg:px-12 shrink-0 sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-[0_4px_14px_0_rgba(0,22,220,0.39)]">
+                M
+            </div>
+            <span class="font-bold text-xl tracking-tight">MMO</span>
+        </div>
+        <a href="#" class="flex items-center gap-2 text-text-muted hover:text-primary transition-colors font-medium text-sm">
+            <i class="fa-solid fa-arrow-left text-xs"></i>
+            Voltar para Busca
+        </a>
+    </header>
+
+    <!-- Main Workspace -->
+    <main id="main-workspace" class="flex-1 flex flex-col lg:flex-row w-full max-w-[1440px] mx-auto p-6 lg:p-8 gap-8">
+        
+        <!-- Left Column: Document Viewer (50%) -->
+        <section id="document-viewer" class="w-full lg:w-1/2 flex flex-col h-[calc(100vh-8rem)]">
+            <div class="bg-surface-white rounded-[24px] shadow-soft flex-1 flex flex-col relative border border-gray-100">
+                <!-- Viewer Toolbar -->
+                <div class="h-14 border-b border-gray-100 flex items-center justify-between px-6 bg-surface-white/80 backdrop-blur-sm z-10">
+                    <div class="flex items-center gap-4 text-sm text-text-muted font-medium">
+                        <span>Página 1 de 5</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button class="w-8 h-8 rounded-full hover:bg-gray-50 flex items-center justify-center text-text-muted transition-colors">
+                            <i class="fa-solid fa-magnifying-glass-minus"></i>
+                        </button>
+                        <span class="text-sm font-medium">100%</span>
+                        <button class="w-8 h-8 rounded-full hover:bg-gray-50 flex items-center justify-center text-text-muted transition-colors">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Document Scroll Area -->
+                <div class="flex-1 overflow-y-auto p-8 bg-[#F3F4F6] flex flex-col items-center gap-8">
+                    <!-- Active Page -->
+                    <div class="w-full max-w-[600px] aspect-[1/1.414] bg-white rounded-lg shadow-sm border-2 border-primary shadow-glow relative group transition-all duration-300">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b2b-templates/spreadsheet-preview-1.png" alt="Preview Page 1" class="w-full h-full object-cover object-top opacity-90" onerror="this.src='https://images.unsplash.com/photo-1544396821-4dd40b938ad3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                        <div class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                            Atual
+                        </div>
+                    </div>
+
+                    <!-- Inactive Page -->
+                    <div class="w-full max-w-[600px] aspect-[1/1.414] bg-white rounded-lg shadow-sm border border-gray-200 relative group opacity-80 hover:opacity-100 transition-all duration-300">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b2b-templates/spreadsheet-preview-2.png" alt="Preview Page 2" class="w-full h-full object-cover object-top" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column: Context & Download (50%) -->
+        <section id="resource-context" class="w-full lg:w-1/2 flex flex-col h-[calc(100vh-8rem)] relative">
+            <div class="bg-surface-tint rounded-[24px] shadow-soft p-8 lg:p-12 flex flex-col h-full overflow-y-auto border border-gray-100 sticky top-0">
+                
+                <!-- Header Info -->
+                <div class="mb-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm font-semibold text-text-main shadow-sm border border-gray-100 mb-6">
+                        <i class="fa-solid fa-chart-simple text-primary"></i>
+                        Excel / Google Sheets
+                    </div>
+                    <h1 class="text-3xl lg:text-4xl font-bold text-text-main leading-tight mb-4">
+                        Planilha de Orçamento de Obra (Alto Padrão)
+                    </h1>
+                    <div class="flex items-center gap-4 text-sm text-text-muted">
+                        <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock"></i> Atualizado hoje</span>
+                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-download"></i> 2.4k downloads</span>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="prose prose-slate max-w-none mb-10 text-text-muted leading-relaxed">
+                    <p class="mb-4">
+                        Uma ferramenta completa e automatizada para gestão de custos em obras de alto padrão. Desenvolvida por especialistas do setor, esta planilha oferece controle granular sobre cada etapa do projeto.
+                    </p>
+                    <h3 class="text-lg font-bold text-text-main mt-6 mb-3">Fórmulas e Recursos Incluídos:</h3>
+                    <ul class="space-y-3 list-none p-0 m-0">
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-[10px]"></i></div>
+                            <span><strong>Cálculo Automático de BDI:</strong> Margens ajustáveis dinamicamente por etapa da obra.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-[10px]"></i></div>
+                            <span><strong>Curva ABC Integrada:</strong> Identificação instantânea dos insumos mais críticos.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-[10px]"></i></div>
+                            <span><strong>Dashboard Financeiro:</strong> Gráficos pré-configurados de previsto vs. realizado.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Compatibility -->
+                <div class="mb-12">
+                    <h4 class="text-sm font-bold text-text-main uppercase tracking-wider mb-4 opacity-70">Compatibilidade</h4>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center text-[#107C41] text-xl hover:shadow-md transition-shadow">
+                            <i class="fa-solid fa-file-excel"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center text-[#0F9D58] text-xl hover:shadow-md transition-shadow">
+                            <i class="fa-solid fa-table-cells"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spacer to push actions to bottom if content is short -->
+                <div class="flex-1 min-h-[40px]"></div>
+
+                <!-- Actions Sticky Bottom -->
+                <div class="flex flex-col gap-4 mt-auto pt-6 border-t border-gray-200/60 bg-surface-tint">
+                    <button class="w-full h-16 bg-primary hover:bg-primary/90 text-white rounded-full font-bold text-lg shadow-[0_8px_24px_-8px_rgba(0,22,220,0.5)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                        Fazer Download do Modelo
+                    </button>
+                    <button class="w-full h-14 bg-transparent border-2 border-gray-200 hover:border-gray-300 text-text-main rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-bookmark"></i>
+                        Salvar nos Meus Favoritos
+                    </button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

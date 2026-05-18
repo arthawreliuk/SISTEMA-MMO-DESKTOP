@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de serviço principal e serviços atendidos  - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'off-white': '#F8F9FA',
+                        'trust-blue': '#0016dc',
+                        'dark-navy': '#1A1A24',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="h-screen w-full flex ">
+
+
+    <!-- Main Workspace Area -->
+    <main class="flex-1 flex flex-col h-full p-6 lg:p-10 overflow-y-auto">
+        
+        <!-- Header Area -->
+        <header id="header_workspace" class="flex items-center justify-between w-full mb-8">
+            <div class="flex items-center gap-4">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Arthur" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                <div>
+                    <p class="text-sm text-gray-500 font-medium">Bem-vindo de volta</p>
+                    <h1 class="text-xl font-bold text-dark-navy">Olá, Arthur</h1>
+                </div>
+            </div>
+
+            <!-- Stepper -->
+            <div class="flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-sm">
+                <span class="w-6 h-6 rounded-full bg-trust-blue text-white flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-check"></i></span>
+                <div class="w-8 h-1 bg-trust-blue rounded-full"></div>
+                <span class="w-6 h-6 rounded-full bg-trust-blue text-white flex items-center justify-center text-xs font-bold">2</span>
+                <div class="w-8 h-1 bg-gray-200 rounded-full"></div>
+                <span class="w-6 h-6 rounded-full border-2 border-gray-200 text-gray-400 flex items-center justify-center text-xs font-bold">3</span>
+                <div class="w-8 h-1 bg-gray-200 rounded-full"></div>
+                <span class="w-6 h-6 rounded-full border-2 border-gray-200 text-gray-400 flex items-center justify-center text-xs font-bold">4</span>
+                <span class="ml-2 text-sm font-semibold text-dark-navy">Passo 2 de 4</span>
+            </div>
+        </header>
+
+        <!-- Main Selection Card -->
+        <section id="service_selection_card" class="bg-white rounded-[24px] shadow-soft flex-1 flex flex-col p-8 lg:p-12 relative">
+            
+            <!-- Counter Tag -->
+            <div class="absolute top-8 right-8 bg-blue-50 text-trust-blue px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                <i class="fa-solid fa-chart-pie"></i>
+                3/5 selecionados
+            </div>
+
+            <div class="max-w-3xl mb-10">
+                <h2 class="text-3xl lg:text-4xl font-bold text-dark-navy mb-4">O que você faz de melhor?</h2>
+                <p class="text-gray-500 text-lg leading-relaxed">Selecione sua especialidade principal e até 4 complementares (Limite: 5).</p>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative max-w-2xl mb-12">
+                <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400 text-lg"></i>
+                </div>
+                <input type="text" class="w-full pr-6 py-5 bg-gray-50 border-2 border-transparent focus:border-trust-blue focus:bg-white rounded-full text-lg text-dark-navy outline-none transition-all placeholder-gray-400 font-medium shadow-inner" placeholder="Buscar especialidades (ex: UI Design, Copywriting...)">
+            </div>
+
+            <!-- Selection Grid -->
+            <div id="selection_tag_grid" class="flex-1 flex flex-col gap-6">
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Suas Seleções</h3>
+                
+                <div class="flex flex-wrap gap-4">
+                    <!-- Active Tags -->
+                    <div class="bg-trust-blue text-white px-6 py-3 rounded-full flex items-center gap-3 font-semibold shadow-md transform hover:scale-105 transition-transform cursor-pointer">
+                        UI/UX Design
+                        <button class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40 transition-colors">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="bg-trust-blue text-white px-6 py-3 rounded-full flex items-center gap-3 font-semibold shadow-md transform hover:scale-105 transition-transform cursor-pointer">
+                        Web Development
+                        <button class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40 transition-colors">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="bg-trust-blue text-white px-6 py-3 rounded-full flex items-center gap-3 font-semibold shadow-md transform hover:scale-105 transition-transform cursor-pointer">
+                        Brand Identity
+                        <button class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40 transition-colors">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Empty Slots -->
+                    <div class="border-2 border-dashed border-gray-300 text-gray-400 px-6 py-3 rounded-full flex items-center gap-3 font-medium bg-gray-50">
+                        <i class="fa-solid fa-plus text-sm"></i>
+                        Adicionar
+                    </div>
+                    <div class="border-2 border-dashed border-gray-300 text-gray-400 px-6 py-3 rounded-full flex items-center gap-3 font-medium bg-gray-50">
+                        <i class="fa-solid fa-plus text-sm"></i>
+                        Adicionar
+                    </div>
+                </div>
+
+                <!-- Suggestions -->
+                <div class="mt-8">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Sugestões Populares</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="px-5 py-2.5 rounded-full border border-gray-200 text-dark-navy hover:border-trust-blue hover:text-trust-blue font-medium transition-colors bg-white">
+                            Marketing Digital
+                        </button>
+                        <button class="px-5 py-2.5 rounded-full border border-gray-200 text-dark-navy hover:border-trust-blue hover:text-trust-blue font-medium transition-colors bg-white">
+                            Copywriting
+                        </button>
+                        <button class="px-5 py-2.5 rounded-full border border-gray-200 text-dark-navy hover:border-trust-blue hover:text-trust-blue font-medium transition-colors bg-white">
+                            SEO
+                        </button>
+                        <button class="px-5 py-2.5 rounded-full border border-gray-200 text-dark-navy hover:border-trust-blue hover:text-trust-blue font-medium transition-colors bg-white">
+                            Ilustração
+                        </button>
+                        <button class="px-5 py-2.5 rounded-full border border-gray-200 text-dark-navy hover:border-trust-blue hover:text-trust-blue font-medium transition-colors bg-white">
+                            Edição de Vídeo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Action -->
+            <div id="bottom_action_navigation" class="mt-auto pt-8 flex justify-end">
+                <button class="bg-trust-blue text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-blue-800 transform hover:-translate-y-1 transition-all flex items-center gap-3">
+                    Confirmar e Avançar
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

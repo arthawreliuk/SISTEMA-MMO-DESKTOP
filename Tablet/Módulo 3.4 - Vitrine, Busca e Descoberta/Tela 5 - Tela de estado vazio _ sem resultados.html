@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de estado vazio _ sem resultados - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#6B7280',
+                        border: '#E5E7EB',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.08), 0 4px 12px -4px rgba(0,0,0,0.04)',
+                        'nav': '0 4px 20px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="h-screen w-full flex bg-background font-sans text-textDark">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-workspace" class="flex-1 h-full flex flex-col relative px-8 py-6">
+        
+        <!-- Top Control Bar -->
+        <header id="top-control-bar" class="w-full max-w-4xl mx-auto flex items-center justify-between mb-auto mt-4 z-10">
+            <div class="relative w-full max-w-2xl">
+                <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-textMuted"></i>
+                </div>
+                <input type="text" 
+                       value="Mestre de Magia Nível 50, São Paulo" 
+                       class="block w-full pr-12 py-4 bg-white border border-transparent rounded-full text-textDark placeholder-textMuted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm text-[15px] font-medium"
+                       readonly>
+                <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-textMuted hover:text-textDark transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4 ml-6">
+                <button class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm text-textDark hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+                <div class="h-10 w-px bg-border"></div>
+                <button class="flex items-center gap-2 px-5 py-3 rounded-full bg-white shadow-sm text-sm font-semibold hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-location-dot text-primary"></i>
+                    <span>São Paulo, SP</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Feedback Card (Centered Focus) -->
+        <section id="empty-state-focus" class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-full max-w-[650px] bg-white rounded-[24px] shadow-ambient p-12 flex flex-col items-center text-center pointer-events-auto">
+                
+                <!-- Premium Empty State Graphic -->
+                <div class="w-48 h-48 mb-8 relative flex items-center justify-center">
+                    <div class="absolute inset-0 bg-blue-50 rounded-full opacity-50 scale-150 blur-2xl"></div>
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Empty State Illustration" class="w-full h-full object-contain relative z-10 hidden">
+                    <!-- Using an abstract icon composition as placeholder for premium SVG since we can't use external images -->
+                    <div class="relative z-10 w-32 h-32 bg-gray-50 rounded-full flex items-center justify-center border-4 border-white shadow-sm">
+                        <i class="fa-solid fa-ghost text-4xl text-gray-300"></i>
+                        <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+                            <i class="fa-solid fa-magnifying-glass-minus text-xl text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <h1 class="text-2xl font-bold text-textDark mb-4 tracking-tight">
+                    Nenhum resultado exato para sua busca
+                </h1>
+                <p class="text-[15px] text-textMuted leading-relaxed mb-10 max-w-[480px]">
+                    Tente remover algumas especialidades ou aumentar o raio de distância para ver mais Mestres disponíveis.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-row w-full gap-4">
+                    <button class="flex-1 py-4 px-6 rounded-full border border-border text-textDark font-semibold hover:bg-gray-50 transition-colors">
+                        Navegar no Início
+                    </button>
+                    <button class="flex-1 py-4 px-6 rounded-full bg-primary text-white font-semibold shadow-md hover:bg-blue-700 transition-colors">
+                        Limpar Busca
+                    </button>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- Bottom spacing element to balance flex column if needed -->
+        <div class="mt-auto"></div>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

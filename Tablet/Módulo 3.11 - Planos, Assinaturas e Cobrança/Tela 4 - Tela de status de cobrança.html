@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de status de cobrança - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA',
+                            lightbg: '#EBF0FF',
+                            border: '#E2E8F0',
+                            textmuted: '#64748B'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 20px 40px -10px rgba(0, 22, 220, 0.08), 0 10px 20px -5px rgba(0, 22, 220, 0.04)',
+                        'nav': '4px 0 24px rgba(0,0,0,0.04)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Dashed line animation */
+        .dashed-divider {
+            background-image: linear-gradient(to right, #E2E8F0 50%, rgba(255,255,255,0) 0%);
+            background-position: bottom;
+            background-size: 12px 2px;
+            background-repeat: repeat-x;
+            height: 2px;
+        }
+
+        /* Checkmark Animation */
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-scale-in {
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+    </style>
+</head>
+<body class="text-brand-navy min-h-screen flex antialiased bg-brand-offwhite">
+
+    <!-- Main App Container (Tablet Landscape 1024x1366 constraint) -->
+    <div class="flex w-full h-screen max-w-[1366px] mx-auto relative ">
+
+
+        <!-- Main Content Workspace -->
+        <main id="main_workspace" class="flex-1 ml-[112px] h-full flex items-center justify-center p-8 relative">
+            
+            <!-- Decorative Background Elements (Reference inspired) -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- Abstract shapes mimicking the reference's vibrant background feel but subtle for this context -->
+                <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-brand-blue opacity-[0.03] rounded-full blur-[80px]"></div>
+                <div class="absolute bottom-[-10%] left-[10%] w-[500px] h-[500px] bg-brand-blue opacity-[0.02] rounded-full blur-[60px]"></div>
+            </div>
+
+            <!-- The Success Modal -->
+            <div id="success_modal" class="w-full max-w-[680px] bg-white rounded-[32px] shadow-ambient p-12 relative z-10 flex flex-col items-center text-center transform transition-all duration-500 hover:-translate-y-1">
+                
+                <!-- Header Section -->
+                <div id="success_modal_header" class="flex flex-col items-center w-full">
+                    <!-- 3D Checkmark / Badge -->
+                    <div class="relative w-28 h-28 mb-8 animate-scale-in">
+                        <div class="absolute inset-0 bg-brand-lightbg rounded-full scale-110 opacity-50"></div>
+                        <div class="absolute inset-0 bg-brand-blue rounded-full flex items-center justify-center shadow-xl shadow-brand-blue/30">
+                            <i class="fa-solid fa-check text-5xl text-white"></i>
+                        </div>
+                        <!-- Sparkle decorations -->
+                        <i class="fa-solid fa-star text-[#10B981] absolute -top-2 -right-2 text-xl animate-pulse"></i>
+                        <i class="fa-solid fa-star text-[#10B981] absolute bottom-2 -left-4 text-sm animate-pulse" style="animation-delay: 0.2s"></i>
+                    </div>
+
+                    <h1 class="text-[32px] leading-tight font-extrabold tracking-tight mb-3 text-brand-navy">
+                        Assinatura Confirmada!
+                    </h1>
+                    <p class="text-brand-textmuted text-lg mb-10 max-w-[400px]">
+                        Seu pagamento foi processado com sucesso e sua conta já está atualizada.
+                    </p>
+                </div>
+
+                <!-- Dashed Divider -->
+                <div class="w-full dashed-divider mb-10 opacity-60"></div>
+
+                <!-- Receipt Details Grid -->
+                <div id="receipt_details_grid" class="w-full bg-[#F8FAFC] rounded-[24px] p-8 mb-10 border border-slate-100">
+                    <div class="grid grid-cols-2 gap-y-8 gap-x-12 text-left">
+                        
+                        <!-- Left Column -->
+                        <div class="flex flex-col gap-2">
+                            <span class="text-sm font-semibold text-brand-textmuted uppercase tracking-wider">Plano</span>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-brand-lightbg flex items-center justify-center text-brand-blue">
+                                    <i class="fa-solid fa-crown"></i>
+                                </div>
+                                <span class="text-[17px] font-bold text-brand-navy">Plano Mestre</span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="flex flex-col gap-2">
+                            <span class="text-sm font-semibold text-brand-textmuted uppercase tracking-wider">Valor</span>
+                            <span class="text-2xl font-extrabold text-brand-navy">R$ 49,90<span class="text-sm text-brand-textmuted font-medium ml-1">/mês</span></span>
+                        </div>
+
+                        <!-- Left Column -->
+                        <div class="flex flex-col gap-2">
+                            <span class="text-sm font-semibold text-brand-textmuted uppercase tracking-wider">Método de Pagamento</span>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-600 shadow-sm">
+                                    <i class="fa-brands fa-cc-mastercard text-xl"></i>
+                                </div>
+                                <span class="text-[15px] font-semibold text-brand-navy">Cartão de Crédito <span class="text-brand-textmuted font-normal">•••• 4242</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="flex flex-col gap-2">
+                            <span class="text-sm font-semibold text-brand-textmuted uppercase tracking-wider">Próxima Renovação</span>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-regular fa-calendar text-brand-textmuted"></i>
+                                <span class="text-[15px] font-semibold text-brand-navy">29/05/2026</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Action Footer -->
+                <div id="action_footer" class="w-full flex flex-col items-center gap-6">
+                    <button class="w-full h-[64px] bg-brand-blue hover:bg-blue-700 text-white rounded-full text-lg font-bold shadow-lg shadow-brand-blue/25 transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-3">
+                        Começar a usar o Plano Mestre
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    
+                    <button class="text-brand-textmuted font-semibold hover:text-brand-blue transition-colors text-[15px] flex items-center gap-2">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        Ver detalhes da fatura
+                    </button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

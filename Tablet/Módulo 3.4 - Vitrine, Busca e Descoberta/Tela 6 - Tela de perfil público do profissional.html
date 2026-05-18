@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de perfil público do profissional - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0016dc',
+                        surface: '#FFFFFF',
+                        background: '#F8F9FA',
+                        text: {
+                            main: '#1A1A24',
+                            muted: '#6B7280'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'nav': '5px 0 30px -10px rgba(0,0,0,0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-text-main h-screen flex">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-content" class=" w-[calc(100%-8rem)] h-full overflow-y-auto hide-scrollbar p-8 xl:p-12">
+        <div class="max-w-7xl mx-auto space-y-8 pb-20">
+
+            <!-- Hero Header Card -->
+            <section id="hero-header" class="bg-surface rounded-[24px] shadow-soft p-8 xl:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="flex items-center gap-8 w-full md:w-auto">
+                    <div class="relative">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Profile" class="w-32 h-32 rounded-[20px] object-cover border-4 border-white shadow-sm">
+                        <div class="absolute -bottom-3 -right-3 bg-primary text-white p-2 rounded-full border-4 border-surface shadow-sm">
+                            <i class="fa-solid fa-check text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <h1 class="text-3xl font-bold text-text-main flex items-center gap-3">
+                            Carlos Mendes
+                            <span class="bg-yellow-100 text-yellow-700 text-sm font-semibold px-3 py-1 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-star text-xs"></i> 4.9
+                            </span>
+                        </h1>
+                        <p class="text-text-muted text-lg font-medium">Mestre de Obras & Reformas</p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="bg-primary/5 text-primary text-sm font-medium px-4 py-1.5 rounded-full">Construção Civil</span>
+                            <span class="bg-primary/5 text-primary text-sm font-medium px-4 py-1.5 rounded-full">Acabamento Fino</span>
+                            <span class="bg-primary/5 text-primary text-sm font-medium px-4 py-1.5 rounded-full">Hidráulica</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-auto flex-shrink-0">
+                    <button class="w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-semibold text-lg px-10 py-5 rounded-full transition-all shadow-[0_8px_20px_-8px_rgba(0,22,220,0.5)] flex items-center justify-center gap-3">
+                        Solicitar Orçamento
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <p class="text-center text-sm text-text-muted mt-3"><i class="fa-regular fa-clock mr-1"></i> Responde em até 2h</p>
+                </div>
+            </section>
+
+            <!-- Split Content Area -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Left Column (30%) -->
+                <aside id="sidebar-info" class="lg:col-span-4 space-y-8">
+                    <!-- Sobre -->
+                    <div class="bg-surface rounded-[24px] shadow-soft p-8">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i class="fa-regular fa-address-card text-primary"></i> Sobre o Mestre
+                        </h3>
+                        <p class="text-text-muted leading-relaxed">
+                            Com mais de 15 anos de experiência no mercado de construção civil e reformas residenciais. Especialista em acabamentos de alto padrão, garantindo pontualidade, limpeza no canteiro de obras e excelência em cada detalhe.
+                        </p>
+                        <div class="mt-6 space-y-4">
+                            <div class="flex items-center gap-3 text-text-main font-medium">
+                                <div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-500">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                São Paulo, SP (Atende 50km)
+                            </div>
+                            <div class="flex items-center gap-3 text-text-main font-medium">
+                                <div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-500">
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                </div>
+                                Disponível a partir de 15/Nov
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="bg-surface rounded-[24px] shadow-soft p-8">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-award text-primary"></i> Certificações & Habilidades
+                        </h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-primary text-white text-sm font-medium px-4 py-2 rounded-full shadow-sm">NR-35 Trabalho em Altura</span>
+                            <span class="bg-primary text-white text-sm font-medium px-4 py-2 rounded-full shadow-sm">NR-10 Elétrica Básica</span>
+                            <span class="bg-primary/10 text-primary text-sm font-medium px-4 py-2 rounded-full">Porcelanato Líquido</span>
+                            <span class="bg-primary/10 text-primary text-sm font-medium px-4 py-2 rounded-full">Drywall Avançado</span>
+                            <span class="bg-primary/10 text-primary text-sm font-medium px-4 py-2 rounded-full">Pintura Airless</span>
+                            <span class="bg-primary/10 text-primary text-sm font-medium px-4 py-2 rounded-full">Gestão de Equipes</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Right Column (70%) -->
+                <div id="main-feed" class="lg:col-span-8 space-y-8">
+                    
+                    <!-- Casos de Sucesso -->
+                    <section class="bg-surface rounded-[24px] shadow-soft p-8">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-2xl font-bold flex items-center gap-3">
+                                <i class="fa-solid fa-camera-retro text-primary"></i> Casos de Sucesso
+                            </h2>
+                            <a href="#" class="text-primary font-medium hover:underline text-sm flex items-center gap-1">Ver todos (24) <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="group relative rounded-[16px] aspect-square cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <span class="text-white font-medium text-sm">Reforma Cozinha</span>
+                                </div>
+                            </div>
+                            <div class="group relative rounded-[16px] aspect-square cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1600607687931-cebf55a5b5df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <span class="text-white font-medium text-sm">Banheiro Alto Padrão</span>
+                                </div>
+                            </div>
+                            <div class="group relative rounded-[16px] aspect-square cursor-pointer hidden md:block">
+                                <img src="https://images.unsplash.com/photo-1600566753086-00f18efc2291?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <span class="text-white font-medium text-sm">Área Gourmet</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Avaliações -->
+                    <section class="bg-surface rounded-[24px] shadow-soft p-8">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-2xl font-bold flex items-center gap-3">
+                                <i class="fa-regular fa-star text-primary"></i> Avaliações Recentes
+                            </h2>
+                            <div class="flex items-center gap-2">
+                                <div class="flex text-yellow-400 text-sm">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <span class="font-bold text-lg">4.9</span>
+                                <span class="text-text-muted text-sm">(128)</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Review Card 1 -->
+                            <div class="border border-gray-100 rounded-[20px] p-6 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div class="flex items-center gap-4">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="User" class="w-12 h-12 rounded-full object-cover">
+                                        <div>
+                                            <h4 class="font-bold text-text-main">Mariana Costa</h4>
+                                            <p class="text-xs text-text-muted">Há 2 dias • Reforma Completa Apartamento</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-text-muted text-sm leading-relaxed">
+"Excelente profissional! Entregou a obra 3 dias antes do prazo acordado. A equipe é super limpa e organizada. O acabamento do porcelanato na sala ficou impecável. Recomendo de olhos fechados."
+                                </p>
+                            </div>
+
+                            <!-- Review Card 2 -->
+                            <div class="border border-gray-100 rounded-[20px] p-6 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div class="flex items-center gap-4">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-12 h-12 rounded-full object-cover">
+                                        <div>
+                                            <h4 class="font-bold text-text-main">Roberto Almeida</h4>
+                                            <p class="text-xs text-text-muted">Há 1 semana • Banheiro Suíte</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                    </div>
+                                </div>
+                                <p class="text-text-muted text-sm leading-relaxed">
+"Muito atencioso desde o primeiro orçamento. Explicou todos os materiais necessários e não teve surpresas no meio da obra. O resultado final ficou de revista."
+                                </p>
+                            </div>
+                        </div>
+                        <button class="w-full mt-6 py-4 rounded-[16px] bg-gray-50 hover:bg-gray-100 text-text-main font-medium transition-colors text-sm">
+                            Carregar mais avaliações
+                        </button>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

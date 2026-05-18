@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de categorias, serviços e cidades - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        navy: '#1A1A24',
+                        offwhite: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '0 0 15px rgba(0, 0, 0, 0.03)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #e5e7eb;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 2.5rem;
+            height: 1.25rem;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .toggle-label::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 1rem;
+            height: 1rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .toggle-checkbox:checked + .toggle-label::after {
+            transform: translateX(1.25rem);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-navy h-screen flex">
+
+
+    <!-- Main Content Workspace -->
+    <main class="flex-1 h-screen overflow-y-auto p-8 lg:p-10 flex flex-col gap-8">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <h1 class="text-4xl font-extrabold tracking-tight text-navy mb-2">Locais e Serviços</h1>
+                <p class="text-muted text-lg font-medium">Controle as regiões de atuação e a árvore de categorias da plataforma.</p>
+            </div>
+            
+            <div class="flex items-center gap-4 bg-surface px-4 py-2 rounded-full shadow-sm border border-border/50">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-muted"></i>
+                    <input type="text" placeholder="Buscar..." class=" pr-4 py-2 bg-transparent border-none focus:outline-none text-sm w-48 font-medium placeholder:text-muted/70">
+                </div>
+            </div>
+        </header>
+
+        <!-- Split Layout Workspace -->
+        <div class="flex flex-col lg:flex-row gap-6 flex-1 min-h-0">
+            
+            <!-- Left Column: Operational Cities (35%) -->
+            <section id="operational-cities" class="w-full lg:w-[35%] bg-surface rounded-4xl shadow-soft border border-border/40 flex flex-col ">
+                <div class="p-6 border-b border-border/50 flex items-center justify-between bg-surface z-10">
+                    <h2 class="text-xl font-bold text-navy flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-primary"></i>
+                        Cidades Ativas
+                    </h2>
+                    <span class="bg-primary/10 text-primary text-xs font-bold px-2.5 py-1 rounded-full">12 Locais</span>
+                </div>
+                
+                <div class="p-6 pb-2">
+                    <button class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3.5 px-4 rounded-full transition-all flex items-center justify-center gap-2 shadow-sm shadow-primary/20">
+                        <i class="fa-solid fa-plus"></i>
+                        Adicionar Praça
+                    </button>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-4 pt-2">
+                    <div class="flex flex-col gap-2">
+                        <!-- City Item -->
+                        <div class="group flex items-center justify-between p-4 rounded-2xl hover:bg-offwhite transition-colors border border-transparent hover:border-border/50">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary font-bold text-sm">
+                                    SP
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-navy">São Paulo</h3>
+                                    <p class="text-xs text-muted font-medium">Capital • 452 profissionais</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <button class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 opacity-0 group-hover:opacity-100 transition-all">
+                                    <i class="fa-solid fa-pen text-xs"></i>
+                                </button>
+                                <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                                    <label for="toggle1" class="toggle-label block h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- City Item -->
+                        <div class="group flex items-center justify-between p-4 rounded-2xl hover:bg-offwhite transition-colors border border-transparent hover:border-border/50">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary font-bold text-sm">
+                                    SC
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-navy">Balneário Camboriú</h3>
+                                    <p class="text-xs text-muted font-medium">Litoral • 128 profissionais</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <button class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 opacity-0 group-hover:opacity-100 transition-all">
+                                    <i class="fa-solid fa-pen text-xs"></i>
+                                </button>
+                                <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle" id="toggle2" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                                    <label for="toggle2" class="toggle-label block h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- City Item -->
+                        <div class="group flex items-center justify-between p-4 rounded-2xl hover:bg-offwhite transition-colors border border-transparent hover:border-border/50">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary font-bold text-sm">
+                                    SC
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-navy">Itajaí</h3>
+                                    <p class="text-xs text-muted font-medium">Vale • 94 profissionais</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <button class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 opacity-0 group-hover:opacity-100 transition-all">
+                                    <i class="fa-solid fa-pen text-xs"></i>
+                                </button>
+                                <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle" id="toggle3" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                                    <label for="toggle3" class="toggle-label block h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- City Item (Inactive) -->
+                        <div class="group flex items-center justify-between p-4 rounded-2xl hover:bg-offwhite transition-colors border border-transparent hover:border-border/50 opacity-60">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-muted font-bold text-sm">
+                                    PR
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-navy">Curitiba</h3>
+                                    <p class="text-xs text-muted font-medium">Capital • 0 profissionais</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <button class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 opacity-0 group-hover:opacity-100 transition-all">
+                                    <i class="fa-solid fa-pen text-xs"></i>
+                                </button>
+                                <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle" id="toggle4" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle4" class="toggle-label block h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Service Tree Editor (65%) -->
+            <section id="service-tree-editor" class="w-full lg:w-[65%] bg-surface rounded-4xl shadow-soft border border-border/40 flex flex-col ">
+                
+                <div class="p-6 border-b border-border/50 flex flex-wrap items-center justify-between gap-4 bg-surface z-10">
+                    <div>
+                        <h2 class="text-xl font-bold text-navy flex items-center gap-2">
+                            <i class="fa-solid fa-sitemap text-primary"></i>
+                            Árvore de Categorias
+                        </h2>
+                        <p class="text-sm text-muted font-medium mt-1">Organize os serviços oferecidos na plataforma</p>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <button class="px-4 py-2 rounded-full border border-border text-navy font-semibold text-sm hover:bg-offwhite transition-colors">
+                            Expandir Tudo
+                        </button>
+                        <button class="px-4 py-2 rounded-full bg-navy text-white font-semibold text-sm hover:bg-navy/90 transition-colors flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-plus text-xs"></i> Nova Categoria
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-6 bg-offwhite/30">
+                    
+                    <!-- Parent Category Block -->
+                    <div class="mb-6 bg-surface border border-border/60 rounded-3xl shadow-sm">
+                        
+                        <!-- Parent Row -->
+                        <div class="flex items-center justify-between p-5 border-b border-border/50 bg-offwhite/50 group">
+                            <div class="flex items-center gap-4">
+                                <button class="w-6 h-6 rounded flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 transition-colors cursor-grab">
+                                    <i class="fa-solid fa-grip-vertical text-sm"></i>
+                                </button>
+                                <button class="w-6 h-6 rounded-full bg-white border border-border shadow-sm flex items-center justify-center text-navy">
+                                    <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                                </button>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-primary flex items-center justify-center shadow-sm">
+                                        <i class="fa-solid fa-hammer"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-navy text-lg">Reforma & Construção</h3>
+                                        <p class="text-xs text-muted font-medium">8 subcategorias ativas</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <button class="px-3 py-1.5 rounded-full text-xs font-bold text-primary bg-primary/5 hover:bg-primary/10 transition-colors border border-primary/20 opacity-0 group-hover:opacity-100">
+                                    Editar Categoria
+                                </button>
+                                <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle" id="toggle_cat1" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                                    <label for="toggle_cat1" class="toggle-label block h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Children Rows -->
+                        <div class="p-2 flex flex-col gap-1">
+                            
+                            <!-- Child 1 -->
+                            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-offwhite transition-colors group">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-6 h-6 flex items-center justify-center text-border">
+                                        <div class="w-px h-full bg-border/50 absolute -ml-6 -mt-8"></div>
+                                        <div class="w-4 h-px bg-border/50 absolute -ml-2"></div>
+                                    </div>
+                                    <button class="w-6 h-6 rounded flex items-center justify-center text-muted/50 hover:text-navy cursor-grab">
+                                        <i class="fa-solid fa-grip-vertical text-xs"></i>
+                                    </button>
+                                    <span class="font-semibold text-navy text-sm">Pintura</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 opacity-0 group-hover:opacity-100 transition-all">
+                                        <i class="fa-solid fa-pen text-xs"></i>
+                                    </button>
+                                    <div class="relative inline-block w-8 align-middle select-none transition duration-200 ease-in scale-90">
+                                        <input type="checkbox" name="toggle" id="toggle_sub1" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                                        <label for="toggle_sub1" class="toggle-label block h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Child 2 -->
+                            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-offwhite transition-colors group">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-6 h-6 flex items-center justify-center text-border">
+                                        <div class="w-px h-full bg-border/50 absolute -ml-6 -mt-8"></div>
+                                        <div class="w-4 h-px bg-border/50 absolute -ml-2"></div>
+                                    </div>
+                                    <button class="w-6 h-6 rounded flex items-center justify-center text-muted/50 hover:text-navy cursor-grab">
+                                        <i class="fa-solid fa-grip-vertical text-xs"></i>
+                                    </button>
+                                    <span class="font-semibold text-navy text-sm">Pedreiro</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 opacity-0 group-hover:opacity-100 transition-all">
+                                        <i class="fa-solid fa-pen text-xs"></i>
+                                    </button>
+                                    <div class="relative inline-block w-8 align-middle select-none transition duration-200 ease-in scale-90">
+                                        <input type="checkbox" name="toggle" id="toggle_sub2" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                                        <label for="toggle_sub2" class="toggle-label block h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Child 3 -->
+                            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-offwhite transition-colors group">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-6 h-6 flex items-center justify-center text-border">
+                                        <div class="w-px h-6 bg-border/50 absolute -ml-6 -mt-3"></div>
+                                        <div class="w-4 h-px bg-border/50 absolute -ml-2"></div>
+                                    </div>
+                                    <button class="w-6 h-6 rounded flex items-center justify-center text-muted/50 hover:text-navy cursor-grab">
+                                        <i class="fa-solid fa-grip-vertical text-xs"></i>
+                                    </button>
+                                    <span class="font-semibold text-navy text-sm">Gesseiro</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <button class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 opacity-0 group-hover:opacity-100 transition-all">
+                                        <i class="fa-solid fa-pen text-xs"></i>
+                                    </button>
+                                    <div class="relative inline-block w-8 align-middle select-none transition duration-200 ease-in scale-90">
+                                        <input type="checkbox" name="toggle" id="toggle_sub3" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                                        <label for="toggle_sub3" class="toggle-label block h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="mx-3 mt-1 mb-2 py-2 px-4 rounded-xl border border-dashed border-border text-muted text-xs font-bold hover:bg-offwhite hover:text-navy transition-colors flex items-center gap-2 w-max">
+                                <i class="fa-solid fa-plus"></i> Adicionar Subcategoria
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <!-- Parent Category Block 2 -->
+                    <div class="mb-6 bg-surface border border-border/60 rounded-3xl shadow-sm opacity-80">
+                        <div class="flex items-center justify-between p-5 border-b border-border/50 bg-offwhite/50 group">
+                            <div class="flex items-center gap-4">
+                                <button class="w-6 h-6 rounded flex items-center justify-center text-muted hover:text-navy hover:bg-border/50 transition-colors cursor-grab">
+                                    <i class="fa-solid fa-grip-vertical text-sm"></i>
+                                </button>
+                                <button class="w-6 h-6 rounded-full bg-white border border-border shadow-sm flex items-center justify-center text-navy">
+                                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                                </button>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-green-50 text-emerald-600 flex items-center justify-center shadow-sm">
+                                        <i class="fa-solid fa-leaf"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-navy text-lg">Jardinagem & Paisagismo</h3>
+                                        <p class="text-xs text-muted font-medium">3 subcategorias ativas</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle" id="toggle_cat2" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                                    <label for="toggle_cat2" class="toggle-label block h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

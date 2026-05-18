@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linha do tempo de ações sensíveis - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        bg: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        surfaceLeft: '#FBFBFC',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        timelineLine: '#F0F4FF',
+                        borderLight: '#E5E7EB',
+                        danger: '#EF4444',
+                        warning: '#F59E0B',
+                        success: '#10B981'
+                    },
+                    boxShadow: {
+                        'nav': '0 4px 24px -4px rgba(0, 0, 0, 0.05), 0 0 1px 0 rgba(0, 0, 0, 0.1)',
+                        'card': '0 12px 32px -8px rgba(0, 22, 220, 0.08), 0 0 0 1px rgba(0, 22, 220, 0.03)',
+                        'cardHover': '0 20px 40px -8px rgba(0, 22, 220, 0.12), 0 0 0 1px rgba(0, 22, 220, 0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+        
+        /* Custom Checkbox */
+        .custom-checkbox input:checked + div {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        .custom-checkbox input:checked + div svg {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased h-screen w-full flex ">
+
+
+    <!-- Main Workspace Container -->
+    <main id="workspace_container" class="mr-6 my-6 flex-1 bg-surface rounded-[32px] shadow-sm flex border border-borderLight/40">
+        
+        <!-- Left Column: Context & Filters -->
+        <aside id="filter_sidebar" class="w-[35%] bg-surfaceLeft border-r border-borderLight flex flex-col h-full overflow-y-auto">
+            <div class="p-10 flex flex-col gap-8">
+                
+                <!-- Header -->
+                <div>
+                    <h1 class="text-4xl font-extrabold tracking-tight text-textMain mb-2">Eventos Críticos</h1>
+                    <p class="text-textMuted font-medium">Monitoramento de segurança SaaS</p>
+                </div>
+
+                <!-- Calendar Pill -->
+                <div class="inline-flex items-center gap-3 bg-white border border-borderLight px-5 py-3 rounded-full shadow-sm w-fit cursor-pointer hover:border-primary transition-colors">
+                    <i class="fa-regular fa-calendar text-primary"></i>
+                    <span class="font-semibold text-textMain">Maio 2026</span>
+                    <i class="fa-solid fa-chevron-down text-textMuted text-sm ml-2"></i>
+                </div>
+
+                <!-- Filters Section -->
+                <div class="mt-4 flex flex-col gap-6">
+                    <h3 class="text-xs font-bold text-textMuted uppercase tracking-wider">Filtros de Evento</h3>
+                    
+                    <div class="flex flex-col gap-4">
+                        <!-- Filter Item 1 -->
+                        <label class="custom-checkbox flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" checked>
+                            <div class="w-6 h-6 rounded border-2 border-borderLight flex items-center justify-center transition-colors group-hover:border-primary">
+                                <svg class="w-3.5 h-3.5 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                                    <i class="fa-solid fa-key text-sm"></i>
+                                </div>
+                                <span class="font-semibold text-textMain">Acessos & Permissões</span>
+                            </div>
+                            <span class="bg-white border border-borderLight text-xs font-bold px-2 py-1 rounded-md text-textMuted">12</span>
+                        </label>
+
+                        <!-- Filter Item 2 -->
+                        <label class="custom-checkbox flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden" checked>
+                            <div class="w-6 h-6 rounded border-2 border-borderLight flex items-center justify-center transition-colors group-hover:border-primary">
+                                <svg class="w-3.5 h-3.5 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-8 h-8 rounded-lg bg-warning/10 text-warning flex items-center justify-center">
+                                    <i class="fa-solid fa-wallet text-sm"></i>
+                                </div>
+                                <span class="font-semibold text-textMain">Financeiro</span>
+                            </div>
+                            <span class="bg-white border border-borderLight text-xs font-bold px-2 py-1 rounded-md text-textMuted">4</span>
+                        </label>
+
+                        <!-- Filter Item 3 -->
+                        <label class="custom-checkbox flex items-center gap-4 cursor-pointer group">
+                            <input type="checkbox" class="hidden">
+                            <div class="w-6 h-6 rounded border-2 border-borderLight flex items-center justify-center transition-colors group-hover:border-primary">
+                                <svg class="w-3.5 h-3.5 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-8 h-8 rounded-lg bg-success/10 text-success flex items-center justify-center">
+                                    <i class="fa-solid fa-database text-sm"></i>
+                                </div>
+                                <span class="font-semibold text-textMain">Dados Sensíveis</span>
+                            </div>
+                            <span class="bg-white border border-borderLight text-xs font-bold px-2 py-1 rounded-md text-textMuted">8</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-borderLight shadow-sm">
+                        <div class="text-textMuted text-xs font-bold mb-1">Risco Alto</div>
+                        <div class="text-2xl font-black text-danger">03</div>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-borderLight shadow-sm">
+                        <div class="text-textMuted text-xs font-bold mb-1">Total Eventos</div>
+                        <div class="text-2xl font-black text-textMain">24</div>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Right Column: Chronological Canvas (Snake Layout) -->
+        <section id="chronological_timeline" class="w-[65%] h-full bg-surface overflow-y-auto relative p-12">
+            
+            <!-- Central Track Line -->
+            <div class="absolute left-1/2 top-0 bottom-0 w-1.5 bg-timelineLine -translate-x-1/2 z-0"></div>
+
+            <div class="relative z-10 flex flex-col gap-16 py-8 max-w-4xl mx-auto">
+                
+                <!-- Date Header -->
+                <div class="flex justify-center sticky top-0 z-20 pb-8">
+                    <div class="bg-surface border border-borderLight px-6 py-2 rounded-full shadow-sm text-sm font-bold text-textMain">
+                        Hoje, 24 Maio
+                    </div>
+                </div>
+
+                <!-- Event 1: Left -->
+                <div class="flex items-center justify-between w-full relative">
+                    <!-- Left Card -->
+                    <div class="w-[45%] pr-8 flex justify-end relative">
+                        <!-- Connecting Line -->
+                        <div class="absolute top-1/2 right-0 w-8 h-0.5 bg-borderLight -translate-y-1/2"></div>
+                        
+                        <div class="bg-white rounded-2xl p-6 shadow-card hover:shadow-cardHover transition-shadow border border-borderLight/50 w-full text-right cursor-pointer group">
+                            <div class="flex justify-end items-start mb-4 gap-3">
+                                <div>
+                                    <div class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded inline-block mb-2">14:32 BRT</div>
+                                    <h4 class="font-bold text-textMain text-lg">Permissão de Administrador Concedida</h4>
+                                </div>
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-12 h-12 rounded-full border border-borderLight object-cover">
+                            </div>
+                            <p class="text-sm text-textMuted mb-4">Carlos Silva concedeu acesso total ao módulo financeiro para novo usuário.</p>
+                            <div class="flex justify-end items-center gap-2">
+                                <i class="fa-solid fa-network-wired text-textMuted text-xs"></i>
+                                <span class="font-mono text-xs text-textMuted bg-bg px-2 py-1 rounded">192.168.1.45</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Center Node -->
+                    <div class="w-8 h-8 rounded-full bg-surface border-4 border-primary shadow-sm flex items-center justify-center z-10 relative">
+                        <div class="w-2 h-2 rounded-full bg-primary"></div>
+                    </div>
+
+                    <!-- Right Empty Space -->
+                    <div class="w-[45%] "></div>
+                </div>
+
+                <!-- Event 2: Right -->
+                <div class="flex items-center justify-between w-full relative mt-[-2rem]">
+                    <!-- Left Empty Space -->
+                    <div class="w-[45%] pr-8"></div>
+                    
+                    <!-- Center Node -->
+                    <div class="w-8 h-8 rounded-full bg-surface border-4 border-danger shadow-sm flex items-center justify-center z-10 relative">
+                        <i class="fa-solid fa-triangle-exclamation text-[10px] text-danger"></i>
+                    </div>
+
+                    <!-- Right Card -->
+                    <div class="w-[45%] relative">
+                         <!-- Connecting Line -->
+                         <div class="absolute top-1/2 left-0 w-8 h-0.5 bg-borderLight -translate-y-1/2"></div>
+                         
+                        <div class="bg-white rounded-2xl p-6 shadow-card hover:shadow-cardHover transition-shadow border border-danger/20 w-full text-left cursor-pointer group relative ">
+                            <div class="absolute top-0 right-0 w-1 h-full bg-danger"></div>
+                            <div class="flex justify-start items-start mb-4 gap-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-12 h-12 rounded-full border border-borderLight object-cover">
+                                <div>
+                                    <div class="text-xs font-bold text-danger bg-danger/10 px-2 py-1 rounded inline-block mb-2">11:15 BRT</div>
+                                    <h4 class="font-bold text-textMain text-lg">Exportação em Massa de Dados</h4>
+                                </div>
+                            </div>
+                            <p class="text-sm text-textMuted mb-4">Ana Paula exportou 15.000 registros de clientes. Volume atípico para o horário.</p>
+                            <div class="flex justify-start items-center gap-2">
+                                <i class="fa-solid fa-globe text-textMuted text-xs"></i>
+                                <span class="font-mono text-xs text-textMuted bg-bg px-2 py-1 rounded">203.0.113.42</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

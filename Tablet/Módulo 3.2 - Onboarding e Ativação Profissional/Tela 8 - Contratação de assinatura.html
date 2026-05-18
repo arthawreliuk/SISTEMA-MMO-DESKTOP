@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contratação de assinatura - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            light: '#E6E8FC',
+                            navy: '#1A1A24',
+                            offwhite: '#F8F9FA'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'floating': '0 20px 40px -20px rgba(0, 22, 220, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E7EB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D1D5DB;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-brand-offwhite">
+
+    <!-- Tablet Landscape Container (1024x1366) -> Displayed as 1366x1024 conceptually, but CSS handles responsive -->
+    <div class="w-full h-screen flex flex-row relative">
+
+
+        <!-- Main Content Workspace -->
+        <main class="flex-1 h-full overflow-y-auto pr-8 py-12 flex flex-col items-center justify-center relative">
+            
+            <!-- Subtle background glow -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-blue opacity-[0.03] blur-[120px] rounded-full pointer-events-none"></div>
+
+            <!-- Main Layout Container (Centered Focus) -->
+            <div class="w-full max-w-[800px] flex flex-col items-center z-10">
+                
+                <!-- Header Area -->
+                <header id="pricing_header" class="text-center mb-16 max-w-2xl">
+                    <h1 class="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-brand-navy tracking-tight leading-[1.1] mb-6">
+                        Escolha seu Plano de Crescimento
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-500 leading-relaxed max-w-[600px] mx-auto font-medium">
+                        Selecione o plano ideal para o seu momento e comece a receber pedidos.
+                    </p>
+                </header>
+
+                <!-- Pricing Grid -->
+                <section id="pricing_grid" class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    
+                    <!-- Left Card (Básico) -->
+                    <div class="bg-white rounded-[24px] p-10 shadow-soft flex flex-col relative border border-gray-100 transition-transform hover:-translate-y-1 duration-300">
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-bold text-brand-navy mb-2">Básico</h3>
+                            <p class="text-gray-500 text-sm h-10">Ferramentas essenciais para começar a vender online hoje mesmo.</p>
+                        </div>
+                        
+                        <div class="mb-8 pb-8 border-b border-gray-100">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-4xl font-extrabold text-brand-navy">R$ 0</span>
+                                <span class="text-gray-500 font-medium">/mês</span>
+                            </div>
+                        </div>
+
+                        <ul class="flex flex-col gap-5 mb-10 flex-1">
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 bg-green-50 text-green-600 rounded-full p-1 border border-green-100">
+                                    <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i>
+                                </div>
+                                <span class="text-brand-navy font-medium text-[15px]">Cardápio digital básico</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 bg-green-50 text-green-600 rounded-full p-1 border border-green-100">
+                                    <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i>
+                                </div>
+                                <span class="text-brand-navy font-medium text-[15px]">Recebimento de pedidos via WhatsApp</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 bg-green-50 text-green-600 rounded-full p-1 border border-green-100">
+                                    <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i>
+                                </div>
+                                <span class="text-brand-navy font-medium text-[15px]">Até 50 produtos cadastrados</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 bg-green-50 text-green-600 rounded-full p-1 border border-green-100">
+                                    <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i>
+                                </div>
+                                <span class="text-brand-navy font-medium text-[15px]">Suporte por email</span>
+                            </li>
+                        </ul>
+
+                        <button class="w-full py-4 px-6 rounded-full border-2 border-brand-blue text-brand-blue font-bold text-lg hover:bg-brand-blue hover:text-white transition-colors duration-300 flex items-center justify-center gap-2 group">
+                            Começar Grátis
+                            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+
+                    <!-- Right Card (Mestre VIP - Highlighted) -->
+                    <div class="bg-brand-light rounded-[24px] p-10 shadow-floating flex flex-col relative border-2 border-brand-blue transition-transform hover:-translate-y-1 duration-300 scale-[1.02]">
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-blue text-white px-4 py-1.5 rounded-full text-sm font-bold tracking-wide shadow-md flex items-center gap-1.5">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-white"></i>
+                            Recomendado
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-bold text-brand-blue mb-2">Mestre VIP</h3>
+                            <p class="text-brand-navy/70 text-sm h-10">O pacote completo para dominar as vendas e fidelizar clientes.</p>
+                        </div>
+                        
+                        <div class="mb-8 pb-8 border-b border-brand-blue/10">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-4xl font-extrabold text-brand-blue">R$ 49,90</span>
+                                <span class="text-brand-navy/70 font-medium">/mês</span>
+                            </div>
+                        </div>
+
+                        <ul class="flex flex-col gap-5 mb-10 flex-1">
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 bg-brand-blue text-white rounded-full p-1 shadow-sm">
+                                    <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i>
+                                </div>
+                                <span class="text-brand-navy font-bold text-[15px]">Tudo do plano Básico</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 bg-brand-blue text-white rounded-full p-1 shadow-sm">
+                                    <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i>
+                                </div>
+                                <span class="text-brand-navy font-medium text-[15px]">Produtos e categorias ilimitadas</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 bg-brand-blue text-white rounded-full p-1 shadow-sm">
+                                    <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i>
+                                </div>
+                                <span class="text-brand-navy font-medium text-[15px]">Gestor de pedidos em tempo real</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 bg-brand-blue text-white rounded-full p-1 shadow-sm">
+                                    <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i>
+                                </div>
+                                <span class="text-brand-navy font-medium text-[15px]">Programa de fidelidade integrado</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 bg-brand-blue text-white rounded-full p-1 shadow-sm">
+                                    <i data-lucide="check" class="w-3 h-3 stroke-[3]"></i>
+                                </div>
+                                <span class="text-brand-navy font-medium text-[15px]">Suporte prioritário via WhatsApp</span>
+                            </li>
+                        </ul>
+
+                        <button class="w-full py-4 px-6 rounded-full bg-brand-blue text-white font-bold text-lg hover:bg-brand-blue/90 transition-colors duration-300 shadow-lg shadow-brand-blue/30 flex items-center justify-center gap-2 group">
+                            Assinar Mestre VIP
+                            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+
+                </section>
+
+                <!-- Footer / Legal -->
+                <footer id="legal_disclaimer" class="text-center w-full">
+                    <a href="#" class="inline-flex items-center gap-2 text-gray-500 hover:text-brand-blue font-medium text-sm transition-colors group">
+                        Ver todos os detalhes e taxas aplicáveis
+                        <i data-lucide="external-link" class="w-4 h-4 opacity-70 group-hover:opacity-100"></i>
+                    </a>
+                </footer>
+
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

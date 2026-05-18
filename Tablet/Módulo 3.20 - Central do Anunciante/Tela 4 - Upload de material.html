@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de material - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        text: '#1A1A24',
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 40px -10px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom styles to match the crisp, premium feel */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <!-- Top Bar -->
+    <header id="header" class="w-full h-[80px] bg-surface flex items-center justify-between px-8 border-b border-border/50 sticky top-0 z-50">
+        <button class="flex items-center gap-2 text-muted hover:text-text transition-colors font-medium text-[15px]">
+            <i class="fa-solid fa-arrow-left text-[14px]"></i>
+            Voltar
+        </button>
+        <h1 class="text-[18px] font-semibold text-text tracking-tight">Montagem do Anúncio</h1>
+        <div class="w-[80px]"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-workspace" class="flex-1 w-full max-w-[1024px] mx-auto p-8 flex flex-col gap-6">
+        
+        <!-- Centered Split View Container -->
+        <div class="bg-surface rounded-[24px] shadow-soft border border-border/40 flex flex-col md:flex-row w-full min-h-[700px]">
+            
+            <!-- Left Column: Creative Controls -->
+            <section id="creative-controls" class="w-full md:w-1/2 p-8 lg:p-10 flex flex-col gap-8 border-b md:border-b-0 md:border-r border-border/50">
+                
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-[20px] font-semibold text-text">Criativo</h2>
+                    <p class="text-[14px] text-muted">Faça o upload da sua mídia e defina os textos do anúncio.</p>
+                </div>
+
+                <!-- Upload Zone -->
+                <div id="upload-zone" class="w-full h-[220px] border-2 border-dashed border-border rounded-[16px] flex flex-col items-center justify-center gap-4 bg-background/50 hover:bg-background hover:border-primary/50 transition-all cursor-pointer group">
+                    <div class="w-14 h-14 rounded-full bg-surface shadow-sm flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cloud-arrow-up text-[20px]"></i>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-[15px] font-medium text-text">Arraste e solte sua mídia aqui</p>
+                        <p class="text-[13px] text-muted mt-1">JPG, PNG ou MP4 (Máx. 50MB)</p>
+                    </div>
+                </div>
+
+                <!-- Text Inputs -->
+                <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[14px] font-medium text-text ml-1">Título do Anúncio</label>
+                        <input type="text" placeholder="Ex: Nova Coleção de Inverno" class="w-full h-[52px] px-5 rounded-[100px] border border-border/80 bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-[15px] placeholder:text-muted/60">
+                    </div>
+                    
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[14px] font-medium text-text ml-1">Descrição</label>
+                        <textarea placeholder="Conte um pouco mais sobre a oferta..." class="w-full h-[120px] p-5 rounded-[24px] border border-border/80 bg-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-[15px] placeholder:text-muted/60 resize-none"></textarea>
+                    </div>
+                </div>
+
+                <!-- CTA Setup -->
+                <div class="flex flex-col gap-3 mt-auto pt-4">
+                    <label class="text-[14px] font-medium text-text ml-1">Call-to-Action (Botão)</label>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="h-[44px] px-6 rounded-[100px] border border-border bg-surface text-[14px] font-medium text-text hover:border-primary hover:text-primary transition-all">Saiba Mais</button>
+                        <button class="h-[44px] px-6 rounded-[100px] border-2 border-primary bg-primary/5 text-[14px] font-semibold text-primary transition-all shadow-[0_0_0_4px_rgba(0,22,220,0.05)]">Comprar</button>
+                        <button class="h-[44px] px-6 rounded-[100px] border border-border bg-surface text-[14px] font-medium text-text hover:border-primary hover:text-primary transition-all">Baixar App</button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Right Column: Real-time Preview -->
+            <section id="live-preview" class="w-full md:w-1/2 bg-background p-8 lg:p-10 flex flex-col items-center justify-center relative">
+                
+                <div class="absolute top-6 left-6 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-[13px] font-medium text-muted">Preview em Tempo Real</span>
+                </div>
+
+                <!-- Mobile Device Frame Simulator -->
+                <div class="w-[320px] h-[600px] bg-surface rounded-[36px] shadow-float border-[8px] border-surface p-4 flex flex-col relative ">
+                    
+                    <!-- Fake Mobile Header -->
+                    <div class="flex items-center justify-between mb-4 px-2">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-background ">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-full h-full object-cover" alt="Brand Avatar">
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[13px] font-semibold text-text leading-tight">Sua Marca</span>
+                                <span class="text-[11px] text-muted leading-tight">Patrocinado</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-ellipsis text-muted"></i>
+                    </div>
+
+                    <!-- Ad Content Area -->
+                    <div class="flex-1 flex flex-col gap-3">
+                        <div class="text-[14px] text-text px-2 line-clamp-2">
+                            Aproveite as melhores ofertas da temporada. Produtos exclusivos com até 50% de desconto.
+                        </div>
+                        
+                        <!-- Media Placeholder -->
+                        <div class="w-full h-[320px] bg-background rounded-[16px] relative">
+                            <div class="absolute inset-0 flex items-center justify-center text-muted/30">
+                                <i class="fa-regular fa-image text-[48px]"></i>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Ad Bar -->
+                        <div class="bg-background rounded-[16px] p-3 flex items-center justify-between mt-auto">
+                            <div class="flex flex-col">
+                                <span class="text-[11px] text-muted uppercase tracking-wider font-semibold">Oferta Especial</span>
+                                <span class="text-[14px] font-semibold text-text">Nova Coleção de Inverno</span>
+                            </div>
+                            <button class="h-[36px] px-4 rounded-[100px] bg-primary text-surface text-[13px] font-semibold">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- Bottom Action Bar -->
+        <div id="bottom-action" class="w-full flex justify-end mt-2">
+            <button class="h-[56px] px-8 rounded-[100px] bg-primary text-surface text-[16px] font-semibold shadow-[0_8px_20px_-6px_rgba(0,22,220,0.4)] hover:bg-[#0012b3] hover:shadow-[0_8px_24px_-4px_rgba(0,22,220,0.5)] transition-all flex items-center gap-3">
+                Finalizar Anúncio
+                <i class="fa-solid fa-arrow-right text-[14px]"></i>
+            </button>
+        </div>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

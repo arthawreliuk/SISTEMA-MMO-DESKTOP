@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro do anunciante - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        'off-white': '#F8F9FA',
+                        'trust-blue': '#0016dc',
+                        'soft-blue': '#F0F4FF',
+                        'deep-navy': '#1A1A24',
+                    },
+                    boxShadow: {
+                        'ambient': '0 20px 40px -10px rgba(0, 0, 0, 0.05), 0 10px 20px -5px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased bg-off-white">
+
+    <!-- Top Bar -->
+    <header id="header" class="w-full px-8 py-6 flex justify-between items-center z-10 max-w-[1366px] mx-auto">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-trust-blue rounded-[12px] flex items-center justify-center text-white">
+                <i class="fa-solid fa-chart-pie text-xl"></i>
+            </div>
+            <span class="font-bold text-xl text-deep-navy tracking-tight">MMO Ads</span>
+        </div>
+        <div>
+            <a href="#" class="text-deep-navy font-medium text-sm hover:text-trust-blue transition-colors flex items-center gap-2">
+                Já anuncia conosco? <span class="text-trust-blue font-semibold">Fazer Login</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Registration Container -->
+    <main id="main-workspace" class="flex-grow flex items-center justify-center p-4 md:p-8 w-full max-w-[1366px] mx-auto">
+        <div class="w-full max-w-6xl bg-white rounded-[32px] shadow-ambient flex flex-col lg:flex-row min-h-[700px]">
+            
+            <!-- Left Column (Value Proposition - 40%) -->
+            <div id="value-prop-column" class="w-full lg:w-[40%] bg-soft-blue p-10 lg:p-14 flex flex-col relative ">
+                <!-- Decorative Elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-trust-blue/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
+                <div class="absolute bottom-0 left-0 w-80 h-80 bg-trust-blue/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
+
+                <div class="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm text-trust-blue text-xs font-semibold uppercase tracking-wider mb-8 border border-white/40 shadow-sm">
+                            <i class="fa-solid fa-rocket"></i> Plataforma B2B
+                        </div>
+                        <h1 class="text-4xl lg:text-5xl font-bold leading-[1.1] text-deep-navy mb-6 tracking-tight">
+                            Anuncie onde as <span class="text-trust-blue">decisões</span> acontecem.
+                        </h1>
+                        <p class="text-deep-navy/70 text-lg mb-12 max-w-md">
+                            Junte-se a milhares de empresas que já transformaram seu alcance no mercado com a MMO Ads.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-[16px] bg-white flex items-center justify-center text-trust-blue shadow-sm shrink-0">
+                                <i class="fa-solid fa-users text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-deep-navy text-lg mb-1">Impacte milhares de profissionais</h3>
+                                <p class="text-deep-navy/60 text-sm">Alcance o público certo no momento exato de decisão.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-[16px] bg-white flex items-center justify-center text-trust-blue shadow-sm shrink-0">
+                                <i class="fa-solid fa-location-crosshairs text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-deep-navy text-lg mb-1">Segmentação hiperlocal</h3>
+                                <p class="text-deep-navy/60 text-sm">Filtros avançados por região, cargo e setor de atuação.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-[16px] bg-white flex items-center justify-center text-trust-blue shadow-sm shrink-0">
+                                <i class="fa-solid fa-chart-line text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-deep-navy text-lg mb-1">Métricas em tempo real</h3>
+                                <p class="text-deep-navy/60 text-sm">Acompanhe o ROI e otimize suas campanhas instantaneamente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column (The Wizard Form - 60%) -->
+            <div id="wizard-form-column" class="w-full lg:w-[60%] bg-white p-10 lg:p-16 flex flex-col">
+                
+                <!-- Wizard Navigation -->
+                <div class="flex items-center gap-3 mb-12">
+                    <div class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-trust-blue bg-trust-blue/5 text-trust-blue font-semibold text-sm">
+                        <span class="w-6 h-6 rounded-full bg-trust-blue text-white flex items-center justify-center text-xs">1</span>
+                        Conta
+                    </div>
+                    <div class="w-8 h-[1px] bg-gray-200"></div>
+                    <div class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-200 text-deep-navy/50 font-medium text-sm">
+                        <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-xs">2</span>
+                        Dados
+                    </div>
+                    <div class="w-8 h-[1px] bg-gray-200"></div>
+                    <div class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-200 text-deep-navy/50 font-medium text-sm">
+                        <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-xs">3</span>
+                        Faturamento
+                    </div>
+                </div>
+
+                <div class="mb-10">
+                    <h2 class="text-3xl font-bold text-deep-navy mb-2">Crie sua conta anunciante</h2>
+                    <p class="text-deep-navy/60">Preencha os dados básicos da sua empresa para começar.</p>
+                </div>
+
+                <!-- Form Fields -->
+                <form class="space-y-6 flex-grow">
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-deep-navy ml-2">CNPJ da Empresa</label>
+                        <div class="relative">
+                            <i class="fa-regular fa-id-card absolute left-5 top-1/2 -translate-y-1/2 text-deep-navy/40"></i>
+                            <input type="text" placeholder="00.000.000/0000-00" class="w-full pr-6 py-4 bg-off-white border border-gray-200 rounded-[24px] text-deep-navy placeholder-deep-navy/40 focus:outline-none focus:border-trust-blue focus:ring-2 focus:ring-trust-blue/20 transition-all font-medium">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-deep-navy ml-2">Nome da Marca / Fantasia</label>
+                        <div class="relative">
+                            <i class="fa-regular fa-building absolute left-5 top-1/2 -translate-y-1/2 text-deep-navy/40"></i>
+                            <input type="text" placeholder="Como seus clientes conhecem você" class="w-full pr-6 py-4 bg-off-white border border-gray-200 rounded-[24px] text-deep-navy placeholder-deep-navy/40 focus:outline-none focus:border-trust-blue focus:ring-2 focus:ring-trust-blue/20 transition-all font-medium">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-deep-navy ml-2">Segmento de Atuação</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-layer-group absolute left-5 top-1/2 -translate-y-1/2 text-deep-navy/40"></i>
+                            <select class="w-full pr-12 py-4 bg-off-white border border-gray-200 rounded-[24px] text-deep-navy focus:outline-none focus:border-trust-blue focus:ring-2 focus:ring-trust-blue/20 transition-all font-medium appearance-none cursor-pointer">
+                                <option value="" disabled selected>Selecione o setor principal</option>
+                                <option value="tech">Tecnologia & Software</option>
+                                <option value="finance">Finanças & Seguros</option>
+                                <option value="health">Saúde & Bem-estar</option>
+                                <option value="retail">Varejo & E-commerce</option>
+                                <option value="industry">Indústria & Manufatura</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-6 top-1/2 -translate-y-1/2 text-deep-navy/40 pointer-events-none text-sm"></i>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Form Actions -->
+                <div id="form-actions" class="mt-12 flex items-center justify-between pt-6 border-t border-gray-100">
+                    <p class="text-xs text-deep-navy/50 max-w-[200px]">
+                        Ao avançar, você concorda com nossos <a href="#" class="text-trust-blue hover:underline">Termos de Serviço</a>.
+                    </p>
+                    <button type="button" class="bg-trust-blue hover:bg-trust-blue/90 text-white font-semibold py-4 px-10 rounded-[24px] shadow-lg shadow-trust-blue/30 transition-all flex items-center gap-3 group">
+                        Avançar
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

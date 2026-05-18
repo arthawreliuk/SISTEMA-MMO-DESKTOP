@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de detalhe da oportunidade elegível - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#6B7280',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'nav': '4px 0 24px -4px rgba(0, 0, 0, 0.03)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+    </style>
+</head>
+<body class="h-screen flex font-sans text-textDark bg-background antialiased">
+
+
+    <!-- Main Workspace -->
+    <main class="flex-1 flex flex-col h-full relative">
+        
+        <!-- Header -->
+        <header id="header" class="h-24 px-8 flex items-center shrink-0 border-b border-border bg-surface/50 backdrop-blur-sm z-10">
+            <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-background transition-colors mr-4 text-textDark">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div>
+                <p class="text-xs font-semibold tracking-wider text-textMuted uppercase mb-1">Opportunity Details</p>
+                <h1 class="text-2xl font-bold text-textDark">Análise de Pedido: Hidráulica</h1>
+            </div>
+            <div class="ml-auto flex items-center gap-4">
+                <span class="px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span> New Request
+                </span>
+                <span class="text-sm text-textMuted font-medium">Posted 2h ago</span>
+            </div>
+        </header>
+
+        <!-- Content Area - 50/50 Split -->
+        <div class="flex-1 flex p-6 gap-6 ">
+            
+            <!-- Left Column: Job Details -->
+            <div id="job-details" class="w-1/2 flex flex-col gap-6 overflow-y-auto pr-2 pb-6">
+                
+                <!-- Client Info Card -->
+                <div class="bg-surface rounded-[24px] p-8 shadow-soft border border-border/50">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 text-xl font-bold">
+                                MC
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-textDark">Maria Costa</h3>
+                                <div class="flex items-center gap-2 text-sm text-textMuted mt-1">
+                                    <i class="fa-solid fa-star text-yellow-400"></i>
+                                    <span>4.9 (12 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="px-4 py-2 rounded-full border border-border text-sm font-medium hover:bg-background transition-colors">
+                            View Profile
+                        </button>
+                    </div>
+
+                    <h2 class="text-xl font-bold text-textDark mb-4">Problem Description</h2>
+                    <p class="text-textMuted leading-relaxed mb-6">
+"Estou com um vazamento grave no cano principal da pia da cozinha. A água está escorrendo para dentro do armário e já começou a estufar a madeira. Preciso de alguém que consiga identificar o ponto exato do vazamento e fazer a troca do encanamento necessário. O registro geral está fechado por enquanto, então tenho urgência."
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="p-4 rounded-2xl bg-background border border-border/50">
+                            <p class="text-xs text-textMuted font-semibold uppercase mb-1">Service Type</p>
+                            <p class="font-medium text-textDark"><i class="fa-solid fa-droplet text-blue-500 mr-2"></i>Plumbing Repair</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-background border border-border/50">
+                            <p class="text-xs text-textMuted font-semibold uppercase mb-1">Urgency</p>
+                            <p class="font-medium text-textDark"><i class="fa-solid fa-bolt text-red-500 mr-2"></i>High (ASAP)</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm font-bold text-textDark mb-3 uppercase tracking-wide">Attached Photos (3)</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="h-32 rounded-xl bg-gray-200 relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=400&q=80" alt="Leak 1" class="w-full h-full object-cover transition-transform group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <i class="fa-solid fa-expand text-white text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="h-32 rounded-xl bg-gray-200 relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1607472586893-edb57cb0b414?auto=format&fit=crop&w=400&q=80" alt="Leak 2" class="w-full h-full object-cover transition-transform group-hover:scale-105">
+                        </div>
+                        <div class="h-32 rounded-xl bg-gray-200 relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1505798577917-a65157d3320a?auto=format&fit=crop&w=400&q=80" alt="Cabinet damage" class="w-full h-full object-cover transition-transform group-hover:scale-105">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Map Card -->
+                <div class="bg-surface rounded-[24px] p-8 shadow-soft border border-border/50">
+                    <h2 class="text-xl font-bold text-textDark mb-4">Location</h2>
+                    <div class="flex items-center gap-3 mb-4 text-textMuted">
+                        <i class="fa-solid fa-location-dot text-primary"></i>
+                        <span>Vila Mariana, São Paulo - SP (approx. 3.2km away)</span>
+                    </div>
+                    <div class="h-48 rounded-2xl bg-gray-100 border border-border/50 relative">
+                        <!-- Simulated Map Background -->
+                        <div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-60"></div>
+                        <!-- Radius Circle -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/20 rounded-full border-2 border-primary/50 flex items-center justify-center">
+                            <div class="w-4 h-4 bg-primary rounded-full shadow-lg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Proposal Builder -->
+            <div id="proposal-builder" class="w-1/2 flex flex-col bg-surface rounded-[24px] shadow-soft border border-border/50 h-full">
+                
+                <div class="p-8 border-b border-border/50 bg-background/50">
+                    <h2 class="text-2xl font-bold text-textDark">Build Your Proposal</h2>
+                    <p class="text-textMuted mt-2 text-sm">Submit your best offer based on the client's description.</p>
+                </div>
+
+                <div class="flex-1 p-8 overflow-y-auto space-y-6">
+                    
+                    <!-- Value Input -->
+                    <div>
+                        <label class="block text-sm font-bold text-textDark mb-2">Valor do Serviço (R$)</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-textMuted font-medium">R$</span>
+                            <input type="number" placeholder="0,00" class="w-full pr-4 py-4 rounded-xl border-2 border-border focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-lg font-semibold text-textDark bg-background/50 focus:bg-surface">
+                        </div>
+                        <p class="text-xs text-textMuted mt-2 flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i> Platform fee of 10% will be deducted from this amount.
+                        </p>
+                    </div>
+
+                    <!-- Time Estimate -->
+                    <div>
+                        <label class="block text-sm font-bold text-textDark mb-2">Tempo Estimado</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-textMuted">
+                                <i class="fa-regular fa-clock"></i>
+                            </span>
+                            <select class="w-full pr-4 py-4 rounded-xl border-2 border-border focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-base font-medium text-textDark bg-background/50 focus:bg-surface appearance-none cursor-pointer">
+                                <option value="" disabled selected>Select estimated duration</option>
+                                <option value="1h">Até 1 hora</option>
+                                <option value="2h">1 a 2 horas</option>
+                                <option value="4h">Meio período (até 4h)</option>
+                                <option value="8h">Período integral (8h)</option>
+                                <option value="more">Mais de 1 dia</option>
+                            </select>
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-textMuted pointer-events-none">
+                                <i class="fa-solid fa-chevron-down text-sm"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label class="block text-sm font-bold text-textDark mb-2">Mensagem ao Cliente</label>
+                        <textarea rows="5" placeholder="Olá Maria, tenho experiência com esse tipo de vazamento em pias de cozinha. Posso ir hoje mesmo avaliar..." class="w-full p-4 rounded-xl border-2 border-border focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all text-base text-textDark bg-background/50 focus:bg-surface resize-none"></textarea>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-xs text-textMuted">Be professional and explain how you'll solve the problem.</p>
+                            <p class="text-xs text-textMuted">0/500</p>
+                        </div>
+                    </div>
+
+                    <!-- Availability Toggle -->
+                    <div class="p-4 rounded-xl bg-primary/5 border border-primary/20 flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-bold text-textDark">Available to start immediately?</p>
+                            <p class="text-xs text-textMuted mt-1">Client marked this as urgent.</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- Footer Action -->
+                <div class="p-6 border-t border-border/50 bg-surface mt-auto">
+                    <button class="w-full py-4 px-6 bg-primary hover:bg-primary/90 text-white rounded-full font-bold text-lg shadow-lg shadow-primary/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                        <span>Enviar Proposta</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <p class="text-center text-xs text-textMuted mt-4">
+                        By submitting, you agree to our <a href="#" class="text-primary hover:underline">Terms of Service</a>.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

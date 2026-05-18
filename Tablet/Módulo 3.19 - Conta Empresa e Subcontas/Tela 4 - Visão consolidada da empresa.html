@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão consolidada da empresa - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        softgrey: '#9CA3AF',
+                        surface: '#FFFFFF',
+                        insightbg: '#EBF0FF',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        'pill': '9999px',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'ambient-lg': '0 20px 60px -15px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex text-navy font-sans overflow-x-hidden">
+
+
+    <!-- Main Workspace -->
+    <main id="main-workspace" class="flex-1 p-8 lg:p-12 min-h-screen flex flex-col max-w-[1600px] mx-auto w-full">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+                <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-3 text-navy">Visão Consolidada</h1>
+                <p class="text-softgrey text-lg max-w-2xl font-medium">Desempenho agregado de todas as subcontas e balanço financeiro.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="px-6 py-3 bg-white border border-gray-200 rounded-full text-navy font-semibold text-sm shadow-sm hover:shadow-md transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-download text-softgrey"></i> Exportar
+                </button>
+                <button class="w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-navy shadow-sm hover:shadow-md transition-all relative">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="absolute top-3 right-3 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Split Layout -->
+        <div class="flex flex-col xl:flex-row gap-8 flex-1">
+            
+            <!-- Left Column (Macro Charts - 60%) -->
+            <section id="macro-charts" class="xl:w-3/5 flex flex-col gap-8">
+                
+                <!-- Main Chart Card -->
+                <div class="bg-surface rounded-4xl shadow-ambient p-8 flex-1 min-h-[500px] flex flex-col">
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <h2 class="text-2xl font-bold text-navy mb-1">Evolução Financeira</h2>
+                            <p class="text-softgrey text-sm font-medium">Receita vs Custo (Consolidado)</p>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-100 rounded-full px-4 py-2 flex items-center gap-2 cursor-pointer hover:bg-gray-100 transition-colors">
+                            <span class="text-sm font-semibold text-navy">Últimos 30 dias</span>
+                            <i class="fa-solid fa-chevron-down text-xs text-softgrey"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- KPI Summary above chart -->
+                    <div class="flex gap-8 mb-8">
+                        <div class="flex flex-col">
+                            <div class="flex items-center gap-2 mb-1">
+                                <div class="w-3 h-3 rounded-full bg-trustblue"></div>
+                                <span class="text-sm font-semibold text-softgrey">Receita Gerada</span>
+                            </div>
+                            <span class="text-3xl font-extrabold text-navy">R$ 428.500</span>
+                            <span class="text-sm font-semibold text-green-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-arrow-trend-up"></i> +12.5%</span>
+                        </div>
+                        <div class="w-px h-16 bg-gray-100"></div>
+                        <div class="flex flex-col">
+                            <div class="flex items-center gap-2 mb-1">
+                                <div class="w-3 h-3 rounded-full bg-gray-300"></div>
+                                <span class="text-sm font-semibold text-softgrey">Custo em Leads</span>
+                            </div>
+                            <span class="text-3xl font-extrabold text-navy">R$ 84.200</span>
+                            <span class="text-sm font-semibold text-red-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-arrow-trend-down"></i> -3.2%</span>
+                        </div>
+                    </div>
+
+                    <!-- Chart Container -->
+                    <div id="main-area-chart" class="w-full flex-1 min-h-[300px]"></div>
+                </div>
+
+                <!-- Secondary Metric Cards Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-surface rounded-4xl shadow-ambient p-6 flex items-center gap-6">
+                        <div class="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center text-green-600 text-2xl">
+                            <i class="fa-solid fa-money-bill-trend-up"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-softgrey mb-1">ROI Global</p>
+                            <p class="text-2xl font-bold text-navy">408%</p>
+                        </div>
+                    </div>
+                    <div class="bg-surface rounded-4xl shadow-ambient p-6 flex items-center gap-6">
+                        <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center text-trustblue text-2xl">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-softgrey mb-1">Conversão Média</p>
+                            <p class="text-2xl font-bold text-navy">18.4%</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column (Global KPIs & Insights - 40%) -->
+            <aside id="global-insights" class="xl:w-2/5 flex flex-col gap-8">
+                
+                <!-- Sticky Container -->
+                <div class="sticky top-8 flex flex-col gap-8">
+                    
+                    <!-- Resumo Operacional Card -->
+                    <div class="bg-surface rounded-4xl shadow-ambient p-8">
+                        <h3 class="text-xl font-bold text-navy mb-6">Resumo Operacional</h3>
+                        
+                        <div class="flex flex-col gap-6">
+                            <!-- Metric 1 -->
+                            <div class="flex items-center justify-between p-4 rounded-2xl bg-gray-50 border border-gray-100/50 hover:border-gray-200 transition-colors">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-trustblue">
+                                        <i class="fa-solid fa-network-wired"></i>
+                                    </div>
+                                    <span class="font-semibold text-navy">Total de Subcontas</span>
+                                </div>
+                                <span class="text-xl font-bold text-navy">12</span>
+                            </div>
+
+                            <!-- Metric 2 -->
+                            <div class="flex items-center justify-between p-4 rounded-2xl bg-gray-50 border border-gray-100/50 hover:border-gray-200 transition-colors">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-trustblue">
+                                        <i class="fa-solid fa-filter-circle-dollar"></i>
+                                    </div>
+                                    <span class="font-semibold text-navy">CAC Médio</span>
+                                </div>
+                                <span class="text-xl font-bold text-navy">R$ 15,00</span>
+                            </div>
+
+                            <!-- Metric 3 -->
+                            <div class="flex items-center justify-between p-4 rounded-2xl bg-gray-50 border border-gray-100/50 hover:border-gray-200 transition-colors">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-trustblue">
+                                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                                    </div>
+                                    <span class="font-semibold text-navy">LTV Estimado</span>
+                                </div>
+                                <span class="text-xl font-bold text-navy">R$ 4.5k</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insight IA Card -->
+                    <div class="bg-insightbg rounded-4xl shadow-ambient p-8 relative border border-trustblue/10">
+                        <!-- Decorative background elements -->
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-trustblue/5 rounded-full blur-2xl"></div>
+                        <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-trustblue/10 rounded-full blur-2xl"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-trustblue text-white flex items-center justify-center shadow-md">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-trustblue">Insight IA</h3>
+                            </div>
+                            
+                            <p class="text-navy font-semibold text-lg leading-relaxed mb-6">
+                                Aumente o limite de saldo da equipe de <span class="text-trustblue bg-white px-2 py-1 rounded-md shadow-sm">Climatização</span>. Alta demanda em Camboriú.
+                            </p>
+                            
+                            <div class="flex gap-3">
+                                <button class="flex-1 bg-trustblue text-white py-3 px-4 rounded-full font-semibold text-sm shadow-md hover:bg-blue-700 transition-colors">
+                                    Aplicar Sugestão
+                                </button>
+                                <button class="w-12 h-12 bg-white text-softgrey rounded-full flex items-center justify-center shadow-sm hover:text-navy transition-colors">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            // Main Area Chart Data (Receita vs Custo)
+            const dates = ['01/10', '05/10', '10/10', '15/10', '20/10', '25/10', '30/10'];
+            const receita = [30000, 35000, 32000, 45000, 42000, 58000, 65000];
+            const custo = [8000, 9500, 9000, 12000, 11000, 14000, 15000];
+
+            const trace1 = {
+                x: dates,
+                y: receita,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Receita Gerada',
+                line: {
+                    color: '#0016dc',
+                    width: 4,
+                    shape: 'spline',
+                    smoothing: 1.3
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(0, 22, 220, 0.1)'
+            };
+
+            const trace2 = {
+                x: dates,
+                y: custo,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Custo em Leads',
+                line: {
+                    color: '#D1D5DB', // Soft Grey equivalent for lines
+                    width: 3,
+                    shape: 'spline',
+                    smoothing: 1.3
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(209, 213, 219, 0.2)'
+            };
+
+            const layout = {
+                margin: { t: 10, r: 10, b: 40, l: 40 },
+                plot_bgcolor: 'transparent',
+                paper_bgcolor: 'transparent',
+                showlegend: false,
+                xaxis: {
+                    showgrid: false,
+                    zeroline: false,
+                    tickfont: { color: '#9CA3AF', family: '"Plus Jakarta Sans", sans-serif', size: 12 },
+                    tickmode: 'array',
+                    tickvals: dates,
+                },
+                yaxis: {
+                    showgrid: true,
+                    gridcolor: 'rgba(0,0,0,0.03)',
+                    zeroline: false,
+                    tickfont: { color: '#9CA3AF', family: '"Plus Jakarta Sans", sans-serif', size: 12 },
+                    tickprefix: 'R$ ',
+                    showticklabels: true
+                },
+                hovermode: 'x unified',
+                hoverlabel: {
+                    bgcolor: '#1A1A24',
+                    font: { family: '"Plus Jakarta Sans", sans-serif', color: '#ffffff' }
+                }
+            };
+
+            const config = {
+                responsive: true,
+                displayModeBar: false,
+                displaylogo: false
+            };
+
+            try {
+                Plotly.newPlot('main-area-chart', [trace2, trace1], layout, config);
+            } catch (e) {
+                console.error("Error rendering chart:", e);
+                document.getElementById('main-area-chart').innerHTML = '<div class="flex items-center justify-center h-full text-softgrey">Failed to load chart data</div>';
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

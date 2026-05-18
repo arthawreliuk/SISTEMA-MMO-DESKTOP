@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de métricas administrativas - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        surface: '#FFFFFF',
+                        background: '#F8F9FA',
+                        text: {
+                            main: '#141517',
+                            muted: '#3F3F46',
+                            light: '#8E92A3'
+                        },
+                        accent: {
+                            green: '#CFFFB3',
+                            pink: '#FF99C8',
+                            purple: '#BDB2FF',
+                            blue: '#BEDCFA'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.03), 0 0 3px rgba(0,0,0,0.02)',
+                        'glow': '0 0 15px rgba(0, 22, 220, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -webkit-font-smoothing: antialiased; color: #141517; }
+        ::-webkit-scrollbar { display: none; }
+        .glass-panel { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); }
+    </style>
+</head>
+<body class="flex h-screen w-full text-text-main font-sans">
+
+    <!-- Floating Side Nav -->
+
+    <!-- Main Workspace -->
+    <main id="main-content" class="flex-1 h-full overflow-y-auto px-8 py-6 flex flex-col gap-6">
+        
+        <!-- Header -->
+        <header id="dashboard-header" class="flex justify-between items-center w-full mt-2">
+            <div>
+                <h1 class="text-[28px] font-bold tracking-tight">Visão Geral de Performance</h1>
+                <p class="text-text-muted text-sm mt-1 font-medium">Acompanhamento em tempo real das métricas da plataforma.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2 shadow-sm text-sm font-medium text-text-muted">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>Últimos 30 dias</span>
+                    <i class="fa-solid fa-chevron-down text-xs ml-2"></i>
+                </div>
+                <button class="px-6 py-2.5 rounded-full border border-primary text-primary font-semibold text-sm hover:bg-primary/5 transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-download"></i>
+                    Exportar PDF
+                </button>
+            </div>
+        </header>
+
+        <!-- KPI Row -->
+        <section id="kpi-row" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- KPI 1 -->
+            <div class="bg-surface rounded-[24px] p-6 shadow-soft flex flex-col justify-between relative group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                <div class="flex justify-between items-start mb-4 relative z-10">
+                    <span class="text-text-muted font-semibold text-sm">GMV Total</span>
+                    <button class="text-text-light hover:text-text-main"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-bold mb-2">R$ 2.4M</h3>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="bg-accent-green/30 text-green-700 px-2 py-0.5 rounded-full font-bold flex items-center gap-1 text-xs">
+                            <i class="fa-solid fa-arrow-up"></i> 14.5%
+                        </span>
+                        <span class="text-text-light text-xs">vs. mês anterior</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 2 -->
+            <div class="bg-surface rounded-[24px] p-6 shadow-soft flex flex-col justify-between relative group">
+                <div class="flex justify-between items-start mb-4 relative z-10">
+                    <span class="text-text-muted font-semibold text-sm">CAC Médio</span>
+                    <button class="text-text-light hover:text-text-main"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-bold mb-2">R$ 45,20</h3>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="bg-accent-pink/30 text-pink-700 px-2 py-0.5 rounded-full font-bold flex items-center gap-1 text-xs">
+                            <i class="fa-solid fa-arrow-down"></i> 2.1%
+                        </span>
+                        <span class="text-text-light text-xs">vs. mês anterior</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 3 -->
+            <div class="bg-surface rounded-[24px] p-6 shadow-soft flex flex-col justify-between relative group">
+                <div class="flex justify-between items-start mb-4 relative z-10">
+                    <span class="text-text-muted font-semibold text-sm">LTV Estimado</span>
+                    <button class="text-text-light hover:text-text-main"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-bold mb-2">R$ 850</h3>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="bg-accent-green/30 text-green-700 px-2 py-0.5 rounded-full font-bold flex items-center gap-1 text-xs">
+                            <i class="fa-solid fa-arrow-up"></i> 5.4%
+                        </span>
+                        <span class="text-text-light text-xs">vs. mês anterior</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 4 -->
+            <div class="bg-text-main text-white rounded-[24px] p-6 shadow-soft flex flex-col justify-between relative group">
+                <div class="absolute inset-0 bg-gradient-to-br from-text-main to-gray-800"></div>
+                <div class="flex justify-between items-start mb-4 relative z-10">
+                    <span class="text-gray-300 font-semibold text-sm">Churn Rate</span>
+                    <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-bold mb-2">2.8%</h3>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="bg-accent-purple/30 text-purple-200 px-2 py-0.5 rounded-full font-bold flex items-center gap-1 text-xs">
+                            <i class="fa-solid fa-minus"></i> 0.0%
+                        </span>
+                        <span class="text-gray-400 text-xs">vs. mês anterior</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Charts Area -->
+        <section id="charts-grid" class="flex flex-col lg:flex-row gap-5 h-[420px]">
+            
+            <!-- Left Chart (60%) -->
+            <div class="bg-surface rounded-[24px] shadow-soft p-6 flex-1 lg:w-[60%] flex flex-col relative">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-lg font-bold">Demanda vs. Oferta</h2>
+                        <p class="text-xs text-text-light mt-1">Pedidos vs. Mestres Disponíveis</p>
+                    </div>
+                    <div class="flex items-center gap-4 text-xs font-semibold">
+                        <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-primary"></span> Pedidos</div>
+                        <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-accent-purple"></span> Mestres</div>
+                        <button class="text-text-light hover:text-text-main ml-2"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                </div>
+                <div id="area-chart" class="flex-1 w-full h-full"></div>
+            </div>
+
+            <!-- Right Chart (40%) -->
+            <div class="bg-surface rounded-[24px] shadow-soft p-6 lg:w-[40%] flex flex-col relative">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-lg font-bold">Distribuição por Cidade</h2>
+                        <p class="text-xs text-text-light mt-1">Volume de operações ativas</p>
+                    </div>
+                    <button class="text-text-light hover:text-text-main"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <div id="donut-chart" class="flex-1 w-full h-full relative">
+                    <!-- Center Metric Overlay for Donut -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none mt-4">
+                        <span class="text-text-light text-xs font-semibold">Total</span>
+                        <span class="text-2xl font-bold text-text-main">12.4k</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Alerts Strip -->
+        <section id="recent-alerts" class="mt-2">
+            <div class="bg-surface rounded-full shadow-soft px-6 py-3 flex items-center justify-between border-l-4 border-accent-pink">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-accent-pink/20 text-pink-600 flex items-center justify-center">
+                        <i class="fa-solid fa-bell text-sm"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-text-main">Picos de demanda detectados em: <span class="text-primary">Ar Condicionado</span></span>
+                    <span class="text-xs text-text-light ml-2">Há 15 min</span>
+                </div>
+                <button class="text-xs font-bold text-primary hover:underline">Ver Detalhes</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function initializeCharts() {
+            // Area Chart Configuration
+            const areaTrace1 = {
+                x: ['01 Aug', '05 Aug', '10 Aug', '15 Aug', '20 Aug', '25 Aug', '30 Aug'],
+                y: [120, 150, 180, 140, 210, 250, 220],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Pedidos',
+                line: {
+                    color: '#0016dc',
+                    width: 3,
+                    shape: 'spline',
+                    smoothing: 1.3
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(0, 22, 220, 0.1)'
+            };
+
+            const areaTrace2 = {
+                x: ['01 Aug', '05 Aug', '10 Aug', '15 Aug', '20 Aug', '25 Aug', '30 Aug'],
+                y: [80, 100, 120, 110, 160, 180, 190],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Mestres',
+                line: {
+                    color: '#BDB2FF',
+                    width: 2,
+                    shape: 'spline',
+                    smoothing: 1.3
+                }
+            };
+
+            const areaLayout = {
+                margin: { t: 10, r: 10, b: 30, l: 30 },
+                showlegend: false,
+                plot_bgcolor: 'transparent',
+                paper_bgcolor: 'transparent',
+                xaxis: {
+                    showgrid: true,
+                    gridcolor: 'rgba(0,0,0,0.03)',
+                    tickfont: { color: '#8E92A3', size: 10 },
+                    zeroline: false
+                },
+                yaxis: {
+                    showgrid: true,
+                    gridcolor: 'rgba(0,0,0,0.03)',
+                    tickfont: { color: '#8E92A3', size: 10 },
+                    zeroline: false
+                },
+                hovermode: 'x unified'
+            };
+
+            Plotly.newPlot('area-chart', [areaTrace1, areaTrace2], areaLayout, {responsive: true, displayModeBar: false});
+
+            // Donut Chart Configuration
+            const donutData = [{
+                values: [55, 30, 15],
+                labels: ['Balneário Camboriú', 'Itajaí', 'Camboriú'],
+                type: 'pie',
+                hole: 0.75,
+                marker: {
+                    colors: ['#0016dc', '#BDB2FF', '#BEDCFA']
+                },
+                textinfo: 'none',
+                hoverinfo: 'label+percent'
+            }];
+
+            const donutLayout = {
+                margin: { t: 10, r: 10, b: 10, l: 10 },
+                showlegend: true,
+                legend: {
+                    orientation: 'h',
+                    y: -0.1,
+                    x: 0.5,
+                    xanchor: 'center',
+                    font: { size: 11, color: '#3F3F46' }
+                },
+                plot_bgcolor: 'transparent',
+                paper_bgcolor: 'transparent'
+            };
+
+            Plotly.newPlot('donut-chart', donutData, donutLayout, {responsive: true, displayModeBar: false});
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

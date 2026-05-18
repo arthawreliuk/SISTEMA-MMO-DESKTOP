@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloco de profissionais recomendados - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0016dc',
+                            navy: '#1A1A24',
+                            bg: '#F8F9FA'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 24px -4px rgba(0, 0, 0, 0.04)',
+                        'nav': '0 8px 32px -8px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-brand-navy antialiased min-h-screen flex">
+
+
+    <!-- Main Workspace -->
+    <main id="main-content" class="flex-1 pr-12 py-12 max-w-[1400px] mx-auto w-full">
+        
+        <!-- Header Section -->
+        <header id="header" class="mb-10">
+            <h1 class="text-[40px] leading-tight font-bold text-brand-navy mb-3 tracking-tight">Recomendações Inteligentes</h1>
+            <p class="text-gray-500 text-lg max-w-2xl">O algoritmo da MMO cruzou dados de qualidade, distância e preço para sugerir estes Mestres.</p>
+        </header>
+
+        <!-- Smart Filters -->
+        <section id="filters" class="mb-10 flex gap-3 overflow-x-auto pb-2">
+            <button class="px-6 py-3 bg-brand-blue text-white rounded-full font-medium text-sm whitespace-nowrap shadow-sm hover:opacity-90 transition-opacity">Tudo</button>
+            <button class="px-6 py-3 bg-white text-gray-600 border border-gray-100 rounded-full font-medium text-sm whitespace-nowrap shadow-sm hover:border-gray-200 transition-colors">Elétrica</button>
+            <button class="px-6 py-3 bg-white text-gray-600 border border-gray-100 rounded-full font-medium text-sm whitespace-nowrap shadow-sm hover:border-gray-200 transition-colors">Manutenção</button>
+            <button class="px-6 py-3 bg-white text-gray-600 border border-gray-100 rounded-full font-medium text-sm whitespace-nowrap shadow-sm hover:border-gray-200 transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-tag text-brand-blue"></i> Apenas Visita Grátis
+            </button>
+        </section>
+
+        <!-- Recommendations Grid -->
+        <section id="grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            
+            <!-- Card 1 -->
+            <article class="bg-white rounded-[24px] p-6 shadow-soft relative flex flex-col h-full border border-gray-50/50 hover:shadow-lg transition-shadow">
+                <div class="absolute top-6 right-6 bg-brand-blue text-white px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-bolt text-[10px]"></i> 98% Match
+                </div>
+                
+                <div class="flex items-start gap-4 mb-5 mt-2">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 shrink-0">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Roberto Silva" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-brand-navy leading-tight mb-1">Roberto Silva</h3>
+                        <div class="flex items-center gap-2 text-sm text-gray-500">
+                            <span class="bg-blue-50 text-brand-blue px-2 py-0.5 rounded-md font-medium text-xs">Eletricista</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-star text-yellow-400 text-xs"></i> 4.9 (120)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">Especialista em instalações residenciais e comerciais. Rápido, limpo e com garantia de serviço. Mais de 15 anos de experiência na região.</p>
+
+                <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between mb-6">
+                    <div class="text-sm text-gray-500"><i class="fa-solid fa-location-dot mr-1"></i> 2.4 km</div>
+                    <div class="text-sm font-semibold text-brand-navy">R$ 150/visita</div>
+                </div>
+
+                <button class="w-full py-3.5 rounded-full border border-brand-blue text-brand-blue font-semibold hover:bg-blue-50 transition-colors mt-auto">
+                    Ver Perfil
+                </button>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="bg-white rounded-[24px] p-6 shadow-soft relative flex flex-col h-full border border-gray-50/50 hover:shadow-lg transition-shadow">
+                <div class="absolute top-6 right-6 bg-brand-blue text-white px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-bolt text-[10px]"></i> 95% Match
+                </div>
+                
+                <div class="flex items-start gap-4 mb-5 mt-2">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 shrink-0">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Ana Costa" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-brand-navy leading-tight mb-1">Ana Costa</h3>
+                        <div class="flex items-center gap-2 text-sm text-gray-500">
+                            <span class="bg-blue-50 text-brand-blue px-2 py-0.5 rounded-md font-medium text-xs">Manutenção Geral</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-star text-yellow-400 text-xs"></i> 5.0 (85)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">Soluções rápidas para pequenos reparos em casa. Pintura, montagem de móveis e hidráulica básica com atendimento impecável.</p>
+
+                <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between mb-6">
+                    <div class="text-sm text-gray-500"><i class="fa-solid fa-location-dot mr-1"></i> 3.1 km</div>
+                    <div class="text-sm font-semibold text-brand-navy">Visita Grátis</div>
+                </div>
+
+                <button class="w-full py-3.5 rounded-full border border-brand-blue text-brand-blue font-semibold hover:bg-blue-50 transition-colors mt-auto">
+                    Ver Perfil
+                </button>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="bg-white rounded-[24px] p-6 shadow-soft relative flex flex-col h-full border border-gray-50/50 hover:shadow-lg transition-shadow">
+                <div class="absolute top-6 right-6 bg-brand-blue text-white px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-bolt text-[10px]"></i> 92% Match
+                </div>
+                
+                <div class="flex items-start gap-4 mb-5 mt-2">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 shrink-0">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Carlos Mendes" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-brand-navy leading-tight mb-1">Carlos Mendes</h3>
+                        <div class="flex items-center gap-2 text-sm text-gray-500">
+                            <span class="bg-blue-50 text-brand-blue px-2 py-0.5 rounded-md font-medium text-xs">Encanador</span>
+                            <span>•</span>
+                            <span><i class="fa-solid fa-star text-yellow-400 text-xs"></i> 4.8 (210)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">Especialista em detecção de vazamentos e instalações hidráulicas complexas. Equipamento de ponta para evitar quebra-quebra.</p>
+
+                <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between mb-6">
+                    <div class="text-sm text-gray-500"><i class="fa-solid fa-location-dot mr-1"></i> 5.0 km</div>
+                    <div class="text-sm font-semibold text-brand-navy">R$ 180/visita</div>
+                </div>
+
+                <button class="w-full py-3.5 rounded-full border border-brand-blue text-brand-blue font-semibold hover:bg-blue-50 transition-colors mt-auto">
+                    Ver Perfil
+                </button>
+            </article>
+
+        </section>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhe_edição da campanha - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        primaryHover: '#0012b3',
+                        textPrimary: '#1A1A24',
+                        textSecondary: '#64748B',
+                        surfaceWhite: '#FFFFFF',
+                        borderLight: '#E2E8F0',
+                        success: '#34D399',
+                        warning: '#FBBF24',
+                        danger: '#EF4444',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02)',
+                        'floating': '0 20px 40px rgba(0, 0, 0, 0.06), 0 8px 16px rgba(0, 0, 0, 0.04)',
+                        'inner-soft': 'inset 0 2px 4px rgba(0,0,0,0.02)',
+                    },
+                    borderRadius: {
+                        '24': '24px',
+                        'pill': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; min-height: 100vh; overflow-x: hidden; }
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Custom Toggle Switch styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans flex flex-col h-screen ">
+
+    <!-- Minimalist Top Bar -->
+    <header id="header" class="w-full bg-surfaceWhite border-b border-borderLight px-6 py-4 flex items-center justify-between z-50 shadow-sm shrink-0">
+        <button class="flex items-center space-x-2 text-textSecondary hover:text-textPrimary transition-colors font-medium">
+            <i class="fa-solid fa-arrow-left text-sm"></i>
+            <span>Voltar para Painel</span>
+        </button>
+        
+        <div class="flex flex-col items-center">
+            <h1 class="text-lg font-bold text-textPrimary tracking-tight">Detalhes da Campanha #492</h1>
+            <span class="text-xs text-textSecondary font-medium flex items-center gap-1.5 mt-0.5">
+                <span class="w-2 h-2 rounded-full bg-success"></span> Ativa
+            </span>
+        </div>
+        
+        <button class="text-textSecondary hover:text-danger transition-colors font-medium flex items-center space-x-2 px-4 py-2 rounded-pill hover:bg-red-50">
+            <i class="fa-regular fa-trash-can"></i>
+            <span>Descartar</span>
+        </button>
+    </header>
+
+    <!-- Main Content Area (Scrollable) -->
+    <main id="main-content" class="flex-1 w-full flex items-center justify-center p-6 md:p-10 lg:p-12 overflow-y-auto">
+        
+        <!-- Center Floating Workspace Container -->
+        <div id="workspace-container" class="w-full max-w-6xl bg-surfaceWhite rounded-24 shadow-floating flex flex-col lg:flex-row min-h-[700px] border border-borderLight/50">
+            
+            <!-- Left Column: Editable Parameters (60%) -->
+            <section id="editable-column" class="w-full lg:w-[60%] p-8 lg:p-12 flex flex-col relative z-10 bg-surfaceWhite">
+                
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-textPrimary mb-2">Ajustes de Veiculação</h2>
+                    <p class="text-textSecondary text-sm">Modifique os parâmetros da sua campanha em tempo real.</p>
+                </div>
+
+                <!-- Master Toggle -->
+                <div class="mb-10 bg-background p-6 rounded-24 border border-borderLight/60 flex items-center justify-between shadow-inner-soft">
+                    <div>
+                        <h3 class="text-lg font-bold text-textPrimary mb-1">Status da Campanha</h3>
+                        <p class="text-sm text-textSecondary">Pausar a campanha interromperá o gasto imediatamente.</p>
+                    </div>
+                    
+                    <div class="relative inline-block w-20 h-10 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="master-toggle" class="toggle-checkbox absolute block w-10 h-10 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 transition-transform duration-300 ease-in-out" checked/>
+                        <label for="master-toggle" class="toggle-label block h-10 rounded-full bg-borderLight cursor-pointer transition-colors duration-300 ease-in-out"></label>
+                    </div>
+                </div>
+
+                <!-- Form Fields -->
+                <div class="space-y-8 flex-1">
+                    <!-- Budget Input -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-semibold text-textPrimary">Novo Orçamento Diário</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                                <span class="text-textSecondary font-medium">R$</span>
+                            </div>
+                            <input type="text" value="150,00" class="block w-full pr-6 py-4 text-lg font-bold text-textPrimary bg-background border border-borderLight rounded-pill focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm outline-none placeholder:text-gray-400" placeholder="0,00">
+                        </div>
+                        <div class="flex items-start gap-2 mt-2 px-2 text-primary">
+                            <i class="fa-solid fa-sparkles text-sm mt-0.5"></i>
+                            <p class="text-sm font-medium">Aumentar o orçamento pode gerar até <span class="font-bold">1.5k visualizações extras</span> hoje.</p>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Input -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-semibold text-textPrimary">Prorrogar Data de Término</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                                <i class="fa-regular fa-calendar text-textSecondary"></i>
+                            </div>
+                            <input type="date" value="2024-12-31" class="block w-full pr-6 py-4 text-base font-medium text-textPrimary bg-background border border-borderLight rounded-pill focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Action -->
+                <div class="mt-12 pt-8 border-t border-borderLight flex justify-start">
+                    <button class="bg-primary hover:bg-primaryHover text-white px-8 py-4 rounded-pill font-bold text-base shadow-lg shadow-primary/30 transition-all hover:-translate-y-0.5 flex items-center gap-3">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                        Atualizar Campanha
+                    </button>
+                </div>
+            </section>
+
+            <!-- Right Column: Campaign Snapshot (40%) -->
+            <aside id="snapshot-column" class="w-full lg:w-[40%] bg-[#F4F5F7] p-8 lg:p-10 flex flex-col border-l border-borderLight/60">
+                
+                <div class="mb-8 flex items-center justify-between">
+                    <h3 class="text-sm font-bold text-textSecondary uppercase tracking-wider">Preview ao Vivo</h3>
+                    <span class="bg-white px-3 py-1 rounded-full text-xs font-bold text-textPrimary shadow-sm border border-borderLight flex items-center gap-1.5">
+                        <i class="fa-brands fa-instagram text-pink-600"></i> Stories
+                    </span>
+                </div>
+
+                <!-- Live Ad Preview Card -->
+                <div class="bg-white rounded-[20px] shadow-soft border border-borderLight/50 flex-1 flex flex-col mb-8 relative group">
+                    <!-- App Chrome Mock -->
+                    <div class="px-4 py-3 border-b border-borderLight flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gray-200 ">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Brand" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-xs font-bold text-textPrimary">SuaMarca</p>
+                            <p class="text-[10px] text-textSecondary">Patrocinado</p>
+                        </div>
+                        <i class="fa-solid fa-ellipsis text-textSecondary"></i>
+                    </div>
+                    
+                    <!-- Ad Creative -->
+                    <div class="relative w-full aspect-[9/16] bg-gray-100 ">
+                        <img src="https://images.unsplash.com/photo-1558769132-cb1fac0840f8?auto=format&fit=crop&q=80&w=800" alt="Ad Creative" class="w-full h-full object-cover">
+                        
+                        <!-- Overlay gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        
+                        <!-- Ad Copy & CTA -->
+                        <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+                            <p class="text-sm font-medium mb-4 line-clamp-2 shadow-sm">Descubra a nova coleção de verão. Ofertas exclusivas por tempo limitado!</p>
+                            <button class="w-full bg-white/20 backdrop-blur-md text-white border border-white/30 py-3 rounded-pill font-bold text-sm flex items-center justify-center gap-2 hover:bg-white/30 transition-colors">
+                                Compre Agora <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Dashboard Metrics -->
+                <div class="grid grid-cols-2 gap-4 mt-auto">
+                    <div class="bg-white p-5 rounded-24 shadow-sm border border-borderLight/50">
+                        <div class="flex items-center gap-2 text-textSecondary mb-2">
+                            <i class="fa-solid fa-wallet text-sm"></i>
+                            <span class="text-xs font-semibold">Gasto até agora</span>
+                        </div>
+                        <p class="text-xl font-bold text-textPrimary">R$ 340,00</p>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-24 shadow-sm border border-borderLight/50">
+                        <div class="flex items-center gap-2 text-textSecondary mb-2">
+                            <i class="fa-solid fa-hand-pointer text-sm"></i>
+                            <span class="text-xs font-semibold">Cliques</span>
+                        </div>
+                        <div class="flex items-end gap-2">
+                            <p class="text-xl font-bold text-textPrimary">142</p>
+                            <span class="text-xs font-bold text-success mb-1 flex items-center gap-0.5">
+                                <i class="fa-solid fa-arrow-trend-up"></i> +12%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

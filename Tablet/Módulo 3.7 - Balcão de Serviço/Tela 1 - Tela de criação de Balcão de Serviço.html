@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de criação de Balcão de Serviço - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-blue': '#0016dc',
+                        'dark-navy': '#1A1A24',
+                        'off-white': '#F8F9FA',
+                    },
+                    boxShadow: {
+                        'ambient': '0 20px 40px -10px rgba(0,0,0,0.05), 0 10px 20px -5px rgba(0,0,0,0.02)',
+                        'nav': '5px 0 30px rgba(0,0,0,0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { display: none; }
+        body { margin: 0; padding: 0; background-color: #F8F9FA; -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #e2e8f0;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 3rem;
+            height: 1.5rem;
+            background-color: #cbd5e1;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .toggle-label::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .toggle-checkbox:checked + .toggle-label::after {
+            transform: translateX(1.5rem);
+        }
+    </style>
+</head>
+<body class="text-dark-navy font-sans antialiased flex h-screen ">
+
+
+    <!-- Main Workspace Area -->
+    <main class="w-full h-full p-8 lg:p-12 overflow-y-auto">
+        
+        <div class="max-w-[1400px] mx-auto h-full flex flex-col gap-8">
+            
+            <!-- Header Intro -->
+            <header id="header_intro" class="flex flex-col gap-2 pt-4">
+                <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-dark-navy">Publicar no Balcão de Serviços</h1>
+                <p class="text-lg text-gray-500 font-medium">Receba múltiplos orçamentos de Mestres Verificados da região.</p>
+            </header>
+
+            <!-- Main Form Card -->
+            <div id="request_form_card" class="bg-white rounded-[24px] shadow-ambient w-full flex-1 min-h-[700px] flex flex-col relative border border-gray-100">
+                
+                <div class="flex flex-col lg:flex-row flex-1 p-8 lg:p-10 gap-12">
+                    
+                    <!-- Left Column (Text & Context) -->
+                    <div class="w-full lg:w-7/12 flex flex-col gap-8 pr-0 lg:pr-8 lg:border-r border-gray-100">
+                        
+                        <!-- Title Input -->
+                        <div class="flex flex-col gap-3">
+                            <label class="text-sm font-bold text-dark-navy uppercase tracking-wider">Título da Solicitação</label>
+                            <input type="text" placeholder="Ex: Reforma completa de banheiro 15m²" class="w-full h-14 bg-off-white rounded-full px-6 text-dark-navy placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 border border-transparent focus:border-brand-blue/30 transition-all font-medium text-lg">
+                        </div>
+
+                        <!-- Category Tags -->
+                        <div class="flex flex-col gap-3">
+                            <label class="text-sm font-bold text-dark-navy uppercase tracking-wider flex items-center justify-between">
+                                <span>Categoria Principal</span>
+                                <span class="text-xs text-gray-400 font-normal normal-case">Selecione até 2</span>
+                            </label>
+                            <div class="flex flex-wrap gap-3">
+                                <button class="px-6 py-3 rounded-full bg-brand-blue text-white font-semibold text-sm transition-all shadow-md shadow-brand-blue/20 flex items-center gap-2">
+                                    <i class="fa-solid fa-hammer"></i> Construção
+                                </button>
+                                <button class="px-6 py-3 rounded-full bg-off-white text-gray-600 hover:bg-gray-100 font-semibold text-sm transition-all border border-gray-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-plug"></i> Elétrica
+                                </button>
+                                <button class="px-6 py-3 rounded-full bg-off-white text-gray-600 hover:bg-gray-100 font-semibold text-sm transition-all border border-gray-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-faucet-drip"></i> Hidráulica
+                                </button>
+                                <button class="px-6 py-3 rounded-full bg-off-white text-gray-600 hover:bg-gray-100 font-semibold text-sm transition-all border border-gray-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-paint-roller"></i> Pintura
+                                </button>
+                                <button class="px-6 py-3 rounded-full bg-off-white text-gray-600 hover:bg-gray-100 font-semibold text-sm transition-all border border-gray-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-couch"></i> Marcenaria
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Details Textarea -->
+                        <div class="flex flex-col gap-3 flex-1">
+                            <label class="text-sm font-bold text-dark-navy uppercase tracking-wider">Detalhes da Obra/Serviço</label>
+                            <textarea placeholder="Descreva o que precisa ser feito com o máximo de detalhes possível. Inclua medidas, tipo de material desejado, e condições atuais do local..." class="w-full h-full min-h-[200px] bg-off-white rounded-[24px] p-6 text-dark-navy placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-blue/20 border border-transparent focus:border-brand-blue/30 transition-all font-medium resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (Media & Settings) -->
+                    <div id="media_upload_grid" class="w-full lg:w-5/12 flex flex-col gap-8">
+                        
+                        <!-- Upload Zone -->
+                        <div class="flex flex-col gap-3 h-[280px]">
+                            <label class="text-sm font-bold text-dark-navy uppercase tracking-wider">Fotos do Local (Opcional mas Recomendado)</label>
+                            <div class="w-full h-full border-2 border-dashed border-brand-blue/30 rounded-[24px] bg-brand-blue/5 flex flex-col items-center justify-center gap-4 cursor-pointer hover:bg-brand-blue/10 transition-all group">
+                                <div class="w-16 h-16 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fa-solid fa-cloud-arrow-up text-2xl"></i>
+                                </div>
+                                <div class="text-center px-6">
+                                    <p class="text-dark-navy font-bold text-lg mb-1">Clique ou arraste imagens</p>
+                                    <p class="text-gray-500 text-sm font-medium">Suporta JPG, PNG. Máx 5MB por foto.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Settings Toggles -->
+                        <div class="flex flex-col gap-6 bg-off-white p-6 rounded-[24px] border border-gray-100 mt-auto">
+                            <h3 class="text-sm font-bold text-dark-navy uppercase tracking-wider mb-2">Configurações do Serviço</h3>
+                            
+                            <!-- Toggle 1 -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-dark-navy font-bold">Fornecer materiais?</span>
+                                    <span class="text-gray-500 text-sm">O profissional deve incluir material no orçamento.</span>
+                                </div>
+                                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle1" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-px bg-gray-200"></div>
+
+                            <!-- Toggle 2 -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-dark-navy font-bold">Serviço Urgente?</span>
+                                    <span class="text-gray-500 text-sm">Destaca sua solicitação (taxa extra pode aplicar).</span>
+                                </div>
+                                <div class="relative inline-block w-12 mr-2 align-middle select-none">
+                                    <input type="checkbox" name="toggle" id="toggle2" checked class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                                    <label for="toggle2" class="toggle-label block h-6 rounded-full bg-brand-blue cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Action Footer Bar -->
+                <div id="action_footer_bar" class="w-full border-t border-gray-100 p-6 lg:px-10 bg-white/80 backdrop-blur-md flex items-center justify-between mt-auto">
+                    <div class="flex items-center gap-3 text-gray-500">
+                        <i class="fa-solid fa-shield-halved text-brand-blue"></i>
+                        <span class="text-sm font-medium">Seus dados estão protegidos</span>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <button class="px-8 py-4 rounded-full bg-off-white text-dark-navy font-bold text-base hover:bg-gray-100 transition-all">
+                            Salvar Rascunho
+                        </button>
+                        <button class="px-10 py-4 rounded-full bg-brand-blue text-white font-bold text-base shadow-lg shadow-brand-blue/30 hover:bg-blue-800 hover:shadow-brand-blue/40 transition-all transform hover:-translate-y-0.5 flex items-center gap-3">
+                            <span>Continuar para Exposição</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

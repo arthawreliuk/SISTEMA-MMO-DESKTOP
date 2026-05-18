@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão interna de conteúdo - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#1A1A24',
+                        trustblue: '#0016dc',
+                        offwhite: '#F8F9FA',
+                        purewhite: '#FFFFFF',
+                    },
+                    borderRadius: {
+                        '24': '24px',
+                        'pill': '9999px',
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'ambient-sm': '0 4px 20px -5px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        .drag-handle { cursor: grab; }
+        .drag-handle:active { cursor: grabbing; }
+    </style>
+</head>
+<body class="h-screen w-full flex font-sans antialiased text-navy">
+
+
+    <!-- Main Workspace Container -->
+    <main id="main-workspace" class="flex-1 h-[calc(100vh-32px)] my-4 mr-4 ml-4 bg-purewhite rounded-[32px] shadow-ambient flex border border-gray-100">
+        
+        <!-- Left Column: Syllabus Builder (40%) -->
+        <section id="syllabus-builder" class="w-[40%] h-full border-r border-gray-100 flex flex-col bg-purewhite relative z-10">
+            <!-- Header -->
+            <div class="p-8 pb-6 flex items-center justify-between border-b border-gray-50">
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">Estrutura da Trilha</h1>
+                    <p class="text-sm text-gray-500 mt-1">Módulo 1: Introdução ao UX Design</p>
+                </div>
+                <button class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-navy transition-colors">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+            </div>
+
+            <!-- Draggable List -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-3">
+                <!-- Lesson 1 (Completed) -->
+                <div class="group flex items-center gap-3 p-4 rounded-2xl bg-offwhite border border-transparent hover:border-gray-200 transition-all cursor-pointer">
+                    <div class="drag-handle text-gray-400 hover:text-gray-600 px-1">
+                        <i class="fa-solid fa-grip-vertical text-sm opacity-50"></i>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-check text-xs"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-semibold text-sm truncate">Fundamentos de Design UI</h3>
+                        <p class="text-xs text-gray-500 mt-0.5">Vídeo • 12 min</p>
+                    </div>
+                </div>
+
+                <!-- Lesson 2 (Active) -->
+                <div class="group flex items-center gap-3 p-4 rounded-2xl bg-purewhite border-2 border-trustblue shadow-ambient-sm transition-all cursor-pointer relative ">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-trustblue rounded-l-2xl"></div>
+                    <div class="drag-handle text-gray-400 hover:text-gray-600 px-1 ml-1">
+                        <i class="fa-solid fa-grip-vertical text-sm"></i>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-trustblue/10 text-trustblue flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-bold text-sm text-trustblue truncate">Teoria das Cores em Interfaces</h3>
+                        <p class="text-xs text-gray-500 mt-0.5">Rascunho • Editando</p>
+                    </div>
+                </div>
+
+                <!-- Lesson 3 -->
+                <div class="group flex items-center gap-3 p-4 rounded-2xl bg-offwhite border border-transparent hover:border-gray-200 transition-all cursor-pointer">
+                    <div class="drag-handle text-gray-400 hover:text-gray-600 px-1">
+                        <i class="fa-solid fa-grip-vertical text-sm opacity-50"></i>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-file-lines text-xs"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="font-semibold text-sm truncate">Tipografia e Hierarquia</h3>
+                        <p class="text-xs text-gray-500 mt-0.5">Artigo • Vazio</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Button -->
+            <div class="p-6 pt-2">
+                <button class="w-full py-4 rounded-pill border border-dashed border-gray-300 text-gray-500 font-semibold text-sm hover:border-trustblue hover:text-trustblue hover:bg-trustblue/5 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-plus"></i> Adicionar Aula
+                </button>
+            </div>
+        </section>
+
+        <!-- Right Column: Lesson Editor (60%) -->
+        <section id="lesson-editor" class="w-[60%] h-full bg-offwhite flex flex-col relative">
+            
+            <div class="flex-1 overflow-y-auto p-10">
+                <!-- Breadcrumb -->
+                <div class="flex items-center gap-2 text-xs font-semibold text-gray-400 mb-8">
+                    <span>Módulo 1</span>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    <span class="text-trustblue">Editando Aula</span>
+                </div>
+
+                <div class="max-w-2xl mx-auto space-y-8">
+                    <!-- Media Dropzone -->
+                    <div class="w-full aspect-video rounded-[24px] border-2 border-dashed border-trustblue/30 bg-trustblue/5 flex flex-col items-center justify-center relative group cursor-pointer hover:bg-trustblue/10 transition-colors">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="w-16 h-16 rounded-full bg-purewhite shadow-lg flex items-center justify-center text-trustblue mb-4 z-10">
+                            <i class="fa-solid fa-video text-xl"></i>
+                        </div>
+                        <p class="font-bold text-navy z-10">video_aula_02_cores.mp4</p>
+                        <div class="flex items-center gap-2 mt-2 z-10">
+                            <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                            <span class="text-sm font-semibold text-green-600">100% Processado</span>
+                        </div>
+                        <button class="absolute top-4 right-4 w-8 h-8 rounded-full bg-purewhite/80 backdrop-blur text-gray-500 hover:text-red-500 flex items-center justify-center z-20">
+                            <i class="fa-solid fa-trash text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Inputs Form -->
+                    <div class="space-y-6">
+                        <!-- Title Input -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 ml-4">Título da Aula</label>
+                            <input type="text" value="Teoria das Cores em Interfaces" class="w-full bg-purewhite border border-gray-200 rounded-pill px-6 py-4 text-sm font-bold text-navy focus:outline-none focus:border-trustblue focus:ring-4 focus:ring-trustblue/10 transition-all shadow-sm">
+                        </div>
+
+                        <!-- Description (Markdown) -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 ml-4 flex justify-between">
+                                <span>Descrição (Markdown)</span>
+                                <span class="text-trustblue cursor-pointer hover:underline normal-case font-semibold">Visualizar Preview</span>
+                            </label>
+                            <div class="bg-purewhite border border-gray-200 rounded-[24px] p-2 shadow-sm focus-within:border-trustblue focus-within:ring-4 focus-within:ring-trustblue/10 transition-all">
+                                <div class="flex items-center gap-2 border-b border-gray-100 pb-2 px-4 mb-2 text-gray-400">
+                                    <button class="hover:text-navy"><i class="fa-solid fa-bold"></i></button>
+                                    <button class="hover:text-navy"><i class="fa-solid fa-italic"></i></button>
+                                    <button class="hover:text-navy"><i class="fa-solid fa-link"></i></button>
+                                    <div class="w-px h-4 bg-gray-200 mx-2"></div>
+                                    <button class="hover:text-navy"><i class="fa-solid fa-list-ul"></i></button>
+                                    <button class="hover:text-navy"><i class="fa-solid fa-list-ol"></i></button>
+                                </div>
+                                <textarea rows="4" class="w-full bg-transparent border-none px-4 py-2 text-sm text-navy focus:outline-none resize-none leading-relaxed">Nesta aula, vamos explorar como as cores afetam a percepção do usuário e como criar paletas acessíveis e harmoniosas para interfaces digitais.
+
+Tópicos abordados:
+- Psicologia das cores
+- Contraste e acessibilidade (WCAG)
+- Criando um sistema de cores no Figma</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Tags Input -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 ml-4">Tags</label>
+                            <div class="w-full bg-purewhite border border-gray-200 rounded-pill px-2 py-2 flex items-center gap-2 shadow-sm focus-within:border-trustblue focus-within:ring-4 focus-within:ring-trustblue/10 transition-all">
+                                <span class="bg-trustblue/10 text-trustblue px-4 py-1.5 rounded-pill text-xs font-bold flex items-center gap-2">
+                                    UI Design <i class="fa-solid fa-xmark cursor-pointer hover:text-navy"></i>
+                                </span>
+                                <span class="bg-trustblue/10 text-trustblue px-4 py-1.5 rounded-pill text-xs font-bold flex items-center gap-2">
+                                    Cores <i class="fa-solid fa-xmark cursor-pointer hover:text-navy"></i>
+                                </span>
+                                <input type="text" placeholder="Adicionar tag..." class="flex-1 bg-transparent border-none px-2 text-sm focus:outline-none text-navy">
+                            </div>
+                        </div>
+
+                        <!-- Toggles -->
+                        <div class="bg-purewhite border border-gray-100 rounded-[24px] p-6 space-y-6 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-bold text-sm">Material Obrigatório</h4>
+                                    <p class="text-xs text-gray-500 mt-1">O aluno deve concluir esta aula para avançar.</p>
+                                </div>
+                                <button class="w-12 h-6 rounded-full bg-trustblue relative transition-colors cursor-pointer focus:outline-none">
+                                    <div class="w-4 h-4 rounded-full bg-purewhite absolute top-1 right-1 shadow-sm"></div>
+                                </button>
+                            </div>
+                            <div class="w-full h-px bg-gray-100"></div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-bold text-sm">Permitir Comentários</h4>
+                                    <p class="text-xs text-gray-500 mt-1">Alunos podem discutir abaixo do vídeo.</p>
+                                </div>
+                                <button class="w-12 h-6 rounded-full bg-gray-200 relative transition-colors cursor-pointer focus:outline-none">
+                                    <div class="w-4 h-4 rounded-full bg-purewhite absolute top-1 left-1 shadow-sm"></div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Footer Bar -->
+            <div class="h-24 bg-purewhite/80 backdrop-blur-md border-t border-gray-100 flex items-center justify-between px-10 flex-shrink-0 z-20">
+                <button class="text-gray-500 font-bold text-sm hover:text-navy transition-colors px-6 py-3">
+                    Descartar Alterações
+                </button>
+                <div class="flex items-center gap-4">
+                    <span class="text-xs text-gray-400 font-semibold">Salvo automaticamente há 2 min</span>
+                    <button class="bg-trustblue text-purewhite px-8 py-3.5 rounded-pill font-bold text-sm shadow-lg shadow-trustblue/30 hover:bg-blue-700 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Salvar e Publicar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

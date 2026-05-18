@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios por região_categoria_perfil - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textMain: '#1A1A24',
+                        textMuted: '#6B7280',
+                        borderLight: '#E5E7EB',
+                        cardBg: '#FFFFFF',
+                        hoverBg: '#F3F4F6'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 30px -5px rgba(0, 0, 0, 0.08)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D1D5DB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9CA3AF;
+        }
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Custom Checkbox */
+        .custom-checkbox input:checked + div {
+            background-color: #0016dc;
+            border-color: #0016dc;
+        }
+        .custom-checkbox input:checked + div svg {
+            display: block;
+        }
+    </style>
+</head>
+<body class="flex h-screen w-full bg-background text-textMain">
+
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col h-full px-8 py-6 relative z-10">
+        
+        <!-- Header Area -->
+        <header id="header" class="flex justify-between items-end mb-8 flex-shrink-0">
+            <div>
+                <h1 class="text-[32px] font-bold tracking-tight text-textMain mb-2">Construtor de Relatórios</h1>
+                <p class="text-textMuted text-base">Cruze dados de regiões, categorias e perfis para análises profundas.</p>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-textMuted"></i>
+                    <input type="text" placeholder="Search..." class="w-[300px] h-12 pr-4 rounded-full bg-cardBg border border-borderLight/50 shadow-sm focus:outline-none focus:border-primary/30 focus:ring-2 focus:ring-primary/10 text-sm transition-all">
+                </div>
+                
+                <button class="w-12 h-12 rounded-full bg-cardBg border border-borderLight/50 shadow-sm flex items-center justify-center text-textMuted hover:text-textMain transition-all relative">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                    <span class="absolute top-3 right-3 w-2 h-2 bg-red-500 rounded-full border-2 border-cardBg"></span>
+                </button>
+                
+                <div class="flex items-center gap-3 ml-2 cursor-pointer bg-cardBg py-1.5 .5 pr-4 rounded-full border border-borderLight/50 shadow-sm hover:bg-hoverBg transition-all">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-9 h-9 rounded-full object-cover">
+                    <i class="fa-solid fa-chevron-down text-xs text-textMuted"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Split Layout Workspace -->
+        <div class="flex flex-1 gap-6 min-h-0">
+            
+            <!-- Left Column (Query Builder - 35%) -->
+            <div id="query-builder" class="w-[35%] bg-cardBg rounded-4xl shadow-soft flex flex-col border border-borderLight/30 relative">
+                
+                <div class="p-6 border-b border-borderLight/40 bg-cardBg sticky top-0 z-10 flex justify-between items-center">
+                    <h2 class="text-lg font-bold text-textMain">Parâmetros</h2>
+                    <button class="text-sm text-textMuted hover:text-primary transition-colors font-medium">Limpar</button>
+                </div>
+                
+                <div class="p-6 flex-1 overflow-y-auto hide-scroll flex flex-col gap-8">
+                    
+                    <!-- Section 1: Estado/Cidade -->
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-sm font-semibold text-textMain uppercase tracking-wider">Localidade</h3>
+                            <span class="text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-md">2 selecionados</span>
+                        </div>
+                        
+                        <div class="relative">
+                            <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-textMuted text-sm"></i>
+                            <input type="text" placeholder="Buscar estado ou cidade..." class="w-full h-11 pr-4 rounded-xl bg-hoverBg border-none focus:ring-2 focus:ring-primary/20 text-sm transition-all">
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <button class="px-4 py-2 rounded-full border border-primary bg-primary/5 text-primary text-sm font-medium flex items-center gap-2 transition-all">
+                                São Paulo, SP <i class="fa-solid fa-xmark text-xs cursor-pointer hover:text-red-500"></i>
+                            </button>
+                            <button class="px-4 py-2 rounded-full border border-primary bg-primary/5 text-primary text-sm font-medium flex items-center gap-2 transition-all">
+                                Rio de Janeiro, RJ <i class="fa-solid fa-xmark text-xs cursor-pointer hover:text-red-500"></i>
+                            </button>
+                            <button class="px-4 py-2 rounded-full border border-borderLight text-textMuted hover:border-textMuted hover:text-textMain text-sm font-medium transition-all">
+                                Minas Gerais, MG
+                            </button>
+                            <button class="px-4 py-2 rounded-full border border-borderLight text-textMuted hover:border-textMuted hover:text-textMain text-sm font-medium transition-all">
+                                Paraná, PR
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="h-px w-full bg-borderLight/40"></div>
+                    
+                    <!-- Section 2: Categoria de Serviço -->
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-semibold text-textMain uppercase tracking-wider">Categoria de Serviço</h3>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="custom-checkbox flex items-center p-3 rounded-xl border border-primary bg-primary/5 cursor-pointer transition-all">
+                                <input type="checkbox" checked class="hidden">
+                                <div class="w-5 h-5 rounded border border-primary flex items-center justify-center mr-3 bg-primary text-white transition-all">
+                                    <svg class="w-3 h-3 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-sm font-medium text-primary">Elétrica</span>
+                            </label>
+                            
+                            <label class="custom-checkbox flex items-center p-3 rounded-xl border border-primary bg-primary/5 cursor-pointer transition-all">
+                                <input type="checkbox" checked class="hidden">
+                                <div class="w-5 h-5 rounded border border-primary flex items-center justify-center mr-3 bg-primary text-white transition-all">
+                                    <svg class="w-3 h-3 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-sm font-medium text-primary">Hidráulica</span>
+                            </label>
+                            
+                            <label class="custom-checkbox flex items-center p-3 rounded-xl border border-borderLight hover:border-textMuted cursor-pointer transition-all">
+                                <input type="checkbox" class="hidden">
+                                <div class="w-5 h-5 rounded border border-borderLight flex items-center justify-center mr-3 transition-all">
+                                    <svg class="w-3 h-3 hidden text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-sm font-medium text-textMain">Alvenaria</span>
+                            </label>
+                            
+                            <label class="custom-checkbox flex items-center p-3 rounded-xl border border-borderLight hover:border-textMuted cursor-pointer transition-all">
+                                <input type="checkbox" class="hidden">
+                                <div class="w-5 h-5 rounded border border-borderLight flex items-center justify-center mr-3 transition-all">
+                                    <svg class="w-3 h-3 hidden text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-sm font-medium text-textMain">Pintura</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="h-px w-full bg-borderLight/40"></div>
+                    
+                    <!-- Section 3: Perfil do Usuário -->
+                    <div class="space-y-4">
+                        <h3 class="text-sm font-semibold text-textMain uppercase tracking-wider">Perfil do Usuário</h3>
+                        
+                        <div class="flex bg-hoverBg p-1 rounded-xl">
+                            <button class="flex-1 py-2.5 rounded-lg bg-white shadow-sm text-sm font-bold text-textMain transition-all">
+                                Todos
+                            </button>
+                            <button class="flex-1 py-2.5 rounded-lg text-sm font-medium text-textMuted hover:text-textMain transition-all">
+                                Cliente
+                            </button>
+                            <button class="flex-1 py-2.5 rounded-lg text-sm font-medium text-textMuted hover:text-textMain transition-all">
+                                Profissional
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="p-6 border-t border-borderLight/40 bg-cardBg mt-auto sticky bottom-0">
+                    <button class="w-full h-14 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold text-base shadow-[0_8px_16px_-4px_rgba(0,22,220,0.3)] transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-bolt"></i> Gerar Visualização
+                    </button>
+                </div>
+                
+            </div>
+
+            <!-- Right Column (Report Preview - 65%) -->
+            <div id="report-preview" class="w-[65%] flex flex-col gap-6 min-h-0">
+                
+                <!-- Main Card Wrapper -->
+                <div class="bg-cardBg rounded-4xl shadow-soft border border-borderLight/30 flex flex-col flex-1 relative">
+                    
+                    <!-- Top: Header -->
+                    <div class="p-6 flex justify-between items-center border-b border-borderLight/40 flex-shrink-0">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="fa-solid fa-table-list text-lg"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-textMain">Pré-visualização do Relatório</h2>
+                        </div>
+                        
+                        <button class="px-5 py-2.5 rounded-full border border-borderLight hover:border-primary hover:text-primary text-textMain text-sm font-semibold flex items-center gap-2 transition-all shadow-sm">
+                            <i class="fa-solid fa-download"></i> Baixar CSV
+                        </button>
+                    </div>
+                    
+                    <!-- Middle: Data Table -->
+                    <div class="flex-1 overflow-auto hide-scroll p-6">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr>
+                                    <th class="pb-4 pt-2 px-4 text-xs font-bold text-textMuted uppercase tracking-wider border-b border-borderLight/50 whitespace-nowrap">Localidade <i class="fa-solid fa-sort ml-1 text-[10px]"></i></th>
+                                    <th class="pb-4 pt-2 px-4 text-xs font-bold text-textMuted uppercase tracking-wider border-b border-borderLight/50 whitespace-nowrap">Categoria <i class="fa-solid fa-sort ml-1 text-[10px]"></i></th>
+                                    <th class="pb-4 pt-2 px-4 text-xs font-bold text-textMuted uppercase tracking-wider border-b border-borderLight/50 whitespace-nowrap">Perfil <i class="fa-solid fa-sort ml-1 text-[10px]"></i></th>
+                                    <th class="pb-4 pt-2 px-4 text-xs font-bold text-textMuted uppercase tracking-wider border-b border-borderLight/50 whitespace-nowrap text-right">Volume <i class="fa-solid fa-sort ml-1 text-[10px]"></i></th>
+                                    <th class="pb-4 pt-2 px-4 text-xs font-bold text-textMuted uppercase tracking-wider border-b border-borderLight/50 whitespace-nowrap text-right">Receita <i class="fa-solid fa-sort ml-1 text-[10px]"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm">
+                                <tr class="hover:bg-hoverBg/50 transition-colors group">
+                                    <td class="py-4 px-4 font-semibold text-textMain rounded-l-xl">São Paulo, SP</td>
+                                    <td class="py-4 px-4 text-textMuted">Elétrica</td>
+                                    <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 text-xs font-bold">Todos</span></td>
+                                    <td class="py-4 px-4 text-right font-medium text-textMain">1,245</td>
+                                    <td class="py-4 px-4 text-right font-bold text-textMain rounded-r-xl">R$ 345.2K</td>
+                                </tr>
+                                <tr class="bg-hoverBg/30 hover:bg-hoverBg/60 transition-colors group">
+                                    <td class="py-4 px-4 font-semibold text-textMain rounded-l-xl">São Paulo, SP</td>
+                                    <td class="py-4 px-4 text-textMuted">Hidráulica</td>
+                                    <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 text-xs font-bold">Todos</span></td>
+                                    <td class="py-4 px-4 text-right font-medium text-textMain">982</td>
+                                    <td class="py-4 px-4 text-right font-bold text-textMain rounded-r-xl">R$ 210.8K</td>
+                                </tr>
+                                <tr class="hover:bg-hoverBg/50 transition-colors group">
+                                    <td class="py-4 px-4 font-semibold text-textMain rounded-l-xl">Rio de Janeiro, RJ</td>
+                                    <td class="py-4 px-4 text-textMuted">Elétrica</td>
+                                    <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 text-xs font-bold">Todos</span></td>
+                                    <td class="py-4 px-4 text-right font-medium text-textMain">854</td>
+                                    <td class="py-4 px-4 text-right font-bold text-textMain rounded-r-xl">R$ 185.4K</td>
+                                </tr>
+                                <tr class="bg-hoverBg/30 hover:bg-hoverBg/60 transition-colors group">
+                                    <td class="py-4 px-4 font-semibold text-textMain rounded-l-xl">Rio de Janeiro, RJ</td>
+                                    <td class="py-4 px-4 text-textMuted">Hidráulica</td>
+                                    <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 text-xs font-bold">Todos</span></td>
+                                    <td class="py-4 px-4 text-right font-medium text-textMain">721</td>
+                                    <td class="py-4 px-4 text-right font-bold text-textMain rounded-r-xl">R$ 142.1K</td>
+                                </tr>
+                                <tr class="hover:bg-hoverBg/50 transition-colors group">
+                                    <td class="py-4 px-4 font-semibold text-textMain rounded-l-xl">Campinas, SP</td>
+                                    <td class="py-4 px-4 text-textMuted">Elétrica</td>
+                                    <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 text-xs font-bold">Todos</span></td>
+                                    <td class="py-4 px-4 text-right font-medium text-textMain">430</td>
+                                    <td class="py-4 px-4 text-right font-bold text-textMain rounded-r-xl">R$ 95.2K</td>
+                                </tr>
+                                <tr class="bg-hoverBg/30 hover:bg-hoverBg/60 transition-colors group">
+                                    <td class="py-4 px-4 font-semibold text-textMain rounded-l-xl">Niterói, RJ</td>
+                                    <td class="py-4 px-4 text-textMuted">Hidráulica</td>
+                                    <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 text-xs font-bold">Todos</span></td>
+                                    <td class="py-4 px-4 text-right font-medium text-textMain">312</td>
+                                    <td class="py-4 px-4 text-right font-bold text-textMain rounded-r-xl">R$ 68.5K</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Bottom: Chart Area -->
+                    <div class="p-6 border-t border-borderLight/40 bg-cardBg flex-shrink-0">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-base font-bold text-textMain">Receita por Categoria (Top Regiões)</h3>
+                            <div class="flex items-center gap-4 text-xs font-medium text-textMuted">
+                                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-primary"></span> Elétrica</div>
+                                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-[#E5E7EB]"></span> Hidráulica</div>
+                            </div>
+                        </div>
+                        <div id="bar-chart" class="h-[220px] w-full"></div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <script>
+        function initializeCharts() {
+            try {
+                const chartData = [
+                    {
+                        x: ['SP Capital', 'RJ Capital', 'Campinas', 'Niterói', 'Guarulhos'],
+                        y: [345.2, 185.4, 95.2, 54.1, 42.8],
+                        name: 'Elétrica',
+                        type: 'bar',
+                        marker: {
+                            color: '#0016dc',
+                            border: { width: 0 }
+                        },
+                        width: 0.3
+                    },
+                    {
+                        x: ['SP Capital', 'RJ Capital', 'Campinas', 'Niterói', 'Guarulhos'],
+                        y: [210.8, 142.1, 45.6, 68.5, 31.2],
+                        name: 'Hidráulica',
+                        type: 'bar',
+                        marker: {
+                            color: '#E5E7EB',
+                            border: { width: 0 }
+                        },
+                        width: 0.3
+                    }
+                ];
+
+                const layout = {
+                    barmode: 'group',
+                    bargap: 0.2,
+                    bargroupgap: 0.1,
+                    margin: { t: 10, r: 10, b: 30, l: 40 },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent',
+                    showlegend: false,
+                    xaxis: {
+                        showgrid: false,
+                        tickfont: { family: 'Plus Jakarta Sans', color: '#6B7280', size: 12 },
+                        tickangle: 0
+                    },
+                    yaxis: {
+                        showgrid: true,
+                        gridcolor: 'rgba(229, 231, 235, 0.5)',
+                        gridwidth: 1,
+                        zeroline: false,
+                        tickfont: { family: 'Plus Jakarta Sans', color: '#6B7280', size: 12 },
+                        tickprefix: 'R$ ',
+                        ticksuffix: 'k'
+                    },
+                    hovermode: 'closest'
+                };
+
+                const config = {
+                    responsive: true,
+                    displayModeBar: false,
+                    displaylogo: false
+                };
+
+                Plotly.newPlot('bar-chart', chartData, layout, config);
+            } catch(e) {
+                console.error('Error initializing chart:', e);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1200);
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

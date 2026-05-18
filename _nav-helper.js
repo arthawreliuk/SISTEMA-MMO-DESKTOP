@@ -1,3 +1,4 @@
+// brainiac-allow-large reason="Single-domain prototype helper: nav standardization, responsive rail, footer standardization and FAB all belong in one injected script"
 (function () {
   'use strict';
 
@@ -152,24 +153,94 @@
       border-radius: 99px;
       cursor: pointer;
     }
+
+    /* ── Tablet floating rail (601–1023px) ───────────────────── */
+    #mmo-tablet-rail {
+      display: none;
+      position: fixed;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 64px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(20px) saturate(200%);
+      -webkit-backdrop-filter: blur(20px) saturate(200%);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 28px;
+      box-shadow: 0 8px 40px rgba(26,26,36,.13), 0 2px 8px rgba(26,26,36,.06),
+                  inset 0 1px 0 rgba(255,255,255,.9);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      gap: 4px;
+    }
+    .mmo-tr-item {
+      width: 44px; height: 50px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 14px;
+      text-decoration: none; color: #9ca3af;
+      transition: background .15s, color .15s, transform .12s;
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mmo-tr-item:hover {
+      background: rgba(240,244,255,.85);
+      color: #1a1a24;
+      transform: scale(1.06);
+    }
+    .mmo-tr-item.on {
+      background: rgba(0,22,220,.08);
+      color: #0016dc;
+    }
+    .mmo-tr-item i { font-size: 21px; }
+    .mmo-tr-item.on::after {
+      content: '';
+      position: absolute; right: 4px; top: 4px;
+      width: 6px; height: 6px;
+      background: #0016dc; border-radius: 50%;
+    }
+    .mmo-tr-item[data-t]::before {
+      content: attr(data-t);
+      position: absolute; left: calc(100% + 12px); top: 50%;
+      transform: translateY(-50%);
+      background: rgba(26,26,36,.88);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 12px; font-weight: 600;
+      padding: 6px 12px; border-radius: 10px;
+      white-space: nowrap; pointer-events: none;
+      opacity: 0; transition: opacity .15s; z-index: 10000;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -.01em;
+    }
+    .mmo-tr-item[data-t]:hover::before { opacity: 1; }
+
+    @media (min-width: 601px) and (max-width: 1023px) {
+      #mmo-std-header  { display: none !important; }
+      #mmo-tablet-rail { display: flex !important; }
+      #mmo-hamburger   { display: none !important; }
+      #mmo-mobile-menu { display: none !important; }
+      body { padding-left: 92px !important; padding-top: 0 !important; }
+    }
   `;
   document.head.appendChild(style);
 
   /* ── Standardize navbar (PT-BR, identical across all pages) ── */
   const NAV_ITEMS = [
-    { label: 'Início',
+    { label: 'Início',        icon: 'fa-house',
       href: '../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 1 - Tela inicial de busca.html',
       keys: ['3.4', 'vitrine', 'busca e descoberta'] },
-    { label: 'Pedidos',
+    { label: 'Pedidos',       icon: 'fa-clipboard-list',
       href: '../Módulo 3.6 - Solicitações e Oportunidades/Tela 3 - Tela de histórico de solicitações.html',
       keys: ['3.6', '3.7', 'solicita', 'balcão'] },
-    { label: 'Mensagens',
+    { label: 'Mensagens',     icon: 'fa-comment-dots',
       href: '../Módulo 3.8 - Chat Interno e Inbox/Tela 1 - Inbox do cliente.html',
       keys: ['3.8', 'chat', 'inbox'] },
-    { label: 'Oportunidades',
+    { label: 'Oportunidades', icon: 'fa-bolt',
       href: '../Módulo 3.6 - Solicitações e Oportunidades/Tela 6 - Tela de oportunidades elegíveis.html',
       keys: ['oportunidade'] },
-    { label: 'Perfil',
+    { label: 'Perfil',        icon: 'fa-user',
       href: '../Módulo 3.3 - Cadastro e Perfil Profissional/Tela 1 - Edição do perfil profissional.html',
       keys: ['3.3', '3.1', 'cadastro', 'acesso', 'onboarding', '3.2'] },
   ];
@@ -209,6 +280,7 @@
     const top    = pos === 'fixed' || pos === 'sticky' ? '0' : cs.top;
     const zIndex = parseInt(cs.zIndex) >= 100 ? cs.zIndex : '1000';
 
+    target.id = 'mmo-std-header';
     target.setAttribute('style',
       `position:${pos};top:${top};left:0;right:0;` +
       `background:#ffffff !important;` +
@@ -217,7 +289,7 @@
       `border-radius:0 !important;` +
       `height:72px !important;min-height:72px !important;` +
       `z-index:${zIndex};` +
-      `display:flex !important;align-items:center;justify-content:center;` +
+      `display:flex;align-items:center;justify-content:center;` +
       `padding:0 !important;margin:0 !important;` +
       `width:100%;max-width:100%;box-sizing:border-box;`
     );
@@ -265,9 +337,20 @@
       menu.innerHTML = NAV_ITEMS.map(item => {
         const active = item.keys.some(k => path.includes(k));
         return `<a href="${item.href}" class="${active ? 'active' : ''}">${item.label}</a>`;
-      }).join('') +
-        `<a href="../Módulo 3.3 - Cadastro e Perfil Profissional/Tela 1 - Edição do perfil profissional.html">Perfil</a>`;
+      }).join('');
       document.body.appendChild(menu);
+    }
+
+    /* tablet floating rail */
+    if (!document.getElementById('mmo-tablet-rail')) {
+      const tRail = document.createElement('nav');
+      tRail.id = 'mmo-tablet-rail';
+      tRail.innerHTML = NAV_ITEMS.map(item => {
+        const active = item.keys.some(k => path.includes(k));
+        return `<a href="${item.href}" class="mmo-tr-item${active ? ' on' : ''}" data-t="${item.label}">` +
+               `<i class="fa-solid ${item.icon}"></i></a>`;
+      }).join('');
+      document.body.prepend(tRail);
     }
 
     /* hamburger toggle */
@@ -278,6 +361,71 @@
     }
   }
   standardizeNav();
+
+  /* ── Standardize footer ──────────────────────────────────── */
+  function _footerCol(title, links) {
+    const ls = links.map(l =>
+      `<a href="#" style="font-size:14px;color:#6b7280;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;" ` +
+      `onmouseover="this.style.color='#0016dc'" onmouseout="this.style.color='#6b7280'">${l}</a>`
+    ).join('');
+    return '<div style="display:flex;flex-direction:column;gap:8px;">' +
+      `<h4 style="font-size:11px;font-weight:700;color:#1a1a24;letter-spacing:.07em;text-transform:uppercase;` +
+           `margin:0 0 8px;font-family:'Plus Jakarta Sans',sans-serif;">${title}</h4>` +
+      ls + '</div>';
+  }
+
+  function _socialIcon(icon) {
+    return `<a href="#" style="color:#9ca3af;font-size:18px;line-height:1;text-decoration:none;" ` +
+           `onmouseover="this.style.color='#0016dc'" onmouseout="this.style.color='#9ca3af'">` +
+           `<i class="fa-brands ${icon}"></i></a>`;
+  }
+
+  function standardizeFooter() {
+    const body = document.body;
+    if (body.classList.contains('h-screen') && body.classList.contains('overflow-hidden')) return;
+
+    const inner =
+      '<div style="max-width:1200px;margin:0 auto;padding:52px 32px 32px;box-sizing:border-box;">' +
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;margin-bottom:44px;">' +
+          '<div style="display:flex;flex-direction:column;gap:14px;max-width:260px;">' +
+            '<a href="../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 1 - Tela inicial de busca.html" style="display:inline-block;">' +
+              '<img src="../assets/logo-mmo.png" style="height:34px;width:auto;" alt="MMO">' +
+            '</a>' +
+            '<p style="font-size:14px;color:#6b7280;line-height:1.65;font-family:\'Plus Jakarta Sans\',sans-serif;margin:0;">' +
+              'Conectamos clientes a profissionais verificados em todo o Brasil.' +
+            '</p>' +
+          '</div>' +
+          '<div style="display:flex;gap:48px;flex-wrap:wrap;">' +
+            _footerCol('Plataforma', ['Como funciona','Para profissionais','Para empresas','Planos e preços']) +
+            _footerCol('Suporte',    ['Central de Ajuda','Fale Conosco','Blog MMO']) +
+            _footerCol('Legal',      ['Termos de Uso','Privacidade','Cookies']) +
+          '</div>' +
+        '</div>' +
+        '<div style="border-top:1px solid #f0f0f0;padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">' +
+          '<p style="font-size:13px;color:#9ca3af;margin:0;font-family:\'Plus Jakarta Sans\',sans-serif;">' +
+            '© 2026 Mestre da Mão de Obra. Todos os direitos reservados.' +
+          '</p>' +
+          '<div style="display:flex;gap:16px;align-items:center;">' +
+            _socialIcon('fa-instagram') + _socialIcon('fa-linkedin-in') + _socialIcon('fa-facebook-f') +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    let footer = document.querySelector('footer#footer');
+    if (footer) {
+      footer.id = 'mmo-std-footer';
+      footer.setAttribute('style', 'background:#fff;border-top:1px solid #f0f0f0;margin-top:auto;width:100%;box-sizing:border-box;');
+      footer.className = '';
+      footer.innerHTML = inner;
+    } else {
+      footer = document.createElement('footer');
+      footer.id = 'mmo-std-footer';
+      footer.setAttribute('style', 'background:#fff;border-top:1px solid #f0f0f0;margin-top:auto;width:100%;box-sizing:border-box;');
+      footer.innerHTML = inner;
+      document.body.appendChild(footer);
+    }
+  }
+  standardizeFooter();
 
   /* ── Highlight all nav elements ─────────────────────────── */
   let highlightsOn = true;

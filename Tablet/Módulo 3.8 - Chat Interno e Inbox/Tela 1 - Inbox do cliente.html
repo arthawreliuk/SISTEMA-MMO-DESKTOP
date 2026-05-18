@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox do cliente - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0016dc',
+                        text: '#1A1A24',
+                        background: '#F8F9FA',
+                        surface: '#FFFFFF',
+                        border: '#E5E7EB',
+                        muted: '#6B7280',
+                        accent: '#E6E8FB'
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'floating': '0 10px 40px -10px rgba(0, 22, 220, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+    </style>
+</head>
+<body class="bg-background min-h-screen text-text antialiased flex">
+
+
+    <!-- Main Workspace -->
+    <main id="main-workspace" class="flex-1 p-6 h-screen flex gap-6 ">
+        
+        <!-- Left Column: Inbox List (35%) -->
+        <section id="inbox-list" class="w-[35%] bg-surface rounded-[24px] shadow-soft flex flex-col border border-border/50">
+            <!-- Header & Search -->
+            <div class="p-6 border-b border-border/50 bg-white/80 backdrop-blur-sm z-10">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-bold text-text">Mensagens</h1>
+                    <button class="w-10 h-10 rounded-full bg-accent text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                </div>
+                
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
+                    <input type="text" placeholder="Buscar mensagens..." class="w-full bg-background border-none rounded-full py-3 pr-4 text-sm focus:ring-2 focus:ring-primary/20 focus:outline-none placeholder-muted text-text transition-shadow">
+                </div>
+                
+                <div class="flex gap-2 mt-4 overflow-x-auto pb-1">
+                    <span class="px-4 py-1.5 rounded-full bg-text text-white text-xs font-medium cursor-pointer whitespace-nowrap">Todas</span>
+                    <span class="px-4 py-1.5 rounded-full bg-background text-muted hover:bg-border text-xs font-medium cursor-pointer whitespace-nowrap transition-colors">Não lidas</span>
+                    <span class="px-4 py-1.5 rounded-full bg-background text-muted hover:bg-border text-xs font-medium cursor-pointer whitespace-nowrap transition-colors">Orçamentos</span>
+                </div>
+            </div>
+
+            <!-- Chat List -->
+            <div class="flex-1 overflow-y-auto p-3 space-y-1">
+                
+                <!-- Chat Item 1 -->
+                <div class="p-3 rounded-[16px] hover:bg-background cursor-pointer transition-colors flex gap-3 items-start relative group">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-text truncate">Mariana Silva</h3>
+                            <span class="text-[11px] text-muted whitespace-nowrap">10:42 AM</span>
+                        </div>
+                        <p class="text-sm text-muted truncate">Olá, gostaria de saber se vocês fazem...</p>
+                        <div class="mt-2 flex gap-1">
+                            <span class="px-2 py-0.5 rounded-full bg-blue-50 text-primary border border-blue-100 text-[10px] font-medium">Novo Contato</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item 2 (Grouped Highlight) -->
+                <div class="p-3 rounded-[16px] bg-accent/30 border border-primary/20 cursor-pointer transition-colors flex gap-3 items-start relative">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary border-2 border-white shadow-sm">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-text truncate">Projeto: Reforma</h3>
+                            <span class="text-[11px] text-primary font-medium">Ontem</span>
+                        </div>
+                        <p class="text-sm text-text font-medium truncate">Carlos Mestre: O material chega na...</p>
+                        <div class="mt-2 flex gap-1">
+                            <span class="px-2 py-0.5 rounded-full bg-yellow-50 text-yellow-700 border border-yellow-100 text-[10px] font-medium">Em Andamento</span>
+                            <span class="px-2 py-0.5 rounded-full bg-gray-100 text-muted text-[10px] font-medium">3 pessoas</span>
+                        </div>
+                    </div>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary"></div>
+                </div>
+
+                <!-- Chat Item 3 -->
+                <div class="p-3 rounded-[16px] hover:bg-background cursor-pointer transition-colors flex gap-3 items-start">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-text truncate">Roberto Alves</h3>
+                            <span class="text-[11px] text-muted whitespace-nowrap">Segunda</span>
+                        </div>
+                        <p class="text-sm text-muted truncate">Perfeito, aguardo o orçamento final.</p>
+                        <div class="mt-2 flex gap-1">
+                            <span class="px-2 py-0.5 rounded-full bg-green-50 text-green-700 border border-green-100 text-[10px] font-medium">Em Negociação</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Item 4 -->
+                <div class="p-3 rounded-[16px] hover:bg-background cursor-pointer transition-colors flex gap-3 items-start">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-semibold text-text truncate">Clínica Bem Estar</h3>
+                            <span class="text-[11px] text-muted whitespace-nowrap">12 Fev</span>
+                        </div>
+                        <p class="text-sm text-muted truncate">Obrigado pelo serviço prestado.</p>
+                        <div class="mt-2 flex gap-1">
+                            <span class="px-2 py-0.5 rounded-full bg-gray-100 text-muted border border-gray-200 text-[10px] font-medium">Concluído</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column: Empty State (65%) -->
+        <section id="empty-state" class="w-[65%] bg-surface rounded-[24px] shadow-soft flex flex-col items-center justify-center p-12 border border-border/50 relative ">
+            <!-- Decorative Background Elements (Subtle) -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/5 to-transparent rounded-bl-full pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-primary/5 to-transparent rounded-tr-full pointer-events-none"></div>
+
+            <div class="max-w-md text-center z-10">
+                <!-- Minimalist SVG Illustration -->
+                <div class="mb-10 relative flex justify-center h-48 w-full">
+                   <div class="absolute w-24 h-24 bg-primary/10 rounded-[24px] transform -rotate-6 top-4 left-1/2 -ml-20"></div>
+                   <div class="absolute w-24 h-24 bg-background rounded-[24px] shadow-sm transform rotate-6 top-10 left-1/2 ml-4 border border-border"></div>
+                   <div class="absolute w-16 h-16 bg-primary rounded-full shadow-floating top-20 left-1/2 -ml-8 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-comments text-2xl"></i>
+                   </div>
+                   
+                   <!-- Decorative Dots -->
+                   <div class="absolute w-2 h-2 rounded-full bg-primary/40 top-8 right-12"></div>
+                   <div class="absolute w-3 h-3 rounded-full bg-muted/20 bottom-12 left-10"></div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-text mb-4 tracking-tight">Selecione uma conversa</h2>
+                <p class="text-muted text-lg leading-relaxed">Acompanhe orçamentos, alinhe detalhes e feche serviços com os Mestres de Camboriú por aqui.</p>
+                
+                <button class="mt-8 px-6 py-3 bg-white border border-border rounded-full text-text font-medium hover:bg-background transition-colors shadow-sm inline-flex items-center gap-2">
+                    <i class="fa-solid fa-plus text-primary"></i> Nova Mensagem
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

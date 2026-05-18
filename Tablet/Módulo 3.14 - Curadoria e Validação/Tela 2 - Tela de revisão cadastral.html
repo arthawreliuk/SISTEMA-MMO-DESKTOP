@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de revisão cadastral - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#6B7280',
+                        cardBg: '#FFFFFF',
+                        borderLight: '#E5E7EB',
+                        tagBg: '#F3F4F6',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'floating': '0 20px 40px -10px rgba(0, 22, 220, 0.15)',
+                        'nav': '5px 0 30px rgba(0,0,0,0.03)',
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        'pill': '9999px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #0016dc;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #0016dc;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #E5E7EB;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 40px;
+            height: 24px;
+            background-color: #E5E7EB;
+            border-radius: 9999px;
+            transition: all 0.3s;
+        }
+        .toggle-dot {
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        .toggle-checkbox:checked ~ .toggle-dot {
+            transform: translateX(16px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased h-screen flex selection:bg-primary selection:text-white">
+
+
+    <!-- Main Content Workspace -->
+    <main id="workspace" class="flex-1 h-screen overflow-y-auto px-8 py-6 flex flex-col relative">
+        
+        <!-- Header Area -->
+        <header id="page-header" class="flex justify-between items-end mb-8 shrink-0">
+            <div>
+                <p class="text-textMuted font-medium text-sm mb-2 tracking-wide uppercase">Profile Inspection</p>
+                <h1 class="text-4xl font-extrabold text-textDark tracking-tight">Auditoria de Cadastro: Roberto Alves</h1>
+            </div>
+            <div class="flex flex-col items-end">
+                <span class="text-sm font-bold text-primary mb-2">Passo 1 de 2: Dados de Texto</span>
+                <div class="flex gap-1.5">
+                    <div class="w-12 h-2 bg-primary rounded-pill"></div>
+                    <div class="w-12 h-2 bg-gray-200 rounded-pill"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Audit Form Card -->
+        <div id="audit-card" class="bg-card rounded-4xl shadow-soft flex-1 flex flex-col border border-borderLight/50">
+            
+            <!-- Internal Layout Split -->
+            <div class="flex flex-1 ">
+                
+                <!-- Left Column (Context & Bio - 40%) -->
+                <div id="col-bio" class="w-[40%] bg-gray-50/50 border-r border-borderLight p-10 flex flex-col overflow-y-auto">
+                    
+                    <!-- Profile Header -->
+                    <div class="flex items-center gap-6 mb-10">
+                        <div class="relative">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Roberto Alves" class="w-24 h-24 rounded-full object-cover shadow-sm border-4 border-white">
+                            <div class="absolute bottom-0 right-0 w-6 h-6 bg-green-500 border-2 border-white rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-check text-white text-[10px]"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-textDark mb-1">Roberto Alves</h2>
+                            <p class="text-textMuted text-sm font-medium">ID: #MMO-99281-A</p>
+                            <p class="text-xs text-textMuted mt-1"><i class="fa-regular fa-clock mr-1"></i> Registrado há 2 dias</p>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="mb-10">
+                        <h3 class="text-sm font-bold text-textDark uppercase tracking-wider mb-4">Serviços Selecionados</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-tagBg text-textDark text-sm font-semibold rounded-pill border border-gray-200">Consultoria VIP</span>
+                            <span class="px-4 py-2 bg-tagBg text-textDark text-sm font-semibold rounded-pill border border-gray-200">Mentoria 1:1</span>
+                            <span class="px-4 py-2 bg-tagBg text-textDark text-sm font-semibold rounded-pill border border-gray-200">Análise de Perfil</span>
+                        </div>
+                    </div>
+
+                    <!-- Bio Text Area -->
+                    <div class="flex-1 flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-sm font-bold text-textDark uppercase tracking-wider">Sobre Mim (Bio)</h3>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-semibold text-textMuted">Verificado</span>
+                                <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle-bio" id="toggle-bio" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer opacity-0"/>
+                                    <label for="toggle-bio" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                    <div class="toggle-dot absolute block w-5 h-5 rounded-full bg-white border-2 border-gray-300 pointer-events-none"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl border border-borderLight shadow-sm flex-1 overflow-y-auto text-textDark leading-relaxed text-[15px]">
+                            Olá! Sou Roberto, especialista em estratégias digitais com mais de 10 anos de experiência no mercado corporativo. Ajudo profissionais a escalarem seus negócios através de metodologias ágeis e posicionamento de marca. 
+                            <br><br>
+                            Minha abordagem é direta e focada em resultados reais. Já atuei em grandes corporações e agora dedico meu tempo a mentorias exclusivas para líderes que buscam o próximo nível em suas carreiras.
+                            <br><br>
+                            Valores: Transparência, execução rápida e foco no cliente.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Hard Data - 60%) -->
+                <div id="col-data" class="w-[60%] p-10 flex flex-col overflow-y-auto bg-white">
+                    <h3 class="text-xl font-bold text-textDark mb-8 border-b border-borderLight pb-4">Dados Estruturados</h3>
+
+                    <div class="space-y-8">
+                        
+                        <!-- Field Group 1: CPF -->
+                        <div class="group bg-gray-50/30 p-5 rounded-2xl border border-transparent hover:border-borderLight transition-colors">
+                            <div class="flex justify-between items-start mb-2">
+                                <label class="text-xs font-bold text-textMuted uppercase tracking-wider">Documento (CPF)</label>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-semibold text-primary">Mark as Verified</span>
+                                    <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                        <input type="checkbox" name="toggle-cpf" id="toggle-cpf" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer opacity-0"/>
+                                        <label for="toggle-cpf" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                        <div class="toggle-dot absolute block w-5 h-5 rounded-full bg-white border-2 border-gray-300 pointer-events-none"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-regular fa-id-card text-gray-400 text-lg w-6"></i>
+                                <p class="text-lg font-semibold text-textDark tracking-wide">123.456.789-00</p>
+                            </div>
+                        </div>
+
+                        <!-- Field Group 2: Full Address -->
+                        <div class="group bg-gray-50/30 p-5 rounded-2xl border border-transparent hover:border-borderLight transition-colors">
+                            <div class="flex justify-between items-start mb-2">
+                                <label class="text-xs font-bold text-textMuted uppercase tracking-wider">Endereço Completo</label>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-semibold text-textMuted">Mark as Verified</span>
+                                    <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                        <input type="checkbox" name="toggle-addr" id="toggle-addr" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer opacity-0"/>
+                                        <label for="toggle-addr" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                        <div class="toggle-dot absolute block w-5 h-5 rounded-full bg-white border-2 border-gray-300 pointer-events-none"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 mt-2">
+                                <i class="fa-solid fa-location-dot text-gray-400 text-lg w-6 mt-1"></i>
+                                <div>
+                                    <p class="text-base font-semibold text-textDark">Av. Paulista, 1578 - Conjunto 42</p>
+                                    <p class="text-sm text-textMuted mt-1">Bela Vista, São Paulo - SP</p>
+                                    <p class="text-sm text-textMuted">CEP: 01310-200</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Field Group 3: Bank Account -->
+                        <div class="group bg-gray-50/30 p-5 rounded-2xl border border-transparent hover:border-borderLight transition-colors">
+                            <div class="flex justify-between items-start mb-2">
+                                <label class="text-xs font-bold text-textMuted uppercase tracking-wider">Dados Bancários</label>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-semibold text-textMuted">Mark as Verified</span>
+                                    <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                                        <input type="checkbox" name="toggle-bank" id="toggle-bank" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer opacity-0"/>
+                                        <label for="toggle-bank" class="toggle-label block h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                        <div class="toggle-dot absolute block w-5 h-5 rounded-full bg-white border-2 border-gray-300 pointer-events-none"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-6 mt-2">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-building-columns text-gray-400 text-lg w-6"></i>
+                                    <div>
+                                        <p class="text-xs text-textMuted">Banco</p>
+                                        <p class="text-base font-semibold text-textDark">Nubank (260)</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-textMuted">Agência</p>
+                                    <p class="text-base font-semibold text-textDark">0001</p>
+                                </div>
+                                <div class="col-span-2">
+                                    <p class="text-xs text-textMuted">Conta Corrente</p>
+                                    <p class="text-base font-semibold text-textDark">1234567-8</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer of Workspace -->
+            <div class="bg-white border-t border-borderLight p-6 flex justify-end items-center shrink-0">
+                <button class="bg-primary hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-pill shadow-floating transition-all transform hover:-translate-y-0.5 flex items-center gap-3 text-lg">
+                    Aprovar Dados e Ir para Documentos
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            
+        </div>
+    </main>
+
+    <script>
+        // Simple script to handle toggle visual states if needed beyond CSS, 
+        // but CSS handles the visual switch accurately.
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const label = e.target.closest('.flex').querySelector('span');
+                if(e.target.checked) {
+                    label.classList.remove('text-textMuted');
+                    label.classList.add('text-primary');
+                    label.textContent = 'Verified';
+                } else {
+                    label.classList.add('text-textMuted');
+                    label.classList.remove('text-primary');
+                    label.textContent = 'Mark as Verified';
+                }
+            });
+        });
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

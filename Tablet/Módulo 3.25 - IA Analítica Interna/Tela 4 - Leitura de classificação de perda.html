@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura de classificação de perda - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'trust-blue': '#0016dc',
+                        'neon-purple': '#BF80FF',
+                        'deep-navy': '#1A1A24',
+                        'off-white': '#F8F9FA',
+                        'card-white': '#FFFFFF',
+                        'border-light': '#E5E7EB',
+                        'text-muted': '#6B7280',
+                    },
+                    boxShadow: {
+                        'soft-ambient': '0 10px 40px -10px rgba(0,0,0,0.05), 0 4px 10px -5px rgba(0,0,0,0.02)',
+                        'inner-glow': 'inset 0 0 0 1px rgba(255,255,255,0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #F8F9FA; color: #1A1A24; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans antialiased h-screen flex flex-col ">
+
+    <!-- Header Navigation -->
+    <header id="header" class="bg-card-white border-b border-border-light px-8 py-4 flex items-center justify-between shrink-0 z-10 relative shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-trust-blue flex items-center justify-center text-white shadow-lg shadow-trust-blue/20">
+                <i class="fa-solid fa-chart-pie text-lg"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold text-deep-navy leading-tight">InsightAI</h1>
+                <p class="text-xs text-text-muted font-medium">SaaS Forensics</p>
+            </div>
+        </div>
+        
+        <nav class="hidden md:flex items-center bg-off-white p-1 rounded-full border border-border-light">
+            <a href="#" class="px-5 py-2 text-sm font-medium text-text-muted hover:text-deep-navy transition-colors rounded-full">Dashboard</a>
+            <a href="#" class="px-5 py-2 text-sm font-semibold bg-white text-trust-blue rounded-full shadow-sm">Loss Classification</a>
+            <a href="#" class="px-5 py-2 text-sm font-medium text-text-muted hover:text-deep-navy transition-colors rounded-full">Reports</a>
+            <a href="#" class="px-5 py-2 text-sm font-medium text-text-muted hover:text-deep-navy transition-colors rounded-full">Settings</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <button class="w-10 h-10 rounded-full border border-border-light flex items-center justify-center text-text-muted hover:text-deep-navy hover:bg-off-white transition-all relative">
+                <i class="fa-regular fa-bell"></i>
+                <span class="absolute top-2 right-2 w-2 h-2 bg-neon-purple rounded-full"></span>
+            </button>
+            <div class="flex items-center gap-3 border-l border-border-light">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-semibold text-deep-navy">Alex Pereira</p>
+                    <p class="text-xs text-text-muted">Head of Sales</p>
+                </div>
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Area -->
+    <main class="flex-1 p-6 md:p-8 flex items-center justify-center relative">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-white to-transparent opacity-50 pointer-events-none"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-trust-blue/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-20 w-80 h-80 bg-neon-purple/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Centered Split View Container -->
+        <div id="main-workspace" class="w-full max-w-[1240px] h-full max-h-[900px] bg-card-white rounded-[24px] shadow-soft-ambient border border-white/60 flex flex-col md:flex-row relative z-10">
+            
+            <!-- Left Column: Loss Directory (35%) -->
+            <section id="loss-directory" class="w-full md:w-[35%] border-r border-border-light bg-off-white/30 flex flex-col h-full">
+                <!-- Directory Header -->
+                <div class="p-6 pb-4 border-b border-border-light bg-white/50 backdrop-blur-sm shrink-0">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-bold text-deep-navy">Loss Directory</h2>
+                        <span class="text-xs font-semibold bg-trust-blue/10 text-trust-blue px-2.5 py-1 rounded-md">Camboriú Region</span>
+                    </div>
+                    
+                    <!-- Search -->
+                    <div class="relative mb-5">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted text-sm"></i>
+                        <input type="text" placeholder="Search opportunities..." class="w-full bg-white border border-border-light rounded-xl py-2.5 pr-4 text-sm focus:outline-none focus:border-trust-blue focus:ring-1 focus:ring-trust-blue transition-all shadow-sm">
+                    </div>
+
+                    <!-- Pill Tabs -->
+                    <div class="flex gap-2 overflow-x-auto hide-scroll pb-1">
+                        <button class="px-4 py-1.5 rounded-full text-sm font-semibold bg-deep-navy text-white shadow-sm whitespace-nowrap">Todos</button>
+                        <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-white text-text-muted hover:text-deep-navy border border-border-light hover:border-text-muted transition-all whitespace-nowrap">Orçamentos</button>
+                        <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-white text-text-muted hover:text-deep-navy border border-border-light hover:border-text-muted transition-all whitespace-nowrap">Assinaturas</button>
+                    </div>
+                </div>
+
+                <!-- List Cards -->
+                <div class="flex-1 overflow-y-auto p-4 space-y-3">
+                    <!-- Active Card -->
+                    <div class="bg-white border-2 border-trust-blue rounded-xl p-4 shadow-sm cursor-pointer relative group">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-trust-blue"></div>
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-bold text-deep-navy text-sm">TechCorp Solutions</h3>
+                                <p class="text-xs text-text-muted mt-0.5">Enterprise Plan • Camboriú</p>
+                            </div>
+                            <span class="font-bold text-deep-navy text-sm">R$ 45.000</span>
+                        </div>
+                        <div class="flex items-center gap-2 mt-3">
+                            <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-orange-50 text-orange-600 text-[11px] font-bold border border-orange-100">
+                                <i class="fa-solid fa-triangle-exclamation"></i> ⚠️ Concorrência
+                            </span>
+                            <span class="text-[10px] text-text-muted font-medium ml-auto">Lost 2 days ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Inactive Card 1 -->
+                    <div class="bg-white border border-border-light rounded-xl p-4 shadow-sm hover:border-text-muted transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-semibold text-deep-navy text-sm group-hover:text-trust-blue transition-colors">Global Logistics BR</h3>
+                                <p class="text-xs text-text-muted mt-0.5">Pro Plan • Balneário</p>
+                            </div>
+                            <span class="font-semibold text-deep-navy text-sm">R$ 12.500</span>
+                        </div>
+                        <div class="flex items-center gap-2 mt-3">
+                            <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 text-blue-600 text-[11px] font-bold border border-blue-100">
+                                <i class="fa-regular fa-clock"></i> ⏳ Demora
+                            </span>
+                            <span class="text-[10px] text-text-muted font-medium ml-auto">Lost 5 days ago</span>
+                        </div>
+                    </div>
+
+                    <!-- Inactive Card 2 -->
+                    <div class="bg-white border border-border-light rounded-xl p-4 shadow-sm hover:border-text-muted transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-semibold text-deep-navy text-sm group-hover:text-trust-blue transition-colors">Marina Resorts Ltd</h3>
+                                <p class="text-xs text-text-muted mt-0.5">Custom Plan • Itajaí</p>
+                            </div>
+                            <span class="font-semibold text-deep-navy text-sm">R$ 85.000</span>
+                        </div>
+                        <div class="flex items-center gap-2 mt-3">
+                            <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-purple-50 text-neon-purple text-[11px] font-bold border border-purple-100">
+                                <i class="fa-solid fa-gem"></i> Portfólio
+                            </span>
+                            <span class="text-[10px] text-text-muted font-medium ml-auto">Lost 1 week ago</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Inactive Card 3 -->
+                    <div class="bg-white border border-border-light rounded-xl p-4 shadow-sm hover:border-text-muted transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-semibold text-deep-navy text-sm group-hover:text-trust-blue transition-colors">Ocean View Imóveis</h3>
+                                <p class="text-xs text-text-muted mt-0.5">Starter Plan • Camboriú</p>
+                            </div>
+                            <span class="font-semibold text-deep-navy text-sm">R$ 5.200</span>
+                        </div>
+                        <div class="flex items-center gap-2 mt-3">
+                            <span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-orange-50 text-orange-600 text-[11px] font-bold border border-orange-100">
+                                <i class="fa-solid fa-triangle-exclamation"></i> ⚠️ Concorrência
+                            </span>
+                            <span class="text-[10px] text-text-muted font-medium ml-auto">Lost 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Analysis Canvas (65%) -->
+            <section id="analysis-canvas" class="w-full md:w-[65%] bg-card-white flex flex-col h-full overflow-y-auto">
+                
+                <!-- Canvas Header -->
+                <div class="px-8 py-6 border-b border-border-light flex justify-between items-center shrink-0">
+                    <div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <h2 class="text-2xl font-bold text-deep-navy">TechCorp Solutions</h2>
+                            <span class="bg-red-50 text-red-600 border border-red-100 px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wide">Lost Deal</span>
+                        </div>
+                        <p class="text-sm text-text-muted flex items-center gap-4">
+                            <span><i class="fa-regular fa-calendar mr-1.5"></i> Oct 24, 2023</span>
+                            <span><i class="fa-regular fa-user mr-1.5"></i> Rep: Sarah Jenkins</span>
+                        </p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="px-4 py-2 rounded-lg border border-border-light text-sm font-semibold text-deep-navy hover:bg-off-white transition-colors shadow-sm flex items-center gap-2">
+                            <i class="fa-solid fa-clock-rotate-left text-text-muted"></i> Timeline
+                        </button>
+                        <button class="px-4 py-2 rounded-lg bg-trust-blue text-white text-sm font-semibold hover:bg-blue-700 transition-colors shadow-md shadow-trust-blue/20 flex items-center gap-2">
+                            <i class="fa-solid fa-share-nodes"></i> Share Analysis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Canvas Content Grid -->
+                <div class="p-8 flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 content-start">
+                    
+                    <!-- AI Confidence Gauge (Left Col) -->
+                    <div class="bg-off-white rounded-2xl p-6 border border-border-light shadow-sm flex flex-col items-center justify-center relative ">
+                        <div class="absolute top-4 left-4 text-xs font-bold text-neon-purple uppercase tracking-wider flex items-center gap-1.5">
+                            <i class="fa-solid fa-brain"></i> AI Classification
+                        </div>
+                        
+                        <div class="w-full h-[200px] mt-6" id="gauge-chart"></div>
+                        
+                        <div class="text-center mt-[-20px] z-10">
+                            <h3 class="text-3xl font-extrabold text-deep-navy">92%</h3>
+                            <p class="text-sm font-medium text-text-muted mt-1">Confiança na Classificação</p>
+                        </div>
+                    </div>
+
+                    <!-- Breakdown Chart (Right Col) -->
+                    <div class="bg-white rounded-2xl p-6 border border-border-light shadow-sm flex flex-col">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-sm font-bold text-deep-navy uppercase tracking-wider">Weight of Reasons</h3>
+                            <button class="text-text-muted hover:text-trust-blue"><i class="fa-solid fa-ellipsis"></i></button>
+                        </div>
+                        
+                        <div class="w-full h-[180px]" id="bar-chart"></div>
+                        
+                        <div class="mt-auto flex justify-between text-xs font-medium text-text-muted border-t border-border-light pt-4">
+                            <span class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded bg-trust-blue"></div> Price</span>
+                            <span class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded bg-orange-400"></div> Timing</span>
+                            <span class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded bg-neon-purple"></div> Portfolio</span>
+                        </div>
+                    </div>
+
+                    <!-- AI Recommendation Box (Full Width) -->
+                    <div class="lg:col-span-2 relative group mt-2">
+                        <div class="absolute -inset-0.5 bg-gradient-to-r from-neon-purple/30 to-trust-blue/20 rounded-[20px] blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
+                        <div class="relative bg-white border-2 border-dashed border-neon-purple/40 rounded-[20px] p-8 flex gap-6 items-start shadow-sm bg-gradient-to-br from-white to-purple-50/50">
+                            <div class="w-12 h-12 rounded-full bg-neon-purple/10 flex items-center justify-center text-neon-purple shrink-0 shadow-inner">
+                                <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-deep-navy mb-2 flex items-center gap-2">
+                                    Strategic AI Recommendation
+                                    <span class="bg-neon-purple/10 text-neon-purple text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider font-bold">High Impact</span>
+                                </h4>
+                                <p class="text-[15px] leading-relaxed text-deep-navy/80 font-medium">
+"Para evitar perdas similares na região litorânea, ative o envio de portfólio junto com a primeira mensagem no Head WhatsApp."
+                                </p>
+                                <div class="mt-5 flex gap-3">
+                                    <button class="px-4 py-2 bg-deep-navy text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors shadow-md">
+                                        Create Workflow Rule
+                                    </button>
+                                    <button class="px-4 py-2 bg-white border border-border-light text-deep-navy text-sm font-semibold rounded-lg hover:bg-off-white transition-colors shadow-sm">
+                                        View Similar Cases
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Raw Data Snippet (Full Width, bottom filler) -->
+                    <div class="lg:col-span-2 border border-border-light rounded-xl mt-4">
+                        <div class="bg-off-white px-4 py-2.5 border-b border-border-light flex justify-between items-center">
+                            <span class="text-xs font-bold text-deep-navy uppercase tracking-wider"><i class="fa-solid fa-code text-text-muted mr-2"></i>Extracted Context Snippet</span>
+                            <span class="text-[10px] text-text-muted font-mono">Source: WhatsApp Transcript</span>
+                        </div>
+                        <div class="p-4 bg-white font-mono text-xs text-text-muted leading-relaxed">
+                            <span class="text-trust-blue font-semibold">[Client - 14:32]:</span> "Gostei da proposta, mas a outra agência já me mandou os cases deles na região e o preço tá um pouco menor."<br>
+                            <span class="text-orange-500 font-semibold">[Rep - 14:35]:</span> "Entendo, posso te enviar nosso portfólio agora, temos ótimos resultados em Balneário."<br>
+                            <span class="text-trust-blue font-semibold">[Client - 15:10]:</span> "Acho que vou fechar com eles dessa vez pela agilidade, mas obrigado."
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Plotly Charts
+        window.addEventListener('load', function() {
+            try {
+                // 1. AI Confidence Gauge Chart
+                var gaugeData = [
+                    {
+                        type: "indicator",
+                        mode: "gauge",
+                        value: 92,
+                        gauge: {
+                            shape: "bullet", // using bullet style for semi-circle approximation in this container
+                            axis: { range: [null, 100], visible: false },
+                            bar: { color: "#BF80FF", thickness: 0.8 }, // Neon Purple
+                            bgcolor: "#E5E7EB",
+                            borderwidth: 0,
+                            steps: [
+                                { range: [0, 100], color: "#F3F4F6" }
+                            ],
+                        }
+                    }
+                ];
+
+                // Better implementation of semi-circle gauge using pie chart approach
+                var donutData = [{
+                    values: [92, 8, 100], // 92 value, 8 remainder, 100 hidden bottom half
+                    labels: ['Confidence', 'Remaining', 'Hidden'],
+                    marker: {
+                        colors: ['#BF80FF', '#E5E7EB', 'rgba(0,0,0,0)']
+                    },
+                    type: 'pie',
+                    hole: 0.75,
+                    rotation: 90,
+                    direction: 'clockwise',
+                    textinfo: 'none',
+                    hoverinfo: 'none',
+                    showlegend: false
+                }];
+
+                var donutLayout = {
+                    margin: { t: 10, b: 10, l: 10, r: 10 },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    width: 200,
+                    height: 200,
+                    shapes: [
+                        // Optional inner ring
+                        {
+                            type: 'circle',
+                            x0: 0.2, y0: 0.2, x1: 0.8, y1: 0.8,
+                            line: { color: 'rgba(191, 128, 255, 0.1)', width: 2 }
+                        }
+                    ]
+                };
+
+                Plotly.newPlot('gauge-chart', donutData, donutLayout, {displayModeBar: false, responsive: true});
+
+                // 2. Breakdown Horizontal Stacked Bar Chart
+                var trace1 = {
+                    y: ['Reasons'],
+                    x: [70],
+                    name: 'Price',
+                    type: 'bar',
+                    orientation: 'h',
+                    marker: { color: '#0016dc', border: {radius: 4} } // Trust Blue
+                };
+
+                var trace2 = {
+                    y: ['Reasons'],
+                    x: [20],
+                    name: 'Timing',
+                    type: 'bar',
+                    orientation: 'h',
+                    marker: { color: '#FB923C' } // Orange
+                };
+
+                var trace3 = {
+                    y: ['Reasons'],
+                    x: [10],
+                    name: 'Portfolio',
+                    type: 'bar',
+                    orientation: 'h',
+                    marker: { color: '#BF80FF', border: {radius: 4} } // Neon Purple
+                };
+
+                var barData = [trace1, trace2, trace3];
+
+                var barLayout = {
+                    barmode: 'stack',
+                    margin: { t: 20, r: 20, b: 20, l: 0 },
+                    xaxis: { 
+                        visible: true, 
+                        showgrid: true,
+                        gridcolor: '#F3F4F6',
+                        tickfont: { color: '#6B7280', size: 10 },
+                        range: [0, 100]
+                    },
+                    yaxis: { visible: false },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    showlegend: false,
+                    height: 120,
+                    // Add value annotations inside bars
+                    annotations: [
+                        { x: 35, y: 'Reasons', text: '70%', font: {color: 'white', size: 14, family: 'Plus Jakarta Sans'}, showarrow: false },
+                        { x: 80, y: 'Reasons', text: '20%', font: {color: 'white', size: 12, family: 'Plus Jakarta Sans'}, showarrow: false },
+                        { x: 95, y: 'Reasons', text: '10%', font: {color: 'white', size: 10, family: 'Plus Jakarta Sans'}, showarrow: false }
+                    ]
+                };
+
+                Plotly.newPlot('bar-chart', barData, barLayout, {displayModeBar: false, responsive: true});
+
+            } catch(e) {
+                console.error("Plotly rendering error:", e);
+            }
+        });
+    </script>
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

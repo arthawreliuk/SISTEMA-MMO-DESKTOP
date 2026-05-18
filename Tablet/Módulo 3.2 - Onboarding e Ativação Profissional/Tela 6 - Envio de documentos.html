@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio de documentos - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#F8F9FA',
+                        primary: '#0016dc',
+                        textDark: '#1A1A24',
+                        textMuted: '#6B7280',
+                        borderLight: '#E5E7EB',
+                        cardBg: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'nav': '2px 0 10px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8F9FA; color: #1A1A24; min-height: 100vh; display: flex; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-textDark antialiased ">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main_workspace" class="flex-1 flex items-center justify-center p-8 min-h-screen">
+        
+        <!-- Main Validation Card -->
+        <div id="validation_card" class="bg-cardBg w-full max-w-[700px] rounded-[24px] shadow-soft p-10 flex flex-col items-center text-center">
+            
+            <!-- Header Section -->
+            <div id="identity_header" class="mb-10 w-full">
+                <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-primary">
+                    <i class="fa-solid fa-shield-halved text-3xl"></i>
+                </div>
+                <h1 class="text-[32px] font-bold tracking-tight mb-3 text-textDark">Sua Segurança Primeiro</h1>
+                <p class="text-textMuted text-base max-w-[480px] mx-auto leading-relaxed">
+                    Para manter o ecossistema confiável e liberar o seu acesso, precisamos validar sua identidade (CNH ou RG).
+                </p>
+            </div>
+
+            <!-- Upload Grid Section -->
+            <div id="upload_grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-8">
+                
+                <!-- Document Upload Box -->
+                <div class="border-2 border-dashed border-primary/30 rounded-[16px] p-6 flex flex-col items-center justify-center bg-primary/[0.02] hover:bg-primary/[0.04] transition-colors group cursor-pointer h-[240px]">
+                    <div class="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center text-primary mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-regular fa-id-card text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-textDark mb-1 text-lg">Documento Oficial</h3>
+                    <p class="text-sm text-textMuted mb-6 text-center px-2">Frente e verso visíveis</p>
+                    <button class="bg-white border border-borderLight text-textDark px-6 py-2.5 rounded-full text-sm font-medium shadow-sm hover:border-primary hover:text-primary transition-all w-full">
+                        Fazer Upload ou Tirar Foto
+                    </button>
+                </div>
+
+                <!-- Selfie Upload Box -->
+                <div class="border-2 border-dashed border-primary/30 rounded-[16px] p-6 flex flex-col items-center justify-center bg-primary/[0.02] hover:bg-primary/[0.04] transition-colors group cursor-pointer h-[240px]">
+                    <div class="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center text-primary mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-regular fa-face-smile text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-textDark mb-1 text-lg">Selfie de Segurança</h3>
+                    <p class="text-sm text-textMuted mb-6 text-center px-2">Rosto bem iluminado</p>
+                    <button class="bg-white border border-borderLight text-textDark px-6 py-2.5 rounded-full text-sm font-medium shadow-sm hover:border-primary hover:text-primary transition-all w-full">
+                        Tirar Selfie
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Trust Indicator -->
+            <div id="trust_indicator" class="flex items-center justify-center gap-2 text-sm text-textMuted mb-8 bg-gray-50 py-2 px-4 rounded-full">
+                <i class="fa-solid fa-lock text-green-600"></i>
+                <span>Criptografia de ponta a ponta ativada.</span>
+            </div>
+
+            <!-- Submission Footer -->
+            <div id="submission_footer" class="w-full">
+                <button class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 rounded-full text-lg transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                    Enviar Documentos de Forma Segura
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>

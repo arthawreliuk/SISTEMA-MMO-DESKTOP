@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de oportunidades elegíveis - MMO Tablet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0016dc',
+                            50: '#e6e8fb',
+                            100: '#ccd1f8',
+                            200: '#99a3f1',
+                            300: '#6675ea',
+                            400: '#3347e3',
+                            500: '#0016dc',
+                            600: '#0012b0',
+                            700: '#000e84',
+                            800: '#000958',
+                            900: '#00052c',
+                        },
+                        navy: {
+                            DEFAULT: '#1A1A24',
+                            light: '#2D2D3A',
+                            muted: '#64748B'
+                        },
+                        surface: {
+                            DEFAULT: '#F8F9FA',
+                            card: '#FFFFFF'
+                        }
+                    },
+                    boxShadow: {
+                        'ambient': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px -5px rgba(0, 22, 220, 0.3)',
+                        'nav': '5px 0 30px -10px rgba(0,0,0,0.03)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+            color: #1A1A24;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="flex h-screen font-sans text-navy bg-surface selection:bg-brand selection:text-white">
+
+
+    <!-- Main Content Workspace -->
+    <main id="main-workspace" class="flex-1 h-full overflow-y-auto overflow-x-hidden p-8 lg:p-12">
+        <div class="max-w-[1400px] mx-auto w-full flex flex-col gap-8">
+            
+            <!-- Header Area -->
+            <header id="page-header" class="flex flex-col gap-2 pt-4">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="px-3 py-1 bg-brand/10 text-brand text-sm font-semibold rounded-full tracking-wide">NOVIDADES</span>
+                    <span class="text-navy-muted text-sm font-medium">Atualizado há 5 min</span>
+                </div>
+                <h1 class="text-4xl lg:text-5xl font-extrabold text-navy tracking-tight">Radar de Oportunidades</h1>
+                <p class="text-lg text-navy-muted font-medium max-w-2xl mt-1">Novos pedidos de clientes que combinam com o seu perfil e especialidade.</p>
+            </header>
+
+            <!-- Top Control Bar -->
+            <section id="control-bar" class="bg-white rounded-[24px] shadow-ambient p-4 flex flex-col md:flex-row items-center justify-between gap-4 sticky top-0 z-40">
+                <!-- Search -->
+                <div class="relative w-full md:w-[400px]">
+                    <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-navy-muted"></i>
+                    <input type="text" placeholder="Buscar por serviço, localização ou cliente..." class="w-full bg-surface border-none rounded-full py-3.5 pr-6 text-navy placeholder:text-navy-muted font-medium focus:ring-2 focus:ring-brand/20 focus:outline-none transition-all">
+                </div>
+
+                <!-- Filters & Toggles -->
+                <div class="flex items-center gap-3 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+                    <button class="flex items-center gap-2 px-5 py-3.5 bg-surface rounded-full text-navy font-semibold hover:bg-gray-200 transition-colors whitespace-nowrap">
+                        <i class="fa-solid fa-sliders text-navy-muted"></i>
+                        Filtros
+                        <span class="bg-brand text-white text-xs px-2 py-0.5 rounded-full ml-1">2</span>
+                    </button>
+                    
+                    <div class="flex items-center bg-surface p-1 rounded-full border border-gray-100">
+                        <button class="flex items-center gap-2 px-6 py-2.5 bg-white shadow-sm rounded-full text-brand font-bold transition-all">
+                            <i class="fa-solid fa-list-ul"></i>
+                            Lista
+                        </button>
+                        <button class="flex items-center gap-2 px-6 py-2.5 text-navy-muted font-medium hover:text-navy transition-all rounded-full">
+                            <i class="fa-regular fa-map"></i>
+                            Mapa
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Grid -->
+            <section id="opportunities-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-20">
+                
+                <!-- Card 1: High Compatibility (Highlighted) -->
+                <article class="bg-white rounded-[24px] shadow-ambient border border-brand/30 relative group hover:-translate-y-1 transition-all duration-300" style="box-shadow: 0 0 20px -5px rgba(0, 22, 220, 0.15);">
+                    <!-- Highlight Badge -->
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand to-brand/50"></div>
+                    
+                    <div class="p-6 flex flex-col h-full gap-5">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-2 bg-brand/10 text-brand px-3 py-1.5 rounded-full text-xs font-bold tracking-wide">
+                                <i class="fa-solid fa-star"></i>
+                                ALTA COMPATIBILIDADE
+                            </div>
+                            <button class="text-navy-muted hover:text-brand transition-colors">
+                                <i class="fa-regular fa-bookmark text-lg"></i>
+                            </button>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-navy leading-tight mb-2">Instalação Elétrica Residencial Completa</h3>
+                            <div class="flex items-center gap-4 text-sm text-navy-muted font-medium">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brand/70"></i> 2.4 km de você</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-brand/70"></i> Há 10 min</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-surface rounded-[16px] p-4 text-sm text-navy-light leading-relaxed border border-gray-100">
+"Preciso de um eletricista para refazer toda a fiação de um apartamento antigo (70m²). O quadro de luz também precisa ser trocado. Urgência para esta semana."
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-3 py-1 bg-gray-100 text-navy-light rounded-full text-xs font-semibold">Elétrica</span>
+                            <span class="px-3 py-1 bg-gray-100 text-navy-light rounded-full text-xs font-semibold">Residencial</span>
+                            <span class="px-3 py-1 bg-red-50 text-red-600 rounded-full text-xs font-semibold">Urgente</span>
+                        </div>
+
+                        <div class="pt-4 mt-2 border-t border-gray-100 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <p class="text-sm font-bold text-navy">Mariana S.</p>
+                                    <p class="text-xs text-navy-muted">Cliente Verificado</p>
+                                </div>
+                            </div>
+                            <button class="px-5 py-2.5 bg-brand text-white rounded-full text-sm font-bold hover:bg-brand-600 transition-colors shadow-md shadow-brand/20">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2: Normal -->
+                <article class="bg-white rounded-[24px] shadow-ambient border border-transparent hover:border-gray-200 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="p-6 flex flex-col h-full gap-5">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-2 bg-gray-100 text-navy-muted px-3 py-1.5 rounded-full text-xs font-bold tracking-wide">
+                                <i class="fa-solid fa-check"></i>
+                                BOM MATCH
+                            </div>
+                            <button class="text-navy-muted hover:text-brand transition-colors">
+                                <i class="fa-regular fa-bookmark text-lg"></i>
+                            </button>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-navy leading-tight mb-2">Manutenção de Ar Condicionado Split</h3>
+                            <div class="flex items-center gap-4 text-sm text-navy-muted font-medium">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brand/70"></i> 5.1 km de você</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-brand/70"></i> Há 45 min</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-surface rounded-[16px] p-4 text-sm text-navy-light leading-relaxed border border-gray-100">
+"Dois aparelhos split 9000 BTUs não estão gelando direito. Precisam de limpeza profunda e talvez recarga de gás. Horário comercial."
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-3 py-1 bg-gray-100 text-navy-light rounded-full text-xs font-semibold">Climatização</span>
+                            <span class="px-3 py-1 bg-gray-100 text-navy-light rounded-full text-xs font-semibold">Manutenção</span>
+                        </div>
+
+                        <div class="pt-4 mt-2 border-t border-gray-100 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-brand/10 text-brand flex items-center justify-center font-bold text-sm border-2 border-white shadow-sm">
+                                    RC
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-navy">Roberto C.</p>
+                                    <p class="text-xs text-navy-muted">Novo Cliente</p>
+                                </div>
+                            </div>
+                            <button class="px-5 py-2.5 bg-surface text-brand rounded-full text-sm font-bold hover:bg-brand hover:text-white transition-colors">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3: High Compatibility (Highlighted) -->
+                <article class="bg-white rounded-[24px] shadow-ambient border border-brand/30 relative group hover:-translate-y-1 transition-all duration-300" style="box-shadow: 0 0 20px -5px rgba(0, 22, 220, 0.15);">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand to-brand/50"></div>
+                    
+                    <div class="p-6 flex flex-col h-full gap-5">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-2 bg-brand/10 text-brand px-3 py-1.5 rounded-full text-xs font-bold tracking-wide">
+                                <i class="fa-solid fa-star"></i>
+                                ALTA COMPATIBILIDADE
+                            </div>
+                            <button class="text-navy-muted hover:text-brand transition-colors">
+                                <i class="fa-regular fa-bookmark text-lg"></i>
+                            </button>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-navy leading-tight mb-2">Projeto de Iluminação LED - Loja</h3>
+                            <div class="flex items-center gap-4 text-sm text-navy-muted font-medium">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brand/70"></i> 1.2 km de você</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-brand/70"></i> Há 1 hora</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-surface rounded-[16px] p-4 text-sm text-navy-light leading-relaxed border border-gray-100">
+"Buscamos profissional para executar projeto de iluminação em loja de roupas no shopping. Todo material já comprado, apenas mão de obra noturna."
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-3 py-1 bg-gray-100 text-navy-light rounded-full text-xs font-semibold">Elétrica</span>
+                            <span class="px-3 py-1 bg-gray-100 text-navy-light rounded-full text-xs font-semibold">Comercial</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-semibold">Noturno</span>
+                        </div>
+
+                        <div class="pt-4 mt-2 border-t border-gray-100 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <p class="text-sm font-bold text-navy">Carlos M.</p>
+                                    <p class="text-xs text-navy-muted">Cliente Premium</p>
+                                </div>
+                            </div>
+                            <button class="px-5 py-2.5 bg-brand text-white rounded-full text-sm font-bold hover:bg-brand-600 transition-colors shadow-md shadow-brand/20">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- Card 4: Normal -->
+                 <article class="bg-white rounded-[24px] shadow-ambient border border-transparent hover:border-gray-200 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="p-6 flex flex-col h-full gap-5">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-2 bg-gray-100 text-navy-muted px-3 py-1.5 rounded-full text-xs font-bold tracking-wide">
+                                <i class="fa-solid fa-check"></i>
+                                BOM MATCH
+                            </div>
+                            <button class="text-navy-muted hover:text-brand transition-colors">
+                                <i class="fa-regular fa-bookmark text-lg"></i>
+                            </button>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-navy leading-tight mb-2">Reparo em Quadro de Distribuição</h3>
+                            <div class="flex items-center gap-4 text-sm text-navy-muted font-medium">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-brand/70"></i> 8.5 km de você</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-brand/70"></i> Há 2 horas</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-surface rounded-[16px] p-4 text-sm text-navy-light leading-relaxed border border-gray-100">
+"Disjuntor caindo constantemente quando ligo o chuveiro. Preciso de uma avaliação e possível troca do componente."
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-3 py-1 bg-gray-100 text-navy-light rounded-full text-xs font-semibold">Elétrica</span>
+                            <span class="px-3 py-1 bg-gray-100 text-navy-light rounded-full text-xs font-semibold">Reparo Rápido</span>
+                        </div>
+
+                        <div class="pt-4 mt-2 border-t border-gray-100 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Client" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm">
+                                <div>
+                                    <p class="text-sm font-bold text-navy">Fernanda L.</p>
+                                    <p class="text-xs text-navy-muted">Cliente Verificado</p>
+                                </div>
+                            </div>
+                            <button class="px-5 py-2.5 bg-surface text-brand rounded-full text-sm font-bold hover:bg-brand hover:text-white transition-colors">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+        </div>
+    </main>
+
+    <script src="../../_tablet-nav.js"></script>
+</body>
+</html>
