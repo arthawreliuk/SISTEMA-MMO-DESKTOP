@@ -154,74 +154,59 @@
       cursor: pointer;
     }
 
-    /* ── Tablet floating rail (601–1023px) ───────────────────── */
+    /* ── Tablet navigation rail (601–1023px) ─────────────────── */
     #mmo-tablet-rail {
       display: none;
       position: fixed;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 64px;
-      background: rgba(255,255,255,.82);
-      backdrop-filter: blur(20px) saturate(200%);
-      -webkit-backdrop-filter: blur(20px) saturate(200%);
-      border: 1px solid rgba(255,255,255,.7);
-      border-radius: 28px;
-      box-shadow: 0 8px 40px rgba(26,26,36,.13), 0 2px 8px rgba(26,26,36,.06),
-                  inset 0 1px 0 rgba(255,255,255,.9);
+      left: 0; top: 0; bottom: 0;
+      width: 80px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-right: 1px solid rgba(240,240,245,.9);
+      box-shadow: 2px 0 20px rgba(26,26,36,.07);
       z-index: 9999;
       flex-direction: column;
       align-items: center;
-      padding: 20px 0;
+      justify-content: center;
+      padding: 24px 0;
       gap: 4px;
     }
     .mmo-tr-item {
-      width: 44px; height: 50px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      width: 64px;
+      padding: 8px 0;
+      border-radius: 16px;
       text-decoration: none; color: #9ca3af;
-      transition: background .15s, color .15s, transform .12s;
+      transition: background .15s, color .15s;
       position: relative;
       -webkit-tap-highlight-color: transparent;
     }
-    .mmo-tr-item:hover {
-      background: rgba(240,244,255,.85);
-      color: #1a1a24;
-      transform: scale(1.06);
-    }
-    .mmo-tr-item.on {
-      background: rgba(0,22,220,.08);
-      color: #0016dc;
-    }
-    .mmo-tr-item i { font-size: 21px; }
-    .mmo-tr-item.on::after {
+    .mmo-tr-item:hover { background: #f0f4ff; color: #1a1a24; }
+    .mmo-tr-item.on  { color: #0016dc; }
+    .mmo-tr-item.on::before {
       content: '';
-      position: absolute; right: 4px; top: 4px;
-      width: 6px; height: 6px;
-      background: #0016dc; border-radius: 50%;
+      position: absolute; inset: 0;
+      border-radius: 16px;
+      background: rgba(0,22,220,.08);
+      z-index: -1;
     }
-    .mmo-tr-item[data-t]::before {
-      content: attr(data-t);
-      position: absolute; left: calc(100% + 12px); top: 50%;
-      transform: translateY(-50%);
-      background: rgba(26,26,36,.88);
-      backdrop-filter: blur(8px);
-      color: #fff;
-      font-size: 12px; font-weight: 600;
-      padding: 6px 12px; border-radius: 10px;
-      white-space: nowrap; pointer-events: none;
-      opacity: 0; transition: opacity .15s; z-index: 10000;
+    .mmo-tr-item i    { font-size: 22px; line-height: 1; }
+    .mmo-tr-item span {
+      font-size: 10px; font-weight: 600;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      letter-spacing: -.01em;
+      white-space: nowrap; letter-spacing: -.01em;
     }
-    .mmo-tr-item[data-t]:hover::before { opacity: 1; }
 
     @media (min-width: 601px) and (max-width: 1023px) {
       #mmo-std-header  { display: none !important; }
       #mmo-tablet-rail { display: flex !important; }
       #mmo-hamburger   { display: none !important; }
       #mmo-mobile-menu { display: none !important; }
-      body { padding-left: 92px !important; padding-top: 0 !important; }
+      body { padding-left: 80px !important; padding-top: 0 !important; }
     }
   `;
   document.head.appendChild(style);
@@ -347,8 +332,9 @@
       tRail.id = 'mmo-tablet-rail';
       tRail.innerHTML = NAV_ITEMS.map(item => {
         const active = item.keys.some(k => path.includes(k));
-        return `<a href="${item.href}" class="mmo-tr-item${active ? ' on' : ''}" data-t="${item.label}">` +
-               `<i class="fa-solid ${item.icon}"></i></a>`;
+        return `<a href="${item.href}" class="mmo-tr-item${active ? ' on' : ''}">` +
+               `<i class="fa-solid ${item.icon}"></i>` +
+               `<span>${item.label}</span></a>`;
       }).join('');
       document.body.prepend(tRail);
     }

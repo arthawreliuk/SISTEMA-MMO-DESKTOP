@@ -10,71 +10,59 @@
     *, *::before, *::after { box-sizing: border-box; }
     ::-webkit-scrollbar { display: none; }
 
-    #mmo-float-rail {
+    #mmo-rail {
       position: fixed;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 64px;
-      background: rgba(255,255,255,.82);
-      backdrop-filter: blur(20px) saturate(200%);
-      -webkit-backdrop-filter: blur(20px) saturate(200%);
-      border: 1px solid rgba(255,255,255,.7);
-      border-radius: 28px;
-      box-shadow: 0 8px 40px rgba(26,26,36,.13), 0 2px 8px rgba(26,26,36,.06),
-                  inset 0 1px 0 rgba(255,255,255,.9);
+      left: 0; top: 0; bottom: 0;
+      width: 80px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-right: 1px solid rgba(240,240,245,.9);
+      box-shadow: 2px 0 20px rgba(26,26,36,.07);
       z-index: 9999;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 0;
+      justify-content: center;
+      padding: 24px 0;
       gap: 4px;
     }
 
-    .mmo-fr-item {
-      width: 44px; height: 50px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 14px;
-      text-decoration: none; color: #9ca3af;
-      transition: background .15s, color .15s, transform .12s;
+    .mmo-rail-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      width: 64px;
+      padding: 8px 0;
+      border-radius: 16px;
+      text-decoration: none;
+      color: #9ca3af;
+      transition: background .15s, color .15s;
       position: relative;
       -webkit-tap-highlight-color: transparent;
     }
-    .mmo-fr-item:hover {
-      background: rgba(240,244,255,.85);
-      color: #1a1a24;
-      transform: scale(1.06);
-    }
-    .mmo-fr-item.on {
+    .mmo-rail-item:hover { background: #f0f4ff; color: #1a1a24; }
+    .mmo-rail-item.on  { color: #0016dc; }
+
+    .mmo-rail-item.on .mmo-rail-pip {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
       background: rgba(0,22,220,.08);
-      color: #0016dc;
-    }
-    .mmo-fr-item i { font-size: 21px; }
-
-    .mmo-fr-item.on::after {
-      content: '';
-      position: absolute; right: 4px; top: 4px;
-      width: 6px; height: 6px;
-      background: #0016dc; border-radius: 50%;
+      z-index: -1;
     }
 
-    .mmo-fr-item[data-t]::before {
-      content: attr(data-t);
-      position: absolute; left: calc(100% + 12px); top: 50%;
-      transform: translateY(-50%);
-      background: rgba(26,26,36,.88);
-      backdrop-filter: blur(8px);
-      color: #fff;
-      font-size: 12px; font-weight: 600;
-      padding: 6px 12px; border-radius: 10px;
-      white-space: nowrap; pointer-events: none;
-      opacity: 0; transition: opacity .15s; z-index: 10000;
+    .mmo-rail-item i   { font-size: 22px; line-height: 1; }
+    .mmo-rail-item span {
+      font-size: 10px;
+      font-weight: 600;
       font-family: 'Plus Jakarta Sans', sans-serif;
+      white-space: nowrap;
       letter-spacing: -.01em;
     }
-    .mmo-fr-item[data-t]:hover::before { opacity: 1; }
 
-    body { padding-left: 92px !important; }
+    body { padding-left: 80px !important; }
   `;
   document.head.appendChild(style);
 
@@ -89,11 +77,14 @@
   ];
 
   const rail = document.createElement('nav');
-  rail.id = 'mmo-float-rail';
+  rail.id = 'mmo-rail';
   rail.innerHTML = NAV.map(n => {
     const on = n.keys.some(k => path.includes(k));
-    return `<a href="${n.href}" class="mmo-fr-item${on ? ' on' : ''}" data-t="${n.label}">` +
-           `<i class="fa-solid ${n.icon}"></i></a>`;
+    return `<a href="${n.href}" class="mmo-rail-item${on ? ' on' : ''}">` +
+           `${on ? '<span class="mmo-rail-pip"></span>' : ''}` +
+           `<i class="fa-solid ${n.icon}"></i>` +
+           `<span>${n.label}</span>` +
+           `</a>`;
   }).join('');
 
   document.body.prepend(rail);
