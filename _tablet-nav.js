@@ -13,7 +13,7 @@
     #mmo-rail {
       position: fixed;
       left: 0; top: 0; bottom: 0;
-      width: 80px;
+      width: 96px;
       background: rgba(255,255,255,.92);
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -25,7 +25,7 @@
       align-items: center;
       justify-content: center;
       padding: 24px 0;
-      gap: 4px;
+      gap: 2px;
     }
 
     .mmo-rail-item {
@@ -33,8 +33,8 @@
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      width: 64px;
-      padding: 8px 0;
+      width: 82px;
+      padding: 8px 4px;
       border-radius: 16px;
       text-decoration: none;
       color: #9ca3af;
@@ -53,16 +53,17 @@
       z-index: -1;
     }
 
-    .mmo-rail-item i   { font-size: 22px; line-height: 1; }
+    .mmo-rail-item i   { font-size: 22px; line-height: 1; flex-shrink: 0; }
     .mmo-rail-item span {
       font-size: 10px;
       font-weight: 600;
       font-family: 'Plus Jakarta Sans', sans-serif;
       white-space: nowrap;
-      letter-spacing: -.01em;
+      letter-spacing: -.02em;
+      text-align: center;
     }
 
-    body { padding-left: 80px !important; }
+    body { padding-left: 96px !important; }
   `;
   document.head.appendChild(style);
 

@@ -24,20 +24,105 @@
     /* Responsive navbar: hide links on narrow screens */
     #mmo-nav-links { display: flex; }
     #mmo-hamburger { display: none; }
+
+    /* ── Side drawer backdrop ─────────────────────────────── */
+    #mmo-drawer-back {
+      position: fixed; inset: 0; z-index: 9998;
+      background: rgba(15,15,30,.5);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      opacity: 0; visibility: hidden;
+      transition: opacity .28s ease, visibility .28s;
+    }
+    #mmo-drawer-back.open { opacity: 1; visibility: visible; }
+
+    /* ── Side drawer panel ────────────────────────────────── */
     #mmo-mobile-menu {
-      display: none; position: fixed; top: 72px; left: 0; right: 0;
-      background: #fff; border-bottom: 1px solid #f0f0f0;
-      box-shadow: 0 8px 24px rgba(26,26,36,.1); z-index: 999;
-      padding: 12px 24px 20px; flex-direction: column; gap: 4px;
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: 300px; z-index: 9999;
+      background: #fff;
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+      box-shadow: -8px 0 48px rgba(26,26,36,.22);
+      overflow-y: auto; overflow-x: hidden;
+      border-radius: 20px 0 0 20px;
     }
-    #mmo-mobile-menu.open { display: flex; }
-    #mmo-mobile-menu a {
-      font-size: 15px; font-weight: 600; color: #1a1a24;
-      text-decoration: none; padding: 12px 8px;
-      border-bottom: 1px solid #f5f5f5; font-family: 'Plus Jakarta Sans', sans-serif;
+    #mmo-mobile-menu.open { transform: translateX(0); }
+
+    .mmo-dr-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 18px; height: 68px;
+      border-bottom: 1px solid #f0f0f0; flex-shrink: 0;
     }
-    #mmo-mobile-menu a:last-child { border-bottom: none; }
-    #mmo-mobile-menu a.active { color: #0016dc; }
+    .mmo-dr-close {
+      width: 36px; height: 36px; border-radius: 10px;
+      border: none; background: #f3f4f6; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: #6b7280; font-size: 16px;
+      transition: background .15s, color .15s;
+    }
+    .mmo-dr-close:hover { background: #fee2e2; color: #dc2626; }
+
+    .mmo-dr-user {
+      margin: 16px 16px 8px;
+      padding: 16px;
+      background: linear-gradient(135deg, #0016dc 0%, #2d3fe0 100%);
+      border-radius: 18px;
+      display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+    }
+    .mmo-dr-avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 2.5px solid rgba(255,255,255,.45);
+      overflow: hidden; flex-shrink: 0;
+    }
+    .mmo-dr-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .mmo-dr-uname {
+      font-size: 14px; font-weight: 700; color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .mmo-dr-urole {
+      font-size: 11px; color: rgba(255,255,255,.72);
+      font-family: 'Plus Jakarta Sans', sans-serif; margin-top: 2px;
+    }
+
+    .mmo-dr-nav { padding: 12px 12px; flex: 1; }
+    .mmo-dr-nav-label {
+      font-size: 10px; font-weight: 700; color: #9ca3af;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 0 8px; margin: 4px 0 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .mmo-dr-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 0 12px; height: 54px; border-radius: 14px;
+      text-decoration: none; color: #4b5563;
+      font-size: 14px; font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background .15s, color .15s;
+      position: relative; margin-bottom: 2px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mmo-dr-item:hover { background: #f0f4ff; color: #1a1a24; }
+    .mmo-dr-item.on { background: #eef1fd; color: #0016dc; }
+    .mmo-dr-item.on::before {
+      content: ''; position: absolute; right: 0; top: 10px; bottom: 10px;
+      width: 3px; background: #0016dc; border-radius: 3px 0 0 3px;
+    }
+    .mmo-dr-item i {
+      font-size: 20px; width: 24px; text-align: center; flex-shrink: 0;
+    }
+
+    .mmo-dr-footer {
+      padding: 16px 20px 28px;
+      border-top: 1px solid #f3f4f6; flex-shrink: 0;
+      display: flex; gap: 20px; align-items: center;
+    }
+    .mmo-dr-footer a {
+      font-size: 12px; font-weight: 600; color: #9ca3af;
+      text-decoration: none; font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: color .15s;
+    }
+    .mmo-dr-footer a:hover { color: #0016dc; }
 
     @media (max-width: 1023px) {
       #mmo-nav-links { display: none !important; }
@@ -154,12 +239,43 @@
       cursor: pointer;
     }
 
+    /* ── Highlights toggle button ────────────────────────────── */
+    #mmo-hl-toggle {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px 8px 13px;
+      border-radius: 999px;
+      border: 1.5px solid #e5e7eb;
+      background: #fff;
+      color: #9ca3af;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(26,26,36,.09);
+      transition: background .2s, color .2s, border-color .2s, box-shadow .2s;
+      white-space: nowrap;
+      user-select: none;
+    }
+    #mmo-hl-toggle:hover { border-color: #0016dc; color: #0016dc; }
+    #mmo-hl-toggle.hl-on {
+      background: #0016dc;
+      color: #fff;
+      border-color: #0016dc;
+      box-shadow: 0 4px 16px rgba(0,22,220,.3);
+    }
+
     /* ── Tablet navigation rail (601–1023px) ─────────────────── */
     #mmo-tablet-rail {
       display: none;
       position: fixed;
       left: 0; top: 0; bottom: 0;
-      width: 80px;
+      width: 96px;
       background: rgba(255,255,255,.92);
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -170,15 +286,15 @@
       align-items: center;
       justify-content: center;
       padding: 24px 0;
-      gap: 4px;
+      gap: 2px;
     }
     .mmo-tr-item {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      width: 64px;
-      padding: 8px 0;
+      width: 82px;
+      padding: 8px 4px;
       border-radius: 16px;
       text-decoration: none; color: #9ca3af;
       transition: background .15s, color .15s;
@@ -194,11 +310,12 @@
       background: rgba(0,22,220,.08);
       z-index: -1;
     }
-    .mmo-tr-item i    { font-size: 22px; line-height: 1; }
+    .mmo-tr-item i    { font-size: 22px; line-height: 1; flex-shrink: 0; }
     .mmo-tr-item span {
       font-size: 10px; font-weight: 600;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      white-space: nowrap; letter-spacing: -.01em;
+      white-space: nowrap;
+      letter-spacing: -.02em; text-align: center;
     }
 
     @media (min-width: 601px) and (max-width: 1023px) {
@@ -206,7 +323,7 @@
       #mmo-tablet-rail { display: flex !important; }
       #mmo-hamburger   { display: none !important; }
       #mmo-mobile-menu { display: none !important; }
-      body { padding-left: 80px !important; padding-top: 0 !important; }
+      body { padding-left: 96px !important; padding-top: 0 !important; }
     }
   `;
   document.head.appendChild(style);
@@ -315,14 +432,41 @@
 
       '</div>';
 
-    /* mobile dropdown menu */
+    /* side drawer: backdrop + panel */
     if (!document.getElementById('mmo-mobile-menu')) {
+      const backdrop = document.createElement('div');
+      backdrop.id = 'mmo-drawer-back';
+      document.body.appendChild(backdrop);
+
       const menu = document.createElement('div');
       menu.id = 'mmo-mobile-menu';
-      menu.innerHTML = NAV_ITEMS.map(item => {
-        const active = item.keys.some(k => path.includes(k));
-        return `<a href="${item.href}" class="${active ? 'active' : ''}">${item.label}</a>`;
-      }).join('');
+      menu.innerHTML =
+        '<div class="mmo-dr-head">' +
+          '<button class="mmo-dr-close" id="mmo-dr-close-btn"><i class="fa-solid fa-xmark"></i></button>' +
+          '<a href="../Módulo 3.4 - Vitrine, Busca e Descoberta/Tela 1 - Tela inicial de busca.html" style="display:flex;align-items:center;text-decoration:none;">' +
+            '<img src="../assets/logo-mmo.png" style="height:36px;width:auto;" alt="MMO">' +
+          '</a>' +
+        '</div>' +
+        '<div class="mmo-dr-user">' +
+          '<div class="mmo-dr-avatar">' +
+            '<img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Perfil">' +
+          '</div>' +
+          '<div>' +
+            '<div class="mmo-dr-uname">Arthur Hawreliuk</div>' +
+            '<div class="mmo-dr-urole">Profissional · MMO Premium</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="mmo-dr-nav">' +
+          '<div class="mmo-dr-nav-label">Navegação</div>' +
+          NAV_ITEMS.map(item => {
+            const active = item.keys.some(k => path.includes(k));
+            return `<a href="${item.href}" class="mmo-dr-item${active ? ' on' : ''}">` +
+                   `<i class="fa-solid ${item.icon}"></i>${item.label}</a>`;
+          }).join('') +
+        '</div>' +
+        '<div class="mmo-dr-footer">' +
+          '<a href="#">Ajuda</a><a href="#">Privacidade</a><a href="#">Termos</a>' +
+        '</div>';
       document.body.appendChild(menu);
     }
 
@@ -339,12 +483,26 @@
       document.body.prepend(tRail);
     }
 
-    /* hamburger toggle */
-    const hbtn = document.getElementById('mmo-hamburger');
-    const mmenu = document.getElementById('mmo-mobile-menu');
-    if (hbtn && mmenu) {
-      hbtn.addEventListener('click', () => mmenu.classList.toggle('open'));
+    /* hamburger toggle — side drawer with backdrop */
+    const hbtn    = document.getElementById('mmo-hamburger');
+    const mmenu   = document.getElementById('mmo-mobile-menu');
+    const mback   = document.getElementById('mmo-drawer-back');
+    const closeBtn = document.getElementById('mmo-dr-close-btn');
+
+    function openDrawer() {
+      if (mback)  mback.classList.add('open');
+      if (mmenu)  mmenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
+    function closeDrawer() {
+      if (mback)  mback.classList.remove('open');
+      if (mmenu)  mmenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (hbtn)     hbtn.addEventListener('click', openDrawer);
+    if (mback)    mback.addEventListener('click', closeDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
   }
   standardizeNav();
 
@@ -414,7 +572,7 @@
   standardizeFooter();
 
   /* ── Highlight all nav elements ─────────────────────────── */
-  let highlightsOn = true;
+  let highlightsOn = false;
 
   function collectNavEls() {
     const els = [];
@@ -434,7 +592,7 @@
       else el.classList.remove('mmo-hot');
     });
   }
-  applyHighlights(true);
+  applyHighlights(false);
 
   /* ── Extract destinations ────────────────────────────────── */
   function getDestinations() {
@@ -490,7 +648,7 @@
       </div>
       <div id="mmo-toggle-row">
         <span>Pulsação nos botões</span>
-        <button id="mmo-toggle-btn">Ocultar</button>
+        <button id="mmo-toggle-btn">Mostrar</button>
       </div>
     </div>
     <button id="mmo-fab-btn" title="Navegação do protótipo">
@@ -518,12 +676,27 @@
   const panel = document.getElementById('mmo-panel');
   btn.addEventListener('click', () => panel.classList.toggle('open'));
 
-  /* toggle highlights */
-  document.getElementById('mmo-toggle-btn').addEventListener('click', function () {
-    highlightsOn = !highlightsOn;
-    applyHighlights(highlightsOn);
-    this.textContent = highlightsOn ? 'Ocultar' : 'Mostrar';
-  });
+  /* ── Highlights toggle button (bottom-right corner) ─────── */
+  const hlBtn = document.createElement('button');
+  hlBtn.id = 'mmo-hl-toggle';
+  hlBtn.innerHTML = '<i class="fa-regular fa-eye-slash"></i> Interações';
+  document.body.appendChild(hlBtn);
+
+  function setHighlights(on) {
+    highlightsOn = on;
+    applyHighlights(on);
+    hlBtn.innerHTML = on
+      ? '<i class="fa-regular fa-eye-slash"></i> Interações'
+      : '<i class="fa-regular fa-eye"></i> Interações';
+    hlBtn.classList.toggle('hl-on', on);
+    const fabToggle = document.getElementById('mmo-toggle-btn');
+    if (fabToggle) fabToggle.textContent = on ? 'Ocultar' : 'Mostrar';
+  }
+
+  hlBtn.addEventListener('click', () => setHighlights(!highlightsOn));
+
+  /* FAB panel toggle kept in sync */
+  document.getElementById('mmo-toggle-btn').addEventListener('click', () => setHighlights(!highlightsOn));
 
   /* re-apply on dynamic DOM changes (some pages use document.write) */
   const observer = new MutationObserver(() => {
